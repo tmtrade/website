@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="refresh" content="5; url=/index/index/">
+	<title>提示信息</title>
+    <link rel="stylesheet" href="<?=StaticDir?>style/nanoscroller.css"/>
+    <link rel="stylesheet" href="<?=StaticDir?>style/import-comm.css"/>
+	<script src="<?=StaticDir?>script/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<!-- ms-loginbar start -->
+<div class="ms-loginbar">
+    <div class="w1000 f-clearfix">
+        <span class="ms-tel">交易热线：<b>010-82676562</b></span>
+        <span>您好！欢迎光临</span>
+    </div>
+</div>
+<!-- ms-loginbar end -->
+<style>
+	.s-main{margin:8% 0 10% 0; text-align:center;}
+	.message{margin-top:20px;font-size:14px;color:#666666;}
+	.message b{color:#e86b1d ; font-size:16px;}
+	.message a{padding-right:20px; background:url(<?=StaticDir?>style/img/error-back.jpg) no-repeat right;font-weight:bold; color:#e86b1d ; text-decoration:none; }
+</style>
+<script>
+start = 5;
+window.setInterval("interval()",1000)
+function interval(){
+	start = start-1;
+	$("#time").html(start);
+
+}
+</script>
+
+<div class="s-main">
+	<div class="gs-404">
+		<img src="<?=StaticDir?>style/img/error.jpg" alt=""/>
+		<div class="message">
+			<b id="time"><?=$msg?></b>
+		</div>
+		<div class="message">
+
+		<b id="time">5</b>&nbsp;秒后自动跳转到首页 &nbsp; &nbsp;
+		<a href="javascript:history.go(-1);">返回上一页</a>
+		</div>
+	</div>
+</div>
+
+<!-- ms-footer start -->
+<div class="ms-footer">
+    <div class="w1000">
+        <div class="ms-link">
+            <a href="">超凡网</a>&nbsp;|
+            <a href="">商标管家</a>
+        </div>
+        <p class="ms-copy">Copyright © 2002 - 2015 北京超凡知识产权代理有限公司 京ICP备13010625号</p>
+    </div>
+</div>
+<!-- ms-footer end -->
+</body>
+</html>
