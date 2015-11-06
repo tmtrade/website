@@ -387,41 +387,43 @@
         </div>
         <div class="mj-navitems fl">
             <ul class="f-clearfix">
-                <li>
-                    <a href="/">
+                <li <?if ($_mod_ == 'urgency'){echo 'class="mj-lihc"';}?> >
+                    <a href="/urgency">
                         <span>快速成交商标 </span>
                         <em>参展入驻紧急需求</em>
                         <i class="uj_icon27"></i>
                     </a>
                 </li>
-                <li class="mj-lihc">
+                <li <?if ($_mod_ == 'potential'){echo 'class="mj-lihc"';}?> >
                     <a href="/potential">
                         <span>潜力投资商标</span>
                         <em>资储备特色商标</em>
                         <i class="uj_icon27"></i>
                     </a>
                 </li>
-                <li>
-                    <a href="/">
+                <li <?if ($_mod_ == 'offprice'){echo 'class="mj-lihc"';}?> >
+                    <a href="/offprice">
                         <span>特价商标</span>
                         <em>每日一款优质商标</em>
                         <i class="uj_icon27"></i>
                     </a>
                 </li>
-                <li>
+                <li >
                     <a href="/">
                         <span>涉外商标出售</span>
                         <em>大陆以外产品使用</em>
                         <i class="uj_icon27"></i>
                     </a>
                 </li>
-                <!--<li>
-                    <a href="">
+            <?if ($_mod_ == 'search'){?> 
+                <li class="mj-brn">
+                    <a href="/licence">
                         <span>可许可商标</span>
                         <em>允许授权仅租用</em>
                         <i class="uj_icon27"></i>
                     </a>
-                </li>-->
+                </li>
+            <?}else{?> 
                 <li class="mj-brn">
                     <a href="/search">
                         <span>快速筛选系统</span>
@@ -429,6 +431,7 @@
                         <i class="uj_icon27"></i>
                     </a>
                 </li>
+            <?}?>
             </ul>
         </div>
     </div>

@@ -37,6 +37,9 @@ abstract class AppAction extends Action
 		$this->set('username', $name);
 		$this->set('userInfo', $this->userInfo);
 		$this->set('isLogin', $this->isLogin);
+
+		$this->set('_mod_', $this->mod);
+		$this->set('_action_', $this->action);
 	}
 
 	/**

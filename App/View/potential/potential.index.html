@@ -240,5 +240,18 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(this).height();
+            if (scrollTop + windowHeight == scrollHeight) {
+
+                alert(1);
+            }
+        });
+
+</script>
 
 <? require(ViewDir.'/footer.html'); ?>
