@@ -14,6 +14,18 @@ class PassportAction extends AppAction
     private $mvName     = 'mvCode'; //手机验证码名称
     private $mbNo       = 'mbNo'; //验证时的手机号
 
+    /**
+     * 正常登录
+     *
+     * 通过校手机或邮箱进行登录操作
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     *
+     * @return  array
+     */
     public function login()
     {
         $account    = $this->input('uname', 'string', '');
@@ -22,7 +34,7 @@ class PassportAction extends AppAction
         if ( empty($account) || empty($password) ){
             $this->returnAjax(array('code'=>2));//账号或密码为空
         }
-        $cateId = isCheck($account);
+        $cateId = isCheck($account);//判断账号是什么类型（1：邮箱，2：手机，3：其他）
         if ( $cateId == 3 ){
             $this->returnAjax(array('code'=>3));//账号不正确
         }
@@ -41,9 +53,21 @@ class PassportAction extends AppAction
         }else{
             $flag = array('code'=>5);//该账号不存在
         }
-        $this->returnAjax($res);
+        $this->returnAjax($flag);
     }
 
+    /**
+     * 手机快捷登录
+     *
+     * 通过校验手机验证码进行登录操作
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     *
+     * @return  json
+     */
     public function fastLogin()
     {
         $account    = $this->input('uname', 'string', '');
@@ -74,6 +98,16 @@ class PassportAction extends AppAction
         $this->returnAjax(array('code'=>1));//登录成功
     }
 
+    /**
+     * 发送手机验证码
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     *
+     * @return  json
+     */
     public function sendMsgCode()
     {
         $mobile = $this->input('m', 'string', '');
@@ -84,14 +118,8 @@ class PassportAction extends AppAction
         if ( empty($userinfo) ){
             $this->returnAjax(array('code'=>3));//该手机号未注册
         }
-        $code   = randCode(6);
-        $prefix = C('COOKIE_PREFIX');
-        $cname  = $prefix.$this->mvName;
-        $mbNo   = $prefix.$this->mbNo;
-        Session::set($cname, $code, $this->codeTime);
-        Session::set($mbNo, $mobile, $this->codeTime);
-        $content = Session::get($cname);
-        $res = $this->load('outmsg')->sendMsg($mobile, $content);
+        //设置验证码
+        $res = $this->setMsgCode($mobile);
         if ( isset($res['code']) ){
             if ( $res['code'] == 1 ){
                 $flag = array('code'=>1);//正确
@@ -106,6 +134,38 @@ class PassportAction extends AppAction
         $this->returnAjax($flag);
     }
 
+    /**
+     * 获取验证码，并发送到手机
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     *
+     * @return  array
+     */
+    private function setMsgCode($mobile, $length=6)
+    {
+        $code   = randCode($length);
+        $prefix = C('COOKIE_PREFIX');
+        $cname  = $prefix.$this->mvName;
+        $mbNo   = $prefix.$this->mbNo;
+        Session::set($cname, $code, $this->codeTime);
+        Session::set($mbNo, $mobile, $this->codeTime);
+        $content = Session::get($cname);
+        return $this->load('outmsg')->sendMsg($mobile, $content);
+    }
+
+    /**
+     * 登出
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     *
+     * @return  null
+     */
     public function loginout()
     {
         $this->loginClear();
@@ -117,6 +177,16 @@ class PassportAction extends AppAction
         $this->redirect('', '/index/');
     }
 
+    /**
+     * 清除用户登录信息
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     *
+     * @return  null
+     */
     private function loginClear()
     {
         $uName = C('PUBLIC_USER');
@@ -124,6 +194,17 @@ class PassportAction extends AppAction
         Session::clear();
     }
 
+    /**
+     * 设置用户登录信息
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     * @param   array  $data      用户信息
+     *
+     * @return  null
+     */
     private function setLogin($data)
     {
         $user = array(
