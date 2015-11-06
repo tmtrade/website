@@ -166,39 +166,52 @@ function strExist($str1, $str2)
 	return !(strpos($str2, $str1) === FALSE);
 }
 
-/**
- * 是否有操作权限
- *
- * @param  int		$role	角色
- * @param  string	$op		操作
- * @return bool
- */
-function hasAuth($role, $op)
-{
-	if ( $role == 4 ) {
-		return true;
-	}
-	
-	$file = AppConfigDir."/auth/role$role.config.php";
-	require($file);
-	
-	return in_array($op, $auth);
-}
 
 /**
- * 获取操作菜单
+ * 获取某长度的随机字符编码
+ * 除纯数字与纯字母选项，其他都不包括(I,i,o,O,1,0)
+ * @author	Xuni
+ * @since	2015-11-05
  *
- * @param  int		$userId		用户id
- * @param  int		$role		角色
- * @return array
+ * @param	int		$len	编码长度
+ * @param	string	$format	格式（ALL：大小写字母加数字，CHAR：大小写字母，NUMBER：纯数字，默认为小写字母加数字）
+ * @return	array
  */
-function getMenu($userId, $role)
+function randCode($len, $format='')
 {
-	$file = AppConfigDir."/auth/role$role.config.php";
-	require($file);
-	
-	return $menu;
+	$is_abc = $is_numer = 0;
+	$password = $tmp ='';  
+	switch($format){
+		case 'ALL':
+			$chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz23456789';
+			break;
+		case 'CHAR':
+			$chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+			break;
+		case 'NUMBER':
+			$chars='0123456789';
+			break;
+		default :
+			$chars='abcdefghjklmnpqrstuvwxyz23456789';
+			break;
+	} 
+	mt_srand((double)microtime()*1000000*getmypid());
+	while(strlen($password)<$len){
+		$tmp =substr($chars,(mt_rand()%strlen($chars)),1);
+		if(($is_numer <> 1 && is_numeric($tmp) && $tmp > 0 )|| $format == 'CHAR'){
+			$is_numer = 1;
+		}
+		if(($is_abc <> 1 && preg_match('/[a-zA-Z]/',$tmp)) || $format == 'NUMBER'){
+			$is_abc = 1;
+		}
+		$password.= $tmp;
+	}
+	if($is_numer <> 1 || $is_abc <> 1 || empty($password) ){
+		$password = randCode($len,$format);
+	}
+	return $password;
 }
+
 
 /**
  * 获取目录下指定扩展名的文件

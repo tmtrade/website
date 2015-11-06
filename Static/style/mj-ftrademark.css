@@ -1,0 +1,256 @@
+.mj-dd{
+    display: none;
+}
+.mj-dt:hover .mj-dd{
+    display: block;
+}
+.mj-content{
+    background: #f5f5f5;
+    padding: 30px;
+}
+.mj-banner{
+    height: 248px;
+    background: url("../style/img/mj-banner3.jpg") no-repeat;
+}
+/*搜索分类样式 start*/
+.mj-selection {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 25px 10px 15px 35px;
+    border-bottom: 1px solid #eeeeee;
+}
+.mj-selection dd {
+    margin: 0;
+    padding: 5px 0 0 0;
+}
+.mj-selection-span {
+    float: left;
+    line-height: 25px;
+    color: #666666;
+    font-size: 14px;
+    width: 80px;
+}
+.mj-selection-list {
+    padding-left: 80px;
+}
+.mj-selection-list a {
+    display: inline-block;
+    padding: 0 18px;
+    margin: 0 2px 5px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    color: #666666;
+    text-decoration: none;
+    border: 1px solid #eeeeee;
+    background: #ffffff;
+}
+.mj-selection-list .current, .mj-selection-list a:hover {
+    background: #fc7d28;
+    border: 1px solid #fc7d28;
+    color: #ffffff;
+}
+/*搜索样式 end*/
+
+
+/*图片列表 start*/
+.mj_goods_check {
+    margin: 30px 0 15px;
+}
+.mj_goods_check li {
+    float: left;
+    padding: 7px 10px;
+    text-align: center;
+    background: #fff;
+    font-size: 12px;
+    color: #777;
+    border:solid 1px #e9e9e9;
+    border-right: none;
+}
+.mj_goods_check li.mj-limg{
+    margin: 0 10px;
+}
+.mj_goods_check li.mj-lisn{
+    padding: 13px 10px;
+    background: none;
+    border:none;
+}
+.mj_goods_check li:last-child{
+    border:solid 1px #e9e9e9;
+}
+.mj_goods_check li label {
+    padding-left: 9px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.mj_goods_check li input {
+    vertical-align: middle;
+    cursor: pointer;
+}
+.mj_goods_check li input[type="checkbox"]{
+    cursor: pointer;
+}
+/*图片列表 end*/
+.mj-imglists{}
+.mj-imglists ul{}
+.mj-imglists li{
+    float: left;
+    position: relative;
+    margin: 0 10px 10px 0;
+    width: 184px;
+    height: 172px;
+    background: #fff;
+    border: solid 1px #f0f0f0;
+}
+
+.mj-imglT {
+    margin-top: 5px;
+    display: table;
+    height: 125px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.mj-imglT span {
+    display: table-cell;
+    vertical-align: middle;
+}
+.mj-imglT a img{
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+}
+.mj-imglB{
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+}
+
+.mj-tip{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 60;
+}
+.mj-ddTop .mj-tip {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.mj-tip label {
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 21px;
+    color: #fff;
+    font-size: 12px;
+}
+.mj-tThe {
+    background: #ff6a6a;
+}
+.mj-tJing {
+    background: #ff8b3e;
+}
+.mj-tShow {
+    background: #a0adc0;
+}
+
+.mj-priceI{
+    display: none;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 184px;
+    height: 265px;
+    border: solid 1px #fe8f45;
+    z-index: 55;
+}
+.mj-priceIcon{
+    padding: 0 10px 0 35px;
+    margin-top: 170px;
+    height: 95px;
+    background: #fff;
+}
+
+
+.mj-priceIcon p{
+    float: left;
+    width: 44px;
+    padding-right: 20px;
+    border: none;
+}
+.mj-priceIcon p a{
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.mj-labelbch:hover .uj_icon13{
+    background: url("slice/mj-icon15.png");
+}
+.mj-labelbch:hover .uj_icon14{
+    background: url("slice/mj-icon16.png");
+}
+.mj-labelbch{
+    background: #f4f4f4;
+}
+.mj-labelbch:hover{
+    background: #fe8f45;
+}
+.mj-priceIcon i{
+    display: inline-block;
+    vertical-align: middle;
+}
+.mj-priceIcon span{
+    padding: 10px 0 2px 0;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #fc7e2a;
+}
+.mj-imglists li:hover .mj-priceI{
+    display: block;
+}
+.mj-inputs{
+    width: 65px;
+    height: 18px;
+    line-height: 18px;
+    border: none;
+    outline: none;
+}
+
+.mj-trademarkTip{
+    width: 670px;
+    height: 45px;
+    margin: 25px auto;
+    background: #fff5ea;
+    line-height: 45px;
+    text-align: center;
+    border: dashed 1px #ffba7b;
+}
+.mj-trademarkTip label{
+    display: inline-block;
+    font-size: 15px;
+    margin-right: 15px;
+    width: 18px;
+    height: 18px;
+    background: #fc7e2a;
+    text-align: center;
+    line-height: 18px;
+    color: #fff;
+    border-radius: 50%;
+}
+.mj-trademarkTip p{
+    font-size: 14px;
+    color: #666;
+}
+.mj-mainbg{
+    padding-bottom: 1px;
+}

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>超凡网-无形资产</title>
+    <link rel="stylesheet" href="<?=StaticDir?>style/import-comm.css"/>
+    <script src="<?=StaticDir?>script/jquery-1.8.3.min.js"></script>
+    <script src="<?=StaticDir?>script/login.js"></script>
+</head>
+<body>
+<div class="mj-header">
+    <div class="w1180 mj-nav f-clearfix">
+        <ul class="mj-header_left fl">
+            <li><span class="security"><i class="uj_icon1"></i>安全保障</span></li>
+            <li>交易损失-3倍赔偿 要加帮助-简介什么的？</li>
+        </ul>
+        <ul class="mj-header_right fr">
+        <? if ($isLogin==true){ ?>
+            <li>
+                <div class="mj-cols">
+                    <i class="uj_icon2"></i>
+                    <a href="javascript:;"><?=$username?></a>
+                </div>
+            </li>
+            <li class="spacer"></li>
+            <li>
+                <div class="mj-cols">
+                    <i class="uj_icon3"></i>
+                    <a href="javascript:loginout();">退出</a>
+                </div>
+            </li>
+            <li class="spacer"></li>
+        <?}else{?>
+            <li>
+                <div class="mj-cols">
+                    <i class="uj_icon2"></i>
+                    <a href="javascript:getlogin();">快捷登陆</a>
+                </div>
+            </li>
+            <li class="spacer"></li>
+            <li>
+                <div class="mj-cols">
+                    <i class="uj_icon3"></i>
+                    <a href="">注册</a>
+                </div>
+            </li>
+            <li class="spacer"></li>
+        <?}?>
+            <li>
+                <a href="">平台帮助</a>
+            </li>
+            <li class="spacer"></li>
+            <li>
+                <a href="">平台简介</a>
+            </li>
+            <li>
+                <div class="mj-phone">
+                    <i class="uj_icon4"></i>
+                    4006-899-852
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- mj-header end -->
+
+<!-- mj-search start -->
+<div class="w1180 mj-search f-clearfix">
+    <div class="mj-logo">
+        <a href="/"></a>
+    </div>
+    <div class="mj-search_con fl">
+        <input type="text" placeholder="输入你想买的商标名称/商标号"/>
+        <ul class="mj-search-box">
+            <li class="select_box">
+                <span>所有分类</span>
+                <i class="uj_icon7"></i>
+                <!--<ul class="son_ul">
+                    <li>分类1</li>
+                    <li>分类2</li>
+                    <li>分类3</li>
+                </ul>-->
+            </li>
+        </ul>
+        <div class="mj-search-submit">
+            <i class="uj_icon8"></i>
+        </div>
+    </div>
+    <div class="mj-search_btn fr">
+        <a href="" class="mj-btnBuy"><i class="uj_icon5"></i>我要买</a>
+        <a href="" class="mj-btnSell"><i class="uj_icon6"></i>我要卖</a>
+    </div>
+</div>
+<!-- mj-search end -->
+
+<!--分类弹框-->
+<div class="w1180">
+    <div class="mj-models">
+        <a href="javascript:;" class="mj-close"></a>
+        <ul class="f-clearfix">
+            <li><a href="javascript:;">1类-化学品(1527) </a></li>
+            <li><a href="javascript:;">1类-化学品(1527) </a></li>
+            <li><a href="javascript:;">1类-化学品(1527) </a></li>
+            <li><a href="javascript:;">1类-化学品(1527) </a></li>
+            <li><a href="javascript:;">1类-化学品(1527) </a></li>
+            <li><a href="javascript:;">1类-化学品(1527) </a></li>
+            <li><a href="javascript:;">1类-化学品(1527) </a></li>
+            <li><a href="javascript:;">1类-化学品(1527) </a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="mj-mNav f-clearfix">
+    <div class="w1180 mj-inpsr">
+        <div class="mj-dorpdown f-clearfix">
+            <div class="mj-dt">
+                <div class="mj-dtCon">
+                    <i class="uj_icon9"></i>
+                    <a href="javascript:;" class="mj-mainL">分类筛选</a>
+                </div>
+                <div class="mj-dd">
+                    <dd>
+                        <a href="">
+                            <span>服装箱包</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">服装/男女装/童装</a></li>
+                                <li><a href="">鞋</a></li>
+                                <li><a href="">婴儿装</a></li>
+                                <li><a href="">帽</a></li>
+                                <li><a href="">袜</a></li>
+                                <li><a href="">手套</a></li>
+                                <li><a href="">围巾</a></li>
+                                <li><a href="">婚纱</a></li>
+                                <li><a href="">服装</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>日用化妆</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">牙膏</a></li>
+                                <li><a href="">清洁去渍制剂</a></li>
+                                <li><a href="">服肥皂/洗衣用清洁物品</a></li>
+                                <li><a href="">香料精油</a></li>
+                                <li><a href="">化妆品</a></li>
+                                <li><a href="">熏料</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>食品商标</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">肉</a></li>
+                                <li><a href="">非活水产品</a></li>
+                                <li><a href="">腌制干制水果</a></li>
+                                <li><a href="">蛋</a></li>
+                                <li><a href="">咖啡</a></li>
+                                <li><a href="">茶、茶饮料</a></li>
+                                <li><a href="">糖果</a></li>
+                                <li><a href="">营养保健品</a></li>
+                                <li><a href="">调味品</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>酒水饮料</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">啤酒</a></li>
+                                <li><a href="">饮料</a></li>
+                                <li><a href="">白酒、黄酒、葡萄酒</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>餐饮教育</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">餐厅/酒店</a></li>
+                                <li><a href="">学校教育/培训</a></li>
+                                <li><a href="">组织安排会议</a></li>
+                                <li><a href="">俱乐部/KTV</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>家电卫浴</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">洗衣机</a></li>
+                                <li><a href="">照明设备/器具</a></li>
+                                <li><a href="">加热设备</a></li>
+                                <li><a href="">制冷/冷藏设备</a></li>
+                                <li><a href="">干燥/通风/空调设备</a></li>
+                                <li><a href="">水暖管件</a></li>
+                                <li><a href="">消毒设备</a></li>
+                                <li><a href="">卫生设备</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>电子产品</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul style="width: 370px">
+                                <li><a href="">卫生设备</a></li>
+                                <li><a href="">手机配件/通讯设备/导航/机膜套</a></li>
+                                <li><a href="">开关/插座</a></li>
+                                <li><a href="">音响音像设备</a></li>
+                                <li><a href="">摄影仪器</a></li>
+                                <li><a href="">电线/电缆</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>珠宝工艺</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">钟/表/计时器</a></li>
+                                <li><a href="">珠宝/首饰</a></li>
+                                <li><a href="">陶瓷</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>家具家纺</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">家具</a></li>
+                                <li><a href="">枕头</a></li>
+                                <li><a href="">纺织品/布料</a></li>
+                                <li><a href="">毛巾浴巾</a></li>
+                                <li><a href="">床上用品</a></li>
+                                <li><a href="">窗帘</a></li>
+                                <li><a href="">地毯</a></li>
+                                <li><a href="">席类</a></li>
+                                <li><a href="">墙纸</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>医用药品</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">药品/消毒剂/中药材</a></li>
+                                <li><a href="">婴儿食品</a></li>
+                                <li><a href="">医用营养品</a></li>
+                                <li><a href="">兽药</a></li>
+                                <li><a href="">农药/杀虫剂</a></li>
+                                <li><a href="">卫生用品</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>广告销售</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul style="width: 455px;">
+                                <li><a href="">广告</a></li>
+                                <li><a href="">为消费者提供商业信息和建议（消费者建议机构 商业管理辅助）</a></li>
+                                <li><a href="">谈话记录（办公事务）</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>油漆燃料</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems">
+                            <ul>
+                                <li><a href="">涂料/油漆</a></li>
+                                <li><a href="">工业用油和油脂</a></li>
+                                <li><a href="">润滑剂</a></li>
+                                <li><a href="">吸收灰尘用合成物</a></li>
+                                <li><a href="">清扫用粘结灰尘合成物</a></li>
+                                <li><a href="">发动机燃料非化学添加剂</a></li>
+                                <li><a href="">照明材料</a></li>
+                                <li><a href="">照明用蜡</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dd>
+                        <a href="">
+                            <span>更多分类</span>
+                            <i class="uj_icon10"></i>
+                        </a>
+                        <div class="mj-ddItems" style="width: 900px;">
+                            <ul style="width: 180px;">
+                                <li><a href="">1类-化学品</a></li>
+                                <li><a href="">2类-医药品</a></li>
+                                <li><a href="">3类-电子电脑</a></li>
+                                <li><a href="">4类-烟火商标</a></li>
+                                <li><a href="">5类-橡胶制品</a></li>
+                                <li><a href="">6类-洁具厨房</a></li>
+                                <li><a href="">7类-洁具厨房</a></li>
+                                <li><a href="">8类-食品商标</a></li>
+                                <li><a href="">9类-酒类商标</a></li>
+                                <li><a href="">10类-建筑修理</a></li>
+                            </ul>
+                            <ul style="width: 180px;">
+                                <li><a href="">11类-教育娱乐</a></li>
+                                <li><a href="">12类-涂料油漆</a></li>
+                                <li><a href="">13类-五金金属</a></li>
+                                <li><a href="">14类-医疗器械</a></li>
+                                <li><a href="">15类-珠宝钟表</a></li>
+                                <li><a href="">16类-皮革皮具</a></li>
+                                <li><a href="">17类-袋篷绳网</a></li>
+                                <li><a href="">18类-花边衬料</a></li>
+                                <li><a href="">19类-方便食品</a></li>
+                                <li><a href="">20类-烟草烟具</a></li>
+                            </ul>
+                            <ul style="width: 180px;">
+                                <li><a href="">21类-通讯传媒</a></li>
+                                <li><a href="">22类-科学服务</a></li>
+                                <li><a href="">23类-化妆日用</a></li>
+                                <li><a href="">24类-电动机械</a></li>
+                                <li><a href="">25类-家用电器</a></li>
+                                <li><a href="">26类-乐器商标</a></li>
+                                <li><a href="">27类-建筑材料</a></li>
+                                <li><a href="">28类-纺织纱线</a></li>
+                                <li><a href="">29类-地毯席垫</a></li>
+                                <li><a href="">30类-水果花木</a></li>
+                            </ul>
+                            <ul style="width: 180px;">
+                                <li><a href="">31类-广告贸易</a></li>
+                                <li><a href="">32类-运输旅行</a></li>
+                                <li><a href="">33类-餐饮住宿</a></li>
+                                <li><a href="">34类-油脂燃料</a></li>
+                                <li><a href="">35类-手工器械</a></li>
+                                <li><a href="">36类-运输工具</a></li>
+                                <li><a href="">37类-文具办公</a></li>
+                                <li><a href="">38类-家具商标</a></li>
+                                <li><a href="">39类-布料床单</a></li>
+                                <li><a href="">40类-运动用品</a></li>
+                            </ul>
+                            <ul style="width: 180px;">
+                                <li><a href="">41类-啤酒饮料</a></li>
+                                <li><a href="">42类-金融物管</a></li>
+                                <li><a href="">43类-材料加工</a></li>
+                                <li><a href="">44类-医疗园艺</a></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </div>
+            </div>
+        </div>
+        <div class="mj-navitems fl">
+            <ul class="f-clearfix">
+                <li>
+                    <a href="/">
+                        <span>快速成交商标 </span>
+                        <em>参展入驻紧急需求</em>
+                        <i class="uj_icon27"></i>
+                    </a>
+                </li>
+                <li class="mj-lihc">
+                    <a href="/potential">
+                        <span>潜力投资商标</span>
+                        <em>资储备特色商标</em>
+                        <i class="uj_icon27"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <span>特价商标</span>
+                        <em>每日一款优质商标</em>
+                        <i class="uj_icon27"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <span>涉外商标出售</span>
+                        <em>大陆以外产品使用</em>
+                        <i class="uj_icon27"></i>
+                    </a>
+                </li>
+                <!--<li>
+                    <a href="">
+                        <span>可许可商标</span>
+                        <em>允许授权仅租用</em>
+                        <i class="uj_icon27"></i>
+                    </a>
+                </li>-->
+                <li class="mj-brn">
+                    <a href="/search">
+                        <span>快速筛选系统</span>
+                        <em>几秒找到合适商标</em>
+                        <i class="uj_icon27"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //分类弹框
+    $(".mj-models").hide(); //初始ul隐藏
+    $(document).ready(function(){
+
+
+        $(".mj-search-box li").click(function(){
+            $(".mj-models").show();
+        });
+        //关闭弹框
+        $(".mj-close").click(function(){
+            $(".mj-models").hide();
+        });
+
+        //左边菜单栏
+        $(".mj-dd dd").hover(function(){
+            $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
+        },function(){
+            $(this).removeClass("mj-ddahoverc");
+        });
+
+        //点击弹框添加样式
+        $(".mj-models li").hover(function(){
+            $(".mj-models").css({"border":"solid 1px #fc7d28"});
+        },function(){
+            $(".mj-models").css({"border":"solid 1px #79797a","box-shadow":"-1px 2px 2px #9a9a9b"});
+        });
+        $(".mj-models li").click(function(){
+            $(this).addClass("cur").siblings().removeClass("cur");
+            $(".select_box span").text($(this).text());
+            $(".mj-models").hide();
+        });
+    });
+
+</script>

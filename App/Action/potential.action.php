@@ -8,7 +8,7 @@
  * @author  Xuni
  * @since   2015-11-05
  */
-class IndexAction extends AppAction
+class PotentialAction extends AppAction
 {
 	public function index()
 	{

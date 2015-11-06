@@ -1,0 +1,286 @@
+
+/* 我要卖3（表单） */
+.mj-dd{
+    display: none;
+}
+.mj-dt:hover .mj-dd{
+    display: block;
+}
+.w1000{
+    width: 1000px;
+    margin: 0 auto;
+}
+.g-mail .g-bgnav .g-bgnav-nav1 table input{
+    width: 210px;
+    height: 30px;
+    color: #fff;
+    background: none;
+    border: none;
+    outline: none;
+}
+.g-mail .g-bgnav .g-bgnav-nav1 table input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 table input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #fff;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 table input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #fff;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 table input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #fff;
+}
+.g-mail{
+    background: url("img/g-mali.jpg") no-repeat;
+    /*height: 1211px;*/
+    padding-bottom: 150px;
+}
+
+.g-mail .g-dar{
+    padding-top:22px;
+    margin-bottom: 45px;
+    color: #fff;
+}
+
+.g-mail .g-dar .g-title{
+    height: 162px;
+}
+
+.g-mail .g-dar .g-title .g-title-p{
+    float: left;
+    margin: 24px 15px 0 0;
+}
+
+.g-mail .g-dar .g-title .g-title-p em{
+    font-size: 80px;
+    display: block;
+    font-style: normal;
+}
+
+.g-mail .g-dar .g-title .g-title-p span{
+    font-size:40px;
+    display: block;
+    line-height: 10px;
+}
+
+.g-mail .g-dar .g-title .g-title-p span b{
+    color: #fdd662;
+    font-family: normal;
+}
+
+.g-mail .g-dar .g-title .g-title-p2{
+    font-size: 140px;
+    color: #fdd662;
+    margin: 0;
+}
+
+.g-mail .g-dar .g-title .g-title-p2 b{
+    font-size: 50px;
+}
+
+.g-mail .g-dar .g-title2 p{
+    font-size:24px;
+    float: left;
+    margin: 24px auto;
+}
+
+.g-mail .g-dar .g-title2 span{
+    font-size:50px;
+    margin-left: 28px;
+}
+
+.g-mail .g-dar .g-title3 p{
+    background: #105bc9;
+    padding-left: 36px;
+    font-size: 28px;
+    margin: 0;
+    float: left;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.g-mail .g-dar .g-title3 p b{
+    background: #fdd662;
+    padding: 0 16px 0 24px;
+    font-size: 52px;
+    color: #2166cd;
+    display: inline-block;
+    float: right;
+    margin-left: 20px;
+}
+
+.g-mail .g-bgnav{
+    background: url("img/g-bgm.png") no-repeat;
+    padding: 34px 83px 67px 103px;
+}
+
+.g-mail .g-bgnav .g-bgnav-title{
+    font-size: 30px;
+    color: #c6ddff;
+}
+
+.g-mail .g-bgnav .g-bgnav-title ul{
+    margin: 0;
+    padding: 0;
+}
+
+.g-mail .g-bgnav .g-bgnav-title ul li{
+    float: left;
+    list-style: none;
+    margin-right: 18px;
+}
+
+.g-mail .g-bgnav .g-bgnav-title ul .g-long{
+    border-top:1px solid #c6ddff;
+    width: 275px;
+    margin-top: 25px;
+}
+
+.g-mail .g-bgnav .g-bgnav-title p{
+    font-size:14px;
+    color: #6899e1;
+    margin: 0;
+    text-align: center;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1{
+    padding: 20px 0 25px 30px;
+    border-bottom: 1px dashed #6899e1;
+}
+
+.g-mail .g-bgnav .g-none{
+    padding: 20px 0 25px 30px;
+    border-bottom: none;
+    width: 300px;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .ul-alert-warning{
+    font-size: 14px;
+    width: 657px;
+    padding: 10px 0 10px 53px;
+    color: #fa7821;
+    background: #ffe6b6 url(slice/g-s1.png) no-repeat 24px 12px;
+    margin-bottom: 25px;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul li{
+    float: left;
+    list-style: none;
+    margin-right: 10px;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul li input{
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #999999;
+    border-radius: 3px;
+    border: 0 none;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul li a{
+    border: 1px solid #578bd8;
+    height: 38px;
+    line-height: 38px;
+    border-radius: 3px;
+    display: inline-block;
+    width: 98px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: #8cb6f2;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int1 input{
+    background: url("slice/g-s2.png") 14px center no-repeat #fff;
+    width: 251px;
+    padding-left: 49px;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2{
+    position: relative;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2 input{
+    width: 162px;
+    padding-left: 18px;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2 i{
+    display: inline-block;
+    position: absolute;
+    font-style: normal;
+    top: 10px;
+    right: 15px;
+    font-size: 14px;
+    color: #4f4f4f;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 table{
+    margin-bottom: 44px;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 table tbody tr{
+    margin-bottom: 1px;
+    float: left;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 table tbody tr td{
+    height:35px;
+    line-height: 35px;
+    margin-right: 1px;
+    float: left;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 table tbody tr .g-td1{
+    color: #b4d2fe;
+    background: #2468ce;
+    text-align: right;
+    width:94px;
+    padding-right: 15px;
+    margin-right: 1px;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 table tbody tr .g-td2{
+    color: #fff;
+    width: 215px;
+    background: #498df2;
+    padding-left: 30px;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 table tbody tr .g-td3{
+    width: 571px;
+}
+
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-intp input{
+    background: url("slice/g-spho.png") 14px center no-repeat #fff;
+}
+
+.ms-bsSub {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 42px;
+    height: 42px;
+    width: 300px;
+    text-align: center;
+    border-radius: 2px;
+    background: #ff8838;
+    color: #ffffff;
+    font-size: 16px;
+}
+.ms-bsSub:hover{
+    background: #EB6409;
+}

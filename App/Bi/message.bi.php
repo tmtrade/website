@@ -5,8 +5,8 @@
  * 发送邮件、短信
  *
  * @package	Bi
- * @author	void
- * @since	2014-11-03
+ * @author	Xuni
+ * @since	2015-11-05
  */
 class MessageBi extends Bi
 {
@@ -18,8 +18,8 @@ class MessageBi extends Bi
 	/**
 	 * 发送邮件
 	 * 
-	 * @author	void
-	 * @since	2014-11-03
+	 * @author	Xuni
+	 * @since	2015-11-05
 	 *
 	 * @access	public
 	 * @param	string	$email		收件人邮箱
@@ -42,5 +42,30 @@ class MessageBi extends Bi
 		
 		return $this->request("message/sendMail/", $param);
 	}
+
+	/**
+	 * 发送短信
+	 * 
+	 * @author	Xuni
+	 * @since	2015-11-05
+	 *
+	 * @access	public
+	 * @param	string	$mobile		收件人手机号
+	 * @param	string	$content	邮件内容
+	 * @param	int 	$tplId		模板Id
+	 * 
+	 * @return	array
+	 */
+	public function sendMsg($mobile, $content, $tplId=0)
+	{
+		$param = array(
+			'mobile'   	=> $mobile,
+			'content' 	=> $content,
+			'tplId'	  	=> $tplId,
+		);
+		
+		return $this->request("message/sendMsg/", $param);
+	}
+
 }
 ?>
