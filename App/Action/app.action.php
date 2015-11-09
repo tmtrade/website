@@ -31,15 +31,15 @@ abstract class AppAction extends Action
 	 */
 	public function before()
 	{
+		//设置用户信息
 		$this->setLoginUser();
-		$name = empty($this->username) ? ( empty($this->userInfo['mobile']) ? 
-			$this->userInfo['email'] : $this->userInfo['mobile']) : $this->username;
-		$this->set('username', $name);
-		$this->set('userInfo', $this->userInfo);
-		$this->set('isLogin', $this->isLogin);
 
 		$this->set('_mod_', $this->mod);
 		$this->set('_action_', $this->action);
+
+		$this->set('CLASSES', C('CLASSES'));
+		$this->set('CATEGORY', C('CATEGORY'));
+		$this->set('CATEGORY_ITEMS', C('CATEGORY_ITEMS'));
 	}
 
 	/**
@@ -54,13 +54,31 @@ abstract class AppAction extends Action
 	{
 		//自定义业务逻辑
 	}
-	
+
+	/**
+	 * 输出json数据
+	 *
+	 * @author	Xuni
+	 * @since	2015-11-06
+	 *
+	 * @access	public
+	 * @return	void
+	 */
 	protected function returnAjax($data=array())
 	{
 		$jsonStr = json_encode($data);
 		exit($jsonStr);
 	}
 
+	/**
+	 * 设置用户信息数据
+	 *
+	 * @author	Xuni
+	 * @since	2015-11-06
+	 *
+	 * @access	public
+	 * @return	void
+	 */
 	protected final function setLoginUser()
 	{
 		$uName = C('PUBLIC_USER');
@@ -80,14 +98,48 @@ abstract class AppAction extends Action
 
 		$this->userId 		= $user['userId'];
 		$this->username 	= $user['username'];
+		$this->userMobile 	= $user['mobile'];
+		$this->userEmail 	= $user['email'];
 		$this->userInfo 	= $user;
 		$this->isLogin 		= true;
+		//设置用户信息到页面
+		$this->setUserView()
+	}
+
+	/**
+	 * 设置用户信息数据到页面
+	 *
+	 * @author	Xuni
+	 * @since	2015-11-06
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	protected final function setUserView()
+	{
+		$name = empty($this->username) ? (empty($this->userMobile) ? $this->userEmail : $this->userMobile) : $this->username;
+		$this->set('username', $name);
+		$this->set('userMobile', $this->userMobile);
+		$this->set('userEmail', $this->userEmail);
+		$this->set('userInfo', $this->userInfo);
+		$this->set('isLogin', $this->isLogin);
 	}
 	
+	/**
+	 * 删除用户信息数据
+	 *
+	 * @author	Xuni
+	 * @since	2015-11-06
+	 *
+	 * @access	public
+	 * @return	void
+	 */
 	protected final function removeUser()
 	{
 		$this->userId 		= '';
 		$this->username 	= '';
+		$this->userMobile 	= '';
+		$this->userEmail 	= '';
 		$this->userInfo 	= '';
 		$this->isLogin 		= false;
 	}

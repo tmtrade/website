@@ -13,27 +13,35 @@
                 <span class="mj-selection-span">商标类别：</span>
                 <div class="mj-selection-list" id="j-dltype">
                     <a href="javascript:;" class="current">全部  </a>
-                    <a href="javascript:;">1类-化学品</a>
-                    <a href="javascript:;">2类-涂料油漆</a>
-                    <a href="javascript:;">3类-化妆日用</a>
-                    <a href="javascript:;">4类-油脂燃料</a>
-                    <a href="javascript:;">5类-医药品</a>
-                    <a href="javascript:;">6类-五金金属</a>
-                    <a href="javascript:;">7类-电动机械</a>
-                    <a href="javascript:;" id="mj_aclik">......</a>
+                <? foreach ($CLASSES as $key => $value) { ?>
+                    <a href="javascript:;" <?if ($c == $key){echo 'class="current"';}?>><?echo $key.'类-'.$value?></a>
+                <? } ?>
+                    <a href="javascript:;" class="curs" id="mj_aclik">......</a>
                 </div>
             </dd>
+        <? if( !empty($group) ){ ?>
             <dd class="f-clearfix">
                 <span class="mj-selection-span">所属群组：</span>
-                <div class="mj-selection-list">
+                <div class="mj-selection-list" id="g-dltype">
                     <a href="javascript:;" class="current">全部  </a>
+                <? foreach ($group as $ky => $val) { ?>
+                    <a href="javascript:;" <?if ($g == $ky){echo 'class="current"';}?>><?=$val?></a>
+                <? } ?>
                     <a href="javascript:;">地毯</a>
                     <a href="javascript:;">席类</a>
                     <a href="javascript:;">垫及其他</a>
                     <a href="javascript:;">铺地板用品</a>
                     <a href="javascript:;">非纺织墙</a>
+                    <a href="javascript:;">铺地板用品</a>
+                    <a href="javascript:;">非纺织墙</a>
+                    <a href="javascript:;">铺地板用品</a>
+                    <a href="javascript:;">非纺织墙</a>
+                <? if ( count($group) > 7 ){?>
+                    <a href="javascript:;" class="curs" id="mg_aclik">......</a>
+                <?}?>
                 </div>
             </dd>
+        <? } ?>
             <dd class="f-clearfix">
                 <span class="mj-selection-span">平台入驻： </span>
                 <div class="mj-selection-list">
