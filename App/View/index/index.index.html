@@ -191,122 +191,75 @@
                 <span class="mj-spanimg"><img src="<?=StaticDir?>style/img/img3.png" alt=""></span>
                 <p>今天选中，明天就用</p>
                 <ul>
-                    <li class="liclickc">天猫京东入驻</li>
-                    <li>大型超凡入驻</li>
-                    <li>其他用途</li>
+                    <li class="liclickc">天猫入驻</li>
+                    <li>京东入驻</li>
+                    <li>大型超市入驻</li>
                 </ul>
             </dt>
             <dd class="mj-categoryCon" id="mj-categoryCon1">
-                <!--天猫京东入驻-->
+                <!--天猫入驻-->
                 <ul class="mj-cTmall">
-                    <li>
+					<?php 
+					if($dataTM){
+						foreach($dataTM['rows'] as $key => $val){
+					?>
+					<li>
                         <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
+                            <a href="<?=$val['url']?>" class="mj-imglT">
+                                <span><img src="<?=$val['imgurl']?>" alt=""/></span>
                             </a>
                         </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
+                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
                     </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
+					<?php
+						}
+					}
+					?>
+             
                     <li class="mj-more">
                         <p><a href=""><span>...</span>查看更多</a></p>
                     </li>
                 </ul>
-                <!--大型超凡入驻-->
+                <!--京东入驻-->
                 <ul class="mj-cLarge">
-                    <li>
+                    <?php 
+					if($dataJD){
+						foreach($dataJD['rows'] as $key => $val){
+					?>
+					<li>
                         <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
+                            <a href="<?=$val['url']?>" class="mj-imglT">
+                                <span><img src="<?=$val['imgurl']?>" alt=""/></span>
                             </a>
                         </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
+                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
                     </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
+					<?php
+						}
+					}
+					?>
                     <li class="mj-more">
                         <p><a href=""><span>...</span>查看更多</a></p>
                     </li>
                 </ul>
-                <!--其他用途-->
+                <!--大型超市-->
                 <ul class="mj-Ather">
-                    <li>
+                    <?php 
+					if($dataDXCS){
+						foreach($dataDXCS['rows'] as $key => $val){
+					?>
+					<li>
                         <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
+                            <a href="<?=$val['url']?>" class="mj-imglT">
+                                <span><img src="<?=$val['imgurl']?>" alt=""/></span>
                             </a>
                         </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
+                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
                     </li>
+					<?php
+						}
+					}
+					?>
                     <li class="mj-more">
                         <p><a href=""><span>...</span>查看更多</a></p>
                     </li>
@@ -382,146 +335,66 @@
             <dd class="mj-categoryCon" id="mj-categoryCon2">
                 <!--潜质商标-->
                 <ul class="mj-cTmall">
-                    <li>
+                    <?php 
+					if($dataQL){
+						foreach($dataQL['rows'] as $key => $val){
+					?>
+					<li>
                         <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
+                            <a href="<?=$val['url']?>" class="mj-imglT">
+                                <span><img src="<?=$val['imgurl']?>" alt=""/></span>
                             </a>
                         </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
+                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
                     </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
+					<?php
+						}
+					}
+					?>
                     <li class="mj-more">
                         <p><a href=""><span>...</span>查看更多</a></p>
                     </li>
                 </ul>
                 <!--精品商标-->
                 <ul class="mj-cLarge">
-                    <li>
+                    <?php 
+					if($dataJP){
+						foreach($dataJP['rows'] as $key => $val){
+					?>
+					<li>
                         <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
+                            <a href="<?=$val['url']?>" class="mj-imglT">
+                                <span><img src="<?=$val['imgurl']?>" alt=""/></span>
                             </a>
                         </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
+                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
                     </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
+					<?php
+						}
+					}
+					?>
                     <li class="mj-more">
                         <p><a href=""><span>...</span>查看更多</a></p>
                     </li>
                 </ul>
                 <!--特色商标-->
                 <ul class="mj-Ather">
-                    <li>
+                    <?php 
+					if($dataTS){
+						foreach($dataTS['rows'] as $key => $val){
+					?>
+					<li>
                         <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
+                            <a href="<?=$val['url']?>" class="mj-imglT">
+                                <span><img src="<?=$val['imgurl']?>" alt=""/></span>
                             </a>
                         </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
+                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
                     </li>
-                    <li>
-                        <div class="mj-logoimg">
-                            <a href="" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">梵秀,FAMXIU 日化用品</p>
-                    </li>
+					<?php
+						}
+					}
+					?>
                     <li class="mj-more">
                         <p><a href=""><span>...</span>查看更多</a></p>
                     </li>
