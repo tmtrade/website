@@ -103,7 +103,7 @@ abstract class AppAction extends Action
 		$this->userInfo 	= $user;
 		$this->isLogin 		= true;
 		//设置用户信息到页面
-		$this->setUserView()
+		$this->setUserView();
 	}
 
 	/**
