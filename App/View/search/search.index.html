@@ -12,31 +12,23 @@
             <dd class="f-clearfix">
                 <span class="mj-selection-span">商标类别：</span>
                 <div class="mj-selection-list" id="j-dltype">
-                    <a href="javascript:;" class="current">全部  </a>
+                    <a href="javascript:;"  <?if ($c == 0){echo 'class="current"';}?>>全部  </a>
                 <? foreach ($CLASSES as $key => $value) { ?>
                     <a href="javascript:;" <?if ($c == $key){echo 'class="current"';}?>><?echo $key.'类-'.$value?></a>
                 <? } ?>
                     <a href="javascript:;" class="curs" id="mj_aclik">......</a>
                 </div>
             </dd>
-        <? if( !empty($group) ){ ?>
+        <? if( !empty($groupList) ){ ?>
             <dd class="f-clearfix">
                 <span class="mj-selection-span">所属群组：</span>
                 <div class="mj-selection-list" id="g-dltype">
-                    <a href="javascript:;" class="current">全部  </a>
-                <? foreach ($group as $ky => $val) { ?>
-                    <a href="javascript:;" <?if ($g == $ky){echo 'class="current"';}?>><?=$val?></a>
+                    <a href="javascript:;" <?if ($g == 0){echo 'class="current"';}?>>全部  </a>
+                <? foreach ($groupList as $ky => $val) { ?>
+                    <a href="javascript:;" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>">
+                    <?=mb_substr($val, 0, 7, 'utf8')?></a>
                 <? } ?>
-                    <a href="javascript:;">地毯</a>
-                    <a href="javascript:;">席类</a>
-                    <a href="javascript:;">垫及其他</a>
-                    <a href="javascript:;">铺地板用品</a>
-                    <a href="javascript:;">非纺织墙</a>
-                    <a href="javascript:;">铺地板用品</a>
-                    <a href="javascript:;">非纺织墙</a>
-                    <a href="javascript:;">铺地板用品</a>
-                    <a href="javascript:;">非纺织墙</a>
-                <? if ( count($group) > 7 ){?>
+                <? if ( count($groupList) > 7 ){?>
                     <a href="javascript:;" class="curs" id="mg_aclik">......</a>
                 <?}?>
                 </div>
@@ -68,7 +60,7 @@
                 <li><input type="checkbox" id="chek5"><label for="chek5">中+图</label></li>
                 <li><input type="checkbox" id="chek6"><label for="chek6">英+图</label></li>
                 <li><input type="checkbox" id="chek7"><label for="chek7">中+英+图</label></li>
-                <li><input type="checkbox" id="chek8"><label for="chek8">3个字</label></li>
+                <li><input type="checkbox" id="chek8"><label for="chek8">数字</label></li>
             </ul>
             <div class="mj-imglists">
                 <ul class="f-clearfix">
@@ -242,7 +234,6 @@
             var scrollHeight = $(document).height();
             var windowHeight = $(this).height();
             if (scrollTop + windowHeight == scrollHeight) {
-
                 alert(1);
             }
         });
