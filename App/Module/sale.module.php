@@ -46,7 +46,7 @@ class SaleModule extends AppModule
      *
      * @return  array   $data       查询数据
      */
-	public function getSaleList($param, $num ,$c=1 , $page=1)
+	public function getSaleList($param, $num , $page=1)
 	{
 		
 		if($param){
@@ -62,12 +62,12 @@ class SaleModule extends AppModule
 		$r['raw']  = "status not in(2,3,4,6)";
 		$r['page']        	= $page;
         $r['limit']         = $num;
-		$r['col']           = array('name,class,id,source');
+		$r['col']           = array('name,class,id,source,number');
         $r['order']         = array('type' => 'asc','date' => 'desc');
         $data = $this->import('sale')->findAll($r);
         foreach($data['rows'] as $k => $item){
 			$data['rows'][$k]['imgurl'] = $this->getImg($item['id']); 
-			$data['rows'][$k]['url']    = "/trademark/view/?id=".$item['id']."&c=".$c; 
+			$data['rows'][$k]['url']    = "/trademark/view/?number=".$item['number']."&class=".$item['class']; 
 			$data['rows'][$k]['name']   = mbSub($item['name'],0,4); 
             $data['rows'][$k]['source'] = isset( $this->source[$item['source']] ) ? $this->source[$item['source']] : $item['source'];
 			$data['rows'][$k]['classes']  = isset( $this->classes[$item['class']] ) ? $this->classes[$item['class']] : $item['class'];
