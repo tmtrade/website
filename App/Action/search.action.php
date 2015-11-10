@@ -12,7 +12,7 @@ class SearchAction extends AppAction
 {
 	public function index()
 	{
-        $keywords   = $this->input('kw', 'string', '');
+        $keyword    = $this->input('kw', 'string', '');
         $class      = $this->input('c', 'int', 0);
         $group      = $this->input('g', 'int', 0);
         $platform   = $this->input('p', 'int', '');
@@ -21,9 +21,12 @@ class SearchAction extends AppAction
             $groupList = $this->load('group')->getClassGroups($class);
             $this->set('groupList', $groupList);
         }
+        if ($keyword){
+            $this->load('search')->getTmList();
+        }
 
         $this->set('c', $class);
-        $this->set('kw', $keywords);
+        $this->set('kw', $keyword);
         $this->set('g', $group);
         $this->set('p', $platform);
 		$this->display();

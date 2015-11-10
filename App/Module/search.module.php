@@ -19,29 +19,36 @@ class SearchModule extends AppModule
     );
 
     /**
-     * 获取国际分类包含的所有群组信息
-     * (只包含群组号与中文名称)
+     * 快速筛选结果
      * 
      * @author  Xuni
-     * @since   2015-11-05
+     * @since   2015-11-09
      *
      * @access  public
      * @param   int     $class      国际分类(1-45)
      *
      * @return  array   $list       群组号对应群组中文名称的数组
      */
-    public function search($params, $start=0, $limit=18)
+    public function search($params, $start=0, $limit=30)
     {
-        
+        $saleList = $this->getSaleList($params, $start, $limit);
+        if ( count($saleList) == $limit ){
 
-        $r['col']   = array('group', 'cn_name');
-        $r['eq']    = array('class'=>$class);
-        $r['limit'] = 100;
-        $data = $this->import('group')->find($r);
-        $list = arrayColumn($data, 'cn_name', 'group');
+        }
         return $list;
     }
 
+    /**
+     * 获取出售信息相关数据
+     * 
+     * @author  Xuni
+     * @since   2015-11-10
+     *
+     * @access  public
+     * @param   int     $class      国际分类(1-45)
+     *
+     * @return  array   $list       群组号对应群组中文名称的数组
+     */
     public function getSaleList($params, $start, $limit)
     {
         if ( !empty($params['keyword']) ){
@@ -51,18 +58,52 @@ class SearchModule extends AppModule
             $r['eq'] = array('class'=>$params['class']);
         }
         if ( !empty($params['group']) ){
-            $r['ft']['group'] = $params['group']);
+            $r['ft']['group'] = $params['group'];
         }
         if ( !empty($params['platform']) ){
-            $r['ft']['platform'] = $params['platform']);
+            $r['ft']['platform'] = $params['platform'];
         }
-
+        $r['group'] = array('tid'=>'asec');
+        $r['index'] = array($start, $limit);
+        $r['col']   = array('tid', 'number', 'class');
         
+        $res    = $this->import('sale')->find($r);
+        $list   = $this->load('sale')->getListTips($res);
+        return $list;
     }
 
+    /**
+     * 获取商标信息相关数据
+     * 
+     * @author  Xuni
+     * @since   2015-11-10
+     *
+     * @access  public
+     * @param   int     $class      国际分类(1-45)
+     *
+     * @return  array   $list       群组号对应群组中文名称的数组
+     */
     public function getTmList()
     {
+        $res = $this->searchLike('五粮液');
 
+        header("Content-type: text/html; charset=utf-8");
+        debug($res);
+    }
+
+    public function searchLike($keyword, $class='', $page=1, $number=100)
+    {
+        if ( empty($keyword) ) return array();
+
+        $params = array(
+            'keyword'   => $keyword,
+            );
+        if ($class > 0 && $class <= 45){
+            $params['class'] = $class;
+        }
+
+        $res = $this->importBi('trademark')->searchLike($params, $page, $number);
+        return $res;
     }
 	
 }
