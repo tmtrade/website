@@ -535,7 +535,7 @@
 .mj-logoimg img{
     position: relative;
     max-width: 210px;
-    min-height: 95px;
+    max-height: 90px;
     vertical-align: middle;
     z-index: 1;
 }
