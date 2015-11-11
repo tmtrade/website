@@ -40,6 +40,7 @@ abstract class AppAction extends Action
 		$this->set('CLASSES', C('CLASSES'));
 		$this->set('CATEGORY', C('CATEGORY'));
 		$this->set('CATEGORY_ITEMS', C('CATEGORY_ITEMS'));
+		$this->set('PLATFORM', C('PLATFORM_IN'));
 	}
 
 	/**

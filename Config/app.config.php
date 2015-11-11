@@ -7,7 +7,8 @@ define('FileSystemDir', DataDir.'/attachment');	                        //定义
 define('FileSystemUrl', 'http://e2.chofn.net/'.DataDir.'/attachment/');	//定义文件系统地址
 
 //近似查询相关配置
-define('SEARCH_URL', 'http://searchapi.chofn.net/');
+//define('SEARCH_URL', 'http://searchapi.chofn.net/');
+define('SEARCH_URL', 'http://tmsearch.chofn.api/');
 define('SEARCH_KEY', '89eb637c610f94b9d281c458bca42421');
 
 

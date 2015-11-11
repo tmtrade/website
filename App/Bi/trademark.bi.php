@@ -31,11 +31,8 @@ class TrademarkBi extends Bi
 		$params['page'] = $page > 0 ? $page : 1;
 		$params['num'] 	= ($num > 0 && $num < 5000) ? $num : 20;
 
-		$tmp 			= $params;
-		array_walk($tmp, array($this, 'makeParams'));
-		$param 			= implode('&', $tmp);
-
-		$res = $this->httpRequest($param, $method);
+		$param 	= http_build_query($params);
+		$res 	= $this->httpRequest($param, $method);
 		return json_decode($res, true);
 	}
 

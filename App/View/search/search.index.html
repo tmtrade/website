@@ -1,6 +1,7 @@
 <? require(ViewDir.'/header.html'); ?>
 
 <link rel="stylesheet" href="<?=StaticDir?>style/mj-pinvestment.css"/>
+<script type="text/javascript" src="<?=StaticDir?>script/objurl.js"></script>
 
 
 <!--content start-->
@@ -37,15 +38,10 @@
             <dd class="f-clearfix">
                 <span class="mj-selection-span">平台入驻： </span>
                 <div class="mj-selection-list">
-                    <a href="javascript:;" class="current">全部  </a>
-                    <a href="javascript:;">自营  </a>
-                    <a href="javascript:;">天猫</a>
-                    <a href="javascript:;">京东</a>
-                    <a href="javascript:;">阿里巴巴</a>
-                    <a href="javascript:;">亚马逊 </a>
-                    <a href="javascript:;">家乐福</a>
-                    <a href="javascript:;">沃尔玛</a>
-                    <a href="javascript:;">其他大型超市</a>
+                    <a href="javascript:;" <?if ($p == 0){echo 'class="current"';}?>>全部  </a>
+                <? foreach ($PLATFORM as $k => $v) { ?>
+                    <a href="javascript:;" <?if ($p == $k){echo 'class="current"';}?>><?=$v?></a>
+                <? } ?>
                 </div>
             </dd>
         </dl>
@@ -63,150 +59,23 @@
                 <li><input type="checkbox" id="chek8"><label for="chek8">数字</label></li>
             </ul>
             <div class="mj-imglists">
-                <ul class="f-clearfix">
+                <ul class="f-clearfix" id="s-all-list">
+                <? foreach ($searchList as $k => $v) { ?>
                     <li>
                         <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
+                            <?if ($v['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
+                            <?if ($v['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
+                            <?if ($v['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
                         </p>
                         <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
+                            <a href="" class="mj-imglT"><span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" title="<?=$v['name']?>"></span></a>
                         </div>
                         <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
+                            <span>(<?=$v['class']?>类)</span>
+                            <p title="<?=$v['name']?>"><?=mb_substr($v['name'],0,10,'utf8')?>&nbsp;&nbsp;<?=$CLASSES[$v['class']]?></p>
                         </div>
                     </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tJing" title="精品推荐">精</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="mj-tip">
-                            <label class="mj-tThe" title="特价产品">特</label>
-                            <label class="mj-tShow" title="授权租用">授</label>
-                        </p>
-                        <div class="mj-imglT">
-                            <a href="" class="mj-imglT"><span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span></a>
-                        </div>
-                        <div class="mj-imglB">
-                            <span>(25类)</span>
-                            <p>梵秀,FAMXIU 日化用品</p>
-                        </div>
-                    </li>
+                <? } ?>
                 </ul>
             </div>
         </div>
@@ -227,16 +96,37 @@
     </div>
 </div>
 
+<div id="_tmpDiv" style="display:none"></div>
+
 <script type="text/javascript">
-    
-        $(window).scroll(function () {
-            var scrollTop = $(this).scrollTop();
-            var scrollHeight = $(document).height();
-            var windowHeight = $(this).height();
-            if (scrollTop + windowHeight == scrollHeight) {
-                alert(1);
-            }
+    var _number     = <?=$_number?>;
+    var _start      = <?=$_number?>;
+    var _whereStr   = "<?=$whereStr?>";
+    var _url        = '/search/getMore/';
+
+    function loadMore(){
+        var obj = new objURL('/?'+_whereStr);
+        _start += _number;
+        obj.set('n', _start);
+        var params = obj.getparams();
+        $("#_tmpDiv").load(_url, params, function(data,status,xml){
+            // if (s != 'success'){
+            //     alert('请求失败，请稍后再试。');
+            //     return false;
+            // }
+            if (data) $("#s-all-list").append(data);
         });
+    }
+
+
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        if (scrollTop + windowHeight == scrollHeight) {
+            loadMore();
+        }
+    });
 
 </script>
 

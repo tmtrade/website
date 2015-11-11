@@ -31,10 +31,15 @@ class SearchModule extends AppModule
      */
     public function search($params, $start=0, $limit=30)
     {
-        $saleList = $this->getSaleList($params, $start, $limit);
-        if ( count($saleList) == $limit ){
-
+        $res = $this->getSaleList($params, $start, $limit);
+        if ( count($res['rows']) >= $limit ){
+            return $res['rows'];
         }
+        $need       = $limit - count($res['rows']);
+        $started    = ($start - $res['total']) < 0 ? 0 : ($start - $res['total']);
+        $tmList     = $this->getTmList($params, $started, $need);
+
+        $list       = array_merge($res['rows'], $tmList);
         return $list;
     }
 
@@ -52,7 +57,8 @@ class SearchModule extends AppModule
     public function getSaleList($params, $start, $limit)
     {
         if ( !empty($params['keyword']) ){
-            $r['like'] = array('name'=>$params['keyword']);
+            //$r['like'] = array('name'=>$params['keyword']);
+            $r['raw'] = "tid >0 and (`name` LIKE '%".$params['keyword']."%' OR `number` = '".$params['keyword']."')";
         }
         if ( !empty($params['class']) ){
             $r['eq'] = array('class'=>$params['class']);
@@ -63,13 +69,21 @@ class SearchModule extends AppModule
         if ( !empty($params['platform']) ){
             $r['ft']['platform'] = $params['platform'];
         }
-        $r['group'] = array('tid'=>'asec');
+        $r['group'] = array('tid'=>'asc');
         $r['index'] = array($start, $limit);
-        $r['col']   = array('tid', 'number', 'class');
-        
+        $r['col']   = array('tid', 'number', 'class', 'name');
+        $r['order'] = array('date'=>'desc');
+
+        $count  = $this->import('sale')->count($r);
         $res    = $this->import('sale')->find($r);
-        $list   = $this->load('sale')->getListTips($res);
-        return $list;
+        $list   = $this->getListTips($res);
+
+        $result = array(
+            'rows'  => $list,
+            'total' => $count,
+            );
+
+        return $result;
     }
 
     /**
@@ -83,15 +97,57 @@ class SearchModule extends AppModule
      *
      * @return  array   $list       群组号对应群组中文名称的数组
      */
-    public function getTmList()
+    public function getTmList($params, $start, $limit)
     {
-        $res = $this->searchLike('五粮液');
+        if ( !empty($params['keyword']) ){
+            $class = empty($params['class']) ? 0 : $params['class'];
+            $res = $this->searchLike($params['keyword'], $class);
+            if ($res['header']['code'] = '101' && $res['body']['status'] == 1){
+                $total  = $res['body']['data']['total'];
+                $rows   = arrayColumn($res['body']['data']['rows'], 'id');
+            }
+            $_r['eq'] = array(
+                'trademark_id'   => $params['keyword'],
+                'status3'       => 0,
+                'status26'      => 0,
+                );
+            if ( !empty($params['class']) ) $r['eq']['class_id'] = $params['class'];
 
-        header("Content-type: text/html; charset=utf-8");
-        debug($res);
+            $_r['col']   = array('tid');
+            $_r['limit'] = 100;
+            $res2 = $this->import('second')->find($_r);
+            $tids = arrayColumn($res2, 'tid');
+            //最终所有tid
+            $ids = array_unique(array_merge($tids, $rows));
+            if ( !empty($ids) ) $r['in'] = array('tid'=>$ids);
+        }
+
+        if ( !empty($params['class']) ){
+            $r['eq'] = array(
+                'class_id'     => $params['class'],
+                'status3'   => 0,
+                'status26'  => 0,
+                );
+        }
+        if ( !empty($params['group']) ){
+            $r['ft']['group'] = $params['group'];
+        }
+        if ( empty($r['eq']) ){
+            $r['eq'] = array(
+                'status3'   => 0,
+                'status26'  => 0,
+                );
+        }
+        $r['index'] = array($start, $limit);
+        $r['col']   = array('tid', 'trademark_id as number', 'class_id as class', 'trademark as name');
+        $r['order'] = array('tid'=>'desc');
+
+        $res3   = $this->import('second')->find($r);
+        $list   = $this->getListTips($res3);
+        return $list;
     }
 
-    public function searchLike($keyword, $class='', $page=1, $number=100)
+    public function searchLike($keyword, $class='', $page=1, $number=1000)
     {
         if ( empty($keyword) ) return array();
 
@@ -99,11 +155,60 @@ class SearchModule extends AppModule
             'keyword'   => $keyword,
             );
         if ($class > 0 && $class <= 45){
-            $params['class'] = $class;
+            $params['classId'] = $class;
         }
 
         $res = $this->importBi('trademark')->searchLike($params, $page, $number);
         return $res;
+    }
+
+
+    public function getListTips($data)
+    {
+        if ( empty($data) ) return array();
+        if ( !is_array(current($data)) ){
+            $_tmp = array($data);
+        }else{
+            $_tmp = $data;
+        }
+        
+        foreach ($_tmp as $k => $v) {
+            $data[$k] = $this->getTips($v);
+        }
+        return $data;
+    }
+
+    public function getTips($data)
+    {
+        $data['isOffprice'] = false;
+        $data['isBest']     = false;
+        $data['isLicence']  = false;
+
+        if ( empty($data['tid']) ) return $data;
+
+        $data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
+        
+        $r['limit'] = 100;
+        $r['eq'] = array(
+            'area'  => 1,
+            'tid'   => $data['tid'],
+        );
+        $r['notIn']   = array('status'=>array(2,3,4,6));
+        $res = $this->import('sale')->find($r);
+        if ( empty($res) ) return $data;
+        
+        foreach ($res as $k => $v) {
+            if ( !$data['isOffprice'] && $v['salePrice'] > 0 ){
+                $data['isOffprice'] = true;
+            }
+            if ( !$data['isBest'] && strpos($v['label'], '1') !== false ){
+                $data['isBest'] = true;
+            }
+            if ( !$data['isLicence'] && $v['saleType'] == 2 ){
+                $data['isLicence'] = true;
+            }
+        }
+        return $data;
     }
 	
 }
