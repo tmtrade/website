@@ -5,9 +5,21 @@
     <div class="w1180 f-clearfix">
         <div class="mj-cTleft fl">
             <div class="mj-cTl_img">
-                <a href=""><img src="<?=StaticDir?>style/img/mj-climg.jpg" alt=""/></a>
+                <a href=""><img src="<?php if($detail['bzpic']){echo  $detail['bzpic']; }else{echo  $detail['imgurl']; }?>" alt=""/></a>
                 <p class="mj-tip">
-                    <label class="mj-tThe" title="特价商品">特</label>
+				<?php 
+				if($data['label']){
+					if(strstr($data['label'],"1")){
+						echo "<label class=\"mj-tJing\" title=\"精品推荐\">精</label>";
+					}
+				}
+				if($data['salePrice'] > 0 && $data['salePriceDate'] > time()){
+					echo "<label class=\"mj-tThe\" title=\"特价商品\">特</label>";
+				}
+				if($data['saleType'] == "2"){
+					echo "<label class=\"mj-tShow\" title=\"授权租用\">授</label>";
+				}
+				?>  
                 </p>
             </div>
             <p class="mj-cTl_imgText f-clearfix">
@@ -18,17 +30,25 @@
         <div class="mj-cTright">
             <ul class="mj-cTr_top">
                 <li>
-                    <b>衫博士</b>
-                    <span class="mj-cTr_top_r"><em class="us-icon ul-icon1"></em><span>已注册</span></span>
+                    <b><?=$data['name']?></b>
+                    <span class="mj-cTr_top_r"><em class="us-icon ul-icon1"></em><span><?=$detail['status']?></span></span>
                 </li>
                 <li>
-                    该商标有较长的使用经历，有一定的知名度。并且拥有长期稳定客户。设计上也比较精美，值得购买。
+                    <?=$detail['valueAnalysis']?>
                 </li>
                 <li class="mj-libs">
                     此商标可入驻：
-                    <a href="" class="cur">天猫</a>
-                    <a href="">京东</a>
-                    <a href="">沃尔玛等大型超市</a>
+					<?php
+						if($data['platform']){
+							$platform = explode(",",$data['platform']);
+							foreach($platform as $val){
+								if($val){
+									echo "<a href='' class=\"cur\">".$platformIn[$val]."</a>";
+								}	
+								
+							}
+						}
+					?>
                 </li>
                 <li class="mj-libs mj-liptb f-clearfix">
                     <span class="mj-liptb_t">交易风险核查：</span>
@@ -63,14 +83,14 @@
             </ul>
             <ul class="mj-cTr_center">
                 <li>
-                    <span><label>注册号：</label>5134523（第33类-酒精饮料 ） </span>
-                    <span><label>当前群组：</label>3301</span>
+                    <span><label>注册号：</label><?=$data['number']?>（第<?=$data['class']?>类-<?=$data['classValue']?> ） </span>
+                    <span><label>当前群组：</label><?=$data['group']?></span>
                 </li>
                 <li>
-                    <span><label>商品列表：</label>烧酒/酒(饮料)/米酒/蒸馏饮料/黄酒/料酒/葡萄酒/白兰地/含酒精液体/开胃酒</span>
+                    <span><label>商品列表：</label><?=$detail['goods']?></span>
                 </li>
                 <li>
-                    <span class="mj-spanColorb"><label>申请人 :  </label><a href="">张国荣</a></span>
+                    <span class="mj-spanColorb"><label>申请人 :  </label><a href=""><?=$detail['proposer']?></a></span>
                 </li>
             </ul>
             <div class="mj-cTr_bottom f-clearfix">
@@ -105,12 +125,12 @@
                 <div class="mj-cTr_bRight fr">
                     <dl>
                         <dd>
-                            <i class="us-icon uj_icon2"></i><span>卖家：<em>张强</em></span>
+                            <i class="us-icon uj_icon2"></i><span>卖家：<em><?=$data['contact']?></em></span>
                             <a href=""><i class="us-icon uj_icon30"></i>在线咨询</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
-                            <label>13125612252</label>
+                            <label><?=$data['phone']?></label>
                         </dd>
                         <dd class="mj-cTr_bRight_dd">
                             <input type="text" placeholder="输入电话号码"/>
@@ -187,8 +207,10 @@
                 <!--<span>您可能感兴趣的</span>-->
             </div>
             <div class="mj-content_bottom-swtich_content">
+				
                 <div class="edit">
-                    <img src="<?=StaticDir?>style/img/l-9.jpg" alt=""/>
+                    <?=$detail['intro']?>
+					<?=$detail['introTwo']?>
                 </div>
                 <div class="edit" style="display: none;">
                     2
@@ -203,18 +225,23 @@
             </div>
             <div class="mj-imglists">
                 <ul class="f-clearfix">
-                    <li>
-                        <a href="" class="mj-imglT">
-                            <span><img src="<?=StaticDir?>style/img/mj-listimg1.png" alt=""></span>
+					<?php
+						if($tj){
+							foreach($tj['rows'] as $val){
+							
+					?>
+					<li>
+                        <a href="<?php echo $val['url']?>" class="mj-imglT">
+                            <span><img src="<?php echo $val['imgurl']?>" alt="<?php echo $val['name']?>"></span>
                         </a>
-                        <div class="mj-imglB">梵秀,FAMXIU 日化用品</div>
+                        <div class="mj-imglB"><?php echo $val['name']?> <?php echo $val['classes']?></div>
                     </li>
-                    <li>
-                        <a href="" class="mj-imglT">
-                            <span><img src="<?=StaticDir?>style/img/img2.png" alt=""></span>
-                        </a>
-                        <div class="mj-imglB">梵秀,FAMXIU 日化用品</div>
-                    </li>
+					<?php
+							
+							}
+						}
+					?>
+                   
                 </ul>
             </div>
         </div>
