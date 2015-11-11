@@ -138,6 +138,8 @@
 .mj-imglT a img {
     vertical-align: middle;
     position: relative;
+    max-width: 170px;
+    max-height: 110px;
     z-index: 1;
 }
 

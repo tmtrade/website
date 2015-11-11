@@ -136,6 +136,8 @@
     vertical-align: middle;
 }
 .mj-imglT a img{
+    max-width: 170px;
+    max-height: 115px;
     vertical-align: middle;
     position: relative;
     z-index: 1;

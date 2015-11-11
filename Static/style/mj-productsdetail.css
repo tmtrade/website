@@ -525,6 +525,8 @@ em{
     +left: 50%;
 }
 .mj-imglT span img{
+    max-width: 180px;
+    max-height: 140px;
     vertical-align: middle;
     position: relative;
     z-index: 1;
