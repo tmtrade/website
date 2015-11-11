@@ -75,12 +75,12 @@ class SaleModule extends AppModule
 		$r['raw']  = "status not in(2,3,4,6)";
 		$r['page']        	= $page;
         $r['limit']         = $num;
-		$r['col']           = array('name,class,id,source,number');
+		$r['col']           = array('name,class,id,source,number,tid');
         $r['order']         = array('type' => 'asc','date' => 'desc');
         $data = $this->import('sale')->findAll($r);
         foreach($data['rows'] as $k => $item){
 			$data['rows'][$k]['imgurl'] = $this->getImg($item['id']); 
-			$data['rows'][$k]['url']    = "/trademark/view/?number=".$item['number']."&class=".$item['class']; 
+			$data['rows'][$k]['url']    = "/trademark/view/?tid=".$item['tid']."&class=".$item['class']; 
 			$data['rows'][$k]['name']   = mbSub($item['name'],0,4); 
             $data['rows'][$k]['source'] = isset( $this->source[$item['source']] ) ? $this->source[$item['source']] : $item['source'];
 			$data['rows'][$k]['classes']  = isset( $this->classes[$item['class']] ) ? $this->classes[$item['class']] : $item['class'];
@@ -121,9 +121,11 @@ class SaleModule extends AppModule
 	 * @param	array		$param  用户名称
 	 * @return	array
 	 */
-	public function getDetail($id)
+	public function getDetail($tid)
 	{	
-        $data = $this->import("sale")->get($id);
+		$r['limit'] = 1;
+		$r['eq']['tid'] = $tid;
+        $data = $this->import("sale")->find($r);
         if(empty($data)) {return array();}
         $data['classValue']     = isset( $this->classes[$data['class']] ) ? $this->classes[$data['class']] : $data['class'];
 		$data['date']      = date('Y-m-d',$data['date']);
@@ -164,14 +166,15 @@ class SaleModule extends AppModule
 	{
 		$r['eq']['class']  = $class;//可出售商标
 		$r['eq']['area']  = 1;//可出售商标
-		$r['raw']  = "status not in(2,3,4,6) and id <> $id";
+		$r['raw']  = "status not in(2,3,4,6) ";
+		$r['raw']  .=  $id ? " and id <> $id " : "";
         $r['limit']         = $num;
-		$r['col']           = array('name,class,id,source,number');
+		$r['col']           = array('name,class,id,source,number,tid');
         $r['order']         = array('type' => 'asc','date' => 'desc');
         $data = $this->import('sale')->findAll($r);
         foreach($data['rows'] as $k => $item){
 			$data['rows'][$k]['imgurl'] = $this->getImg($item['id']); 
-			$data['rows'][$k]['url']    = "/trademark/view/?number=".$item['number']."&class=".$item['class']; 
+			$data['rows'][$k]['url']    = "/trademark/view/?tid=".$item['tid']."&class=".$item['class']; 
 			$data['rows'][$k]['name']   = mbSub($item['name'],0,4); 
             $data['rows'][$k]['source'] = isset( $this->source[$item['source']] ) ? $this->source[$item['source']] : $item['source'];
 			$data['rows'][$k]['classes']  = isset( $this->classes[$item['class']] ) ? $this->classes[$item['class']] : $item['class'];
