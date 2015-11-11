@@ -20,6 +20,10 @@ em{
     position: relative;
 }
 .mj-cTl_img a{}
+.mj-cTl_img a img{
+    max-width: 380px;
+    max-height: 260px;
+}
 .mj-cTl_imgText{
     padding-top: 10px;
 }
