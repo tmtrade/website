@@ -15,6 +15,7 @@ class TrademarkModule extends AppModule
 		'tm'		=> 'trademark',
 		'second'	=> 'secondstatus',
 		'third'		=> 'statusnew',
+		'proposer'	=> 'proposer',
 	);
 
 	/**

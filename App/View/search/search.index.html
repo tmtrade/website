@@ -78,6 +78,8 @@
                 <? } ?>
                 </ul>
             </div>
+            <div id="s-nothing" style="text-align:center;display:none;">后面没有数据了。。。</div>
+            <div id="s-uploading" style="padding-top:200px;text-align:center;display:none;height:300px;"><img src="<?=StaticDir?>images/loading.gif"></div>
         </div>
         <!--imglist end-->
     </div>
@@ -103,18 +105,32 @@
     var _start      = <?=$_number?>;
     var _whereStr   = "<?=$whereStr?>";
     var _url        = '/search/getMore/';
+    var _has        = true;
 
     function loadMore(){
+        if (!_has) return false;
+        $('#s-uploading').show();
         var obj = new objURL('/?'+_whereStr);
         _start += _number;
         obj.set('n', _start);
         var params = obj.getparams();
         $("#_tmpDiv").load(_url, params, function(data,status,xml){
-            // if (s != 'success'){
-            //     alert('请求失败，请稍后再试。');
-            //     return false;
-            // }
-            if (data) $("#s-all-list").append(data);
+            if (status != 'success'){
+                $('#s-uploading').hide();
+                $("#s-nothing").html('请求失败，请稍后再试。');
+                $("#s-nothing").show();
+                return false;
+            }
+            if (data) {
+                $("#s-all-list").append(data);
+                $("#_tmpDiv").html('');
+                $('#s-uploading').hide();
+            }else{
+                _has = false;
+                $('#s-uploading').hide();
+                $("#s-nothing").html('后面没有数据了。。。');
+                $("#s-nothing").show();
+            }
         });
     }
 
@@ -123,7 +139,7 @@
         var scrollTop = $(this).scrollTop();
         var scrollHeight = $(document).height();
         var windowHeight = $(this).height();
-        if (scrollTop + windowHeight == scrollHeight) {
+        if (scrollTop + windowHeight == (scrollHeight)) {
             loadMore();
         }
     });
