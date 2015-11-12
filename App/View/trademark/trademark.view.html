@@ -38,15 +38,22 @@
                 <li class="mj-libs">
                     此商标可入驻：
 					<?php
-					
 					foreach($platformIn as $key => $val){
 						$cur = "";
-						foreach($platformItems as  $item){
-							if($item && in_array($data['class'],$item)){
-								$cur = "class='cur'";
+						if($key == '99'){
+							unset($platformIn[$key]);
+							echo "<a href='' class='cur' >".$val."</a>"; 
+						}
+						foreach($platformItems[$key] as  $item){
+							if(($item && $data['class'] == $item)){
+								unset($platformIn[$key]);
+								echo "<a href='' class='cur' >".$val."</a>"; 
+								break;
 							}
 						}	
-						echo "<a href='' $cur >".$val."</a>";
+					}
+					foreach($platformIn as $key => $val){
+						echo "<a href=''>".$val."</a>";
 					}
 					?>
                 </li>
@@ -95,32 +102,46 @@
             </ul>
             <div class="mj-cTr_bottom f-clearfix">
                 <div class="mj-cTr_bLeft fl">
-                    <!--无价格-->
-                    <div class="mj-pricebtn">
-                        <a href="">点击查看价格</a>
-                    </div>
-                    <!--价格-->
-<!--                    <div class="mj-priceTxtt">
+				<?php
+				if($data['salePrice'] > 0 && $data['salePriceDate'] > time()){
+				?>
+					 <!--价格促销-->
+					<div class="mj-priceTxtt">
                         <strong>
                             <em>￥</em>
-                            <span>50000</span>
+                            <span><?=$data['salePrice']?></span>
+                            <em>.00</em>
+                            <b>&nbsp;元</b>
+                        </strong>
+                        <span>（原价：<b class="mj-priceTxtt_b"><?=$data['guideprice']?>.00</b> )</span>
+                        <br /><label><?php echo date('Y-m-d H:i:s',$data['salePriceDate']); ?></label>前有效<br />
+                        <a href="" class="mj-priceTxtt_link">立即抢购</a>
+                    </div>
+				<?php
+				}else{
+					if($data['guideprice']){
+				?>
+				 <!--价格-->
+                    <div class="mj-priceTxtt">
+                        <strong>
+                            <em>￥</em>
+                            <span><?=$data['guideprice']?></span>
                             <em>.00</em>
                             <b>&nbsp;元</b>
                         </strong>
                         <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
-                    </div>-->
-                    <!--价格促销-->
-<!--                    <div class="mj-priceTxtt">
-                        <strong>
-                            <em>￥</em>
-                            <span>50000</span>
-                            <em>.00</em>
-                            <b>&nbsp;元</b>
-                        </strong>
-                        <span>（原价：<b class="mj-priceTxtt_b">60000.00</b> )</span>
-                        <br /><label>2015/10/15 24：15</label>前有效<br />
-                        <a href="" class="mj-priceTxtt_link">立即抢购</a>
-                    </div>-->
+                    </div>
+				<?php
+					}else{
+				?>
+					<!--无价格-->
+					<div class="mj-pricebtn">
+                        <a href="">点击查看价格</a>
+                    </div>
+				<?php
+					}
+				}
+				?> 
                 </div>
                 <div class="mj-cTr_bRight fr">
                     <dl>
@@ -201,7 +222,7 @@
             </div>
         </div>
 		
-		<?php if(!$detail['intro'] && !$detail['introTwo']){?>
+		<?php if(!empty($detail['intro']) && !empty($detail['introTwo'])){?>
         <div class="mj-content_bottom-swtich f-clearfix">
             <div class="mj-content_bottom-swtich_tit">
                 <span class="cur">商标介绍</span>
@@ -224,7 +245,7 @@
         <div class="mj-content_bottom-inter">
             <div class="mj-content_bottom-inter_t f-clearfix">
                 <span>或许您还对以下商标感兴趣</span>
-                <a href="">查看更多>></a>
+                <a href="/search/index/?c=<?=$data['class']?>">查看更多>></a>
             </div>
             <div class="mj-imglists">
                 <ul class="f-clearfix">

@@ -30,6 +30,7 @@ class TrademarkAction extends AppAction
 		$detail  = $this->load("sale")->getTrademarkDetail($data['id']);
 		$this->set("platformIn",C('PLATFORM_IN'));
 		$this->set("platformItems",C('PLATFORM_ITEMS'));
+	
 		//原始商标数据里面的数据
 		$info = $this->load('trademark')->trademarks($tid,$class);
 		$infoDetail = $this->load('trademark')->trademarkDetail($info,$info['auto']);
@@ -43,8 +44,8 @@ class TrademarkAction extends AppAction
 		}
 		//读取推荐商标
 		$tj  = $this->load("sale")->getDetailtj($class,6,$data['id']);
-		$data    = !empty($data) ? $data : $info  ;
-		$detail  = !empty($detail) ? $detail : $infoDetail ;
+		$data    = empty($data) ? $info : $data;
+		$detail  = empty($detail) ? $infoDetail : $detail;
 		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("data",$data);
 		$this->set("detail",$detail);
