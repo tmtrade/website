@@ -8,6 +8,11 @@
     <div class="w1180">
         <!--search start-->
         <dl class="mj-selection">
+        <? if ($kw){ ?>
+            <dd class="f-clearfix">
+                <span>查询条件：<?=$kw?></span>
+            </dd>
+        <? }?>
             <dd class="f-clearfix">
                 <span class="mj-selection-span">商标类别：</span>
                 <div class="mj-selection-list" id="j-dltype">
@@ -24,7 +29,7 @@
                 <div class="mj-selection-list" id="g-dltype">
                     <a href="javascript:getGroup(0);" <?if ($g == 0){echo 'class="current"';}?>>全部  </a>
                 <? foreach ($groupList as $ky => $val) { ?>
-                    <a href="javascript:getGroup(<?=$ky?>);" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>">
+                    <a href="javascript:getGroup('<?=$ky?>');" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>">
                     <?=mb_substr($val, 0, 7, 'utf8')?></a>
                 <? } ?>
                 <? if ( count($groupList) > 7 ){?>
@@ -105,17 +110,17 @@
     var _url        = '/search/getMore/';
     var _has        = true;
     var _kw         = "<?=$kw?>";
-    var _class      = <?=$c?>;
-    var _group      = <?=$g?>;
+    var _class      = "<?=$c?>";
+    var _group      = "<?=$g?>";
 
     function getClass(cls)
     {
         var obj = new objURL('/?'+_whereStr);
-        obj.set('c', cls);
-        obj.set('kw', _kw);
-        obj.set('n', 0);
-        obj.set('g', 0);
-        obj.set('p', 0);
+        obj.set('c', cls==0?'':cls);
+        obj.set('kw', _kw==0?'':_kw);
+        obj.set('n', '');
+        obj.set('g', '');
+        obj.set('p', '');
         var params = obj.strparams();
         window.location = '/search/index/?'+params;
     }
@@ -123,11 +128,11 @@
     function getGroup(grp)
     {
         var obj = new objURL('/?'+_whereStr);
-        obj.set('c', _class);
-        obj.set('kw', _kw);
-        obj.set('g', grp);
-        obj.set('n', 0);
-        obj.set('p', 0);
+        obj.set('c', _class==0?'':_class);
+        obj.set('kw', _kw==0?'':_kw);
+        obj.set('g', grp==0?'':grp);
+        obj.set('n', '');
+        obj.set('p', '');
         var params = obj.strparams();
         window.location = '/search/index/?'+params;
     }
@@ -135,11 +140,11 @@
     function getPlatform(plat)
     {
         var obj = new objURL('/?'+_whereStr);
-        obj.set('c', _class);
-        obj.set('kw', _kw);
-        obj.set('g', _group);
-        obj.set('p', plat);
-        obj.set('n', 0);
+        obj.set('c', _class==0?'':_class);
+        obj.set('kw', _kw==0?'':_kw);
+        obj.set('g', _group==0?'':_group);
+        obj.set('p', plat==0?'':plat);
+        obj.set('n', '');
         var params = obj.strparams();
         window.location = '/search/index/?'+params;
     }

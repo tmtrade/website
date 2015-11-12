@@ -24,7 +24,7 @@
                         <i class="us-icon uj_icon7"></i>
                         <div class="mj-cols_list">
                             <ul>
-                                <li><i class="us-icon uj_icon36"></i><a href="http://i.new.com">个人中心</a></li>
+                                <li><i class="us-icon uj_icon36"></i><a href="http://i.chofn.net">个人中心</a></li>
                                 <li><i class="us-icon uj_icon37"></i><a href="">我的商标</a></li>
                                 <li><i class="us-icon uj_icon38"></i><a href="">我是买家</a></li>
                                 <li><i class="us-icon uj_icon39"></i><a href="">我是卖家</a></li>
@@ -76,21 +76,19 @@
         <a href="/"></a>
     </div>
     <div class="mj-search_con fl">
-        <input type="text" placeholder="输入你想买的商标名称/商标号"/>
+    <form id="searchForm" method="GET" action="/search/index/">
+        <input type="text" name="kw" placeholder="输入你想买的商标名称/商标号"/>
         <ul class="mj-search-box">
             <li class="select_box">
                 <span>所有分类</span>
                 <i class="uj_icon7"></i>
-                <!--<ul class="son_ul">
-                    <li>分类1</li>
-                    <li>分类2</li>
-                    <li>分类3</li>
-                </ul>-->
             </li>
         </ul>
+        <input type="hidden" id="publicClassSet" name="c" />
         <div class="mj-search-submit">
             <i class="uj_icon8"></i>
         </div>
+    </form>
     </div>
     <div class="mj-search_btn fr">
         <a href="" class="mj-btnBuy"><i class="uj_icon5"></i>我要买</a>
@@ -196,7 +194,10 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        
+        $(".mj-search-submit").click(function (){
+            $("#searchForm").submit();
+        });
+
         $(".mj-search-box li").click(function(){
             $(".mj-models").show();
         });
@@ -221,6 +222,8 @@
         $(".mj-models li").click(function(){
             $(this).addClass("cur").siblings().removeClass("cur");
             $(".select_box span").text($(this).text());
+            var _cid = $(this).attr('cid');
+            $("#publicClassSet").val(_cid);
             $(".mj-models").hide();
         });
     });

@@ -150,14 +150,10 @@
     <div class="mj-models" style="display:none;">
         <a href="javascript:;" class="mj-close"></a>
         <ul class="f-clearfix">
-            <li><a href="javascript:;">1类-化学品(1527) </a></li>
-            <li><a href="javascript:;">1类-化学品(1527) </a></li>
-            <li><a href="javascript:;">1类-化学品(1527) </a></li>
-            <li><a href="javascript:;">1类-化学品(1527) </a></li>
-            <li><a href="javascript:;">1类-化学品(1527) </a></li>
-            <li><a href="javascript:;">1类-化学品(1527) </a></li>
-            <li><a href="javascript:;">1类-化学品(1527) </a></li>
-            <li><a href="javascript:;">1类-化学品(1527) </a></li>
+            <li cid="0"><a href="javascript:;">所有分类</a></li>
+            <? foreach ($CLASSES as $key => $value) { ?>
+                <li cid="<?=$key?>"><a href="javascript:;"><?echo $key.'类-'.$value?></a></li>
+            <? } ?>
         </ul>
     </div>
 </div>

@@ -16,11 +16,13 @@ class SearchAction extends AppAction
 	{
         $keyword    = $this->input('kw', 'string', '');
         $class      = $this->input('c', 'int', 0);
-        $group      = $this->input('g', 'int', 0);
+        $group      = $this->input('g', 'string', 0);
         $platform   = $this->input('p', 'int', 0);
         $start      = $this->input('n', 'int', 0);
 
-        if ($group == 99) $group = 0;
+        if( $group > 0 && strlen($group) == 4 && !in_array($class, range(1, 45))){
+            $class = (int)substr($group, 0, 2);
+        }
         if ( $class > 0 ){
             $groupList = $this->load('group')->getClassGroups($class);
             $this->set('groupList', $groupList);
@@ -29,7 +31,7 @@ class SearchAction extends AppAction
             'keyword'   => $keyword,
             'class'     => $class,
             'group'     => $group,
-            'platform'  => $platform,
+            'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
             );
         $res        = $this->load('search')->search($params, $start, $this->_number);
         $strArr     = $this->getFormData();

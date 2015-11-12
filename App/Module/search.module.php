@@ -57,8 +57,9 @@ class SearchModule extends AppModule
     public function getSaleList($params, $start, $limit)
     {
         if ( !empty($params['keyword']) ){
-            //$r['like'] = array('name'=>$params['keyword']);
-            $r['raw'] = "tid >0 and (`name` LIKE '%".$params['keyword']."%' OR `number` = '".$params['keyword']."')";
+            $r['raw'] = " tid > 0 and (`name` LIKE '%".$params['keyword']."%' OR `number` = '".$params['keyword']."') ";
+        }else{
+            $r['raw'] = " tid > 0 ";
         }
         if ( !empty($params['class']) ){
             $r['eq'] = array('class'=>$params['class']);
@@ -74,6 +75,7 @@ class SearchModule extends AppModule
         $r['col']   = array('tid', 'number', 'class', 'name');
         $r['order'] = array('date'=>'desc');
 
+        //debug($r);
         $count  = $this->import('sale')->count($r);
         $res    = $this->import('sale')->find($r);
         $list   = $this->getListTips($res);
@@ -128,12 +130,19 @@ class SearchModule extends AppModule
                 'status3'   => 0,
                 'status26'  => 0,
                 );
+            if ( !empty($params['platform']) ){
+                $pItems = C('PLATFORM_ITEMS');
+                if ( !empty($pItems[$params['platform']]) && !in_array($params['class'], $pItems[$params['platform']])){
+                    return array();
+                }
+            }
         }elseif ( !empty($params['platform']) ){
             $pItems = C('PLATFORM_ITEMS');
             if ( !empty($pItems[$params['platform']]) ){
                 $r['in']['class_id'] =$pItems[$params['platform']];
             }
         }
+
         if ( !empty($params['group']) ){
             $r['ft']['group'] = $params['group'];
         }

@@ -17,7 +17,7 @@ class SearchIndexForm extends AppForm
     protected $map = array(
         'kw' 	=> array( 'field' => 'kw', 'method' => 'fieldString', ),
         'c'    	=> array( 'field' => 'c', 'method' => 'fieldInt', ),
-        'g'   	=> array( 'field' => 'g', 'method' => 'fieldInt', ),
+        'g'   	=> array( 'field' => 'g', 'method' => 'fieldString', ),
         'n'  	=> array( 'field' => 'n', 'method' => 'fieldInt', ),
     );
 
