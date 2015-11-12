@@ -20,23 +20,20 @@ class SearchAction extends AppAction
         $platform   = $this->input('p', 'int', 0);
         $start      = $this->input('n', 'int', 0);
 
-        $strArr = $this->getFormData();
-
+        if ($group == 99) $group = 0;
         if ( $class > 0 ){
             $groupList = $this->load('group')->getClassGroups($class);
             $this->set('groupList', $groupList);
         }
-        //if ($keyword || $class || $group){
         $params = array(
             'keyword'   => $keyword,
             'class'     => $class,
             'group'     => $group,
             'platform'  => $platform,
             );
-        $res = $this->load('search')->search($params, $start, $this->_number);
-        //}
-
-        $whereStr = http_build_query($strArr);
+        $res        = $this->load('search')->search($params, $start, $this->_number);
+        $strArr     = $this->getFormData();
+        $whereStr   = http_build_query($strArr);
 
         $this->set('c', $class);
         $this->set('kw', $keyword);

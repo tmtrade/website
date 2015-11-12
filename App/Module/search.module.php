@@ -128,6 +128,11 @@ class SearchModule extends AppModule
                 'status3'   => 0,
                 'status26'  => 0,
                 );
+        }elseif ( !empty($params['platform']) ){
+            $pItems = C('PLATFORM_ITEMS');
+            if ( !empty($pItems[$params['platform']]) ){
+                $r['in']['class_id'] =$pItems[$params['platform']];
+            }
         }
         if ( !empty($params['group']) ){
             $r['ft']['group'] = $params['group'];
