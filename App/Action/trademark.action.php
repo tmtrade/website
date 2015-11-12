@@ -38,6 +38,7 @@ class TrademarkAction extends AppAction
 			$classes = C('CLASSES') ;
 			$info['name'] = $info['trademark'];
 			$info['classValue'] = $classes[$info['class']];
+			$info['number'] = $info['id'];
 		}
 		if ( empty($info)  && empty($data) ){
 			MessageBox::halt('未找到相关数据3！');
@@ -280,6 +281,21 @@ class TrademarkAction extends AppAction
 			$boolsaletrademark = $this->load('saletrademark')->Saletrademark($detail);
 		}
 		return $tradeId;
+	}
+	
+	/**
+	 * 详情界面添加我要买
+	 * 
+	 * @author	JEANY
+	 * @since	2015-11-12
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	public function addBuy()
+	{
+		$thisid = $this->input('id','int');
+		
 	}
 }
 ?>

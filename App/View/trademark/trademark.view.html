@@ -115,33 +115,39 @@
                         </strong>
                         <span>（原价：<b class="mj-priceTxtt_b"><?=$data['guideprice']?>.00</b> )</span>
                         <br /><label><?php echo date('Y-m-d H:i:s',$data['salePriceDate']); ?></label>前有效<br />
-                        <a href="" class="mj-priceTxtt_link">立即抢购</a>
+						<?php
+						if($isLogin){
+							echo "<a href='javascript:getorder(".$data['id'].");' class=\"mj-priceTxtt_link\">立即抢购</a>";
+						}else{
+							echo "<a href='javascript:getlogin();' class=\"mj-priceTxtt_link\">立即抢购</a>";
+						}
+						?>
+                        
                     </div>
 				<?php
 				}else{
-					if($data['guideprice']){
-				?>
-				 <!--价格-->
-                    <div class="mj-priceTxtt">
-                        <strong>
-                            <em>￥</em>
-                            <span><?=$data['guideprice']?></span>
-                            <em>.00</em>
-                            <b>&nbsp;元</b>
-                        </strong>
-                        <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
-                    </div>
-				<?php
+					if($isLogin){//是否登录
+						if($data['isBargain'] == 2){//商品定价方案为售价
+				?>			
+							<!--价格-->
+							<div class="mj-priceTxtt">
+								<strong>
+									<em>￥</em>
+									<span><?=$data['guideprice']?></span>
+									<em>.00</em>
+									<b>&nbsp;元</b>
+								</strong>
+								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
+							</div>
+				<?php	
+						}else{//商品定价方案为义价
+							echo "<div class=\"mj-pricebtn\">议价</div>";
+						}
 					}else{
-				?>
-					<!--无价格-->
-					<div class="mj-pricebtn">
-                        <a href="">点击查看价格</a>
-                    </div>
-				<?php
+						echo "<div class=\"mj-pricebtn\"><a href='javascript:getlogin();'>请登录查看</a></div>";
 					}
 				}
-				?> 
+				?>
                 </div>
                 <div class="mj-cTr_bRight fr">
                     <dl>
