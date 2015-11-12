@@ -183,51 +183,6 @@ class SaleModule extends AppModule
 		return $data;
 	}
 
-    public function getListTips($data)
-    {
-        if ( empty($data) ) return array();
-        if ( !is_array(current($data)) ){
-            $_tmp = array($data);
-        }else{
-            $_tmp = $data;
-        }
-        
-        foreach ($_tmp as $k => $v) {
-            $data[$k] = $this->getTips($v);
-        }
-        return $data;
-    }
-
-    public function getTips($data)
-    {
-        $data['isOffprice'] = false;
-        $data['isBest']     = false;
-        $data['isLicence']  = false;
-
-        if ( empty($data['tid']) ) return $data;
-        
-        $r['limit'] = 100;
-        $r['eq'] = array(
-            'area'  => 1,
-            'tid'   => $v['tid'],
-        );
-        $r['notIn']   = array('status'=>array(2,3,4,6));
-        $res = $this->import('sale')->find($r);
-        if ( empty($res) ) return $data;
-        
-        foreach ($res as $k => $v) {
-            if ( !$data['isOffprice'] && $v['salePrice'] > 0 ){
-                $data['isOffprice'] = true;
-            }
-            if ( !$data['isBest'] && strpos($v['label'], '1') !== false ){
-                $data['isBest'] = true;
-            }
-            if ( !$data['isLicence'] && $v['saleType'] == 2 ){
-                $data['isLicence'] = true;
-            }
-        }
-        return $data;
-    }
 
 
 }
