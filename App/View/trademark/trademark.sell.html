@@ -1,0 +1,168 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>style/normalize.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/mg-buySell.css"/>
+	
+<!--content start-->
+<div class="g-mail">
+	<div class="w1000">
+		<div class="g-dar f-clearfix">
+			<div class="g-title f-clearfix">
+				<p class="g-title-p">
+					<em>10 大 绝 招</em>
+					<span>将你出售<b>商标价值提高</b></span>
+				</p>
+				<p class="g-title-p2">55<b>%</b></p>
+			</div>
+			<div class="g-title2 f-clearfix">
+				<p>就算未匹配到合适买家?<b>你还能获得我们 -</b></p>
+				<span>独 家 商 标 包 装 绝 招</span>
+			</div>
+			<div class="g-title3 f-clearfix">
+				<p>而且-这些都是<b>免费的</b></p>
+			</div>
+		</div>
+
+		<div class="g-bgnav f-clearfix">
+			<div class="g-bgnav-title f-clearfix">
+				<ul class="f-clearfix">
+					<li class="g-long"></li>
+					<li>商标出售登记表</li>
+					<li class="g-long"></li>
+				</ul>
+				<p class="g-bgnav-p">免费获得10大价值包装绝招</p>
+			</div>
+			<div class="g-bgnav-nav1 f-clearfix">
+				<div class="ul-alert-warning">你的商标已经进入出售流程-运营人员与你联系确认后马上就能出售你的商标</div>
+				<div class="g-bgnav-input1" id="j-bgnav">
+
+					<div>
+						<ul>
+							<li class="g-int1">
+								<input type="text" placeholder="商标号" name="number" class="input-number"/>
+							</li>
+							<li class="g-int2">
+								<input type="text" placeholder="出售底价" name="price"/>
+								<i>元</i>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="remove" style="display: none;">x&nbsp;删除商标</a>
+							</li>
+							<li class="">
+								<a href="javascript:void(0);" class="add">+&nbsp;添加商标</a>
+							</li>
+						</ul>
+						<table style="display: none;">
+							<tbody>
+							<tr>
+								<td class="g-td1">商标名称：</td>
+								<td class="g-td2"><input type="text" placeholder="无"/></td>
+								<td class="g-td1">申请人：</td>
+								<td class="g-td2"><input type="text"/></td>
+							</tr>
+							<tr>
+								<td class="g-td1">商标图样：</td>
+								<td class="g-td2 g-td3" rowspan="3">无</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="g-bgnav-nav1 f-clearfix">
+				<div class="g-bgnav-input1">
+					<ul>
+						<li class="g-int1 g-intp">
+							<input type="text" placeholder="输入手家方便买家联系" name="pbone" />
+						</li>
+						<li class="g-int2">
+							<input type="text" placeholder="你的姓氏" name="contact" />
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="g-bgnav-nav1 g-none f-clearfix">
+				<a href="" class="ms-bsSub g-bsb">马上出售</a>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--content end-->
+<? require(ViewDir.'/footer.html'); ?>
+
+<script type="text/javascript">
+    $(function(){
+
+        //分类弹框
+        $(".mj-models").hide(); //初始ul隐藏
+        $(".mj-search-box li").click(function(){
+            $(".mj-models").show();
+        });
+        //关闭弹框
+        $(".mj-close").click(function(){
+            $(".mj-models").hide();
+        });
+        //点击弹框添加样式
+        $(".mj-models li").hover(function(){
+            $(".mj-models").css({"border":"solid 1px #fc7d28"});
+        },function(){
+            $(".mj-models").css({"border":"solid 1px #79797a"});
+        });
+        //ms-hoverList  //免费通知
+        $('.ms-imglist-ul li,.ms-call').hover(function(){
+            $(this).addClass('current');
+        },function(){
+            $(this).removeClass('current');
+        });
+
+        //当点击跳转链接后，回到页面顶部位置
+        $(".mj-topIcon").click(function(){
+            $('body,html').animate({scrollTop:0},1000);
+            return false;
+        });
+
+
+
+        //左边菜单栏
+        $(".mj-dd dd").hover(function(){
+            $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
+        },function(){
+            $(this).removeClass("mj-ddahoverc");
+        });
+
+        var jBgnav = $('#j-bgnav');
+        var tiemOut = null;
+        jBgnav.on('click', '.add', function(){
+            var _parent = $(this).parent().parent().parent();
+            var _copy = _parent.clone();
+            _copy.find(".remove").removeAttr('style');
+            _parent.after(_copy);
+            _copy.find('input').val('');
+        }).on('click', '.remove', function(){
+            $(this).parent().parent().parent().remove();
+        });
+        jBgnav.on('keyup', '.input-number', function(){
+            var _val = '';
+            var _this = $(this);
+            _this.parent().parent().next().removeAttr('style');
+            clearTimeout(tiemOut);
+            tiemOut = setTimeout(function(){
+                _val = $.trim(_this.val());
+                $.ajax({
+                    url : '',
+                    data : '',
+                    method: 'post'
+                }).done(function(data){
+                    if( data ){
+
+                    }
+                }).error(function(){
+
+                });
+            }, 100);
+        })
+    });
+</script>
