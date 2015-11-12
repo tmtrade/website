@@ -55,13 +55,13 @@
 							<tbody>
 							<tr>
 								<td class="g-td1">商标名称：</td>
-								<td class="g-td2"><input type="text" placeholder="无"/></td>
+								<td class="g-td2"></td>
 								<td class="g-td1">申请人：</td>
-								<td class="g-td2"><input type="text"/></td>
+								<td class="g-td2"></td>
 							</tr>
 							<tr>
 								<td class="g-td1">商标图样：</td>
-								<td class="g-td2 g-td3" rowspan="3">无</td>
+								<td class="g-td2 g-td3" rowspan="3"><img class="imgurl" src="" /></td>
 							</tr>
 							</tbody>
 						</table>
@@ -144,7 +144,7 @@
         }).on('click', '.remove', function(){
             $(this).parent().parent().parent().remove();
         });
-        jBgnav.on('keyup', '.input-number', function(){
+        jBgnav.on('blur', '.input-number', function(){
             var _val = '';
             var _this = $(this);
             _this.parent().parent().next().removeAttr('style');
@@ -152,15 +152,29 @@
             tiemOut = setTimeout(function(){
                 _val = $.trim(_this.val());
                 $.ajax({
-                    url : '',
-                    data : '',
+                    url : '/trademark/getselldata/',
+                    data : {number:_val},
                     method: 'post'
                 }).done(function(data){
-                    if( data ){
-
-                    }
+					var obj = eval('(' + data + ')');	
+					if(obj == ''){
+						_this.attr('placeholder','商标信息不存在,请重新填写');
+						_this.val('');
+						return false;
+					} 
+					if(obj['status'] == '0'){
+						_this.attr('placeholder',obj['statusValue']+'的商标不可出售');
+						_this.val('');
+						return false;	
+					}
+					$.each(obj,function(item,value){		
+						if(item == 'imgurl'){
+							$('.imgurl').attr('src',value);
+						}else{
+							$('.'+item).html(value);
+						}
+					})
                 }).error(function(){
-
                 });
             }, 100);
         })

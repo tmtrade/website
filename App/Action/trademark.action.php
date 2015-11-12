@@ -32,7 +32,7 @@ class TrademarkAction extends AppAction
 		$this->set("platformItems",C('PLATFORM_ITEMS'));
 		//原始商标数据里面的数据
 		$info = $this->load('trademark')->trademarks($tid,$class);
-		$infoDetail = $this->load('trademark')->trademarkDetail($info);
+		$infoDetail = $this->load('trademark')->trademarkDetail($info,$info['auto']);
 		if($info){
 			$classes = C('CLASSES') ;
 			$info['name'] = $info['trademark'];
@@ -43,13 +43,32 @@ class TrademarkAction extends AppAction
 		}
 		//读取推荐商标
 		$tj  = $this->load("sale")->getDetailtj($class,6,$data['id']);
-		$data    = $data ? $data : $info  ;
-		$detail  = $detail ? $detail : $infoDetail ;
+		$data    = !empty($data) ? $data : $info  ;
+		$detail  = !empty($detail) ? $detail : $infoDetail ;
+		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("data",$data);
 		$this->set("detail",$detail);
 		$this->set("info",$info);
 		$this->set("tj",$tj);
 		$this->display();
+	}
+	
+	
+	/* 
+	* 群组字符串替换处理
+	*/ 
+	public function emptyreplace($str) 
+	{ 
+		$str = str_replace('　', ' ', $str); //替换全角空格为半角 
+		$str = str_replace('<br>', ' ', $str); //替换BR
+		$str = str_replace('&lt;br&gt;', ' ', $str); //替换BR
+		$str = str_replace('*', '', $str);  //替换*
+		$str = preg_replace('/\(.*?\)/', ' ', $str);//替换括号里面的
+		$result = '';
+		$strArr = explode(" ",$str);
+		$strArr = array_unique(array_filter($strArr)); //去掉空字符串
+		$result = implode(',', $strArr);
+		return $result; 
 	}
 	
 	
@@ -69,20 +88,20 @@ class TrademarkAction extends AppAction
 	 */
 	public function getselldata()
 	{
-		$number	= $this->input("number","int");
+		$number	= $this->input("number","string");
 		$data   = $this->load('trademark')->trademarks($number);
 		$result = array();
-		if($data['rows']){
+		if($data){
+			$detail = $this->load('trademark')->trademarkDetail($data,$data['auto']);
 			$status = array('申请中','已无效','冻结中');
 			if(in_array($data['rows'][0]['status'],$status)){
 				//不能出售的商标
 				$result['status'] = "0";
 				$result['statusValue'] = strip_tags($data['rows'][0]['status']);
 			}else{
-				$result['name']=$data['rows'][0]['trademark'];
-				$result['proposer']=$data['rows'][0]['proposerName'];
-				$result['validend']=$data['rows'][0]['valid_end'];
-				$result['imgurl']=$data['rows'][0]['imgUrl'];
+				$result['sbname']=$data['trademark'];
+				$result['proposer']=$detail['proposer'];
+				$result['imgurl']=$detail['imgurl'];
 			}
 		}
 		echo json_encode($result);
@@ -97,12 +116,16 @@ class TrademarkAction extends AppAction
 	 * @access	public
 	 * @return	void
 	 */
-	public function addselldata()
+	public function addsell()
 	{
 		$data = $this->getFormData();	
 		$url = '/trademark/sell/';
 		if($data['name']){
-			foreach($data as $sales){
+			foreach($data['name'] as $key => $item){
+				$sales['name']     = $item;
+				$sales['phone']    = $data[$key];
+				$sales['contact']  = $data['contact'];
+				$sales['price']    = $data['price'];
 				//检查传过来的数据
 				$this->checkselldata($sales);
 				$sales['guideprice'] = $this->getSalePrice($sales['price']);
