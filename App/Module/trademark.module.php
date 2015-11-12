@@ -31,7 +31,7 @@ class TrademarkModule extends AppModule
 		}else{
 			foreach($data['rows'] as $key => $item){
 				
-				$data['rows'][$key]['imgUrl'] = $this->load('imgurl')->getUrl($item['id']);
+				$data['rows'][$key]['imgUrl'] = $this->load('imgurl')->getUrl($item['tid']);
 				$w['eq']				= array('id' => $item['proposer_id']);
 				$w['limit']				= 1;
 				$proposer				= $this->import('proposer')->find($w);
@@ -59,7 +59,7 @@ class TrademarkModule extends AppModule
 	 */
 	public function trademarkDetail($item)
 	{
-		$data['imgurl'] 	= $this->getImg($item['id']);
+		$data['imgurl'] 	= $this->getImg($item['tid']);
 		
 		$w['eq']			= array('id' => $item['proposer_id']);
 		$w['limit']			= 1;

@@ -39,15 +39,11 @@
                 <li class="mj-libs">
                     此商标可入驻：
 					<?php
-						if($data['platform']){
-							$platform = explode(",",$data['platform']);
-							foreach($platform as $val){
-								if($val){
-									echo "<a href='' class=\"cur\">".$platformIn[$val]."</a>";
-								}	
-								
+						foreach($platformItems as $key => $item){
+							if($item && in_array($data['class'],$item)){
+								echo "<a href='' class=\"cur\">".$platformIn[$key]."</a>";
 							}
-						}
+						}	
 					?>
                 </li>
                 <li class="mj-libs mj-liptb f-clearfix">

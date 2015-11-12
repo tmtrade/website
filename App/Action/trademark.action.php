@@ -29,16 +29,15 @@ class TrademarkAction extends AppAction
         $data    = $this->load("sale")->getDetail($tid);
 		$detail  = $this->load("sale")->getTrademarkDetail($data['id']);
 		$this->set("platformIn",C('PLATFORM_IN'));
+		$this->set("platformItems",C('PLATFORM_ITEMS'));
 		//原始商标数据里面的数据
 		$info = $this->load('trademark')->trademarks($tid,$class);
 		$infoDetail = $this->load('trademark')->trademarkDetail($info);
-		
 		if($info){
 			$classes = C('CLASSES') ;
 			$info['name'] = $info['trademark'];
 			$info['classValue'] = $classes[$info['class']];
 		}
-		
 		if ( empty($info)  && empty($data) ){
 			MessageBox::halt('未找到相关数据3！');
 		}
@@ -100,63 +99,118 @@ class TrademarkAction extends AppAction
 	 */
 	public function addselldata()
 	{
-		$sales = $this->getFormData();	
-		//检查传过来的数据
-		$this->checkselldata($sales);
-		$sales['guideprice'] = $this->getSalePrice($sales['price']);
-		
-		//商标信息
-		$result   = $this->load('trademark')->trademarks($sales['number']);
-		if($result['rows']){
-			
-			$sales['source']  = 4; //来源，前台展示页
-			$sales['status']  = 5; //销售状态
-			$sales['memo'] = $result['total'] > 1 ? "该商标为一标多类，必须捆绑出售" : ""; 
-			$sales['name']       = $result['rows'][0]['trademark'];
-			$sales['proposerId'] = $result['rows'][0]['proposer_id'];
-			$sales['newId'] = $result['rows'][0]['newId'];
-			/*认证状态*/
-			$approves  = $this->getApprove($sales);
-			$sales['type']       = $approves['type'];
-			$sales['approveStatus']   = $approves['status'];
-			$sales['date']  	 = time();
-			
-			//商标详细信息
-			$detail['number']  = $sales['number']; 
-			$detail['area']  = 1;
-			
-			foreach($result['rows'] as $key => $item){
-				$sales['class']      = $item['class'];
-				$tradeId = $this->load('sale')->addSale($sales);
-				$detail['saleId']      = $tradeId;
-				$detail['name']      = $item['trademark'];
-				$detail['class']     = $item['class'];
-				$detail['imgurl']    = $item['imgUrl'];
-				$detail['group']     = $item['group'];
-				$detail['goods']     = $item['goods'];
-				$detail['proposer']  = $item['proposerName'];
-				$detail['status']    = $item['status'];
-				$detail['validEnd']  = $item['valid_end'];
-				$boolsaletrademark = $this->load('saletrademark')->Saletrademark($detail);
-				
+		$data = $this->getFormData();	
+		$url = '/trademark/sell/';
+		if($data){
+			foreach($data as $sales){
+				//检查传过来的数据
+				$this->checkselldata($sales);
+				$sales['guideprice'] = $this->getSalePrice($sales['price']);
+				//商标信息
+				$result   = $this->load('trademark')->trademarks($sales['number']);
+				if($result['rows']){
+					$sales['source']     = 4; //来源，前台展示页
+					$sales['status']     = 5; //销售状态
+					$sales['memo']       = $result['total'] > 1 ? "该商标为一标多类，必须捆绑出售".$result['rows'][0]['auto'] : ""; 
+					$sales['name']       = $result['rows'][0]['trademark'];
+					$sales['proposerId'] = $result['rows'][0]['proposer_id'];
+					$sales['newId']      = $result['rows'][0]['newId'];
+					/*认证状态*/
+					$approves  = $this->getApprove($sales);
+					$sales['type']           = $approves['type'];
+					$sales['approveStatus']  = $approves['status'];
+					$sales['date']  	     = time();
+					//商标详细信息
+					$detail['number']        = $sales['number']; 
+					$detail['area']          = 1;
+					//添加数据
+					$tradeId = $this->addSellDataToSql($result['rows'],$sales,$detail);
+					if($tradeId){
+						$url  =  "/trademark/sellok/";
+						header("Location:".$url);
+					}else{
+						$msg = '操作失败,请重试';
+						$this->redirect($msg, $url);
+					}
+				}else{
+					$msg = '没有相应的商标数据';
+					$this->redirect($msg, $url);
+				}
 			}
-			
-			$url = '';
-			if($tradeId){
-				$url  =  $data['approve']== 1 && $sales['type'] != 2 ? "/approve/email/?pid=".$sales['newId']."&sid=".$tradeId : "/trademark/sellok/";
-				header("Location:".$url);
-				
-			}else{
-				$msg = '操作失败,请重试';
-				$this->redirect($msg, $url);
-			}
-			
-		}else{
-			$url = "/trademark/sell/";
-			$msg = '没有相应的商标数据';
-			$this->redirect($msg, $url);
 		}
 	}
+	
+	/**
+	 * 检验出售数据的添加
+	 * 
+	 * @author	JEANY
+	 * @since	2015-11-12
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	public function checkselldata($data)
+	{
+		if ( empty($data['input-number']) ){
+			$msg = '您还未输入商标号，请填写';exit();
+		}elseif(!preg_match('/^\d*$/',$data['number'])){
+			$msg = '请输入正确商标号！';exit();
+		}
+		
+		if ( empty($data['input-iphone']) ){
+			$msg = '您还未输入电话，请填写';exit();
+		}elseif(!preg_match("/^1[3,4,5,7,8]{1}[0-9]{9}$/",$data['iphone'])){
+			$msg = '请输入正确手机号！';exit();
+		}
+		
+		if ( empty($data['input-price']) ){
+			$msg = '您还未输入底价，请填写';exit();
+		}elseif(!preg_match('/^\d*$/',$data['price'])){
+			$msg = '请输入正确价格！';exit();
+		}
+	}
+	
+	/**
+	 * 指导价格(出售价格) 出售价格系统自动添加，出售价格=底价+浮动比例(不同底价对应不同的浮动比例)
+	 * 
+	 * @author	Jeany
+	 * @since	2015-11-12
+	 * @access	public
+	 * @return	int
+	 */
+	 public function getSalePrice($price)
+	{	
+		$ratio = C("FLAOT_RATIO");
+		switch($price){
+			case ($price <= 10000):
+				$key = 1;
+				break;
+			case ($price > 10000 && $price <= 20000):
+				$key = 2;
+				break;
+			case ($price > 20000 && $price <= 30000):
+				$key = 3;
+				break;
+			case ($price > 30000 && $price <= 50000):
+				$key = 4;
+				break;
+			case ($price > 50000 && $price <= 60000):
+				$key = 5;
+				break;
+			case ($price > 60000 && $price <= 100000):
+				$key = 6;
+				break;
+			case ($price > 100000 && $price <= 200000):
+				$key = 7;
+				break;
+			case ($price > 200000):
+				$key = 8;
+				break;
+		}
+		$salePrice = $price*(1+$ratio[$key]);
+		return $salePrice;
+	}
+	
 	
 	/**
 	 * 检验出售数据的添加
@@ -174,9 +228,8 @@ class TrademarkAction extends AppAction
 		return $approves;
 	}
 	
-	
 	/**
-	 * 检验出售数据的添加
+	 * 出售数据数据库添加
 	 * 
 	 * @author	JEANY
 	 * @since	2015-11-12
@@ -184,25 +237,25 @@ class TrademarkAction extends AppAction
 	 * @access	public
 	 * @return	void
 	 */
-	public function checkselldata($data)
+	public function addSellDataToSql($rows,$sales,$detail)
 	{
-		if ( empty($data['input-number']) ){
-			$msg = '您还未输入商标号，请填写';exit();
-		}elseif(!preg_match('/^\d*$/',$data['input-number'])){
-			$msg = '请输入正确商标号！';exit();
+		$tradeId = '';
+		foreach($rows as $key => $item){
+			$sales['class']      = $item['class'];
+			$sales['tid']        = $item['auto'];
+			$tradeId = $this->load('sale')->addSale($sales);
+			$detail['saleId']    = $tradeId;
+			$detail['name']      = $item['trademark'];
+			$detail['class']     = $item['class'];
+			$detail['imgurl']    = $item['imgUrl'];
+			$detail['group']     = $item['group'];
+			$detail['goods']     = $item['goods'];
+			$detail['proposer']  = $item['proposerName'];
+			$detail['status']    = $item['status'];
+			$detail['validEnd']  = $item['valid_end'];
+			$boolsaletrademark = $this->load('saletrademark')->Saletrademark($detail);
 		}
-		
-		if ( empty($data['input-iphone']) ){
-			$msg = '您还未输入电话，请填写';exit();
-		}elseif(!preg_match("/^1[3,4,5,7,8]{1}[0-9]{9}$/",$data['input-iphone'])){
-			$msg = '请输入正确手机号！';exit();
-		}
-		
-		if ( empty($data['input-price']) ){
-			$msg = '您还未输入底价，请填写';exit();
-		}elseif(!preg_match('/^\d*$/',$data['input-price'])){
-			$msg = '请输入正确价格！';exit();
-		}
+		return $tradeId;
 	}
 }
 ?>
