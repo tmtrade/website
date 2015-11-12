@@ -165,6 +165,22 @@
             }
         });
     }
+
+    if ( _class >= 7 ){
+        var _first = $("#j-dltype").find('a').first();
+        $("#j-dltype").prepend($("#j-dltype > .current"));
+        $("#j-dltype").prepend(_first);
+    }
+    
+    $("#g-dltype").find('a').each(function (k,v){
+        if ( $(this).hasClass('current') ){
+            if ( k >= 7 && $("#g-dltype").find('a').length > 8){
+                var _first = $("#g-dltype").find('a').first();
+                $("#g-dltype").prepend($("#g-dltype > .current"));
+                $("#g-dltype").prepend(_first);
+            }
+        }
+    });
     
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();

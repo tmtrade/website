@@ -31,7 +31,7 @@ class SearchIndexForm extends AppForm
      */
     public function fieldString($value)
     {
-        return empty($value) ? '' : htmlspecialchars(trim($value));
+        return empty($value) ? '' : urldecode(htmlspecialchars(trim($value)));
     }
 
     /**

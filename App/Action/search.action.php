@@ -36,6 +36,7 @@ class SearchAction extends AppAction
         $res        = $this->load('search')->search($params, $start, $this->_number);
         $strArr     = $this->getFormData();
         $whereStr   = http_build_query($strArr);
+        //debug($whereStr);
 
         $this->set('c', $class);
         $this->set('kw', $keyword);
@@ -56,7 +57,7 @@ class SearchAction extends AppAction
         $start      = $this->input('n', 'int', 0);
 
         $params = array(
-            'keyword'   => $keyword,
+            'keyword'   => urldecode($keyword),
             'class'     => $class,
             'group'     => $group,
             'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
