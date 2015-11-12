@@ -101,7 +101,7 @@ class TrademarkAction extends AppAction
 	{
 		$data = $this->getFormData();	
 		$url = '/trademark/sell/';
-		if($data){
+		if($data['name']){
 			foreach($data as $sales){
 				//检查传过来的数据
 				$this->checkselldata($sales);
