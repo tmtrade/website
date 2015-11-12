@@ -57,11 +57,9 @@ class TrademarkModule extends AppModule
 	/**
 	 * 通过商标号获取商标信息
 	 */
-	public function trademarkDetail($item)
+	public function trademarkDetail($item,$tid)
 	{
-
 		$data['imgurl'] 	= $this->getImg($item['auto']);
-		
 		$w['eq']			= array('id' => $item['proposer_id']);
 		$w['limit']			= 1;
 		$proposer			= $this->import('proposer')->find($w);
