@@ -1,23 +1,22 @@
 <?
 /**
- * 网站首页
+ * 可许可商标
  *
- * 网站首页
+ * 可许可的商标列表
  *
  * @package Action
  * @author  Xuni
- * @since   2015-11-05
+ * @since   2015-11-12
  */
-class PotentialAction extends AppAction
+class LicenceAction extends AppAction
 {
-	private $_number = 30;
+    private $_number = 30;
 
     public function index()
     {
         $class      = $this->input('c', 'int', 0);
         $group      = $this->input('g', 'string', 0);
         $platform   = $this->input('p', 'int', 0);
-        $start      = $this->input('n', 'int', 0);
 
         if( $group > 0 && strlen($group) == 4 && !in_array($class, range(1, 45))){
             $class = (int)substr($group, 0, 2);
@@ -29,10 +28,10 @@ class PotentialAction extends AppAction
         $params = array(
             'class'     => $class,
             'group'     => $group,
-            'label'     => '2',
+            'saleType'  => '2',
             'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
             );
-        $res        = $this->load('search')->getSaleList($params, $start, $this->_number);
+        $res        = $this->load('search')->getSaleList($params, 0, $this->_number);
         $strArr     = $this->getFormData();
         $whereStr   = http_build_query($strArr);
 
@@ -55,7 +54,7 @@ class PotentialAction extends AppAction
         $params = array(
             'class'     => $class,
             'group'     => $group,
-            'label'     => '2',
+            'saleType'  => '2',
             'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
             );
         $list   = $this->load('search')->getSaleList($params, $start, $this->_number);

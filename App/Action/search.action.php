@@ -51,13 +51,15 @@ class SearchAction extends AppAction
     {
         $keyword    = $this->input('kw', 'string', '');
         $class      = $this->input('c', 'int', 0);
-        $group      = $this->input('g', 'int', 0);
+        $group      = $this->input('g', 'string', 0);
+        $platform   = $this->input('p', 'int', 0);
         $start      = $this->input('n', 'int', 0);
 
         $params = array(
             'keyword'   => $keyword,
             'class'     => $class,
             'group'     => $group,
+            'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
             );
         $list   = $this->load('search')->search($params, $start, $this->_number);
         
@@ -65,9 +67,5 @@ class SearchAction extends AppAction
         $this->display();
     }
 
-    private function makeParams(&$item, $key)
-    {
-        $item = $key.'='.$item;
-    }
 }
 ?>

@@ -8,14 +8,13 @@
  * @author	Xuni
  * @since	2015-11-11
  */
-class SearchIndexForm extends AppForm
+class OffpriceIndexForm extends AppForm
 {
 	
 	/**
      * 字段映射(建立表单字段与程序字段或数据表字段的关联)
      */
     protected $map = array(
-        'kw' 	=> array( 'field' => 'kw', 'method' => 'fieldString', ),
         'c'    	=> array( 'field' => 'c', 'method' => 'fieldInt', ),
         'g'   	=> array( 'field' => 'g', 'method' => 'fieldString', ),
     );
