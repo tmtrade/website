@@ -274,38 +274,16 @@
                 </dt>
                 <dd>
                     <ul class="m2list">
-                        <li>
-                            <span>张先生<em>（135****8025）</em></span>
-                            <p>期望购买：25类 用于天猫服装分类的 XX</p>
-                        </li>
-                        <li>
-                            <span>张先生<em>（135****8025）</em></span>
-                            <p>期望购买：25类 用于天猫服装分类的 XX</p>
-                        </li>
-                        <li>
-                            <span>张先生<em>（135****8025）</em></span>
-                            <p>期望购买：25类 用于天猫服装分类的 XX</p>
-                        </li>
-                        <li>
-                            <span>张先生<em>（135****8025）</em></span>
-                            <p>期望购买：25类 用于天猫服装分类的 XX</p>
-                        </li>
-                        <li>
-                            <span>张先生<em>（135****8025）</em></span>
-                            <p>期望购买：25类 用于天猫服装分类的 XX</p>
-                        </li>
-                        <li>
-                            <span>张先生<em>（135****8025）</em></span>
-                            <p>期望购买：25类 用于天猫服装分类的 XX</p>
-                        </li>
-                        <li>
-                            <span>张先生<em>（135****8025）</em></span>
-                            <p>期望购买：25类 用于天猫服装分类的 XX</p>
-                        </li>
-                        <li>
-                            <span>张先生<em>（135****8025）</em></span>
-                            <p>期望购买：25类 用于天猫服装分类的 XX</p>
-                        </li>
+						<?php
+						if($buyInfo){
+						foreach($buyInfo as $val){
+							echo "<li>
+                            <span>".$val['contact']."<em>（".$val['phone']."）</em></span>
+                            <p>期望购买：".$val['need']."</p>
+                        </li>";
+						}
+						}
+						?>
                     </ul>
                 </dd>
 
@@ -409,42 +387,19 @@
                 </dt>
                 <dd>
                     <ul class="m3list">
-                        <li> <i class="mj-hep"><img src="<?=StaticDir?>style/img/mj-img3.png" alt=""/></i>
-                            <div class="mj-peinf">
-                                <span>张先生<em>3秒前</em></span>
-                                <p>交易：第7类商标，空气净化器</p>
+					<?php
+						if($tradeInfo){
+						foreach($tradeInfo as $val){
+							echo "
+							<li> <i class=\"mj-hep\"><img src='".StaticDir."style/img/mj-img3.png' alt=''/></i>
+                            <div class=\"mj-peinf\">
+                                <span>".$val['contact']."<em>".$val['dealDate']."</em></span>
+                                <p>交易：第".$val['class']."类商标，".$val['name']."</p>
                             </div>
-                        </li>
-                        <li> <i class="mj-hep"><img src="<?=StaticDir?>style/img/mj-img3.png" alt=""/></i>
-                            <div class="mj-peinf">
-                                <span>张先生<em>3秒前</em></span>
-                                <p>交易：第7类商标，空气净化器</p>
-                            </div>
-                        </li>
-                        <li> <i class="mj-hep"><img src="<?=StaticDir?>style/img/mj-img3.png" alt=""/></i>
-                            <div class="mj-peinf">
-                                <span>张先生<em>3秒前</em></span>
-                                <p>交易：第7类商标，空气净化器</p>
-                            </div>
-                        </li>
-                        <li> <i class="mj-hep"><img src="<?=StaticDir?>style/img/mj-img3.png" alt=""/></i>
-                            <div class="mj-peinf">
-                                <span>张先生<em>3秒前</em></span>
-                                <p>交易：第7类商标，空气净化器</p>
-                            </div>
-                        </li>
-                        <li> <i class="mj-hep"><img src="<?=StaticDir?>style/img/mj-img3.png" alt=""/></i>
-                            <div class="mj-peinf">
-                                <span>张先生<em>3秒前</em></span>
-                                <p>交易：第7类商标，空气净化器</p>
-                            </div>
-                        </li>
-                        <li> <i class="mj-hep"><img src="<?=StaticDir?>style/img/mj-img3.png" alt=""/></i>
-                            <div class="mj-peinf">
-                                <span>张先生<em>3秒前</em></span>
-                                <p>交易：第7类商标，空气净化器</p>
-                            </div>
-                        </li>
+                        </li>";
+						}
+						}
+						?>
                     </ul>
                 </dd>
 

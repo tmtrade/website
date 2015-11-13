@@ -35,6 +35,12 @@ class IndexAction extends AppAction
 		$paramTS['label'] = "2,3";
 		$paramTS['notId'] = $dataJP['notId'];
 		$dataTS = $this->load('sale')->getSaleList($paramTS,8);
+		//最新购买需求
+		$buyInfo = $this->load('buy')->getNewsBuy(8);
+		$this->set('buyInfo',$buyInfo);
+		//最新交易记录
+		$tradeInfo = $this->load('buy')->getNewsTrade(8);
+		$this->set('tradeInfo',$tradeInfo);
 		
 		$this->set('dataTM',$dataTM);
 		$this->set('dataJD',$dataJD);

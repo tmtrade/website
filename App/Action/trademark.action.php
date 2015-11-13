@@ -43,10 +43,19 @@ class TrademarkAction extends AppAction
 		if ( empty($info)  && empty($data) ){
 			MessageBox::halt('未找到相关数据3！');
 		}
+		
+		//查询订单是否存在
+		if($this->userInfo && $data['id']){
+			$user = $this->userInfo;
+			$buyData = $this->load("buy")->getDataBySaleId($data['id'],$user['userId']);
+			$this->set("buyData",$buyData);	
+		}
+		
 		//读取推荐商标
 		$tj  = $this->load("sale")->getDetailtj($class,6,$data['id']);
 		$data    = empty($data) ? $info : $data;
 		$detail  = empty($detail) ? $infoDetail : $detail;
+		
 		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("data",$data);
 		$this->set("detail",$detail);
@@ -294,8 +303,37 @@ class TrademarkAction extends AppAction
 	 */
 	public function addBuy()
 	{
-		$thisid = $this->input('id','int');
-		
+		$saleid = $this->input('saleid','int');
+		if($this->userInfo){
+			//查询商标是否存在
+			$sale = $this->load("sale")->getSaleById($saleid);
+			if(!$sale){
+				$result = 4; //商标数据不存在
+				echo $result;
+				exit;
+			}
+			$user = $this->userInfo;
+			//查询订单是否存在
+			$buyData = $this->load("buy")->getDataBySaleId($saleid,$user['userId']);
+			if(!$buyData){
+				$buy['userId'] = $user['userId'];
+				$buy['source'] = 4; //来源展示页
+				$buy['name']   = $sale['name'];
+				$buy['class']  = $sale['class'];
+				$buy['contact']= $user['username'];
+				$buy['phone']  = $user['mobile'];
+				$buy['status'] = 5;
+				$buy['date']   = time();
+				$buy['saleId'] = $saleid;
+				$buy['need']   = '';
+				$result = $this->load("buy")->create($buy);
+			}else{
+				$result = 2; //数据已经存在
+			}
+		}else{
+			$result = 3; //未登录
+		}
+		echo $result;
 	}
 }
 ?>

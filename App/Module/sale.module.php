@@ -182,8 +182,22 @@ class SaleModule extends AppModule
         }
 		return $data;
 	}
-
-
-
+	
+	/**
+	 * 通过出售详情
+	 * @author	Jeany
+	 * @since	2015-07-23
+	 *
+	 * @access	public
+	 * @param	array		$param  用户名称
+	 * @return	array
+	 */
+	public function getSaleById($id)
+	{	
+		$r['limit'] = 1;
+		$r['eq']['id'] = $id;
+        $data = $this->import("sale")->find($r);
+        return $data;
+	}
 }
 ?>

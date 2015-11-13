@@ -116,10 +116,15 @@
                         <span>（原价：<b class="mj-priceTxtt_b"><?=$data['guideprice']?>.00</b> )</span>
                         <br /><label><?php echo date('Y-m-d H:i:s',$data['salePriceDate']); ?></label>前有效<br />
 						<?php
-						if($isLogin){
-							echo "<a href='javascript:getorder(".$data['id'].");' class=\"mj-priceTxtt_link\">立即抢购</a>";
+						
+						if($buyData){
+							echo "<a href='javascript:void(0)' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
 						}else{
-							echo "<a href='javascript:getlogin();' class=\"mj-priceTxtt_link\">立即抢购</a>";
+							if($isLogin){
+								echo "<a href='javascript:getorder(".$data['id'].");' class=\"mj-priceTxtt_link\" id='addorder' >立即抢购</a>";
+							}else{
+								echo "<a href='javascript:getlogin();' class=\"mj-priceTxtt_link\">立即抢购</a>";
+							}
 						}
 						?>
                         
@@ -141,7 +146,19 @@
 							</div>
 				<?php	
 						}else{//商品定价方案为义价
-							echo "<div class=\"mj-pricebtn\">议价</div>";
+				?>
+					<!--价格-->
+							<div class="mj-priceTxtt">
+								<strong>
+									<em>￥</em>
+									<span>议价</span>
+									<em></em>
+									<b>&nbsp;</b>
+								</strong>
+								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
+							</div>
+							
+				<?php
 						}
 					}else{
 						echo "<div class=\"mj-pricebtn\"><a href='javascript:getlogin();'>请登录查看</a></div>";
@@ -277,5 +294,6 @@
         </div>
     </div>
 </div>
+<script src="<?=StaticDir?>script/order.js"></script>
 <!--content end-->
 <? require(ViewDir.'/footer.html'); ?>
