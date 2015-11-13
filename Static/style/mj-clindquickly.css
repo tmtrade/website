@@ -59,55 +59,6 @@
 }
 .mj_goods_check li {
     float: left;
-    padding: 7px 10px;
-    text-align: center;
-    background: #fff;
-    font-size: 12px;
-    color: #777;
-    border:solid 1px #e9e9e9;
-    border-right: none;
-}
-.mj_goods_check li.mj-determine{
-    margin-left: 15px;
-    padding: 0;
-    width: 50px;
-    height: 35px;
-    line-height: 35px;
-    background: #48aff1;
-    border-radius: 3px;
-}
-.mj_goods_check li.mj-determine:hover{
-    background: #268ACA;
-}
-.mj_goods_check li.mj-determine a{
-    display:inline-block;
-    width: 50px;
-    height: 43px;
-    text-align: center;
-    color: #fff;
-    font-size: 12px;
-}
-.mj_goods_check li.mj-limg{
-    margin: 0 10px;
-}
-.mj_goods_check li.mj-lisn{
-    padding: 13px 10px;
-    background: none;
-    border:none;
-}
-.mj_goods_check li:last-child{
-    border:solid 1px #e9e9e9;
-}
-.mj_goods_check li label {
-    padding-left: 9px;
-    vertical-align: middle;
-    cursor: pointer;
-}
-.mj_goods_check li input {
-    vertical-align: middle;
-}
-.mj_goods_check li input[type="checkbox"]{
-    cursor: pointer;
 }
 /*Í¼Æ¬ÁÐ±í end*/
 .mj-imglists{}

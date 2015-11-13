@@ -2,7 +2,7 @@
 @import url("mj-header.css");
 @import url("mj-footer.css");
 @import url("us-icon.css");
-
+@import url("mj-select.css");
 /* 引入全局清除默认浏览器样式 */
 @import url("normalize.css");
 /*重置body*/

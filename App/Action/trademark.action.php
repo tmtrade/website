@@ -308,7 +308,7 @@ class TrademarkAction extends AppAction
 			//查询商标是否存在
 			$sale = $this->load("sale")->getSaleById($saleid);
 			if(!$sale){
-				$result = 4; //商标数据不存在
+				$result = -4; //商标数据不存在
 				echo $result;
 				exit;
 			}
@@ -325,13 +325,13 @@ class TrademarkAction extends AppAction
 				$buy['status'] = 5;
 				$buy['date']   = time();
 				$buy['saleId'] = $saleid;
-				$buy['need']   = '';
+				$buy['need']   = "商标号:".$sale['number'].",类别:".$sale['class']."";
 				$result = $this->load("buy")->create($buy);
 			}else{
-				$result = 2; //数据已经存在
+				$result = -2; //数据已经存在
 			}
 		}else{
-			$result = 3; //未登录
+			$result = -3; //未登录
 		}
 		echo $result;
 	}

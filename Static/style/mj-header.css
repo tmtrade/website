@@ -494,6 +494,7 @@ table {
     position: absolute;
     top: 5px;
     right: 10px;
+    cursor: pointer;
 }
 .ms-login h6{
     margin: 0;

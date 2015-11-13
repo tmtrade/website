@@ -284,3 +284,71 @@ textarea::-webkit-input-placeholder {
 .ms-bsSub:hover{
     background: #EB6409;
 }
+
+.mj-bgTips{
+    font-size: 14px;
+    color: #fff;
+}
+
+
+/*购买弹出层*/
+.mj-boughtM{
+    display: none;
+    position: relative;
+    width: 483px;
+    height: 224px;
+    background: #fff;
+    border: solid 1px #cfcfcf;
+}
+.mj-bcon{
+    padding: 50px 0 0 60px;
+}
+.mj-bconLeft{
+    display: inline-block;
+    padding: 0 15px 0 38px;
+    float: left;
+    height: 115px;
+}
+.mj-bconLefts{
+    display: inline-block;
+    margin-right: 15px;
+    float: left;
+    height: 110px;
+}
+.mj-bconRight{}
+.mj-bconRight h1{
+    margin: 0;
+    font-size: 22px;
+    color: #ff6700;
+    font-weight: normal;
+}
+.mj-bconRight h2{
+    font-size: 22px;
+    color: #444;
+    font-weight: normal;
+}
+.mj-bconRight a{
+    display: inline-block;
+    margin-top: 15px;
+    width: 160px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    font-size: 12px;
+    border-radius: 1px;
+}
+.mj-boBtn1{
+    background: #fff;
+    border: solid 1px #c3e1f9;
+    color: #48aff1;
+}
+.mj-bconRight p{
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+}
+.mj-bconRight p em{
+    color: #ff6600;
+    font-style: normal;
+}
+

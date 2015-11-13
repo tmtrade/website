@@ -538,3 +538,71 @@ em{
     font-size: 12px;
     color: #888;
 }
+.mj-validationTip{
+    display: block;
+    padding-top: 3px;
+    font-size: 12px;
+    color: #fc7d28;
+}
+
+/*¹ºÂòµ¯³ö²ã*/
+.mj-boughtM{
+    display: none;
+    position: relative;
+    width: 483px;
+    height: 224px;
+    background: #fff;
+    border: solid 1px #cfcfcf;
+}
+.mj-bcon{
+    padding: 76px 0 0 60px;
+}
+.mj-bconLeft{
+    display: inline-block;
+    padding: 0 15px 0 38px;
+    float: left;
+    height: 85px;
+}
+.mj-bconLefts{
+    display: inline-block;
+    margin-right: 15px;
+    float: left;
+    height: 110px;
+}
+.mj-bconRight{}
+.mj-bconRight h1{
+    margin: 0;
+    font-size: 22px;
+    color: #ff6700;
+    font-weight: normal;
+}
+.mj-bconRight h2{
+    font-size: 22px;
+    color: #444;
+    font-weight: normal;
+}
+.mj-bconRight a{
+    display: inline-block;
+    margin-top: 15px;
+    width: 118px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    font-size: 12px;
+    border-radius: 1px;
+}
+.mj-boBtn1{
+    background: #fff;
+    border: solid 1px #c3e1f9;
+    color: #48aff1;
+}
+.mj-boBtn2{
+    background: #fef4eb;
+    border: solid 1px #e89160;
+    color: #e89160;
+}
+.mj-bconRight p{
+    margin-top: 18px;
+    font-size: 12px;
+    color: #888;
+}
