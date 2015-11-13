@@ -1,18 +1,23 @@
 <?
 /**
- * 账号验证
+ * 买商标，求购
  *
- * 账号登录、验证
+ * 求购商标信息添加
  *
  * @package	Action
  * @author	Xuni
- * @since	2015-11-05
+ * @since	2015-11-13
  */
-class PassportAction extends AppAction
+class BuyAction extends AppAction
 {
     private $codeTime   = 300;//手机验证码有效时间(秒)
     private $mvName     = 'mvCode'; //手机验证码名称
     private $mbNo       = 'mbNo'; //验证时的手机号
+
+    public function index()
+    {
+        $this->display();
+    }
 
     /**
      * 正常登录
@@ -79,8 +84,15 @@ class PassportAction extends AppAction
         if ( isCheck($account) != 2 ){
             $this->returnAjax(array('code'=>3));//手机号不正确
         }
-        //判断验证码是否正确
-        $this->checkMsgCode($account, $password, false);
+        $prefix = C('COOKIE_PREFIX');
+        $mbNo   = $prefix.$this->mbNo;
+        if ( $account != Session::get($mbNo) ){
+            $this->returnAjax(array('code'=>4));//手机号不是验证时的手机号
+        }
+        $cname   = $prefix.$this->mvName;
+        if ( $password != Session::get($cname) ){
+            $this->returnAjax(array('code'=>5));//验证码不正确
+        }
 
         $userinfo = $this->load('passport')->get($account);
         if ( empty($userinfo) ) $this->returnAjax(array('code'=>0));//账号不正确或获取数据失败
@@ -89,31 +101,6 @@ class PassportAction extends AppAction
         Session::remove($mbNo);//登录成功清除临时值
         Session::remove($cname);//登录成功清除临时值
         $this->returnAjax(array('code'=>1));//登录成功
-    }
-
-    /**
-     * 检验账号是否存在
-     * 
-     * @author  Xuni
-     * @since   2015-11-13
-     *
-     * @access  public
-     *
-     * @return  json
-     */
-    public function existAccount()
-    {
-        $account = $this->input('account', 'string', '');
-        if ( empty($account) ){
-            $this->returnAjax(array('code'=>2));//账号为空
-        }
-        if ( isCheck($account) == 3 ){
-            $this->returnAjax(array('code'=>3));//账号格式不正确
-        }
-        $userinfo = $this->load('passport')->get($account, isCheck($account));
-        if ( empty($userinfo) ) $this->returnAjax(array('code'=>0));//账号不正确或获取数据失败
-
-        $this->returnAjax(array('code'=>1));//账号正确
     }
 
     /**
@@ -128,14 +115,13 @@ class PassportAction extends AppAction
      */
     public function sendMsgCode()
     {
-        $mobile     = $this->input('m', 'string', '');
-        $isRegister = $this->input('r', 'string', 'y');
+        $mobile = $this->input('m', 'string', '');
         if ( empty($mobile) || isCheck($mobile) != 2 ){
             $this->returnAjax(array('code'=>2));//手机号不正确
         }
-        if ( $isRegister == 'y' ){
-            $userinfo = $this->load('passport')->get($mobile);
-            if ( empty($userinfo) ) $this->returnAjax(array('code'=>3));//该手机号未注册
+        $userinfo = $this->load('passport')->get($account);
+        if ( empty($userinfo) ){
+            $this->returnAjax(array('code'=>3));//该手机号未注册
         }
         //设置验证码
         $res = $this->setMsgCode($mobile);
@@ -160,43 +146,6 @@ class PassportAction extends AppAction
      * @since   2015-11-06
      *
      * @access  public
-     * @param   int         $mobile      手机号码
-     * @param   string      $length      验证码
-     * @param   bool        $length      是否通过Ajax访问
-     *
-     * @return  array
-     */
-    public function checkMsgCode($mobile='', $code='', $ajax=true)
-    {
-        if ( $ajax || empty($mobile) || empty($code) ){
-            $mobile = $this->input('m', 'string', '');
-            $code   = $this->input('c', 'string', '');
-        }
-        $prefix = C('COOKIE_PREFIX');
-        $mbNo   = $prefix.$this->mbNo;
-        if ( $mobile != Session::get($mbNo) ){
-            $this->returnAjax(array('code'=>4));//手机号不是验证时的手机号
-        }
-        $cname   = $prefix.$this->mvName;
-        if ( $code != Session::get($cname) ){
-            $this->returnAjax(array('code'=>5));//验证码不正确
-        }
-        if ( $ajax ){
-            $userinfo = $this->load('passport')->get($mobile);
-            if ( empty($userinfo) ) $this->returnAjax(array('code'=>11));//验证码正确(手机已注册)
-            $this->returnAjax(array('code'=>1));//验证码正确(但手机未注册)
-        }
-    }
-
-    /**
-     * 获取验证码，并发送到手机
-     * 
-     * @author  Xuni
-     * @since   2015-11-06
-     *
-     * @access  public
-     * @param   int     $mobile      手机号码
-     * @param   int     $length      验证码长度
      *
      * @return  array
      */

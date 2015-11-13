@@ -1,3 +1,9 @@
+/**********************************************************
+ * 登录js
+ * author：Xuni
+ * 
+ **********************************************************/
+
 var sendOnce = true;
 var _iconE = '<i class="us-icon us-icon19"></i>';
 $(document).ready(function(){

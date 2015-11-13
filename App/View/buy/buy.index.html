@@ -1,0 +1,200 @@
+<? require(ViewDir.'/header.html'); ?>
+
+<link rel="stylesheet" href="<?=StaticDir?>style/mj-buy.css"/>
+<script src="<?=StaticDir?>script/layer/layer.js"></script>
+<script src="<?=StaticDir?>script/jquery.SuperSlide.2.1.js"></script>
+<script src="<?=StaticDir?>script/buy.js"></script>
+
+<div class="mj-banner">
+    <div class="w1180 mj-formW">
+        <div class="mj-from">
+            <form id="buyForm" action="/buy/add/">
+                <div class="mj-from-title">
+                    <label></label><span>商标购买快捷登记</span><label></label>
+                    <div class="ms-errorTips mj-eed">
+                        <p class="reg-tip"><i class="us-icon us-icon19"></i><em></em></p>
+                    </div>
+                    <p>我们会在10分钟内帮你匹配到合适的商标</p>
+                </div>
+                <div class="mj-form-wrapper mj-fwH">
+                    <span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>
+                    <div class="mj-inputPi">
+                        <i class="us-icon uj-icon4"></i>
+                        <input type="text" id="mj-inputl" name="content">
+                    </div>
+                </div>
+                <div class="mj_form_wpo f-clearfix">
+                    <div class="mj-form-wrapper w178 fl">
+                        <span class="mj-inpuV">留下电话方便卖家联系你</span>
+                        <div class="mj-inputPi">
+                            <i class="us-icon uj-icon5"></i>
+                            <input id="usrMp_popup" type="text" name="mobile" style="width: 176px;padding-left: 5px;">
+                        </div>
+                    </div>
+                    <div class="mj_form_wrapper_input fr">
+                        <span class="mj-inpuV" style="padding-left: 10px;">你的姓氏</span>
+                        <div class="mj-inputPi" style="left: 0;">
+                            <input type="text" name="name">
+                        </div>
+                    </div>
+                </div>
+                <a href="javascript:;" class="mj-from-btn">立即登记</a>
+                <p class="mj-from-txt">我们将严格保密您的个人信息</p>
+            </form>
+        </div>
+    </div>
+    <div class="mj-bannerIimg">
+        <ul class="mj-banner-img">
+            <li class="mj-banner-itme">
+                <img src="<?=StaticDir?>style/img/mj-banner7.jpg" alt=""/>
+            </li>
+            <li class="mj-banner-itme">
+                <img src="<?=StaticDir?>style/img/mj-banner8.jpg" alt=""/>
+            </li>
+        </ul>
+        <ul class="hd f-clearfix">
+        <li></li>
+        <li></li>
+    </ul>
+    </div>
+</div>
+
+<!--buy content start-->
+<div class="mj-buyCon">
+    <div class="mj_processList">
+        <div class="w1180 mj_processList_con">
+            <span class="mj-tipImg"><img src="<?=StaticDir?>style/img/1-2.png" alt=""/></span>
+            <ul class="f-clearfix">
+                <li>
+                    <label>1</label>
+                    <span>150种风险核查</span>
+                </li>
+                <li>
+                    <label>2</label>
+                    <span>19项价格评估标准</span>
+                </li>
+                <li>
+                    <label>3</label>
+                    <span>3300万商品匹配</span>
+                </li>
+                <li>
+                    <label>4</label>
+                    <span>3方赔付协议</span>
+                </li>
+                <li>
+                    <label>5</label>
+                    <span>100%转让公证审核</span>
+                </li>
+                <li>
+                    <label>6</label>
+                    <span>上报国家商标局</span>
+                </li>
+                <li>
+                    <label>7</label>
+                    <span>手续办理</span>
+                </li>
+                <li>
+                    <label>8</label>
+                    <span>获取<em>《商标转让受理通知书》</em></span>
+                </li>
+                <li>
+                    <label>9</label>
+                    <span>得核准转让证明及商标证</span>
+                </li>
+                <li>
+                    <label>10</label>
+                    <span>后期10年监测（可延伸）</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mj_mainText w1180">
+        <h3>安全保障流程说明：</h3>
+        <ul>
+            <li>1. 买家选定所需商标，并报至客服人员相关信息</li>
+            <li>相关信息包括：</li>
+            <li>(1). 商标的ID、商标的名字、商标所属类别；</li>
+            <li>(2). 买方的联系电话，QQ等有效联系方式，保证我们能联系上您及时给您报价。</li>
+        </ul>
+        <ul>
+            <li>2. 交易人员针对商标进行询价、向买方报价并了解商标相关情况，确保商标能成功转让</li>
+            <li>(1). 我网交易人员将对买方咨询商标询问持标人价格；</li>
+            <li>(2). 我网交易人员将通过中国商标局官方网站查询商标信息，确保商标真实有效，可以转让；</li>
+            <li>(3). 我网交易人员将验证卖家公司或者个人信息，保证商标转让能够顺利进行；</li>
+            <li>(4). 我网交易人员将商标价格报与买方，并积极帮助买方选购商标。</li>
+        </ul>
+        <ul>
+            <li>3. 签订《商标委托购买合同》，买家支付定金，并提供身份复印件和营业执照复印件</li>
+            <li>(1). 签订《商标委托购买合同》通过合同方式 确定双方的责任与权力；</li>
+            <li>(2). 买家支付合同约定的定金；</li>
+            <li>(3). 买方需要提供身份证复印件和营业执照复印件。</li>
+        </ul>
+        <ul>
+            <li>4. 商标持有人办理商标公证及签定所需文件公证手续一般在五个工作日内完成</li>
+            <li>(1). 我网交易人员将协助持标人到正规公证处办理商标公证书，确保公正具有法律效应，保证买方权益；</li>
+            <li>(2). 商标公证一般在5个工作日可以完成。</li>
+        </ul>
+        <ul>
+            <li>5. 公证完成后，我网按协议约定向买家交付有关资料，买方确认后付清尾款</li>
+            <li>(1). 签订《商标委托购买合同》通过合同方式 确定双方的责任与权力；</li>
+            <li>(2). 买家支付合同约定的尾款；</li>
+        </ul>
+    </div>
+</div>
+<!--buy content end-->
+
+<!--未检测到对应的电话号弹出层-->
+<div class="mj-boughtM" id="mj-submitte">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>就差一步了,请输入手机验证码</h2>
+            <input type="text"/>
+            <!--不能点击状态-->
+            <!--<label class="mj-bconT mj-bclik">重新发送 60s</label>-->
+            <!--可点击状态-->
+            <label class="mj-bconT mj-clickable">重新发送 60s</label>
+            <span class="mj-bcTips">验证码错误，请验证后输入</span>
+            <label class="mj-determineBtn">确定</label>
+        </div>
+    </div>
+</div>
+<!--求购已提交弹出层-->
+<div class="mj-boughtM" id="mj-submitteS">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>恭喜您，求购已提交！</h2>
+            <p>请保持电话畅通，以便交易专员联系到您</p>
+            <a href="" class="mj-boBtn1">点击此处查看！</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _isLogin = "<?=$isLogin?>";
+    var _mobile  = "<?=$userMobile?>";
+    
+    $(function (){
+        $("input").each(function(){
+            var spanT= $(this).parent().parent().find($(".mj-inpuV")).text();
+            $(this).focus(function(){
+                $(this).parent().parent().find($(".mj-inpuV")).text("");
+            });
+            $(this).blur(function(){
+                if($(this).val()===""){
+                    $(this).parent().parent().find($(".mj-inpuV")).text(spanT);
+                }else{
+                    $(this).parent().parent().find($(".mj-inpuV")).text("");
+                }
+            });
+        });
+        
+    })
+
+</script>
+
+
+<? require(ViewDir.'/footer.html'); ?>
