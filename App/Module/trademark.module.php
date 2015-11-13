@@ -37,7 +37,7 @@ class TrademarkModule extends AppModule
 				$proposer				= $this->import('proposer')->find($w);
 				$data['rows'][$key]['newId']    	= $proposer['newId'];
 				$data['rows'][$key]['proposerName']	= $proposer['name'];
-				$status					= $this->load("secondstatus")->details($number, $item['class']);
+				$status	 = implode(',', $this->getSecond($item['auto']));
 				$data['rows'][$key]['status']		= $status;
 			}
 		} 
@@ -65,7 +65,7 @@ class TrademarkModule extends AppModule
 		$proposer			= $this->import('proposer')->find($w);
 		$data['newId']    	= $proposer['newId'];
 		$data['proposer']	= $proposer['name'];
-		$status				= $this->load("secondstatus")->details($item['id'], $item['class']);
+		$status				= implode(',', $this->getSecond($item['auto']));//debug($status);
 		$data['status']		= $status;
 		$data['goods']		= $item['goods'];
 		return $data;
