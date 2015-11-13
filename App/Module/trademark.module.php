@@ -60,7 +60,7 @@ class TrademarkModule extends AppModule
 		$data['imgurl'] 	= $this->getImg($item['auto']);
 		$w['eq']			= array('id' => $item['proposer_id']);
 		$w['limit']			= 1;
-		$proposer			= $this->import('proposer')->find($w);
+		$proposer			= $this->load('proposer')->find($w);
 		$data['newId']    	= $proposer['newId'];
 		$data['proposer']	= $proposer['name'];
 		$status				= implode(',', $this->getSecond($item['auto']));//debug($status);
