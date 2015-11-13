@@ -15,7 +15,6 @@ class TrademarkModule extends AppModule
 		'tm'		=> 'trademark',
 		'second'	=> 'secondstatus',
 		'third'		=> 'statusnew',
-		'proposer'	=> 'proposer',
 	);
 	
 	/**
@@ -25,19 +24,18 @@ class TrademarkModule extends AppModule
 	{
 		$r['eq']	= array('id' => $number);
 		$r['limit']	= 100;
-		$data		= $this->import('trademark')->findAll($r);
+		$data		= $this->import('trademark')->find($r);
 		if(empty($data)){
 			return array();
 		}else{
-			foreach($data['rows'] as $key => $item){
-				$data['rows'][$key]['imgUrl'] = $this->getImg($item['auto']);
+			foreach($data as $key => $item){
+				$data['rows'][$key]['imgUrl'] 		= $this->getImg($item['auto']);
 
-				$w['eq']				= array('id' => $item['proposer_id']);
-				$w['limit']				= 1;
-				$proposer				= $this->import('proposer')->find($w);
+				$proposer 	= $this->load('proposer')->get($item['proposer_id']);
+				$status	 	= implode(',', $this->getSecond($item['auto']));
+
 				$data['rows'][$key]['newId']    	= $proposer['newId'];
 				$data['rows'][$key]['proposerName']	= $proposer['name'];
-				$status	 = implode(',', $this->getSecond($item['auto']));
 				$data['rows'][$key]['status']		= $status;
 			}
 		} 
