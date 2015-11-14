@@ -37,9 +37,11 @@ class BuyAction extends AppAction
             $this->returnAjax(array('code'=>2));//信息不正确
         }
         $buy = array(
+            'source'    => 4,
             'phone'     => $mobile,
             'need'      => $content,
             'contact'   => $name,
+            'date'      = time(),
             );
         if ( $this->userId ){
             $buy['loginUserId'] = $this->userId;
