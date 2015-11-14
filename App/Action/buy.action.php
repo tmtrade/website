@@ -41,7 +41,7 @@ class BuyAction extends AppAction
             'phone'     => $mobile,
             'need'      => $content,
             'contact'   => $name,
-            'date'      = time(),
+            'date'      => time(),
             );
         if ( $this->userId ){
             $buy['loginUserId'] = $this->userId;
