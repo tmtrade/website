@@ -22,7 +22,7 @@ $(document).ready(function(){
         if($("#usrMp_popup").val()==""){
             $(".mj-eed").show();
             $(".reg-tip em").html("手机号不能为空");
-        }else if(!/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/.test($("#usrMp_popup").val())){
+        }else if(!/^0?(13[0-9]|15[012356789]|18[0123456789]|14[57])[0-9]{8}$/.test($("#usrMp_popup").val())){
             $(".mj-eed").show();
             $(".reg-tip em").html("手机号码不正确");
         }else{
