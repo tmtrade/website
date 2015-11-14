@@ -56,9 +56,21 @@ class BuyAction extends AppAction
                 $buy['loginUserId'] = $userinfo['id'];
             }
         }
+        $role = array(
+            'eq' => array(
+                'source'        => 4,
+                'phone'         => $mobile,
+                'need'          => $content,
+                //'contact'       => $name,
+                'loginUserId'   => $buy['loginUserId'],
+                ),
+            );
+        if ( $this->load('buy')->find($role) ){
+            $this->returnAjax(array('code'=>1));
+        }
         $res = $this->load('buy')->create($buy);
-        if ( $res ) $this->returnAjax(array('code'=>1));
-        $this->returnAjax(array('code'=>4)); //未生成求购成功
+        if ( $res ) $this->returnAjax(array('code'=>1));//成功
+        $this->returnAjax(array('code'=>4)); //未成功
     }
 
     /**

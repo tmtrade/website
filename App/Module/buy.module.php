@@ -18,6 +18,22 @@ class BuyModule extends AppModule
 		'history'		=> 'history',
 		'saletrademark' => 'saletrademark',
 	);
+
+    /**
+     * 基础获取求购信息的方法
+     *
+     * @author  Xuni
+     * @since   2015-11-14
+     *
+     * @access  public
+     * @param   array     $r     条件
+     *
+     * @return  array
+     */
+    public function find($r)
+    {
+        return $this->import('buy')->find($r);
+    }
 	
 	/**
      * 通过saleId获取数据
@@ -27,8 +43,7 @@ class BuyModule extends AppModule
      * @access	public
      * @param	int 	$saleId	    出售编号
      * @return	array
-     */
-	 
+     */	 
     public function getDataBySaleId( $saleId ,$userId)
     {
 		$r['limit']         = 1;

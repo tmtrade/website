@@ -50,10 +50,10 @@ $(document).ready(function(){
 
     $(".mj-clickable").click(function (){
         if ( !_sendOnce ) return false;
+        $('.mj-bcTips').show();
         var mobile = $("#usrMp_popup").val();
         if (mobile == ''){
             $(".mj-bcTips").text('手机号错误');
-            $('.mj-bcTips').show();
         }
         $.ajax({
             type: "post",
@@ -62,9 +62,10 @@ $(document).ready(function(){
             dataType: "json",
             success: function(data){
                 if (data.code == 1){
-                    $('.mj-bcTips').hide();
+                    $(".mj-bcTips").text('发送成功');
+                    $('.mj-bcTips').show();
                     _sendOnce = false;
-                    timer(60 ,$(".mj-clickable"));
+                    _timer(60 ,$(".mj-clickable"));
                 }else if (data.code == 2){
                     $(".mj-bcTips").text('手机号不正确');
                     $('.mj-bcTips').show();
@@ -117,18 +118,22 @@ $(document).ready(function(){
 });
 
 //倒计时
-function timer(count, obj)
-{  
-     window.setTimeout (function () {
-         count --;
-         obj.text(count + "秒后重新获取");
+function _timer(count, obj)
+{
+    obj.removeClass('mj-clickable');
+    obj.addClass('mj-bclik');
+    window.setTimeout (function () {
+        count --;
+        obj.text(count + "秒后重新获取");
          if(count > -1){
-             timer(count, obj);
+            _timer(count, obj);
          }else{
-             _sendOnce = true;
-             obj.text('重新获取');
-         }
-     },1000);
+            _sendOnce = true;
+            obj.text('重新获取');
+            obj.removeClass('mj-bclik');
+            obj.addClass('mj-clickable');
+        }
+    },1000);
 }
 
 

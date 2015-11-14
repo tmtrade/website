@@ -1,12 +1,14 @@
 <? require(ViewDir.'/header.html'); ?>
 
 <link rel="stylesheet" href="<?=StaticDir?>style/mj-index.css"/>
+<script src="<?=StaticDir?>script/layer/layer.js"></script>
 <script src="<?=StaticDir?>script/jquery.SuperSlide.2.1.js"></script>
+<script src="<?=StaticDir?>script/buy.js"></script>
 
 <div class="mj-banner">
     <div class="w1180 mj-formW">
         <div class="mj-from">
-            <form action="">
+            <form id="buyForm" action="/buy/add/">
                 <div class="mj-from-title">
                     <label></label><span>商标购买快捷登记</span><label></label>
                     <div class="ms-errorTips mj-eed">
@@ -18,7 +20,7 @@
                     <span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>
                     <div class="mj-inputPi">
                         <i class="us-icon uj-icon4"></i>
-                        <input type="text" id="mj-inputl">
+                        <input type="text" id="mj-inputl" name="content">
                     </div>
                 </div>
                 <div class="mj_form_wpo f-clearfix">
@@ -26,17 +28,17 @@
                         <span class="mj-inpuV">留下电话方便卖家联系你</span>
                         <div class="mj-inputPi">
                             <i class="us-icon uj-icon5"></i>
-                            <input id="usrMp_popup" type="text" style="width: 155px;padding-left: 5px;">
+                            <input id="usrMp_popup" type="text" name="mobile" style="width: 155px;padding-left: 5px;">
                         </div>
                     </div>
                     <div class="mj_form_wrapper_input fr">
                         <span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>
                         <div class="mj-inputPi" style="left: 0;">
-                            <input type="text">
+                            <input type="text" name="name" id="userName">
                         </div>
                     </div>
                 </div>
-                <a href="" class="mj-from-btn">立即登记</a>
+                <a href="javascript:;" class="mj-from-btn">立即登记</a>
                 <p class="mj-from-txt">我们将严格保密您的个人信息</p>
             </form>
         </div>
@@ -270,7 +272,7 @@
             <dl class="allFocus">
                 <dt>
                     <span>最新购买需求</span>
-                    <a href="javascript:;" class="mj-abgc">登记你的购买需求</a>
+                    <a href="/buy" class="mj-abgc">登记你的购买需求</a>
                 </dt>
                 <dd>
                     <ul class="m2list">
@@ -603,6 +605,7 @@
         </div>
     </div>
 </div>
+
 <div class="mj-hncon">
     <div class="w1180 mj-hcenrer">
         <h1>超凡资产交易平台能做的</h1>
@@ -612,9 +615,67 @@
     </div>
 </div>
 
+<!--未检测到对应的电话号弹出层-->
+<div class="mj-boughtM" id="mj-submitte">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>就差一步了,请输入手机验证码</h2>
+            <input type="text" id="buyMsgCode"/>
+            <!--不能点击状态-->
+            <!--<label class="mj-bconT mj-bclik">重新发送 60s</label>-->
+            <!--可点击状态-->
+            <label class="mj-bconT mj-clickable">发送验证码</label>
+            <span class="mj-bcTips"><!--验证码错误，请验证后输入--></span>
+            <label class="mj-determineBtn">确定</label>
+        </div>
+    </div>
+</div>
+<!--求购已提交弹出层-->
+<div class="mj-boughtM" id="mj-submitteS">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>恭喜您，求购已提交！</h2>
+            <p>请保持电话畅通，以便交易专员联系到您</p>
+            <a href="<?=MANAGER_URL?>buyer/ready/" class="mj-boBtn1">点击此处查看！</a>
+        </div>
+    </div>
+</div>
+<!--求购已提交失败弹出层-->
+<div class="mj-boughtM" id="mj-submitteF">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2 style="color:#ff6600">求购提交失败，请稍后重试！</h2>
+            <p>可能因为网络问题或其他原因导致</p>
+            <a href="javascript:;" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
+    var _isLogin = "<?=$isLogin?>";
+    var _mobile  = "<?=$userMobile?>";
+
     $(function(){
+         $("input").each(function(){
+            var spanT= $(this).parent().parent().find($(".mj-inpuV")).text();
+            $(this).focus(function(){
+                $(this).parent().parent().find($(".mj-inpuV")).text("");
+            });
+            $(this).blur(function(){
+                if($(this).val()===""){
+                    $(this).parent().parent().find($(".mj-inpuV")).text(spanT);
+                }else{
+                    $(this).parent().parent().find($(".mj-inpuV")).text("");
+                }
+            });
+        });
+
         //banner切换
         jQuery(".mj-banner").slide({ mainCell:".mj-banner-img",effect:"fold", autoPlay:true, delayTime:600, trigger:"click"});
         //特价商标切换
@@ -629,20 +690,7 @@
         jQuery(".allFocus").slide({ mainCell:".m2list", effect:"topLoop", vis:4, opp:true, autoPlay:true, delayTime:800 });
         //最新交易记录切换
         jQuery(".allFocusJ").slide({ mainCell:".m3list", effect:"topLoop", vis:4, opp:true, autoPlay:true, delayTime:800 });
-        $("input").each(function(){
-            var spanT= $(this).parent().parent().find($(".mj-inpuV")).text();
-            $(this).focus(function(){
-                $(this).parent().parent().find($(".mj-inpuV")).text("");
-            });
-            $(this).blur(function(){
-
-                if($(this).val()===""){
-                    $(this).parent().parent().find($(".mj-inpuV")).text(spanT);
-                }else{
-                    $(this).parent().parent().find($(".mj-inpuV")).text("");
-                }
-            });
-        });
+        
         //快速成交商标切换
         $(".mj-link1-dt ul li").click(function(){
             $(this).addClass("liclickc").siblings().removeClass("liclickc");
@@ -659,8 +707,6 @@
             $('#mj-categoryCon3>ul:eq('+$(this).index()+')').show().siblings().hide();
         });
 
-
-
         //ms-hoverList  //免费通知
         $('.ms-imglist-ul li,.ms-call').hover(function(){
             $(this).addClass('current');
@@ -673,87 +719,8 @@
             return false;
         });
 
-        //手机验证
-        $("#usrMp_popup").blur(function(){
-            if($("#usrMp_popup").val()==""){
-                $(".mj-eed").show();
-                $(".reg-tip em").html("手机号不能为空");
-            }else if(!/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/.test($("#usrMp_popup").val())){
-                $(".reg-tip em").html("输入的信息不合法");
-            }else{
-                $(".reg-tip em").html("输入正确");
-            }
-        });
-        $("#usrMp_popups").blur(function(){
-            if($("#usrMp_popups").val()==""){
-                $(".mj-errds").show();
-                $(".reg-tips em").html("手机号不能为空");
-            }else if(!/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/.test($("#usrMp_popups").val())){
-                $(".reg-tips em").html("输入的信息不合法");
-            }else{
-                $(".reg-tips em").html("输入正确");
-            }
-
-        });
-        //类别验证
-        $("#mj-inputl").blur(function(){
-            if($("#mj-inputl").val()==""){
-                $(".mj-eed").show();
-                $(".reg-tip em").text("类别不能为空");
-            }else{
-                $(".reg-tip em").text("输入正确");
-            }
-        });
-        //类别验证
-        $("#mj-inputls").blur(function(){
-            if($("#mj-inputls").val()==""){
-                $(".mj-errds").show();
-                $(".reg-tips em").text("类别不能为空");
-            }else{
-                $(".reg-tips em").text("输入正确");
-            }
-        });
-
     });
 </script>
 
-
-<!-- 购买需求弹出层 -->
-<div class="mj-from ms-loginBox" id="mj-from">
-    <span class="ms-close mj-close" onclick="boxHide('ms-loginBox')"></span>
-    <form action="">
-        <div class="mj-from-title">
-            <label></label><span>商标购买快捷登记</span><label></label>
-            <div class="ms-errorTips mj-errds">
-                <p class="reg-tips"><i class="us-icon us-icon19"></i><em></em></p>
-            </div>
-            <p>我们会在10分钟内帮你匹配到合适的商标</p>
-        </div>
-        <div class="mj-form-wrapper">
-            <span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>
-            <div class="mj-inputPi">
-                <i class="us-icon uj-icon4"></i>
-                <input type="text" id="mj-inputls">
-            </div>
-        </div>
-        <div class="mj_form_wpo f-clearfix">
-            <div class="mj-form-wrapper w178 fl">
-                <span class="mj-inpuV">留下电话方便卖家联系你</span>
-                <div class="mj-inputPi">
-                    <i class="us-icon uj-icon5"></i>
-                    <input id="usrMp_popups" type="text" style="width: 155px;padding-left: 5px;">
-                </div>
-            </div>
-            <div class="mj_form_wrapper_input fr">
-                <span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>
-                <div class="mj-inputPi" style="left: 0;">
-                    <input type="text">
-                </div>
-            </div>
-        </div>
-        <a href="" class="mj-from-btn">立即登记</a>
-        <p class="mj-from-txt">我们将严格保密您的个人信息</p>
-    </form>
-</div>
 
 <? require(ViewDir.'/footer.html'); ?>

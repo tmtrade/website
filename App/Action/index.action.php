@@ -17,11 +17,11 @@ class IndexAction extends AppAction
 		$dataTM = $this->load('sale')->getSaleList($paramTM,8);
 		//京东
 		$paramJD['platform'] = "1";
-		$paramJD['notId']    = $dataTM['notId'];
+		if (!empty($dataTM['notId'])) $paramJD['notId']    = $dataTM['notId'];
 		$dataJD = $this->load('sale')->getSaleList($paramJD,8);
 		//大型超市
 		$paramDXCS['platform'] = "7";
-		$paramDXCS['notId']    = $dataJD['notId'];
+		if (!empty($dataJD['notId'])) $paramDXCS['notId'] = $dataJD['notId'];
 		$dataDXCS = $this->load('sale')->getSaleList($paramDXCS,8);
 		
 		//潜力
@@ -29,11 +29,11 @@ class IndexAction extends AppAction
 		$dataQL = $this->load('sale')->getSaleList($paramQL,8);
 		//精品
 		$paramJP['label'] = "1,3";
-		$paramJP['notId'] = $dataQL['notId'];
+		if (!empty($dataQL['notId'])) $paramJP['notId'] = $dataQL['notId'];
 		$dataJP = $this->load('sale')->getSaleList($paramJP,8);
 		//特色
 		$paramTS['label'] = "2,3";
-		$paramTS['notId'] = $dataJP['notId'];
+		if (!empty($dataJP['notId'])) $paramTS['notId'] = $dataJP['notId'];
 		$dataTS = $this->load('sale')->getSaleList($paramTS,8);
 		//最新购买需求
 		$buyInfo = $this->load('buy')->getNewsBuy(8);
