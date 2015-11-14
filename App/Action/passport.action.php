@@ -79,15 +79,12 @@ class PassportAction extends AppAction
         if ( isCheck($account) != 2 ){
             $this->returnAjax(array('code'=>3));//手机号不正确
         }
-        //判断验证码是否正确
-        $this->checkMsgCode($account, $password, false);
-
         $userinfo = $this->load('passport')->get($account);
         if ( empty($userinfo) ) $this->returnAjax(array('code'=>0));//账号不正确或获取数据失败
 
+        //判断验证码是否正确
+        $this->checkMsgCode($account, $password, false);
         $this->setLogin($userinfo);
-        Session::remove($mbNo);//登录成功清除临时值
-        Session::remove($cname);//登录成功清除临时值
         $this->returnAjax(array('code'=>1));//登录成功
     }
 
@@ -110,7 +107,7 @@ class PassportAction extends AppAction
         if ( isCheck($account) == 3 ){
             $this->returnAjax(array('code'=>3));//账号格式不正确
         }
-        $userinfo = $this->load('passport')->get($account, isCheck($account));
+        $userinfo = $this->load('passport')->exist($account, isCheck($account));
         if ( empty($userinfo) ) $this->returnAjax(array('code'=>0));//账号不正确或获取数据失败
 
         $this->returnAjax(array('code'=>1));//账号正确
@@ -172,15 +169,19 @@ class PassportAction extends AppAction
             $mobile = $this->input('m', 'string', '');
             $code   = $this->input('c', 'string', '');
         }
+        
         $prefix = C('COOKIE_PREFIX');
-        $mbNo   = $prefix.$this->mbNo;
-        if ( $mobile != Session::get($mbNo) ){
-            $this->returnAjax(array('code'=>4));//手机号不是验证时的手机号
-        }
         $cname   = $prefix.$this->mvName;
         if ( $code != Session::get($cname) ){
             $this->returnAjax(array('code'=>5));//验证码不正确
         }
+        $mbNo   = $prefix.$this->mbNo;
+        if ( $mobile != Session::get($mbNo) ){
+            $this->returnAjax(array('code'=>4));//手机号不是验证时的手机号
+        }
+        Session::remove($mbNo);//登录成功清除临时值
+        Session::remove($cname);//登录成功清除临时值
+
         if ( $ajax ){
             $userinfo = $this->load('passport')->get($mobile);
             if ( empty($userinfo) ) $this->returnAjax(array('code'=>11));//验证码正确(手机已注册)

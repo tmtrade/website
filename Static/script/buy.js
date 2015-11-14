@@ -3,34 +3,8 @@
  * author：Xuni
  **********************************************************/
 
+var _sendOnce = true;
 $(document).ready(function(){
-
-    $(".mj-clickable").click(function (){
-        var mobile = $("#usrMp_popup").val();
-        if (mobile == ''){
-            $(".mj-bcTips").text('手机号错误');
-        }
-        $.ajax({
-            type: "post",
-            url: "/passport/sendMsgCode",
-            data: {m:umobile},
-            dataType: "json",
-            success: function(data){
-                if (data.code == 1){
-                    
-                }else if (data.code == 2){
-                    $('#mTips').html(_iconE+'手机号不正确');
-                    $('#mTips').show();
-                }else if (data.code == 3){
-                    $('#mTips').html(_iconE+'该手机号未注册');
-                    $('#mTips').show();
-                }else{
-                    $('#mTips').html(_iconE+'发送失败');
-                    $('#mTips').show();
-                }
-            }
-        });
-    });
 
     $(".mj-from-btn").click(function (){
         $("#usrMp_popup").blur();
@@ -74,23 +48,89 @@ $(document).ready(function(){
         }
     });
 
-});
+    $(".mj-clickable").click(function (){
+        if ( !_sendOnce ) return false;
+        var mobile = $("#usrMp_popup").val();
+        if (mobile == ''){
+            $(".mj-bcTips").text('手机号错误');
+            $('.mj-bcTips').show();
+        }
+        $.ajax({
+            type: "post",
+            url: "/passport/sendMsgCode/",
+            data: {m:mobile,c:'n'},
+            dataType: "json",
+            success: function(data){
+                if (data.code == 1){
+                    $('.mj-bcTips').hide();
+                    _sendOnce = false;
+                    timer(60 ,$(".mj-clickable"));
+                }else if (data.code == 2){
+                    $(".mj-bcTips").text('手机号不正确');
+                    $('.mj-bcTips').show();
+                }else{
+                    $(".mj-bcTips").text('发送失败');
+                    $('.mj-bcTips').show();
+                }
+            }
+        });
+    });
 
+    $(".mj-determineBtn").click(function (){
+        var code    = $.trim($("#buyMsgCode").val());
+        var mobile  = $.trim($("#usrMp_popup").val());
+        if (mobile == '' || mobile.length != 11){
+            $(".mj-bcTips").text('手机号错误');
+            $('.mj-bcTips').show();
+        }
+        if ( code == '' || code.length != 6){
+            $(".mj-bcTips").text('验证码不正确');
+            $('.mj-bcTips').show();
+        }
+        $.ajax({
+            type: "post",
+            url: "/passport/checkMsgCode/",
+            data: {m:mobile,c:code},
+            dataType: "json",
+            success: function(data){
+                if (data.code == 1 || data.code == 11){
+                    $(".mj-close").click();
+                    addBuy();
+                }else if (data.code == 4){
+                    $(".mj-bcTips").text('手机号已更改');
+                    $('.mj-bcTips').show();
+                }else if (data.code == 5){
+                    $(".mj-bcTips").text('验证码不正确');
+                    $('.mj-bcTips').show();
+                }else{
+                    $(".mj-bcTips").text('发送失败');
+                    $('.mj-bcTips').show();
+                }
+            }
+        });
+    });
+
+    $("#closeFailed").click(function (){
+        layer.closeAll();
+    });
+
+});
 
 //倒计时
 function timer(count, obj)
-{
+{  
      window.setTimeout (function () {
          count --;
          obj.text(count + "秒后重新获取");
          if(count > -1){
              timer(count, obj);
          }else{
-             sendOnce = true;
+             _sendOnce = true;
              obj.text('重新获取');
          }
      },1000);
 }
+
 
 function getLayer(obj)
 {
@@ -111,29 +151,6 @@ function getLayer(obj)
 
 function addBuy()
 {
-    alert('123123'); return ;
-
-    var mobile = $("#usrMp_popup").val();
-    $.ajax({
-        type: "post",
-        url: "/passport/existAccount/",
-        data: {account:mobile},
-        dataType: "json",
-        success: function(data){
-            if (data.code == 1){
-                getLayer($('#mj-submitte'));
-            }else if (data.code == 2){
-                $(".mj-eed").show();
-                $(".reg-tip em").html("手机号不能为空");
-            }else if (data.code == 3){
-                $('#mTips').html(_iconE+'手机号码不正确');
-                $('#mTips').show();
-            }else{
-                addBuy();
-            }
-        }
-    });
-
     var params = $("#buyForm").serialize();
     $.ajax({
         type: "post",
@@ -142,16 +159,11 @@ function addBuy()
         dataType: "json",
         success: function(data){
             if (data.code == 1){
-               getLogin();return ;
-            }else if (data.code == 2){
-                $(".mj-eed").show();
-                $(".reg-tip em").html("手机号不能为空");
-            }else if (data.code == 3){
-                $('#mTips').html(_iconE+'手机号码不正确');
-                $('#mTips').show();
+                getLayer($('#mj-submitteS'));
             }else{
-                $("#buyForm").submit();
+                getLayer($('#mj-submitteF'));
             }
         }
     });
+
 }

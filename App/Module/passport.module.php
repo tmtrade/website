@@ -52,5 +52,43 @@ class PassportModule extends AppModule
         return $res;
     }
 
+    /**
+     * 检查账户是否存在
+     * 
+     * @author  Xuni
+     * @since   2015-11-14
+     *
+     * @access  public
+     * @param   string  $account    登录账户
+     * @param   int     $cateId     账户标识(1邮件、2手机、3用户名)
+     * @return  int     返回userId(0不存在、大于0存在)
+     */
+    public function exist($account, $cateId=1)
+    {
+        $res    = $this->importBi('passport')->exist($account, $cateId);
+        return (isset($res['code']) && $res['code'] == 1) ? true : false;
+    }
+
+
+    /**
+     * 账户注册
+     *
+     * @author  Xuni
+     * @since   2015-11-14
+     *
+     * @access  public
+     * @param   string  $account    登录账户
+     * @param   string  $password   登录密码
+     * @param   int     $cateId     账户标识(1邮件、2手机、3用户名)
+     * 
+     * @return  int     返回userId (0失败或异常、大于0成功)
+     */
+    public function register($account, $password, $cateId=1)
+    {
+        $ip     = getClientIp();
+        $res    = $this->importBi('passport')->register($account, $password, $cateId, $ip);
+        return  (isset($res['code']) && $res['code'] == 1) ? $res['data']['id'] : 0;
+    }
+
 }
 ?>
