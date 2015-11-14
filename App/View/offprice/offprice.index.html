@@ -130,8 +130,8 @@
                 </ul>
             </div>
 
-            <div id="s-nothing" style="text-align:center;display:none;">后面没有数据了。。。</div>
-            <div id="s-uploading" style="padding-top:200px;text-align:center;display:none;height:300px;"><img src="<?=StaticDir?>images/loading.gif"></div>
+            <div id="s-nothing" style="padding-top:50px;text-align:center;display:none;"><img src="<?=StaticDir?>images/last.png"></div>
+            <div id="s-uploading" style="padding-top:280px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
         </div>
         <!--imglist end-->
     </div>
@@ -211,7 +211,6 @@
             }else{
                 _has = false;
                 $('#s-uploading').hide();
-                $("#s-nothing").html('后面没有数据了。。。');
                 $("#s-nothing").show();
             }
         });
