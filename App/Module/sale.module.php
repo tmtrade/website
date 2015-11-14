@@ -199,5 +199,29 @@ class SaleModule extends AppModule
         $data = $this->import("sale")->find($r);
         return $data;
 	}
+	
+	/**
+	 * 添加出售信息
+	 * @author	Jeany
+	 * @since	2015-07-23
+	 *
+	 * @access	public
+	 * @param	array		$param  用户名称
+	 * @return	array
+	 */
+	public function addSale($param)
+	{
+
+		if($param['type']){
+			if($param['type'] == 1 || $param['type'] == 2){
+				$param['approveStatus'] = 2 ;
+			}
+			if($param['type'] == 3){
+				$param['approveStatus'] = 4 ;
+			}
+		}
+		$param['date'] = time();
+		return $this->import('sale')->add($param);
+	}
 }
 ?>

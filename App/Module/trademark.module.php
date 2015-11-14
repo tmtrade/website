@@ -24,19 +24,17 @@ class TrademarkModule extends AppModule
 	{
 		$r['eq']	= array('id' => $number);
 		$r['limit']	= 100;
-		$data		= $this->import('trademark')->find($r);
+		$data		= $this->import('tm')->find($r);
 		if(empty($data)){
 			return array();
 		}else{
 			foreach($data as $key => $item){
-				$data['rows'][$key]['imgUrl'] 		= $this->getImg($item['auto']);
-
+				$data[$key]['imgUrl'] 		= $this->getImg($item['auto']);
 				$proposer 	= $this->load('proposer')->get($item['proposer_id']);
 				$status	 	= implode(',', $this->getSecond($item['auto']));
-
-				$data['rows'][$key]['newId']    	= $proposer['newId'];
-				$data['rows'][$key]['proposerName']	= $proposer['name'];
-				$data['rows'][$key]['status']		= $status;
+				$data[$key]['newId']    	= $proposer['newId'];
+				$data[$key]['proposerName']	= $proposer['name'];
+				$data[$key]['status']		= $status;
 			}
 		} 
 		return $data;
@@ -47,7 +45,8 @@ class TrademarkModule extends AppModule
 	 */
 	public function trademarks($number)
 	{
-		$data = $this->getInfo($number);
+		$r['eq']['id'] = $number;
+		$data = $this->find($r);
 		return $data;
 	}
 	

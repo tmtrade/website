@@ -11,42 +11,24 @@ function getorder(saleid){
 				if (data > 0){
                     sellok();
                 }else if (data.code == -2){
-                    $('#mTips').html(_iconE+'数据已经存在');
-                    $('#mTips').show();
+					str = "您已购买过该商品！";
+                    sellNo(str);
                 }else if (data.code == -3){
-                    $('#mTips').html(_iconE+'未登录');
-                    $('#mTips').show();
+					str = "未登录";
+                    sellNo(str);
 				}else if (data.code == -4){
-                    $('#mTips').html(_iconE+'商标数据不存在');
-                    $('#mTips').show();
+					str = "商标数据不存在";
+                    sellNo(str);
                 }else{
-                    $('#mTips').html(_iconE+'操作失败');
-                    $('#mTips').show();
+					str = "操作失败";
+                    sellNo(str);
                 }
-                // if (data == 1){
-                    // sendOnce = false;
-                    // timer(60, _this);
-                    // $('#mTips').html(_iconE+'订单提交');
-                    // $('#mTips').show();
-                // }else if (data.code == 2){
-                    // $('#mTips').html(_iconE+'数据已经存在');
-                    // $('#mTips').show();
-                // }else if (data.code == 3){
-                    // $('#mTips').html(_iconE+'未登录');
-                    // $('#mTips').show();
-				// }else if (data.code == 4){
-                    // $('#mTips').html(_iconE+'商标数据不存在');
-                    // $('#mTips').show();
-                // }else{
-                    // $('#mTips').html(_iconE+'操作失败');
-                    // $('#mTips').show();
-                // }
             }
         });
 	}
 }
 
-
+//提交成功
 function sellok(){
 	layer.open({
 		type: 1,
@@ -55,6 +37,29 @@ function sellok(){
 		skin: 'yourclass',
 		content: $('#mj-submitte')
 	});
+	setTimeout(function(){
+		layer.closeAll();
+		$('#addorder').attr('href',"javascript:void(0)");
+		$('#addorder').html("商标已经成功添加到您的购物单！");
+	},5000);
+	$(".mj-close").bind("click",function(){
+		layer.closeAll();
+	});
+}
+
+//提交失败
+function sellNo(str){
+	$('.errorReason').html(str);
+	layer.open({
+		type: 1,
+		title: false,
+		closeBtn: false,
+		skin: 'yourclass',
+		content: $('#mj-error')
+	});
+	setTimeout(function(){
+		layer.closeAll();
+	},5000);
 	$(".mj-close").bind("click",function(){
 		layer.closeAll();
 	});

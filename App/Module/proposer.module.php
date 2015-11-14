@@ -29,7 +29,8 @@ class ProposerModule extends AppModule
 	 */
     public function get($id)
     {
-		$data = $this->import('proposer')->find($id);
+		$r['eq']['id'] = $id;
+		$data = $this->import('proposer')->find($r);
     	return $data ? $data : array();
     }
 
