@@ -5,7 +5,9 @@
     <title>超凡网-无形资产</title>
     <link rel="stylesheet" href="<?=StaticDir?>style/import-comm.css"/>
     <script src="<?=StaticDir?>script/jquery-1.8.3.min.js"></script>
+    <script src="<?=StaticDir?>script/layer/layer.js"></script>
     <script src="<?=StaticDir?>script/login.js"></script>
+    <script src="<?=StaticDir?>script/backcallandtongji.js"></script>
 </head>
 <body>
 <div class="mj-header">
@@ -15,9 +17,9 @@
             <li>交易损失-3倍赔偿 要加帮助-简介什么的？</li>
         </ul>
         <ul class="mj-header_right fr">
+        <? if ($isLogin==true){ ?>
             <li>
                 <div class="mj-cols">
-                <? if ($isLogin==true){ ?>
                     <!--已登录状态-->
                     <div class="Is_logged">
                         <a href="javascript:;"><?=$username?></a>
@@ -25,22 +27,25 @@
                         <div class="mj-cols_list">
                             <ul>
                                 <li><i class="us-icon uj_icon36"></i><a href="<?=MANAGER_URL?>">个人中心</a></li>
-                                <li><i class="us-icon uj_icon37"></i><a href="">我的商标</a></li>
+                                <!--<li><i class="us-icon uj_icon37"></i><a href="">我的商标</a></li>-->
                                 <li><i class="us-icon uj_icon38"></i><a href="">我是买家</a></li>
                                 <li><i class="us-icon uj_icon39"></i><a href="">我是卖家</a></li>
-                                <li><i class="us-icon uj_icon40"></i><a href="">超凡业务</a></li>
-                                <li><i class="us-icon uj_icon41"></i><a href="">我的收藏</a></li>
+                                <!--<li><i class="us-icon uj_icon40"></i><a href="">超凡业务</a></li>-->
+                                <!--<li><i class="us-icon uj_icon41"></i><a href="">我的收藏</a></li>-->
                                 <li><i class="us-icon uj_icon42"></i><a href="javascript:loginout();">退出登录</a></li>
                             </ul>
                         </div>
                     </div>
-                <?}else{?>
+                </div>
+            </li>
+        <?}else{?>
+            <li>
+                <div class="mj-cols">
                     <!--未登录状态-->
                     <span class="Not_logged" style="display: block;">
                         <i class="uj_icon2"></i>
                         <a href="javascript:getlogin();">快捷登陆</a>
                     </span>
-                <?}?>
                 </div>
             </li>
             <li class="spacer"></li>
@@ -50,6 +55,7 @@
                     <a href="http://i.new.com/passport/register" target="_blank">注册</a>
                 </div>
             </li>
+        <?}?>
             <li class="spacer"></li>
             <li>
                 <a href="">平台帮助</a>
@@ -196,6 +202,25 @@
 
     $(document).ready(function(){
         $(".mj-search-submit").click(function (){
+            var input_kw = $("input[name='kw']");
+            var kw_value = $("input[name='kw']").val();
+
+            var special = RegExp(/[(\ )(\～)(\！)(\＠)(\＃)(\￥)(\％)(\……)(\＆)(\×)(\（)(\）)(\？)(\｜)(\｝)(\｛)(\【)(\】)(\＋)(\——)(\－)(\＝)(\；)(\：)(\“)(\”)(\‘)(\’)(\，)(\。)(\《)(\》)(\`)(\~)(\!)(\@)(\#)(\$)(\%)(\^)(\&)(\*)(\()(\))(\-)(\_)(\+)(\=)(\[)(\])(\{)(\})(\|)(\\)(\;)(\:)(\')(\")(\,)(\.)(\/)(\<)(\>)(\?)(\)]+/);
+            if ( special.test(kw_value) ){
+                layer.tips('不要输入特殊字符哦', input_kw, {
+                    tips: [3, '#fc7d28'],
+                    time: 2000
+                });
+                return false;
+            }
+            if (kw_value.length > 30){
+                layer.tips('只搜索前30个字符哦，请稍等...', input_kw, {
+                    tips: [3, '#fc7d28'],
+                    time: 1000
+                });
+                kw_value = kw_value.substr(0, 30);
+                input_kw.val(kw_value);
+            }
             $("#searchForm").submit();
         });
 
