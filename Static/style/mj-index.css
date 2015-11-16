@@ -505,11 +505,14 @@
 .mj-categoryCon li{
     float: left;
     position: relative;
-    width: 226px;
+    width: 225px;
     height: 142px;
     border: solid 1px #f0f0f0;
-    border-top: none;
-    border-left: none;
+    border-top-color: #fff;
+    border-left-color: #fff;
+}
+.mj-categoryCon li:hover{
+    border: solid 1px #fc7e2a;
 }
 .mj-cTmall{}
 .mj-cLarge,.mj-Ather{

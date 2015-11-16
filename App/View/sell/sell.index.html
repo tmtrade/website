@@ -77,7 +77,7 @@
 				<div class="g-bgnav-input1">
 					<ul>
 						<li class="g-int1 g-intp">
-							<input type="text" placeholder="输入手机号码方便买家联系" name="phone" class="input-phone" />
+							<input type="text" placeholder="输入手机号码方便买家联系" name="phone" class="input-phone" id="usrMp_popup" />
 						</li>
 						<li class="g-int2">
 							<input type="text" placeholder="你的姓氏" name="contact" />
@@ -125,5 +125,28 @@
         </div>
     </div>
 </div>
+
+<!--未检测到对应的电话号弹出层-->
+<div class="mj-boughtM" id="mj-submittel">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>就差一步了,请输入手机验证码</h2>
+            <input type="text" id="buyMsgCode"/>
+            <!--不能点击状态-->
+            <!--<label class="mj-bconT mj-bclik">重新发送 60s</label>-->
+            <!--可点击状态-->
+            <label class="mj-bconT mj-clickable">发送验证码</label>
+            <span class="mj-bcTips">验证码错误，请验证后输入</span>
+            <label class="mj-determineBtn">确定</label>
+        </div>
+    </div>
+</div>
+
 <script src="<?=StaticDir?>script/sell.js"></script>
 <? require(ViewDir.'/footer.html'); ?>
+<script>
+	var _isLogin = "<?=$isLogin?>";
+    var _mobile  = "<?=$userMobile?>";
+</script>

@@ -211,6 +211,9 @@
 .mj-imglists li:hover .mj-priceI{
     display: block;
 }
+.mj-imglists li:hover{
+    border: solid 1px #fc7e2a;
+}
 .mj-inputs{
     width: 65px;
     height: 18px;

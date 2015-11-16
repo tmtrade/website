@@ -188,6 +188,9 @@
     font-size: 12px;
     color: #fc7e2a;
 }
+.mj-imglists li:hover{
+    border: solid 1px #fc7e2a;
+}
 .mj-imglists li:hover .mj-priceI{
     display: block;
 }
