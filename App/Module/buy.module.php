@@ -48,7 +48,7 @@ class BuyModule extends AppModule
     {
 		$r['limit']         = 1;
 		$r['eq']['saleId']  = $saleId;
-		$r['eq']['userId']  = $userId;
+		$r['eq']['loginUserId']  = $userId;
         $data = $this->import("buy")->find($r);
         return $data;
     }
