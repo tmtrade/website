@@ -37,10 +37,12 @@ abstract class AppAction extends Action
 		$this->set('_mod_', $this->mod);
 		$this->set('_action_', $this->action);
 
-		$this->set('CLASSES', C('CLASSES'));
-		$this->set('CATEGORY', C('CATEGORY'));
-		$this->set('CATEGORY_ITEMS', C('CATEGORY_ITEMS'));
-		$this->set('PLATFORM', C('PLATFORM_IN'));
+		$this->set('CLASSES', C('CLASSES'));//国际分类
+		$this->set('CATEGORY', C('CATEGORY'));//分类
+		$this->set('CATEGORY_ITEMS', C('CATEGORY_ITEMS'));//分类群组
+		$this->set('PLATFORM', C('PLATFORM_IN'));//平台列表
+		$this->set('NUMBER', C('SBNUMBER'));//商标字数
+		$this->set('TYPES', C('TYPES'));//商标类型
 	}
 
 	/**

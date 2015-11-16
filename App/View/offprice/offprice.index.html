@@ -129,7 +129,9 @@
                 <? } ?>
                 </ul>
             </div>
-
+            <? if (empty($searchList) || $has == false){?>
+                <div id="s-nothing" style="padding-top:50px;text-align:center;"><img src="<?=StaticDir?>images/nogoods.png"></div>
+            <?}?>
             <div id="s-nothing" style="padding-top:50px;text-align:center;display:none;"><img src="<?=StaticDir?>images/last.png"></div>
             <div id="s-uploading" style="padding-top:280px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
         </div>
@@ -156,7 +158,7 @@
     var _whereStr   = "<?=$whereStr?>";
     var _moreUrl    = '/offprice/getMore/';
     var _url        = '/offprice/index/?';
-    var _has        = true;
+    var _has        = "<?=$has?>";
     var _class      = "<?=$c?>";
     var _group      = "<?=$g?>";
 

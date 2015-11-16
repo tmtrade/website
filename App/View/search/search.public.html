@@ -52,14 +52,33 @@
         <!--imglist start-->
         <div class="w1180">
             <ul class="mj_goods_check f-clearfix">
-                <li><input type="checkbox" id="chek1"><label for="chek1">中文</label></li>
-                <li><input type="checkbox" id="chek2"><label for="chek2">英文</label></li>
-                <li><input type="checkbox" id="chek3"><label for="chek3">图形</label></li>
-                <li><input type="checkbox" id="chek4"><label for="chek4">中+英</label></li>
-                <li><input type="checkbox" id="chek5"><label for="chek5">中+图</label></li>
-                <li><input type="checkbox" id="chek6"><label for="chek6">英+图</label></li>
-                <li><input type="checkbox" id="chek7"><label for="chek7">中+英+图</label></li>
-                <li><input type="checkbox" id="chek8"><label for="chek8">3个字</label></li>
+                <li>
+                    <label class="mj-mt26">商标类别：</label>
+                    <div class="select_boxs">
+                        <span id="sType" tid="<?=$t?>" class="mj-textS">
+                        <?if ( empty($t) ){echo '全部';}else{echo $TYPES[$t];}?>
+                        </span>
+                        <ul class="son_ul" style="display: none;">
+                        <? foreach ($TYPES as $k => $v) { ?>
+                            <li tid="<?=$k?>"><?=$v?></li>
+                        <? } ?>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <label class="mj-mt26">商标字数：</label>
+                    <div class="select_boxs select_boxW">
+                        <span id="sNumber" tid="<?=$sn?>" class="mj-textS">
+                        <?if ( empty($sn) ){echo '全部';}else{echo $NUMBER[$sn];}?>
+                        </span>
+                        <ul class="son_ul son_uls" style="display: none;">
+                        <? foreach ($NUMBER as $k => $v) { ?>
+                            <li tid="<?=$k?>"><?=$v?></li>
+                        <? } ?>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mj-determine"><a href="javascript:;" id="sSubmit">确认</a></li>
             </ul>
             <div class="mj-imglists">
                 <ul class="f-clearfix" id="s-all-list">
@@ -81,7 +100,9 @@
                 <? } ?>
                 </ul>
             </div>
-
+            <? if (empty($searchList) || $has == false){?>
+                <div id="s-nothing" style="padding-top:50px;text-align:center;"><img src="<?=StaticDir?>images/nogoods.png"></div>
+            <?}?>
             <div id="s-nothing" style="padding-top:50px;text-align:center;display:none;"><img src="<?=StaticDir?>images/last.png"></div>
             <div id="s-uploading" style="padding-top:280px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
         </div>
@@ -110,7 +131,7 @@
     var _whereStr   = "<?=$whereStr?>";
     var _moreUrl    = '/<?=$_mod_?>/getMore/';
     var _url        = '/<?=$_mod_?>/index/?';
-    var _has        = true;
+    var _has        = "<?=$has?>";
     var _class      = "<?=$c?>";
     var _group      = "<?=$g?>";
 
@@ -183,6 +204,47 @@
                 $("#g-dltype").prepend($("#g-dltype > .current"));
                 $("#g-dltype").prepend(_first);
             }
+        }
+    });
+
+    /*select*/
+    $('.son_ul').hide(); //初始ul隐藏
+    $('.select_boxs span').hover(function(){ //鼠标移动函数
+                $(this).parent().find('ul.son_ul').slideDown();  //找到ul.son_ul显示
+                $(this).parent().find('li').hover(function(){$(this).addClass('hover')},function(){$(this).removeClass('hover')}); //li的hover效果
+                $(this).parent().hover(function(){},
+                        function(){
+                            $(this).parent().find("ul.son_ul").slideUp();
+                        }
+                );
+            },function(){}
+    );
+    $('ul.son_ul li').click(function(){
+        $(this).parents('li').find('.mj-textS').html($(this).html());
+        $(this).parents('li').find('.mj-textS').attr('tid', $(this).attr('tid'));
+        $(this).parents('li').find('ul').slideUp();
+    });
+
+    $("#sSubmit").click(function (){
+        var _sT = $("#sType").attr('tid');
+        var _sN = $("#sNumber").attr('tid');
+        if ( _sT || _sN ){
+            var obj = new objURL('/?'+_whereStr);
+            obj.set('t', _sT==0?'':_sT);
+            obj.set('sn', _sN==0?'':_sN);
+            var params = obj.strparams();
+            window.location = _url+params;
+        }
+    });
+
+    //悬浮层
+     _nav = $('.mj_goods_check');
+    $(window).scroll(function(){
+        console.log($(window).scrollTop());
+        if($(window).scrollTop()>=450){
+            _nav.addClass("mj-navT")
+        }else if($(window).scrollTop()<=450){
+            _nav.removeClass("mj-navT")
         }
     });
     

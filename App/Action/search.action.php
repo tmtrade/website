@@ -19,6 +19,8 @@ class SearchAction extends AppAction
         $group      = $this->input('g', 'string', 0);
         $platform   = $this->input('p', 'int', 0);
         $start      = $this->input('n', 'int', 0);
+        $type       = $this->input('t', 'int', 0);
+        $number     = $this->input('sn', 'int', 0);
 
         if( $group > 0 && strlen($group) == 4 && !in_array($class, range(1, 45))){
             $class = (int)substr($group, 0, 2);
@@ -32,6 +34,8 @@ class SearchAction extends AppAction
             'class'     => $class,
             'group'     => $group,
             'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
+            'types'     => $type,
+            'sblength'  => $number,
             );
         $res        = $this->load('search')->search($params, $start, $this->_number);
         $strArr     = $this->getFormData();
@@ -42,7 +46,10 @@ class SearchAction extends AppAction
         $this->set('kw', $keyword);
         $this->set('g', $group);
         $this->set('p', $platform);
+        $this->set('t', $type);
+        $this->set('sn', $number);
         $this->set('searchList', $res);
+        $this->set('has', empty($res) ? false : true);
         $this->set('_number', $this->_number);
         $this->set('whereStr', $whereStr);
 		$this->display();
@@ -55,12 +62,16 @@ class SearchAction extends AppAction
         $group      = $this->input('g', 'string', 0);
         $platform   = $this->input('p', 'int', 0);
         $start      = $this->input('n', 'int', 0);
+        $type       = $this->input('t', 'int', 0);
+        $number     = $this->input('sn', 'int', 0);
 
         $params = array(
             'keyword'   => urldecode($keyword),
             'class'     => $class,
             'group'     => $group,
             'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
+            'types'     => $type,
+            'sblength'  => $number,
             );
         $list   = $this->load('search')->search($params, $start, $this->_number);
         

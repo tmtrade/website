@@ -73,6 +73,12 @@ class SearchModule extends AppModule
         if ( !empty($params['label']) ){
             $r['ft']['label'] = $params['label'];
         }
+        if ( !empty($params['types']) ){
+            $r['ft']['types'] = $params['types'];
+        }
+        if ( !empty($params['sblength']) ){
+            $r['ft']['sblength'] = $params['sblength'];
+        }
         if ( !empty($params['isBargain']) ){
             $r['eq']['isBargain'] = $params['isBargain'];
             $r['raw'] = empty($r['raw']) ? ' `salePrice` > 0 ' : $r['raw'].' and `salePrice` > 0 ';
@@ -155,6 +161,9 @@ class SearchModule extends AppModule
 
         if ( !empty($params['group']) ){
             $r['ft']['group'] = $params['group'];
+        }
+        if ( !empty($params['types']) ){
+            $r['raw'] = $r['raw'] ? $raw['raw'].' and type = '.$params['types'] : ' type = '.$params['types'];
         }
         if ( empty($r['eq']) ){
             $r['eq'] = array(
