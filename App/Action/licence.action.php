@@ -42,6 +42,8 @@ class LicenceAction extends AppAction
         $this->set('c', $class);
         $this->set('g', $group);
         $this->set('p', $platform);
+        $this->set('t', $type);
+        $this->set('sn', $number);
         $this->set('searchList', empty($res['rows']) ? array() : $res['rows']);
         $this->set('has', empty($res['rows']) ? false : true);
         $this->set('_number', $this->_number);

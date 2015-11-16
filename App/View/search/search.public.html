@@ -59,6 +59,7 @@
                         <?if ( empty($t) ){echo '全部';}else{echo $TYPES[$t];}?>
                         </span>
                         <ul class="son_ul" style="display: none;">
+                        <li tid="0">全部</li>
                         <? foreach ($TYPES as $k => $v) { ?>
                             <li tid="<?=$k?>"><?=$v?></li>
                         <? } ?>
@@ -72,6 +73,7 @@
                         <?if ( empty($sn) ){echo '全部';}else{echo $NUMBER[$sn];}?>
                         </span>
                         <ul class="son_ul son_uls" style="display: none;">
+                        <li tid="0">全部</li>
                         <? foreach ($NUMBER as $k => $v) { ?>
                             <li tid="<?=$k?>"><?=$v?></li>
                         <? } ?>
@@ -228,13 +230,11 @@
     $("#sSubmit").click(function (){
         var _sT = $("#sType").attr('tid');
         var _sN = $("#sNumber").attr('tid');
-        if ( _sT || _sN ){
-            var obj = new objURL('/?'+_whereStr);
-            obj.set('t', _sT==0?'':_sT);
-            obj.set('sn', _sN==0?'':_sN);
-            var params = obj.strparams();
-            window.location = _url+params;
-        }
+        var obj = new objURL('/?'+_whereStr);
+        obj.set('t', _sT==0?'':_sT);
+        obj.set('sn', _sN==0?'':_sN);
+        var params = obj.strparams();
+        window.location = _url+params;
     });
 
     //悬浮层
