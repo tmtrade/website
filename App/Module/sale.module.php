@@ -141,11 +141,11 @@ class SaleModule extends AppModule
 	 * @param	array		$param  用户名称
 	 * @return	array
 	 */
-	public function getTrademarkDetail($id)
-	{	
-		$r['limit']             = 1;
-        $r['eq']['saleId']      = $id;
-        $data                   = $this->import("saletrademark")->find($r);
+	public function getTrademarkDetail($id, $tid)
+	{
+        $r['eq']['saleId']  = $id;
+        $data               = $this->import("saletrademark")->find($r);
+        $data['status']     = implode(',', $this->load('trademark')->getSecond($tid));
         return $data;
 	}
 	

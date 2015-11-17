@@ -27,7 +27,8 @@ class TrademarkAction extends AppAction
 		//出售列表里面有的数据
 		$data   =  $detail  = array();
         $data    = $this->load("sale")->getDetail($tid);
-		$detail  = $this->load("sale")->getTrademarkDetail($data['id']);
+		$detail  = $this->load("sale")->getTrademarkDetail($data['id'], $tid);
+		
 		$this->set("platformIn",C('PLATFORM_IN'));
 		$this->set("platformItems",C('PLATFORM_ITEMS'));
 	
