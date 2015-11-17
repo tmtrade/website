@@ -246,43 +246,6 @@
        CHOFN.boxShows();
    });
 
-    var _ddNum = 7;
-    var _jDltype = $("#j-dltype");
-    var _jDltypeNum = _jDltype.find('a');
-    var obj = _jDltypeNum.slice(_ddNum, _jDltypeNum.length - 1);
-    obj.css({'display':'none'});
-    $("#mj_aclik").click(function(){
-        var _hasClass = $(this).hasClass('curs');
-        var _text = '收拢';
-        if( _hasClass ){
-            obj.removeAttr('style');
-            $(this).removeClass('curs');
-        }else{
-            _text = '......';
-            obj.css({'display':'none'});
-            $(this).addClass('curs');
-        }
-        this.innerText = _text;
-    });
-
-    var _gDltype = $("#g-dltype");
-    var _gDltypeNum = _gDltype.find('a');
-    var gobj = _gDltypeNum.slice(_ddNum, _gDltypeNum.length - 1);
-    gobj.css({'display':'none'});
-    $("#mg_aclik").click(function(){
-        var _hasClass = $(this).hasClass('curs');
-        var _text = '收拢';
-        if( _hasClass ){
-            gobj.removeAttr('style');
-            $(this).removeClass('curs');
-        }else{
-            _text = '......';
-            gobj.css({'display':'none'});
-            $(this).addClass('curs');
-        }
-        this.innerText = _text;
-    });
-
     //ms-hoverList  //免费通知
     $('.ms-imglist-ul li,.ms-call').hover(function(){
         $(this).addClass('current');

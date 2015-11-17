@@ -14,6 +14,11 @@ class PassportAction extends AppAction
     private $mvName     = 'mvCode'; //手机验证码名称
     private $mbNo       = 'mbNo'; //验证时的手机号
 
+    public function index()
+    {
+        $this->redirect('', '/');
+    }
+
     /**
      * 正常登录
      *
@@ -28,6 +33,8 @@ class PassportAction extends AppAction
      */
     public function login()
     {
+        if ( !$this->isAjax() ) $this->redirect('', '/');
+
         $account    = $this->input('uname', 'string', '');
         $password   = $this->input('upass', 'string', '');
 
@@ -70,6 +77,8 @@ class PassportAction extends AppAction
      */
     public function fastLogin()
     {
+        if ( !$this->isAjax() ) $this->redirect('', '/');
+
         $account    = $this->input('uname', 'string', '');
         $password   = $this->input('upass', 'string', '');
 
@@ -100,6 +109,8 @@ class PassportAction extends AppAction
      */
     public function existAccount()
     {
+        if ( !$this->isAjax() ) $this->redirect('', '/');
+
         $account = $this->input('account', 'string', '');
         if ( empty($account) ){
             $this->returnAjax(array('code'=>2));//账号为空
@@ -125,6 +136,8 @@ class PassportAction extends AppAction
      */
     public function sendMsgCode()
     {
+        if ( !$this->isAjax() ) $this->redirect('', '/');
+
         $mobile     = $this->input('m', 'string', '');
         $isRegister = $this->input('r', 'string', 'y');
         if ( empty($mobile) || isCheck($mobile) != 2 ){
