@@ -707,18 +707,6 @@
             $('#mj-categoryCon3>ul:eq('+$(this).index()+')').show().siblings().hide();
         });
 
-        //ms-hoverList  //免费通知
-        $('.ms-imglist-ul li,.ms-call').hover(function(){
-            $(this).addClass('current');
-        },function(){
-            $(this).removeClass('current');
-        });
-        //当点击跳转链接后，回到页面顶部位置
-        $(".mj-topIcon").click(function(){
-            $('body,html').animate({scrollTop:0},1000);
-            return false;
-        });
-
     });
 </script>
 

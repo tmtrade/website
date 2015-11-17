@@ -43,18 +43,18 @@
 						$cur = "";
 						if($key == '99'){
 							unset($platformIn[$key]);
-							echo "<a href='' class='cur' >".$val."</a>"; 
+							echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
 						}
 						foreach($platformItems[$key] as  $item){
 							if(($item && $data['class'] == $item)){
 								unset($platformIn[$key]);
-								echo "<a href='' class='cur' >".$val."</a>"; 
+								echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
 								break;
 							}
 						}	
 					}
 					foreach($platformIn as $key => $val){
-						echo "<a href=''>".$val."</a>";
+						echo "<a href='javascript:;'>".$val."</a>";
 					}
 					?>
                 </li>
@@ -98,7 +98,7 @@
                     <span><label>商品列表：</label><?=$detail['goods']?></span>
                 </li>
                 <li>
-                    <span class="mj-spanColorb"><label>申请人 :  </label><a href="" ><?=$detail['proposer']?></a></span>
+                    <span class="mj-spanColorb"><label>申请人 :  </label><a href="javascript:;" ><?=$detail['proposer']?></a></span>
                 </li>
             </ul>
             <div class="mj-cTr_bottom f-clearfix">
