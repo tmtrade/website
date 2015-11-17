@@ -36,8 +36,7 @@ textarea::-webkit-input-placeholder {
     color: #fff;
 }
 .g-mail{
-    background: url("img/g-mali.jpg") no-repeat;
-    /*height: 1211px;*/
+    background: #246DDC url("img/g-mali.jpg") no-repeat;
     padding-bottom: 150px;
 }
 
@@ -116,7 +115,7 @@ textarea::-webkit-input-placeholder {
 }
 
 .g-mail .g-bgnav{
-    background: url("img/g-bgm.png") no-repeat;
+    background: url("img/g-bgm.png");
     padding: 34px 83px 67px 103px;
 }
 
