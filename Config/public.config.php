@@ -321,6 +321,11 @@ $define = array(
     'PUBLIC_USER' => 'ChOfNuSeR',//公用用户登录信息标识
     'PUBLIC_USER_TIME' => 1800,//用户登录信息有效时间
 
+    'MSG_TEMPLATE' => array(
+        'valid'     => "验证码：%s，有效期为5分钟，请尽快使用。",
+        'register'  => "你的账号%s已生成，密码为%s，请勿告诉他人。首次登录请修改密码，如您忘记你的密码，请联系超凡网客服人员。",
+        ),
+
 );
 
 

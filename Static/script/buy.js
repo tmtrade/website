@@ -11,6 +11,7 @@ $(document).ready(function(){
         $("#mj-inputl").blur();
         if ( $(".mj-eed").css('display') != 'none' ) return false;
         if ( !_isLogin ){
+            $("#buyMsgCode").val('');
             getLayer($('#mj-submitte'));
         }else{
             addBuy();

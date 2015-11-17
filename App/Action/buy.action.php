@@ -10,7 +10,6 @@
  */
 class BuyAction extends AppAction
 {
-    private $_passStr = "你的账号%s已生成，密码为%s。第一次登录请修改密码，如您忘记你的密码，请联系超凡网客服人员。";
 
     public function index()
     {
@@ -89,7 +88,8 @@ class BuyAction extends AppAction
         $userId = $this->load('passport')->register($mobile, $pass, isCheck($mobile));
         if ( !$userId ) return false;
 
-        $msg = sprintf($this->_passStr, $mobile, $pass);
+        $msgTemp = C('MSG_TEMPLATE');
+        $msg = sprintf($msgTemp['register'], $mobile, $pass);
         $res = $this->load('outmsg')->sendMsg($mobile, $msg);
         if (isset($res['code']) && $res['code'] == 1){
             return $userId;

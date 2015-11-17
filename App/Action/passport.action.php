@@ -209,8 +209,10 @@ class PassportAction extends AppAction
         $mbNo   = $prefix.$this->mbNo;
         Session::set($cname, $code, $this->codeTime);
         Session::set($mbNo, $mobile, $this->codeTime);
+        $msgTemp = C('MSG_TEMPLATE');
         $content = Session::get($cname);
-        return $this->load('outmsg')->sendMsg($mobile, $content);
+        $msg     = sprintf($msgTemp['valid'], $content);
+        return $this->load('outmsg')->sendMsg($mobile, $msg);
     }
 
     /**
