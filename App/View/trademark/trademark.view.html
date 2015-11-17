@@ -1,6 +1,7 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" href="<?=StaticDir?>style/mj-productsdetail.css"/>
 <script src="<?=StaticDir?>script/layer/layer.js"></script>
+<script src="<?=StaticDir?>script/backcallandtongji.js"></script>
 <!--content start-->
 <div class="mj-content_top">
     <div class="w1180 f-clearfix">
@@ -177,9 +178,9 @@
                             <label><?=$data['phone']?></label>
                         </dd>
                         <dd class="mj-cTr_bRight_dd">
-                            <input type="text" placeholder="输入电话号码"/>
+                            <input type="text" placeholder="输入电话号码" id="telInput" />
                             <label for="l-button">
-                                <button type="submit" id="l-button">打给我</button>
+                                <button type="submit" id="l-button" >打给我</button>
                             </label>
                         </dd>
                     </dl>
@@ -334,3 +335,10 @@
 <script src="<?=StaticDir?>script/order.js"></script>
 <!--content end-->
 <? require(ViewDir.'/footer.html'); ?>
+
+<script>
+//侧边与回呼
+$("#l-button").on("click",function(){
+	lxb.call(document.getElementById("telInput"));
+})
+</script>
