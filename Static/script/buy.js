@@ -51,6 +51,7 @@ $(document).ready(function(){
 
     $(".mj-clickable").click(function (){
         if ( !_sendOnce ) return false;
+        $(".mj-bcTips").text('');
         $('.mj-bcTips').show();
         var mobile = $("#usrMp_popup").val();
         if (mobile == ''){
@@ -59,7 +60,7 @@ $(document).ready(function(){
         $.ajax({
             type: "post",
             url: "/passport/sendMsgCode/",
-            data: {m:mobile,c:'n'},
+            data: {m:mobile,r:'n'},
             dataType: "json",
             success: function(data){
                 if (data.code == 1){
