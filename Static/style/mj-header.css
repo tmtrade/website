@@ -62,9 +62,9 @@ table {
 .mj-cols_list{
     display: none;
     position: absolute;
+    padding-bottom: 10px;
     left: -15px;
     width: 110px;
-    height: 268px;
     background: #fff;
     border: solid 1px #d1d1d1;
     z-index: 557;

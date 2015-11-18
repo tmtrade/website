@@ -3,13 +3,17 @@
  * author：Xuni
  **********************************************************/
 
-var _sendOnce = true;
+var _sendOnce   = true;
+var _buyMobile  = false;
+var _buyNeed    = false;
 $(document).ready(function(){
 
     $(".mj-from-btn").click(function (){
         $("#usrMp_popup").blur();
+        if ( !_buyMobile ) return false;
         $("#mj-inputl").blur();
-        if ( $(".mj-eed").css('display') != 'none' ) return false;
+        if ( !_buyNeed ) return false;
+        
         if ( !_isLogin ){
             $("#buyMsgCode").val('');
             getLayer($('#mj-submitte'));
@@ -20,6 +24,7 @@ $(document).ready(function(){
 
     //手机验证
     $("#usrMp_popup").blur(function(){
+        _buyMobile = false;
         if($("#usrMp_popup").val()==""){
             $(".mj-eed").show();
             $(".reg-tip em").html("手机号不能为空");
@@ -27,6 +32,7 @@ $(document).ready(function(){
             $(".mj-eed").show();
             $(".reg-tip em").html("手机号码不正确");
         }else{
+            _buyMobile = true;
             $(".mj-eed").hide();
             //$(".reg-tip em").html("输入正确");
         }
@@ -40,10 +46,12 @@ $(document).ready(function(){
 
     //类别验证
     $("#mj-inputl").blur(function(){
+        _buyNeed = false;
         if($("#mj-inputl").val()==""){
             $(".mj-eed").show();
             $(".reg-tip em").text("请填写购买需求");
         }else{
+            _buyNeed = true;
             $(".mj-eed").hide();
             //$(".reg-tip em").text("输入正确");
         }
