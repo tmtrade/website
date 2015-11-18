@@ -3,11 +3,12 @@
 <script src="<?=StaticDir?>script/layer/layer.js"></script>
 <script src="<?=StaticDir?>script/backcallandtongji.js"></script>
 <!--content start-->
+
 <div class="mj-content_top">
     <div class="w1180 f-clearfix">
         <div class="mj-cTleft fl">
             <div class="mj-cTl_img">
-                <a href=""><img src="<?php if($detail['bzpic']){echo  $detail['bzpic']; }else{echo  $detail['imgurl']; }?>" alt=""/></a>
+                <a href=""><img src="<?php if($detail['bzpic']){echo  $detail['bzpic']; }elseif($detail['imgurl']){echo  $detail['imgurl']; }else{echo "/Static/images/img1.png"; }?>" alt=""/></a>
                 <p class="mj-tip">
 				<?php 
 				if($data['label']){

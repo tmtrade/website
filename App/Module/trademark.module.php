@@ -43,9 +43,9 @@ class TrademarkModule extends AppModule
 	/**
 	 * 通过商标号获取商标信息
 	 */
-	public function trademarks($number)
+	public function trademarks($tid)
 	{
-		$r['eq']['id'] = $number;
+		$r['eq']['auto'] = $tid;
 		$data = $this->find($r);
 		return $data;
 	}
