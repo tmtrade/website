@@ -1,0 +1,31 @@
+.mj-footer{
+    background: #f5f5f5;
+    padding: 72px 0 200px;
+}
+.mj-footer_con{
+    text-align: center;
+}
+.mj-footer_con ul{
+    width: 225px;
+    margin: 0 auto;
+}
+.mj-footer_con li{
+    float: left;
+    font-size: 12px;
+}
+.mj-footer_con li a{
+    color: #888;
+}
+.mj-footer_con li.spacer{
+    width: 1px;
+    height: 13px;
+    margin: 3px 10px 0;
+    padding: 0;
+    background: #9b9b9b;
+    overflow: hidden
+}
+.mj-footer_con p{
+    padding-top: 15px;
+    font-size: 12px;
+    color: #888;
+}
