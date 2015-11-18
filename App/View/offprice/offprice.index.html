@@ -96,10 +96,12 @@
                 </div>
             </dd>
         </dl>
+    </div>
         <!--search end-->
         <!--imglist start-->
+    <div class="mj_goods_check">
         <div class="w1180">
-            <ul class="mj_goods_check f-clearfix">
+            <ul class="f-clearfix mj-pu">
                 <li>
                     <label class="mj-mt26">商标类别：</label>
                     <div class="select_boxs">
@@ -107,10 +109,10 @@
                         <?if ( empty($t) ){echo '全部';}else{echo $TYPES[$t];}?>
                         </span>
                         <ul class="son_ul" style="display: none;">
-                        <li tid="0">全部</li>
-                        <? foreach ($TYPES as $k => $v) { ?>
+                            <li tid="0">全部</li>
+                            <? foreach ($TYPES as $k => $v) { ?>
                             <li tid="<?=$k?>"><?=$v?></li>
-                        <? } ?>
+                            <? } ?>
                         </ul>
                     </div>
                 </li>
@@ -121,15 +123,18 @@
                         <?if ( empty($sn) ){echo '全部';}else{echo $NUMBER[$sn];}?>
                         </span>
                         <ul class="son_ul son_uls" style="display: none;">
-                        <li tid="0">全部</li>
-                        <? foreach ($NUMBER as $k => $v) { ?>
+                            <li tid="0">全部</li>
+                            <? foreach ($NUMBER as $k => $v) { ?>
                             <li tid="<?=$k?>"><?=$v?></li>
-                        <? } ?>
+                            <? } ?>
                         </ul>
                     </div>
                 </li>
                 <li class="mj-determine"><a href="javascript:;" id="sSubmit">确认</a></li>
             </ul>
+        </div>
+    </div>
+        <div class="w1180">
             <div class="mj-imglists">
                 <ul class="f-clearfix" id="s-all-list">
                 <? foreach ($searchList as $k => $v) { ?>
@@ -157,7 +162,6 @@
             <div id="s-uploading" style="padding-top:280px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
         </div>
         <!--imglist end-->
-    </div>
 </div>
 
 <!--content end-->

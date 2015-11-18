@@ -6,7 +6,7 @@
 }
 .mj-content{
     background: #f5f5f5;
-    padding: 30px;
+    padding: 30px 0;
 }
 .mj-banner{
     height: 248px;
@@ -55,6 +55,8 @@
 
 /*Í¼Æ¬ÁÐ±í start*/
 .mj_goods_check {
+}
+.mj-pu{
     margin: 30px 0 15px;
 }
 .mj_goods_check li {
