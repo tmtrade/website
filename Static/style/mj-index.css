@@ -760,6 +760,8 @@
     text-align: center;
 }
 .mj-hcenrer h1{
+    padding-top: 30px;
+    margin: 0;
     font-size: 36px;
     color: #fff;
 }
