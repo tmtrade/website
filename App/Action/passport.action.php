@@ -214,9 +214,9 @@ class PassportAction extends AppAction
      *
      * @return  array
      */
-    private function setMsgCode($mobile, $length=6)
+    private function setMsgCode($mobile, $length=4, $type='NUMBER')
     {
-        $code   = randCode($length);
+        $code   = randCode($length, $type);
         $prefix = C('COOKIE_PREFIX');
         $cname  = $prefix.$this->mvName;
         $mbNo   = $prefix.$this->mbNo;
