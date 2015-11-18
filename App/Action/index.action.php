@@ -13,7 +13,8 @@ class IndexAction extends AppAction
 	public function index()
 	{
 		//天猫
-		$paramTM['platform'] = "2";
+		//$paramTM['platform'] = "2";
+		$paramTM = array('platform' => 2,'label' => '4');
 		$dataTM = $this->load('sale')->getSaleList($paramTM,8);
 		//京东
 		$paramJD['platform'] = "1";
