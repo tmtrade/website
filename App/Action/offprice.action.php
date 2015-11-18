@@ -31,7 +31,7 @@ class OffpriceAction extends AppAction
         $params = array(
             'class'     => $class,
             'group'     => $group,
-            //'isBargain' => '2',//这次不上
+            'isBargain' => '2',//这次不上
             'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
             'types'     => $type,
             'sblength'  => $number,
@@ -64,7 +64,7 @@ class OffpriceAction extends AppAction
         $params = array(
             'class'     => $class,
             'group'     => $group,
-            //'isBargain' => '2',//这次不上
+            'isBargain' => '2',//这次不上
             'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
             'types'     => $type,
             'sblength'  => $number,
