@@ -105,7 +105,7 @@ class BuyModule extends AppModule
         $r['limit']         = $num;
         $r['order']         = array('date' => 'desc', 'id'=>'desc');
 		$r['col']           = array("contact","need","phone");
-		$r['raw']           = " phone != '' and status = 5 and need != ''";
+		$r['raw']           = " phone != '' and status =6 and need != ''";
         $data               = $this->import('buy')->find($r);
         foreach($data as $key => $item){
 			$star = "****";
