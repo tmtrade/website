@@ -13,7 +13,7 @@ $(document).ready(function(){
         if ( !_buyMobile ) return false;
         $("#mj-inputl").blur();
         if ( !_buyNeed ) return false;
-        
+
         if ( !_isLogin ){
             $("#buyMsgCode").val('');
             getLayer($('#mj-submitte'));
@@ -174,6 +174,7 @@ function addBuy()
         dataType: "json",
         success: function(data){
             if (data.code == 1){
+                clearBuy();
                 getLayer($('#mj-submitteS'));
             }else{
                 getLayer($('#mj-submitteF'));
@@ -181,4 +182,11 @@ function addBuy()
         }
     });
 
+}
+
+function clearBuy()
+{
+    $("#usrMp_popup").val('');
+    $("#mj-inputl").val('');
+    $("#userName").val('');
 }
