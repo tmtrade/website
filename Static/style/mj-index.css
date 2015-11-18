@@ -904,12 +904,13 @@
 }
 .mj-bcTips{
     display: block;
-    margin: 15px 0;
+    margin-top: 5px;
     font-size: 12px;
     color: #fc7d28;
 }
 .mj-determineBtn{
     display: inline-block;
+    margin-top: 10px;
     width: 107px;
     height: 40px;
     background: #fc7d28;
