@@ -7,12 +7,13 @@
 <div class="mj-content">
     <div class="w1180">
         <!--search start-->
-        <dl class="mj-selection">
         <? if ($kw){ ?>
-            <dd class="f-clearfix">
-                <span>查询条件：<?=$kw?></span>
-            </dd>
+        <div class="mj-query">
+            <i class="us-icon uj-icon1"></i>
+            <span>搜索内容：<em><?=$kw?></em></span>
+        </div>
         <? }?>
+        <dl class="mj-selection">
             <dd class="f-clearfix">
                 <span class="mj-selection-span">商标类别：</span>
                 <div class="mj-selection-list" id="j-dltype">

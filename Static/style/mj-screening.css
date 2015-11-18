@@ -199,3 +199,14 @@
     border: none;
     outline: none;
 }
+.mj-query{
+    padding-bottom: 13px;
+}
+.mj-query span{
+    font-size: 14px;
+    color: #666;
+}
+.mj-query span em{
+    color: #5b5150;
+    font-style: normal;
+}

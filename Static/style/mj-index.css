@@ -68,7 +68,7 @@
     width: 245px;
     padding: 25px;
     background: #fff;
-    box-shadow: 2px 2px 2px #cacaca;
+    box-shadow: 0 0 10px #cacaca;
 }
 .mj-from-title {
     margin: 0 0 20px 0;
@@ -832,7 +832,7 @@
     display: inline-block;
     margin-right: 15px;
     float: left;
-    height: 120px;
+    height: 160px;
 }
 .mj-bconRight{}
 .mj-bconRight h1{

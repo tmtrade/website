@@ -219,6 +219,7 @@ table {
     background: #5b5150;
     text-align: center;
     line-height: 44px;
+    cursor: pointer;
 }
 .mj-search-submit i{
     display: inline-block;
