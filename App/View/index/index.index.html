@@ -75,71 +75,28 @@
         </dt>
         <dd>
             <ul class="piclist f-clearfix">
+             <?php foreach($offpriceList as $k => $v){ ?>
                 <li>
-                    <a href="javascript:;">
-                        <div class="mj-ddTop">
-                            <h5>全球五金第一品牌</h5>
-                            <span>索亿商贸</span>
-                            <p class="mj-tip">
-                                <label class="mj-tThe" title="特价产品">特</label>
-                                <label class="mj-tJing" title="精品推荐">精</label>
-                            </p>
-                        </div>
-                        <div class="mj-ddImg">
-                            <img src="<?=StaticDir?>style/img/mj-ddimg.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="mj-ddTop">
+                    <a href="/trademark/view/?tid=<?=$v['tid']?>&class=<?=$v['class']?>">
+                        <!--<div class="mj-ddTop">
                             <h5>全球五金第一品牌</h5>
                             <span>索亿商贸</span>
                             <p class="mj-tip">
                                 <label class="mj-tJing" title="精品推荐">精</label>
                                 <label class="mj-tShow" title="授权租用">授</label>
                             </p>
-                        </div>
+                        </div>-->
                         <div class="mj-ddImg">
                             <img src="<?=StaticDir?>style/img/mj-ddimg.png" alt=""/>
                         </div>
                     </a>
                 </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="mj-ddTop">
-                            <h5>全球五金第一品牌</h5>
-                            <span>索亿商贸</span>
-                            <p class="mj-tip">
-                                <label class="mj-tJing" title="精品推荐">精</label>
-                                <label class="mj-tShow" title="授权租用">授</label>
-                            </p>
-                        </div>
-                        <div class="mj-ddImg">
-                            <img src="<?=StaticDir?>style/img/mj-ddimg.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="mj-ddTop">
-                            <h5>全球五金第一品牌</h5>
-                            <span>索亿商贸</span>
-                            <p class="mj-tip">
-                                <label class="mj-tJing" title="精品推荐">精</label>
-                                <label class="mj-tShow"  title="授权租用">授</label>
-                            </p>
-                        </div>
-                        <div class="mj-ddImg">
-                            <img src="<?=StaticDir?>style/img/mj-ddimg.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
+            <? } ?>
             </ul>
         </dd>
 
     </dl>
-    <!--<a href="" class="next"></a>-->
+    <a href="/offprice" class="next">></a>
 </div>
 
 <!-- ms-news start -->

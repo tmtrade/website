@@ -46,6 +46,38 @@ class SaleModule extends AppModule
 		$this->platform = C("PLATFORM_IN"); //入驻平台
 		$this->classes = C('CLASSES');
     }
+
+    /**
+     * 获取首页特价商标显示数据，暂时为4条记录
+     * 
+     * @author  Xuni
+     * @since   2015-11-18
+     *
+     * @access  public
+     * @return  array   $list       数据列表
+     */
+    public function getIndexOffprice()
+    {
+        $r['raw']   = " tjpic != '' ";
+        $r['limit'] = 1000;
+        $r['col']   = array('saleId', 'tjpic');
+        $res        = $this->load('saletrademark')->find($r);
+        $items      = arrayColumn($res, 'tjpic', 'saleId');
+        $ids        = array_keys($items);
+
+        $role['in']     = array('id'=>$ids);
+        $role['group']  = array('tid'=>'asc');
+        $role['limit']  = 4;
+        $role['col']    = array('id', 'tid', 'number', 'class', 'name');
+        $role['order']  = array('date'=>'desc');
+        $role['notIn']  = array('status'=>array(2,3,4,6));
+        
+        $list = $this->import('sale')->find($role);
+        foreach ($list as $k => $v) {
+            $list[$k]['imgurl'] = $items[$v['id']];
+        }
+        return $list;
+    }
 		
     /**
      * 通过条件查询商标信息--首页使用
@@ -71,8 +103,8 @@ class SaleModule extends AppModule
 				}	
 			}
 		}
-		$r['eq']['area']  = 1;//可出售商标
-		$r['raw']  = "status not in(2,3,4,6)";
+		$r['eq']['area']    = 1;//可出售商标
+		$r['raw']           = "status not in(2,3,4,6)";
 		$r['page']        	= $page;
         $r['limit']         = $num;
 		$r['col']           = array('name,class,id,source,number,tid');

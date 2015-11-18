@@ -80,10 +80,10 @@ class SearchModule extends AppModule
             $r['ft']['sblength'] = $params['sblength'];
         }
         //这次不上
-        // if ( !empty($params['isBargain']) ){
-        //     $r['eq']['isBargain'] = $params['isBargain'];
-        //     $r['raw'] = empty($r['raw']) ? ' `salePrice` > 0 ' : $r['raw'].' and `salePrice` > 0 ';
-        // }
+        if ( !empty($params['isBargain']) ){
+            //$r['eq']['isBargain'] = $params['isBargain'];
+            $r['raw'] = empty($r['raw']) ? ' `salePrice` > 0 ' : $r['raw'].' and `salePrice` > 0 ';
+        }
         if ( !empty($params['saleType']) ){
             $r['eq']['saleType'] = $params['saleType'];
         }

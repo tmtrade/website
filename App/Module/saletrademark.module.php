@@ -18,6 +18,22 @@ class SaletrademarkModule extends AppModule
 	);
 
 	/**
+	 * 出售详情表基础查询
+	 *
+	 * @author	Xuni
+	 * @since	2015-11-18
+	 *
+	 * @access	public
+	 * @param	array		$r  	条件
+	 *
+	 * @return	array
+	 */
+	public function find($r)
+	{
+		return $this->import('saletrademark')->find($r);
+	}
+
+	/**
 	 * 添加出售详细信息
 	 * @author	Jeany
 	 * @since	2015-07-23

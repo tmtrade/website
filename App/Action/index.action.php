@@ -41,6 +41,12 @@ class IndexAction extends AppAction
 		//最新交易记录
 		$tradeInfo = $this->load('buy')->getNewsTrade(8);
 		$this->set('tradeInfo',$tradeInfo);
+
+		$params = array(
+			'isBargain' => '2',
+			);
+		$offprice = $this->load('search')->getSaleList($params, 0, 4);
+		$this->set('offpriceList', $this->load('sale')->getIndexOffprice());
 		
 		$this->set('dataTM',$dataTM);
 		$this->set('dataJD',$dataJD);
