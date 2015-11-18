@@ -10,7 +10,7 @@
 }
 .mj-banner{
     height: 248px;
-    background: url("../style/img/mj-banner2.jpg") no-repeat;
+    background: url("../style/img/mj-banner2.jpg") no-repeat center 0;
 }
 /*搜索分类样式 start*/
 .mj-selection {
