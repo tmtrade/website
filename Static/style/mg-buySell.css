@@ -243,7 +243,11 @@ textarea::-webkit-input-placeholder {
     margin-right: 1px;
     float: left;
 }
-
+.g-mail .g-bgnav .g-bgnav-nav1 table tbody tr td img{
+    max-width: 150px;
+    max-height: 100px;
+    vertical-align: middle;
+}
 .g-mail .g-bgnav .g-bgnav-nav1 table tbody tr .g-td1{
     color: #b4d2fe;
     background: #2468ce;

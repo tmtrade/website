@@ -43,7 +43,9 @@
 .mj-banner-img .mj-banner-itme {
     float: left;
 }
-
+.mj-banner-itme img{
+    width: 100%;
+}
 .mj-formW{
     position: relative;
 }
@@ -902,7 +904,7 @@
 }
 .mj-bcTips{
     display: block;
-    margin: 5px 0;
+    margin: 15px 0;
     font-size: 12px;
     color: #fc7d28;
 }
