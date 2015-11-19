@@ -301,8 +301,10 @@
     text-align: center;
 }*/
 .mj-ddImg img{
-    max-height: 140px;
-    max-width: 230px;
+    max-height: 150px;
+    max-width: 240px;
+    min-height: 150px;
+    min-width: 240px;
     vertical-align: middle;
 }
 /* ms-column */
