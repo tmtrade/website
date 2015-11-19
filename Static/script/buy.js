@@ -64,6 +64,7 @@ $(document).ready(function(){
         var mobile = $("#usrMp_popup").val();
         if (mobile == ''){
             $(".mj-bcTips").text('手机号错误');
+            return false;
         }
         $.ajax({
             type: "post",
@@ -93,10 +94,12 @@ $(document).ready(function(){
         if (mobile == '' || mobile.length != 11){
             $(".mj-bcTips").text('手机号错误');
             $('.mj-bcTips').show();
+            return false;
         }
         if ( code == '' || code.length != 6){
             $(".mj-bcTips").text('验证码不正确');
             $('.mj-bcTips').show();
+            return false;
         }
         $.ajax({
             type: "post",
