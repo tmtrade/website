@@ -168,7 +168,10 @@ class SearchModule extends AppModule
             $r['ft']['group'] = $params['group'];
         }
         if ( !empty($params['types']) ){
-            $r['raw'] = $r['raw'] ? $raw['raw'].' and type = '.$params['types'] : ' type = '.$params['types'];
+            $r['eq']['type'] = $params['types'];
+        }
+        if ( !empty($params['sblength']) ){
+            $r['eq']['nums'] = $params['sblength'];
         }
         if ( empty($r['eq']) ){
             $r['eq'] = array(
