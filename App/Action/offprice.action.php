@@ -10,7 +10,8 @@
  */
 class OffpriceAction extends AppAction
 {
-    private $_number = 20;
+    private $_number    = 20;
+    private $_col       = array('id', 'tid', 'number', 'class', 'name', 'guideprice', 'salePrice');
 
     public function index()
     {
@@ -36,9 +37,10 @@ class OffpriceAction extends AppAction
             'types'     => $type,
             'sblength'  => $number,
             );
-        $res        = $this->load('search')->getSaleList($params, $start, $this->_number);
-        $strArr     = $this->getFormData();
-        $whereStr   = http_build_query($strArr);
+        $res            = $this->load('search')->getSaleList($params, $start, $this->_number);
+        $res['rows']    = $this->getOffpriceList($res['rows']);
+        $strArr         = $this->getFormData();
+        $whereStr       = http_build_query($strArr);
 
         $this->set('c', $class);
         $this->set('g', $group);
@@ -69,10 +71,20 @@ class OffpriceAction extends AppAction
             'types'     => $type,
             'sblength'  => $number,
             );
-        $list   = $this->load('search')->getSaleList($params, $start, $this->_number);
-        
+        $list           = $this->load('search')->getSaleList($params, $start, $this->_number);
+        $list['rows']   = $this->getOffpriceList($list['rows']);
         $this->set('searchList', empty($list['rows']) ? array() : $list['rows']);
         $this->display();
+    }
+
+    private function getOffpriceList($data)
+    {
+        if ( empty($data) ) return array();
+        foreach ($data as $k => $v) {
+            $imgUrl = $this->load('saletrademark')->getOffpriceImg($v['id']);
+            $data[$k]['imgUrl'] = empty($imgUrl) ? $v['imgUrl'] : TRADE_URL.$imgUrl;
+        }
+        return $data;
     }
 
 }

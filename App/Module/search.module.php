@@ -54,7 +54,7 @@ class SearchModule extends AppModule
      *
      * @return  array   $list       群组号对应群组中文名称的数组
      */
-    public function getSaleList($params, $start=0, $limit=30)
+    public function getSaleList($params, $start=0, $limit=30, $col=array())
     {
         if ( !empty($params['keyword']) ){
             $r['raw'] = " tid > 0 and (`name` LIKE '%".$params['keyword']."%' OR `number` = '".$params['keyword']."') ";
@@ -82,14 +82,18 @@ class SearchModule extends AppModule
         //这次不上
         if ( !empty($params['isBargain']) ){
             //$r['eq']['isBargain'] = $params['isBargain'];
-            $r['raw'] = empty($r['raw']) ? ' `salePrice` > 0 ' : $r['raw'].' and `salePrice` > 0 ';
+            $r['raw'] = empty($r['raw']) ? ' `salePrice` > 0 and `salePriceDate` > unix_timestamp(now()) ' : $r['raw'].' and (`salePrice` > 0 and `salePriceDate` > unix_timestamp(now()))';
         }
         if ( !empty($params['saleType']) ){
             $r['eq']['saleType'] = $params['saleType'];
         }
         $r['group'] = array('tid'=>'asc');
         $r['index'] = array($start, $limit);
-        $r['col']   = array('tid', 'number', 'class', 'name');
+        if ( empty($col) ){
+            $r['col']   = array('id', 'tid', 'number', 'class', 'name');
+        }else{
+            $r['col']   = $col;
+        }
         $r['order'] = array('date'=>'desc');
         $r['notIn'] = array('status'=>array(2,3,4,6));
 
