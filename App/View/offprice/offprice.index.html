@@ -29,7 +29,7 @@
             <li>
                 <div class="gla_inbox">
                     <a href=""><img src="<?=StaticDir?>style/img/mj-banner5.jpg" /></a>
-                    <span class="mj-specialTip mj-sl">昨日特价</span>
+                    <!--<span class="mj-specialTip mj-sl">昨日特价</span>-->
                     <div class="mj-tjtip">
                         <p class="mj-bimgbg"><strong>30</strong>% 折扣</p>
                         <p class="f-clearfix mj-bgimt"><span><em>50万</em><br/>现价</span><b>2.5</b>万</p>
@@ -42,7 +42,7 @@
             <li>
                 <div class="gla_inbox">
                     <a href=""><img src="<?=StaticDir?>style/img/mj-banner6.jpg" /></a>
-                    <span class="mj-specialTip mj-sr">眀日特价</span>
+                    <!--<span class="mj-specialTip mj-sr">眀日特价</span>-->
                     <div class="mj-tjtip">
                         <p class="mj-bimgbg"><strong>30</strong>% 折扣</p>
                         <p class="f-clearfix mj-bgimt"><span><em>50万</em><br/>现价</span><b>2.5</b>万</p>
@@ -149,7 +149,9 @@
                         </div>
                         <div class="mj-imglB">
                             <p title="<?=$v['name']?>"><?=mb_substr($v['name'],0,10,'utf8')?>&nbsp;&nbsp;<?=$CLASSES[$v['class']]?></p>
-                             <span class="mj-imgspan"><a href=""><strong>30</strong>%折扣</a> <b><em>￥</em>4.5<em>000</em></b></span>
+                             <span class="mj-imgspan"><a href=""><strong>
+                             <? if ($v['guideprice'] <= $v['salePrice']){echo '100';}else{echo intval(($v['guideprice']-$v['salePrice'])/($v['guideprice'])*100);}?>
+                             </strong>%折扣</a> <b><em>￥</em><em><?=$v['salePrice']?></em></b></span>
                         </div>
                     </li>
                 <? } ?>

@@ -37,7 +37,7 @@ class OffpriceAction extends AppAction
             'types'     => $type,
             'sblength'  => $number,
             );
-        $res            = $this->load('search')->getSaleList($params, $start, $this->_number);
+        $res            = $this->load('search')->getSaleList($params, $start, $this->_number, $this->_col);
         $res['rows']    = $this->getOffpriceList($res['rows']);
         $strArr         = $this->getFormData();
         $whereStr       = http_build_query($strArr);
@@ -71,7 +71,7 @@ class OffpriceAction extends AppAction
             'types'     => $type,
             'sblength'  => $number,
             );
-        $list           = $this->load('search')->getSaleList($params, $start, $this->_number);
+        $list           = $this->load('search')->getSaleList($params, $start, $this->_number, $this->_col);
         $list['rows']   = $this->getOffpriceList($list['rows']);
         $this->set('searchList', empty($list['rows']) ? array() : $list['rows']);
         $this->display();
