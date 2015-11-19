@@ -19,6 +19,16 @@ $(document).ready(function(){
             $(".reg-tip em").html("姓氏必须为中英文");
             return false;
         }
+        if ( name_ != '' && (!isChinese(name_) && name_.length > 4) ){
+            $(".mj-eed").show();
+            $(".reg-tip em").html("姓氏中文为4字以内");
+            return false;
+        }
+        if ( name_ != '' && (isEng(name_) && name_.length > 8) ){
+            $(".mj-eed").show();
+            $(".reg-tip em").html("姓氏英文为8字母以内");
+            return false;
+        }
         if ( !_isLogin ){
             $("#buyMsgCode").val('');
             getLayer($('#mj-submitte'));
@@ -52,9 +62,13 @@ $(document).ready(function(){
     //类别验证
     $("#mj-inputl").blur(function(){
         _buyNeed = false;
-        if($("#mj-inputl").val()==""){
+        var _mj_input = $("#mj-inputl").val();
+        if(_mj_input == ""){
             $(".mj-eed").show();
             $(".reg-tip em").text("请填写购买需求");
+        }else if(_mj_input.length > 100){
+            $(".mj-eed").show();
+            $(".reg-tip em").text("购买需求不能超过100字符");
         }else{
             _buyNeed = true;
             $(".mj-eed").hide();
