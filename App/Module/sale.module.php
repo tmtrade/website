@@ -103,12 +103,13 @@ class SaleModule extends AppModule
 			}
 		}
 		
-		$r['eq']['area']    = 1;//可出售商标
-		$r['in']            = array('status' => array('1','5'));
-		$r['page']        	= $page;
-        $r['limit']         = $num;
-		$r['col']           = array('name,class,id,source,number,tid');
-        $r['order']         = array('type' => 'asc','date' => 'desc');
+		$r['eq']['area']  = 1;//可出售商标
+		$r['in']          = array('status' => array('1','5'));
+		$r['page']        = $page;
+        $r['limit']       = $num;
+		$r['col']         = array('name,class,id,source,number,tid');
+		$r['group']       = array('number' => '','class' => '');
+        $r['order']       = array('type' => 'asc','date' => 'desc');
         $data = $this->import('sale')->findAll($r);
 		$data['notId'] = array();
         foreach($data['rows'] as $k => $item){
