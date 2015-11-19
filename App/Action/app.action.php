@@ -101,6 +101,7 @@ abstract class AppAction extends Action
 
 		$this->userId 		= $user['userId'];
 		$this->username 	= $user['username'];
+		$this->nickname 	= $user['nickname'];
 		$this->userMobile 	= $user['mobile'];
 		$this->userEmail 	= $user['email'];
 		$this->userInfo 	= $user;
@@ -120,8 +121,9 @@ abstract class AppAction extends Action
 	 */
 	protected final function setUserView()
 	{
-		$name = empty($this->username) ? (empty($this->userMobile) ? $this->userEmail : $this->userMobile) : $this->username;
-		$this->set('username', $name);
+		$name = empty($this->nickname) ? (empty($this->userMobile) ? $this->userEmail : $this->userMobile) : $this->nickname;
+		$this->set('nickname', $name);
+		$this->set('username', $this->username);
 		$this->set('userMobile', $this->userMobile);
 		$this->set('userEmail', $this->userEmail);
 		$this->set('userInfo', $this->userInfo);
@@ -141,6 +143,7 @@ abstract class AppAction extends Action
 	{
 		$this->userId 		= '';
 		$this->username 	= '';
+		$this->nickname 	= '';
 		$this->userMobile 	= '';
 		$this->userEmail 	= '';
 		$this->userInfo 	= '';

@@ -282,6 +282,7 @@ class PassportAction extends AppAction
         $user = array(
             'userId'    => $data['id'],
             'username'  => $data['username'],
+            'nickname'  => $data['nickname'],
             'email'     => $data['email'],
             'mobile'    => $data['mobile'],
             'isEmail'   => $data['isEmail'],
