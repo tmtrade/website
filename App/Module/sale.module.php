@@ -71,7 +71,7 @@ class SaleModule extends AppModule
         $role['col']    = array('id', 'tid', 'number', 'class', 'name');
         $role['order']  = array('date'=>'desc');
         $role['notIn']  = array('status'=>array(2,3,4,6));
-        
+        $role['raw']    = ' ( `salePrice` > 0 and `salePriceDate` > unix_timestamp(now()) )';
         $list = $this->import('sale')->find($role);
         foreach ($list as $k => $v) {
             $list[$k]['imgurl'] = TRADE_URL.$items[$v['id']];
