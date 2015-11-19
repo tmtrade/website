@@ -146,7 +146,7 @@ function checkMoblieForm()
         $('#mTips').show();
         return false;
     }
-    if (ucode.length != 6){
+    if (ucode.length != 4){
         $('#mTips').html(_iconE+'验证码不正确');
         $('#mTips').show();
         return false;

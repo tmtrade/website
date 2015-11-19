@@ -96,7 +96,7 @@ $(document).ready(function(){
             $('.mj-bcTips').show();
             return false;
         }
-        if ( code == '' || code.length != 6){
+        if ( code == '' || code.length != 4){
             $(".mj-bcTips").text('验证码不正确');
             $('.mj-bcTips').show();
             return false;
