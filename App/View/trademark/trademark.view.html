@@ -117,7 +117,7 @@
                             <b>&nbsp;元</b>
                         </strong>
                         <span>（原价：<b class="mj-priceTxtt_b"><?=$data['guideprice']?>.00</b> )</span>
-                        <br /><label><?php echo date('Y-m-d H:i:s',$data['salePriceDate']); ?></label>前有效<br />
+                        <br /><label><?php echo date('Y-m-d H:i',$data['salePriceDate']); ?></label>前有效<br />
 						<?php
 						if($buyData){
 							echo "<a href='javascript:void(0)' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
