@@ -22,6 +22,7 @@ em{
 .mj-cTl_img a{}
 .mj-cTl_img a img{
     max-width: 380px;
+    min-width: 380px;
     max-height: 260px;
 }
 .mj-cTl_imgText{
@@ -53,8 +54,12 @@ em{
 .mj-tThe {
     background: #ff6a6a;
 }
-
-
+.mj-tJing {
+    background: #ff8b3e;
+}
+.mj-tShow {
+    background: #a0adc0;
+}
 
 .mj-cTright{
     margin-left: 430px;
