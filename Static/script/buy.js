@@ -13,9 +13,10 @@ $(document).ready(function(){
         if ( !_buyMobile ) return false;
         $("#mj-inputl").blur();
         if ( !_buyNeed ) return false;
-        if ( $("#userName").val() != '' && isChinese($("#userName").val()) ){
+        var name_ = $("#userName").val();
+        if ( name_ != '' && isChinese(name_) && !isEng(name_) ){
             $(".mj-eed").show();
-            $(".reg-tip em").html("姓氏必须为中文");
+            $(".reg-tip em").html("姓氏必须为中英文");
             return false;
         }
         if ( !_isLogin ){
@@ -200,7 +201,16 @@ function clearBuy()
 
 function isChinese(temp)
 {
-    var re = /.*[\u4e00-\u9fa5]+.*$/;
-    if (re.test(temp)) return false ;
-    return true ;
+    var regExp = /.*[\u4e00-\u9fa5]+.*$/;
+    if(regExp.test(temp))
+        return false;
+    return true;
+}
+
+//判断字母(英文)   
+function isEng(param){
+    var regExp = /[^A-Za-z]/;
+    if(regExp.test(param))
+        return false;
+    return true;
 }
