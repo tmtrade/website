@@ -13,7 +13,11 @@ $(document).ready(function(){
         if ( !_buyMobile ) return false;
         $("#mj-inputl").blur();
         if ( !_buyNeed ) return false;
-
+        if ( $("#userName").val() != '' && isChinese($("#userName").val()) ){
+            $(".mj-eed").show();
+            $(".reg-tip em").html("姓氏必须为中文");
+            return false;
+        }
         if ( !_isLogin ){
             $("#buyMsgCode").val('');
             getLayer($('#mj-submitte'));
@@ -192,4 +196,11 @@ function clearBuy()
     $("#usrMp_popup").val('');
     $("#mj-inputl").val('');
     $("#userName").val('');
+}
+
+function isChinese(temp)
+{
+    var re = /.*[\u4e00-\u9fa5]+.*$/;
+    if (re.test(temp)) return false ;
+    return true ;
 }

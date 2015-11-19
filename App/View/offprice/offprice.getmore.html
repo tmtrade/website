@@ -10,7 +10,7 @@
     </div>
     <div class="mj-imglB">
         <p title="<?=$v['name']?>"><?=mb_substr($v['name'],0,10,'utf8')?>&nbsp;&nbsp;<?=$CLASSES[$v['class']]?></p>
-         <span class="mj-imgspan"><a href=""><strong>30</strong>%折扣</a> <b><em>￥</em>4.5<em>000</em></b></span>
+         <span class="mj-imgspan"><a href=""><strong><? if ($v['guideprice'] <= $v['salePrice']){echo '100';}else{echo intval(($v['guideprice']-$v['salePrice'])/($v['guideprice'])*100);}?></strong>%折扣</a> <b><em>￥</em><em><?=$v['salePrice']?></em></b></span>
     </div>
 </li>
 <? } ?>
