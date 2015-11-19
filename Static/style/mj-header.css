@@ -522,21 +522,18 @@ table {
     font-style: normal;
 }
 .ms-input{
-    margin-top: 20px;
-    padding: 0 10px;
     height: 38px;
-    border: 1px solid #cccccc;
-    border-radius: 2px;
 }
 .ms-input input{
+    width: 270px;
     margin: 0 0 0 10px;
     padding: 0;
     font-size: 14px;
     height: 38px;
     line-height: 38px\9;
+    background: url('');
     border: 0 none;
     outline: none;
-    width: 88%;
     vertical-align: middle;
 }
 .ms-loginBtn{

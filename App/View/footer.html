@@ -174,13 +174,19 @@
                 <div class="ms-errorTips">
                     <p id="eTips"><i class="us-icon us-icon19"></i></p>
                 </div>
-                <div class="ms-input">
-                    <i class="us-icon us-icon22"></i>
-                    <input type="text" id="uemail" placeholder="请输入邮箱或手机"/>
+                <div class="mj-form-wrappers">
+                    <span class="mj-inpuVs">请输入邮箱或手机</span>
+                    <div class="ms-input">
+                        <i class="us-icon us-icon22"></i>
+                        <input type="text" id="uemail"/>
+                    </div>
                 </div>
-                <div class="ms-input">
-                    <i class="us-icon us-icon21"></i>
-                    <input type="password" id="upass" placeholder="请输入密码"/>
+                <div class="mj-form-wrappers">
+                    <span class="mj-inpuVs">请输入密码</span>
+                    <div class="ms-input">
+                        <i class="us-icon us-icon21"></i>
+                        <input type="password" id="upass"/>
+                    </div>
                 </div>
                 <a href="javascript:;" ctype="e" class="ms-loginBtn">立即登录</a>
             </form>
@@ -298,6 +304,20 @@
        $('.ms-boxBg').remove();
        isOpen = 0;
    };
+
+    $("input").each(function(){
+        var spanT= $(this).parent().parent().find($(".mj-inpuVs")).text();
+        $(this).focus(function(){
+            $(this).parent().parent().find($(".mj-inpuVs")).text("");
+        });
+        $(this).blur(function(){
+            if($(this).val()===""){
+                $(this).parent().parent().find($(".mj-inpuVs")).text(spanT);
+            }else{
+                $(this).parent().parent().find($(".mj-inpuVs")).text("");
+            }
+        });
+    });
     $(document).ready(function(){
         var doc=document,inputs=doc.getElementsByTagName('input'),supportPlaceholder='placeholder'in doc.createElement('input'),placeholder=function(input){var text=input.getAttribute('placeholder'),defaultValue=input.defaultValue;
             if(defaultValue==''){
