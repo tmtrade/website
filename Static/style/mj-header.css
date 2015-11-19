@@ -549,15 +549,15 @@ table {
     border-radius: 2px;
 }
 .ms-phoneInput{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .ms-phoneInput .ms-input{
     float: left;
-    width: 55%;
+    width: 178px;
     margin: 0;
 }
 .ms-phoneInput .ms-input input{
-    width: 81%;
+    width: 90%;
 }
 .ms-phoneInput .ms-sent{
     float: right;
