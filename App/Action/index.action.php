@@ -12,18 +12,25 @@ class IndexAction extends AppAction
 {
 	public function index()
 	{
+		
 		//天猫
 		$paramTM = array('platform' => 2,'label' => '4');
 		$dataTM = $this->load('sale')->getSaleList($paramTM,8);
+		
 		//京东
 		$paramTM = array('platform' => 1,'label' => '4');
 		if (!empty($dataTM['notId'])) $paramJD['notId']    = $dataTM['notId'];
 		$dataJD = $this->load('sale')->getSaleList($paramJD,8);
+		
 		//大型超市
 		$notIdArr = array_merge($dataTM['notId'],$dataJD['notId']);
+		
+		//var_dump($dataJD['notId']);
+
 		$paramTM = array('platform' => 7,'label' => '4');
-		if (!empty($dataJD['notId'])) $paramDXCS['notId'] = $notIdArr;
+		if (!empty($dataJD['notId'])) $paramDXCS['notId'] = $dataJD['notId'];
 		$dataDXCS = $this->load('sale')->getSaleList($paramDXCS,8);
+
 		
 		//潜力
 		$paramQL['label'] = "3";
