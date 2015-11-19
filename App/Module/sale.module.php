@@ -109,7 +109,7 @@ class SaleModule extends AppModule
         $r['limit']       = $num;
 		$r['col']         = array('name,class,id,source,number,tid');
 		$r['group']       = array('number' => '','class' => '');
-        $r['order']       = array('type' => 'asc','date' => 'desc');
+        $r['order']       = array('isTop' => 'desc','type' => 'asc','date' => 'desc');
         $data = $this->import('sale')->findAll($r);
 		$data['notId'] = array();
         foreach($data['rows'] as $k => $item){
