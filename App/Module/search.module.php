@@ -94,7 +94,7 @@ class SearchModule extends AppModule
         }else{
             $r['col']   = $col;
         }
-        $r['order'] = array('date'=>'desc');
+        $r['order'] = array('isTop' => 'desc','date'=>'desc');
         $r['notIn'] = array('status'=>array(2,3,4,6));
 
         $count  = $this->import('sale')->count($r);
