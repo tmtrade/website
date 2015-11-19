@@ -158,6 +158,7 @@ class SaleModule extends AppModule
 	{	
 		$r['limit'] = 1;
 		$r['eq']['tid'] = $tid;
+		$r['in']        = array('status' => array('1','5'));
         $data = $this->import("sale")->find($r);
         if(empty($data)) {return array();}
         $data['classValue']     = isset( $this->classes[$data['class']] ) ? $this->classes[$data['class']] : $data['class'];
