@@ -153,6 +153,7 @@ $(function(){
 		
 //检查提交数据
 function submitSell(){
+
 	var flag = checks($('.input-number'));
 	if(flag){
 		flag = checks($('.input-price'));
@@ -161,7 +162,9 @@ function submitSell(){
 		$('.input-phone').focus();
 		flag = false;
 	}
-	if(flag){
+	
+	if(flag === true){
+		alert(5);
 		if ( !_isLogin ){
 			getLayer($('#mj-submittel'));
 		}else{
@@ -199,11 +202,9 @@ function addSell(){
 function checks(obj){
 	var result = true;
 	obj.each(function(){
-		var tip = $(this).parent().parent().next();
-		if($(this).val() == ''){
+		if($(this).val() == '' || $(this).val() == obj.attr('placeholder')){
 			$(this).focus();
 			result = false;
-			return false;
 		}
 	})
 	return result;
