@@ -70,7 +70,7 @@ class SaleModule extends AppModule
         $role['limit']  = 4;
         $role['col']    = array('id', 'tid', 'number', 'class', 'name');
         $role['order']  = array('date'=>'desc');
-        $role['notIn']  = array('status'=>array(2,3,4,6));
+        $role['notIn']  = array('status'=>array(2,3,4,5,6));
         
         $list = $this->import('sale')->find($role);
         foreach ($list as $k => $v) {
@@ -93,30 +93,31 @@ class SaleModule extends AppModule
      */
 	public function getSaleList($param, $num , $page=1)
 	{
-		
 		if($param){
 			foreach($param as $key => $val){
 				if($key == 'notId'){
-					$r['notIn']  = array('id'=>$val);//可出售商标
+					$r['notIn']    = array('id'=>$val);
 				}else{
 					$r['ft'][$key] = $val;
 				}	
 			}
 		}
+		
 		$r['eq']['area']    = 1;//可出售商标
-		$r['raw']           = "status not in(2,3,4,6)";
+		$r['in']            = array('status' => array('1','5'));
 		$r['page']        	= $page;
         $r['limit']         = $num;
 		$r['col']           = array('name,class,id,source,number,tid');
         $r['order']         = array('type' => 'asc','date' => 'desc');
         $data = $this->import('sale')->findAll($r);
+		$data['notId'] = array();
         foreach($data['rows'] as $k => $item){
 			$data['rows'][$k]['imgurl'] = $this->getImg($item['id']); 
 			$data['rows'][$k]['url']    = "/trademark/view/?tid=".$item['tid']."&class=".$item['class']; 
 			$data['rows'][$k]['name']   = mbSub($item['name'],0,4); 
             $data['rows'][$k]['source'] = isset( $this->source[$item['source']] ) ? $this->source[$item['source']] : $item['source'];
 			$data['rows'][$k]['classes']  = isset( $this->classes[$item['class']] ) ? $this->classes[$item['class']] : $item['class'];
-			$data['notId'][] = $item['id'];
+			array_push($data['notId'], $item['id']);
         }
 		return $data;
 	}
