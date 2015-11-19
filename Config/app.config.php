@@ -13,5 +13,6 @@ define('SEARCH_KEY', '89eb637c610f94b9d281c458bca42421');
 
 define('MANAGER_URL', 'http://i.chofn.net/');
 define('SITE_URL', 'http://t.chofn.net/');
+define('TRADE_URL', 'http://tr.chofn.net/');
 
 ?>

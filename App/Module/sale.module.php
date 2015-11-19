@@ -74,7 +74,7 @@ class SaleModule extends AppModule
         
         $list = $this->import('sale')->find($role);
         foreach ($list as $k => $v) {
-            $list[$k]['imgurl'] = $items[$v['id']];
+            $list[$k]['imgurl'] = TRADE_URL.$items[$v['id']];
         }
         return $list;
     }
