@@ -18,17 +18,19 @@ class IndexAction extends AppAction
 		$dataTM = $this->load('sale')->getSaleList($paramTM,8);
 		
 		//京东
+		$notIdArr = $dataTM['notId'];
 		$paramTM = array('platform' => 1,'label' => '4');
-		if (!empty($dataTM['notId'])) $paramJD['notId']    = $dataTM['notId'];
+		if (!empty($dataTM['notId'])) $paramJD['notId']    = $notIdArr;
 		$dataJD = $this->load('sale')->getSaleList($paramJD,8);
 		
-		//大型超市
-		$notIdArr = array_merge($dataTM['notId'],$dataJD['notId']);
 		
-		//var_dump($dataJD['notId']);
-
+		if($notIdArr && $dataJD['notId']){
+			$notIdArr = array_merge_recursive($notIdArr, $dataJD['notId']);  
+		}elseif($dataJD['notId']){
+			$notIdArr = $dataJD['notId'];
+		}
 		$paramTM = array('platform' => 7,'label' => '4');
-		if (!empty($dataJD['notId'])) $paramDXCS['notId'] = $dataJD['notId'];
+		if (!empty($dataJD['notId'])) $paramDXCS['notId'] = $notIdArr;
 		$dataDXCS = $this->load('sale')->getSaleList($paramDXCS,8);
 
 		
