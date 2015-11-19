@@ -303,6 +303,7 @@
 .mj-ddImg img{
     max-height: 150px;
     max-width: 240px;
+    min-height: 150px;
     vertical-align: middle;
 }
 /* ms-column */
