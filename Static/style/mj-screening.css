@@ -57,7 +57,7 @@
 .mj_goods_check {
 }
 .mj-pu{
-    padding: 30px 0 15px;
+    padding: 20px 0;
 }
 .mj_goods_check li {
     float: left;
@@ -77,9 +77,9 @@
 }
 
 .mj-imglT {
-    margin-top: 5px;
+    margin-top: 12px;
     display: table;
-    height: 110px;
+    height: 95px;
     text-align: center;
     width: 100%;
     position: relative;
@@ -91,7 +91,7 @@
 }
 .mj-imglT a img{
     max-width: 170px;
-    max-height: 95px;
+    max-height: 85px;
     vertical-align: middle;
     position: relative;
     z-index: 1;
@@ -99,10 +99,13 @@
 .mj-imglB{
     text-align: center;
     font-size: 12px;
-    color: #888;
-    text-align: center;
 }
-
+.mj-imglB span{
+    color: #999;
+}
+.mj-imglB p{
+    color: #888;
+}
 .mj-tip{
     position: absolute;
     top: 5px;

@@ -56,10 +56,10 @@
             <div class="w1180">
                 <ul class="f-clearfix mj-pu">
                     <li>
-                        <label class="mj-mt26">商标类别：</label>
+                        <!--<label class="mj-mt26"></label>-->
                         <div class="select_boxs">
                                 <span id="sType" tid="<?=$t?>" class="mj-textS">
-                                <?if ( empty($t) ){echo '全部';}else{echo $TYPES[$t];}?>
+                                <?if ( empty($t) ){echo '商标类别';}else{echo $TYPES[$t];}?>
                                 </span>
                             <ul class="son_ul" style="display: none;">
                                 <li tid="0">全部</li>
@@ -70,10 +70,10 @@
                         </div>
                     </li>
                     <li>
-                        <label class="mj-mt26">商标字数：</label>
+                       <!-- <label class="mj-mt26">商标字数：</label>-->
                         <div class="select_boxs select_boxW">
                                 <span id="sNumber" tid="<?=$sn?>" class="mj-textS">
-                                <?if ( empty($sn) ){echo '全部';}else{echo $NUMBER[$sn];}?>
+                                <?if ( empty($sn) ){echo '商标字数';}else{echo $NUMBER[$sn];}?>
                                 </span>
                             <ul class="son_ul son_uls" style="display: none;">
                                 <li tid="0">全部</li>

@@ -85,7 +85,7 @@ ul.son_uls li{
     margin-top: 0!important;
     top: 0;
     z-index: 558;
-    background-color: #F5F5F5;
+    background-color: #fff;
     width: 100%;
-    border-bottom: solid 1px #ddd;
+    border-bottom: solid 1px #ccc;
 }

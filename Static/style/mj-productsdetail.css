@@ -142,7 +142,7 @@ em{
 .mj-cTr_top li a{
     display: inline-block;
     padding: 4px 7px;
-    background: #f6f7f7;
+    background: #FAFAFA;
     color: #999;
     border: solid 1px #e8e8e8;
     margin-left: 6px;
@@ -240,7 +240,7 @@ em{
     border-radius: 2px;
 }
 .mj-priceTxtt{
-    padding:15px 0 0;
+    /*padding:15px 0 0;*/
     color: #999;
 }
 .mj-priceTxtt p{

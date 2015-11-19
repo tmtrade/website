@@ -176,11 +176,11 @@
                 </div>
                 <div class="ms-input">
                     <i class="us-icon us-icon22"></i>
-                    <input type="text" id="uemail" placeholder="请输入邮箱或手机" />
+                    <input type="text" id="uemail" placeholder="请输入邮箱或手机"/>
                 </div>
                 <div class="ms-input">
                     <i class="us-icon us-icon21"></i>
-                    <input type="password" id="upass" placeholder="请输入密码" />
+                    <input type="password" id="upass" placeholder="请输入密码"/>
                 </div>
                 <a href="javascript:;" ctype="e" class="ms-loginBtn">立即登录</a>
             </form>
@@ -298,7 +298,16 @@
        $('.ms-boxBg').remove();
        isOpen = 0;
    };
-
+    $(document).ready(function(){
+        var doc=document,inputs=doc.getElementsByTagName('input'),supportPlaceholder='placeholder'in doc.createElement('input'),placeholder=function(input){var text=input.getAttribute('placeholder'),defaultValue=input.defaultValue;
+            if(defaultValue==''){
+                input.value=text}
+            input.onfocus=function(){
+                if(input.value===text){this.value=''}};
+            input.onblur=function(){if(input.value===''){this.value=text}}};
+        if(!supportPlaceholder){
+            for(var i=0,len=inputs.length;i<len;i++){var input=inputs[i],text=input.getAttribute('placeholder');
+                if(input.type==='text'&&text){placeholder(input)}}}});
 </script>
 </body>
 </html>

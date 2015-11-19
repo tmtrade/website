@@ -71,9 +71,9 @@
 }
 
 .mj-imglT {
-    margin-top: 5px;
+    margin-top: 12px;
     display: table;
-    height: 100px;
+    height: 95px;
     text-align: center;
     width: 100%;
     position: relative;
@@ -86,17 +86,20 @@
 .mj-imglT a img{
     vertical-align: middle;
     max-width: 129px;
-    max-height: 95px;
+    max-height: 85px;
     position: relative;
     z-index: 1;
 }
 .mj-imglB{
     text-align: center;
     font-size: 12px;
-    color: #888;
-    text-align: center;
 }
-
+.mj-imglB span{
+    color: #999;
+}
+.mj-imglB p{
+    color: #888;
+}
 .mj-tip{
     position: absolute;
     top: 5px;

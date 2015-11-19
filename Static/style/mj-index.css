@@ -82,7 +82,10 @@
 .mj-errds{
     display: none;
 }
-.mj-from-title .ms-errorTips p {
+.ms-errorTips{
+   margin-bottom: 10px;
+}
+ .ms-errorTips p {
     margin: 5px 0 0 0;
     padding: 0 30px;
     line-height: 28px;
@@ -90,7 +93,7 @@
     background: #fff7e1;
     color: #e80b05;
 }
-.mj-from-title .ms-errorTips p em{
+ .ms-errorTips p em{
     font-style: normal;
 }
 .mj-from-title p{
@@ -164,7 +167,7 @@
     background: #efeded;
     border-radius: 4px;
     padding: 0 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .mj-from-btn {
     display: block;
@@ -250,6 +253,8 @@
     margin-right: 10px;
     width: 240px;
     height: 150px;
+    line-height: 150px;
+    text-align: center;
     background: #f4f4f4;
 }
 .mj-ddTop{
@@ -289,15 +294,15 @@
 .mj-tJing{
     background: #ff8b3e;
 }
-.mj-ddImg{
+/*.mj-ddImg{
     margin-top: 15px;
     height: 70px;
     line-height: 70px;
     text-align: center;
-}
+}*/
 .mj-ddImg img{
-    max-height: 65px;
-    max-width: 175px;
+    max-height: 140px;
+    max-width: 230px;
     vertical-align: middle;
 }
 /* ms-column */
@@ -341,7 +346,7 @@
     line-height: 24px;
     color: #fff;
     font-size: 12px;
-    padding: 0 10px;
+    padding: 0 0 0 10px;
 }
 .ms-noticeList dt span{
     display: inline-block;
@@ -528,6 +533,7 @@
 .mj-imglT {
     display: table;
     height: 105px;
+    margin-top: 10px;
     text-align: center;
     width: 100%;
     position: relative;
@@ -646,6 +652,7 @@
 }
 .mj-imgL_right dt .mj-abgc{
     display: inline-block;
+    margin-left: 5px;
     width: 110px;
     height: 25px;
     text-align: center;
@@ -753,7 +760,7 @@
 
 .mj-hncon{
     height: 203px;
-    background: url(../style/img/mj-img4.jpg) no-repeat;
+    background: url(../style/img/mj-img4.jpg) no-repeat center 0;
 }
 .mj-hcenrer{
     padding: 1px 0 30px 0;
@@ -764,6 +771,7 @@
     margin: 0;
     font-size: 36px;
     color: #fff;
+    font-weight: normal;
 }
 .mj-hcenrer p{
     font-size: 19px;

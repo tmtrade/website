@@ -264,7 +264,7 @@ table {
 .mj-models{
     position: absolute;
     top: 115px;
-    left: 30%;
+    margin-left: 215px;
     width: 776px;
     background: #fff;
     border: solid 1px #79797a;
@@ -317,8 +317,8 @@ table {
     position: relative;
 }
 .mj-dorpdown{
-    position: relative;
-    margin-top: 14px;
+    position: absolute;
+    top: -2px;
     padding-top: 14px;
     z-index: 555;
     height: 50px;
@@ -348,8 +348,8 @@ table {
 }
 .mj-dd dd{
     width: 178px;
-    height: 37px;
-    line-height: 37px;
+    height: 36px;
+    line-height: 36px;
     font-size: 15px;
 }
 
@@ -517,6 +517,9 @@ table {
     border: 1px solid #ffddb2;
     background: #fff7e1;
     color: #e80b05;
+}
+.ms-errorTips em{
+    font-style: normal;
 }
 .ms-input{
     margin-top: 20px;

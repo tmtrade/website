@@ -38,12 +38,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100%!important;
     z-index: 1;
 }
 .mj-banner-img .mj-banner-itme, .mj-banner-img .mj-banner-itme a {
     display: block;
-    width: 100%;
+    width: 100%!important;
     height: 590px;
 }
 .mj-banner-img .mj-banner-itme {
@@ -105,7 +105,7 @@
 }
 .mj-from-title label {
     display: inline-block;
-    width: 40px;
+    width: 67px;
     height: 1px;
     background: #aeaeae;
     vertical-align: middle;
@@ -388,4 +388,8 @@ div.mj-fwH input[type="text"]{
     font-size: 16px;
     color: #fff;
     border-radius: 5px;
+}
+.ms-errorTips{
+    margin-bottom: 10px;
+    text-align: center;
 }
