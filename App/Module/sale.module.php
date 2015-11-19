@@ -70,7 +70,7 @@ class SaleModule extends AppModule
         $role['limit']  = 4;
         $role['col']    = array('id', 'tid', 'number', 'class', 'name');
         $role['order']  = array('date'=>'desc');
-        $role['notIn']  = array('status'=>array(2,3,4,5,6));
+        $role['notIn']  = array('status'=>array(2,3,4,6));
         
         $list = $this->import('sale')->find($role);
         foreach ($list as $k => $v) {
