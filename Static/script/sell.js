@@ -138,7 +138,7 @@ $(function(){
 	
 	$('.input-phone').bind("blur",function(){
 		var thisval = $(this).val();
-		var preg = /^1[3|5|7|8][0-9]\d{8}$/;
+		var preg = /^1[3|4|5|7|8][0-9]\d{8}$/;
 		var tip = $(this).parent().parent().next();
 		if(!preg.test(thisval)){
 			$(this).val('');

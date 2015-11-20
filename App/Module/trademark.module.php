@@ -47,6 +47,9 @@ class TrademarkModule extends AppModule
 	{
 		$r['eq']['id'] = $number;
 		$data = $this->find($r);
+		if($data['auto']){
+			$data['status'] = implode(',', $this->getSecond($data['auto']));
+		}
 		return $data;
 	}
 

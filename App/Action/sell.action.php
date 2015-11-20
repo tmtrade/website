@@ -33,10 +33,10 @@ class SellAction extends AppAction
 		if($data){
 			$detail = $this->load('trademark')->trademarkDetail($data);
 			$status = array('已无效','冻结中');
-			if(in_array($data['rows'][0]['status'],$status)){
+			if(in_array($data['status'],$status)){
 				//不能出售的商标
 				$result['status'] = "0";
-				$result['statusValue'] = strip_tags($data['rows'][0]['status']);
+				$result['statusValue'] = strip_tags($data['status']);
 			}else{
 				$result['sbname']=$data['trademark'];
 				$result['proposer']=$detail['proposer'];
