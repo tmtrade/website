@@ -238,10 +238,10 @@ function sellok(number){
 		skin: 'yourclass',
 		content: $('#mj-submitte')
 	});
-	setTimeout(function(){
-		layer.closeAll();
-		location.reload() 
-	},5000);
+	// setTimeout(function(){
+		// layer.closeAll();
+		// location.reload() 
+	// },5000);
 	$(".mj-close").bind("click",function(){
 		layer.closeAll();
 		location.reload() 
