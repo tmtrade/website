@@ -104,7 +104,7 @@ $(function(){
         $.ajax({
             type: "post",
             url: "/passport/sendMsgCode/",
-            data: {m:mobile,c:'n'},
+            data: {m:mobile,r:'n'},
             dataType: "json",
             success: function(data){
                 if (data.code == 1){
