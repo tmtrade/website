@@ -158,6 +158,10 @@ $(function(){
 			$(this).val('');
 			tip.html("<i class='us-icon uj_icon44'></i>您的姓氏只能输入中文或者英文");
 			tip.show();
+		}else if(_this.length > 8){
+			$(this).val('');
+			tip.html("<i class='us-icon uj_icon44'></i>您的姓氏不能大于8个字符");
+			tip.show();
 		}else{
 			tip.hide();
 		}
