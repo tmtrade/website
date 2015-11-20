@@ -142,11 +142,26 @@ $(function(){
 		var tip = $(this).parent().parent().next();
 		if(!preg.test(thisval)){
 			$(this).val('');
+			tip.html("<i class='us-icon uj_icon44'></i>请您输入正确的联系电话");
 			tip.show();	
 		}else{
 			tip.hide();	
 		}
 	})
+	
+	//验证姓名，只能输入数字和英文
+	$('#contact').bind("blur",function(){
+		var _this = $(this).val();
+		var pregName = /^[\u0391-\uFFE5A-Za-z]+$/;
+		var tip = $(this).parent().parent().next();
+		if(!pregName.test(_this)){
+			$(this).val('');
+			tip.html("<i class='us-icon uj_icon44'></i>您的姓氏只能输入中文或者英文");
+			tip.show();
+		}else{
+			tip.hide();
+		}
+	});
 });
 	
 	
