@@ -181,7 +181,7 @@ class SearchModule extends AppModule
         }
         $r['index'] = array($start, $limit);
         $r['col']   = array('tid', 'trademark_id as number', 'class_id as class', 'trademark as name');
-        $r['order'] = array('tid'=>'desc');
+        //$r['order'] = array('tid'=>'desc');
 
         $res3   = $this->import('second')->find($r);
         $list   = $this->getListTips($res3);
