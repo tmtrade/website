@@ -64,8 +64,9 @@ class SaleModule extends AppModule
         $res        = $this->load('saletrademark')->find($r);
         $items      = arrayColumn($res, 'tjpic', 'saleId');
         $ids        = array_keys($items);
-
-        $role['in']     = array('id'=>$ids);
+		if(!empty($ids)){
+			$role['in']     = array('id'=>$ids);
+		}
         $role['group']  = array('tid'=>'asc');
         $role['limit']  = 4;
         $role['col']    = array('id', 'tid', 'number', 'class', 'name');
