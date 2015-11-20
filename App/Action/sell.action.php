@@ -28,11 +28,11 @@ class SellAction extends AppAction
 	public function getselldata()
 	{
 		$number	= $this->input("number","string");
-		$data   = $this->load('trademark')->trademarks($number);
+		$data   = $this->load('trademark')->getTrademarkById($number);
 		$result = array();
 		if($data){
-			$detail = $this->load('trademark')->trademarkDetail($data,$data['auto']);
-			$status = array('申请中','已无效','冻结中');
+			$detail = $this->load('trademark')->trademarkDetail($data);
+			$status = array('已无效','冻结中');
 			if(in_array($data['rows'][0]['status'],$status)){
 				//不能出售的商标
 				$result['status'] = "0";

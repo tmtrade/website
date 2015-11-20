@@ -39,6 +39,16 @@ class TrademarkModule extends AppModule
 		} 
 		return $data;
 	}
+	
+	/**
+	 * 通过商标号获取商标信息
+	 */
+	public function getTrademarkById($number)
+	{
+		$r['eq']['id'] = $number;
+		$data = $this->find($r);
+		return $data;
+	}
 
 	/**
 	 * 通过商标号获取商标信息
@@ -54,7 +64,7 @@ class TrademarkModule extends AppModule
 	/**
 	 * 通过商标号获取商标信息
 	 */
-	public function trademarkDetail($item,$tid)
+	public function trademarkDetail($item)
 	{
 		$data['imgurl'] 	= $this->getImg($item['auto']);
 		$w['eq']			= array('id' => $item['proposer_id']);
