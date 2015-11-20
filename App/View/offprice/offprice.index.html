@@ -315,10 +315,10 @@
         bearing:0,
         shape: 'figure7'
     });
-
+    var foor=$(".mj-footer").height();
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
-        var scrollHeight = $(document).height();
+        var scrollHeight = $(document).height()-foor;
         var windowHeight = $(this).height();
         if (scrollTop + windowHeight == scrollHeight) {
             loadMore();
