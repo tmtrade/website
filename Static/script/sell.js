@@ -164,7 +164,6 @@ function submitSell(){
 	}
 	
 	if(flag === true){
-		alert(5);
 		if ( !_isLogin ){
 			getLayer($('#mj-submittel'));
 		}else{
