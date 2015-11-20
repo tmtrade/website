@@ -43,6 +43,7 @@ em{
 }
 .mj-tip label {
     display: inline-block;
+    margin-left: 5px;
     width: 21px;
     height: 21px;
     border-radius: 2px;
@@ -212,20 +213,22 @@ em{
 }
 
 .mj-cTr_bottom{
-    height: 168px;
+    /*height: 168px;*/
     background: #fefaf5;
     border: solid 1px #f1ebe3;
     position: relative;
     z-index: 1;
     padding-right: 360px;
-    float: left;
+    /*float: left;*/
 }
 .mj-cTr_bLeft{
     position: relative;
     z-index: 1;
     top: 25px;
     left: 55px;
-    height: 118px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    /*height: 118px;*/
     border-right: dashed 1px #e4dfbe;
     float: left;
     padding-right: 40px;
