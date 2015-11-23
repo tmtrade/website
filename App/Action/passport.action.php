@@ -88,11 +88,12 @@ class PassportAction extends AppAction
         if ( isCheck($account) != 2 ){
             $this->returnAjax(array('code'=>3));//手机号不正确
         }
+        //判断验证码是否正确
+        $this->checkMsgCode($account, $password, false);
+        
         $userinfo = $this->load('passport')->get($account);
         if ( empty($userinfo) ) $this->returnAjax(array('code'=>0));//账号不正确或获取数据失败
 
-        //判断验证码是否正确
-        $this->checkMsgCode($account, $password, false);
         $this->setLogin($userinfo);
         $this->returnAjax(array('code'=>1));//登录成功
     }
