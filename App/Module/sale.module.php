@@ -200,7 +200,9 @@ class SaleModule extends AppModule
 	{
         $r['eq']['saleId']  = $id;
         $data               = $this->import("saletrademark")->find($r);
-        $data['status']     = implode(',', $this->load('trademark')->getSecond($tid));
+        //$data['status']     = implode(',', $this->load('trademark')->getSecond($tid));
+		$status	 	= $this->load('trademark')->getSecond($tid);
+		$data['status'] = $status[0];
 		$data['bzpic']     =  $data['bzpic'] ? C('IMAGE_HOST').$data['bzpic'] : "";
         return $data;
 	}

@@ -31,10 +31,11 @@ class TrademarkModule extends AppModule
 			foreach($data as $key => $item){
 				$data[$key]['imgUrl'] 		= $this->getImg($item['auto']);
 				$proposer 	= $this->load('proposer')->get($item['proposer_id']);
-				$status	 	= implode(',', $this->getSecond($item['auto']));
+				//$status	 	= implode(',', $this->getSecond($item['auto']));
+				$status	 	= $this->getSecond($item['auto']);
 				$data[$key]['newId']    	= $proposer['newId'];
 				$data[$key]['proposerName']	= $proposer['name'];
-				$data[$key]['status']		= $status;
+				$data[$key]['status']		= $status[0];
 			}
 		} 
 		return $data;
@@ -48,7 +49,8 @@ class TrademarkModule extends AppModule
 		$r['eq']['id'] = $number;
 		$data = $this->find($r);
 		if($data['auto']){
-			$data['status'] = implode(',', $this->getSecond($data['auto']));
+			$status	 	= $this->getSecond($item['auto']);
+			$data['status'] = $status[0];
 		}
 		return $data;
 	}
