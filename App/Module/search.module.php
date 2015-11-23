@@ -224,6 +224,7 @@ class SearchModule extends AppModule
         $data['isOffprice'] = false;
         $data['isBest']     = false;
         $data['isLicence']  = false;
+        $data['isApprove']  = false;
 
         if ( empty($data['tid']) ) return $data;
 
@@ -247,6 +248,9 @@ class SearchModule extends AppModule
             }
             if ( !$data['isLicence'] && $v['saleType'] == 2 ){
                 $data['isLicence'] = true;
+            }
+            if ( !$data['isApprove'] && $v['approveStatus'] == 2){
+                $data['isApprove'] = true;
             }
         }
         return $data;

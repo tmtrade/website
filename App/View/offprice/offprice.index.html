@@ -1,6 +1,7 @@
 <? require(ViewDir.'/header.html'); ?>
 
 <link rel="stylesheet" href="<?=StaticDir?>style/mj-strademark.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/mj-clindquickly.css"/>
 <script type="text/javascript" src="<?=StaticDir?>script/objurl.js"></script>
 <script type="text/javascript" src="<?=StaticDir?>script/jquery.corner.js"></script>
 <script type="text/javascript" src="<?=StaticDir?>script/jquery.roundabout.js"></script>
@@ -143,6 +144,7 @@
                             <?if ($v['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
                             <?if ($v['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
                             <?if ($v['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
+                            <?if ($v['isApprove'] == true){?><label class="mj-tZheng" title="认证通过">认</label><?};?>
                         </p>
                         <div class="mj-imglT">
                             <a href="/trademark/view/?tid=<?=$v['tid']?>&class=<?=$v['class']?>" target="_blank" class="mj-imglT"><span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" title="<?=$v['name']?>"></span></a>
