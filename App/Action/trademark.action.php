@@ -117,7 +117,6 @@ class TrademarkAction extends AppAction
 				$buy['class']  = $sale['class'];
 				$buy['contact']= $user['nickname'];
 				$buy['phone']  = $user['mobile'];
-				$buy['status'] = 5;
 				$buy['date']   = time();
 				$buy['saleId'] = $saleid;
 				$buy['need']   = "商标号:".$sale['number'].",类别:".$sale['class']."";
@@ -181,7 +180,6 @@ class TrademarkAction extends AppAction
 			$buy['name']   = $sale['name'];
 			$buy['class']  = $sale['class'];
 			$buy['phone']  = $phone;
-			$buy['status'] = 5;
 			$buy['date']   = time();
 			$buy['saleId'] = $saleid;
 			$buy['need']   = "商标号:".$sale['number'].",类别:".$sale['class']."";
