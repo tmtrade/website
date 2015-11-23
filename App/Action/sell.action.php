@@ -30,6 +30,19 @@ class SellAction extends AppAction
 		$number	= $this->input("number","string");
 		$data   = $this->load('trademark')->getTrademarkById($number);
 		$result = array();
+		
+		
+		//检查商标是否存在了
+		if($this->userInfo && $number){
+			$user = $this->userInfo;
+			$saleData = $this->load("sale")->getSaleByNum($number,$user['userId']);
+			if($saleData){
+				$result['status'] = "-1";
+				echo json_encode($result);
+				exit;	
+			}	
+		}
+			
 		if($data){
 			$detail = $this->load('trademark')->trademarkDetail($data);
 			$status = array('已无效','冻结中');
@@ -59,17 +72,31 @@ class SellAction extends AppAction
 	{
 		$data = $this->getFormData();	
 		$url = '/trademark/sell/';
+		$num['old'] = 0;
+		$num['state'] = 1;
+		$num['num'] = 0;
 		if($data['number']){
-			$userinfo = $this->load('passport')->get($data['phone']);
-            //没有账号自动创建该手机账号
-            if ( empty($userinfo) ){
-                $userId = $this->register($data['phone']);//注册并发密码短信
-                if ( !$userId ) $this->returnAjax(array('code'=>3)); //未成功
-                $buy['userId'] = $userId;
-            }else{
-                $buy['userId'] = $userinfo['id'];
-            }
+			if($this->userInfo){
+				$userinfo = $this->userInfo;
+				$sales['userId'] = $userinfo['userId'];
+			}else{
+				$userinfo = $this->load('passport')->get($data['phone']);
+				//没有账号自动创建该手机账号
+				if ( empty($userinfo) ){
+					$userId = $this->register($data['phone']);//注册并发密码短信
+					if ( !$userId ) $this->returnAjax(array('code'=>3)); //未成功
+					$sales['userId'] = $userId;
+				}else{
+					$sales['userId'] = $userinfo['id'];
+				}
+			}
+			
 			foreach($data['number'] as $key => $item){
+				$saleData = $this->load("sale")->getSaleByNum($item,$sales['userId']);
+				if($saleData){
+					$num['old'] ++;
+					continue;
+				}
 				$sales['number']   = $item;
 				$sales['phone']    = $data['phone'];
 				$sales['contact']  = $data['contact'];
@@ -86,6 +113,7 @@ class SellAction extends AppAction
 					$sales['name']       = $result[0]['trademark'];
 					$sales['proposerId'] = $result[0]['proposer_id'];
 					$sales['newId']      = $result[0]['newId'];
+					$sales['group']      = $result[0]['group'];
 					/*认证状态*/
 					$approves  = $this->getApprove($sales);
 					$sales['type']           = $approves['type'];
@@ -98,16 +126,17 @@ class SellAction extends AppAction
 					$tradeId = $this->addSellDataToSql($result,$sales,$detail);
 					
 					if($tradeId){
-						$num++; //成功啦
+						$num['num'] ++;
 					}
 				}else{
-					$num = -2; //商标数据不存在
+					$num['state'] = -2; //商标数据不存在
 				}
 			}
 		}else{
-			$num = -2; //商标数据不存在
+			$num['state'] = -2; //商标数据不存在
 		}
-		echo $num;
+		$num['all'] = $num['num'] + $num['old'];
+		echo json_encode($num);
 	}
 	
 	/**

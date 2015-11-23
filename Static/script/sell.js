@@ -43,6 +43,13 @@ $(function(){
 					_this.val('');
 					return false;
 				}
+				if(obj['status'] == '-1'){
+					tip.html("<i class=\"us-icon uj_icon44\"></i>"+'您已经提交了此商标，不能重复提交');
+					tip.show();
+					table.hide();
+					_this.val('');
+					return false;
+				}
 				table.removeAttr('style');
 				tip.hide();
 				$.each(obj,function(item,value){		
@@ -203,17 +210,18 @@ function addSell(){
 		data: content,
 		dataType: "json",
 		success: function(data){
-			if (data > 0){
-				sellok(data);
-			}else if (data.code == -2){
-				str = "商标不存在";
-				sellNo(str);
-			}else if (data.code == -3){
-				str = "提交的数据不正确";
-				sellNo(str);
-			}else{
-				str = "操作失败";
-				sellNo(str);
+			
+			if (data.state == 1){
+				 sellok(data);
+			// }else if (data.state == -2){
+				// str = "商标不存在";
+				// sellNo(str);
+			// }else if (data.state == -3){
+				// str = "提交的数据不正确";
+				// sellNo(str);
+			// }else{
+				// str = "操作失败";
+				// sellNo(str);
 			}
 		}
 	});
@@ -231,8 +239,10 @@ function checks(obj){
 }
 	
 //提交成功
-function sellok(number){
-	$('.allsell').html(number);
+function sellok(data){
+	$('.allsell').html(data['all']);
+	$('.oldsell').html(data['old']);
+	$('.newsell').html(data['num']);
 	layer.open({
 		type: 1,
 		title: false,

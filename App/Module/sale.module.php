@@ -169,6 +169,25 @@ class SaleModule extends AppModule
 	}
 	
 	/**
+	 * 通过商标号和登录账号判断是否存在
+	 * @author	Jeany
+	 * @since	2015-07-23
+	 *
+	 * @access	public
+	 * @param	array		$param  用户名称
+	 * @return	array
+	 */
+	public function getSaleByNum($number,$userid)
+	{	
+		$r['limit'] = 1;
+		$r['eq']['number'] = $number;
+		$r['eq']['userId'] = $userid;
+		$r['in']        = array('status' => array('1','5'));
+        $data = $this->import("sale")->find($r);
+        return $data;
+	}
+	
+	/**
 	 * 出售详细信息
 	 * @author	Jeany
 	 * @since	2015-07-23
