@@ -1,3 +1,14 @@
+$(function(){
+	
+	$(".qd-close").bind("click",function(){
+		layer.closeAll();
+	});
+	
+	$(".mj-close").bind("click",function(){
+		layer.closeAll();
+	});
+})
+
 //生成我要买订单
 function getorder(saleid){
 	$('#addorder').attr('href',"javascript:void(0)");
@@ -37,14 +48,12 @@ function sellok(){
 		skin: 'yourclass',
 		content: $('#mj-submitte')
 	});
-	setTimeout(function(){
-		layer.closeAll();
+	//setTimeout(function(){
+	//	layer.closeAll();
 		$('#addorder').attr('href',"javascript:void(0)");
-		$('#addorder').html("商标已经成功添加到您的购物单！");
-	},5000);
-	$(".mj-close").bind("click",function(){
-		layer.closeAll();
-	});
+		$('#addorder').html("商标已经成功添加！");
+	//},5000);
+	
 }
 
 //提交失败
@@ -60,7 +69,4 @@ function sellNo(str){
 	setTimeout(function(){
 		layer.closeAll();
 	},5000);
-	$(".mj-close").bind("click",function(){
-		layer.closeAll();
-	});
 }
