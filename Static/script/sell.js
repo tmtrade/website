@@ -160,23 +160,35 @@ $(function(){
 	
 	//验证姓名，只能输入数字和英文
 	$('#contact').bind("blur",function(){
-		var _this = $(this).val();
-		var pregName = /^[\u0391-\uFFE5A-Za-z]+$/;
-		var tip = $(this).parent().parent().next();
-		if(!pregName.test(_this)){
-			$(this).val('');
+		
+		contact($(this));
+	});
+});
+
+//验证姓名
+function contact(obj){
+	var pregName = /^[\u0391-\uFFE5A-Za-z]+$/;
+	var tip = obj.parent().parent().next();
+	var result = true;
+	if(obj.val()){
+		if(!pregName.test(obj.val())){
 			tip.html("<i class='us-icon uj_icon44'></i>您的姓氏只能输入中文或者英文");
 			tip.show();
+			result = false;
+			return false;
 		}else if(_this.length > 8){
-			$(this).val('');
 			tip.html("<i class='us-icon uj_icon44'></i>您的姓氏不能大于8个字符");
 			tip.show();
+			result = false;
+			return false;
 		}else{
 			tip.hide();
 		}
-	});
-});
-	
+	}else{
+		tip.hide();
+	}
+	return result;
+}
 	
 		
 //检查提交数据
@@ -189,6 +201,10 @@ function submitSell(){
 	if($('.input-phone').val() == '' && flag){
 		$('.input-phone').focus();
 		flag = false;
+	}
+	
+	if(flag){
+		flag = contact($('#contact'));
 	}
 	
 	if(flag === true){
