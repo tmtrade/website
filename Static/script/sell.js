@@ -243,12 +243,20 @@ function sellok(data){
 	$('.allsell').html(data['all']);
 	$('.oldsell').html(data['old']);
 	$('.newsell').html(data['num']);
+	var obj ; 
+	if(data['old'] == 0){ //全部是新的
+		obj = $("#mj-submitok");
+	}else if(data['old'] > 0 && data['num']){	//有部分提交过的
+		obj = $("#mj-submitte");
+	}else{//全部都是旧的
+		obj = $("#mj-error");
+	}
 	layer.open({
 		type: 1,
 		title: false,
 		closeBtn: false,
 		skin: 'yourclass',
-		content: $('#mj-submitte')
+		content: obj
 	});
 	// setTimeout(function(){
 		// layer.closeAll();
