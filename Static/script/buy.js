@@ -115,7 +115,12 @@ $(document).ready(function(){
             $('.mj-bcTips').show();
             return false;
         }
-        if ( code == '' || code.length != 4){
+        if ( code == '' ){
+            $(".mj-bcTips").text('验证码不能为空');
+            $('.mj-bcTips').show();
+            return false;
+        }
+        if ( code.length != 4 ){
             $(".mj-bcTips").text('验证码不正确');
             $('.mj-bcTips').show();
             return false;
