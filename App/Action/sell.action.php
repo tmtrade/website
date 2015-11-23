@@ -60,6 +60,15 @@ class SellAction extends AppAction
 		$data = $this->getFormData();	
 		$url = '/trademark/sell/';
 		if($data['number']){
+			$userinfo = $this->load('passport')->get($data['phone']);
+            //没有账号自动创建该手机账号
+            if ( empty($userinfo) ){
+                $userId = $this->register($data['phone']);//注册并发密码短信
+                if ( !$userId ) $this->returnAjax(array('code'=>3)); //未成功
+                $buy['userId'] = $userId;
+            }else{
+                $buy['userId'] = $userinfo['id'];
+            }
 			foreach($data['number'] as $key => $item){
 				$sales['number']   = $item;
 				$sales['phone']    = $data['phone'];
@@ -100,6 +109,31 @@ class SellAction extends AppAction
 		}
 		echo $num;
 	}
+	
+	/**
+     * 注册手机账号
+     *
+     * 通过手机号进行注册并发送随机的8位密码
+     * 
+     * @author  Xuni
+     * @since   2015-11-14
+     *
+     * @return  bool
+     */
+    private function register($mobile)
+    {
+        $pass   = randCode(8);//生成8位随机密码
+        $userId = $this->load('passport')->register($mobile, $pass, isCheck($mobile));
+        if ( !$userId ) return false;
+
+        $msgTemp = C('MSG_TEMPLATE');
+        $msg = sprintf($msgTemp['register'], $mobile, $pass);
+        $res = $this->load('outmsg')->sendMsg($mobile, $msg);
+        if (isset($res['code']) && $res['code'] == 1){
+            return $userId;
+        }
+        return false;
+    }
 	
 	/**
 	 * 检验出售数据的添加

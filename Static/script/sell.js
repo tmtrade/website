@@ -244,7 +244,7 @@ function sellok(number){
 		// layer.closeAll();
 		// location.reload() 
 	// },5000);
-	$(".mj-close").bind("click",function(){
+	$(".mj-close,.mj-boBtn1").bind("click",function(){
 		layer.closeAll();
 		location.reload() 
 	});
