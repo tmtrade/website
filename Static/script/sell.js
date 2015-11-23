@@ -5,6 +5,8 @@ $(function(){
 		var _parent = $(this).parent().parent().parent();
 		var _copy = _parent.clone();
 		_copy.find(".remove").removeAttr('style');
+		_copy.find('.mj-bgTips').css('display','none');
+		_copy.find('.sbtable').css("display","none")
 		_parent.after(_copy);
 		_copy.find('input').val('');
 		_copy.find('.g-td2').html('');
