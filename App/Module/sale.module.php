@@ -220,15 +220,16 @@ class SaleModule extends AppModule
      *
      * @return  array   $data       查询数据
      */
-	public function getDetailtj($class, $num , $id)
+	public function getDetailtj($class, $num , $tid)
 	{
 		$r['eq']['class']  = $class;//可出售商标
 		$r['eq']['area']  = 1;//可出售商标
 		$r['raw']  = "status not in(2,3,4,6) ";
-		$r['raw']  .=  $id ? " and id <> $id " : "";
+		$r['raw']  .=  $tid ? " and tid <> $tid " : "";
         $r['limit']         = $num;
 		$r['col']           = array('name,class,id,source,number,tid');
         $r['order']         = array('type' => 'asc','date' => 'desc');
+		$r['group']       = array('tid'=>'asc');
         $data = $this->import('sale')->findAll($r);
         foreach($data['rows'] as $k => $item){
 			$data['rows'][$k]['imgurl'] = $this->getImg($item['id']); 

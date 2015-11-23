@@ -53,7 +53,7 @@ class TrademarkAction extends AppAction
 		}
 		
 		//读取推荐商标
-		$tj  = $this->load("sale")->getDetailtj($class,6,$data['id']);
+		$tj  = $this->load("sale")->getDetailtj($class,6,$data['tid']);
 		$data    = empty($data) ? $info : $data;
 		$detail  = empty($detail) ? $infoDetail : $detail;
 		
