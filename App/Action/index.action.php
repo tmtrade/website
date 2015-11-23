@@ -37,7 +37,7 @@ class IndexAction extends AppAction
 		$dataQL = $this->load('sale')->getSaleList($paramQL,8);
 		
 		//精品
-		$paramJP['label'] = "1,2";
+		$paramJP['label'] = array('1','2');
 		$notIdArrQL = $dataQL['notId'];
 		if (!empty($dataQL['notId'])) $paramJP['notId'] = $notIdArrQL;
 		$dataJP = $this->load('sale')->getSaleList($paramJP,8);
@@ -48,7 +48,7 @@ class IndexAction extends AppAction
 		}elseif($dataJP['notId']){
 			$notIdArrQL = $dataJP['notId'];
 		}
-		$paramTS['label'] = "2,3";
+		$paramTS['label'] = array('3','2');
 		if (!empty($notIdArrQL)) $paramTS['notId'] = $notIdArrQL;
 		$dataTS = $this->load('sale')->getSaleList($paramTS,8);
 		
