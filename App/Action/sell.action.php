@@ -76,6 +76,7 @@ class SellAction extends AppAction
 		$num['state'] = 1;
 		$num['num'] = 0;
 		if($data['number']){
+			
 			if($this->userInfo){
 				$userinfo = $this->userInfo;
 				$sales['userId'] = $userinfo['userId'];
@@ -90,7 +91,6 @@ class SellAction extends AppAction
 					$sales['userId'] = $userinfo['id'];
 				}
 			}
-			
 			foreach($data['number'] as $key => $item){
 				$saleData = $this->load("sale")->getSaleByNum($item,$sales['userId']);
 				if($saleData){
