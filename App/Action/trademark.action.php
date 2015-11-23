@@ -95,6 +95,7 @@ class TrademarkAction extends AppAction
 	public function addBuy()
 	{
 		$saleid = $this->input('saleid','int');
+		
 		if($this->userInfo){
 			//查询商标是否存在
 			$sale = $this->load("sale")->getSaleById($saleid);
@@ -106,8 +107,10 @@ class TrademarkAction extends AppAction
 			$user = $this->userInfo;
 			//查询订单是否存在
 			$buyData = $this->load("buy")->getDataBySaleId($saleid,$user['userId']);
-			if(!$buyData){
-				$buy['userId'] = $user['userId'];
+			if($buyData){
+				$result = -2; //数据已经存在
+			}else{
+				$buy['loginUserId'] = $user['userId'];
 				$buy['source'] = 4; //来源展示页
 				$buy['name']   = $sale['name'];
 				$buy['class']  = $sale['class'];
@@ -118,8 +121,6 @@ class TrademarkAction extends AppAction
 				$buy['saleId'] = $saleid;
 				$buy['need']   = "商标号:".$sale['number'].",类别:".$sale['class']."";
 				$result = $this->load("buy")->create($buy);
-			}else{
-				$result = -2; //数据已经存在
 			}
 		}else{
 			$result = -3; //未登录
