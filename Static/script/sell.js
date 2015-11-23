@@ -109,9 +109,6 @@ $(function(){
         if ( !_sendOnce ) return false;
         $('.mj-bcTips').show();
         var mobile = $("#usrMp_popup").val();
-        if (mobile == ''){
-            $(".mj-bcTips").text('手机号错误');
-        }
         $.ajax({
             type: "post",
             url: "/passport/sendMsgCode/",
@@ -178,7 +175,7 @@ function contact(obj){
 			tip.show();
 			result = false;
 			return false;
-		}else if(_this.length > 8){
+		}else if(obj.val().length > 8){
 			tip.html("<i class='us-icon uj_icon44'></i>您的姓氏不能大于8个字符");
 			tip.show();
 			result = false;
