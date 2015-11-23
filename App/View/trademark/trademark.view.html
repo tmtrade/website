@@ -172,7 +172,7 @@
                     <dl>
                         <dd>
                             <i class="us-icon uj_icon2"></i><span>卖家：<em><?=$data['contact']?></em></span>
-                            <a href=""><i class="us-icon uj_icon30"></i>在线咨询</a>
+                            <a href="javascript:;" onclick="consultation()"><i class="us-icon uj_icon30"></i>在线咨询</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
@@ -349,7 +349,11 @@
         </div>
     </div>
 </div>
-
+<script>
+function consultation(){
+	window.open("http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165");
+}
+</script>
 <script src="<?=StaticDir?>script/order.js"></script>
 <!--content end-->
 <? require(ViewDir.'/footer.html'); ?>
