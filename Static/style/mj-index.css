@@ -933,3 +933,10 @@
 }
 
 
+/* media */
+@media (min-width: 1px) and (max-width: 1180px) {
+    .mj-banner{
+        width: 1180px;
+        margin: 0 auto;
+    }
+}

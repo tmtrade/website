@@ -124,7 +124,7 @@ em{
 }
 .mj-cTr_top .mj-cTr_top_r{
     display: inline-block;
-    width: 67px;
+    padding-right: 5px;
     height: 22px;
     +line-height: 22px;
     color: #fff;
@@ -502,6 +502,7 @@ em{
     margin-top: 3px;
 }
 .mj-content_bottom-inter_t a:hover{
+    color: #fc7d28;
     text-decoration: underline;
 }
 .mj-imglists{

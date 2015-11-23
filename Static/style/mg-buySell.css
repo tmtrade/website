@@ -357,9 +357,7 @@ textarea::-webkit-input-placeholder {
 
 
 /*检测电话号码弹出层*/
-.mj-bcon{
-    padding: 65px 0 0 60px;
-}
+
 .mj-bconLeft{
     display: inline-block;
     padding: 0 15px 0 38px;
@@ -442,12 +440,13 @@ textarea::-webkit-input-placeholder {
 }
 .mj-bcTips{
     display: block;
-    margin: 5px 0;
+    margin-top: 5px;
     font-size: 12px;
     color: #fc7d28;
 }
 .mj-determineBtn{
     display: inline-block;
+    margin-top: 10px;
     width: 107px;
     height: 40px;
     background: #fc7d28;
