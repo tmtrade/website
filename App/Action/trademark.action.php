@@ -177,7 +177,6 @@ class TrademarkAction extends AppAction
 		if($buyData){
 			$result = -2; //数据已经存在
 		}else{
-			$buy['loginUserId'] = $user['userId'];
 			$buy['source'] = 4; //来源展示页
 			$buy['name']   = $sale['name'];
 			$buy['class']  = $sale['class'];

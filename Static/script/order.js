@@ -40,7 +40,7 @@ function checkCallPhone(obj){
 //打电话验证并添加订单
 $('#l-button').bind('click',function(){
 	checkCallPhone($('#telInput'));
-	
+	createOrderByPhone($('#telInput').val());
 })
 
 //继续打电话
@@ -67,24 +67,22 @@ function getOrderState(phone){
 }
 
 //生成我要买订单
-function createOrderByPhone(saleid){
-	$('#addorder').attr('href',"javascript:void(0)");
-	if(saleid > 0){
+function createOrderByPhone(phone){
+	if(_saleid > 0){
 		$.ajax({
             type: "post",
             url: "/trademark/addBuyByPhone",
             data: {saleid:_saleid,phone:phone},
             dataType: "json",
+			async:false,
             success: function(data){
 				if (data > 0){
-                    sellok();
+					$('#telInput').val('');
+                   lxb.call(document.getElementById("telInput"));
                 }else if (data.code == -2){
 					str = "您已购买过该商品！";
                     sellNo(str);
-                }else if (data.code == -3){
-					str = "未登录";
-                    sellNo(str);
-				}else if (data.code == -4){
+                }else if (data.code == -4){
 					str = "商标数据不存在";
                     sellNo(str);
                 }else{
@@ -95,7 +93,7 @@ function createOrderByPhone(saleid){
         });
 	}
 }
-	
+
 //生成我要买订单
 function createOrder(saleid){
 	$('#addorder').attr('href',"javascript:void(0)");
