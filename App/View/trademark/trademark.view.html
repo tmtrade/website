@@ -1,5 +1,6 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" href="<?=StaticDir?>style/mj-productsdetail.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/mj-clindquickly.css"/>
 <script src="<?=StaticDir?>script/layer/layer.js"></script>
 <script src="<?=StaticDir?>script/backcallandtongji.js"></script>
 <!--content start-->
@@ -10,19 +11,10 @@
             <div class="mj-cTl_img">
                 <a href=""><img src="<?php if($detail['bzpic']){echo  $detail['bzpic']; }elseif($detail['imgurl']){echo  $detail['imgurl']; }else{echo "/Static/images/img1.png";}?>" alt=""/></a>
                 <p class="mj-tip">
-				<?php 
-				if($data['label']){
-					if(strstr($data['label'],"1")){
-						echo "<label class=\"mj-tJing\" title=\"精品推荐\">精</label>";
-					}
-				}
-				if($data['salePrice'] > 0 && $data['salePriceDate'] > time()){
-					echo "<label class=\"mj-tThe\" title=\"特价商品\">特</label>";
-				}
-				if($data['saleType'] == "2"){
-					echo "<label class=\"mj-tShow\" title=\"授权租用\">授</label>";
-				}
-				?>  
+				<?if ($detail['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
+                <?if ($detail['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
+                <?if ($detail['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
+                <?if ($detail['isApprove'] == true){?><label class="mj-tZheng" title="认证通过">认</label><?};?>
                 </p>
             </div>
             <p class="mj-cTl_imgText f-clearfix">

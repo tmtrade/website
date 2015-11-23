@@ -18,28 +18,37 @@ class TrademarkAction extends AppAction
 	
 	public function view()
 	{
-		$tid = $this->input("tid","int");
-		$class = $this->input("class","int");
+		$tid 	= $this->input("tid","int");
+		$class 	= $this->input("class","int");
 
 		if ( $tid <= 0 || $class <= 0 || !in_array($class, range(1, 45)) ){
 			MessageBox::halt('未找到相关数据2！');
 		}
-		//出售列表里面有的数据
-		$data   =  $detail  = array();
-        $data    = $this->load("sale")->getDetail($tid);
-		$detail  = $this->load("sale")->getTrademarkDetail($data['id'], $tid);
-		
+
 		$this->set("platformIn",C('PLATFORM_IN'));
 		$this->set("platformItems",C('PLATFORM_ITEMS'));
 	
-		//原始商标数据里面的数据
-		$info = $this->load('trademark')->trademarks($tid,$class);
-		$infoDetail = $this->load('trademark')->trademarkDetail($info);
-		if($info){
-			$classes = C('CLASSES') ;
-			$info['name'] = $info['trademark'];
-			$info['classValue'] = $classes[$info['class']];
-			$info['number'] = $info['id'];
+		//出售列表里面有的数据
+		$data   = $detail = array();
+        $data 	= $this->load("sale")->getDetail($tid);
+		if ( $data && $detail ){
+			$detail  		= $this->load("sale")->getTrademarkDetail($data['id'], $tid);
+			$detail['tid'] 	= $data['tid'];
+			$detail 		= $this->load('search')->getTips($detail);
+		}else{
+			//原始商标数据里面的数据
+			$info = $this->load('trademark')->trademarks($tid,$class);
+			$infoDetail = $this->load('trademark')->trademarkDetail($info);
+			if($info){
+				$classes 			= C('CLASSES') ;
+				$info['name'] 		= $info['trademark'];
+				$info['classValue'] = $classes[$info['class']];
+				$info['number'] 	= $info['id'];
+				if ( $infoDetail ){
+					$infoDetail['tid'] = $info['auto'];
+					$infoDetail = $this->load('search')->getTips($infoDetail);
+				}
+			}
 		}
 		if ( empty($info)  && empty($data) ){
 			MessageBox::halt('未找到相关数据3！');
@@ -47,16 +56,15 @@ class TrademarkAction extends AppAction
 		$baystate = 0;
 		//查询订单是否存在
 		if($this->userInfo && $data['id']){
-			$user = $this->userInfo;
-			$buyData = $this->load("buy")->getDataBySaleId($data['id'],$user['userId']);
-			$baystate = $buyData ? 1 : 0;
+			$user 		= $this->userInfo;
+			$buyData 	= $this->load("buy")->getDataBySaleId($data['id'],$user['userId']);
+			$baystate 	= $buyData ? 1 : 0;
 		}
-		
 		//读取推荐商标
-		$tj  = $this->load("sale")->getDetailtj($class,6,$data['tid']);
-		$data    = empty($data) ? $info : $data;
-		$detail  = empty($detail) ? $infoDetail : $detail;
-		
+		$tj  	= $this->load("sale")->getDetailtj($class,6,$data['tid']);
+		$data  	= empty($data) ? $info : $data;
+		$detail = (empty($data) || empty($detail)) ? $infoDetail : $detail;
+
 		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("data",$data);
 		$this->set("detail",$detail);
