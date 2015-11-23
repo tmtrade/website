@@ -52,6 +52,24 @@ class BuyModule extends AppModule
         $data = $this->import("buy")->find($r);
         return $data;
     }
+	
+	/**
+     * 通过saleId和联系电话获取数据
+     * @author	Jeany
+     * @since	2015-11-26
+     *
+     * @access	public
+     * @param	int 	$saleId	    出售编号
+     * @return	array
+     */	 
+    public function getDataByContact( $saleId ,$phone)
+    {
+		$r['limit']         = 1;
+		$r['eq']['saleId']  = $saleId;
+		$r['eq']['phone']  = $phone;
+        $data = $this->import("buy")->find($r);
+        return $data;
+    }
 
     /**
      * 创建数据

@@ -44,12 +44,12 @@ class TrademarkAction extends AppAction
 		if ( empty($info)  && empty($data) ){
 			MessageBox::halt('未找到相关数据3！');
 		}
-		
+		$baystate = 0;
 		//查询订单是否存在
 		if($this->userInfo && $data['id']){
 			$user = $this->userInfo;
 			$buyData = $this->load("buy")->getDataBySaleId($data['id'],$user['userId']);
-			$this->set("buyData",$buyData);	
+			$baystate = $buyData ? 1 : 0;
 		}
 		
 		//读取推荐商标
@@ -62,6 +62,7 @@ class TrademarkAction extends AppAction
 		$this->set("detail",$detail);
 		$this->set("info",$info);
 		$this->set("tj",$tj);
+		$this->set("baystate",$baystate);	
 		$this->display();
 	}
 	
@@ -114,7 +115,7 @@ class TrademarkAction extends AppAction
 				$buy['source'] = 4; //来源展示页
 				$buy['name']   = $sale['name'];
 				$buy['class']  = $sale['class'];
-				$buy['contact']= $user['username'];
+				$buy['contact']= $user['nickname'];
 				$buy['phone']  = $user['mobile'];
 				$buy['status'] = 5;
 				$buy['date']   = time();
@@ -127,5 +128,71 @@ class TrademarkAction extends AppAction
 		}
 		echo $result;
 	}
+	
+	/**
+	 * 检查是够购买过商标
+	 * 
+	 * @author	JEANY
+	 * @since	2015-11-23
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	public function getOrderState()
+	{
+		$result = 1;
+		$saleid = $this->input('saleid','int');
+		$phone  = $this->input('phone','string');
+		$buyData = $this->load("buy")->getDataByContact($saleid,$phone);
+		if($buyData){
+			$result = -2; //数据已经存在
+		}
+		echo $result;
+	}
+	
+	/**
+	 * 检查是够购买过商标
+	 * 
+	 * @author	JEANY
+	 * @since	2015-11-23
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	public function addBuyByPhone()
+	{
+		$result = 1;
+		$saleid = $this->input('saleid','int');
+		$phone  = $this->input('phone','string');
+		
+		//查询商标是否存在
+		$sale = $this->load("sale")->getSaleById($saleid);
+		if(!$sale){
+			$result = -4; //商标数据不存在
+			echo $result;
+			exit;
+		}
+		//查询订单是否存在
+		$buyData = $this->load("buy")->getDataByContact($saleid,$phone);
+		if($buyData){
+			$result = -2; //数据已经存在
+		}else{
+			$buy['loginUserId'] = $user['userId'];
+			$buy['source'] = 4; //来源展示页
+			$buy['name']   = $sale['name'];
+			$buy['class']  = $sale['class'];
+			$buy['phone']  = $phone;
+			$buy['status'] = 5;
+			$buy['date']   = time();
+			$buy['saleId'] = $saleid;
+			$buy['need']   = "商标号:".$sale['number'].",类别:".$sale['class']."";
+			$result = $this->load("buy")->create($buy);
+		}
+		echo $result;
+	}
+	
+	
+	
+	
 }
 ?>
