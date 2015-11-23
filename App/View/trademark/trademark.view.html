@@ -120,7 +120,7 @@
                         <br /><label><?php echo date('Y-m-d H:i',$data['salePriceDate']); ?></label>前有效<br />
 						<?php
 						if($baystate == 1){
-							echo "<a href='javascript:void(0)' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
+							echo "<a href='".MANAGER_URL."buyer/ready/' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
 						}else{
 							if($isLogin){
 								echo "<a href='javascript:createOrder(".$data['id'].");' class=\"mj-priceTxtt_link\" id='addorder' >立即抢购</a>";
@@ -359,4 +359,5 @@ var _isLogin = "<?=$isLogin?>";
 var _mobile  = "<?=$userMobile?>";
 var _saleid  = "<?=$data['id']?>";
 var baystate = "<?=$baystate?>";
+var buyUrl   = "<?=MANAGER_URL?>buyer/ready/";
 </script>

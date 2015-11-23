@@ -96,7 +96,7 @@ function createOrderByPhone(phone){
 
 //生成我要买订单
 function createOrder(saleid){
-	$('#addorder').attr('href',"javascript:void(0)");
+	$('#addorder').attr('href',buyUrl);
 	if(saleid > 0){
 		$.ajax({
             type: "post",
