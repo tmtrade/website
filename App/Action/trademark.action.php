@@ -34,7 +34,7 @@ class TrademarkAction extends AppAction
 	
 		//原始商标数据里面的数据
 		$info = $this->load('trademark')->trademarks($tid,$class);
-		$infoDetail = $this->load('trademark')->trademarkDetail($info,$info['auto']);
+		$infoDetail = $this->load('trademark')->trademarkDetail($info);
 		if($info){
 			$classes = C('CLASSES') ;
 			$info['name'] = $info['trademark'];

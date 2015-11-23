@@ -102,10 +102,10 @@ class SaletrademarkModule extends AppModule
 	public function getOffpriceImg($saleId)
 	{
 		$r['eq']['saleId'] 	= $saleId;
-		$r['col']			= array('tjpic');
+		$r['col']			= array('tjpic','bzpic');
 		$res = $this->import('saletrademark')->find($r);
-		return empty($res['tjpic']) ? '' : $res['tjpic'];
+		return empty($res) ? array() : $res;
 	}
-	
+
 }
 ?>

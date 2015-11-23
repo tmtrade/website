@@ -81,7 +81,9 @@ class OffpriceAction extends AppAction
     {
         if ( empty($data) ) return array();
         foreach ($data as $k => $v) {
-            $imgUrl = $this->load('saletrademark')->getOffpriceImg($v['id']);
+            $img        = $this->load('saletrademark')->getOffpriceImg($v['id']);
+            $imgUrl    = empty($img['bzpic']) ? $img['tjpic'] : $img['bzpic'];
+
             $data[$k]['imgUrl'] = empty($imgUrl) ? $v['imgUrl'] : TRADE_URL.$imgUrl;
         }
         return $data;
