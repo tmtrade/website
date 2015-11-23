@@ -71,6 +71,7 @@ class IndexAction extends AppAction
 		$this->set('dataQL',$dataQL);
 		$this->set('dataJP',$dataJP);
 		$this->set('dataTS',$dataTS);
+		$this->set('classes',C('CLASSES'));
 		$this->display();
 	}
 }
