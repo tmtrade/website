@@ -9,7 +9,7 @@ $(function(){
 	});
 })
 
-$("#telInput").bind("blur",function(){
+$("#telInput2").bind("blur",function(){
 	//电话号码验证
 	checkCallPhone($(this));
 	
@@ -39,13 +39,13 @@ function checkCallPhone(obj){
 
 //打电话验证并添加订单
 $('#l-button').bind('click',function(){
-	checkCallPhone($('#telInput'));
-	createOrderByPhone($('#telInput').val());
+	checkCallPhone($('#telInput2'));
+	createOrderByPhone($('#telInput2').val());
 })
 
 //继续打电话
 $(".callphone").on("click",function(){
-	lxb.call(document.getElementById("telInput"));
+	lxb.call(document.getElementById("telInput2"));
 })
 
 //检查订单是否存在
@@ -77,8 +77,8 @@ function createOrderByPhone(phone){
 			async:false,
             success: function(data){
 				if (data > 0){
-					$('#telInput').val('');
-                   lxb.call(document.getElementById("telInput"));
+					lxb.call(document.getElementById("telInput2"));
+					$('#telInput2').val('');               
                 }else if (data.code == -2){
 					str = "您已购买过该商品！";
                     sellNo(str);
