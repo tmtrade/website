@@ -168,7 +168,7 @@
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
-                            <label><?=$data['phone']?></label>
+                            <label><?=substr($data['phone'],0,4).'****'.substr($data['phone'],-3);?></label>
                         </dd>
                         <dd class="mj-cTr_bRight_dd">
                             <input type="text" placeholder="输入电话号码" id="telInput" />
