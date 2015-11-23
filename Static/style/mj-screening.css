@@ -35,14 +35,13 @@
 }
 .mj-selection-list a {
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 10px;
     margin: 0 2px 5px;
     height: 25px;
     line-height: 25px;
-    font-size: 14px;
+    font-size: 12px;
     color: #666666;
     text-decoration: none;
-    border: 1px solid #eeeeee;
     background: #ffffff;
 }
 .mj-selection-list .current, .mj-selection-list a:hover {

@@ -7,22 +7,20 @@
     <script src="<?=StaticDir?>script/jquery-1.8.3.min.js"></script>
     <script src="<?=StaticDir?>script/layer/layer.js"></script>
     <script src="<?=StaticDir?>script/login.js"></script>
-    
     <script src="<?=StaticDir?>script/respond.min.js"></script>
-
-    </head>
-    <body>
-    <div class="mj-header">
-        <div class="w1180 mj-nav f-clearfix">
-            <ul class="mj-header_left fl">
-                <li><span class="security"><i class="uj_icon1"></i>安全保障</span></li>
-                <li>交易损失-3倍赔偿 要加帮助-简介什么的？</li>
-            </ul>
-            <ul class="mj-header_right fr">
-            <? if ($isLogin==true){ ?>
-                <li>
-                    <div class="mj-cols">
-                        <!--已登录状态-->
+</head>
+<body>
+<div class="mj-header">
+    <div class="w1180 mj-nav f-clearfix">
+        <ul class="mj-header_left fl">
+            <li><span class="security"><i class="uj_icon1"></i>安全保障</span></li>
+            <li>交易损失-3倍赔偿 要加帮助-简介什么的？</li>
+        </ul>
+        <ul class="mj-header_right fr">
+        <? if ($isLogin==true){ ?>
+            <li>
+                <div class="mj-cols">
+                    <!--已登录状态-->
                     <div class="Is_logged">
                         <a href="javascript:;"><?=$nickname?></a>
                         <i class="us-icon uj_icon7"></i>
