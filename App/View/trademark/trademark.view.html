@@ -9,7 +9,7 @@
     <div class="w1180 f-clearfix">
         <div class="mj-cTleft fl">
             <div class="mj-cTl_img">
-                <a href=""><img src="<?php if($detail['bzpic']){echo  $detail['bzpic']; }elseif($detail['imgurl']){echo  $detail['imgurl']; }else{echo "/Static/images/img1.png";}?>" alt=""/></a>
+                <span><img src="<?php if($detail['bzpic']){echo  $detail['bzpic']; }elseif($detail['imgurl']){echo  $detail['imgurl']; }else{echo "/Static/images/img1.png";}?>" alt=""/></span>
                 <p class="mj-tip">
 				<?if ($detail['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
                 <?if ($detail['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
