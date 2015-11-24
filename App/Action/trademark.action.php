@@ -121,24 +121,25 @@ class TrademarkAction extends AppAction
 				echo $result;
 				exit;
 			}
-			
 			$user = $this->userInfo;
+			$isExist = array(
+				'loginUserId'		=> $this->userId,
+				'source'			=> 4, //来源展示页
+				'name'				=> $sale['name'],
+				'class'				=> $sale['class'],
+				'contact'			=> $this->nickname,
+				'phone'				=> $this->mobile,
+				'buyType'			=> 1,
+				'need'				=> "商标号:".$sale['number'].",类别:".$sale['class'],
+			);
+
 			//查询订单是否存在
-			$buyData = $this->load("buy")->getDataBySaleId($saleid,$user['userId']);
+			$buyData = $this->load("buy")->isExist($isExist);
 			if($buyData){
 				$result = -2; //数据已经存在
 			}else{
-				$buy['loginUserId'] = $user['userId'];
-				$buy['source'] = 4; //来源展示页
-				$buy['name']   = $sale['name'];
-				$buy['class']  = $sale['class'];
-				$buy['contact']= $user['nickname'];
-				$buy['phone']  = $user['mobile'];
-				$buy['date']   = time();
-				$buy['saleId'] = $saleid;
-				$buy['buyType'] = 1;
-				$buy['need']   = "商标号:".$sale['number'].",类别:".$sale['class']."";
-				$result = $this->load("buy")->create($buy);
+				$isExist['date']	= time();
+				$result				= $this->load("buy")->create($isExist);
 			}
 		}else{
 			$result = -3; //未登录
@@ -160,7 +161,25 @@ class TrademarkAction extends AppAction
 		$result = 1;
 		$saleid = $this->input('saleid','int');
 		$phone  = $this->input('phone','string');
-		$buyData = $this->load("buy")->getDataByContact($saleid,$phone);
+		$sale	= $this->load("sale")->getSaleById($saleid);
+		
+		$isExist = array(
+			'phone'					=> $phone,
+			'source'				=> 4,//来源展示页
+			'name'					=> $sale['name'],
+			'class'					=> $sale['class'],
+			'buyType'				=> 1,
+			'need'					=> "商标号:".$sale['number'].",类别:".$sale['class'],
+		);
+		
+		if(!empty($this->userId)){
+			$isExist['loginUserId'] = $this->userId;
+			$isExist['contact']		= $this->nickname;
+		}else{
+			$isExist['loginUserId'] = '';
+			$isExist['contact']		= '';
+		}
+		$buyData = $this->load("buy")->isExist($isExist);
 		if($buyData){
 			$result = -2; //数据已经存在
 		}
@@ -189,19 +208,30 @@ class TrademarkAction extends AppAction
 			echo $result;
 			exit;
 		}
+		
+		$isExist = array(
+			'phone'					=> $phone,
+			'source'				=> 4,//来源展示页
+			'name'					=> $sale['name'],
+			'class'					=> $sale['class'],
+			'buyType'				=> 1,
+			'need'					=> "商标号:".$sale['number'].",类别:".$sale['class'],
+		);
+		
+		if(!empty($this->userId)){
+			$isExist['loginUserId'] = $this->userId;
+			$isExist['contact']		= $this->nickname;
+		}else{
+			$isExist['loginUserId'] = '';
+			$isExist['contact']		= '';
+		}
 		//查询订单是否存在
-		$buyData = $this->load("buy")->getDataByContact($saleid,$phone);
+		$buyData = $this->load("buy")->isExist($isExist);
 		if($buyData){
 			$result = -2; //数据已经存在
 		}else{
-			$buy['source'] = 4; //来源展示页
-			$buy['name']   = $sale['name'];
-			$buy['class']  = $sale['class'];
-			$buy['phone']  = $phone;
-			$buy['date']   = time();
-			$buy['saleId'] = $saleid;
-			$buy['need']   = "商标号:".$sale['number'].",类别:".$sale['class']."";
-			$result = $this->load("buy")->create($buy);
+			$isExist['date']	= time();
+			$result					= $this->load("buy")->create($isExist);
 		}
 		echo $result;
 	}

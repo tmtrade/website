@@ -54,6 +54,26 @@ class BuyModule extends AppModule
     }
 	
 	/**
+     * 判断求购信息是否存在
+	 * 
+	 * @author	martin
+	 * @since	2015/11/24
+	 *
+	 * @access	public
+     * @param	array	$data	数组
+	 * @return	array
+	 */
+	public function isExist( $data)
+	{
+		foreach($data as $key => $val){
+			$r['eq'][$key] = $val;
+		}
+        $r['limit']         = 1;
+        $data               = $this->import('buy')->find($r);
+		return $data;
+	}
+
+	/**
      * 通过saleId和联系电话获取数据
      * @author	Jeany
      * @since	2015-11-26
