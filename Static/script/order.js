@@ -69,6 +69,7 @@ function getOrderState(phone){
 //生成我要买订单
 function createOrderByPhone(phone){
 	if(_saleid > 0){
+		var result = false ;
 		$.ajax({
             type: "post",
             url: "/trademark/addBuyByPhone",
@@ -77,8 +78,9 @@ function createOrderByPhone(phone){
 			async:false,
             success: function(data){
 				if (data > 0){
+					result = true;
 					lxb.call(document.getElementById("telInput2"));
-					$('#telInput2').val('');               
+					//$('#telInput2').val('');               
                 }else if (data.code == -2){
 					str = "您已购买过该商品！";
                     sellNo(str);
@@ -92,6 +94,7 @@ function createOrderByPhone(phone){
             }
         });
 	}
+	
 }
 
 //生成我要买订单
