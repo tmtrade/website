@@ -128,7 +128,7 @@ class BuyModule extends AppModule
         foreach($data as $key => $item){
 			$star = "****";
 			$data[$key]['phone']  = substr($item['phone'],0,3).$star.substr($item['phone'],7);
-			$data[$key]['contact'] = substr($item['contact'],0,3)."**";
+			$data[$key]['contact'] = $item['contact'] ? substr($item['contact'],0,3)."**" : "佚名" ;
 			$data[$key]['need']    = mbSub($item['need'],0,12); 
         }
 		return $data;
@@ -151,7 +151,7 @@ class BuyModule extends AppModule
 		$r['raw']           = " class > 0";
         $data               = $this->import('buy')->find($r);
         foreach($data as $key => $item){
-			$data[$key]['contact'] = substr($item['contact'],0,3)."**";
+			$data[$key]['contact'] = $item['contact'] ? substr($item['contact'],0,3)."**" : "佚名" ;
 			$data[$key]['name']    = mbSub($item['name'],0,12); 
 			$data[$key]['dealDate']    = $this->tradeTime($item['dealDate']);
         }
