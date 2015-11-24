@@ -318,3 +318,15 @@ div.mj-stclose label{
     background: url(img/mj-maclose.png) no-repeat;
     cursor: pointer;
 }
+.mj-topIcon:hover .uj_icon25 {
+    background-image: url("slice/mj-icon26.png");
+}
+.uj_icon25 {
+    width: 26px;
+    height: 24px;
+    background-image: url("slice/mj-icon25.png");
+}
+.uj_icon25 {
+    text-align: center;
+    display: inline-block;
+}
