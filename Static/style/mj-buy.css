@@ -389,6 +389,7 @@ div.mj-fwH input[type="text"]{
     font-size: 16px;
     color: #fff;
     border-radius: 5px;
+    cursor: pointer;
 }
 .ms-errorTips{
     margin-bottom: 10px;

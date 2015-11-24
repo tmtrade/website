@@ -91,7 +91,7 @@
 .mj-imglT a img {
     vertical-align: middle;
     position: relative;
-    max-width: 170px;
+    max-width: 150px;
     max-height: 85px;
     z-index: 1;
 }
