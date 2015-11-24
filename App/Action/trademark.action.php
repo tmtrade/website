@@ -31,7 +31,7 @@ class TrademarkAction extends AppAction
 		//出售列表里面有的数据
 		$data   = $detail = array();
         $data 	= $this->load("sale")->getDetail($tid);
-		if ( $data && $detail ){
+		if ( $data ){
 			$detail  		= $this->load("sale")->getTrademarkDetail($data['id'], $tid);
 			$detail['tid'] 	= $data['tid'];
 			$detail 		= $this->load('search')->getTips($detail);
