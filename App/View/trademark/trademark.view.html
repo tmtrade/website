@@ -39,7 +39,7 @@
 							unset($platformIn[$key]);
 							echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
 						}
-						if($platform){
+						if($platform || $data['date']){
 							if($key && in_array($key,$platform)){
 								unset($platformIn[$key]);
 								echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
