@@ -129,6 +129,7 @@
     right: 0;
 }
 .mj-stclose{
+    display: none;
     padding-bottom: 7px;
 }
 div.mj-stclose label{
@@ -138,6 +139,7 @@ div.mj-stclose label{
     cursor: pointer;
 }
 .mj-sidebarCon{
+    display: none;
     width: 60px;
     margin-right: 20px;
     background: #ffffff;
@@ -225,7 +227,7 @@ div.mj-stclose label{
     color: #ffffff;
 }
 .mj-siright{
-    display: none;
+    /*display: none;*/
     padding: 12px 5px 0;
     width: 25px;
     height: 110px;
@@ -241,6 +243,7 @@ div.mj-stclose label{
 
 /*footer mj-footerTip*/
 .mj-footerTip{
+    display: none;
     height: 52px;
     background: #626262;
     line-height: 52px;
@@ -310,7 +313,6 @@ div.mj-stclose label{
     z-index: 55;
 }
 .mj-maclose{
-    display: none;
     width: 56px;
     height: 52px;
     background: url(img/mj-maclose.png) no-repeat;
