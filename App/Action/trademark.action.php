@@ -113,12 +113,15 @@ class TrademarkAction extends AppAction
 		
 		if($this->userInfo){
 			//查询商标是否存在
+			
+			
 			$sale = $this->load("sale")->getSaleById($saleid);
 			if(!$sale){
 				$result = -4; //商标数据不存在
 				echo $result;
 				exit;
 			}
+			
 			$user = $this->userInfo;
 			//查询订单是否存在
 			$buyData = $this->load("buy")->getDataBySaleId($saleid,$user['userId']);
@@ -133,6 +136,7 @@ class TrademarkAction extends AppAction
 				$buy['phone']  = $user['mobile'];
 				$buy['date']   = time();
 				$buy['saleId'] = $saleid;
+				$buy['buyType'] = 1;
 				$buy['need']   = "商标号:".$sale['number'].",类别:".$sale['class']."";
 				$result = $this->load("buy")->create($buy);
 			}
