@@ -166,8 +166,13 @@ class SearchModule extends AppModule
             }
         }
 
+        $isInGroup = false;
         if ( !empty($params['group']) ){
-            $r['ft']['group'] = $params['group'];
+            if ( empty($r['in']) ){
+                $r['ft']['group'] = $params['group'];
+            }else{
+                $isInGroup = true;
+            }
         }
         if ( !empty($params['types']) ){
             $r['eq']['type'] = $params['types'];
@@ -181,15 +186,55 @@ class SearchModule extends AppModule
                 'status26'  => 0,
                 );
         }
-        $r['index'] = array($start, $limit);
-        $r['col']   = array('tid', 'trademark_id as number', 'class_id as class', 'trademark as name');
+        if ( $isInGroup ){
+            $r['limit'] = 1000;
+        }else{
+            $r['index'] = array($start, $limit);
+        }
+        $r['col']   = array('tid', 'trademark_id as number', 'class_id as class', 'trademark as name', 'group');
         //$r['order'] = array('tid'=>'desc');
 
         $res3   = $this->import('second')->find($r);
+        //处理MySQL不走索引而效率慢的问题
+        if ( $isInGroup ){
+            $items  = $this->makeInGroup($res3, $params['group']);
+            $res3   = array_splice($items, $start, $limit);
+        }
         $list   = $this->getListTips($res3);
         return $list;
     }
 
+    /**
+     * 处理带有IN和match条件的数据
+     *
+     * 把带有IN条件的数据进行PHP字符串匹配处理，完成MySQL不走索引而效率慢的问题。 
+     * @author  Xuni
+     * @since   2015-11-24
+     *
+     * @access  public
+     * @param   array       $data       原始数据
+     * @param   array       $group      群组
+     *
+     * @return  array       $rows       原始数据匹配$group后的数据
+     */
+    public function makeInGroup($data, $group)
+    {
+        $rows = array();
+        foreach ($data as $k => $v) {
+            if ( strpos($v['group'], $group) !== false ){
+                $rows[] = $v;
+            }
+        }
+        return $rows;
+    }
+
+    /**
+     * 近似查询调用
+     *
+     * @author  Xuni
+     * @since   2015-11-11
+     *
+     */
     public function searchLike($keyword, $class='', $page=1, $number=1000)
     {
         if ( empty($keyword) ) return array();
@@ -205,7 +250,13 @@ class SearchModule extends AppModule
         return $res;
     }
 
-
+    /**
+     * 处理列表数据
+     *
+     * @author  Xuni
+     * @since   2015-11-11
+     *
+     */
     public function getListTips($data)
     {
         if ( empty($data) ) return array();
@@ -221,6 +272,13 @@ class SearchModule extends AppModule
         return $data;
     }
 
+    /**
+     * 处理列表数据
+     *
+     * @author  Xuni
+     * @since   2015-11-11
+     *
+     */
     public function getTips($data)
     {
         $data['isOffprice'] = false;
