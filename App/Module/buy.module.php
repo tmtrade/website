@@ -121,7 +121,7 @@ class BuyModule extends AppModule
 	public function getNewsBuy($num)
 	{
         $r['limit']         = $num;
-        $r['order']         = array('date' => 'desc', 'id'=>'desc');
+        $r['order']         = array('dealDate' => 'desc', 'id'=>'desc');
 		$r['col']           = array("contact","need","phone");
 		$r['raw']           = " phone != '' and status =6 and need != ''";
         $data               = $this->import('buy')->find($r);
@@ -145,7 +145,7 @@ class BuyModule extends AppModule
 	public function getNewsTrade($num)
 	{
 		$r['limit']         = $num;
-        $r['order']         = array('date' => 'desc', 'id'=>'desc');
+        $r['order']         = array('dealDate' => 'desc', 'id'=>'desc');
 		$r['in']            = array('status' => array("2","3") );
 		$r['col']           = array("contact","name","class","dealDate");
 		$r['raw']           = " class > 0";

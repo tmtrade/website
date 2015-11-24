@@ -53,10 +53,10 @@ class IndexAction extends AppAction
 		$dataTS = $this->load('sale')->getSaleList($paramTS,8);
 		
 		//最新购买需求
-		$buyInfo = $this->load('buy')->getNewsBuy(8);
+		$buyInfo = $this->load('buy')->getNewsBuy(10);
 		$this->set('buyInfo',$buyInfo);
 		//最新交易记录
-		$tradeInfo = $this->load('buy')->getNewsTrade(8);
+		$tradeInfo = $this->load('buy')->getNewsTrade(10);
 		$this->set('tradeInfo',$tradeInfo);
 
 		$params = array(
