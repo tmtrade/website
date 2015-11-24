@@ -18,29 +18,37 @@ $("#telInput2").bind("blur",function(){
 //验证打电话的电话输入
 function checkCallPhone(obj){
 	var value = obj.val();
+	var result = true;
 	if(value.length == 11 ){
 		if(verifyPhoneNum(value)){
 			var state = getOrderState(value);
 			if(state ==  -2){ //订单已经存在
 				getLayer($('#bugphone'));	
+				result = false;	
 				return false;				
 			}
 		}else{	
 			obj.val("");
 			obj.attr("placeholder","请输入正确的电话号码");
+			result = false;	
 			return false;
 		}
 	}else{
 		obj.val("");
 		obj.attr("placeholder","请输入正确的电话号码");
+		result = false;	
 		return false;
 	}
+	return result;
 }
 
 //打电话验证并添加订单
 $('#l-button').bind('click',function(){
-	checkCallPhone($('#telInput2'));
-	createOrderByPhone($('#telInput2').val());
+	var flag = checkCallPhone($('#telInput2'));
+	if(flag){
+		createOrderByPhone($('#telInput2').val());
+	}
+	
 })
 
 //继续打电话
