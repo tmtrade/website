@@ -283,3 +283,10 @@
     top: 0;
     left: 0;
 }
+#mj_aclik:hover{
+    color: #fff!important;
+}
+#s-nothing{
+    margin-top: 50px;
+    border-top: dashed 1px #c6c6c6;
+}

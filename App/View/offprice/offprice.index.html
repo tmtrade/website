@@ -160,10 +160,10 @@
                 </ul>
             </div>
             <? if (empty($searchList) || $has == false){?>
-                <div id="s-nothing" style="padding-top:50px;text-align:center;"><img src="<?=StaticDir?>images/nogoods.png"></div>
+                <div id="s-nothing" style="padding-top:33px;text-align:center;"><img src="<?=StaticDir?>images/nogoods.png"></div>
             <?}?>
-            <div id="s-nothing" style="padding-top:50px;text-align:center;display:none;"><img src="<?=StaticDir?>images/last.png"></div>
-            <div id="s-uploading" style="padding-top:280px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
+            <div id="s-nothing" style="padding-top:33px;text-align:center;display:none;"><img src="<?=StaticDir?>images/last.png"></div>
+            <div id="s-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
         </div>
         <!--imglist end-->
 </div>
@@ -340,10 +340,12 @@
         if( _hasClass ){
             obj.removeAttr('style');
             $(this).removeClass('curs');
+            $(this).css("color","#4ba5de");
         }else{
             _text = '......';
             obj.css({'display':'none'});
             $(this).addClass('curs');
+            $(this).css("color","#666");
         }
         this.text = _text;
     });
