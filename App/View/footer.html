@@ -166,7 +166,7 @@
 <div class="ms-loginBox" id="ms-loginBox">
     <span class="ms-close mj-close" onclick="boxHide('ms-loginBox')"></span>
     <div class="ms-login">
-        <h6 class="f-clearfix"><a href="javascript:;" class="ms-loginTab" onclick="CHOFN.upTab(this,'ms-loginMain','手机快捷登录点击这里','邮箱快捷登录点这里')">手机快捷登录点击这里</a>
+        <h6 class="f-clearfix"><a href="javascript:;" class="ms-loginTab" onclick="CHOFN.upTab(this,'ms-loginMain','手机快捷登录点击这里','账号登录点这里')">手机快捷登录点击这里</a>
         登录
         </h6>
         <div class="ms-loginMain">
@@ -233,7 +233,7 @@
            __hasCls ? __isNum = 1 : __isNum = 0;
            var __html = __isNum ? txt : txt1;
            var __cls = __isNum ? objCls : objCls + ' cur';
-           obj.text = __html;
+           $(obj).html(__html);
            __clsBox.attr('class',__cls);
        };
        //弹出登录窗
