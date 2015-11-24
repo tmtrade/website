@@ -229,8 +229,8 @@ em{
     z-index: 1;
     top: 25px;
     left: 55px;
-    padding-bottom: 20px;
-    margin-bottom: 50px;
+    padding-bottom: 25px;
+    margin-bottom: 60px;
     /*height: 118px;*/
     border-right: dashed 1px #e4dfbe;
     float: left;
@@ -298,8 +298,8 @@ em{
 .mj-cTr_bRight{
     position: absolute;
     top: 15px;
-    right: 0;
-    width: 265px;
+    right: 5px;
+    /*width: 265px;*/
 }
 .mj-cTr_bRight dt{
     padding-bottom: 10px;
@@ -345,7 +345,7 @@ em{
 }
 .mj-cTr_bRight dd input{
     padding-left: 15px;
-    width: 105px;
+    width: 125px;
     height: 28px;
     background: #fff;
     border: solid 1px #fbc7a3;
