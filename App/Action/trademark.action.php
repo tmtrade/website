@@ -35,6 +35,7 @@ class TrademarkAction extends AppAction
 			$detail  		= $this->load("sale")->getTrademarkDetail($data['id'], $tid);
 			$detail['tid'] 	= $data['tid'];
 			$detail 		= $this->load('search')->getTips($detail);
+			$platform		= $this->load("sale")->getPlatform($data);
 		}else{
 			//原始商标数据里面的数据
 			$info = $this->load('trademark')->trademarks($tid,$class);
@@ -53,6 +54,7 @@ class TrademarkAction extends AppAction
 		if ( empty($info)  && empty($data) ){
 			MessageBox::halt('未找到相关数据3！');
 		}
+		
 		$baystate = 0;
 		//查询订单是否存在
 		if($this->userInfo && $data['id']){
@@ -64,15 +66,20 @@ class TrademarkAction extends AppAction
 		$tj  	= $this->load("sale")->getDetailtj($class,6,$data['tid']);
 		$data  	= empty($data) ? $info : $data;
 		$detail = (empty($data) || empty($detail)) ? $infoDetail : $detail;
-
+		
+		
+		
 		$data['group'] = $this->emptyreplace($data['group']);
+		$this->set("info",$info);
 		$this->set("data",$data);
 		$this->set("detail",$detail);
-		$this->set("info",$info);
+		$this->set("platform",$platform);
 		$this->set("tj",$tj);
 		$this->set("baystate",$baystate);	
 		$this->display();
 	}
+	
+	
 	
 	
 	/* 

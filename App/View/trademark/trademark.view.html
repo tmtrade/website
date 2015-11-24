@@ -39,12 +39,23 @@
 							unset($platformIn[$key]);
 							echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
 						}
+						
 						foreach($platformItems[$key] as  $item){
-							if(($item && $data['class'] == $item)){
-								unset($platformIn[$key]);
-								echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
-								break;
+							if($platform){
+								if($item && in_array($item,$platform)){
+									unset($platformIn[$key]);
+									echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
+									break;
+								}
+							}else{
+								if(($item && $data['class'] == $item)){
+									unset($platformIn[$key]);
+									echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
+									break;
+								}
 							}
+						
+							
 						}	
 					}
 					foreach($platformIn as $key => $val){

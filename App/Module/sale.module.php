@@ -207,6 +207,45 @@ class SaleModule extends AppModule
         return $data;
 	}
 	
+	/**
+	 * 出售详细信息
+	 * @author	Jeany
+	 * @since	2015-07-23
+	 *
+	 * @access	public
+	 * @param	array		$param  用户名称
+	 * @return	array
+	 */
+	public function getPlatform($data)
+    {
+        if ( empty($data['tid']) ) return $data;
+
+        $r['limit'] = 100;
+        $r['eq'] = array(
+            'area'  => 1,
+            'tid'   => $data['tid'],
+        );
+		$r['col']   = array('platform');
+        $r['notIn'] = array('status'=>array(2,3,4,6));
+        $res = $this->import('sale')->find($r);
+        if ( empty($res) ) return $data;
+        $arr = $arrAll = array();
+        foreach ($res as $k => $v) {
+			if($v['platform']){
+				$arr = explode(",",$v['platform']);
+				foreach($arr as $key => $item){
+					if(!in_array($arrAll,$item)){
+						
+						$arrAll[] = $item;
+					}
+					
+				}
+			}
+        }
+		$arrAll=array_unique($arrAll);
+        return $arrAll;
+    }
+	
 	
 	 /**
      * 通过条件查询商标信息--首页使用
@@ -227,7 +266,7 @@ class SaleModule extends AppModule
 		$r['raw']  = "status not in(2,3,4,6) ";
 		$r['raw']  .=  $tid ? " and tid <> $tid " : "";
         $r['limit']         = $num;
-		$r['col']           = array('name,class,id,source,number,tid');
+		$r['col']           = array('name,class,id,source,number,tid,platform');
         $r['order']         = array('type' => 'asc','date' => 'desc');
 		$r['group']       = array('tid'=>'asc');
         $data = $this->import('sale')->findAll($r);
