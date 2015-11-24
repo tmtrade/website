@@ -35,9 +35,10 @@ class SearchModule extends AppModule
         if ( count($res['rows']) >= $limit ){
             return $res['rows'];
         }
+        $notInIds   = arrayColumn($res['rows'], 'tid');
         $need       = $limit - count($res['rows']);
         $started    = ($start - $res['total']) < 0 ? 0 : ($start - $res['total']);
-        $tmList     = $this->getTmList($params, $started, $need);
+        $tmList     = $this->getTmList($params, $started, $need, $notInIds);
 
         $list       = array_merge($res['rows'], $tmList);
         return $list;
@@ -120,7 +121,7 @@ class SearchModule extends AppModule
      *
      * @return  array   $list       群组号对应群组中文名称的数组
      */
-    public function getTmList($params, $start, $limit)
+    public function getTmList($params, $start, $limit, $notInIds)
     {
         if ( !empty($params['keyword']) ){
             $class = empty($params['class']) ? 0 : $params['class'];
@@ -142,6 +143,7 @@ class SearchModule extends AppModule
             $tids = arrayColumn($res2, 'tid');
             //最终所有tid
             $ids = array_unique(array_merge($tids, $rows));
+            $ids = array_diff($ids, $notInIds);
             if ( !empty($ids) ) $r['in'] = array('tid'=>$ids);
         }
 
