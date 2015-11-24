@@ -121,16 +121,27 @@
 
 /* ²à±ßÀ¸ */
 /* ms-sidebar */
-.ms-sidebar{
-    width: 60px;
+.mj-sidebar{
     position: fixed;
-    right: 20px;
     top: 50%;
     margin-top: -211px;
-    background: #ffffff;
-    z-index: 600;
+    z-index: 20;
+    right: 0;
 }
-.ms-sidebar span{
+.mj-stclose{
+    padding-bottom: 7px;
+}
+div.mj-stclose label{
+    margin-left: 27px;
+    font-size: 12px;
+    color: #fc7d28;
+}
+.mj-sidebarCon{
+    width: 60px;
+    margin-right: 20px;
+    background: #ffffff;
+}
+.mj-sidebar span{
     position: relative;
     display: block;
     padding: 4px 0;
@@ -139,8 +150,8 @@
     line-height: 26px;
     color: #ffffff;
 }
-.ms-sidebar span.jxwz{ background:none; color:#888; font-size:11px; text-align:center; line-height:20px; top:-10px}
-.ms-sidebar span b{
+.mj-sidebar span.jxwz{ background:none; color:#888; font-size:11px; text-align:center; line-height:20px; top:-10px}
+.mj-sidebar span b{
     display: block;
     width: 0;
     height: 0;
@@ -152,7 +163,7 @@
     margin-left: -5px;
     bottom: -6px;
 }
-.ms-sidebar a{
+.mj-sidebar a{
     display: block;
     padding: 8px 0;
     line-height: 20px;
@@ -162,7 +173,7 @@
     border: 1px solid #f2f2f2;
     margin-top: -1px;
 }
-.ms-sidebar a:hover{
+.mj-sidebar a:hover{
     color: #fc7d28;
 }
 .ms-call{
@@ -174,7 +185,6 @@
 .ms-sidebarTel{
     width: 120px;
     padding: 15px;
-    padding-bottom:5px;
     border: 1px solid #eeeeee;
     position: absolute;
     top: 0;
@@ -213,80 +223,15 @@
 .ms-sidebarTel a:hover{
     color: #ffffff;
 }
-.uj_icon25{
+.mj-siright{
+    display: none;
+    padding: 12px 5px 0;
+    width: 25px;
+    height: 110px;
+    background: #fc7f2b;
     text-align: center;
-    display: inline-block;
 }
-.uj_icon25{
-    width: 26px;
-    height: 24px;
-    background-image: url("slice/mj-icon25.png");
-}
-.mj-topIcon:hover .uj_icon25{
-    background-image: url("slice/mj-icon26.png");
-}
-
-/*footer mj-footerTip*/
-.mj-footerTip{
-    height: 52px;
-    background: #626262;
-    line-height: 52px;
-}
-.mj-bgimg{
-    padding: 0 195px 0 250px;
-    position: relative;
-}
-.mj-bgimg img{
-    position: absolute;
-    bottom: 2px;
-}
-.mj-footerTip a{
-    margin:0 40px 0 130px;
+.mj-siright em{
     font-size: 14px;
     color: #fff;
-    border-bottom: solid 2px #c5c5c5;
-}
-.mj-footerTip a:hover{
-    color: #fc7d28;
-    border-bottom: solid 2px #fc7d28;
-}
-.mj-footerTip span strong{
-    font-size: 17px;
-    font-weight: normal;
-}
-.mj-footerTip label{
-    font-size: 12px;
-    color: #959595;
-}
-.mj-mainbg{
-    padding-top: 50px;
-    background: #f5f5f5;
-}
-
-.mj-form-wrappers {
-    position: relative;
-    height: 38px;
-    background: #fff;
-    border-radius: 2px;
-    padding: 0 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-}
-.mj-inpuVs {
-    line-height: 38px;
-    color: #999;
-    padding-left: 5px;
-    font-size: 12px;
-}
-.mj-form-wrappers .ms-input{
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-#mj_aclik:hover{
-    color: #fff!important;
-}
-#s-nothing{
-    margin-top: 50px;
-    border-top: dashed 1px #c6c6c6;
 }
