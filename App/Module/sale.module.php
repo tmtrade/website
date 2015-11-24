@@ -238,7 +238,6 @@ class SaleModule extends AppModule
 						
 						$arrAll[] = $item;
 					}
-					
 				}
 			}
         }
