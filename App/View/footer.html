@@ -128,7 +128,7 @@
 
 <div class="mj-sidebar">
     <div class="mj-stclose">
-        <label>X关闭</label>
+        <label id="mj-stclose">X关闭</label>
     </div>
     <div class="mj-sidebarCon">
         <span><i class="us-icon us-icon14"></i><br>免费咨询<b></b></span>
@@ -333,6 +333,17 @@
             }
         });
     });
+
+    $("#mj-stclose").click(function(){
+        $(".mj-stclose").hide(300);
+        $(".mj-sidebarCon").hide(300);
+        $(".mj-siright").show(300);
+    });
+    $(".mj-siright").click(function(){
+        $(".mj-stclose").show(300);
+        $(".mj-sidebarCon").show(300);
+        $(".mj-siright").hide(300);
+    });
     $(document).ready(function(){
         var doc=document,inputs=doc.getElementsByTagName('input'),supportPlaceholder='placeholder'in doc.createElement('input'),placeholder=function(input){var text=input.getAttribute('placeholder'),defaultValue=input.defaultValue;
             if(defaultValue==''){
@@ -342,7 +353,8 @@
             input.onblur=function(){if(input.value===''){this.value=text}}};
         if(!supportPlaceholder){
             for(var i=0,len=inputs.length;i<len;i++){var input=inputs[i],text=input.getAttribute('placeholder');
-                if(input.type==='text'&&text){placeholder(input)}}}});
+                if(input.type==='text'&&text){placeholder(input)}}}
+    });
 </script>
 </body>
 </html>

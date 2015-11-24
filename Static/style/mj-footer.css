@@ -135,6 +135,7 @@ div.mj-stclose label{
     margin-left: 27px;
     font-size: 12px;
     color: #fc7d28;
+    cursor: pointer;
 }
 .mj-sidebarCon{
     width: 60px;
@@ -230,10 +231,12 @@ div.mj-stclose label{
     height: 110px;
     background: #fc7f2b;
     text-align: center;
+    cursor: pointer;
 }
 .mj-siright em{
     font-size: 14px;
     color: #fff;
+    font-style: normal;
 }
 
 /*footer mj-footerTip*/
