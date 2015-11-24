@@ -16,21 +16,21 @@
             <li>
                 <div class="gla_inbox">
                     <a href=""><img src="<?=StaticDir?>style/img/mj-banner4.jpg" /></a>
-                    <div class="mj-tjtip">
+                    <div class="mj-tjtip jShow">
                         <p class="mj-bimgbg"><strong>30</strong>% 折扣</p>
                         <p class="f-clearfix mj-bgimt"><span><em>50万</em><br/>现价</span><b>2.5</b>万</p>
                     </div>
                     <p class="mj-ad">
                         这里是广告语，这里就是广告口号什么的，只有一排，不会有第二排列...
                     </p>
-                    <label class="mj-bgimgbg2"></label>
+                    <label class="mj-bgimgbg2 jShow"></label>
                 </div>
             </li>
             <li>
                 <div class="gla_inbox">
                     <a href=""><img src="<?=StaticDir?>style/img/mj-banner5.jpg" /></a>
-                    <!--<span class="mj-specialTip mj-sl">昨日特价</span>-->
-                    <div class="mj-tjtip">
+                    <!--<span class="mj-specialTip mj-sl jShow" style="visibility: hidden;">昨日特价</span>-->
+                    <div class="mj-tjtip jShow" style="visibility: hidden;">
                         <p class="mj-bimgbg"><strong>30</strong>% 折扣</p>
                         <p class="f-clearfix mj-bgimt"><span><em>50万</em><br/>现价</span><b>2.5</b>万</p>
                     </div>
@@ -42,8 +42,8 @@
             <li>
                 <div class="gla_inbox">
                     <a href=""><img src="<?=StaticDir?>style/img/mj-banner6.jpg" /></a>
-                    <!--<span class="mj-specialTip mj-sr">眀日特价</span>-->
-                    <div class="mj-tjtip">
+                   <!-- <span class="mj-specialTip mj-sr jShow" style="visibility: hidden;">眀日特价</span>-->
+                    <div class="mj-tjtip jShow" style="visibility: hidden;">
                         <p class="mj-bimgbg"><strong>30</strong>% 折扣</p>
                         <p class="f-clearfix mj-bgimt"><span><em>50万</em><br/>现价</span><b>2.5</b>万</p>
                     </div>
@@ -303,9 +303,10 @@
             _nav.removeClass("mj-navT")
         }
     });
-    
+
     //banner切换
-    $('#gla_box>ul').roundabout({
+    var _prveDom = null;
+    var c = $('#gla_box>ul').roundabout({
         minOpacity:0.5,
         btnNext: ".next",
         duration: 1000,
@@ -316,7 +317,17 @@
         autoplayPauseOnHover: true,
         tilt:0,
         bearing:0,
-        shape: 'figure7'
+        shape: 'figure7',
+        autoplayCallback: function(obj){
+            var _cur = this.find('.roundabout-in-focus');
+            var _li = this.find('li');
+            var _index = _cur.index();
+            var _css = { 'visibility' : 'visible' };
+            var _css1 = { 'visibility' : 'hidden' };
+
+            //_cur.find('.jShow').css(_css);
+            _li.find('.jShow').css(_css1).end().eq(_index).find('.jShow').css(_css);
+        }
     });
     var foor=$(".mj-footer").height();
     $(window).scroll(function () {

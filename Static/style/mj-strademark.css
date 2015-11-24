@@ -343,7 +343,7 @@
 }
 .mj-specialTip{
     position: absolute;
-    top: 220px;
+    top: 20px;
     font-size: 12px;
     color: #888;
     background: #fff;
@@ -354,7 +354,7 @@
     left: 15px;
 }
 .mj-sr {
-    right: 15px;
+    left: 15px;
 }
 /*ÂÖ²¥Í¼ÑùÊ½ end*/
 
