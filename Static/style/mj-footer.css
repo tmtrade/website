@@ -253,6 +253,18 @@ div.mj-stclose label{
     position: absolute;
     bottom: 2px;
 }
+.mj-bgimg label{
+    position: absolute;
+    margin-top: 10px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url(img/mj-labelc.png) no-repeat;
+    cursor: pointer;
+}
+.mj-bgimg label:hover{
+    background: url(img/mj-labelch.png) no-repeat;
+}
 .mj-footerTip a{
     margin:0 40px 0 130px;
     font-size: 14px;
@@ -296,4 +308,11 @@ div.mj-stclose label{
     top: 0;
     left: 0;
     z-index: 55;
+}
+.mj-maclose{
+    display: none;
+    width: 56px;
+    height: 52px;
+    background: url(img/mj-maclose.png) no-repeat;
+    cursor: pointer;
 }
