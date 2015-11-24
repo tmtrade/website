@@ -32,9 +32,9 @@
                     <a href="javascript:getGroup(0);" <?if ($g == 0){echo 'class="current"';}?>>全部  </a>
                 <? foreach ($groupList as $ky => $val) { ?>
                     <a href="javascript:getGroup('<?=$ky?>');" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>">
-                    <?=mb_substr($val, 0, 7, 'utf8')?></a>
+                    <?=mb_substr($val, 0, 6, 'utf8')?></a>
                 <? } ?>
-                <? if ( count($groupList) > 7 ){?>
+                <? if ( count($groupList) > 10 ){?>
                     <a href="javascript:;" class="curs" id="mg_aclik">......</a>
                 <?}?>
                 </div>
@@ -202,22 +202,6 @@
         });
     }
 
-    if ( _class >= 7 ){
-        var _first = $("#j-dltype").find('a').first();
-        $("#j-dltype").prepend($("#j-dltype > .current"));
-        $("#j-dltype").prepend(_first);
-    }
-    
-    $("#g-dltype").find('a').each(function (k,v){
-        if ( $(this).hasClass('current') ){
-            if ( k >= 7 && $("#g-dltype").find('a').length > 8){
-                var _first = $("#g-dltype").find('a').first();
-                $("#g-dltype").prepend($("#g-dltype > .current"));
-                $("#g-dltype").prepend(_first);
-            }
-        }
-    });
-
     /*select*/
     $('.son_ul').hide(); //初始ul隐藏
     $('.select_boxs span').hover(function(){ //鼠标移动函数
@@ -266,9 +250,24 @@
         }
     });
 
+    if ( _class >= 10 ){
+        var _first = $("#j-dltype").find('a').first();
+        $("#j-dltype").prepend($("#j-dltype > .current"));
+        $("#j-dltype").prepend(_first);
+    }
+    
+    $("#g-dltype").find('a').each(function (k,v){
+        if ( $(this).hasClass('current') ){
+            if ( k >= 11 && $("#g-dltype").find('a').length > 8){
+                var _first = $("#g-dltype").find('a').first();
+                $("#g-dltype").prepend($("#g-dltype > .current"));
+                $("#g-dltype").prepend(_first);
+            }
+        }
+    });
 
 //(function (){
-    var _ddNum = 7;
+    var _ddNum = 10;
     var _jDltype = $("#j-dltype");
     var _jDltypeNum = _jDltype.find('a');
     var obj = _jDltypeNum.slice(_ddNum, _jDltypeNum.length - 1);
