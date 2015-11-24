@@ -31,6 +31,7 @@ class TrademarkAction extends AppAction
 		//出售列表里面有的数据
 		$data   = $detail = array();
         $data 	= $this->load("sale")->getDetail($tid);
+
 		if ( $data ){
 			$detail  		= $this->load("sale")->getTrademarkDetail($data['id'], $tid);
 			$detail['tid'] 	= $data['tid'];
@@ -66,8 +67,6 @@ class TrademarkAction extends AppAction
 		$tj  	= $this->load("sale")->getDetailtj($class,6,$data['tid']);
 		$data  	= empty($data) ? $info : $data;
 		$detail = (empty($data) || empty($detail)) ? $infoDetail : $detail;
-		
-		
 		
 		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("info",$info);
