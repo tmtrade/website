@@ -47,16 +47,13 @@
         <ul class="mj-banner-img">
             <li class="mj-banner-itme" style="background:url(<?=StaticDir?>style/img/banner1.jpg) #CCE1F3 center 0 no-repeat;">
             </li>
-            <li class="mj-banner-itme" style="background:url(<?=StaticDir?>style/img/banner1.jpg) #CCE1F3 center 0 no-repeat;">
-            </li>
-            <li class="mj-banner-itme" style="background:url(<?=StaticDir?>style/img/banner1.jpg) #CCE1F3 center 0 no-repeat;">
+            <li class="mj-banner-itme" style="background:url(<?=StaticDir?>style/img/banner2.jpg) #CCE1F3 center 0 no-repeat;">
             </li>
         </ul>
-        <!--<ul class="hd f-clearfix">
+        <ul class="hd f-clearfix">
             <li></li>
             <li></li>
-            <li></li>
-       </ul>-->
+       </ul>
     </div>
 </div>
 
@@ -630,7 +627,7 @@
         });
 
         //banner切换
-       /* jQuery(".mj-banner").slide({ mainCell:".mj-banner-img",effect:"fold", autoPlay:true, delayTime:600, trigger:"click"});*/
+        jQuery(".mj-banner").slide({ mainCell:".mj-banner-img",effect:"fold", autoPlay:true, delayTime:600, trigger:"click"});
         //特价商标切换
         $(".mj-specialT>a").hide();
         $(".mj-specialT").hover(function(){
