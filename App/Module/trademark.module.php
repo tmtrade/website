@@ -49,7 +49,7 @@ class TrademarkModule extends AppModule
 		$r['eq']['id'] = $number;
 		$data = $this->find($r);
 		if($data['auto']){
-			$status	 	= $this->getSecond($item['auto']);
+			$status = $this->getSecond($data['auto']);
 			$data['status'] = $status[0];
 		}
 		return $data;
@@ -175,6 +175,7 @@ class TrademarkModule extends AppModule
 
 		$r['eq'] 	= array('tid'=>$tid);
 		$second 	= $this->import('second')->find($r);
+
 		if ( empty($second) ) return array();
 
 		$list 		= array();
