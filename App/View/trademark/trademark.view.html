@@ -246,8 +246,7 @@
                 </p>
             </div>
         </div>
-		
-		<?php if(!empty($detail['intro']) && !empty($detail['introTwo'])){?>
+		<?php if(!empty($detail['intro']) || !empty($detail['introTwo'])){?>
         <div class="mj-content_bottom-swtich f-clearfix">
             <div class="mj-content_bottom-swtich_tit">
                 <span class="cur">商标介绍</span>
@@ -256,8 +255,13 @@
             <div class="mj-content_bottom-swtich_content">
 				
                 <div class="edit">
-                    <?=$detail['intro']?>
-					<?=$detail['introTwo']?>
+				<?php
+				
+					$intro = str_replace("/Static/editor/attached/",TRADE_URL."/Static/editor/attached/",$detail['intro']);
+					$introTwo = str_replace("/Static/editor/attached/",TRADE_URL."/Static/editor/attached/",$detail['introTwo']);
+					echo $intro;
+					echo $introTwo;
+				?>
                 </div>
                 <div class="edit" style="display: none;">
                     2
