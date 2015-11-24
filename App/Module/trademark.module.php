@@ -77,8 +77,9 @@ class TrademarkModule extends AppModule
 		$proposer			= $this->load('proposer')->find($w);
 		$data['newId']    	= $proposer['newId'];
 		$data['proposer']	= $proposer['name'];
-		$status				= implode(',', $this->getSecond($item['auto']));//debug($status);
-		$data['status']		= $status;
+		//$status				= implode(',', $this->getSecond($item['auto']));//debug($status);
+		$status				= $this->getSecond($item['auto']);//debug($status);
+		$data['status']		= $status[0];
 		$data['goods']		= $item['goods'];
 		return $data;
 	}
