@@ -578,3 +578,6 @@ table {
 .ms-loginMain.cur .ms-phone{
     display: block;
 }
+.mj-selection-list .current, .mj-selection-list a:hover{
+    color: #fff!important;
+}
