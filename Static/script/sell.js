@@ -32,7 +32,6 @@ $(function(){
 				data : {number:_val},
 				method: 'post'
 			}).done(function(data){
-
 				var obj = eval('(' + data + ')');	
 				if(obj == ''){
 					tip.html('<i class="us-icon uj_icon44"></i>商标信息不存在,请重新填写');
@@ -46,7 +45,6 @@ $(function(){
 					tip.show();
 					table.hide();
 					_this.val('');
-					alert(2);
 					return false;
 				}
 				if(obj['status'] == '-1'){
@@ -54,13 +52,11 @@ $(function(){
 					tip.show();
 					table.hide();
 					_this.val('');
-					alert(3);
 					return false;
 				}
-				return false;
 				table.removeAttr('style');
 				tip.hide();
-				$.each(obj,function(item,value){		
+				$.each(obj,function(item,value){	
 					if(item == 'imgurl'){
 						table.find('.imgurl').html('<img src="'+value+'" style="width:120px;height:100px;border:0;" />');
 					}else{
