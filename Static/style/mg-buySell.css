@@ -214,8 +214,8 @@ textarea::-webkit-input-placeholder {
 }
 
 .g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2 input{
-    width: 162px;
-    padding-left: 18px;
+    width: 132px;
+    padding: 0 30px 0 18px;
 }
 
 .g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2 i{
