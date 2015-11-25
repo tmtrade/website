@@ -57,7 +57,6 @@ class TrademarkAction extends AppAction
 		}
 		
 		$baystate = 0;
-		var_dump($this->userInfo);
 		//查询订单是否存在
 		if($this->userInfo && $data['id']){
 			$user 		= $this->userInfo;
