@@ -859,6 +859,7 @@
     font-size: 22px;
     color: #444;
     font-weight: normal;
+    padding-bottom: 10px\9;
 }
 .mj-bconRight a{
     display: inline-block;
@@ -893,6 +894,8 @@
     border: solid 1px #ccc;
     border-radius: 3px;
     outline: none;
+    vertical-align: middle\9;
+    margin-top: 0\9;
 }
 .mj-bconT{
     display: inline-block;
@@ -904,6 +907,7 @@
     line-height: 38px;
     border: solid 1px #c3e1f9;
     border-radius: 1px;
+    vertical-align: middle\9;
 }
 .mj-bclik{
     background: #fff;
