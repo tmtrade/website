@@ -253,7 +253,7 @@
     margin-right: 10px;
     width: 240px;
     height: 150px;
-    line-height: 150px;
+    /*line-height: 150px;*/
     text-align: center;
    /* background: #f4f4f4;*/
 }
