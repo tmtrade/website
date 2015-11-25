@@ -57,10 +57,11 @@ class TrademarkAction extends AppAction
 		}
 		
 		$baystate = 0;
+		var_dump($this->userInfo);
 		//查询订单是否存在
 		if($this->userInfo && $data['id']){
 			$user 		= $this->userInfo;
-			$buyData 	= $this->load("buy")->getDataBySaleId($data['id'],$user['userId']);
+			$buyData 	= $this->load("buy")->getDataBySale($data['name'],$data['class'],$user['userId']);
 			$baystate 	= $buyData ? 1 : 0;
 		}
 		//读取推荐商标

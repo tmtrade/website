@@ -44,10 +44,11 @@ class BuyModule extends AppModule
      * @param	int 	$saleId	    出售编号
      * @return	array
      */	 
-    public function getDataBySaleId( $saleId ,$userId)
+    public function getDataBySale( $name ,$class ,$userId)
     {
 		$r['limit']         = 1;
-		$r['eq']['saleId']  = $saleId;
+		$r['eq']['name']  = $name;
+		$r['eq']['class'] = $class;
 		$r['eq']['loginUserId']  = $userId;
         $data = $this->import("buy")->find($r);
         return $data;
