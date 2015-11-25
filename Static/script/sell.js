@@ -137,11 +137,13 @@ $(function(){
             }
         });
     });
-	
-	$('.input-price').bind("blur",function(){
+
+	jBgnav.on('blur','.input-price', function(){
 		var thisval = $(this).val();
 		var preg = /^[1-9][\d]{0,7}$/;
-		var tip = $(this).parent().parent().next();
+		var _this = $(this);
+		var _ie = $.browser.msie;
+		var tip = _ie ? _this.parent().parent().parent().next() : _this.parent().parent().next();
 		if(!preg.test(thisval)){
 			$(this).val('');
 			tip.html('<i class="us-icon uj_icon44"></i>商标出售底价不正确');
@@ -154,7 +156,9 @@ $(function(){
 	$('.input-phone').bind("blur",function(){
 		var thisval = $(this).val();
 		var preg = /^1[3|4|5|7|8][0-9]\d{8}$/;
-		var tip = $(this).parent().parent().next();
+		var _this = $(this);
+		var _ie = $.browser.msie;
+		var tip = _ie ? _this.parent().parent().parent().next() : _this.parent().parent().next();
 		if(!preg.test(thisval)){
 			$(this).val('');
 			tip.html("<i class='us-icon uj_icon44'></i>请您输入正确的联系电话");
@@ -174,7 +178,9 @@ $(function(){
 //验证姓名
 function contact(obj){
 	var pregName = /^[\u0391-\uFFE5A-Za-z]+$/;
-	var tip = obj.parent().parent().next();
+	var _this = $(obj);
+	var _ie = $.browser.msie;
+	var tip = _ie ? _this.parent().parent().parent().next() : _this.parent().parent().next();
 	var result = true;
 	if(obj.val()){
 		if(!pregName.test(obj.val())){

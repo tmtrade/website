@@ -247,10 +247,13 @@ div.mj-stclose label{
     height: 52px;
     background: #626262;
     line-height: 52px;
+    text-align: center;
 }
 .mj-bgimg{
-    padding: 0 195px 0 250px;
     position: relative;
+    display: inline-block;
+    *display: inline;
+    z-index: 1;
 }
 .mj-bgimg img{
     position: absolute;
@@ -258,6 +261,8 @@ div.mj-stclose label{
 }
 .mj-bgimg label{
     position: absolute;
+    top: 0;
+    right: 0;
     margin-top: 10px;
     display: inline-block;
     width: 30px;

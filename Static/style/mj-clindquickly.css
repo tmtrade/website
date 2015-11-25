@@ -86,6 +86,9 @@
 .mj-imglT span {
     display: table-cell;
     vertical-align: middle;
+    display: inline-block\9;
+    width: 184px\9;
+    line-height: 95px\9;
 }
 .mj-imglT a img{
     max-width: 150px;
@@ -209,10 +212,5 @@
     .mj-content{
         width: 1180px;
         margin: 0 auto;
-    }
-    .mj-mainbg{
-        width: 1180px;
-        margin: 0 auto;
-        padding: 0;
     }
 }

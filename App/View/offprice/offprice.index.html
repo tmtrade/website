@@ -1,6 +1,6 @@
 <? require(ViewDir.'/header.html'); ?>
 
-<link rel="stylesheet" href="<?=StaticDir?>style/mj-strademark.css"/>
+
 <script type="text/javascript" src="<?=StaticDir?>script/objurl.js"></script>
 <script type="text/javascript" src="<?=StaticDir?>script/jquery.corner.js"></script>
 <script type="text/javascript" src="<?=StaticDir?>script/jquery.roundabout.js"></script>
@@ -169,15 +169,12 @@
 
 <!--content end-->
 <div class="mj-mainbg">
-    <div class="mj-maclose">
-    </div>
+    <div class="mj-maclose"></div>
     <div class="mj-footerTip">
-        <div class="w1180">
-            <div class="mj-bgimg">
-                <img src="<?=StaticDir?>style/img/mj-img7.png" alt=""/>
-                <a href=""><span>后面还有 <strong> 3000 </strong>商标可购买，实在太多 --  提交购买需求我们帮你匹配？</span></a>
-                <label id="mj-label"></label>
-            </div>
+        <div class="mj-bgimg">
+            <img src="<?=StaticDir?>style/img/mj-img7.png" alt=""/>
+            <a href=""><span>后面还有 <strong> 3000 </strong>商标可购买，实在太多 --  提交购买需求我们帮你匹配？</span></a>
+            <label id="mj-label"></label>
         </div>
     </div>
 </div>
@@ -300,7 +297,7 @@
     //悬浮层
      _nav = $('.mj_goods_check');
     $(window).scroll(function(){
-        console.log($(window).scrollTop());
+        //console.log($(window).scrollTop());
         if($(window).scrollTop()>=450){
             _nav.addClass("mj-navT")
         }else if($(window).scrollTop()<=450){

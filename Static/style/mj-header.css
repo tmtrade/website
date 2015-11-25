@@ -394,7 +394,7 @@ table {
     min-width: 200px;
     height: 480px;
     background: #fff;
-    box-shadow: 3px 3px 2px #e5e6e6;
+    box-shadow: 1px 1px 2px #e5e6e6;
 }
 .mj-ddItems ul{
     width: 220px;
@@ -580,4 +580,12 @@ table {
 }
 .mj-selection-list .current, .mj-selection-list a:hover{
     color: #fff!important;
+}
+
+/* media */
+@media (min-width: 1px) and (max-width: 1180px) {
+    .mj-mNav{
+        width: 1180px;
+        margin: 0 auto;
+    }
 }
