@@ -71,6 +71,7 @@ class TrademarkAction extends AppAction
 		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("info",$info);
 		$this->set("data",$data);
+		$this->set("userMobile",$this->userMobile);
 		$this->set("detail",$detail);
 		$this->set("platform",$platform);
 		$this->set("tj",$tj);
