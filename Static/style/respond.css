@@ -1,0 +1,15 @@
+/* media */
+
+
+@media only screen and (min-width: 1px) and (max-width: 1180px){
+    .mj-content{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    #gla{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+}
