@@ -111,6 +111,7 @@ class TrademarkAction extends AppAction
 	public function addBuy()
 	{
 		$saleid = $this->input('saleid','int');
+		$phone  = $this->input('phone','string');
 		
 		if($this->userInfo){
 			//查询商标是否存在
@@ -129,7 +130,7 @@ class TrademarkAction extends AppAction
 				'name'				=> $sale['name'],
 				'class'				=> $sale['class'],
 				'contact'			=> $this->nickname,
-				'phone'				=> $this->mobile,
+				'phone'				=> $this->userMobile,
 				'buyType'			=> 1,
 				'need'				=> "商标号:".$sale['number'].",类别:".$sale['class'],
 			);
@@ -177,7 +178,7 @@ class TrademarkAction extends AppAction
 			$isExist['loginUserId'] = $this->userId;
 			$isExist['contact']		= $this->nickname;
 		}else{
-			$isExist['loginUserId'] = '';
+			$isExist['loginUserId'] = 0;
 			$isExist['contact']		= '';
 		}
 		$buyData = $this->load("buy")->isExist($isExist);
@@ -223,7 +224,7 @@ class TrademarkAction extends AppAction
 			$isExist['loginUserId'] = $this->userId;
 			$isExist['contact']		= $this->nickname;
 		}else{
-			$isExist['loginUserId'] = '';
+			$isExist['loginUserId'] = 0;
 			$isExist['contact']		= '';
 		}
 		//查询订单是否存在
