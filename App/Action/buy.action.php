@@ -92,32 +92,31 @@ class BuyAction extends AppAction
         $content    = $this->input('content', 'string', '');
         $name       = $this->input('name', 'string', '');
 
+        $userinfo = $this->load('passport')->get($mobile,2);
         $role = array(
             'eq' => array(
                 'mobile'    => $mobile,
                 'need'      => $content,
+                'userId'    => empty($userinfo)?'0':$userinfo['id'],
                 ),
             );
         $temp = $this->load('buy')->findTemp($role);
         if ( $temp ){
             $this->returnAjax(array('code'=>1));//未添加
         }
-        $userinfo = $this->load('passport')->get($mobile);
-        if ( empty($userinfo) ){//没有账号
-            $buy = array(
-                'mobile'    => $mobile,
-                'need'      => $content,
-                'name'      => $name,
-                'ip'        => getClientIp(),
-                'date'      => time(),
-                );
-            $res = $this->load('buy')->addTempBuy($buy);
-            if ( $res ) {
-                $this->returnAjax(array('code'=>1));//成功
-            }
-            $this->returnAjax(array('code'=>0)); //未成功
+        $buy = array(
+            'mobile'    => $mobile,
+            'need'      => $content,
+            'name'      => $name,
+            'userId'    => empty($userinfo)?'0':$userinfo['id'],
+            'ip'        => getClientIp(),
+            'date'      => time(),
+            );
+        $res = $this->load('buy')->addTempBuy($buy);
+        if ( $res ) {
+            $this->returnAjax(array('code'=>1));//成功
         }
-        $this->returnAjax(array('code'=>2)); //不用添加
+        $this->returnAjax(array('code'=>0)); //未成功
     }
 
     /**
