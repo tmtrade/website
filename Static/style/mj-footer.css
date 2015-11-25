@@ -333,3 +333,6 @@ div.mj-stclose label{
     text-align: center;
     display: inline-block;
 }
+.ms-errorTips {
+     margin-bottom: 10px;
+}
