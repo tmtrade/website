@@ -359,6 +359,7 @@
 /*ÂÖ²¥Í¼ÑùÊ½ end*/
 
 .progress_bar{
+    display: none;
     position: absolute;
 }
 #loading{
