@@ -457,3 +457,12 @@ textarea::-webkit-input-placeholder {
     border-radius: 5px;
 }
 
+
+/* media */
+@media (min-width: 1px) and (max-width: 1180px) {
+    .g-mail{
+        width: 1180px;
+        margin: 0 auto;
+    }
+   
+}
