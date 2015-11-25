@@ -16,11 +16,13 @@ $(function(){
 	jBgnav.on('blur', '.input-number', function(){
 		var _val = '';
 		var _this = $(this);
-		var tip = _this.parent().parent().next();
+		var _ie = $.browser.msie;
+		var tip = _ie ? _this.parent().parent().parent().next() : _this.parent().parent().next();
 		if(_this.val() == ''){
-			tip.show();
+			tip.css({'display':'block'});
 			return false;
 		}
+
 		var table = _this.parent().parent().next().next();
 		clearTimeout(tiemOut);
 		tiemOut = setTimeout(function(){
@@ -30,6 +32,7 @@ $(function(){
 				data : {number:_val},
 				method: 'post'
 			}).done(function(data){
+
 				var obj = eval('(' + data + ')');	
 				if(obj == ''){
 					tip.html('<i class="us-icon uj_icon44"></i>商标信息不存在,请重新填写');
@@ -43,6 +46,7 @@ $(function(){
 					tip.show();
 					table.hide();
 					_this.val('');
+					alert(2);
 					return false;
 				}
 				if(obj['status'] == '-1'){
@@ -50,8 +54,10 @@ $(function(){
 					tip.show();
 					table.hide();
 					_this.val('');
+					alert(3);
 					return false;
 				}
+				return false;
 				table.removeAttr('style');
 				tip.hide();
 				$.each(obj,function(item,value){		
@@ -62,6 +68,7 @@ $(function(){
 					}
 				})
 			}).error(function(){
+
 			});
 		}, 100);
 	})
@@ -138,7 +145,7 @@ $(function(){
 		if(!preg.test(thisval)){
 			$(this).val('');
 			tip.html('<i class="us-icon uj_icon44"></i>商标出售底价不正确');
-			tip.show();	
+			tip.show();
 		}else{
 			tip.hide();	
 		}

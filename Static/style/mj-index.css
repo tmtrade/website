@@ -131,6 +131,7 @@
     position: absolute;
     left: 10px;
     top: 0;
+    background: url("");
 }
 .mj-form-wrapper input[type="text"] {
     height: 40px;
