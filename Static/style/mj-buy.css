@@ -198,7 +198,7 @@ div.mj-fwH input[type="text"]{
     background: #EB6409;
 }
 .mj-from-txt {
-    margin: 10px 0 0 0;
+    margin: 0 0 10px  0;
     line-height: 25px;
     text-align: center;
     color: #999;
