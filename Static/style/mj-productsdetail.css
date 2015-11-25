@@ -19,13 +19,13 @@ em{
 .mj-cTl_img{
     position: relative;
     width: 380px;
-    height: 229px;
+    height: 260px;
     background: #f5f5f5;
     text-align: center;
 }
 .mj-cTl_img span{
     text-align: center;
-    line-height: 229px;
+    line-height: 260px;
 }
 .mj-cTl_img span img{
     max-width: 380px;
