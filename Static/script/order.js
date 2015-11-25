@@ -59,11 +59,11 @@ $(".callphone").on("click",function(){
 //检查订单是否存在
 function getOrderState(phone){
 	var result = 1; //
-	if(_saleid){
+	if(_tid){
 		$.ajax({
             type: "post",
             url: "/trademark/getOrderState",
-            data: {saleid:_saleid,phone:phone},
+            data: {tid:_tid,phone:phone},
 			async:false,
             dataType: "json",
             success: function(data){
@@ -76,17 +76,18 @@ function getOrderState(phone){
 
 //生成我要买订单
 function createOrderByPhone(phone){
-	if(_saleid > 0){
+	if(_tid > 0){
 		var result = false ;
 		$.ajax({
             type: "post",
             url: "/trademark/addBuyByPhone",
-            data: {saleid:_saleid,phone:phone},
+            data: {tid:_tid,phone:phone},
             dataType: "json",
 			async:false,
             success: function(data){
 				if (data > 0){
 					result = true;
+					sellok();
 					lxb.call(document.getElementById("telInput2"));
 					//$('#telInput2').val('');               
                 }else if (data.code == -2){
