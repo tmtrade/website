@@ -375,3 +375,16 @@
     text-align:center;
     line-height:13px;
 }
+/* media */
+@media (min-width: 1px) and (max-width: 1180px) {
+    .mj-content{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .mj-mainbg{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+}
