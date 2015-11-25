@@ -628,3 +628,27 @@ em{
     font-size: 12px;
     color: #888;
 }
+
+
+.mj_mainText{
+    padding: 40px 0 100px;
+}
+.mj_mainText h3{
+    padding: 0 0 0 47px;
+    font-size: 22px;
+    color: #555;
+    font-weight: normal;
+}
+.mj_mainText ul{
+    padding-left: 35px;
+    margin: 24px 34px 0 12px;
+    border-bottom: dashed 1px #cfcfcf;
+}
+.mj_mainText ul:last-child{
+    border-bottom: none;
+}
+.mj_mainText li{
+    padding-bottom: 22px;
+    font-size: 14px;
+    color: #555;
+}
