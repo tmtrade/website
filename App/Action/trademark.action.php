@@ -71,6 +71,7 @@ class TrademarkAction extends AppAction
 		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("info",$info);
 		$this->set("data",$data);
+		$this->set("tid",$tid);
 		$this->set("userMobile",$this->userMobile);
 		$this->set("detail",$detail);
 		$this->set("platform",$platform);
@@ -116,7 +117,6 @@ class TrademarkAction extends AppAction
 		if($this->userInfo){
 			//查询商标是否存在
 			
-			
 			$sale = $this->load("sale")->getSaleById($saleid);
 			if(!$sale){
 				$result = -4; //商标数据不存在
@@ -161,9 +161,11 @@ class TrademarkAction extends AppAction
 	public function getOrderState()
 	{
 		$result = 1;
-		$saleid = $this->input('saleid','int');
+		//$saleid = $this->input('saleid','int');
+		//$sale	= $this->load("sale")->getSaleById($saleid);
 		$phone  = $this->input('phone','string');
-		$sale	= $this->load("sale")->getSaleById($saleid);
+		$tid    = $this->input('tid','int');
+		$sale = $this->load("trademark")->getInfo($tid,'name,class');
 		
 		$isExist = array(
 			'phone'					=> $phone,
@@ -200,11 +202,13 @@ class TrademarkAction extends AppAction
 	public function addBuyByPhone()
 	{
 		$result = 1;
-		$saleid = $this->input('saleid','int');
+		$tid = $this->input('tid','int');
 		$phone  = $this->input('phone','string');
 		
 		//查询商标是否存在
-		$sale = $this->load("sale")->getSaleById($saleid);
+		//$sale = $this->load("sale")->getSaleById($saleid);
+		$sale = $this->load("trademark")->getInfo($tid,'name,class');
+		
 		if(!$sale){
 			$result = -4; //商标数据不存在
 			echo $result;
