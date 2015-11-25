@@ -29,7 +29,7 @@ class PassportModule extends AppModule
         if ( isset($res['code']) && $res['code'] == 1 ){
             return empty($res['data']) ? array() : (array)$res['data'];
         }
-        return array();
+        return false;
     }
 	
     /**
@@ -87,7 +87,66 @@ class PassportModule extends AppModule
     {
         $ip     = getClientIp();
         $res    = $this->importBi('passport')->register($account, $password, $cateId, $ip);
-        return  (isset($res['code']) && $res['code'] == 1) ? $res['data']['id'] : 0;
+        return  (isset($res['code']) && $res['code'] == 1) ? $res['data']['id'] : false;
+    }
+
+
+    /**
+     * 注册手机账号
+     *
+     * 通过手机号进行注册并发送随机的8位密码
+     * 
+     * @author  Xuni
+     * @since   2015-11-14
+     *
+     * @return  bool
+     */
+    public function autoRegMoblie($mobile, $length=8)
+    {
+        if ( $length <= 0 || $length > 20 ){
+            $length = 8;
+        }
+        $pass   = randCode($length);//生成8位随机密码
+        if ( isCheck($mobile) != 2 ) return false;
+        $userId = $this->register($mobile, $pass, 2);
+        if ( !$userId ) return false;
+
+        $msgTemp = C('MSG_TEMPLATE');
+        $msg = sprintf($msgTemp['register'], $mobile, $pass);
+        $res = $this->load('outmsg')->sendMsg($mobile, $msg);
+        if (isset($res['code']) && $res['code'] == 1){
+            return $userId;
+        }
+        return false;
+    }
+
+    /**
+     * 设置用户登录信息
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     * @param   array  $data      用户信息
+     *
+     * @return  null
+     */
+    public function setLogin($data)
+    {
+        $user = array(
+            'userId'    => $data['id'],
+            'username'  => $data['username'],
+            'nickname'  => $data['nickname'],
+            'email'     => $data['email'],
+            'mobile'    => $data['mobile'],
+            'isEmail'   => $data['isEmail'],
+            'isMobile'  => $data['isMobile'],
+            );
+
+        $uName = C('PUBLIC_USER');
+        $uTime = C('PUBLIC_USER_TIME');
+        $info  = serialize($user);
+        Session::set($uName, $info, $uTime);
     }
 
 }

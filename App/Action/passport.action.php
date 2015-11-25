@@ -92,8 +92,15 @@ class PassportAction extends AppAction
         $this->checkMsgCode($account, $password, false);
         
         $userinfo = $this->load('passport')->get($account);
-        if ( empty($userinfo) ) $this->returnAjax(array('code'=>0));//账号不正确或获取数据失败
-
+        if ( $userinfo === false ){
+            $this->returnAjax(array('code'=>0));//接口获取数据失败  
+        }elseif ( empty($userinfo) ){//未注册
+            $userId = $this->load('passport')->autoRegMoblie($account);//注册并发密码短信
+            if ( !$userId ) $this->returnAjax(array('code'=>0)); //未成功
+            $userinfo = $this->load('passport')->get($account);
+            if ( empty($userinfo) ) $this->returnAjax(array('code'=>0));//未成功
+        }
+        $this->unsetMsgCode();
         $this->setLogin($userinfo);
         $this->returnAjax(array('code'=>1));//登录成功
     }
@@ -193,14 +200,22 @@ class PassportAction extends AppAction
         if ( $mobile != Session::get($mbNo) ){
             $this->returnAjax(array('code'=>4));//手机号不是验证时的手机号
         }
-        Session::remove($mbNo);//登录成功清除临时值
-        Session::remove($cname);//登录成功清除临时值
 
         if ( $ajax ){
             $userinfo = $this->load('passport')->get($mobile);
             if ( empty($userinfo) ) $this->returnAjax(array('code'=>11));//验证码正确(手机已注册)
             $this->returnAjax(array('code'=>1));//验证码正确(但手机未注册)
         }
+    }
+
+    private function unsetMsgCode()
+    {
+        $prefix = C('COOKIE_PREFIX');
+        $cname  = $prefix.$this->mvName;
+        $mbNo   = $prefix.$this->mbNo;
+
+        Session::remove($mbNo);//登录成功清除临时值
+        Session::remove($cname);//登录成功清除临时值
     }
 
     /**
@@ -280,20 +295,7 @@ class PassportAction extends AppAction
      */
     private function setLogin($data)
     {
-        $user = array(
-            'userId'    => $data['id'],
-            'username'  => $data['username'],
-            'nickname'  => $data['nickname'],
-            'email'     => $data['email'],
-            'mobile'    => $data['mobile'],
-            'isEmail'   => $data['isEmail'],
-            'isMobile'  => $data['isMobile'],
-            );
-
-        $uName = C('PUBLIC_USER');
-        $uTime = C('PUBLIC_USER_TIME');
-        $info  = serialize($user);
-        Session::set($uName, $info, $uTime);
+        $this->load('passport')->setLogin($data);
     }
 }
 ?>

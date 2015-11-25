@@ -36,7 +36,7 @@ $(document).ready(function(){
         $.ajax({
             type: "post",
             url: "/passport/sendMsgCode",
-            data: {m:umobile},
+            data: {m:umobile,r:'n'},
             dataType: "json",
             success: function(data){
                 if (data.code == 1){
@@ -47,9 +47,9 @@ $(document).ready(function(){
                 }else if (data.code == 2){
                     $('#mTips').html(_iconE+'手机号不正确');
                     $('#mTips').show();
-                }else if (data.code == 3){
-                    $('#mTips').html(_iconE+'该手机号未注册');
-                    $('#mTips').show();
+                //}else if (data.code == 3){
+                //    $('#mTips').html(_iconE+'该手机号未注册');
+                //    $('#mTips').show();
                 }else{
                     $('#mTips').html(_iconE+'发送失败');
                     $('#mTips').show();
@@ -87,8 +87,8 @@ function checkEmailForm()
 {
     var uemail  = $.trim($("#uemail").val());
     var upass   = $("#upass").val();
-    if (uemail == '' || uemail == '请填写邮箱或手机号'){
-        $('#eTips').html(_iconE+'请填写邮箱或手机号');
+    if (uemail == '' || uemail == '请填写正确的邮箱或手机'){
+        $('#eTips').html(_iconE+'请填写正确的邮箱或手机');
         $('#eTips').show();
         return false;
     }
@@ -111,7 +111,7 @@ function checkEmailForm()
                 $('#eTips').html(_iconE+'账号或密码为空');
                 $('#eTips').show();
             }else if (data.code == 3){
-                $('#eTips').html(_iconE+'请填写邮箱或手机号');
+                $('#eTips').html(_iconE+'请填写正确的邮箱或手机');
                 $('#eTips').show();
             }else if (data.code == 4){
                 $('#eTips').html(_iconE+'密码不正确');
