@@ -149,7 +149,7 @@ class BuyModule extends AppModule
 			$star = "****";
 			$data[$key]['phone']  = substr($item['phone'],0,3).$star.substr($item['phone'],7);
 			$data[$key]['contact'] = $item['contact'] ? substr($item['contact'],0,3)."**" : "佚名" ;
-			$data[$key]['need']    = mbSub($item['need'],0,12); 
+			$data[$key]['shortneed']    = mbSub($item['need'],0,12); 
         }
 		return $data;
 	}
