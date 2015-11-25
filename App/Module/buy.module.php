@@ -11,6 +11,7 @@ class BuyModule extends AppModule
 	*/
 	public $models = array(
 		'buy'			=> 'buy',
+        'temp'          => 'tempbuy',
 		'sale'			=> 'sale',
         'member'		=> 'member',
 		'track'			=> 'track',
@@ -34,7 +35,37 @@ class BuyModule extends AppModule
     {
         return $this->import('buy')->find($r);
     }
+
+    /**
+     * 基础获取临时求购信息的方法
+     *
+     * @author  Xuni
+     * @since   2015-11-25
+     *
+     * @access  public
+     * @param   array     $r     条件
+     *
+     * @return  array
+     */
+    public function findTemp($r)
+    {
+        return $this->import('temp')->find($r);
+    }
 	
+    /**
+     * 创建数据
+     * @author  Xuni
+     * @since   2015-11-25
+     *
+     * @access  public
+     * @param   array   $data   数据
+     * @return  void
+     */
+    public function addTempBuy($data)
+    {
+        return $this->import("temp")->create($data);
+    }
+
 	/**
      * 通过saleId获取数据
      * @author	Jeany

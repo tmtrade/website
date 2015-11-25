@@ -31,6 +31,7 @@ $(document).ready(function(){
         }
         if ( !_isLogin ){
             $("#buyMsgCode").val('');
+            addTempBuy();
             getLayer($('#mj-submitte'));
         }else{
             addBuy();
@@ -188,6 +189,24 @@ function getLayer(obj)
 
     $(".mj-close").bind("click",function(){
         layer.closeAll();
+    });
+}
+
+function addTempBuy()
+{
+    var params = $("#buyForm").serialize();
+    $.ajax({
+        type: "post",
+        url: "/buy/addTemp/",
+        data: params,
+        dataType: "json",
+        //success: function(data){
+            //if (data.code == 1){
+                //添加成功
+            //}else{
+                //未成功
+            //}
+        //}
     });
 }
 

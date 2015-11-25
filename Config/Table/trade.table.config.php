@@ -81,5 +81,12 @@ $tbl['excel'] = array(
 );
 
 
+$tbl['tempBuy'] = array(
+	'name'		=> $prefix.'temp_buy',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
+
 
 ?>

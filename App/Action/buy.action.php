@@ -64,6 +64,7 @@ class BuyAction extends AppAction
                 'loginUserId'   => $buy['loginUserId'],
                 ),
             );
+
         if ( $this->load('buy')->find($role) ){
             $this->returnAjax(array('code'=>1));
         }
@@ -73,6 +74,50 @@ class BuyAction extends AppAction
             $this->returnAjax(array('code'=>1));//成功
         }
         $this->returnAjax(array('code'=>4)); //未成功
+    }
+
+    /**
+     * 添加临时求购信息
+     *
+     * @author  Xuni
+     * @since   2015-11-25
+     *
+     * @access  public
+     *
+     * @return  json
+     */
+    public function addTemp()
+    {
+        $mobile     = $this->input('mobile', 'string', '');
+        $content    = $this->input('content', 'string', '');
+        $name       = $this->input('name', 'string', '');
+
+        $role = array(
+            'eq' => array(
+                'mobile'    => $mobile,
+                'need'      => $content,
+                ),
+            );
+        $temp = $this->load('buy')->findTemp($role);
+        if ( $temp ){
+            $this->returnAjax(array('code'=>1));//未添加
+        }
+        $userinfo = $this->load('passport')->get($mobile);
+        if ( empty($userinfo) ){//没有账号
+            $buy = array(
+                'mobile'    => $mobile,
+                'need'      => $content,
+                'name'      => $name,
+                'ip'        => getClientIp(),
+                'date'      => time(),
+                );
+            $res = $this->load('buy')->addTempBuy($buy);
+            if ( $res ) {
+                $this->returnAjax(array('code'=>1));//成功
+            }
+            $this->returnAjax(array('code'=>0)); //未成功
+        }
+        $this->returnAjax(array('code'=>2)); //不用添加
     }
 
     /**
