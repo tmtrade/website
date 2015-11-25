@@ -378,18 +378,3 @@
     line-height:13px;
 }
 
-/* media */
-@media (min-width: 1180px) {
-    .mj-content{
-        width: 1180px;
-        margin: 0 auto;
-        padding: 0;
-    }
-    #gla{
-        width: 1180px;
-        margin: 0 auto;
-        padding: 0;
-        display: none;
-        background: red;
-    }
-}
