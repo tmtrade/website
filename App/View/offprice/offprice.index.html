@@ -258,7 +258,7 @@
     
     $("#g-dltype").find('a').each(function (k,v){
         if ( $(this).hasClass('current') ){
-            if ( k >= 11 && $("#g-dltype").find('a').length > 8){
+            if ( k >= 10 && $("#g-dltype").find('a').length > 11){
                 var _first = $("#g-dltype").find('a').first();
                 $("#g-dltype").prepend($("#g-dltype > .current"));
                 $("#g-dltype").prepend(_first);
