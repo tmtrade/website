@@ -62,12 +62,16 @@
     float: left;
 }
 /*Í¼Æ¬ÁÐ±í end*/
-.mj-imglists{}
-.mj-imglists ul{}
+.mj-imglists{
+    overflow: hidden;
+}
+.mj-imglists ul{
+    margin-right: -10px;
+}
 .mj-imglists li{
     float: left;
     position: relative;
-    margin: 0 10px 10px 0;
+    margin: 0 12px 10px 0;
     width: 184px;
     height: 172px;
     background: #fff;
