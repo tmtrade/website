@@ -83,7 +83,8 @@ class SearchModule extends AppModule
         //这次不上
         if ( !empty($params['isBargain']) ){
             //$r['eq']['isBargain'] = $params['isBargain'];
-            $r['raw'] = empty($r['raw']) ? ' `salePrice` > 0 and `salePriceDate` > unix_timestamp(now()) ' : $r['raw'].' and (`salePrice` > 0 and `salePriceDate` > unix_timestamp(now()))';
+            $_raw_    = ' `salePrice` > 0 and (`salePriceDate` = 0 OR `salePriceDate` > unix_timestamp(now())) ';
+            $r['raw'] = empty($r['raw']) ? $_bar_ : $r['raw'].$_bar_ ;
         }
         if ( !empty($params['saleType']) ){
             $r['eq']['saleType'] = $params['saleType'];
