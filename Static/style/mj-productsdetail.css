@@ -252,6 +252,7 @@ em{
     border-right: dashed 1px #e4dfbe;
     float: left;
     padding-right: 40px;
+	width:300px;
 }
 .mj-pricebtn{
     padding-top: 45px;
