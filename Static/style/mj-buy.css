@@ -27,6 +27,7 @@
     height: 8px;
     border-radius: 50%;
     background: #517cc8;
+    cursor: pointer;
 }
 .hd .on{
     background: #6197cd;
