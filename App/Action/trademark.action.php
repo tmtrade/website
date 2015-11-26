@@ -10,6 +10,8 @@
  */
 class TrademarkAction extends AppAction
 {
+    public $pageTitle   = '%s - 一只蝉';
+
 	public function index()
 	{
 		
@@ -67,6 +69,9 @@ class TrademarkAction extends AppAction
 		$tj  	= $this->load("sale")->getDetailtj($class,6,$data['tid']);
 		$data  	= empty($data) ? $info : $data;
 		$detail = (empty($data) || empty($detail)) ? $infoDetail : $detail;
+
+		//设置页面TITLE
+		$this->set('TITLE', sprintf($this->pageTitle, $data['trademark']));
 		
 		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("info",$info);

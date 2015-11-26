@@ -10,6 +10,7 @@
  */
 class OffpriceAction extends AppAction
 {
+    public $pageTitle   = '特价商标 - 一只蝉';
     private $_number    = 20;
     private $_col       = array('id', 'tid', 'number', 'class', 'name', 'guideprice', 'salePrice');
 

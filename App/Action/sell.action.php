@@ -10,6 +10,8 @@
  */
 class SellAction extends AppAction
 {
+	public $pageTitle   = '我要卖 - 一只蝉';
+	
 	public function index()
 	{
 		

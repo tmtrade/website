@@ -10,6 +10,7 @@
  */
 class FaqAction extends AppAction
 {
+    public $pageTitle   = '交易常见问题 - 一只蝉';
 	
 	//公司介绍
 	public function protocol()

@@ -10,6 +10,7 @@
  */
 class UrgencyAction extends AppAction
 {
+    public $pageTitle   = '快速成交商标 - 一只蝉';
     private $_number = 30;
 
 	public function index()

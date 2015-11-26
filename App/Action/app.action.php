@@ -13,13 +13,15 @@ abstract class AppAction extends Action
 	/**
 	 * 每页显示多少行
 	 */
-	public $rowNum  = 10;
+	public $rowNum  	= 10;
 	
-	public $username = '';
+	public $username 	= '';
 	
-	public $userId   = '';
+	public $userId   	= '';
 	
-	public $isLogin  = false;
+	public $isLogin  	= false;
+
+	public $pageTitle 	= '一只蝉 - 无形资产交易平台 - 多、快、安';
 
 	/**
 	 * 前置操作(框架自动调用)
@@ -37,6 +39,7 @@ abstract class AppAction extends Action
 		$this->set('_mod_', $this->mod);
 		$this->set('_action_', $this->action);
 
+		$this->set('TITLE', $this->pageTitle);//页面title
 		$this->set('CLASSES', C('CLASSES'));//国际分类
 		$this->set('CATEGORY', C('CATEGORY'));//分类
 		$this->set('CATEGORY_ITEMS', C('CATEGORY_ITEMS'));//分类群组

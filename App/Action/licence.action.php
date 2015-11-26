@@ -10,6 +10,8 @@
  */
 class LicenceAction extends AppAction
 {
+    public $pageTitle   = '租用/许可商标 - 一只蝉';
+    
     private $_number = 30;
 
     public function index()

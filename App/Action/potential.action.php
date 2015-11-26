@@ -10,6 +10,7 @@
  */
 class PotentialAction extends AppAction
 {
+    public $pageTitle   = '潜力投资商标 - 一只蝉';
 	private $_number = 30;
 
     public function index()
