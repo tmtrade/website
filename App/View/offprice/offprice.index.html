@@ -144,7 +144,6 @@
             <? if (empty($searchList) || $has == false){?>
                 <div id="s-nothing" style="padding-top:33px;text-align:center;"><img src="<?=StaticDir?>images/nogoods.png"></div>
             <?}?>
-            <div id="s-nothing" style="padding-top:33px;text-align:center;display:none;"><img src="<?=StaticDir?>images/last.png"></div>
             <div id="s-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
         </div>
         <!--imglist end-->
@@ -152,11 +151,12 @@
 
 <!--content end-->
 <div class="mj-mainbg">
-    <div class="mj-maclose"></div>
+    <div class="mj-maclose">
+    </div>
     <div class="mj-footerTip">
         <div class="mj-bgimg">
             <img src="<?=StaticDir?>style/img/mj-img7.png" alt=""/>
-            <a href="javascript:;" onclick="consultation()"><span>后面还有 <strong> 3000 </strong>商标可购买，实在太多 --  提交购买需求我们帮你匹配？</span></a>
+            <a href="javascript:;" onclick="consultation()" id="list-more"><span>不想翻了，拒绝等待！！！还有更多商标在等您，让我来帮你找找？</span></a>
             <label id="mj-label"></label>
         </div>
     </div>
@@ -214,12 +214,6 @@
         obj.set('n', _start);
         var params = obj.getparams();
         $("#_tmpDiv").load(_moreUrl, params, function(data,status,xml){
-            if (status != 'success'){
-                $('#s-uploading').hide();
-                $("#s-nothing").html('请求失败，请稍后再试。');
-                $("#s-nothing").show();
-                return false;
-            }
             if (data) {
                 $("#s-all-list").append(data);
                 $("#_tmpDiv").html('');
@@ -227,7 +221,9 @@
             }else{
                 _has = false;
                 $('#s-uploading').hide();
-                $("#s-nothing").show();
+                $("#list-more").html("<span>没找到中意的？还有近<strong> 30000 </strong>商标没上线，让我来帮你找找？</span>");
+                $(".mj-maclose").hide();
+                $(".mj-footerTip").show();
             }
         });
     }
