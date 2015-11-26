@@ -109,7 +109,7 @@
                 </li>
             </ul>
             <div class="mj-cTr_bottom f-clearfix" <?php if($data['status'] && in_array($data['status'],array(2,3,4))){ echo "style=;display:none;'";}?>>
-				<div class=\"mj-cTr_bLeft fl\">
+				<div class="mj-cTr_bLeft fl">
 				<?php 
 					if(($data['salePrice'] > 0 && $data['salePriceDate'] == 0) ||  ($data['salePrice'] > 0 && $data['salePriceDate'] > time())){
 				?>
