@@ -37,18 +37,18 @@
 						$cur = "";
 						if($key == '99'){
 							unset($platformIn[$key]);
-							echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
+							echo "<a href='".$platformUrl[$key]."' target='_blank' class='cur' >".$val."</a>"; 
 						}
 						if($platform || $data['date']){
 							if($key && in_array($key,$platform)){
 								unset($platformIn[$key]);
-								echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
+								echo "<a href='".$platformUrl[$key]."' target='_blank' class='cur' >".$val."</a>"; 
 							}
 						}else{
 							foreach($platformItems[$key] as  $item){
 								if(($item && $data['class'] == $item)){
 									unset($platformIn[$key]);
-									echo "<a href='javascript:;' class='cur' >".$val."</a>"; 
+									echo "<a href='".$platformUrl[$key]."' target='_blank' class='cur' >".$val."</a>"; 
 									break;
 								}
 							}	
@@ -56,7 +56,7 @@
 						
 					}
 					foreach($platformIn as $key => $val){
-						echo "<a href='javascript:;'>".$val."</a>";
+						echo "<a href='".$platformUrl[$key]."' target='_blank' >".$val."</a>";
 					}
 					?>
                 </li>
@@ -253,11 +253,10 @@
                 </p>
             </div>
         </div>
-		<?php if(!empty($detail['intro']) || !empty($detail['introTwo'])){?>
         <div class="mj-content_bottom-swtich f-clearfix">
             <div class="mj-content_bottom-swtich_tit">
                 <span class="cur">商标介绍</span>
-                <!--<span>您可能感兴趣的</span>-->
+                <!--<span><a href="#process">您可能感兴趣的</a></span>-->
             </div>
             <div class="mj-content_bottom-swtich_content">
 				
@@ -270,50 +269,47 @@
 					echo "<p></p>";
 					echo $introTwo;
 				?>
+
+
                 </div>
-                <div class="edit" style="display: none;">
-                    2
+                <div class="edit" id="process" >
+					<div class="mj_mainText w1180">
+						<h3>商标交易流程：</h3>
+						<ul>
+							<li>1、商标风险核查</li>
+							<li>商标上线销售前，超凡会进行全面风险核查，杜绝无效、撤三等商标出现。</li>
+						</ul>
+						<ul>
+							<li>2、商标价格评估</li>
+							<li>超凡从商标涵义、商标状态、市场占有率等多方面评估商标价格，杜绝漫天要价，让你买的放心，不花冤枉钱。</li>
+						</ul>
+						<ul>
+							<li>3、购买需求匹配</li>
+							<li>可在线自助选择，系统3.5秒快速匹配，也可选择线下专家一对一匹配，最快10分钟。</li>
+						</ul>
+						<ul>
+							<li>4、签订三方协议</li>
+							<li>确定交易意向后，将与买卖双方签订《商标代购协议》 《商标代售协议》 。<li>
+							<li>①另与卖家签订《独占许可协议》，确保卖家在转让期限内不得将商标出售、许可给第三人，让买家可尽快使用上购买的商标；<li>
+							<li>②另与买家签订《安全保障协议》，承诺先行赔付。一旦出现交易损失，超凡将在第一时间给予赔偿，让买家彻底远离赔偿纠纷。</li>
+						</ul>
+						<ul>
+							<li>5、公证审核</li>
+							<li>签订三方协议后，超凡将为卖家提供国家政府认可的公证机构，并给出减少公证费的省钱建议（如双方免费转让），降低双方在办理公证手续上的支出。且对最终公证书的真实性进行再次核实，确保双方交易的安全性。</li>
+						</ul>
+						<ul>
+							<li>6、代办转让手续</li>
+							<li>确认材料无误后，超凡将资料上报至国家商标局，一月左右将收到转让受通，6-10月后收到转让证明，届时完成转让。</li>
+						</ul>
+						<ul>
+							<li>7、10年商标安全监测</li>
+							<li>转让完成后，在商标的10年有效期内，超凡将不间断的提供状态监测服务。有任何异动系统将通知您。</li>
+						</ul>
+					</div>
                 </div>
             </div>
         </div>
-		<?php 
-		}
-		?>
 
-
-		<div class="mj_mainText w1180">
-			<h3>商标交易流程：</h3>
-			<ul>
-				<li>1、商标风险核查</li>
-				<li>商标上线销售前，超凡会进行全面风险核查，杜绝无效、撤三等商标出现。</li>
-			</ul>
-			<ul>
-				<li>2、商标价格评估</li>
-				<li>超凡从商标涵义、商标状态、市场占有率等多方面评估商标价格，杜绝漫天要价，让你买的放心，不花冤枉钱。</li>
-			</ul>
-			<ul>
-				<li>3、购买需求匹配</li>
-				<li>可在线自助选择，系统3.5秒快速匹配，也可选择线下专家一对一匹配，最快10分钟。</li>
-			</ul>
-			<ul>
-				<li>4、签订三方协议</li>
-				<li>确定交易意向后，将与买卖双方签订《商标代购协议》 《商标代售协议》 。<li>
-				<li>①另与卖家签订《独占许可协议》，确保卖家在转让期限内不得将商标出售、许可给第三人，让买家可尽快使用上购买的商标；<li>
-				<li>②另与买家签订《安全保障协议》，承诺先行赔付。一旦出现交易损失，超凡将在第一时间给予赔偿，让买家彻底远离赔偿纠纷。</li>
-			</ul>
-			<ul>
-				<li>5、公证审核</li>
-				<li>签订三方协议后，超凡将为卖家提供国家政府认可的公证机构，并给出减少公证费的省钱建议（如双方免费转让），降低双方在办理公证手续上的支出。且对最终公证书的真实性进行再次核实，确保双方交易的安全性。</li>
-			</ul>
-			<ul>
-				<li>6、代办转让手续</li>
-				<li>确认材料无误后，超凡将资料上报至国家商标局，一月左右将收到转让受通，6-10月后收到转让证明，届时完成转让。</li>
-			</ul>
-			<ul>
-				<li>7、10年商标安全监测</li>
-				<li>转让完成后，在商标的10年有效期内，超凡将不间断的提供状态监测服务。有任何异动系统将通知您。</li>
-			</ul>
-		</div>
         <div class="mj-content_bottom-inter">
             <div class="mj-content_bottom-inter_t f-clearfix">
                 <span>或许您还对以下商标感兴趣</span>

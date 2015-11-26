@@ -27,6 +27,7 @@ class TrademarkAction extends AppAction
 		}
 
 		$this->set("platformIn",C('PLATFORM_IN'));
+		$this->set("platformUrl",C('PLATFORM_URL'));
 		$this->set("platformItems",C('PLATFORM_ITEMS'));
 	
 		//出售列表里面有的数据

@@ -280,6 +280,16 @@ $define = array(
         '5'  => '美丽说',
         '6'  => '聚美优品',
     ),
+    'PLATFORM_URL' => array(
+        '99'  => '/faq/rule/',
+        '1'  => '/faq/rule/#r6',
+        '2'  => '/faq/rule/#r7',
+        '7'  => '/faq/rule/#r1',
+        '3'  => '/faq/rule/#r2',
+        '4'  => '/faq/rule/#r5',  
+        '5'  => '/faq/rule/#r3',
+        '6'  => '/faq/rule/#r4',
+    ),
 
     /*平台入驻*/
     'PLATFORM_ITEMS' => array(
