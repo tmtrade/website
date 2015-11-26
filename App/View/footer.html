@@ -344,6 +344,12 @@
         $(".mj-sidebarCon").show(300);
         $(".mj-siright").hide(300);
     });
+	
+	if($('body').width() > 1180){
+        $(".mj-siright").hide(300);
+        $(".mj-stclose").show(300);
+        $(".mj-sidebarCon").show(300);
+	}
     $("#mj-label").click(function(){
         $(".mj-footerTip").hide();
         $(".mj-maclose").show();
