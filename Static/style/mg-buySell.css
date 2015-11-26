@@ -381,6 +381,7 @@ textarea::-webkit-input-placeholder {
     font-size: 22px;
     color: #444;
     font-weight: normal;
+    padding-bottom: 10px\9;
 }
 .mj-bconRight a{
     display: inline-block;
@@ -415,6 +416,8 @@ textarea::-webkit-input-placeholder {
     border: solid 1px #ccc;
     border-radius: 3px;
     outline: none;
+    margin-top: 0\9;
+    vertical-align: middle\9;
 }
 .mj-bconT{
     display: inline-block;
