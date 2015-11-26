@@ -14,7 +14,6 @@ class TrademarkAction extends AppAction
 
 	public function index()
 	{
-		
 		$this->display();
 	}
 	
@@ -32,7 +31,7 @@ class TrademarkAction extends AppAction
 	
 		//出售列表里面有的数据
 		$data   = $detail = array();
-        $data 	= $this->load("sale")->getDetail($tid);
+        $data 	= $this->load("sale")->getDetail($tid,$class);
 
 		if ( $data ){
 			$detail  		= $this->load("sale")->getTrademarkDetail($data['id'], $tid);
@@ -42,8 +41,8 @@ class TrademarkAction extends AppAction
 		}else{
 			//原始商标数据里面的数据
 			$info = $this->load('trademark')->trademarks($tid,$class);
-			$infoDetail = $this->load('trademark')->trademarkDetail($info);
 			if($info){
+				$infoDetail = $this->load('trademark')->trademarkDetail($info);
 				$classes 			= C('CLASSES') ;
 				$info['name'] 		= $info['trademark'];
 				$info['classValue'] = $classes[$info['class']];
@@ -57,7 +56,6 @@ class TrademarkAction extends AppAction
 		if ( empty($info)  && empty($data) ){
 			MessageBox::halt('未找到相关数据3！');
 		}
-		
 		$baystate = 0;
 		//查询订单是否存在
 		if($this->userInfo && $data['id']){
