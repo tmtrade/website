@@ -74,8 +74,17 @@ em{
 
 .mj-cTright{
     margin-left: 430px;
+    position: relative;
 }
-
+.mj-xiimg{
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 50px;
+    width: 153px;
+    height: 149px;
+    background:url(img/mj-yxjimg.png) no-repeat;
+}
 .mj-cTr_top{
 
 }
@@ -202,6 +211,7 @@ em{
     padding-top: 15px;
 }
 .mj-cTr_center li{
+    width: 590px;
     font-size: 12px;
     padding-bottom: 13px;
 }
