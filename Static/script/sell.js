@@ -17,7 +17,7 @@ $(function(){
 		var _val = '';
 		var _this = $(this);
 		var tip = _this.parent().parent().next();
-		if(_this.val() == ''){
+		if($.trim(_this.val()) == ''){
 			tip.show();
 			return false;
 		}
