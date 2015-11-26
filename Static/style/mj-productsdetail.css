@@ -502,7 +502,10 @@ em{
     border: 1px solid #e9e9e9;
 }
 .mj-content_bottom-swtich_content .edit{
-    padding: 47px 25px;
+    padding: 0 25px 0 47px
+}
+.mj-content_bottom-swtich_content .edit .intro{
+    padding: 20px 0 20px 0;
 }
 .mj-content_bottom-swtich_content .edit p{
     font-size: 16px;
@@ -646,17 +649,16 @@ em{
 
 
 .mj_mainText{
-    padding: 40px 0 100px;
+    padding: 40px 0 20px;
 }
 .mj_mainText h3{
-    padding: 0 0 0 47px;
+    
     font-size: 22px;
     color: #555;
     font-weight: normal;
 }
 .mj_mainText ul{
-    padding-left: 35px;
-    margin: 24px 34px 0 12px;
+    margin: 24px 34px 0 0;
     border-bottom: dashed 1px #cfcfcf;
 }
 .mj_mainText ul:last-child{

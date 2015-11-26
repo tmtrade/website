@@ -265,16 +265,17 @@
 				
 					$intro = str_replace("/Static/editor/attached/",TRADE_URL."/Static/editor/attached/",$detail['intro']);
 					$introTwo = str_replace("/Static/editor/attached/",TRADE_URL."/Static/editor/attached/",$detail['introTwo']);
-					echo $intro;
-					echo "<p></p>";
-					echo $introTwo;
+					if(!empty($intro)){
+						echo '<div class="intro">'.$intro."</div>";
+					}
+					if(!empty($introTwo)){
+						echo '<div class="intro">'.$introTwo."</div>";
+					}
 				?>
-
-
                 </div>
                 <div class="edit" id="process" >
-					<div class="mj_mainText w1180">
-						<h3>商标交易流程：</h3>
+					<div class="mj_mainText ">
+						<B>商标交易流程：</B>
 						<ul>
 							<li>1、商标风险核查</li>
 							<li>商标上线销售前，超凡会进行全面风险核查，杜绝无效、撤三等商标出现。</li>
