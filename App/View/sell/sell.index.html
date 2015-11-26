@@ -169,8 +169,8 @@
 <script>
 	var _isLogin = "<?=$isLogin?>";
     var _mobile  = "<?=$userMobile?>";
-	$(function(){
-		/*$("input").each(function(){
+	/*$(function(){
+		$("input").each(function(){
 			var spanT= $(this).parent().find($(".mj-inpuV")).text();
 			$(this).focus(function(){
 				$(this).parent().find($(".mj-inpuV")).text("");
@@ -183,16 +183,17 @@
 				}
 			});
 		});*/
-		var spanT= $(".mj-inpuV").text();
-		$(".g-bgnav-input1").on('focus','input',function(){
+
+
+		$("#addsell").on('focus','.g-bgnav-input1 input',function(){
 			$(this).parent().find($(".mj-inpuV")).text("");
 		});
-		$(".g-bgnav-input1").on('blur','input',function(){
-			if($(this).val()===""){
-				$(this).parent().find($(".mj-inpuV")).text($(this).parent().find(spanT));
-			}else{
+		$("#addsell").on('blur','.g-bgnav-input1 input',function(e) {
+			var spanT = e.parent().find($(".mj-inpuV")).text();
+			if ($(this).val() === "") {
+				$(this).parent().find($(".mj-inpuV")).text(spanT);
+			} else {
 				$(this).parent().find($(".mj-inpuV")).text("");
 			}
-		})
-	});
+		});
 </script>
