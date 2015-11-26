@@ -104,14 +104,12 @@
                 </li>
             </ul>
             <div class="mj-cTr_bottom f-clearfix">
-                <div class="mj-cTr_bLeft fl">
-				<?php
-				
+			<?php 
 				if($data['status'] && in_array($data['status'],array(2,3,4))){
 					echo "<label class=\"mj-xiimg\"></label>";
 				}else{
-				
-				if(($data['salePrice'] > 0 && $data['salePriceDate'] == 0) ||  ($data['salePrice'] > 0 && $data['salePriceDate'] > time())){
+					echo  "<div class=\"mj-cTr_bLeft fl\">";
+					if(($data['salePrice'] > 0 && $data['salePriceDate'] == 0) ||  ($data['salePrice'] > 0 && $data['salePriceDate'] > time())){
 				?>
 					 <!--价格促销-->
 					<div class="mj-priceTxtt">
@@ -137,7 +135,7 @@
                         
                     </div>
 				<?php
-				}else{
+					}else{
 					if($isLogin){//是否登录
 						//if($data['isBargain'] == 2){//商品定价方案为售价
 						if($data['price'] > 0){
@@ -172,7 +170,6 @@
 						echo "<div class=\"mj-pricebtn\"><a href='javascript:getlogin();'>查看价格</a></div>";
 					}
 				}
-				}
 				?>
                 </div>
                 <div class="mj-cTr_bRight fr">
@@ -193,6 +190,7 @@
                         </dd>
                     </dl>
                 </div>
+				<?php }?>
             </div>
             
         </div>
