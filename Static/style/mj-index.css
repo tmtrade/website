@@ -134,12 +134,14 @@
     background: url("");
 }
 .mj-form-wrapper input[type="text"] {
+    position: absolute;
+    left: 30px;
     height: 40px;
     line-height: 40px\9;
     padding: 0;
     width: 200px;
-    background: url('');
     vertical-align: middle;
+    z-index: 2;
 }
 .mj_form_wrapper_input {
     position: relative;
@@ -148,14 +150,26 @@
     background: #efeded;
     border-radius: 4px;
 }
+.mj-form-wrapper input{
+    background: url(' ');
+}
 .mj_form_wrapper_input input {
+    position: absolute;
+    left: 0;
     width: 46px;
     height: 40px;
     border: none;
     border-radius: 4px;
     text-align: center;
     outline: medium;
-    background: url('');
+    background: url(' ');
+    z-index: 2;
+    line-height: 40px\9;
+}
+.mj-form-wrapper i{
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
 
 .w178 {
