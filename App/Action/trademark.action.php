@@ -70,8 +70,9 @@ class TrademarkAction extends AppAction
 		$data  	= empty($data) ? $info : $data;
 		$detail = (empty($data) || empty($detail)) ? $infoDetail : $detail;
 
+		$title 	= $data['trademark'] ? $data['trademark'] : $data['name'];
 		//设置页面TITLE
-		$this->set('TITLE', sprintf($this->pageTitle, $data['trademark']));
+		$this->set('TITLE', sprintf($this->pageTitle, $title));
 		
 		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("info",$info);
