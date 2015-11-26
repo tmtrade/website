@@ -108,12 +108,9 @@
                     <span class="mj-spanColorb"><label>申请人 :  </label><a href="javascript:;" ><?=$detail['proposer']?></a></span>
                 </li>
             </ul>
-            <div class="mj-cTr_bottom f-clearfix">
-			<?php 
-				if($data['status'] && in_array($data['status'],array(2,3,4))){
-					echo "<label class=\"mj-xiimg\"></label>";
-				}else{
-					echo  "<div class=\"mj-cTr_bLeft fl\">";
+            <div class="mj-cTr_bottom f-clearfix" <?php if($data['status'] && in_array($data['status'],array(2,3,4))){ echo "style=;display:none;'";}?>>
+				<div class=\"mj-cTr_bLeft fl\">
+				<?php 
 					if(($data['salePrice'] > 0 && $data['salePriceDate'] == 0) ||  ($data['salePrice'] > 0 && $data['salePriceDate'] > time())){
 				?>
 					 <!--价格促销-->
@@ -195,7 +192,6 @@
                         </dd>
                     </dl>
                 </div>
-				<?php }?>
             </div>
 
         </div>
