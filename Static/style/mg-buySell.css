@@ -483,6 +483,7 @@ textarea::-webkit-input-placeholder {
     background: url(' ');
     position: absolute;
     z-index: 2;
+    outline: none;
 }
 .g-bgnav-input1 ul .g-int1 input{
     width: 257px;
