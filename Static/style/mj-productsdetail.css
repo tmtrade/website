@@ -504,6 +504,11 @@ em{
 .mj-content_bottom-swtich_content .edit{
     padding: 47px 25px;
 }
+.mj-content_bottom-swtich_content .edit p{
+    font-size: 16px;
+    color: #333;
+    line-height: 25px;
+}
 .mj-content_bottom-swtich_content .edit img{
     vertical-align: middle;
     max-width: 941px;
