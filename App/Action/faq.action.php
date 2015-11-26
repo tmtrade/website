@@ -10,34 +10,41 @@
  */
 class FaqAction extends AppAction
 {
-    public $pageTitle   = '交易常见问题 - 一只蝉';
-	
+	public $seotime = '一只蝉';
 	//公司介绍
 	public function index()
     {
-		$this->protocol();
+		$this->redirect("","/faq/protocol/");
     }
 	//公司介绍
 	public function protocol()
     {
+		$pageTitle   = '用户服务协议 - '.$this->seotime;
+		$this->set("TITLE",$pageTitle);
         $this->display();
     }
 
 	//常见问题
 	public function question()
     {
+		$pageTitle   = '常见问题 - '.$this->seotime;
+		$this->set("TITLE",$pageTitle);
         $this->display();
     }
 
 	//流程
 	public function process()
     {
+		$pageTitle   = '操作流程 - '.$this->seotime;
+		$this->set("TITLE",$pageTitle);
         $this->display();
     }
 
 	//规则
 	public function rule()
     {
+		$pageTitle   = '入驻平台规则 - '.$this->seotime;
+		$this->set("TITLE",$pageTitle);
         $this->display();
     }
 }
