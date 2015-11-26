@@ -118,10 +118,9 @@
                         <strong>
                             <em>￥</em>
                             <span><?=$data['salePrice']?></span>
-                            <em>.00</em>
                             <b>&nbsp;元</b>
                         </strong>
-                        <span>（原价：<b class="mj-priceTxtt_b"><?=$data['guideprice']?>.00</b> )</span>
+                        <span>（原价：<b class="mj-priceTxtt_b"><?=$data['guideprice']?></b> )</span>
                         <br /><label><?php if($data['salePriceDate'] > 0){echo date('Y-m-d H:i',$data['salePriceDate']);}else{echo "永久";} ?></label>有效<br />
 						<?php
 						if($baystate == 1){
