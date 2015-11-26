@@ -186,14 +186,21 @@
 
 
 		$("#addsell").on('focus','.g-bgnav-input1 input',function(){
-			$(this).parent().find($(".mj-inpuV")).text("");
+			var _css = {'visibility': 'hidden'};
+			$(this).parent().find($(".mj-inpuV")).css(_css);
 		});
-		$("#addsell").on('blur','.g-bgnav-input1 input',function(e) {
-			var spanT = e.parent().find($(".mj-inpuV")).text();
-			if ($(this).val() === "") {
-				$(this).parent().find($(".mj-inpuV")).text(spanT);
-			} else {
-				$(this).parent().find($(".mj-inpuV")).text("");
-			}
+		$("#addsell").on('blur','.g-bgnav-input1 input',function() {
+			var _value = $.trim(this.value);
+			var spanT = $(this).parent().find($(".mj-inpuV")).text();
+			var _inputTip = $(this).parent().find($(".mj-inpuV"));
+			var _css = {'visibility': 'hidden'};
+			var _css1 = {'visibility': 'visible'};
+
+			(_value == "") ? _inputTip.css(_css1) : _inputTip.css(_css);
+//			if ( _value == "") {
+//				$(this).parent().find($(".mj-inpuV")).text(spanT);
+//			} else {
+//				$(this).parent().find($(".mj-inpuV")).text("");
+//			}
 		});
 </script>
