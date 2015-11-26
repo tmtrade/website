@@ -136,12 +136,20 @@
     top: 0;
 }
 .mj-form-wrapper input[type="text"] {
+    position: absolute;
     height: 38px;
-    line-height: 33px\9;
+    line-height: 40px\9;
     padding: 0;
-    width: 200px;
+    width: 259px;
     background: url('');
     vertical-align: middle;
+    z-index: 2;
+    left: 34px;
+}
+.mj-form-wrapper i{
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
 .mj_form_wrapper_input {
     position: relative;
@@ -152,6 +160,8 @@
     border: solid 1px #ccc;
 }
 .mj_form_wrapper_input input {
+    position: absolute;
+    left: 0;
     width: 78px;
     height: 38px;
     border: none;
@@ -181,6 +191,7 @@ div.mj-fwH span{
 }
 div.mj-fwH input[type="text"]{
     height: 70px;
+    line-height: 70px\9;
 }
 
 .mj-from-btn {
