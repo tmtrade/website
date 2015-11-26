@@ -701,6 +701,10 @@
 .mj-imgL_right dd p, .mj-imgL_right dd p a{
     color: #666;
 }
+.mj-imgL_right dd p a:hover{
+    color: #fc7d28;
+    text-decoration: underline;
+}
 .mj-imgLr_bottom{
     position: relative;
     margin-top: 10px;
