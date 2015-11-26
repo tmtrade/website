@@ -819,14 +819,14 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 560;
+    z-index: 6665;
 }
 .ms-close{
     cursor: pointer;
 }
 .ms-loginBox {
     position: fixed;
-    z-index: 565;
+    z-index: 6666;
     padding: 30px;
     top: 0;
     left: 0;
