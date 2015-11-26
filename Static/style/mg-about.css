@@ -413,6 +413,7 @@ textarea::-webkit-input-placeholder {
     border: solid 1px #ccc;
     border-radius: 3px;
     outline: none;
+    line-height: 38px\9;
 }
 .mj-bconT{
     display: inline-block;
