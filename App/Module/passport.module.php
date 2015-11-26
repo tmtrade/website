@@ -10,6 +10,9 @@
  */
 class PassportModule extends AppModule
 {
+    private $codeTime   = 600;//手机验证码有效时间(秒)
+    private $mvName     = 'mvCode'; //手机验证码名称
+    private $mbNo       = 'mbNo'; //验证时的手机号
 
     /**
      * 获取账号信息
