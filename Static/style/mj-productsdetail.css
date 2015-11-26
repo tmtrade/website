@@ -368,6 +368,7 @@ em{
     outline: none;
     display: inline-block;
     vertical-align: middle;
+    line-height: 28px\9;
 }
 .mj-cTr_bRight .mj-cTr_bRight_dd label{
     display: inline-block;
