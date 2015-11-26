@@ -77,9 +77,10 @@ em{
     position: relative;
 }
 .mj-xiimg{
+    position: absolute;
     display: block;
     right: 0;
-    top: 50px;
+    top: 115px;
     width: 153px;
     height: 149px;
     background:url(img/mj-yxjimg.png) no-repeat;
