@@ -91,6 +91,11 @@
                     </div>-->
                 </li>
             </ul>
+			<?php 
+				if($data['status'] && in_array($data['status'],array(2,3,4))){
+					echo "<label class=\"mj-xiimg\"></label>";
+				}
+			?>
             <ul class="mj-cTr_center">
                 <li>
                     <span><label>注册号：</label><?=$data['number']?>（第<?=$data['class']?>类-<?=$data['classValue']?> ） </span>
