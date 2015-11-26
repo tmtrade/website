@@ -89,7 +89,7 @@ class PassportAction extends AppAction
             $this->returnAjax(array('code'=>3));//手机号不正确
         }
         //判断验证码是否正确
-        $this->checkMsgCode($account, $password, false);
+        $this->checkMsgCode($account, $password, false, false);
         
         $userinfo = $this->load('passport')->get($account);
         if ( $userinfo === false ){
@@ -184,11 +184,15 @@ class PassportAction extends AppAction
      *
      * @return  array
      */
-    public function checkMsgCode($mobile='', $code='', $ajax=true)
+    public function checkMsgCode($mobile='', $code='', $ajax=true, $isUnset=true)
     {
         if ( $ajax || empty($mobile) || empty($code) ){
             $mobile = $this->input('m', 'string', '');
             $code   = $this->input('c', 'string', '');
+            $unset  = $this->input('r', 'string', 'y');//是否清除reset
+            if ( $unset == 'n'){
+                $isUnset = false;//不清除
+            }
         }
         
         $prefix = C('COOKIE_PREFIX');
@@ -200,6 +204,9 @@ class PassportAction extends AppAction
         if ( $mobile != Session::get($mbNo) ){
             $this->returnAjax(array('code'=>4));//手机号不是验证时的手机号
         }
+        if ( $isUnset ){
+            $this->unsetMsgCode();
+        }
 
         if ( $ajax ){
             $userinfo = $this->load('passport')->get($mobile);
@@ -208,14 +215,18 @@ class PassportAction extends AppAction
         }
     }
 
+    /**
+     * 清除验证码记录
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     * @return  null
+     */
     private function unsetMsgCode()
     {
-        $prefix = C('COOKIE_PREFIX');
-        $cname  = $prefix.$this->mvName;
-        $mbNo   = $prefix.$this->mbNo;
-
-        Session::remove($mbNo);//登录成功清除临时值
-        Session::remove($cname);//登录成功清除临时值
+        $this->load('passport')->unsetMsgCode();
     }
 
     /**

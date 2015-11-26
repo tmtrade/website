@@ -149,5 +149,24 @@ class PassportModule extends AppModule
         Session::set($uName, $info, $uTime);
     }
 
+    /**
+     * 清除验证码记录
+     * 
+     * @author  Xuni
+     * @since   2015-11-06
+     *
+     * @access  public
+     * @return  null
+     */
+    public function unsetMsgCode()
+    {
+        $prefix = C('COOKIE_PREFIX');
+        $cname  = $prefix.$this->mvName;
+        $mbNo   = $prefix.$this->mbNo;
+
+        Session::remove($mbNo);//登录成功清除临时值
+        Session::remove($cname);//登录成功清除临时值
+    }
+
 }
 ?>
