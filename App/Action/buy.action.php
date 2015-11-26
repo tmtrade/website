@@ -51,6 +51,7 @@ class BuyAction extends AppAction
             if ( empty($userinfo) ){
                 $userId = $this->register($mobile);//注册并发密码短信
                 if ( !$userId ) $this->returnAjax(array('code'=>3)); //未成功
+                $userinfo = $this->load('passport')->get($mobile);
                 $buy['loginUserId'] = $userId;
             }else{
                 $buy['loginUserId'] = $userinfo['id'];
@@ -71,7 +72,7 @@ class BuyAction extends AppAction
         }
         $res = $this->load('buy')->create($buy);
         if ( $res ) {
-
+            if ( $userinfo ) $this->load('passport')->setLogin($userinfo);
             $this->returnAjax(array('code'=>1));//成功
         }
         $this->returnAjax(array('code'=>4)); //未成功
