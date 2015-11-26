@@ -40,10 +40,12 @@
 					<div style="margin-bottom: 10px;">
 						<ul>
 							<li class="g-int1">
-								<input type="text" placeholder="商标号" name="number[]" class="input-number" value="" />
+								<em class="mj-inpuV">商标号</em>
+								<input type="text" name="number[]" class="input-number" value="" />
 							</li>
 							<li class="g-int2">
-								<input type="text" placeholder="出售底价" name="price[]" class="input-price" value="" />
+								<em class="mj-inpuV">出售底价</em>
+								<input type="text" name="price[]" class="input-price" value="" />
 								<i>元</i>
 							</li>
 							<li>
@@ -76,11 +78,12 @@
 			<div class="g-bgnav-nav1 f-clearfix">
 				<div class="g-bgnav-input1">
 					<ul>
-						<li class="g-int1 g-intp">
+						<li class="g-int1 g-intp j-int1">
 							<input type="text" name="phone" value="<?=$userMobile?>" class="input-phone" id="usrMp_popup" />
 						</li>
 						<li class="g-int2">
-							<input type="text" placeholder="你的姓氏" name="contact" id="contact" />
+							<em>你的姓氏</em>
+							<input type="text" name="contact" id="contact" />
 						</li>
 					</ul>
 					<span style="display:none;" class="mj-bgTips" ><i class="us-icon uj_icon44"></i>请您输入正确的联系电话</span>
@@ -166,5 +169,19 @@
 <script>
 	var _isLogin = "<?=$isLogin?>";
     var _mobile  = "<?=$userMobile?>";
-
+	$(function(){
+		$("input").each(function(){
+			var spanT= $(this).parent().find($(".mj-inpuV")).text();
+			$(this).focus(function(){
+				$(this).parent().find($(".mj-inpuV")).text("");
+			});
+			$(this).blur(function(){
+				if($(this).val()===""){
+					$(this).parent().find($(".mj-inpuV")).text(spanT);
+				}else{
+					$(this).parent().find($(".mj-inpuV")).text("");
+				}
+			});
+		});
+	});
 </script>

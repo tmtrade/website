@@ -203,27 +203,34 @@ textarea::-webkit-input-placeholder {
     color: #8cb6f2;
 }
 
-.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int1 input{
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int1{
     background: url("slice/g-s2.png") 14px center no-repeat #fff;
+    width: 251px;
+    padding-left: 49px;
+}
+.j-int1{
+    background: url("slice/g-spho.png") 14px center no-repeat #fff!important;
     width: 251px;
     padding-left: 49px;
 }
 
 .g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2{
     position: relative;
+    background: #fff;
+    border-radius: 3px;
 }
 
-.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2 input{
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2{
     width: 132px;
-    padding: 0 40px 0 18px;
+    padding: 0 40px 0 10px;
 }
 
 .g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2 i{
     display: inline-block;
     position: absolute;
     font-style: normal;
-    top: 10px;
-    right: 15px;
+    /*top: 10px;*/
+    right: 2px;
     font-size: 14px;
     color: #4f4f4f;
 }
@@ -268,9 +275,11 @@ textarea::-webkit-input-placeholder {
     width: 571px;
 }
 
+/*
 .g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-intp input{
-    background: url("slice/g-spho.png") 14px center no-repeat #fff;
+
 }
+*/
 
 .ms-bsSub {
     display: inline-block;
@@ -418,6 +427,7 @@ textarea::-webkit-input-placeholder {
     outline: none;
     margin-top: 0\9;
     vertical-align: middle\9;
+    line-height: 38px\9;
 }
 .mj-bconT{
     display: inline-block;
@@ -459,8 +469,31 @@ textarea::-webkit-input-placeholder {
     color: #fff;
     border-radius: 5px;
 }
+.g-bgnav-input1 li{
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+}
+.g-bgnav-input1 em{
+    color: #999;
+    top: 11px;
+    font-style: normal;
+}
+.g-bgnav-input1 input{
+    background: url(' ');
+    position: absolute;
+    z-index: 2;
+}
+.g-bgnav-input1 ul .g-int1 input{
+    width: 257px;
+    left: 40px;
+}
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2 input{
+    left: 10px;
+}
+.g-mail .g-bgnav .g-bgnav-nav1 .g-bgnav-input1 ul .g-int2 em{
 
-
+}
 /* media */
 @media (min-width: 1px) and (max-width: 1180px) {
     .g-mail{
