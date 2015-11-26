@@ -181,10 +181,10 @@ class TrademarkAction extends AppAction
 		$isExist = array(
 			'phone'					=> $phone,
 			'source'				=> 4,//来源展示页
-			'name'					=> $sale['name'],
+			'name'					=> $sale['trademark'],
 			'class'					=> $sale['class'],
 			'buyType'				=> 1,
-			'need'					=> "商标号:".$sale['number'].",类别:".$sale['class'],
+			'need'					=> "商标号:".$sale['id'].",类别:".$sale['class'],
 		);
 		
 		if(!empty($this->userId)){
@@ -218,7 +218,7 @@ class TrademarkAction extends AppAction
 		
 		//查询商标是否存在
 		//$sale = $this->load("sale")->getSaleById($saleid);
-		$sale = $this->load("trademark")->getInfo($tid,'name,class');
+		$sale = $this->load("trademark")->getInfo($tid,'name,class,id');
 		
 		if(!$sale){
 			$result = -4; //商标数据不存在
@@ -229,10 +229,10 @@ class TrademarkAction extends AppAction
 		$isExist = array(
 			'phone'					=> $phone,
 			'source'				=> 4,//来源展示页
-			'name'					=> $sale['name'],
+			'name'					=> $sale['trademark'],
 			'class'					=> $sale['class'],
 			'buyType'				=> 1,
-			'need'					=> "商标号:".$sale['number'].",类别:".$sale['class'],
+			'need'					=> "商标号:".$sale['id'].",类别:".$sale['class'],
 		);
 		
 		if(!empty($this->userId)){
