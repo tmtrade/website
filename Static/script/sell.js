@@ -21,7 +21,7 @@ $(function(){
 			tip.show();
 			return false;
 		}
-		var table = _this.parent().parent().next().next();
+		var table = _ie ? _this.parent().parent().parent().next().next() : _this.parent().parent().next().next();
 		clearTimeout(tiemOut);
 		tiemOut = setTimeout(function(){
 			_val = $.trim(_this.val());
@@ -52,6 +52,7 @@ $(function(){
 					_this.val('');
 					return false;
 				}
+				
 				table.removeAttr('style');
 				tip.hide();
 				$.each(obj,function(item,value){
