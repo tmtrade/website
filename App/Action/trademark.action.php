@@ -32,8 +32,13 @@ class TrademarkAction extends AppAction
 	
 		//出售列表里面有的数据
 		$data   = $detail = array();
-        $data 	= $this->load("sale")->getDetail($tid,$class);
-
+        $data 	= $this->load("sale")->getDetail($tid,$class,true);
+		/**如果是点击过来不存在出售的商标，那就查询下架商标是否存在**/
+		if(!$data){
+			$data 	= $this->load("sale")->getDetail($tid,$class);
+		}
+		
+		
 		if ( $data ){
 			$detail  		= $this->load("sale")->getTrademarkDetail($data['id'], $tid);
 			$detail['tid'] 	= $data['tid'];

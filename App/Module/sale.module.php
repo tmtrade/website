@@ -156,12 +156,12 @@ class SaleModule extends AppModule
 	 * @param	array		$param  用户名称
 	 * @return	array
 	 */
-	public function getDetail($tid,$class)
+	public function getDetail($tid,$class,$status = false)
 	{	
 		$r['limit'] = 1;
 		$r['eq']['tid'] = $tid;
 		$r['eq']['class'] = $class;
-		//$r['in']        = array('status' => array('1','5'));
+		if($status)$r['in']   = array('status' => array('1','5')); //状态
         $data = $this->import("sale")->find($r);
         if(empty($data)) {return array();}
         $data['classValue']     = isset( $this->classes[$data['class']] ) ? $this->classes[$data['class']] : $data['class'];
