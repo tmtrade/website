@@ -178,12 +178,12 @@
                 <div class="mj-cTr_bRight fr">
                     <dl>
                         <dd>
-                            <i class="us-icon uj_icon2"></i><span>卖家：<em><?=$data['contact']?></em></span>
+                            <i class="us-icon uj_icon2"></i><span>卖家：<em><?=$contact['name']?></em></span>
                             <a href="javascript:;" onclick="consultation()"><i class="us-icon uj_icon30"></i>在线咨询</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
-                            <label><?=substr($data['phone'],0,4).'****'.substr($data['phone'],-3);?></label>
+                            <label><?=$contact['phone']?></label>
                         </dd>
                         <dd class="mj-cTr_bRight_dd">
                             <input type="text" id="telInput2" value="<?=$userMobile?>"/>
