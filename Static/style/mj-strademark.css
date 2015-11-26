@@ -256,11 +256,11 @@
 }
 #gla_box .prev{
     background:url(../style/img/mj-bprev.png) left bottom no-repeat;
-    left:-160px
+    left:-275px
 }
 #gla_box .next{
     background:url(../style/img/mj-bnext.png) right bottom no-repeat;
-    right:-170px
+    right:-270px
 }
 #gla_box .prev:hover{
     background-position:left top;
