@@ -21,7 +21,7 @@ abstract class AppAction extends Action
 	
 	public $isLogin  	= false;
 
-	public $pageTitle 	= '一只蝉 - 无形资产交易平台 - 多、快、安';
+	public $pageTitle 	= '一只蝉 - 超凡集团旗下 - 无形资产交易平台 - 多、快、安';
 
 	/**
 	 * 前置操作(框架自动调用)
