@@ -39,7 +39,7 @@
             </dd>
         <? } ?>
             <dd class="f-clearfix">
-                <span class="mj-selection-span">平台入驻： </span>
+                <span class="mj-selection-span">入驻平台： </span>
                 <div class="mj-selection-list">
                     <a href="javascript:getPlatform(0);" <?if ($p == 0){echo 'class="current"';}?>>全部  </a>
                 <? foreach ($PLATFORM as $k => $v) { ?>
@@ -58,7 +58,7 @@
                         <!--<label class="mj-mt26"></label>-->
                         <div class="select_boxs">
                                 <span id="sType" tid="<?=$t?>" class="mj-textS">
-                                <?if ( empty($t) ){echo '商标类型';}else{echo $TYPES[$t];}?>
+                                <?if ( empty($t) ){echo '首选商标';}else{echo $TYPES[$t];}?>
                                 </span>
                             <ul class="son_ul" style="display: none;">
                                 <li tid="0">全部</li>
@@ -72,7 +72,7 @@
                        <!-- <label class="mj-mt26">商标字数：</label>-->
                         <div class="select_boxs select_boxW">
                                 <span id="sNumber" tid="<?=$sn?>" class="mj-textS">
-                                <?if ( empty($sn) ){echo '商标字数';}else{echo $NUMBER[$sn];}?>
+                                <?if ( empty($sn) ){echo '组合类型';}else{echo $NUMBER[$sn];}?>
                                 </span>
                             <ul class="son_ul son_uls" style="display: none;">
                                 <li tid="0">全部</li>
