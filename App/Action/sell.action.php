@@ -96,6 +96,7 @@ class SellAction extends AppAction
 			}
 			foreach($data['number'] as $key => $item){
 				$saleData = $this->load("sale")->getSaleByNum($item,$sales['userId']);
+				
 				if($saleData){
 					$num['old'] ++;
 					continue;
@@ -180,7 +181,7 @@ class SellAction extends AppAction
 	{
 		if ( empty($data['number']) ){
 			$msg = '您还未输入商标号，请填写';exit(-3);
-		}elseif(!preg_match('/^\d*$/',$data['number'])){
+		}elseif(!preg_match('/^[0-9a-zA-Z]*$/',$data['number'])){
 			$msg = '请输入正确商标号！';exit(-3);
 		}
 		
