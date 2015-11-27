@@ -120,10 +120,10 @@ class SaleModule extends AppModule
             $data['rows'][$k]['source'] = isset( $this->source[$item['source']] ) ? $this->source[$item['source']] : $item['source'];
 			$data['rows'][$k]['classes']  = isset( $this->classes[$item['class']] ) ? $this->classes[$item['class']] : $item['class'];
 			
-			$img	= $this->load('saletrademark')->getOffpriceImg($data['id']);
+			$img	= $this->load('saletrademark')->getOffpriceImg($item['id']);
             $imgUrl	= empty($img['bzpic']) ? $img['tjpic'] : $img['bzpic'];
 			if ( empty($imgUrl) ) {
-				$data['rows'][$k]['imgurl'] = $this->load('trademark')->getImg($data['tid']);
+				$data['rows'][$k]['imgurl'] = $this->load('trademark')->getImg($item['tid']);
 			}else{
 				$data['rows'][$k]['imgurl'] = TRADE_URL.$imgUrl;
 			}
