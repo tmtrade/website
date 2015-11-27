@@ -288,8 +288,23 @@ class SearchModule extends AppModule
         $data['isApprove']  = false;
 
         if ( empty($data['tid']) ) return $data;
-
-        $data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
+		
+		if ( $data['id'] ){
+			$r1['eq']		= array(
+				'number'	=> $data['number'],
+				'class'		=> $data['class'],
+				);
+			$r1['raw']		= " bzpic != '' ";
+			$r1['col']		= array('bzpic');
+			$res1			= $this->load('saletrademark')->find($r);
+			if ( $res1 ) {
+				$data['imgUrl'] = TRADE_URL.$res1['bzpic'];
+			}else{
+				$data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
+			}
+		}else{
+			$data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
+		}
         
         $r['limit'] = 100;
         $r['eq'] = array(
