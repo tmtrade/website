@@ -339,5 +339,67 @@ div.mj-stclose label{
     display: inline-block;
 }
 .ms-errorTips {
-     margin-bottom: 10px;
+     margin: 10px 0;
+}
+
+
+/*ÐÂµÇÂ¼*/
+.mj-loginModel{
+    position: relative;
+    padding: 30px 25px 15px;
+    width: 294px;
+    background: #fff;
+    border: solid 1px #cfcfcf;
+}
+.mj-lmTop{
+    padding: 0 0 15px 15px;
+    border-bottom: dashed 1px #dcdcdc;
+}
+.mj-lmTop h6{
+    font-size: 20px;
+    color: #383838;
+}
+.mj-lmTop h6 em{
+    font-style: normal;
+    font-size: 14px;
+    color: #fc7d28;
+}
+.mj-lmTop h6 span{
+    font-size: 14px;
+    color: #383838;
+}
+.mj-lmTop p{
+    font-size: 12px;
+    color: #666;
+}
+.ms-input i{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.mj-mlspan{
+    margin-left: 15px;
+}
+.mj-form-wrappers div.mj-input{
+    padding-left: 20px;
+    width: 158px;
+}
+.mj-lomTip{
+    margin-bottom: 10px;
+}
+.mj-lomTip b{
+    font-size: 14px;
+    color: #444;
+}
+.mj-lomTip p{
+    font-size: 12px;
+    color: #7a6e6d;
+}
+.mj-lotipb{
+    margin-top: 10px;
+    text-align: center;
+}
+.mj-lotipb a{
+    font-size: 12px;
+    color: #357bdb;
 }
