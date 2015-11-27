@@ -38,7 +38,6 @@ class TrademarkAction extends AppAction
 			$data 	= $this->load("sale")->getDetail($tid,$class);
 		}
 		
-		
 		if ( $data ){
 			$detail  		= $this->load("sale")->getTrademarkDetail($data['id'], $tid);
 			$detail['tid'] 	= $data['tid'];

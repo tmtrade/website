@@ -161,6 +161,7 @@ class SaleModule extends AppModule
 		$r['limit'] = 1;
 		$r['eq']['tid'] = $tid;
 		$r['eq']['class'] = $class;
+		$r['order']         = array('salePrice' => 'desc','date' => 'desc');
 		if($status)$r['in']   = array('status' => array('1','5')); //状态
         $data = $this->import("sale")->find($r);
         if(empty($data)) {return array();}
