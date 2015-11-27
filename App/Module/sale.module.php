@@ -114,11 +114,20 @@ class SaleModule extends AppModule
         $data = $this->import('sale')->findAll($r);
 		$data['notId'] = array();
         foreach($data['rows'] as $k => $item){
-			$data['rows'][$k]['imgurl'] = $this->getImg($item['id']); 
+			//$data['rows'][$k]['imgurl'] = $this->getImg($item['id']); 
 			$data['rows'][$k]['url']    = "/trademark/view/?tid=".$item['tid']."&class=".$item['class']; 
 			$data['rows'][$k]['name']   = mbSub($item['name'],0,4); 
             $data['rows'][$k]['source'] = isset( $this->source[$item['source']] ) ? $this->source[$item['source']] : $item['source'];
 			$data['rows'][$k]['classes']  = isset( $this->classes[$item['class']] ) ? $this->classes[$item['class']] : $item['class'];
+			
+			$img	= $this->load('saletrademark')->getOffpriceImg($data['id']);
+            $imgUrl	= empty($img['bzpic']) ? $img['tjpic'] : $img['bzpic'];
+			if ( empty($imgUrl) ) {
+				$data['rows'][$k]['imgurl'] = $this->load('trademark')->getImg($data['tid']);
+			}else{
+				$data['rows'][$k]['imgurl'] = TRADE_URL.$imgUrl;
+			}
+			
 			array_push($data['notId'], $item['id']);
         }
 		return $data;
