@@ -58,9 +58,9 @@ class SearchModule extends AppModule
     public function getSaleList($params, $start=0, $limit=30, $col=array())
     {
         if ( !empty($params['keyword']) ){
-            $r['raw'] = " tid > 0 and (`name` LIKE '%".$params['keyword']."%' OR `number` = '".$params['keyword']."') ";
+            $r['raw'] = " area = 1 and tid > 0 and (`name` LIKE '%".$params['keyword']."%' OR `number` = '".$params['keyword']."') ";
         }else{
-            $r['raw'] = " tid > 0 ";
+            $r['raw'] = " area = 1 and tid > 0 ";
         }
         if ( !empty($params['class']) ){
             $r['eq'] = array('class'=>$params['class']);
