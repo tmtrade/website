@@ -169,6 +169,7 @@
 <script>
 	var _isLogin = "<?=$isLogin?>";
     var _mobile  = "<?=$userMobile?>";
+	var _number   = "<?=$number?>";
 	/*$(function(){
 		$("input").each(function(){
 			var spanT= $(this).parent().find($(".mj-inpuV")).text();
@@ -183,7 +184,15 @@
 				}
 			});
 		});*/
-
+		
+		$(function(){
+			if(_number){
+				$('.input-number').val(_number);
+				$('.input-number').focus();
+			}
+		})
+		
+		
 
 		$("#addsell").on('focus','.g-bgnav-input1 input',function(){
 			var _css = {'visibility': 'hidden'};

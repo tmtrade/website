@@ -14,7 +14,8 @@ class SellAction extends AppAction
 	
 	public function index()
 	{
-		
+		$number	= $this->input("m","string");
+		$this->set("number",$number);
 		$this->display();
 	}
 
