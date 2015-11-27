@@ -290,17 +290,12 @@ class SearchModule extends AppModule
         if ( empty($data['tid']) ) return $data;
 		
 		if ( $data['id'] ){
-			$r1['eq']		= array(
-				'number'	=> $data['number'],
-				'class'		=> $data['class'],
-				);
-			$r1['raw']		= " bzpic != '' ";
-			$r1['col']		= array('bzpic');
-			$res1			= $this->load('saletrademark')->find($r);
-			if ( $res1 ) {
-				$data['imgUrl'] = TRADE_URL.$res1['bzpic'];
-			}else{
+			$img	= $this->load('saletrademark')->getOffpriceImg($data['id']);
+            $imgUrl	= empty($img['bzpic']) ? $img['tjpic'] : $img['bzpic'];
+			if ( empty($imgUrl) ) {
 				$data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
+			}else{
+				$data['imgUrl'] = TRADE_URL.$imgUrl;
 			}
 		}else{
 			$data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
