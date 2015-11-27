@@ -144,12 +144,12 @@ table {
     float: left;
     width: 375px;
     height: 40px;
-    padding: 32px 0 28px 4px;
+    padding: 15px 0 28px 4px;
 }
 .mj-logo a{
     display: block;
-    width: 260px;
-    height: 40px;
+    width: 167px;
+    height: 167px;
     background: url(img/logo.png) no-repeat;
 }
 .mj-search_con{
