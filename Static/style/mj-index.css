@@ -957,6 +957,22 @@
     color: #fff;
     border-radius: 5px;
 }
+.mj-dtBottom{
+    margin-left: 20px;
+}
+.mj-dtBottom i{
+    float: left;
+}
+.mj-dtBottom >div{
+    margin-bottom: 20px;
+    height: 40px;
+}
+.mj-dtBottom span{
+    font-size: 15px;
+    color: #fff;
+    vertical-align: middle;
+}
+
 
 
 /* media */
