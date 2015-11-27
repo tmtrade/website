@@ -116,7 +116,7 @@
                     <span><label>商品列表：</label><?=$detail['goods']?></span>
                 </li>
                 <li>
-                    <span class="mj-spanColorb"><label>申请人 :  </label><a href="javascript:;" ><?=$detail['proposer']?></a></span>
+                    <span class="mj-spanColorb"><label>申请人 :  </label><?=$detail['proposer']?></span>
                 </li>
             </ul>
             <div class="mj-cTr_bottom f-clearfix" <?php if($data['status'] && in_array($data['status'],array(2,3,4))){ echo "style=;display:none;'";}?>>
