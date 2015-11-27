@@ -115,7 +115,7 @@ class PassportModule extends AppModule
         if ( !$userId ) return false;
 
         $msgTemp = C('MSG_TEMPLATE');
-        $msg = sprintf($msgTemp['register'], $mobile, $pass);
+        $msg = sprintf($msgTemp['register'], $pass);
         $res = $this->load('outmsg')->sendMsg($mobile, $msg);
         if (isset($res['code']) && $res['code'] == 1){
             return $userId;
