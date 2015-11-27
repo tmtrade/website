@@ -17,6 +17,7 @@ class OffpriceIndexForm extends AppForm
     protected $map = array(
         'c'    	=> array( 'field' => 'c', 'method' => 'fieldInt', ),
         'g'   	=> array( 'field' => 'g', 'method' => 'fieldString', ),
+        'p'     => array( 'field' => 'p', 'method' => 'fieldInt', ),
         't'     => array( 'field' => 't', 'method' => 'fieldInt', ),
         'sn'    => array( 'field' => 'sn', 'method' => 'fieldInt', ),
     );

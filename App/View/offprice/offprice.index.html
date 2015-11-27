@@ -173,6 +173,8 @@
     var _has        = "<?=$has?>";
     var _class      = "<?=$c?>";
     var _group      = "<?=$g?>";
+    var _times      = 0;
+    var _objTime ;
 
     function getClass(cls)
     {
@@ -192,6 +194,8 @@
         obj.set('c', _class==0?'':_class);
         obj.set('g', grp==0?'':grp);
         obj.set('p', '');
+        obj.set('t', '');
+        obj.set('sn', '');
         var params = obj.strparams();
         window.location = _url+params;
     }
@@ -202,6 +206,8 @@
         obj.set('c', _class==0?'':_class);
         obj.set('g', _group==0?'':_group);
         obj.set('p', plat==0?'':plat);
+        obj.set('t', '');
+        obj.set('sn', '');
         var params = obj.strparams();
         window.location = _url+params;
     }
@@ -211,6 +217,11 @@
         $('#s-uploading').show();
         var obj = new objURL('/?'+_whereStr);
         _start += _number;
+        if ( _times != 0 ){
+            return false;
+        }
+        _times      = 1;
+        _objTime    = setTimeout(function(){_times = 0;},30000);
         obj.set('n', _start);
         var params = obj.getparams();
         $("#_tmpDiv").load(_moreUrl, params, function(data,status,xml){
@@ -218,12 +229,15 @@
                 $("#s-all-list").append(data);
                 $("#_tmpDiv").html('');
                 $('#s-uploading').hide();
+                clearTimeout(_objTime);
+                _times = 0;
             }else{
                 _has = false;
                 $('#s-uploading').hide();
                 $("#list-more").html("<span>没找到中意的？还有近<strong> 30000 </strong>商标没上线，让我来帮你找找？</span>");
                 $(".mj-maclose").hide();
                 $(".mj-footerTip").show();
+                _times = 1;
             }
         });
     }
