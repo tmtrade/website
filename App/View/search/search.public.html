@@ -293,10 +293,12 @@
         if( _hasClass ){
             gobj.removeAttr('style');
             $(this).removeClass('curs');
+            $(this).css("color","#4ba5de");
             $(this).text("收起")
         }else{
             gobj.css({'display':'none'});
             $(this).addClass('curs');
+            $(this).css("color","#666");
             $(this).text("......")
         }
     //});
