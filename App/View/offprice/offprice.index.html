@@ -258,11 +258,11 @@
     /*select*/
     $('.son_ul').hide(); //初始ul隐藏
     $('.select_boxs span').hover(function(){ //鼠标移动函数
-                $(this).parent().find('ul.son_ul').slideDown();  //找到ul.son_ul显示
+                $(this).parent().find('ul.son_ul').show();  //找到ul.son_ul显示
                 $(this).parent().find('li').hover(function(){$(this).addClass('hover')},function(){$(this).removeClass('hover')}); //li的hover效果
                 $(this).parent().hover(function(){},
                         function(){
-                            $(this).parent().find("ul.son_ul").slideUp();
+                            $(this).parent().find("ul.son_ul").hide();
                         }
                 );
             },function(){}
@@ -270,7 +270,7 @@
     $('ul.son_ul li').click(function(){
         $(this).parents('li').find('.mj-textS').html($(this).html());
         $(this).parents('li').find('.mj-textS').attr('tid', $(this).attr('tid'));
-        $(this).parents('li').find('ul').slideUp();
+        $(this).parents('li').find('ul').hide();
     });
     
     //悬浮层
