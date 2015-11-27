@@ -152,6 +152,9 @@ em{
 .mj-cTr_top .mj-cTr_top_r em{
     margin-left: 5px;
 }
+.mj-cTr_top .mj-cTr_top_r em img{
+    vertical-align: middle;
+}
 .mj-cTr_top .mj-cTr_top_r span{
     display: inline-block;
     vertical-align: middle;
