@@ -173,6 +173,7 @@
 <!-- 登录框弹出 -->
 <div class="ms-loginBox" id="ms-loginBox">
     <span class="ms-close mj-close" onclick="boxHide('ms-loginBox')"></span>
+    <div id="loginInfo"></div>
     <div class="ms-login">
         <h6 class="f-clearfix"><a href="javascript:;" class="ms-loginTab" onclick="CHOFN.upTab(this,'ms-loginMain','账号登录点这里','手机快捷登录点击这里')">账号登录点这里</a>
         登录
@@ -227,10 +228,9 @@
     </div>
 </div>
 
-
 <!-- 新增登录框弹出框 -->
-<div class="mj-loginModel" style="display: none;">
-    <span class="ms-close mj-close" onclick="boxHide('ms-loginBox')"></span>
+<div class="mj-loginModel" id="newLoginDiv2"  style="display: none;">
+    <span class="ms-close mj-close" onclick="javascript:layer.closeAll();"></span>
     <div class="mj-lmTop">
         <h6>“商标名”商标值多少钱？</h6>
         <p style="margin-left: 10px;">快捷登录，立马看价，中意商标绝不错过</p>
@@ -268,8 +268,8 @@
     </div>
 </div>
 <!--提交成功-->
-<div class="mj-loginModel" style="display: none;">
-    <span class="ms-close mj-close" onclick="boxHide('ms-loginBox')"></span>
+<div class="mj-loginModel"  id="newLoginDiv" style="display: none;">
+    <span class="ms-close mj-close" onclick="javascript:layer.closeAll();"></span>
     <div class="mj-lmTop">
         <h6>亲，提交成功了<span>，</span><em>10分钟内</em><span>将联系你</span></h6>
         <p>系统已自动为你开通手机账户，密码发送至手机，
@@ -279,15 +279,12 @@
         <div class="ms-errorTips mj-eed" style="display: block;">
             <p class="reg-tip"><i class="us-icon us-icon19"></i><em>您输入的用户名不存在</em></p>
         </div>
-        <div class="ms-phoneInput f-clearfix">
-            <div class="mj-form-wrappers fl" style="width: 158px;">
-                <span class="mj-inpuVs mj-mlspan">请输入手机号码</span>
-                <div class="ms-input mj-input">
-                    <i class="us-icon uj-icon5"></i>
-                    <input type="text">
-                </div>
+        <div class="mj-form-wrappers">
+            <span class="mj-inpuVs">请输入邮箱或手机</span>
+            <div class="ms-input">
+                <i class="us-icon us-icon22"></i>
+                <input type="text" id="uemail"/>
             </div>
-            <a href="javascript:;" class="ms-sent">发送密码到手机</a>
         </div>
         <div class="mj-lomTip">
             <b>未收到密码: </b>
@@ -342,8 +339,23 @@
        return chofn;
    })(jQuery,CHOFN || {});
    //调整用弹层方法
-    function getlogin(){
+    function getlogin(title){
+        if (title){
+            $("#loginInfo").html(title);
+        }else{
+            $("#loginInfo").html('');
+        }
         CHOFN.boxShow();
+        // layer.open({
+        //     type: 1,
+        //     //skin: 'layui-layer-demo', //样式类名
+        //     title: false,
+        //     closeBtn: 0, //不显示关闭按钮
+        //     shift: 2,
+        //     shade:0.7,
+        //     //shadeClose: true, //开启遮罩关闭
+        //     content: $("#newLoginDiv")
+        // });
     }
 
     //ms-hoverList  //免费通知

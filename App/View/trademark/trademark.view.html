@@ -140,7 +140,7 @@
 							if($isLogin){
 								echo "<a href='javascript:createOrder(".$data['id'].");' class=\"mj-priceTxtt_link\" id='addorder' >立即抢购</a>";
 							}else{
-								echo "<a href='javascript:getlogin();' class=\"mj-priceTxtt_link\">立即抢购</a>";
+								echo "<a href='javascript:getloginpage(\"".$data['name']."\");' class=\"mj-priceTxtt_link\">立即抢购</a>";
 							}
 						}
 						?>
@@ -418,4 +418,9 @@ var _tid     = "<?=$tid?>";
 var baystate = "<?=$baystate?>";
 var buyUrl   = "<?=MANAGER_URL?>buyer/ready/";
 
+    function getloginpage(name)
+    {
+        var title = '<div class="mj-lmTop"> <h6>“'+name+'”商标值多少钱？</h6> <p style="margin-left: 10px;">快捷登录，立马看价，中意商标绝不错过</p> </div>';
+        getlogin(title);
+    }
 </script>
