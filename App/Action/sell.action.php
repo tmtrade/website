@@ -95,6 +95,7 @@ class SellAction extends AppAction
 				}
 			}
 			foreach($data['number'] as $key => $item){
+				$item = trim($item);
 				$saleData = $this->load("sale")->getSaleByNum($item,$sales['userId']);
 				
 				if($saleData){
