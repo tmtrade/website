@@ -50,10 +50,13 @@ class TrademarkModule extends AppModule
 		$data = $this->find($r);
 		if($data['auto']){
 			$status = $this->getSecond($data['auto']);
-			if($status[0] == '已注册' && $status[1] == "冻结中"){
-				$data['status'] = $status[1];
-			}else{	
-				$data['status'] = $status[0];
+			
+			$data['status'] = $status[0];
+			foreach($status as $key => $val){
+				if($val == '冻结中'){
+					$data['status'] = "冻结中";
+					break;
+				}	
 			}
 		}
 		return $data;
