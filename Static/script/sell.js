@@ -30,7 +30,7 @@ $(function(){
 			}
 		})
 		if(key > 1){
-			tip.html('<i class="us-icon uj_icon44"></i>该商标已经填写，请不要重复填写');
+			tip.html('<i class="us-icon uj_icon44"></i>您已提交了该商标，请验证后重新输入。');
 			tip.show();
 			table.hide();
 			_this.val('');
