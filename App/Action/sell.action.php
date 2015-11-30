@@ -164,17 +164,7 @@ class SellAction extends AppAction
      */
     private function register($mobile)
     {
-        $pass   = randCode(8);//生成8位随机密码
-        $userId = $this->load('passport')->register($mobile, $pass, isCheck($mobile));
-        if ( !$userId ) return false;
-
-        $msgTemp = C('MSG_TEMPLATE');
-        $msg = sprintf($msgTemp['register'], $mobile, $pass);
-        $res = $this->load('outmsg')->sendMsg($mobile, $msg);
-        if (isset($res['code']) && $res['code'] == 1){
-            return $userId;
-        }
-        return false;
+       return $this->load('passport')->autoRegMoblie($mobile);
     }
 	
 	/**
