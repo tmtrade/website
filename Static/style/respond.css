@@ -37,10 +37,15 @@
     }
 }
 @media only screen and (min-width: 1px) and (max-width: 1180px){
-    .mj-sidebar{
-        display: none;
-    }
-    .mj-siright{
-        display: block;
+    @media only screen and (min-width: 1px) and (max-width: 1270px){
+        .mj-stclose{
+            display: none!important;
+        }
+        .mj-sidebarCon{
+            display: none!important;
+        }
+        .mj-siright{
+            display: block!important;
+        }
     }
 }
