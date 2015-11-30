@@ -144,12 +144,14 @@
 						foreach($dataTM['rows'] as $key => $val){
 					?>
 					<li>
-                        <div class="mj-logoimg">
-                            <a href="<?=$val['url']?>"  target="_blank" class="mj-imglT">
-                                <span><img src="<?=$val['imgurl']?>" /></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        <a href="<?=$val['url']?>"  target="_blank">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        </a>
                     </li>
 					<?php
 						}
@@ -167,12 +169,14 @@
 						foreach($dataJD['rows'] as $key => $val){
 					?>
 					<li>
-                        <div class="mj-logoimg">
-                            <a href="<?=$val['url']?>"  target="_blank" class="mj-imglT">
-                                <span><img src="<?=$val['imgurl']?>" /></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        <a href="<?=$val['url']?>"  target="_blank">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        </a>
                     </li>
 					<?php
 						}
@@ -189,12 +193,14 @@
 						foreach($dataDXCS['rows'] as $key => $val){
 					?>
 					<li>
-                        <div class="mj-logoimg">
-                            <a href="<?=$val['url']?>"  target="_blank" class="mj-imglT">
-                                <span><img src="<?=$val['imgurl']?>" /></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        <a href="<?=$val['url']?>"  target="_blank">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        </a>
                     </li>
 					<?php
 						}
@@ -258,12 +264,14 @@
 						foreach($dataQL['rows'] as $key => $val){
 					?>
 					<li>
-                        <div class="mj-logoimg">
-                            <a href="<?=$val['url']?>"  target="_blank" class="mj-imglT">
-                                <span><img src="<?=$val['imgurl']?>" /></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        <a href="<?=$val['url']?>"  target="_blank">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        </a>
                     </li>
 					<?php
 						}
@@ -280,12 +288,14 @@
 						foreach($dataJP['rows'] as $key => $val){
 					?>
 					<li>
-                        <div class="mj-logoimg">
-                            <a href="<?=$val['url']?>"  target="_blank" class="mj-imglT">
-                                <span><img src="<?=$val['imgurl']?>" /></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        <a href="<?=$val['url']?>"  target="_blank">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        </a>
                     </li>
 					<?php
 						}
@@ -302,12 +312,14 @@
 						foreach($dataTS['rows'] as $key => $val){
 					?>
 					<li>
-                        <div class="mj-logoimg">
-                            <a href="<?=$val['url']?>"  target="_blank"class="mj-imglT">
-                                <span><img src="<?=$val['imgurl']?>" /></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        <a href="<?=$val['url']?>"  target="_blank">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                        </a>
                     </li>
 					<?php
 						}
@@ -374,68 +386,84 @@
                 <!--欧盟-->
                 <ul class="mj-cTmall" onclick="consultation()">
                     <li>
-                        <div class="mj-logoimg">
-                            <a href="javascript:;" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>images/FASHION1.jpg" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">FASHION IDOL 缝纫用品</p>
+                        <a href="javascript:;" >
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=StaticDir?>images/FASHION1.jpg" alt=""/></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText">FASHION IDOL 缝纫用品</p>
+                        </a>
                     </li>
                     <li>
-                        <div class="mj-logoimg">
-                            <a href="javascript:;" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>images/FASHION2.jpg" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">JOEDIR 缝纫用品</p>
+                        <a href="javascript:;">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=StaticDir?>images/FASHION2.jpg" alt=""/></span>
+                               </label>
+                            </div>
+                            <p class="mj-cateText">JOEDIR 缝纫用品</p>
+                        </a>
                     </li>
                     <li>
-                        <div class="mj-logoimg">
-                            <a href="javascript:;" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>images/FASHION3.jpg" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">NATURE 缝纫用品</p>
+                        <a href="javascript:;">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=StaticDir?>images/FASHION3.jpg" alt=""/></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText">NATURE 缝纫用品</p>
+                        </a>
                     </li>
                     <li>
-                        <div class="mj-logoimg">
-                            <a href="javascript:;" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>images/FASHION4.jpg" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">R REBECCA 缝纫用品</p>
+                        <a href="javascript:;">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=StaticDir?>images/FASHION4.jpg" alt=""/></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText">R REBECCA 缝纫用品</p>
+                        </a>
                     </li>
                     <li>
-                        <div class="mj-logoimg">
-                            <a href="javascript:;" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>images/FASHION5.jpg" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">REMY COUTURE 缝纫用品</p>
+                        <a href="javascript:;">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=StaticDir?>images/FASHION5.jpg" alt=""/></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText">REMY COUTURE 缝纫用品</p>
+                        </a>
                     </li>
                     <li>
-                        <div class="mj-logoimg">
-                            <a href="javascript:;" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>images/FASHION6.jpg" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">SLEEK 化妆清洁</p>
+                        <a href="javascript:;">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=StaticDir?>images/FASHION6.jpg" alt=""/></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText">SLEEK 化妆清洁</p>
+                        </a>
                     </li>
                     <li>
-                        <div class="mj-logoimg">
-                            <a href="javascript:;" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>images/FASHION7.jpg" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">TOP MODEL 缝纫用品</p>
+                        <a href="javascript:;">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=StaticDir?>images/FASHION7.jpg" alt=""/></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText">TOP MODEL 缝纫用品</p>
+                        </a>
                     </li>
                     <li>
-                        <div class="mj-logoimg">
-                            <a href="javascript:;" class="mj-imglT">
-                                <span><img src="<?=StaticDir?>images/FASHION8.jpg" alt=""/></span>
-                            </a>
-                        </div>
-                        <p class="mj-cateText">WU QIONG 食品鱼肉</p>
+                        <a href="javascript:;">
+                            <div class="mj-logoimg">
+                                <label class="mj-imglT">
+                                    <span><img src="<?=StaticDir?>images/FASHION8.jpg" alt=""/></span>
+                                </label>
+                            </div>
+                            <p class="mj-cateText">WU QIONG 食品鱼肉</p>
+                        </a>
                     </li>
                     <li class="mj-more">
                         <p><a href="javascript:;"><span>...</span>查看更多</a></p>

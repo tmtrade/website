@@ -84,12 +84,13 @@
     width: 100%;
     position: relative;
     z-index: 1;
+    cursor: pointer;
 }
 .mj-imglT span {
     display: table-cell;
     vertical-align: middle;
 }
-.mj-imglT a img{
+.mj-imglT label img{
     max-width: 230px;
     max-height: 160px;
     vertical-align: middle;
@@ -106,7 +107,7 @@
     display: inline-block;
     margin-top: 3px;
 }
-.mj-imgspan a{
+.mj-imgspan label{
     display: inline-block;
     padding: 5px 15px;
     font-size: 13px;
@@ -216,6 +217,11 @@
     text-align: center;
     font-size: 12px;
     color: #fc7e2a;
+}
+.mj-imglists li>label{
+    display: inline-block;
+    width: 282px;
+    height: 266px;
 }
 .mj-imglists li:hover .mj-priceI{
     display: block;

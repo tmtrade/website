@@ -543,11 +543,9 @@
 .mj-cLarge,.mj-Ather{
     display: none;
 }
-/*.mj-logoimg{
-    height: 105px;
-    line-height: 105px;
-    text-align: center;
-}*/
+.mj-logoimg{
+   cursor: pointer;
+}
 .mj-imglT {
     display: table;
     height: 105px;
@@ -556,6 +554,7 @@
     width: 100%;
     position: relative;
     z-index: 1;
+    cursor: pointer;
 }
 .mj-imglT span {
     display: table-cell;

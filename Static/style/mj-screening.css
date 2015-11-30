@@ -87,12 +87,13 @@
     width: 100%;
     position: relative;
     z-index: 1;
+    cursor: pointer;
 }
 .mj-imglT span {
     display: table-cell;
     vertical-align: middle;
 }
-.mj-imglT a img{
+.mj-imglT label img{
     max-width: 150px;
     max-height: 85px;
     vertical-align: middle;
@@ -196,6 +197,11 @@
     text-align: center;
     font-size: 12px;
     color: #fc7e2a;
+}
+.mj-imglists li>a{
+    display: inline-block;
+    width: 186px;
+    height: 174px;
 }
 .mj-imglists li:hover{
     border: solid 1px #fc7e2a;
