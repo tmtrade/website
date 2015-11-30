@@ -32,16 +32,15 @@
         margin: 0 auto;
         padding: 0;
     }
-
-}
-@media only screen and (min-width: 1px) and (max-width: 1270px){
-    .mj-stclose{
-        display: none!important;
+    .mj-sidebar{
+        display: none;
     }
-    .mj-sidebarCon{
-        display: none!important;
+}
+@media only screen and (min-width: 1px) and (max-width: 1180px){
+    .mj-sidebar{
+        display: none;
     }
     .mj-siright{
-        display: block!important;
+        display: block;
     }
 }
