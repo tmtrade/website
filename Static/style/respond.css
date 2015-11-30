@@ -35,7 +35,13 @@
 
 }
 @media only screen and (min-width: 1px) and (max-width: 1270px){
-    .mj-sidebar{
-        display: none;
+    .mj-stclose{
+        display: none!important;
+    }
+    .mj-sidebarCon{
+        display: none!important;
+    }
+    .mj-siright{
+        display: block!important;
     }
 }
