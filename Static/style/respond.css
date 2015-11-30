@@ -32,4 +32,10 @@
         margin: 0 auto;
         padding: 0;
     }
+
+}
+@media only screen and (min-width: 1px) and (max-width: 1270px){
+    .mj-sidebar{
+        display: none;
+    }
 }
