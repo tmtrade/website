@@ -1,17 +1,21 @@
 <? foreach ($searchList as $k => $v) { ?>
 <li>
-    <p class="mj-tip">
-        <?if ($v['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?};?>
-        <?if ($v['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?};?>
-        <?if ($v['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?};?>
-        <?if ($v['isApprove'] == true){?><label class="mj-tZheng" title="已认证">证</label><?};?>
-    </p>
-    <div class="mj-imglT">
-        <a href="/trademark/view/?tid=<?=$v['tid']?>&class=<?=$v['class']?>" target="_blank" class="mj-imglT"><span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" title="<?=$v['name']?>"></span></a>
-    </div>
-    <div class="mj-imglB">
-        <p title="<?=$v['name']?>"><?=mb_substr($v['name'],0,10,'utf8')?>&nbsp;&nbsp;<?=$CLASSES[$v['class']]?></p>
-         <span class="mj-imgspan"><a href=""><strong><? if ($v['guideprice'] <= $v['salePrice']){echo '10';}else{$zk = (($v['salePrice'])/($v['guideprice']))*10;echo number_format($zk,1);}?></strong>折</a> <b><em>￥</em><em><?=$v['salePrice']?></em></b></span>
-    </div>
+    <a href="/trademark/view/?tid=<?=$v['tid']?>&class=<?=$v['class']?>" target="_blank">
+        <p class="mj-tip">
+            <?if ($v['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?};?>
+            <?if ($v['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?};?>
+            <?if ($v['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?};?>
+            <?if ($v['isApprove'] == true){?><label class="mj-tZheng" title="已认证">证</label><?};?>
+        </p>
+        <div class="mj-imglT">
+            <label class="mj-imglT">
+                <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" title="<?=$v['name']?>"></span>
+            </label>
+        </div>
+        <div class="mj-imglB">
+            <p title="<?=$v['name']?>"><?=mb_substr($v['name'],0,10,'utf8')?>&nbsp;&nbsp;<?=$CLASSES[$v['class']]?></p>
+             <span class="mj-imgspan"><a href=""><strong><? if ($v['guideprice'] <= $v['salePrice']){echo '10';}else{$zk = (($v['salePrice'])/($v['guideprice']))*10;echo number_format($zk,1);}?></strong>折</a> <b><em>￥</em><em><?=$v['salePrice']?></em></b></span>
+        </div>
+    </a>
 </li>
 <? } ?>
