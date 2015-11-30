@@ -80,7 +80,7 @@
 
 .mj-imglT {
     margin-top: 12px;
-    display: table;
+    display: table!important;
     height: 95px;
     text-align: center;
     width: 100%;
@@ -103,7 +103,7 @@
     z-index: 1;
 }
 .mj-imglT-detail{
-	height: 130px;
+	height: 130px!important;
 }
 .mj-imglT-detail span img{
     max-width: 180px;
