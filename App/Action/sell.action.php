@@ -101,14 +101,19 @@ class SellAction extends AppAction
 					$num['old'] ++;
 					continue;
 				}
+				
 				$sales['number']   = $item;
 				$sales['phone']    = $data['phone'];
 				$sales['contact']  = $data['contact'];
 				$sales['price']    = $data['price'][$key];
 				//检查传过来的数据
 				$this->checkselldata($sales);
+				
+				
 				//商标信息
 				$result   = $this->load('trademark')->getTrademarks($sales['number']);
+				
+				
 				if($result){
 					$sales['guideprice'] = $this->getSalePrice($sales['price']);
 					$sales['source']     = 4; //来源，前台展示页
@@ -120,12 +125,15 @@ class SellAction extends AppAction
 					$sales['group']      = $result[0]['group'];
 					/*认证状态*/
 					$approves  = $this->getApprove($sales);
+					
+					
 					$sales['type']           = $approves['type'];
 					$sales['approveStatus']  = $approves['status'];
 					$sales['date']  	     = time();
 					//商标详细信息
 					$detail['number']        = $sales['number']; 
 					$detail['area']          = 1;
+					
 					//添加数据
 					$tradeId = $this->addSellDataToSql($result,$sales,$detail);
 					
@@ -139,6 +147,7 @@ class SellAction extends AppAction
 		}else{
 			$num['state'] = -2; //商标数据不存在
 		}
+		
 		$num['all'] = $num['num'] + $num['old'];
 		echo json_encode($num);
 	}
@@ -273,12 +282,13 @@ class SellAction extends AppAction
 			$sales['sblength']  = $this->getTrademarkLength($item['trademark']);
 			$sales['platform']  = $this->getTrademarkPlatform($item['class']);
 			$sales['types']     = $this->getTrademarkType($item['trademark']);
+			
 			$tradeId = $this->load('sale')->addSale($sales);
+			
 			$detail['saleId']    = $tradeId;
 			$detail['name']      = $item['trademark'];
 			$detail['class']     = $item['class'];
 			$detail['imgurl']    = $item['imgUrl'];
-			$detail['group']     = $item['group'];
 			$detail['goods']     = $item['goods'];
 			$detail['proposer']  = $item['proposerName'];
 			$detail['status']    = $item['status'];
