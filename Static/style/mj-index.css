@@ -646,6 +646,11 @@
     margin-top: -15px;
     font-size: 90px;
 }
+.mj-categoryCon li>a{
+    display: inline-block;
+    width: 225px;
+    height: 141px;
+}
 .mj-categoryCon li:hover .mj-priceI{
     display: block;
 }
