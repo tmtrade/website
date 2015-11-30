@@ -21,7 +21,22 @@ $(function(){
 			tip.show();
 			return false;
 		}
+		var key = 0;
 		var table =  _this.parent().parent().next().next();
+		/**检查是否重复**/
+		$('.input-number').each(function(index){
+			if($.trim($(this).val()) != '' && $(this).val() == $.trim(_this.val())){
+				key ++ ;
+			}
+		})
+		if(key > 1){
+			tip.html('<i class="us-icon uj_icon44"></i>该商标已经填写，请不要重复填写');
+			tip.show();
+			table.hide();
+			_this.val('');
+			return false;
+		}
+		/**检查是否重复**/
 		clearTimeout(tiemOut);
 		tiemOut = setTimeout(function(){
 			_val = $.trim(_this.val());
