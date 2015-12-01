@@ -33,15 +33,17 @@
         padding: 0;
     }
 }
+/*
 @media only screen and (max-width: 1270px){
         .mj-siright{
-            display: block!important;
+            display: block;
         }
         .mj-stclose{
-            display: none!important;
+            display: none;
         }
         .mj-sidebarCon{
-            display: none!important;
+            display: none;
         }
 
 }
+*/

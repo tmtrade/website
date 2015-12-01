@@ -452,6 +452,48 @@
         $(".mj-footerTip").show();
         $(".mj-maclose").hide();
     });
+    var $wind = $(window);//将浏览器加入缓存中
+
+
+
+    var win = $wind.outerWidth()//首先获取浏览器的宽度
+
+    $wind.resize(function(){
+//浏览器变化宽度的动作。
+        var newW = $wind.outerWidth();
+        if(newW<1270){
+            $(".mj-siright").show();
+            $(".mj-stclose").hide();
+            $(".mj-sidebarCon").hide();
+            $("#mj-stclose").click(function(){
+                $(".mj-stclose").hide(300);
+                $(".mj-sidebarCon").hide(300);
+                $(".mj-siright").show(300);
+            });
+            $(".mj-siright").click(function(){
+                $(".mj-stclose").show(300);
+                $(".mj-sidebarCon").show(300);
+                $(".mj-siright").hide(300);
+            });
+        }else{
+            $(".mj-siright").hide();
+            $(".mj-stclose").show();
+            $(".mj-sidebarCon").show();
+            $("#mj-stclose").click(function(){
+                $(".mj-stclose").hide(300);
+                $(".mj-sidebarCon").hide(300);
+                $(".mj-siright").show(300);
+            });
+            $(".mj-siright").click(function(){
+                $(".mj-stclose").show(300);
+                $(".mj-sidebarCon").show(300);
+                $(".mj-siright").hide(300);
+            });
+        }
+
+    });
+
+
     $(document).ready(function(){
         var doc=document,inputs=doc.getElementsByTagName('input'),supportPlaceholder='placeholder'in doc.createElement('input'),placeholder=function(input){var text=input.getAttribute('placeholder'),defaultValue=input.defaultValue;
             if(defaultValue==''){
