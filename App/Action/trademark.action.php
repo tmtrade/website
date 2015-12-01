@@ -273,7 +273,7 @@ class TrademarkAction extends AppAction
 		$nameArr = explode(" ",$name);
 		$contact['name']  = $nameArr[$lastTid].$gender[$sex];
 		$phone = 18602868321;
-		$contact['phone'] = substr($phone,0,3).'****'.substr($phone,-3);
+		$contact['phone'] = substr($phone,0,3).'*****'.substr($phone,-3);
 		return $contact;
 	}
 	
