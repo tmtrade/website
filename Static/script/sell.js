@@ -25,7 +25,7 @@ $(function(){
 		var table =  _this.parent().parent().next().next();
 		/**检查是否重复**/
 		$('.input-number').each(function(index){
-			if($.trim($(this).val()) != '' && $(this).val() == $.trim(_this.val())){
+			if($.trim($(this).val()) != '' && $.trim($(this).val()) == $.trim(_this.val())){
 				key ++ ;
 			}
 		})
