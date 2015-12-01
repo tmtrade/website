@@ -123,7 +123,7 @@ class SellAction extends AppAction
 					$sales['name']       = $result[0]['trademark'];
 					$sales['proposerId'] = $result[0]['proposer_id'];
 					$sales['newId']      = $result[0]['newId'];
-					$sales['group']      = $result[0]['group'];
+					$sales['group']      = $this->emptyreplace($result[0]['group']);
 					/*认证状态*/
 					$approves  = $this->getApprove($sales);
 					
@@ -289,6 +289,23 @@ class SellAction extends AppAction
 			$boolsaletrademark   = $this->load('saletrademark')->Saletrademark($detail);
 		}
 		return $tradeId;
+	}
+	
+	/* 
+	* 群组字符串替换处理
+	*/ 
+	public function emptyreplace($str) 
+	{ 
+		$str = str_replace('　', ' ', $str); //替换全角空格为半角 
+		$str = str_replace('<br>', ' ', $str); //替换BR
+		$str = str_replace('&lt;br&gt;', ' ', $str); //替换BR
+		$str = str_replace('*', '', $str);  //替换*
+		$str = preg_replace('/\(.*?\)/', ' ', $str);//替换括号里面的
+		$result = '';
+		$strArr = explode(" ",$str);
+		$strArr = array_unique(array_filter($strArr)); //去掉空字符串
+		$result = implode(',', $strArr);
+		return $result; 
 	}
 	
 	/**
