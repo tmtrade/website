@@ -246,6 +246,14 @@
         });
     }
 
+    $("#mj-label").click(function(){
+        $(".mj-footerTip").hide();
+        $(".mj-maclose").show();
+    });
+    $(".mj-maclose").click(function(){
+        $(".mj-footerTip").show();
+        $(".mj-maclose").hide();
+    });
 
     if ( _class >= 10 ){
         var _first = $("#j-dltype").find('a').first();

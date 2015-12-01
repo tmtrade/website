@@ -145,6 +145,59 @@
     var _group      = "<?=$g?>";
     var _times      = 0;
     var _objTime ;
+    var _mod        = "<?=$_mod_?>";
+
+/*cookie管理*/
+var Cookie = {
+    getExpiresDate:function(days, hours, minutes) {
+        var ExpiresDate = new Date();
+        if (typeof days == "number" && typeof hours == "number" &&
+            typeof hours == "number") {
+            ExpiresDate.setDate(ExpiresDate.getDate() + parseInt(days));
+            ExpiresDate.setHours(ExpiresDate.getHours() + parseInt(hours));
+            ExpiresDate.setMinutes(ExpiresDate.getMinutes() + parseInt(minutes));
+            return ExpiresDate.toGMTString();
+        }
+    },
+    _getValue:function(offset) {
+        var endstr = document.cookie.indexOf (";", offset);
+        if (endstr == -1) {
+            endstr = document.cookie.length;
+        }
+        return unescape(document.cookie.substring(offset, endstr));
+    },
+    get:function(name) {
+        var arg = name + "=";
+        var alen = arg.length;
+        var clen = document.cookie.length;
+        var i = 0;
+        while (i < clen) {
+            var j = i + alen;
+            if (document.cookie.substring(i, j) == arg) {
+                return this._getValue(j);
+            }
+            i = document.cookie.indexOf(" ", i) + 1;
+            if (i == 0) break;
+        }
+        return "";
+    },
+    set:function(name, value, expires, path, domain, secure) {
+        document.cookie = name + "=" + escape (value) +
+            ((expires) ? "; expires=" + expires : "") +
+            ((path) ? "; path=" + path : "") +
+            ((domain) ? "; domain=" + domain : "") +
+            ((secure) ? "; secure" : "");
+    },
+    remove:function(name,path,domain) {
+        if (this.get(name)) {
+            document.cookie = name + "=" +
+                ((path) ? "; path=" + path : "") +
+                ((domain) ? "; domain=" + domain : "") +
+                "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+        }
+    }
+};
+
 
     function getClass(cls)
     {
@@ -186,15 +239,21 @@
         if (!_has) return false;
         $('#s-uploading').show();
         var obj = new objURL('/?'+_whereStr);
-        _start += _number;
-		if(_start > 120){
+		if(_mod == 'search'){
+            if ( _start >= 120 && !Cookie.get('_buttomView') ){
+                $("#list-more").html("<span>不想翻了，拒绝等待！！！还有更多商标在等你，让我来帮你找找？</span>");
+    			$(".mj-maclose").hide();
+    			$(".mj-footerTip").show();
+            }
+		}else{
             $("#list-more").html("<span>不想翻了，拒绝等待！！！还有更多商标在等你，让我来帮你找找？</span>");
-			$(".mj-maclose").hide();
-			$(".mj-footerTip").show();
-		}
+            $(".mj-maclose").hide();
+            $(".mj-footerTip").show();
+        }
         if ( _times != 0 ){
             return false;
         }
+        _start += _number;
         _times      = 1;
         _objTime    = setTimeout(function(){_times = 0;},30000);
         obj.set('n', _start);
@@ -209,13 +268,32 @@
             }else{
                 _has = false;
                 $('#s-uploading').hide();
-                $("#list-more").html("<span>没找到中意的？还有近<strong> 30000 </strong>商标没上线，让我来帮你找找？</span>");
-                $(".mj-maclose").hide();
-                $(".mj-footerTip").show();
+                if (_mod == 'search'){
+                    if ( !Cookie.get('_buttomView') ){
+                        $("#list-more").html("<span>没找到中意的？还有近<strong> 30000 </strong>商标没上线，让我来帮你找找？</span>");
+                        $(".mj-maclose").hide();
+                        $(".mj-footerTip").show();
+                    }
+                }else{
+                    $("#list-more").html("<span>没找到中意的？还有近<strong> 30000 </strong>商标没上线，让我来帮你找找？</span>");
+                    $(".mj-maclose").hide();
+                    $(".mj-footerTip").show();
+                }
                 _times = 1;
             }
         });
     }
+
+    $("#mj-label").click(function(){
+        if (_mod == 'search') Cookie.set('_buttomView', true);
+        $(".mj-footerTip").hide();
+        $(".mj-maclose").show();
+    });
+    $(".mj-maclose").click(function(){
+        if (_mod == 'search') Cookie.set('_buttomView', false);
+        $(".mj-footerTip").show();
+        $(".mj-maclose").hide();
+    });
 
     /*select*/
     $('.son_ul').hide(); //初始ul隐藏
