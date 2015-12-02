@@ -37,6 +37,12 @@
         margin: 0 auto;
         padding: 0;
     }
+    .sp-1,.sp-2,.sp-3,.sp-4,.sp-5,.sp-6,.sp-7{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+  
 }
 /*
 @media only screen and (max-width: 1270px){
