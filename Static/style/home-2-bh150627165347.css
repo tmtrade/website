@@ -9,3 +9,6 @@
     background: #f5f5f5;
     padding: 30px;
 }
+.sp-2_box .icon:hover.icon a{
+    text-decoration: underline;
+}
