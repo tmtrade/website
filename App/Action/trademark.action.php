@@ -272,7 +272,9 @@ class TrademarkAction extends AppAction
 		$gender = array(1=>'先生',2=>'女士');
 		$nameArr = explode(" ",$name);
 		$contact['name']  = $nameArr[$lastTid].$gender[$sex];
-		$phone = 18602868321;
+		$phoneArr = array('15811270065','15811378137','15810761501','15811132605','15810113823','15811137365');
+		$phoneid = ceil(substr($tid,-1)/3*2) > 5 ? 5 : ceil(substr($tid,-1)/3*2);
+		$phone = $phoneArr[$phoneid];
 		$contact['phone'] = substr($phone,0,3).'*****'.substr($phone,-3);
 		return $contact;
 	}
