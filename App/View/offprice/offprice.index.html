@@ -278,7 +278,7 @@
 	$('.mj-laBtn').click(function(){
 		var _kw = $('#keywords').val();
 		var obj = new objURL('/?'+_whereStr);
-		obj.set('kw',_kw==0?'':_kw);
+		obj.set('kw',_kw==0?'':$.trim(_kw));
 		obj.set('c', _class==0?'':_class);
 		obj.set('g', _group==0?'':_group);
         obj.set('p', _plat==0?'':_plat);
