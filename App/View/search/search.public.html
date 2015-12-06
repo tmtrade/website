@@ -58,9 +58,9 @@
                     <li>
                         <!--<label class="mj-mt26"></label>-->
                         <div class="select_boxs">
-                                <span id="sType" tid="<?=$t?>" class="mj-textS">
+                            <span id="sType" tid="<?=$t?>" class="mj-textS">
                                 <?if ( empty($t) ){echo '商标类型';}else{echo $TYPES[$t];}?>
-                                </span>
+                            </span>
                             <ul class="son_ul" style="display: none;">
                                 <li tid="0" onclick="createUrl('_sT',0);" >全部</li>
                                 <? foreach ($TYPES as $k => $v) { ?>
@@ -198,6 +198,7 @@
     var _whereStr   = "<?=$whereStr?>";
     var _moreUrl    = '/<?=$_mod_?>/getMore/';
     var _url        = '/<?=$_mod_?>/index/?';
+	var _urlSearch  = '/search/index/?';
     var _has        = "<?=$has?>";
     var _class      = "<?=$c?>";
     var _group      = "<?=$g?>";
@@ -290,8 +291,16 @@
 	
 	//搜索提交
 	$('.mj-laBtn').click(function(){
-		var kw = $('#keywords').val();
-		createUrl("_kw",$.trim(kw));
+		var _kw = $('#keywords').val();
+		var obj = new objURL('/?'+_whereStr);
+		obj.set('kw',_kw==0?'':_kw);
+		obj.set('c', _class==0?'':_class);
+		obj.set('g', _group==0?'':_group);
+        obj.set('p', _plat==0?'':_plat);
+        obj.set('t', _sT==0?'':_sT);
+        obj.set('sn', _sN==0?'':_sN);
+        var params = obj.strparams();
+        window.location = _urlSearch+params;
 	})
 	
 	//提交URL
