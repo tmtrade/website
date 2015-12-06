@@ -420,7 +420,9 @@
 
     //类别
     $("#mj-leb").click(function(){
+	   $("#mj-qzList").hide();
        $("#mj-lbList").show();
+	   
     });
     $("#mj-lbList dd a").click(function(){
         $(this).addClass("current").siblings().removeClass("current");
@@ -435,6 +437,7 @@
     });
     //群组
     $("#mj-qz>span").click(function(){
+		$("#mj-lbList").hide();
         $("#mj-qzList").show();
     });
     $("#mj-qzList dd a").click(function(){
