@@ -95,9 +95,9 @@
                                 <a href="javascript:;" class="mj-close"></a>
                                 <dt>商标类别</dt>
                                 <dd>
-									 <a href="javascript:createUrl('_class',0);" <?if ($c == 0){echo 'class="current"';}?>> 全部 </a>
+									 <a  tid="0" href="javascript:createUrl('_class',0);" <?if ($c == 0){echo 'class="current"';}?>> 全部 </a>
 									<? foreach ($CLASSES as $key => $value) { ?>
-										<a href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?> ><?echo $key.'类-'.$value?></a>
+										<a tid="<?=$key?>" href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?> ><?echo $key.'类-'.$value?></a>
 									<? } ?>
                                 </dd>
                             </dl>
