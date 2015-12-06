@@ -137,7 +137,7 @@
                     <li>
                         <div class="mj-liIn">
                             <input type="text" value="<?=$kw?>" id="keywords" />
-                            <a class="mj-laBtn">重新搜索</a>
+                            <a class="mj-laBtn">确定</a>
                         </div>
                     </li>
                     <!--<li class="mj-determine"><a href="javascript:;" id="sSubmit">确认</a></li>-->
@@ -426,7 +426,9 @@
         $(this).addClass("current").siblings().removeClass("current");
         $("#mj-leb").text($(this).text());
         $("#mj-lbList").hide();
-        $("#mj-qz").show();
+		if($(this).attr('tid') > 0){
+			$("#mj-qz").show();
+		}
     });
     $(".mj-mdl .mj-close").click(function(){
         $(".mj-mdl").hide();

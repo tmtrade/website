@@ -48,9 +48,9 @@
             <dd class="f-clearfix">
                 <span class="mj-selection-span">商标类别：</span>
                 <div class="mj-selection-list" id="j-dltype">
-                    <a href="javascript:createUrl('_class',0);"  <?if ($c == 0){echo 'class="current"';}?>>全部  </a>
+                    <a tid=0 href="javascript:createUrl('_class',0);"  <?if ($c == 0){echo 'class="current"';}?>>全部  </a>
                 <? foreach ($CLASSES as $key => $value) { ?>
-                    <a href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?>><?echo $key.'类-'.$value?></a>
+                    <a tid=<?=$key?> href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?>><?echo $key.'类-'.$value?></a>
                 <? } ?>
                     <a href="javascript:;" class="curs" id="mj_aclik">......</a>
                 </div>
@@ -168,7 +168,7 @@
                 <li>
                     <div class="mj-liIn">
                         <input type="text" value="<?=$kw?>" id="keywords" />
-                        <a class="mj-laBtn">重新搜索</a>
+                        <a class="mj-laBtn">确定</a>
                     </div>
                 </li>
                 <!--<li class="mj-determine"><a href="javascript:;" id="sSubmit">确认</a></li>-->
@@ -243,42 +243,6 @@
 	
     var _times      = 0;
     var _objTime ;
-
-    function getClass(cls)
-    {
-        var obj = new objURL('/?'+_whereStr);
-        obj.set('c', cls==0?'':cls);
-        obj.set('g', '');
-        obj.set('p', '');
-        obj.set('t', '');
-        obj.set('sn', '');
-        var params = obj.strparams();
-        window.location = _url+params;
-    }
-
-    function getGroup(grp)
-    {
-        var obj = new objURL('/?'+_whereStr);
-        obj.set('c', _class==0?'':_class);
-        obj.set('g', grp==0?'':grp);
-        obj.set('p', '');
-        obj.set('t', '');
-        obj.set('sn', '');
-        var params = obj.strparams();
-        window.location = _url+params;
-    }
-
-    function getPlatform(plat)
-    {
-        var obj = new objURL('/?'+_whereStr);
-        obj.set('c', _class==0?'':_class);
-        obj.set('g', _group==0?'':_group);
-        obj.set('p', plat==0?'':plat);
-        obj.set('t', '');
-        obj.set('sn', '');
-        var params = obj.strparams();
-        window.location = _url+params;
-    }
 
     function loadMore(){
         if (!_has) return false;
@@ -506,10 +470,12 @@
         $("#mj-lbList").show();
     });
     $("#mj-lbList dd a").click(function(){
-        $(this).addClass("current").siblings().removeClass("current");
+		$(this).addClass("current").siblings().removeClass("current");
         $("#mj-leb").text($(this).text());
-        $("#mj-lbList").hide();
-        $("#mj-qz").show();
+		$("#mj-lbList").hide();
+		if($(this).attr('tid') > 0){
+			$("#mj-qz").show();
+		}
     });
     $(".mj-mdl .mj-close").click(function(){
         $(".mj-mdl").hide();
