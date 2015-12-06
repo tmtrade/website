@@ -148,14 +148,13 @@
 								echo "<a href='javascript:getlogin();' class=\"mj-priceTxtt_link\">立即抢购</a>";
 							}
 						}
-						?>
-                        
+						?>    
                     </div>
 				<?php
 					}else{
 					if($isLogin){//是否登录
 						//if($data['isBargain'] == 2){//商品定价方案为售价
-						if($data['price'] > 0){
+						if($data['guideprice'] > 0){
 				?>			
 							<!--价格-->
 							<div class="mj-priceTxtt">
