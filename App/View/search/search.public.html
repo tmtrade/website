@@ -16,20 +16,21 @@
             <dd class="f-clearfix">
                 <span class="mj-selection-span">商标类别：</span>
                 <div class="mj-selection-list" id="j-dltype">
-                    <a href="javascript:getClass(0);"  <?if ($c == 0){echo 'class="current"';}?>>全部  </a>
-                <? foreach ($CLASSES as $key => $value) { ?>
-                    <a href="javascript:getClass(<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?>><?echo $key.'类-'.$value?></a>
+                    <a href="javascript:createUrl('_class',0);"  <?if ($c == 0){echo 'class="current"';}?>>全部  </a>
+                <? 
+				foreach ($CLASSES as $key => $value) { ?>
+                    <a href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?>><?echo $key.'类-'.$value?></a>
                 <? } ?>
                     <a href="javascript:;" class="curs" id="mj_aclik">......</a>
                 </div>
             </dd>
-        <? if( !empty($groupList) ){ ?>
+        <? if( !empty($groupList) ){?>
             <dd class="f-clearfix">
                 <span class="mj-selection-span">所属群组：</span>
                 <div class="mj-selection-list" id="g-dltype">
-                    <a href="javascript:getGroup(0);" <?if ($g == 0){echo 'class="current"';}?>>全部  </a>
+                    <a href="javascript:createUrl('_group',0);" <?if ($g == 0){echo 'class="current"';}?>>全部  </a>
                 <? foreach ($groupList as $ky => $val) { ?>
-                    <a href="javascript:getGroup('<?=$ky?>');" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>">
+                    <a href="javascript:createUrl('_group','<?=$ky?>');" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>">
                     <?=mb_substr($val, 0, 6, 'utf8')?></a>
                 <? } ?>
                 <? if ( count($groupList) > 10 ){?>
@@ -41,9 +42,9 @@
             <dd class="f-clearfix">
                 <span class="mj-selection-span">入驻平台： </span>
                 <div class="mj-selection-list">
-                    <a href="javascript:getPlatform(0);" <?if ($p == 0){echo 'class="current"';}?>>全部  </a>
+                    <a href="javascript:createUrl('_plat','0');" <?if ($p == 0){echo 'class="current"';}?>>全部  </a>
                 <? foreach ($PLATFORM as $k => $v) { ?>
-                    <a href="javascript:getPlatform(<?=$k?>);" <?if ($p == $k){echo 'class="current"';}?>><?=$v?></a>
+                    <a href="javascript:createUrl('_plat','<?=$k?>');" <?if ($p == $k){echo 'class="current"';}?>><?=$v?></a>
                 <? } ?>
                 </div>
             </dd>
@@ -61,9 +62,9 @@
                                 <?if ( empty($t) ){echo '商标类型';}else{echo $TYPES[$t];}?>
                                 </span>
                             <ul class="son_ul" style="display: none;">
-                                <li tid="0">全部</li>
+                                <li tid="0" onclick="createUrl('_sT',0);" >全部</li>
                                 <? foreach ($TYPES as $k => $v) { ?>
-                                <li tid="<?=$k?>"><?=$v?></li>
+                                <li tid="<?=$k?>" onclick="createUrl('_sT',<?=$k?>);" ><?=$v?></li>
                                 <? } ?>
                             </ul>
                         </div>
@@ -74,9 +75,9 @@
                                 <?if ( empty($sn) ){echo '组合类型';}else{echo $NUMBER[$sn];}?>
                                 </span>
                             <ul class="son_ul son_uls" style="display: none;">
-                                <li tid="0">全部</li>
+                                <li tid="0" onclick="createUrl('_sN',0);">全部</li>
                                 <? foreach ($NUMBER as $k => $v) { ?>
-                                <li tid="<?=$k?>"><?=$v?></li>
+                                <li tid="<?=$k?>" onclick="createUrl('_sN',<?=$k?>);" ><?=$v?></li>
                                 <? } ?>
                             </ul>
                         </div>
@@ -87,135 +88,55 @@
                     <li>
                         <!--<label class="mj-mt26"></label>-->
                         <div class="select_boxs select_boxW">
-                                <span class="mj-textS" id="mj-leb" style="text-align: center;">类别</span>
+							<span class="mj-textS" tid="<?=$p?>" id="mj-leb" style="text-align: center;" >
+                                <?if ( empty($c) ){echo '类别';}else{echo $c.'类-'.$CLASSES[$c];}?>
+                            </span>	
                             <dl class="mj-mdl" id="mj-lbList">
                                 <a href="javascript:;" class="mj-close"></a>
                                 <dt>商标类别</dt>
                                 <dd>
-                                    <a href="javascript:void(0)" class="current"> 全部 </a>
-                                    <a href="javascript:void(0)">1类-化工原料</a>
-                                    <a href="javascript:void(0)">2类-油漆涂料</a>
-                                    <a href="javascript:void(0)">3类-化妆清洁</a>
-                                    <a href="javascript:void(0)">4类-工业油脂</a>
-                                    <a href="javascript:void(0)">5类-药品制剂</a>
-                                    <a href="javascript:void(0)">6类-五金器具</a>
-                                    <a href="javascript:void(0)">7类-机械机器</a>
-                                    <a href="javascript:void(0)">8类-手工用具</a>
-                                    <a href="javascript:void(0)">9类-电子电器</a>
-                                    <a href="javascript:void(0)">10类-医疗器械</a>
-                                    <a href="javascript:void(0)">11类-家用电器</a>
-                                    <a href="javascript:void(0)">12类-车船配件</a>
-                                    <a href="javascript:void(0)">13类-火器烟花</a>
-                                    <a href="javascript:void(0)">14类-珠宝饰品</a>
-                                    <a href="javascript:void(0)">15类-乐器乐辅</a>
-                                    <a href="javascript:void(0)">16类-文具办公</a>
-                                    <a href="javascript:void(0)">17类-橡塑制品</a>
-                                    <a href="javascript:void(0)">18类-皮具制品</a>
-                                    <a href="javascript:void(0)">19类-建筑材料</a>
-                                    <a href="javascript:void(0)">20类-家具工艺</a>
-                                    <a href="javascript:void(0)">21类-厨具日用</a>
-                                    <a href="javascript:void(0)">22类-缆绳帐篷</a>
-                                    <a href="javascript:void(0)">23类-线纱丝纺</a>
-                                    <a href="javascript:void(0)">24类-家用纺品</a>
-                                    <a href="javascript:void(0)">25类-服装鞋帽</a>
-                                    <a href="javascript:void(0)">26类-缝纫用品</a>
-                                    <a href="javascript:void(0)">27类-地毯席垫</a>
-                                    <a href="javascript:void(0)">28类-运动器械</a>
-                                    <a href="javascript:void(0)">29类-食品鱼肉</a>
-                                    <a href="javascript:void(0)">30类-食品佐料</a>
-                                    <a href="javascript:void(0)">31类-生鲜农产</a>
-                                    <a href="javascript:void(0)">32类-啤酒饮料</a>
-                                    <a href="javascript:void(0)">33类-酒精饮料</a>
-                                    <a href="javascript:void(0)">34类-烟草制品</a>
-                                    <a href="javascript:void(0)">35类-广告商业</a>
-                                    <a href="javascript:void(0)">36类-金融经纪</a>
-                                    <a href="javascript:void(0)">37类-修理安装</a>
-                                    <a href="javascript:void(0)">38类-通讯服务</a>
-                                    <a href="javascript:void(0)">39类-运输旅行</a>
-                                    <a href="javascript:void(0)">40类-加工服务</a>
-                                    <a href="javascript:void(0)">41类-教育娱乐</a>
-                                    <a href="javascript:void(0)">42类-科技研究</a>
-                                    <a href="javascript:void(0)">43类-餐饮住宿</a>
-                                    <a href="javascript:void(0)">44类-医疗美容</a>
-                                    <a href="javascript:void(0)">45类-法律安全</a>
+									 <a href="javascript:createUrl('_class',0);" <?if ($c == 0){echo 'class="current"';}?>> 全部 </a>
+									<? foreach ($CLASSES as $key => $value) { ?>
+										<a href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?> ><?echo $key.'类-'.$value?></a>
+									<? } ?>
                                 </dd>
                             </dl>
                         </div>
                     </li>
                     <li>
-                        <div class="select_boxs select_boxW" id="mj-qz">
-                            <span class="mj-textS" style="text-align: center;">群组</span>
+                        <div class="select_boxs select_boxW" id="mj-qz" <? if( empty($groupList) ){ ?>style="display:none;"<? } ?>>
+                            <span class="mj-textS" style="text-align: center;">
+								<?if ( empty($g) ){echo '群组';}else{echo mb_substr($groupList[$g], 0, 6, 'utf8');}?>
+							</span>
                             <dl class="mj-mdl" id="mj-qzList">
                                 <a href="javascript:;" class="mj-close"></a>
                                 <dt>所属群组</dt>
                                 <dd>
-                                    <a href="javascript:void(0)" class="current"> 全部 </a>
-                                    <a href="javascript:void(0)">1类-化工原料</a>
-                                    <a href="javascript:void(0)">2类-油漆涂料</a>
-                                    <a href="javascript:void(0)">3类-化妆清洁</a>
-                                    <a href="javascript:void(0)">4类-工业油脂</a>
-                                    <a href="javascript:void(0)">5类-药品制剂</a>
-                                    <a href="javascript:void(0)">6类-五金器具</a>
-                                    <a href="javascript:void(0)">7类-机械机器</a>
-                                    <a href="javascript:void(0)">8类-手工用具</a>
-                                    <a href="javascript:void(0)">9类-电子电器</a>
-                                    <a href="javascript:void(0)">10类-医疗器械</a>
-                                    <a href="javascript:void(0)">11类-家用电器</a>
-                                    <a href="javascript:void(0)">12类-车船配件</a>
-                                    <a href="javascript:void(0)">13类-火器烟花</a>
-                                    <a href="javascript:void(0)">14类-珠宝饰品</a>
-                                    <a href="javascript:void(0)">15类-乐器乐辅</a>
-                                    <a href="javascript:void(0)">16类-文具办公</a>
-                                    <a href="javascript:void(0)">17类-橡塑制品</a>
-                                    <a href="javascript:void(0)">18类-皮具制品</a>
-                                    <a href="javascript:void(0)">19类-建筑材料</a>
-                                    <a href="javascript:void(0)">20类-家具工艺</a>
-                                    <a href="javascript:void(0)">21类-厨具日用</a>
-                                    <a href="javascript:void(0)">22类-缆绳帐篷</a>
-                                    <a href="javascript:void(0)">23类-线纱丝纺</a>
-                                    <a href="javascript:void(0)">24类-家用纺品</a>
-                                    <a href="javascript:void(0)">25类-服装鞋帽</a>
-                                    <a href="javascript:void(0)">26类-缝纫用品</a>
-                                    <a href="javascript:void(0)">27类-地毯席垫</a>
-                                    <a href="javascript:void(0)">28类-运动器械</a>
-                                    <a href="javascript:void(0)">29类-食品鱼肉</a>
-                                    <a href="javascript:void(0)">30类-食品佐料</a>
-                                    <a href="javascript:void(0)">31类-生鲜农产</a>
-                                    <a href="javascript:void(0)">32类-啤酒饮料</a>
-                                    <a href="javascript:void(0)">33类-酒精饮料</a>
-                                    <a href="javascript:void(0)">34类-烟草制品</a>
-                                    <a href="javascript:void(0)">35类-广告商业</a>
-                                    <a href="javascript:void(0)">36类-金融经纪</a>
-                                    <a href="javascript:void(0)">37类-修理安装</a>
-                                    <a href="javascript:void(0)">38类-通讯服务</a>
-                                    <a href="javascript:void(0)">39类-运输旅行</a>
-                                    <a href="javascript:void(0)">40类-加工服务</a>
-                                    <a href="javascript:void(0)">41类-教育娱乐</a>
-                                    <a href="javascript:void(0)">42类-科技研究</a>
-                                    <a href="javascript:void(0)">43类-餐饮住宿</a>
-                                    <a href="javascript:void(0)">44类-医疗美容</a>
-                                    <a href="javascript:void(0)">45类-法律安全</a>
+									<a href="javascript:createUrl('_group',0);" <?if ($g == 0){echo 'class="current"';}?>>全部  </a>
+									<? foreach ($groupList as $ky => $val) { ?>
+										<a href="javascript:createUrl('_group','<?=$ky?>')" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>"><?=mb_substr($val, 0, 6, 'utf8')?></a>
+									<? } ?>
                                 </dd>
                             </dl>
                         </div>
                     </li>
                     <li>
                         <div class="select_boxs">
-                            <span class="mj-textS">平台</span>
+							<span class="mj-textS" tid="<?=$p?>" class="mj-textS">
+                                <?if ( empty($p) ){echo '平台';}else{echo $PLATFORM[$p];}?>
+                            </span>
                             <ul class="son_ul" style="display: none;">
-                                <li >全部</li>
-                                <li >京东</li>
-                                <li >大型超市</li>
-                                <li >亚马逊</li>
-                                <li>1号店</li>
-                                <li>美丽说</li>
-                                <li>聚美优品</li>
+								<li tid="0" onclick="createUrl('_plat','0')">全部</li>
+								<? foreach ($PLATFORM as $k => $v) { ?>
+									<li tid="<?=$k?>" onclick="createUrl('_plat','<?=$k?>')"><?=$v?></li>
+								<? } ?>
+                                
                             </ul>
                         </div>
                     </li>
                     <li>
                         <div class="mj-liIn">
-                            <input type="text"/>
+                            <input type="text" value="<?=$kw?>" id="keywords" />
                             <a class="mj-laBtn">重新搜索</a>
                         </div>
                     </li>
@@ -280,47 +201,14 @@
     var _has        = "<?=$has?>";
     var _class      = "<?=$c?>";
     var _group      = "<?=$g?>";
+	var _kw         = "<?=$kw?>";
+	var _sT			= "<?=$t?>"; //商标类型，（中文，英文、、、）
+    var _sN			= "<?=$sn?>";//商标名称长度，（一个中文或字母、、、）
+	var _plat		= "<?=$p?>"; //入驻平台，（天猫，京东、、、）
     var _times      = 0;
     var _objTime ;
     var _mod        = "<?=$_mod_?>";
     var _buttomView = false;
-
-
-    function getClass(cls)
-    {
-        var obj = new objURL('/?'+_whereStr);
-        obj.set('c', cls==0?'':cls);
-        obj.set('g', '');
-        obj.set('p', '');
-        obj.set('t', '');
-        obj.set('sn', '');
-        var params = obj.strparams();
-        window.location = _url+params;
-    }
-
-    function getGroup(grp)
-    {
-        var obj = new objURL('/?'+_whereStr);
-        obj.set('c', _class==0?'':_class);
-        obj.set('g', grp==0?'':grp);
-        obj.set('p', '');
-        obj.set('t', '');
-        obj.set('sn', '');
-        var params = obj.strparams();
-        window.location = _url+params;
-    }
-
-    function getPlatform(plat)
-    {
-        var obj = new objURL('/?'+_whereStr);
-        obj.set('c', _class==0?'':_class);
-        obj.set('g', _group==0?'':_group);
-        obj.set('p', plat==0?'':plat);
-        obj.set('t', '');
-        obj.set('sn', '');
-        var params = obj.strparams();
-        window.location = _url+params;
-    }
 
     function loadMore(){
         if (!_has) return false;
@@ -399,16 +287,48 @@
         $(this).parents('li').find('.mj-textS').attr('tid', $(this).attr('tid'));
         $(this).parents('li').find('ul').hide();
     });
-
-    $("#sSubmit").click(function (){
-        var _sT = $("#sType").attr('tid');
-        var _sN = $("#sNumber").attr('tid');
-        var obj = new objURL('/?'+_whereStr);
+	
+	//搜索提交
+	$('.mj-laBtn').click(function(){
+		var kw = $('#keywords').val();
+		createUrl("_kw",$.trim(kw));
+	})
+	
+	//提交URL
+	function createUrl(parameter,value){
+		if(parameter == '_class' && value == 0){
+			_group = "";
+		}
+		switch(parameter){
+			case "_kw" :
+				_kw = value;
+				break;
+			case "_class" :
+				_class = value;
+				break;
+			case "_group" :
+				_group = value;
+				break;
+			case "_plat" :
+				_plat = value;
+				break;
+			case "_sT" :
+				_sT = value;
+				break;
+			case "_sN" :
+				_sN = value;
+				break;
+		}
+		var obj = new objURL('/?'+_whereStr);
+		obj.set('kw',_kw==0?'':_kw);
+		obj.set('c', _class==0?'':_class);
+		obj.set('g', _group==0?'':_group);
+        obj.set('p', _plat==0?'':_plat);
         obj.set('t', _sT==0?'':_sT);
         obj.set('sn', _sN==0?'':_sN);
         var params = obj.strparams();
         window.location = _url+params;
-    });
+	}
 
     //悬浮层
      _nav = $('.mj_goods_check');
