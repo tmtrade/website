@@ -160,3 +160,8 @@ ul.son_uls li{
 #mj-dnul{
     display: none;
 }
+ul.mj-pup{
+    position: absolute;
+    padding-left: 290px;
+    z-index: 5;
+}

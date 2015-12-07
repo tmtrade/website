@@ -437,18 +437,20 @@
     $("#mj-leb").click(function(){
 	   $("#mj-qzList").hide();
        $("#mj-lbList").show();
-	   
+       $("#mj-dnul").addClass("mj-pup");
     });
     $("#mj-lbList dd a").click(function(){
         $(this).addClass("current").siblings().removeClass("current");
         $("#mj-leb").text($(this).text());
         $("#mj-lbList").hide();
+        $("#mj-dnul").removeClass("mj-pup");
 		if($(this).attr('tid') > 0){
 			$("#mj-qz").show();
 		}
     });
     $(".mj-mdl .mj-close").click(function(){
         $(".mj-mdl").hide();
+        $("#mj-dnul").removeClass("mj-pup");
     });
     //群组
     $("#mj-qz>span").click(function(){
