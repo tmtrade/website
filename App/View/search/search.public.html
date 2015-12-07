@@ -144,7 +144,7 @@
                 </ul>
             </div>
         </div>
-        <div class="w1180">
+        <div class="w1180" id="sept">
             <div class="mj-imglists">
                 <ul class="f-clearfix" id="s-all-list">
                 <? foreach ($searchList as $k => $v) { ?>
@@ -354,19 +354,23 @@
             if($(window).scrollTop()>=600){
                 _nav.addClass("mj-navT");
                 $("#mj-dnul").show();
+                $("#sept").addClass("sept");
                 _isshow = 1;
             }else if($(window).scrollTop()<=600){
                 _nav.removeClass("mj-navT");
                 $("#mj-dnul").hide();
+                $("#sept").removeClass("sept");
                 _isshow = 0;
             }
         }else{
             if($(window).scrollTop()>=250){
                 _nav.addClass("mj-navT");
                 $("#mj-dnul").show();
+                $("#sept").addClass("sept");
                 _isshow = 1;
             }else if($(window).scrollTop()<=250){
                 _nav.removeClass("mj-navT");
+                $("#sept").removeClass("sept");
                 $("#mj-dnul").hide();
                 _isshow = 0;
             }
