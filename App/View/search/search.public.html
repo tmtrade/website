@@ -137,10 +137,10 @@
                     <li>
                         <div class="mj-liIn">
                             <input type="text" value="<?=$kw?>" id="keywords" />
-                            <a class="mj-laBtn">确定</a>
+                            <!--<a class="mj-laBtn">确定</a>-->
                         </div>
                     </li>
-                    <!--<li class="mj-determine"><a href="javascript:;" id="sSubmit">确认</a></li>-->
+                    <li class="mj-determine"><a href="javascript:;" id="sSubmit">确认</a></li>
                 </ul>
             </div>
         </div>
@@ -348,35 +348,36 @@
 	}
 
     //悬浮层
-     _nav = $('.mj_goods_check');
+    _nav = $('.mj_goods_check');
     $(window).scroll(function(){
         if(_hasBanner==true){
-            if($(window).scrollTop()>=450){
+            if($(window).scrollTop()>=600){
                 _nav.addClass("mj-navT");
                 _nav.attr('id',"idname");
                 $("#mj-dnul").show();
-				_isshow = 1;
-            }else if($(window).scrollTop()<=450){
+                _isshow = 1;
+            }else if($(window).scrollTop()<=600){
                 _nav.removeClass("mj-navT");
                 _nav.removeAttr("id");
                 $("#mj-dnul").hide();
-				_isshow = 0;
+                _isshow = 0;
             }
         }else{
             if($(window).scrollTop()>=250){
                 _nav.addClass("mj-navT");
                 _nav.attr('id',"idname");
                 $("#mj-dnul").show();
-				_isshow = 1;
+                _isshow = 1;
             }else if($(window).scrollTop()<=250){
                 _nav.removeClass("mj-navT");
                 _nav.removeAttr("id");
                 $("#mj-dnul").hide();
-				_isshow = 0;
+                _isshow = 0;
             }
         }
 
     });
+
 
 
     $(window).scroll(function () {
