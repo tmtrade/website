@@ -52,7 +52,7 @@
         <!--search end-->
     </div>
         <!--imglist start-->
-        <div class="mj_goods_check ">
+        <div class="mj_goods_check " id="searchC">
             <div class="w1180 f-clearfix">
                 <ul class="f-clearfix mj-pu mj-ulw fl">
                     <li>
@@ -210,6 +210,7 @@
     var _objTime ;
     var _mod        = "<?=$_mod_?>";
     var _buttomView = false;
+	var _maodian    = "#searchC";
 
     function loadMore(){
         if (!_has) return false;
@@ -300,11 +301,12 @@
         obj.set('t', _sT==0?'':_sT);
         obj.set('sn', _sN==0?'':_sN);
         var params = obj.strparams();
-        window.location = _urlSearch+params;
+        window.location = _urlSearch+params+_maodian;
 	})
-	
+	var _isshow = 0;
 	//提交URL
 	function createUrl(parameter,value){
+		t =_isshow;
 		if(parameter == '_class'){
 			_group = "";
 		}
@@ -336,7 +338,13 @@
         obj.set('t', _sT==0?'':_sT);
         obj.set('sn', _sN==0?'':_sN);
         var params = obj.strparams();
-        window.location = _url+params;
+		
+		if(t == 1){
+			var allurl = _url+params+_maodian;
+		}else{
+			var allurl = _url+params;
+		}
+        window.location = allurl;
 	}
 
     //悬浮层
@@ -347,20 +355,24 @@
                 _nav.addClass("mj-navT");
                 _nav.attr('id',"idname");
                 $("#mj-dnul").show();
+				_isshow = 1;
             }else if($(window).scrollTop()<=450){
                 _nav.removeClass("mj-navT");
                 _nav.removeAttr("id");
                 $("#mj-dnul").hide();
+				_isshow = 0;
             }
         }else{
             if($(window).scrollTop()>=250){
                 _nav.addClass("mj-navT");
                 _nav.attr('id',"idname");
                 $("#mj-dnul").show();
+				_isshow = 1;
             }else if($(window).scrollTop()<=250){
                 _nav.removeClass("mj-navT");
                 _nav.removeAttr("id");
                 $("#mj-dnul").hide();
+				_isshow = 0;
             }
         }
 

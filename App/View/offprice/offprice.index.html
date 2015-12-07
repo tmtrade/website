@@ -83,7 +83,7 @@
     </div>
         <!--search end-->
         <!--imglist start-->
-    <div class="mj_goods_check">
+    <div class="mj_goods_check" id="searchC" >
         <div class="w1180 f-clearfix">
             <ul class="f-clearfix mj-pu mj-ulw fl">
                 <li>
@@ -128,7 +128,7 @@
 							<dd>
 								 <a tid=0 href="javascript:createUrl('_class',0);" <?if ($c == 0){echo 'class="current"';}?>> 全部 </a>
 								<? foreach ($CLASSES as $key => $value) { ?>
-									<a tid=0 href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?> ><?echo $key.'类-'.$value?></a>
+									<a tid=0 href="javascript:createUrl('_class','<?=$key?>');" <?if ($c == $key){echo 'class="current"';}?> ><?echo $key.'类-'.$value?></a>
 								<? } ?>
 							</dd>
 						</dl>
@@ -240,7 +240,7 @@
 	var _sT			= "<?=$t?>"; //商标类型，（中文，英文、、、）
     var _sN			= "<?=$sn?>";//商标名称长度，（一个中文或字母、、、）
 	var _plat		= "<?=$p?>"; //入驻平台，（天猫，京东、、、）
-	
+	var _maodian    = "#searchC";
     var _times      = 0;
     var _objTime ;
 
@@ -285,12 +285,13 @@
         obj.set('t', _sT==0?'':_sT);
         obj.set('sn', _sN==0?'':_sN);
         var params = obj.strparams();
-        window.location = _urlSearch+params;
+        window.location = _urlSearch+params+_maodian;
 	})
-	
+	var _isshow = 0;
 	//提交URL
 	function createUrl(parameter,value){
-		if(parameter == '_class' && value == 0){
+		t =_isshow;
+		if(parameter == '_class'){
 			_group = "";
 		}
 		switch(parameter){
@@ -321,9 +322,13 @@
         obj.set('t', _sT==0?'':_sT);
         obj.set('sn', _sN==0?'':_sN);
         var params = obj.strparams();
-        window.location = _url+params;
+		if(t == 1){
+			var allurl = _url+params+_maodian;
+		}else{
+			var allurl = _url+params;
+		}
+        window.location = allurl;
 	}
-	
 
     $("#mj-label").click(function(){
         $(".mj-footerTip").hide();
@@ -384,9 +389,11 @@
         if($(window).scrollTop()>=450){
             _nav.addClass("mj-navT");
             $("#mj-dnul").show();
+			_isshow = 1;
         }else if($(window).scrollTop()<=450){
             _nav.removeClass("mj-navT");
             $("#mj-dnul").hide();
+			_isshow = 0;
         }
     });
 
