@@ -51,10 +51,6 @@
 					<?php
 					foreach($platformIn as $key => $val){
 						$cur = "";
-						//if($key == '99'){
-						//	unset($platformIn[$key]);
-						//	echo "<a href='".$platformUrl[$key]."' target='_blank' class='cur' >".$val."</a>"; 
-						//}
 						if($platform || $data['date']){
 							if($key && in_array($key,$platform)){
 								unset($platformIn[$key]);

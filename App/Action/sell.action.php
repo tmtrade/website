@@ -123,7 +123,7 @@ class SellAction extends AppAction
 					$sales['name']       = $result[0]['trademark'];
 					$sales['proposerId'] = $result[0]['proposer_id'];
 					$sales['newId']      = $result[0]['newId'];
-					$sales['group']      = $this->emptyreplace($result[0]['group']);
+					$sales['group']      = $this->load('sale')->emptyreplace($result[0]['group']);
 					/*认证状态*/
 					$approves  = $this->getApprove($sales);
 					
@@ -270,9 +270,9 @@ class SellAction extends AppAction
 		foreach($rows as $key => $item){
 			$sales['class']      = $item['class'];
 			$sales['tid']        = $item['auto'];
-			$sales['sblength']  = $this->getTrademarkLength($item['trademark']);
-			$sales['platform']  = $this->getTrademarkPlatform($item['class']);
-			$sales['types']     = $this->getTrademarkType($item['trademark']);
+			$sales['sblength']  = $this->load('sale')->getTrademarkLength($item['trademark']);
+			$sales['platform']  = $this->load('sale')->getTrademarkPlatform($item['class']);
+			$sales['types']     = $this->load('sale')->getTrademarkType($item['trademark']);
 			
 			$tradeId = $this->load('sale')->addSale($sales);
 			
@@ -290,132 +290,5 @@ class SellAction extends AppAction
 		}
 		return $tradeId;
 	}
-	
-	/* 
-	* 群组字符串替换处理
-	*/ 
-	public function emptyreplace($str) 
-	{ 
-		$str = str_replace('　', ' ', $str); //替换全角空格为半角 
-		$str = str_replace('<br>', ' ', $str); //替换BR
-		$str = str_replace('&lt;br&gt;', ' ', $str); //替换BR
-		$str = str_replace('*', '', $str);  //替换*
-		$str = preg_replace('/\(.*?\)/', ' ', $str);//替换括号里面的
-		$result = '';
-		$strArr = explode(" ",$str);
-		$strArr = array_unique(array_filter($strArr)); //去掉空字符串
-		$result = implode(',', $strArr);
-		return $result; 
-	}
-	
-	/**
-	 * 获取入驻平台
-	 * 
-	 * @author	Jeany
-	 * @since	2015-11-5
-	 * @access	public
-	 * @return	void
-	 */
-	public function getTrademarkPlatform($class)
-	{
-		$str = '';
-		$platform = C("PLATFORM_ITEMS");
-		foreach($platform as $key => $val){
-			if(in_array($class,$val)){
-				$str .= $key."," ;  
-			}
-		}
-		return $str ? substr($str,0,-1) : '';
-	}
-	
-	/**
-	 * 获取商标名称类型
-	 * 
-	 * @author	Jeany
-	 * @since	2015-11-5
-	 * @access	public
-	 * @return	void
-	 */
-	public function getTrademarkType($trademark)
-	{
-		
-		$pregtx = "图形";//图形验证正则
-		$pregZW = "/^[\x7f-\xff]+$/"; //中文验证正则
-		$pregYW = "/^[a-zA-Z]+$/";//英文验证正则
-		$pregSZ = "/^[0-9]+$/";//数字
-		
-		$pregZWBH = "/[\x7f-\xff]/"; //包含中文
-		$pregYWBH = "/[a-zA-Z]+/";//包含英文验证正则
-		$pregSZBH = "/[0-9]+/";//包含数字
-		
-		if(preg_match($pregZW,$trademark)  && !strstr($trademark,$pregtx)){	
-			$value = 1;//中文
-		}
-		
-		if(preg_match($pregYW,$trademark)){
-			$value = 2;//英文
-		}
-		
-		if($pregtx == $trademark){
-			$value = 3;//图形
-		}
-		
-		if(preg_match($pregZWBH,$trademark) && preg_match($pregYWBH,$trademark) && !strstr($trademark,$pregtx) && !preg_match($pregSZBH,$trademark)){
-			$value = 4;//中+英
-		}
-		
-		if(preg_match($pregZWBH,$trademark)  && strstr($trademark,$pregtx) && strlen($trademark) != 6 && !preg_match($pregSZBH,$trademark)){
-			$value = 5;//中+图
-		}
-		
-		$str = str_replace("图形","",$trademark);
-		if(preg_match($pregYWBH,$trademark)  && strstr($trademark,$pregtx) && !preg_match($pregZWBH,$str)){
-			$value = 6;//英+图
-		}
-		
-		
-		if(preg_match($pregZWBH,$trademark) && preg_match($pregYWBH,$trademark) && strstr($trademark,$pregtx)){
-			$value = 7;//中+英+图
-		}
-		
-		
-		if(preg_match($pregSZ,$trademark)){
-			$value = 8;//数字
-		}
-		
-		return $value;
-	}
-
-	/**
-	 * 获取商标名称字数
-	 * 
-	 * @author	Jeany
-	 * @since	2015-11-5
-	 * @access	public
-	 * @return	void
-	 */
-	public function getTrademarkLength($trademark)
-	{
-	
-		$pregZWBH = "/[\x{4e00}-\x{9fa5}]+/u"; //包含中文
-		$pregSZBH = "/[0-9]/"; //包含数字
-		$pregYWBH = "/[a-zA-Z]/u";//包含英文验证 
-		//包含中文的，都按照中文计算
-		if((preg_match($pregZWBH,$trademark)  && preg_match($pregYWBH,$trademark)) || (preg_match($pregZWBH,$trademark)  && !preg_match($pregYWBH,$trademark))){
-			preg_match_all($pregZWBH, $trademark, $match);
-			$str = implode(" ",$match[0]);
-			$str = str_replace(" ","" ,$str);
-			$strlen = strlen($str)/3;
-		}
-		
-		//不包含中文的，按照英文字母计算
-		if(!preg_match($pregZWBH,$trademark)  && preg_match($pregYWBH,$trademark)){
-			preg_match_all($pregYWBH, $trademark, $matchYW);
-			$strlen = count($matchYW[0]);
-		}
-	
-		return $strlen;
-	}
-	
 }
 ?>
