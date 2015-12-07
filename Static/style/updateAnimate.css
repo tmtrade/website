@@ -1,0 +1,91 @@
+.error .a0,
+.error .a1,
+.error .a2,
+.error .a3,
+.error .a4,
+.error .a5,
+.error .a6,
+.error .a7,
+.error .a8,
+.error .a9,
+.error .anquandun_tit{
+    color: #ff4a4a;
+}
+.error .rightcircle{
+    border-top-color: #ff4a4a;
+    border-right-color: #ff4a4a;
+}
+.error .leftcircle{
+    border-bottom-color: #ff4a4a;
+    border-left-color: #ff4a4a;
+}
+
+
+.error1 .a0,
+.error1 .a1,
+.error1 .a2,
+.error1 .a3,
+.error1 .a4,
+.error1 .a5,
+.error1 .a6,
+.error1 .a7,
+.error1 .a8,
+.error1 .a9,
+.error1 .anquandun_tit{
+    color: #fc7d28;
+}
+.error1 .rightcircle{
+    border-top-color: #fc7d28;
+    border-right-color: #fc7d28;
+}
+.error1 .leftcircle{
+    border-bottom-color: #fc7d28;
+    border-left-color: #fc7d28;
+}
+
+
+.error2 .a0,
+.error2 .a1,
+.error2 .a2,
+.error2 .a3,
+.error2 .a4,
+.error2 .a5,
+.error2 .a6,
+.error2 .a7,
+.error2 .a8,
+.error2 .a9,
+.error2 .anquandun_tit{
+    color: #F7F910;
+}
+.error2 .rightcircle{
+    border-top-color: #F7F910;
+    border-right-color: #F7F910;
+}
+.error2 .leftcircle{
+    border-bottom-color: #F7F910;
+    border-left-color: #F7F910;
+}
+
+
+.error3 .a0,
+.error3 .a1,
+.error3 .a2,
+.error3 .a3,
+.error3 .a4,
+.error3 .a5,
+.error3 .a6,
+.error3 .a7,
+.error3 .a8,
+.error3 .a9,
+.error3 .anquandun_tit{
+    color: #31db4c;
+}
+.error3 .rightcircle{
+    border-top-color: #31db4c;
+    border-right-color: #31db4c;
+}
+.error3 .leftcircle{
+    border-bottom-color: #31db4c;
+    border-left-color: #31db4c;
+}
+

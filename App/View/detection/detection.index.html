@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title></title>
+    
+    <script src="<?=StaticDir?>script/jquery-1.8.3.min.js"></script>
+    <script src="<?=StaticDir?>script/layer/layer.js"></script>
+    <script src="<?=StaticDir?>script/login.js"></script>
+    <script src="<?=StaticDir?>script/respond.min.js"></script>
+    <script src="<?=StaticDir?>script/jquery.imgpreload.min.js"></script>
+    <link rel="stylesheet" href="<?=StaticDir?>style/import-comm.css"/>
+    <link rel="stylesheet" href="<?=StaticDir?>style/respond.css"/>
+    <link rel="stylesheet" href="<?=StaticDir?>style/ul-style.css"/>
+    <link rel="stylesheet" href="<?=StaticDir?>style/updateAnimate.css"/>
+</head>
+<body>
+<!--第二种头部-->
+<div class="mj-tHeader">
+    <div class="w1180 f-clearfix">
+        <ul class="f-clearfix">
+            <li>
+                <a href=""><img src="<?=StaticDir?>style/img/mj-tHlog.png" alt=""/></a>
+            </li>
+            <li class="mj-sper"></li>
+            <li><span>超凡集团旗下资产交易平台</span></li>
+        </ul>
+        <div class="mj-tHright fr">
+            <i class="us-icon uj_icon4s"></i>
+            <span>4006-899-852</span>
+        </div>
+    </div>
+</div>
+
+    <div class="content-1180">
+        <div class="ml-testtrademark">
+            <div class="ml-testtrademark_tit">
+                <strong>商标质量检测工具</strong>
+                <span>检测时间：2015年12月5日</span>
+                <ul>
+                    <li><a href="">下载报告</a></li>
+                    <li class="speaer"></li>
+                    <li><i class="us-icon uj_icon29"></i><a href="">分享</a></li>
+                </ul>
+            </div>
+            
+            <div class="ml-animate ml-animate-load" id="janimate">
+                <div class="ml-animate_bg">
+                    <img src="style/img/ul-bg2.png" alt=""/>
+                </div>
+                <div class="ml-animate_iebiaobox" style="display: none;">
+                    <img src="style/img/ul-bg3.png" class="biao1"/>
+                    <div class="anquandun"></div>
+                    <div class="anquandun_tit">非常安全</div>
+                    <span>
+                        <strong>0</strong>
+                        <b>%</b>
+                    </span>
+                </div>
+                <div class="ml-animate_biaobox" style="display: none;">
+                    <div class="biaobox ">
+                        <span class="a0">0</span>
+                        <span class="a1">10</span>
+                        <span class="a2">20</span>
+                        <span class="a3">30</span>
+                        <span class="a4">40</span>
+                        <span class="a5">50</span>
+                        <span class="a6">60</span>
+                        <span class="a7">70</span>
+                        <span class="a8">80</span>
+                        <span class="a9">90</span>
+                    </div>
+                    <div class="biaoinner ">
+                        <div class="biaoinner_box"></div>
+                        <div class="spinner">
+                            <div class="wrapper right">
+                                <div class="circleProgress rightcircle"></div>
+                            </div>
+                            <div class="wrapper left">
+                                <div class="circleProgress leftcircle"></div>
+                            </div>
+                        </div>
+                        <div class="anquandun"></div>
+                        <div class="anquandun_tit">非常安全</div>
+                        <div class="biaoinner_txt" style="visibility: hidden;">
+                            <i style="font-style: normal;">检测分数</i><br/>
+                            <span>
+                                <strong>0</strong>
+                                <b></b>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="ml-testtrademark_form">
+                <dl>
+                    <dt>请输入商标号：</dt>
+                    <dd>
+                        <input name="trademarkName" type="text" class="ul-input-text trademarkName" maxlength="10" />
+                        <select name="" id="" class="defineselect">
+                            <option value="0">请选择类别</option>
+                        </select>
+                        <div class="error">
+                            <span></span>
+                        </div>
+                    </dd>
+                    <dd>
+                        <label for="buttonsubmit" class="buttonsubmit"><button type="submit" id="buttonsubmit">测一下</button></label>
+                    </dd>
+                    <dd>
+                        <div class="ml-testtrademark_num">
+                            已有<b>163000</b>人完成了检测 ，获得了专业检测报告
+                        </div>
+                    </dd>
+                </dl>
+                <dl style="display: none;">
+                    <!--<dt>检测动态</dt>
+                    <dd>还有 <span class="color-fc7d28" id="xiang">11</span> 项目检测项目 ，请勿关闭网页</dd>
+                    <dd>正在 检测商标号 xxxxxx 的质量</dd>
+                    <dd>当前正在进行 <span class="color-fc7d28" id="zhiliang">质押检测</span>  ...</dd>-->
+                    <div class="mj-anright">
+                        <div class="mj-anrT">
+                            <b>蒙顶山</b>
+                            <em>第42类</em>
+                        </div>
+                        <div class="mj-anrC">
+                            <span><i class="us-icon uj_icon34" id="uj_icons"></i></span>
+                            <p>
+                                <em>经系统检验分析：</em>
+                                <div class="prompt">商标没有任何<span></span>风险。建议根据报告规避风险</div>
+                            </p>
+                        </div>
+                        <div class="mj-anrB"></div>
+                    </div>
+                </dl>
+            </form>
+        </div>
+    </div>
+    <div class="w1180 f-clearfix">
+        <div class="mj-cBottom f-clearfix">
+            <div class="mj-cbT">
+                <h3>商标信息</h3>
+            </div>
+            <div class="mj-cbB f-clearfix">
+                <div class="mj-cbLeft fl">
+                    <div class="mj-tiT">
+                        <h3>申请人</h3>
+                        <p>川超凡知识产权代理有限公司</p>
+                    </div>
+                    <div class="mj-tib">
+                        <h3>商品列表</h3>
+                        <p>烧酒/酒(饮料)/米酒/蒸馏饮料/黄酒
+                            料酒/葡萄酒/白兰地/含酒精液体/开胃酒</p>
+                    </div>
+                </div>
+                <div class="mj-cbCen fl">
+                    <a href="javascript:void(0);"><img src="" alt="" class="imgtb"/></a>
+                    <p class="mj-pbg"><span>可入住</span></p>
+                </div>
+                <div class="mj-cbR fr">
+                    <ul class="mj-amin">
+                        <li><a href="javascript:void(0);" class="clob">天猫</a></li>
+                        <li><a href="javascript:void(0);" class="cloq">大型超市</a></li>
+                        <li><a href="javascript:void(0);" class="cloz">京东</a></li>
+                        <li><a href="javascript:void(0);" class="clozs">美丽说</a></li>
+                        <li><a href="javascript:void(0);" class="clozy">1号店</a></li>
+                        <li><a href="javascript:void(0);" class="clof">聚美优品</a></li>
+                        <li><a href="javascript:void(0);" class="cloo">亚马逊</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mj-anbt">
+        <span>购买和查看跟多商标信息请登录</span>
+        <a href="">www.yizhchan.com</a>
+    </div>
+    <script>
+        var _janimate = $('#janimate');
+        var _ie = $.browser.msie;
+        var _ieBox = _janimate.find('.ml-animate_iebiaobox');
+        var _animateBox = _janimate.find('.ml-animate_biaobox');
+        var _ieNextNum = _ieBox.find('strong');
+        var _animateNextNum = _animateBox.find('.biaoinner_txt');
+
+        var _formDl = null;
+        var _rightcircle = _janimate.find('.rightcircle');
+        var _leftcircle = _janimate.find('.leftcircle');		
+        /**
+         *
+         * 用于添加 error10 ... error100
+         */
+        var _mlAnimateBiaobox = _janimate.find('.ml-animate_biaobox');
+
+        /**
+         *
+         * 开始动画
+         * biaobox-animate
+         * biaoinner-animate
+         */
+        var _biaobox = _janimate.find('.biaobox');
+        var _biaoinner = _janimate.find('.biaoinner');
+        var _mlAnimateBg = _janimate.find('.ml-animate_bg');
+        /**
+         *
+         * 心跳
+         * heartbeat
+         */
+        var _anquandun = _janimate.find('.anquandun');
+		
+        function coutAnimateFun(num, css){
+            var _min = 0;
+            var _max = 0;
+            var _total = (136 + 45) / 50;
+            var _num = 0;
+            var _css = (css == undefined) ? [] : css;
+            if( num > 50 ){
+                _min = parseInt(num - 50);
+                num = 50;
+            }
+            _num = parseInt( (-136) + _total * num );
+            _css.push({
+                'transform': 'rotate('+_num+'deg)',
+                '-webkit-transform': 'rotate('+_num+'deg)',
+                '-moz-transform': 'rotate('+_num+'deg)',
+                '-o-transform': 'rotate('+_num+'deg)',
+                '-ms-transform': 'rotate('+_num+'deg)'
+            });
+            if( _min > 0 ) coutAnimateFun(_min, _css);
+            return _css;
+        }		
+		
+        function submitTestData(dom){
+			return false;
+            _animateNextNum.css('visibility', 'visible').find('i').html('商标检测中');
+            /**
+             * 如果有分类执行下面
+             */
+            //$(dom.trademarkName).next().css('visibility', 'visible');
+            //return false;
+            /** end  */
+
+            if( _formDl === null ){
+                _formDl = $(dom).find('dl');
+            }
+            _formDl.css('display','none').eq(1).css('display','block');
+            var _name = $.trim(dom.trademarkName.value);
+            _anquandun.addClass('heartbeat');
+//            $.ajax({
+//                url : ''
+//            }).done(function(data){
+					if( _ie ){
+						_ieNextNum.html('10');
+						_anquandun.css('visibility','hidden').next().css('visibility','visible').html('灰常严重');
+					}else{
+						var _resultNum = 55;
+						var _css = coutAnimateFun(_resultNum);
+						var _tipTxt = '';
+						var _timeNum = 800;
+						setTimeout(function(){
+							if( _resultNum <= 50 ){
+								_tipTxt = '深红';
+								_mlAnimateBiaobox.addClass('error');
+								_rightcircle.css(_css);
+							}else if( _resultNum > 50 && _resultNum <= 80 ){
+								_tipTxt = '橘红';
+								_mlAnimateBiaobox.addClass('error1');
+								_rightcircle.css(_css[0]);
+								setTimeout(function(){
+									_leftcircle.css(_css[1]);
+								},_timeNum);
+							}else if( _resultNum > 80 && _resultNum < 100 ){
+								_tipTxt = '黄';
+								_mlAnimateBiaobox.addClass('error2');
+								_rightcircle.css(_css[0]);
+								setTimeout(function(){
+									_leftcircle.css(_css[1]);
+								},_timeNum);
+							}else{
+								_tipTxt = '绿';
+								_mlAnimateBiaobox.addClass('error3');
+								_rightcircle.css(_css[0]);
+								setTimeout(function(){
+									_leftcircle.css(_css[1]);
+								},_timeNum);
+							}
+							_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(_tipTxt);
+							_animateNextNum.html(_resultNum);
+						}, 1000);
+					}
+//            }).error(function(){
+//
+//            });
+            return false;
+        }
+        var load_img = [];
+        load_img.push( 'style/img/anquandun.png' );
+        load_img.push( 'style/img/ul-bg2.png' );
+        loading();
+        function loading() {
+            jQuery.imgpreload(load_img,{
+                all: function() {
+                    _janimate.removeClass('ml-animate-load');
+                    if( _ie ){
+                        _mlAnimateBg.addClass('ml-animate_bg-animate');
+                        _ieBox.css({'display':'block'});
+                    }else{
+                        _animateBox.removeAttr('style');
+                        setTimeout(function(){
+                            _mlAnimateBg.addClass('ml-animate_bg-animate');
+                            _biaobox.addClass('biaobox-animate');
+                            _biaoinner.addClass('biaoinner-animate');
+                        },200);
+                    }
+                }
+            });
+        }
+
+        //左边菜单栏
+        $(".mj-dd dd").hover(function(){
+            $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
+        },function(){
+            $(this).removeClass("mj-ddahoverc");
+        });
+		
+		
+		//开始
+		var tradId	= 0;
+		$(document).ready(function(e) {
+			//离开输入框检查
+			$(document).on('blur','.trademarkName',function(){
+				getTrInfo();
+			});
+			//END
+			//点击提交
+			$(document).on('click','.buttonsubmit',function(){
+				isTid = getTrInfo();
+				if( !isTid ){
+					return false;	
+				}
+				optNum		= $('.defineselect option').length;
+				tradname	= $.trim($('.trademarkName').val());
+				if(!tradname){
+					setSpanWarn('请输入商标号');
+					return false;
+				}
+				if( optNum == 2 ){
+					optVal = $('.defineselect option:last').val();
+				}else if( optNum >= 3 ){
+					optVal = $('.defineselect').find("option:selected").val();
+					if( optVal == 0){
+						setSpanWarn('您输入的商标号有多条分类信息，请选择其中一条');
+						return false;
+					}
+				}else{
+					return false;
+				}
+				$.ajax({
+					 type		: "get",
+					 //data		: {"tradname" : tradname,"class" :optVal},
+					 url		: "/detection/checkscoreajax/?tradname="+tradname+"&class="+optVal,
+					 dataType	: "json",
+					 beforeSend : function(){
+						 _anquandun.css('visibility','hidden').next().css('visibility','visible').html('检查中...');
+					 },
+					 success	: function(data){
+						var myobj = eval(data);
+						setScore(myobj.result.total);
+						$('.mj-anrT').find('b').text(myobj.info.trademark);
+						$('.mj-anrT').find('em').text('第'+myobj.info.class+'类');
+						markObj  = eval(myobj.result.mark);
+						if( markObj.length > 0 ){
+							markString = '';
+							advice     = '<br/><b>建议：</b>在协议中进行责任约定，将风险降到最低。';
+							$('.prompt').html(markObj[0]);
+							for(var i=1;i<markObj.length;i++){  
+								markString +='<p>'+markObj[i]+advice+'</p>';
+							}
+							$('.mj-anrB').html(markString);
+						}
+						setTradInfo(myobj.info);
+						setTradContent();
+					 }
+				 });
+				return false;
+			});
+			//END
+        });
+		function setTradInfo(infoObj){
+			$('.imgtb').attr('src',infoObj.imgurl);
+			$('.mj-tiT').find('p').html(infoObj.pname);
+			$('.mj-tib').find('p').html(infoObj.goods);
+		}
+		function setTradContent(){
+			dom = $('.ml-testtrademark_form');
+			if( _formDl === null ){
+                _formDl = $(dom).find('dl');
+            }
+            _formDl.css('display','none').eq(1).css('display','block');
+            _anquandun.addClass('heartbeat');	
+		}
+		function setScore(num){
+			var _resultNum = parseInt(num);
+			if( _resultNum <= 50 ){
+				_tipTxt 	= '高级风险';
+				iconClass	= 'uj_icon34';
+			}else if( _resultNum > 50 && _resultNum <= 80 ){
+				_tipTxt 	= '中级风险';
+				iconClass	= 'uj_icon34';
+			}else if( _resultNum > 80 && _resultNum < 100 ){
+				_tipTxt 	= '低级风险';
+				iconClass	= 'uj_icon32';
+			}else{
+				_tipTxt 	= '安全';
+				iconClass	= 'uj_icon32';
+			}
+			if( _ie ){
+				_ieNextNum.html(_resultNum);
+				_anquandun.css('visibility','hidden').next().css('visibility','visible').html(_tipTxt);
+			}else{
+				var _css = coutAnimateFun(_resultNum);
+				var _tipTxt = '';
+				var _timeNum = 800;
+				setTimeout(function(){
+					if( _resultNum <= 50 ){
+						_tipTxt = '高级风险';
+						_mlAnimateBiaobox.addClass('error');
+						_rightcircle.css(_css[0]);
+					}else if( _resultNum > 50 && _resultNum <= 80 ){
+						_tipTxt = '中级风险';
+						_mlAnimateBiaobox.addClass('error1');
+						_rightcircle.css(_css[0]);
+						setTimeout(function(){
+							_leftcircle.css(_css[1]);
+						},_timeNum);
+					}else if( _resultNum > 80 && _resultNum < 100 ){
+						_tipTxt = '低级风险';
+						_mlAnimateBiaobox.addClass('error2');
+						_rightcircle.css(_css[0]);
+						setTimeout(function(){
+							_leftcircle.css(_css[1]);
+						},_timeNum);
+					}else{
+						_tipTxt = '安全';
+						_mlAnimateBiaobox.addClass('error3');
+						_rightcircle.css(_css[0]);
+						setTimeout(function(){
+							_leftcircle.css(_css[1]);
+						},_timeNum);
+					}
+					_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(_tipTxt);
+					_animateNextNum.html(_resultNum);
+				}, 500);
+			}
+			$('#uj_icons').removeClass();
+			$('#uj_icons').addClass('us-icon '+iconClass);		
+		}
+		//获取商标检查结果数据包
+		function getTrInfo(){
+			isTmId = tradAlert();
+			if(!isTmId){
+				return false;	
+			}
+			tradname = $.trim($('.trademarkName').val());
+			if( tradId == tradname ){
+				return true;	
+			}
+			var tId = 0;
+			$(".defineselect option:not(:first)").remove();//清空除去第一个的项目
+			$.ajax({
+				 type		: "post",
+				 async		: false,
+				 data		: {"tradname" : tradname},
+				 url		: "/detection/checkareajax/",
+				 dataType	: "json",
+				 success	: function(data){
+					if(data){
+						var myobj=eval(data);
+						if(myobj.total==0){
+							msgString = '未找到该商标，请检查商标号是否正确。';
+							setSpanWarn(msgString);
+						}else{
+							setSpanWarn();
+							num = myobj.total > 1 ? 1 : 0;
+							setSelect(num,myobj.rows);
+						}
+						tId = myobj.total;
+					}
+					tradId = tradname;
+				 }
+			 });
+			if( tId > 0 ){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		//设置select的值
+		function setSelect(isHide,optionObj){
+			defObj = $('.defineselect');
+			if( isHide == 1 ){
+				$(defObj).css({'visibility' :'visible'});//显示
+			}else{
+				$(defObj).css({'visibility' :'hidden'});//隐藏
+			}
+			var optionObjs	= eval(optionObj);
+			optString		= '';
+			for(var i=0;i<optionObjs.length;i++){  
+				classId	= optionObjs[i].class;
+				optString = $("<option>").val(classId).text("第"+classId+"类");
+				$(defObj).append(optString);
+			}
+		}
+		//警告提示
+		function setSpanWarn(str){
+			var sbQuery = '<a href="http://www.yizhchan.com">通过商标名查询请点击此处</a>';
+			msgString   = '';
+			if(str){
+				msgString = '<span>'+str+'</span>'+sbQuery;
+				$('.error').show();
+			}else{
+				$('.error').hide();
+			}	
+			$('.error').html(msgString);
+		}
+		function tradAlert(){
+			tradname	= $.trim($('.trademarkName').val());
+			if( !tradname ){
+				setSpanWarn('请输入商标号');
+				return false;
+			}
+			istrname	= checkTradName();
+			if( !istrname ){
+				setSpanWarn('请输入正确的商标号');
+				return false;
+			}
+			return true;
+		}
+		//验证商标号是否正确
+		function checkTradName(){
+			tradname = $.trim($('.trademarkName').val());
+			isTrue	 = /^([a-z0-9]){1,10}$/i.test(tradname);
+			return isTrue;	
+		}
+    </script>
+    
+<!-- mj-footer start -->
+<? require(ViewDir.'/footer.html'); ?>
+<!-- mj-footer end -->
