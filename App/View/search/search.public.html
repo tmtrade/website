@@ -342,13 +342,28 @@
     //悬浮层
      _nav = $('.mj_goods_check');
     $(window).scroll(function(){
-        if($(window).scrollTop()>=450){
-            _nav.addClass("mj-navT");
-            $("#mj-dnul").show();
-        }else if($(window).scrollTop()<=450){
-            _nav.removeClass("mj-navT");
-            $("#mj-dnul").hide();
+        if(_hasBanner==true){
+            if($(window).scrollTop()>=450){
+                _nav.addClass("mj-navT");
+                _nav.attr('id',"idname");
+                $("#mj-dnul").show();
+            }else if($(window).scrollTop()<=450){
+                _nav.removeClass("mj-navT");
+                _nav.removeAttr("id");
+                $("#mj-dnul").hide();
+            }
+        }else{
+            if($(window).scrollTop()>=250){
+                _nav.addClass("mj-navT");
+                _nav.attr('id',"idname");
+                $("#mj-dnul").show();
+            }else if($(window).scrollTop()<=250){
+                _nav.removeClass("mj-navT");
+                _nav.removeAttr("id");
+                $("#mj-dnul").hide();
+            }
         }
+
     });
 
 
