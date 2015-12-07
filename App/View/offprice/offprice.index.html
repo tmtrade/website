@@ -355,16 +355,21 @@
         }
     });
 
-    $("#sSubmit").click(function (){
-        var _sT = $("#sType").attr('tid');
-        var _sN = $("#sNumber").attr('tid');
-        var obj = new objURL('/?'+_whereStr);
+	
+	//搜索提交
+	$('#sSubmit').click(function(){
+		var _kw = $('#keywords').val();
+		var obj = new objURL('/?'+_whereStr);
+		obj.set('kw',_kw==0?'':$.trim(_kw));
+		obj.set('c', _class==0?'':_class);
+		obj.set('g', _group==0?'':_group);
+        obj.set('p', _plat==0?'':_plat);
         obj.set('t', _sT==0?'':_sT);
         obj.set('sn', _sN==0?'':_sN);
         var params = obj.strparams();
-        window.location = _url+params;
-    });
-
+        window.location = _urlSearch+params+_maodian;
+	})
+	
     /*select*/
     $('.son_ul').hide(); //初始ul隐藏
     $('.select_boxs span').hover(function(){ //鼠标移动函数

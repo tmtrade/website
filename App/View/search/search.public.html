@@ -291,7 +291,7 @@
     });
 	
 	//搜索提交
-	$('.mj-laBtn').click(function(){
+	$('#sSubmit').click(function(){
 		var _kw = $('#keywords').val();
 		var obj = new objURL('/?'+_whereStr);
 		obj.set('kw',_kw==0?'':$.trim(_kw));
@@ -304,6 +304,7 @@
         window.location = _urlSearch+params+_maodian;
 	})
 	var _isshow = 0;
+	
 	//提交URL
 	function createUrl(parameter,value){
 		t =_isshow;
