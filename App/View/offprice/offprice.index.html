@@ -474,34 +474,47 @@
 //});
     //类别
     $("#mj-leb").click(function(){
-		$("#mj-qzList").hide();
+        $("#mj-qzList").hide();
         $("#mj-lbList").show();
-        $("#mj-dnul").addClass("mj-pup");
+        $('.select_boxs span').hover(function(){ //鼠标移动函数
+            $('ul.son_ul').hide();  //找到ul.son_ul显示
+        },function(){});
     });
     $("#mj-lbList dd a").click(function(){
-		$(this).addClass("current").siblings().removeClass("current");
+        $(this).addClass("current").siblings().removeClass("current");
         $("#mj-leb").text($(this).text());
-		$("#mj-lbList").hide();
-        $("#mj-dnul").removeClass("mj-pup");
-		if($(this).attr('tid') > 0){
-			$("#mj-qz").show();
-		}
+        $("#mj-lbList").hide();
+        $('.select_boxs span').hover(function(){ //鼠标移动函数
+            $(this).parent().find('ul.son_ul').show();   //找到ul.son_ul显示
+        },function(){});
+        if($(this).attr('tid') > 0){
+            $("#mj-qz").show();
+        }
     });
     $(".mj-mdl .mj-close").click(function(){
         $(".mj-mdl").hide();
-        $("#mj-dnul").removeClass("mj-pup");
+        $('.select_boxs span').hover(function(){ //鼠标移动函数
+            $(this).parent().find('ul.son_ul').show();   //找到ul.son_ul显示
+        },function(){});
     });
     //群组
     $("#mj-qz>span").click(function(){
         $("#mj-lbList").hide();
         $("#mj-qzList").show();
+        $('.select_boxs span').hover(function(){ //鼠标移动函数
+            $('ul.son_ul').hide();  //找到ul.son_ul显示
+        },function(){});
     });
     $("#mj-qzList dd a").click(function(){
         $(this).addClass("current").siblings().removeClass("current");
         $("#mj-qz>span").text($(this).text());
         $("#mj-qzList").hide();
         $("#mj-qz").show();
+        $('.select_boxs span').hover(function(){ //鼠标移动函数
+            $(this).parent().find('ul.son_ul').show();  //找到ul.son_ul显示
+        },function(){});
     });
+
 
 
 </script>
