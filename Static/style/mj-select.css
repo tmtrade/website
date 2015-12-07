@@ -143,6 +143,7 @@ ul.son_uls li{
     border: 1px solid #e9e9e9;
     vertical-align: middle;
     outline: none;
+    line-height: 36px\9;
 }
 .mj-laBtn{
     display: inline-block;
@@ -160,8 +161,6 @@ ul.son_uls li{
 #mj-dnul{
     display: none;
 }
-ul.mj-pup{
-    position: absolute;
-    padding-left: 290px;
-    z-index: 5;
+.sept{
+    padding-top: 80px;
 }
