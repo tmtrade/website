@@ -350,6 +350,8 @@ div.mj-stclose label{
     width: 294px;
     background: #fff;
     border: solid 1px #cfcfcf;
+    z-index:6666;
+	position:fixed;
 }
 .mj-lmTop{
     padding: 0 0 15px 15px;
@@ -358,6 +360,7 @@ div.mj-stclose label{
 .mj-lmTop h6{
     font-size: 20px;
     color: #383838;
+	text-align:center;
 }
 .mj-lmTop h6 em{
     font-style: normal;

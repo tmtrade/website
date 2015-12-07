@@ -19,19 +19,54 @@ $(document).ready(function(){
         return false;
     });
 
+
+	function checkUsername(){
+        var umobile  = $.trim($("#umobile").val());
+        if (umobile == ''){
+            $('#mTips').html(_iconE+'请输入手机号');
+            $('#mTips').show();
+            return false;
+        }
+		
+        if (umobile.length != 11){
+            $('#mTips').html(_iconE+'请输入正确的手机号');
+            $('#mTips').show();
+            return false;
+        }
+		
+	}
+	$("#umobile").blur(function (){
+		checkMobile();
+
+        $.ajax({
+            type: "post",
+            url: "/passport/sendMsgCode",
+            data: {m:umobile,r:'n'},
+            dataType: "json",
+            success: function(data){
+                if (data.code == 1){
+                    sendOnce = false;
+                    timer(60, _this);
+                    $('#mTips').html(_iconE+'密码已发送');
+                    $('#mTips').show();
+                }else if (data.code == 2){
+                    $('#mTips').html(_iconE+'请输入正确的手机号');
+                    $('#mTips').show();
+                //}else if (data.code == 3){
+                //    $('#mTips').html(_iconE+'该手机号未注册');
+                //    $('#mTips').show();
+                }else{
+                    $('#mTips').html(_iconE+'发送失败');
+                    $('#mTips').show();
+                }
+            }
+        });
+	})
+	
     $(".ms-sent").click(function (){
         var _this = $(this);
         var umobile  = $.trim($("#umobile").val());
-        if (umobile == ''){
-            $('#mTips').html(_iconE+'请填写手机号');
-            $('#mTips').show();
-            return false;
-        }
-        if (umobile.length != 11){
-            $('#mTips').html(_iconE+'手机号不正确');
-            $('#mTips').show();
-            return false;
-        }
+		checkMobile();
         if ( !sendOnce ) return false;
         $.ajax({
             type: "post",
@@ -42,10 +77,10 @@ $(document).ready(function(){
                 if (data.code == 1){
                     sendOnce = false;
                     timer(60, _this);
-                    $('#mTips').html(_iconE+'验证码已发送');
+                    $('#mTips').html(_iconE+'密码已发送');
                     $('#mTips').show();
                 }else if (data.code == 2){
-                    $('#mTips').html(_iconE+'手机号不正确');
+                    $('#mTips').html(_iconE+'请输入正确的手机号');
                     $('#mTips').show();
                 //}else if (data.code == 3){
                 //    $('#mTips').html(_iconE+'该手机号未注册');
@@ -131,16 +166,8 @@ function checkMoblieForm()
 {
     var umobile  = $.trim($("#umobile").val());
     var ucode   = $.trim($("#ucode").val());
-    if (umobile == ''){
-        $('#mTips').html(_iconE+'请填写手机号');
-        $('#mTips').show();
-        return false;
-    }
-    if (umobile.length != 11){
-        $('#mTips').html(_iconE+'手机号不正确');
-        $('#mTips').show();
-        return false;
-    }
+	checkMobile();
+
     if (ucode == ''){
         $('#mTips').html(_iconE+'请填写验证码');
         $('#mTips').show();

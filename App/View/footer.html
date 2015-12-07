@@ -171,6 +171,7 @@
 </div>
 
 <!-- 登录框弹出 -->
+<!--
 <div class="ms-loginBox" id="ms-loginBox">
     <span class="ms-close mj-close" onclick="boxHide('ms-loginBox')"></span>
     <div id="loginInfo"></div>
@@ -227,43 +228,45 @@
         </div>
     </div>
 </div>
-
+-->
 <!-- 新增登录框弹出框 -->
 <div class="mj-loginModel" id="newLoginDiv2"  style="display: none;">
-    <span class="ms-close mj-close" onclick="javascript:layer.closeAll();"></span>
+    <span class="ms-close mj-close" onclick="boxHide('mj-loginModel')"></span>
     <div class="mj-lmTop">
-        <h6>“商标名”商标值多少钱？</h6>
-        <p style="margin-left: 10px;">快捷登录，立马看价，中意商标绝不错过</p>
+        <h6>登录</h6>
+        <p style="margin-left: 10px;"></p>
     </div>
     <div class="mj-lmBottom">
-        <div class="ms-errorTips mj-eed" style="display: block;">
-            <p class="reg-tip"><i class="us-icon us-icon19"></i><em>您输入的用户名不存在</em></p>
+        <div class="ms-errorTips">
+            <p class="reg-tip" id="mTips"><i class="us-icon us-icon19"></i><em></em></p>
         </div>
         <div class="ms-phoneInput f-clearfix">
             <div class="mj-form-wrappers fl" style="width: 158px;">
                 <span class="mj-inpuVs mj-mlspan">请输入手机号码</span>
                 <div class="ms-input mj-input">
                     <i class="us-icon uj-icon5"></i>
-                    <input type="text">
+                    <input type="text" id="umobile">
                 </div>
             </div>
-            <a href="javascript:;" class="ms-sent">发送密码到手机</a>
+            <a href="javascript:;" class="ms-sent">忘记密码</a>
         </div>
         <div class="mj-lomTip">
+			<!--
             <b>未收到密码: </b>
             <p>1.手机号错误，请验证后重新输入</p>
             <p>2.发送失败，人工将电话告知你报价</p>
+			-->
         </div>
         <div class="mj-form-wrappers">
             <span class="mj-inpuVs mj-mlspan">请输入密码</span>
             <div class="ms-input mj-input">
                 <i class="us-icon us-iconmi"></i>
-                <input type="password">
+                <input type="password" id="ucode" onkeydown="if(event.keyCode==13) checkEmailForm();" >
             </div>
         </div>
-        <a href="javascript:;" class="ms-loginBtn">立即登录</a>
+        <a href="javascript:;" ctype="e" class="ms-loginBtn">立即登录</a>
         <div class="mj-lotipb">
-            <a href="">我有还没有账号</a>
+            <a href="<?=MANAGER_URL?>register">我还没有账号</a>
         </div>
     </div>
 </div>
@@ -324,8 +327,9 @@
            __clsBox.attr('class',__cls);
        };
        //弹出登录窗
-       var __loginBox = $('#ms-loginBox');
+       //var __loginBox = $('#ms-loginBox');
        var __loginBoxs = $('#mj-from');
+       var __loginBox = $('#newLoginDiv2');
        chofn.boxShow = function(obj){
            __loginBox.show();
            boxBg();
