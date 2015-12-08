@@ -147,7 +147,6 @@ $(function(){
 			}
 		});
 	});
-
 	
 	priceCheck();
 	//价格循环检查
@@ -229,11 +228,11 @@ function submitSell(){
 	}
 
 	if(flag === true){
-		if ( !_isLogin ){
-			getLayer($('#mj-submittel'));
-		}else{
+		//if ( !_isLogin ){
+		//	getLayer($('#mj-submittel'));
+		//}else{
 			addSell();
-		}
+		//}
 	}else{
 		return flag;
 	}
@@ -295,10 +294,6 @@ function sellok(data){
 		skin: 'yourclass',
 		content: obj
 	});
-	// setTimeout(function(){
-	// layer.closeAll();
-	// location.reload()
-	// },5000);
 	$(".mj-close,.mj-boBtn1").bind("click",function(){
 		layer.closeAll();
 		location.reload()

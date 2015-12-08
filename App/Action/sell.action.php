@@ -86,11 +86,15 @@ class SellAction extends AppAction
 			}else{
 				$userinfo = $this->load('passport')->get($data['phone']);
 				//没有账号自动创建该手机账号
-				if ( empty($userinfo) ){
-					$userId = $this->register($data['phone']);//注册并发密码短信
-					if ( !$userId ) $this->returnAjax(array('code'=>3)); //未成功
-					$sales['userId'] = $userId;
-				}else{
+				// if ( empty($userinfo) ){
+					// $userId = $this->register($data['phone']);//注册并发密码短信
+					// if ( !$userId ) $this->returnAjax(array('code'=>3)); //未成功
+					// $sales['userId'] = $userId;
+				// }else{
+					// $sales['userId'] = $userinfo['id'];
+				// }
+				
+				if ( !empty($userinfo) ){
 					$sales['userId'] = $userinfo['id'];
 				}
 			}
