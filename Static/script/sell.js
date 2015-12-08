@@ -106,10 +106,10 @@ $(function(){
 				if (data.code == 1 || data.code == 11){
 					$(".mj-close").click();
 					addSell();
-				}else if (data.code == 4){
+				}else if (data.code == 5){
 					$(".mj-bcTips").text('手机号已更改');
 					$('.mj-bcTips').show();
-				}else if (data.code == 5){
+				}else if (data.code == 4){
 					$(".mj-bcTips").text('验证码不正确');
 					$('.mj-bcTips').show();
 				}else{

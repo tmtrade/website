@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="<?=StaticDir?>style/import-comm.css"/>
     <script src="<?=StaticDir?>script/jquery-1.8.3.min.js"></script>
     <script src="<?=StaticDir?>script/layer/layer.js"></script>
-    <script src="<?=StaticDir?>script/login.js"></script>
+    <script src="<?=StaticDir?>script/login_new.js"></script>
     <link rel="stylesheet" href="<?=StaticDir?>style/respond.css"/>
     <script src="<?=StaticDir?>script/respond.min.js"></script>
 </head>
 <body>
+<input type="hidden" name="sid" id="sid">
+<input type="hidden" name="area" id="area">
 <div class="mj-header">
     <div class="w1180 mj-nav f-clearfix">
         <ul class="mj-header_left fl">
@@ -45,7 +47,7 @@
                     <!--未登录状态-->
                     <span class="Not_logged" style="display: block;">
                         <i class="uj_icon2"></i>
-                        <a href="javascript:getlogin();">快捷登录</a>
+                        <a href="javascript:;" id="fastLogin">快捷登录</a>
                     </span>
                 </div>
             </li>

@@ -66,6 +66,20 @@ class BuyModule extends AppModule
         return $this->import("temp")->create($data);
     }
 
+    /**
+     * 删除数据
+     * @author  Xuni
+     * @since   2015-12-8
+     *
+     * @access  public
+     * @param   array     $r     条件
+     * @return  void
+     */
+    public function removeTemp($r)
+    {
+        return $this->import('temp')->remove($r);
+    }
+
 	/**
      * 通过saleId获取数据
      * @author	Jeany

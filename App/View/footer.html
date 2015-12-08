@@ -170,126 +170,29 @@
     <div id="loading"><div></div></div>
 </div>
 
-<!-- 登录框弹出 -->
-<!--
-<div class="ms-loginBox" id="ms-loginBox">
-    <span class="ms-close mj-close" onclick="boxHide('ms-loginBox')"></span>
-    <div id="loginInfo"></div>
-    <div class="ms-login">
-        <h6 class="f-clearfix"><a href="javascript:;" class="ms-loginTab" onclick="CHOFN.upTab(this,'ms-loginMain','账号登录点这里','手机快捷登录点击这里')">账号登录点这里</a>
-        登录
-        </h6>
-        <div class="ms-loginMain">
-            <form action="" method="post" class="ms-username">
-                <div class="ms-errorTips">
-                    <p id="mTips"><i class="us-icon us-icon19"></i></p>
-                </div>
-                <div class="ms-phoneInput f-clearfix">
-                    <div class="mj-form-wrappers fl" style="width: 158px;">
-                        <span class="mj-inpuVs">请输入手机号码</span>
-                        <div class="ms-input">
-                            <i class="us-icon us-icon20"></i>
-                            <input type="text" id="umobile"/>
-                        </div>
-                    </div>
-                    <a href="javascript:;" class="ms-sent">发送验证码到手机</a>
-                </div>
-                <div class="mj-form-wrappers">
-                    <span class="mj-inpuVs">请输入验证码</span>
-                    <div class="ms-input">
-                        <i class="us-icon us-icon21"></i>
-                        <input type="text" id="ucode" onkeydown="if(event.keyCode==13) checkMoblieForm();"/>
-                    </div>
-                </div>
-                <a href="javascript:;" ctype="m" class="ms-loginBtn">立即登录</a>
-            </form>
-
-            <form action="" method="post" class="ms-phone">
-                <div class="ms-errorTips">
-                    <p id="eTips"><i class="us-icon us-icon19"></i></p>
-                </div>
-                <div class="mj-form-wrappers">
-                    <span class="mj-inpuVs">请输入邮箱或手机</span>
-                    <div class="ms-input">
-                        <i class="us-icon us-icon22"></i>
-                        <input type="text" id="uemail"/>
-                    </div>
-                </div>
-                <div class="mj-form-wrappers">
-                    <span class="mj-inpuVs">请输入密码</span>
-                    <div class="ms-input">
-                        <i class="us-icon us-icon21"></i>
-                        <input type="password" id="upass" onkeydown="if(event.keyCode==13) checkEmailForm();" />
-                    </div>
-                </div>
-                <a href="javascript:;" ctype="e" class="ms-loginBtn">立即登录</a>
-            </form>
-
-        </div>
-    </div>
-</div>
--->
 <!-- 新增登录框弹出框 -->
-<div class="mj-loginModel" id="newLoginDiv2"  style="display: none;">
+<div class="mj-loginModel" id="loginFormDiv"  style="display: none;">
     <span class="ms-close mj-close" onclick="boxHide('mj-loginModel')"></span>
-    <div class="mj-lmTop">
+    <div class="mj-lmTop" id="dl_title">
         <h6>登录</h6>
         <p style="margin-left: 10px;"></p>
     </div>
     <div class="mj-lmBottom">
         <div class="ms-errorTips">
-            <p class="reg-tip" id="mTips"><i class="us-icon us-icon19"></i><em></em></p>
+            <p class="reg-tip" id="loginTips" style="display:none"><i class="us-icon us-icon19"></i><em></em></p>
         </div>
         <div class="ms-phoneInput f-clearfix">
             <div class="mj-form-wrappers fl" style="width: 158px;">
                 <span class="mj-inpuVs mj-mlspan">请输入手机号码</span>
                 <div class="ms-input mj-input">
                     <i class="us-icon uj-icon5"></i>
-                    <input type="text" id="umobile">
+                    <input type="text" id="loginUser">
                 </div>
             </div>
-            <a href="javascript:;" class="ms-sent">忘记密码</a>
+            <a href="javascript:;" class="ms-sent " id="dl_wjmm">忘记密码</a>
+            <a href="javascript:;" class="ms-sent" id="dl_fsmm" style="display:none">发送密码</a>
         </div>
-        <div class="mj-lomTip">
-			<!--
-            <b>未收到密码: </b>
-            <p>1.手机号错误，请验证后重新输入</p>
-            <p>2.发送失败，人工将电话告知你报价</p>
-			-->
-        </div>
-        <div class="mj-form-wrappers">
-            <span class="mj-inpuVs mj-mlspan">请输入密码</span>
-            <div class="ms-input mj-input">
-                <i class="us-icon us-iconmi"></i>
-                <input type="password" id="ucode" onkeydown="if(event.keyCode==13) checkEmailForm();" >
-            </div>
-        </div>
-        <a href="javascript:;" ctype="e" class="ms-loginBtn">立即登录</a>
-        <div class="mj-lotipb">
-            <a href="<?=MANAGER_URL?>register">我还没有账号</a>
-        </div>
-    </div>
-</div>
-<!--提交成功-->
-<div class="mj-loginModel"  id="newLoginDiv" style="display: none;">
-    <span class="ms-close mj-close" onclick="javascript:layer.closeAll();"></span>
-    <div class="mj-lmTop">
-        <h6>亲，提交成功了<span>，</span><em>10分钟内</em><span>将联系你</span></h6>
-        <p>系统已自动为你开通手机账户，密码发送至手机，
-            现在登录查看你的求购进展吧。</p>
-    </div>
-    <div class="mj-lmBottom">
-        <div class="ms-errorTips mj-eed" style="display: block;">
-            <p class="reg-tip"><i class="us-icon us-icon19"></i><em>您输入的用户名不存在</em></p>
-        </div>
-        <div class="mj-form-wrappers">
-            <span class="mj-inpuVs">请输入邮箱或手机</span>
-            <div class="ms-input">
-                <i class="us-icon us-icon22"></i>
-                <input type="text" id="uemail"/>
-            </div>
-        </div>
-        <div class="mj-lomTip">
+        <div class="mj-lomTip" id="dl_ts" style="display:none">
             <b>未收到密码: </b>
             <p>1.手机号错误，请验证后重新输入</p>
             <p>2.发送失败，人工将电话告知你报价</p>
@@ -298,16 +201,12 @@
             <span class="mj-inpuVs mj-mlspan">请输入密码</span>
             <div class="ms-input mj-input">
                 <i class="us-icon us-iconmi"></i>
-                <input type="password">
+                <input type="password" id="loginPass" onkeydown="if(event.keyCode==13) checkLoginForm();" >
             </div>
         </div>
-        <a href="javascript:;" class="ms-loginBtn">立即登录</a>
-        <div class="mj-lotipb">
-            <a href="">我有账号</a>
-        </div>
+        <a href="javascript:;" ctype="e" class="ms-loginBtn" id="dl_sub">立即登录</a>
     </div>
 </div>
-
 
 <script src="<?=StaticDir?>script/backcallandtongji.js"></script>
 <script type="text/javascript">
@@ -315,52 +214,21 @@
     //$(".mj-models").hide(); //初始ul隐藏
 
     var CHOFN = (function($,chofn){
-       //切换
-       chofn.upTab = function(obj,objCls,txt,txt1){
-           var __isNum = 0,
-                   __clsBox = $('.'+objCls),
-                   __hasCls = __clsBox.hasClass('cur');
-           __hasCls ? __isNum = 1 : __isNum = 0;
-           var __html = __isNum ? txt : txt1;
-           var __cls = __isNum ? objCls : objCls + ' cur';
-           $(obj).html(__html);
-           __clsBox.attr('class',__cls);
-       };
-       //弹出登录窗
-       //var __loginBox = $('#ms-loginBox');
-       var __loginBoxs = $('#mj-from');
-       var __loginBox = $('#newLoginDiv2');
-       chofn.boxShow = function(obj){
+       var __loginBox = $('#loginFormDiv');
+       chofn.loginShow = function(obj){
            __loginBox.show();
            boxBg();
            reCal(__loginBox);
        };
-       chofn.boxShows = function(obj){
+       var __loginBoxs = $('#buyFormDiv');
+       chofn.BuyShow = function(obj){
            __loginBoxs.show();
            boxBg();
            reCal(__loginBoxs);
        };
        return chofn;
-   })(jQuery,CHOFN || {});
-   //调整用弹层方法
-    function getlogin(title){
-        if (title){
-            $("#loginInfo").html(title);
-        }else{
-            $("#loginInfo").html('');
-        }
-        CHOFN.boxShow();
-        // layer.open({
-        //     type: 1,
-        //     //skin: 'layui-layer-demo', //样式类名
-        //     title: false,
-        //     closeBtn: 0, //不显示关闭按钮
-        //     shift: 2,
-        //     shade:0.7,
-        //     //shadeClose: true, //开启遮罩关闭
-        //     content: $("#newLoginDiv")
-        // });
-    }
+    })(jQuery,CHOFN || {});
+   
 
     //ms-hoverList  //免费通知
     $('.ms-imglist-ul li,.ms-call').hover(function(){
@@ -416,6 +284,7 @@
        $('.'+objId).hide();
        $('.ms-boxBg').remove();
        isOpen = 0;
+       doBuyFunc = '';
    };
 
     $("input").each(function(){

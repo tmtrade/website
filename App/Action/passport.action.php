@@ -20,7 +20,7 @@ class PassportAction extends AppAction
     }
 
     /**
-     * 正常登录
+     * 登录
      *
      * 通过校手机或邮箱进行登录操作
      * 
@@ -37,6 +37,7 @@ class PassportAction extends AppAction
 
         $account    = $this->input('uname', 'string', '');
         $password   = $this->input('upass', 'string', '');
+        $sid        = $this->input('sid', 'string', '');
 
         if ( empty($account) || empty($password) ){
             $this->returnAjax(array('code'=>2));//账号或密码为空
@@ -57,16 +58,44 @@ class PassportAction extends AppAction
             $flag = array('code'=>1);
         }else if( $res['code'] == 0 ){
             $flag = array('code'=>4);//密码错误
+            //判断验证码是否正确
+            $this->checkMsgCode($account, $password, false, false);
+            $userinfo = $this->load('passport')->get($account);
+            if ( !empty($userinfo) ){
+                $this->setLogin($userinfo);
+                $this->unsetMsgCode();
+                $flag = array('code'=>1);
+            }else{
+                $flag = array('code'=>0);
+            }            
         }else{
-            $flag = array('code'=>5);//该账号不存在
+            $flag = array('code'=>6);//该账号不存在
+            //判断是否在临时数据库中存在
+            $user = $this->load('temp')->isExist($account);
+            if ( empty($user) ) $this->returnAjax($flag);//登录失败
+            
+            if ($user['password'] != $password){
+                //如果临时密码也不通过，会直接返回错误
+                $this->checkMsgCode($account, $password, false, false);
+            }
+            $userId = $this->load('passport')->register($account, $user['password'], 2);//注册账号
+            if ( !$userId ) $this->returnAjax(array('code'=>0));//登录失败
+
+            $userinfo = $this->load('passport')->get($account);
+            if ( !empty($userinfo) ){
+                $this->setLogin($userinfo);
+                $flag = array('code'=>1);
+                //处理临时求购信息
+                $this->load('temp')->moveTempToReal($userId, $account, $sid);
+            }else{
+                $flag = array('code'=>0);
+            }
         }
         $this->returnAjax($flag);
     }
 
     /**
-     * 手机快捷登录
-     *
-     * 通过校验手机验证码进行登录操作
+     * 发送手机验证码
      * 
      * @author  Xuni
      * @since   2015-11-06
@@ -75,35 +104,39 @@ class PassportAction extends AppAction
      *
      * @return  json
      */
-    public function fastLogin()
+    public function sendMsgCodeNew()
     {
         if ( !$this->isAjax() ) $this->redirect('', '/');
 
-        $account    = $this->input('uname', 'string', '');
-        $password   = $this->input('upass', 'string', '');
-
-        if ( empty($account) || empty($password) ){
-            $this->returnAjax(array('code'=>2));//账号或密码为空
+        $mobile     = $this->input('m', 'string', '');
+        if ( empty($mobile) || isCheck($mobile) != 2 ){
+            $this->returnAjax(array('code'=>2));//手机号不正确
         }
-        if ( isCheck($account) != 2 ){
-            $this->returnAjax(array('code'=>3));//手机号不正确
-        }
-        //判断验证码是否正确
-        $this->checkMsgCode($account, $password, false, false);
         
-        $userinfo = $this->load('passport')->get($account);
-        if ( $userinfo === false ){
-            $this->returnAjax(array('code'=>0));//接口获取数据失败  
-        }elseif ( empty($userinfo) ){//未注册
-            $userId = $this->load('passport')->autoRegMoblie($account);//注册并发密码短信
-            if ( !$userId ) $this->returnAjax(array('code'=>0)); //未成功
-            $userinfo = $this->load('passport')->get($account);
-            if ( empty($userinfo) ) $this->returnAjax(array('code'=>0));//未成功
+        $userinfo = $this->load('passport')->get($mobile);
+        if ( empty($userinfo) ) {
+            $user = $this->load('temp')->isExist($mobile);
+            if ( empty($user) ){
+                $this->returnAjax(array('code'=>3));//该手机号未注册
+            }
         }
-        $this->unsetMsgCode();
-        $this->setLogin($userinfo);
-        $this->returnAjax(array('code'=>1));//登录成功
+
+        //设置验证码
+        $res = $this->setMsgCode($mobile, 'newValid');
+        if ( isset($res['code']) ){
+            if ( $res['code'] == 1 ){
+                $flag = array('code'=>1);//正确
+            }else if( $res['code'] == 2 ){
+                $flag = array('code'=>2);//手机号不正确
+            }else{
+                $flag = array('code'=>0);//发送失败
+            }
+        }else{
+            $flag = array('code'=>0);//发送失败
+        }
+        $this->returnAjax($flag);
     }
+
 
     /**
      * 检验账号是否存在
@@ -126,10 +159,17 @@ class PassportAction extends AppAction
         if ( isCheck($account) == 3 ){
             $this->returnAjax(array('code'=>3));//账号格式不正确
         }
-        $userinfo = $this->load('passport')->exist($account, isCheck($account));
-        if ( empty($userinfo) ) $this->returnAjax(array('code'=>0));//账号不正确或获取数据失败
+        $res = $this->load('passport')->exist($account, isCheck($account));
+        if ( $res === false ) {
+            $this->returnAjax(array('code'=>0));//获取数据失败
+        }elseif ( $res['code'] == 1 ){
+            $this->returnAjax(array('code'=>1));//账号正确
+        }
+        //判断是否在临时数据库中存在
+        $user = $this->load('temp')->isExist($account);
+        if ( $user ) $this->returnAjax(array('code'=>1));//账号正确
 
-        $this->returnAjax(array('code'=>1));//账号正确
+        $this->returnAjax(array('code'=>-1));//账号不存在
     }
 
     /**
@@ -171,6 +211,45 @@ class PassportAction extends AppAction
         $this->returnAjax($flag);
     }
 
+
+    /**
+     * 发送手机密码
+     * 
+     * @author  Xuni
+     * @since   2015-12-08
+     *
+     * @access  public
+     *
+     * @return  json
+     */
+    public function sendRegCode()
+    {
+        if ( !$this->isAjax() ) $this->redirect('', '/');
+
+        $mobile = $this->input('m', 'string', '');
+        $sid    = $this->input('s', 'string', '');
+
+        if ( empty($mobile) || isCheck($mobile) != 2 ){
+            $this->returnAjax(array('code'=>2));//手机号不正确
+        }
+
+        $userinfo = $this->load('passport')->get($mobile);
+        if ( !empty($userinfo) ) {
+            $this->returnAjax(array('code'=>3));//该手机号已注册
+        }
+
+        //设置验证码
+        $res = $this->load('passport')->RegTempUser($mobile, $sid);
+        if (isset($res['code']) && $res['code'] == 1){
+            $flag = array('code'=>1);//正确
+        }elseif (isset($res['code']) && $res['code'] == 2) {
+            $flag = array('code'=>2);//发送失败
+        }else{
+            $flag = array('code'=>0);//发送失败
+        }
+        $this->returnAjax($flag);
+    }
+
     /**
      * 获取验证码，并发送到手机
      * 
@@ -198,11 +277,11 @@ class PassportAction extends AppAction
         $prefix = C('COOKIE_PREFIX');
         $cname   = $prefix.$this->mvName;
         if ( $code != Session::get($cname) ){
-            $this->returnAjax(array('code'=>5));//验证码不正确
+            $this->returnAjax(array('code'=>4));//验证码不正确
         }
         $mbNo   = $prefix.$this->mbNo;
         if ( $mobile != Session::get($mbNo) ){
-            $this->returnAjax(array('code'=>4));//手机号不是验证时的手机号
+            $this->returnAjax(array('code'=>5));//手机号不是验证时的手机号
         }
         if ( $isUnset ){
             $this->unsetMsgCode();
@@ -241,7 +320,7 @@ class PassportAction extends AppAction
      *
      * @return  array
      */
-    private function setMsgCode($mobile, $length=4, $type='NUMBER')
+    private function setMsgCode($mobile, $prefix='valid', $length=4, $type='NUMBER')
     {
         $code   = randCode($length, $type);
         $prefix = C('COOKIE_PREFIX');

@@ -69,7 +69,7 @@ class PassportModule extends AppModule
     public function exist($account, $cateId=1)
     {
         $res    = $this->importBi('passport')->exist($account, $cateId);
-        return (isset($res['code']) && $res['code'] == 1) ? true : false;
+        return (isset($res['code'])) ? $res : false;
     }
 
 
@@ -93,6 +93,30 @@ class PassportModule extends AppModule
         return  (isset($res['code']) && $res['code'] == 1) ? $res['data']['id'] : false;
     }
 
+    /**
+     * 注册手机账号
+     *
+     * 通过手机号进行注册并发送随机的8位密码
+     * 
+     * @author  Xuni
+     * @since   2015-11-14
+     *
+     * @return  bool
+     */
+    public function RegTempUser($mobile, $sid, $length=8)
+    {
+        if ( $length <= 0 || $length > 20 ){
+            $length = 8;
+        }
+        $pass   = randCode($length);//生成8位随机密码
+        if ( isCheck($mobile) != 2 ) return false;
+        $userId = $this->load('temp')->create($mobile, $pass, $sid);
+        if ( !$userId ) return false;
+
+        $msgTemp = C('MSG_TEMPLATE');
+        $msg = sprintf($msgTemp['register'], $pass);
+        return $this->load('outmsg')->sendMsg($mobile, $msg);
+    }
 
     /**
      * 注册手机账号

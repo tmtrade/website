@@ -80,7 +80,6 @@ $tbl['excel'] = array(
 	'configFile'=> $configFile,
 );
 
-
 $tbl['tempBuy'] = array(
 	'name'		=> $prefix.'temp_buy',
 	'dbId'		=> $dbId, 
@@ -92,6 +91,11 @@ $tbl['checkcount'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['tempUser'] = array(
+	'name'		=> $prefix.'temp_user',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
 
 
 ?>
