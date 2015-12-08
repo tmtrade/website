@@ -39,8 +39,10 @@ class DetectionAction extends AppAction
     );
     public function index()
     {
-        $count = $this->load('checkcount')->getAllCount();
+        $count  = $this->load('checkcount')->getAllCount();
+        $sj     = date('Y年m月d',time());
         $this->set('count',$count);
+        $this->set('sj',$sj);
         $this->display();
     }
     /**

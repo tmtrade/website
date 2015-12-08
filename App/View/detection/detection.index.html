@@ -38,7 +38,7 @@
         <div class="ml-testtrademark">
             <div class="ml-testtrademark_tit">
                 <strong>商标质量检测工具</strong>
-                <span class="sj"></span>
+                <span class="sj">检测时间：<?=$sj?></span>
                 <ul>
                     <li><a href="">下载报告</a></li>
                     <li class="speaer"></li>
@@ -323,8 +323,6 @@
 		//开始
 		var tradId	= 0;
 		$(document).ready(function(e) {
-			sj = getDates();
-			$('.sj').html('检测时间：'+sj);
 			//离开输入框检查
 			$(document).on('blur','.trademarkName',function(){
 				getTrInfo();
