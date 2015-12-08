@@ -71,7 +71,6 @@ class DetectionAction extends AppAction
         $class      = $this->input('class', 'int', '');
         $id         = $this->load('trademark')->getTid($tradid,$class);
         $this->load('checkcount')->click($tradid);
-        $count      = $this->load('checkcount')->getAllCount();
         if( $id > 0 ){
             $info       = $this->getTmInfo($id);
             $twoArr     = $this->load('trademark')->getTwoStageInfo($tradid,$class);
@@ -79,7 +78,7 @@ class DetectionAction extends AppAction
             $alikeCount = $this->load('trademark')->getAlikeBrand($tradid,$class);
             $array      = $this->getScoreInfo($twoArr,$threeArr,$alikeCount);
         }
-        $result = array('info' => $info,'result' => $array,'count' => $count);
+        $result = array('info' => $info,'result' => $array);
         $this->returnAjax($result);
     }
     /**
