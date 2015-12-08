@@ -39,6 +39,8 @@ class DetectionAction extends AppAction
     );
     public function index()
     {
+        $count = $this->load('checkcount')->getAllCount();
+        $this->set('count',$count);
         $this->display();
     }
     /**
@@ -68,6 +70,8 @@ class DetectionAction extends AppAction
         $tradid     = $this->input('tradname', 'string', '');
         $class      = $this->input('class', 'int', '');
         $id         = $this->load('trademark')->getTid($tradid,$class);
+        $this->load('checkcount')->click($tradid);
+        $count      = $this->load('checkcount')->getAllCount();
         if( $id > 0 ){
             $info       = $this->getTmInfo($id);
             $twoArr     = $this->load('trademark')->getTwoStageInfo($tradid,$class);
@@ -75,7 +79,7 @@ class DetectionAction extends AppAction
             $alikeCount = $this->load('trademark')->getAlikeBrand($tradid,$class);
             $array      = $this->getScoreInfo($twoArr,$threeArr,$alikeCount);
         }
-        $result = array('info' => $info,'result' => $array);
+        $result = array('info' => $info,'result' => $array,'count' => $count);
         $this->returnAjax($result);
     }
     /**

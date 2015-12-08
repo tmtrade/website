@@ -86,6 +86,11 @@ $tbl['tempBuy'] = array(
 	'dbId'		=> $dbId, 
 	'configFile'=> $configFile,
 );
+$tbl['checkcount'] = array(
+	'name'		=> $prefix.'check_count',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
 
 
 

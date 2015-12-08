@@ -111,7 +111,7 @@
                     </dd>
                     <dd>
                         <div class="ml-testtrademark_num">
-                            已有<b>163000</b>人完成了检测 ，获得了专业检测报告
+                            已有<b><?=$count?></b>人完成了检测 ，获得了专业检测报告
                         </div>
                     </dd>
                 </dl>
@@ -363,6 +363,7 @@
 					 },
 					 success	: function(data){
 						var myobj = eval(data);
+						$('.ml-testtrademark_num').find('b').html(myobj.count);
 						setScore(myobj.result.total);
 						$('.mj-anrT').find('b').text(myobj.info.trademark);
 						$('.mj-anrT').find('em').text('第'+myobj.info.class+'类');
