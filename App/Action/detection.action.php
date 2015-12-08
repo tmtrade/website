@@ -356,6 +356,7 @@ class DetectionAction extends AppAction
         $thirtyArr  = array(7,8,9);//三十
         $tenArr     = array(10,11,12,13);//十
         $array      = $arr = $mark = array();
+        $threeArr   = array_sort($threeArr,'date','desc');
         for( $i == 1; $i < 14; $i++ ){
             $funName    = 'rules'.$i;
             $isExis     = method_exists($this,$funName);
@@ -394,8 +395,7 @@ class DetectionAction extends AppAction
     */
     public function getStatus($array,$name)
     {
-        $newArray = array_sort($array,'date','desc');
-        foreach( $newArray as $k => $v ){
+        foreach( $array as $k => $v ){
             if( $v['status'] == $name ){
                 return true;
             }
@@ -413,10 +413,23 @@ class DetectionAction extends AppAction
     {
         $info   = $this->load('trademark')->getInfo($id,array('auto','class','trademark','pid','goods'));
         if( $info['pid'] > 0 ){
-            $proArr = $this->load('proposer')->get($id);
-            $img    = $this->load('trademark')->getImg($id);
-            $info['pname']  = $proArr['cnName'];
+            $proArr = $this->load('proposer')->get($id);//获取申请人
+            $img    = $this->load('trademark')->getImg($id);//获取图片
+            $plat   = $this->load('sale')->getTrademarkPlatform($info['class']);//获取平台
+            if( !empty($plat) ){
+                $clo        = array('clog','clob','cloq','cloz','clozs','clozy','clof','cloo');//标签云的class
+                $platIn     = C("PLATFORM_IN");
+                $platArr    = explode(',',$plat);
+                foreach( $platArr as $k => $v ){
+                    if( array_key_exists($v,$platIn) ){
+                        $rand       = array_rand($clo,1);
+                        $platform[] = array('class' => $clo[$rand],'name' => $platIn[$v]);
+                    }
+                }
+            }
+            $info['pname']  = $proArr['name'];
             $info['imgurl'] = $img;
+            $info['plat']   = $platform;
         }
         return $info;
     }

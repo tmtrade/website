@@ -38,7 +38,7 @@
         <div class="ml-testtrademark">
             <div class="ml-testtrademark_tit">
                 <strong>商标质量检测工具</strong>
-                <span>检测时间：2015年12月5日</span>
+                <span class="sj"></span>
                 <ul>
                     <li><a href="">下载报告</a></li>
                     <li class="speaer"></li>
@@ -139,7 +139,7 @@
         </div>
     </div>
     <div class="w1180 f-clearfix">
-        <div class="mj-cBottom f-clearfix">
+        <div class="mj-cBottom f-clearfix" style="display:none">
             <div class="mj-cbT">
                 <h3>商标信息</h3>
             </div>
@@ -161,13 +161,7 @@
                 </div>
                 <div class="mj-cbR fr">
                     <ul class="mj-amin">
-                        <li><a href="javascript:void(0);" class="clob">天猫</a></li>
-                        <li><a href="javascript:void(0);" class="cloq">大型超市</a></li>
-                        <li><a href="javascript:void(0);" class="cloz">京东</a></li>
-                        <li><a href="javascript:void(0);" class="clozs">美丽说</a></li>
-                        <li><a href="javascript:void(0);" class="clozy">1号店</a></li>
-                        <li><a href="javascript:void(0);" class="clof">聚美优品</a></li>
-                        <li><a href="javascript:void(0);" class="cloo">亚马逊</a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -329,6 +323,8 @@
 		//开始
 		var tradId	= 0;
 		$(document).ready(function(e) {
+			sj = getDates();
+			$('.sj').html('检测时间：'+sj);
 			//离开输入框检查
 			$(document).on('blur','.trademarkName',function(){
 				getTrInfo();
@@ -371,7 +367,7 @@
 						$('.mj-anrT').find('b').text(myobj.info.trademark);
 						$('.mj-anrT').find('em').text('第'+myobj.info.class+'类');
 						markObj  = eval(myobj.result.mark);
-						if( markObj.length > 0 ){
+						if( markObj ){
 							markString = '';
 							advice     = '<br/><b>建议：</b>在协议中进行责任约定，将风险降到最低。';
 							$('.prompt').html(markObj[0]);
@@ -388,10 +384,21 @@
 			});
 			//END
         });
+		//设置商标信息
 		function setTradInfo(infoObj){
 			$('.imgtb').attr('src',infoObj.imgurl);
 			$('.mj-tiT').find('p').html(infoObj.pname);
 			$('.mj-tib').find('p').html(infoObj.goods);
+			$('.mj-amin').html('');
+			platObj  = eval(infoObj.plat);
+			if( platObj ){
+				platStr = '';
+				for(var i=1;i<platObj.length;i++){  
+					platStr +='<li><a href="javascript:void(0);" class="'+platObj[i].class+'">'+platObj[i].name+'</a></li>';
+				}
+				$('.mj-amin').html(platStr);
+			}
+			$('.mj-cBottom').show();
 		}
 		function setTradContent(){
 			dom = $('.ml-testtrademark_form');
@@ -543,6 +550,15 @@
 			tradname = $.trim($('.trademarkName').val());
 			isTrue	 = /^([a-z0-9]){1,10}$/i.test(tradname);
 			return isTrue;	
+		}
+		//获取时间
+		function getDates(){
+			var myDate = new Date();
+			Y = myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+			M = myDate.getMonth();       //获取当前月份(0-11,0代表1月)
+			D = myDate.getDate();        //获取当前日(1-31)
+			ymd = Y+'年'+M+'月'+D+'日';
+			return  ymd;	
 		}
     </script>
     
