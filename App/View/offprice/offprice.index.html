@@ -167,7 +167,8 @@
 				</li>
                 <li>
                     <div class="mj-liIn">
-                        <input type="text" value="<?=$kw?>" id="keywords" placeholder="商标名称/商标号"/>
+                        <span>商标名称/商标号</span>
+                        <input type="text" value="<?=$kw?>" id="keywords"/>
                         <!--<a class="mj-laBtn">确定</a>-->
                     </div>
                 </li>
@@ -521,7 +522,19 @@
             $(this).parent().find('ul.son_ul').show();  //找到ul.son_ul显示
         },function(){});
     });
-
+    $("#keywords").each(function(){
+        var spanT= $(this).parent().find("span").text();
+        $(this).focus(function(){
+            $(this).parent().find($("span")).text("");
+        });
+        $(this).blur(function(){
+            if($(this).val()===""){
+                $(this).parent().find($("span")).text(spanT);
+            }else{
+                $(this).parent().find($("span")).text("");
+            }
+        });
+    });
 
 
 </script>
