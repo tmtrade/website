@@ -129,6 +129,7 @@
     right: 0;
 }
 .mj-stclose{
+    display: none;
     padding-bottom: 7px;
 }
 div.mj-stclose label{
@@ -138,6 +139,7 @@ div.mj-stclose label{
     cursor: pointer;
 }
 .mj-sidebarCon{
+    display: none;
     width: 60px;
     margin-right: 10px;
     background: #ffffff;

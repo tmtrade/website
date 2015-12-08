@@ -431,7 +431,6 @@
             }
         });
     });
-
     $("#mj-stclose").click(function(){
         $(".mj-stclose").hide(300);
         $(".mj-sidebarCon").hide(300);
@@ -443,12 +442,16 @@
         $(".mj-siright").hide(300);
     });
 	
-	if($('body').width() > 1320){
+	if($(window).width() > 1320){
         $(".mj-siright").hide();
-        $(".mj-stclose").show(300);
-        $(".mj-sidebarCon").show(300);
+        $(".mj-stclose").show();
+        $(".mj-sidebarCon").show();
 	}
-    
+    if($(window).width() < 1320){
+        $(".mj-siright").show();
+        $(".mj-stclose").hide();
+        $(".mj-sidebarCon").hide();
+    }
     var $wind = $(window);//将浏览器加入缓存中
 
 
