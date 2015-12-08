@@ -21,7 +21,7 @@ class TrademarkAction extends AppAction
 	{
 		$tid 	= $this->input("tid","int");
 		$class 	= $this->input("class","int");
-
+		$issale = 0;
 		if ( $tid <= 0 || $class <= 0 || !in_array($class, range(1, 45)) ){
 			MessageBox::halt('未找到相关数据2！');
 		}
@@ -44,6 +44,7 @@ class TrademarkAction extends AppAction
 			$detail 		= $this->load('search')->getTips($detail);
 			$platform		= $this->load("sale")->getPlatform($data);
 		}else{
+			$issale = 1;
 			//原始商标数据里面的数据
 			$info = $this->load('trademark')->trademarks($tid,$class);
 			if($info){
@@ -76,8 +77,9 @@ class TrademarkAction extends AppAction
 		$title 	= $data['trademark'] ? $data['trademark'] : $data['name'];
 		//设置页面TITLE
 		$this->set('TITLE', sprintf($this->pageTitle, $title));
-		
-		$this->set("contact",$this->getPhoneName($tid,$class)); //联系人
+
+		//电话旁边联系人信息
+		$this->set("contact",$this->getPhoneName($tid,$class,$issale)); 
 		$data['group'] = $this->emptyreplace($data['group']);
 		$this->set("info",$info);
 		$this->set("data",$data);
@@ -258,20 +260,24 @@ class TrademarkAction extends AppAction
 	/* 
 	* 电话号码姓氏挑选
 	*/ 
-	public function getPhoneName($tid,$class) 
+	public function getPhoneName($tid,$class,$issale = 0) 
 	{ 
-	
-		$name = "赵 钱 孙 李 周 吴 郑 王 冯 陈 褚 卫 蒋 沈 韩 杨 朱 秦 尤 许 何 吕 施 张 孔 曹 严 华 金 魏 陶 姜 戚 谢 邹 喻 
-		柏 水 窦 章 云 苏 潘 葛 奚 范 彭 郎 鲁 韦 昌 马 苗 凤 花 方 俞 任 袁 柳 酆 鲍 史 唐 费 廉 岑 薛 雷 贺 倪 汤 刘 母 白 
-		滕 殷 罗 毕 郝 邬 安 常 乐 于 时 傅 皮 卞 齐 康 伍 余 元 卜 顾 孟 平 黄 和 穆 萧 尹 姚 邵 湛 汪 祁 毛 禹 狄 欧阳 慕容  
-		米 贝 明 臧 计 伏 成 戴 谈 宋 茅 庞 熊 纪 舒 屈 项 祝 董 梁 杜 阮 蓝 闵 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 蒲 崔 沙 
-		梅 盛 林 刁 锺 徐 邱 骆 高 夏 蔡 田 樊 胡 凌 霍 虞 万 支 柯 昝 管 卢 莫 经 房 裘 缪 干 解 应 宗 丁 宣 贲 邓";
 		
-		$lastTid = ceil(substr($tid,-1)/3)*$class;
-		if($class%2==0){$sex=1;}else{$sex=2;}
-		$gender = array(1=>'先生',2=>'女士');
-		$nameArr = explode(" ",$name);
-		$contact['name']  = $nameArr[$lastTid].$gender[$sex];
+		if($issale){
+			
+			$contact['name'] = "蝉妹妹";
+		}else{
+			$name = "赵 钱 孙 李 周 吴 郑 王 冯 陈 褚 卫 蒋 沈 韩 杨 朱 秦 尤 许 何 吕 施 张 孔 曹 严 华 金 魏 陶 姜 戚 谢 邹 喻 
+			柏 水 窦 章 云 苏 潘 葛 奚 范 彭 郎 鲁 韦 昌 马 苗 凤 花 方 俞 任 袁 柳 酆 鲍 史 唐 费 廉 岑 薛 雷 贺 倪 汤 刘 母 白 
+			滕 殷 罗 毕 郝 邬 安 常 乐 于 时 傅 皮 卞 齐 康 伍 余 元 卜 顾 孟 平 黄 和 穆 萧 尹 姚 邵 湛 汪 祁 毛 禹 狄 欧阳 慕容  
+			米 贝 明 臧 计 伏 成 戴 谈 宋 茅 庞 熊 纪 舒 屈 项 祝 董 梁 杜 阮 蓝 闵 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 蒲 崔 沙 
+			梅 盛 林 刁 锺 徐 邱 骆 高 夏 蔡 田 樊 胡 凌 霍 虞 万 支 柯 昝 管 卢 莫 经 房 裘 缪 干 解 应 宗 丁 宣 贲 邓";
+			$lastTid = ceil(substr($tid,-1)/3)*$class;
+			if($class%2==0){$sex=1;}else{$sex=2;}
+			$gender = array(1=>'先生',2=>'女士');
+			$nameArr = explode(" ",$name);
+			$contact['name']  = $nameArr[$lastTid].$gender[$sex];
+		}
 		$phoneArr = array('15811270065','15811378137','15810761501','15811132605','15810113823','15811137365');
 		$phoneid = ceil(substr($tid,-1)/3*2) > 5 ? 5 : ceil(substr($tid,-1)/3*2);
 		$phone = $phoneArr[$phoneid];
