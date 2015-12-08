@@ -129,7 +129,6 @@
     right: 0;
 }
 .mj-stclose{
-    display: none;
     padding-bottom: 7px;
 }
 div.mj-stclose label{
@@ -139,7 +138,6 @@ div.mj-stclose label{
     cursor: pointer;
 }
 .mj-sidebarCon{
-    display: none;
     width: 60px;
     margin-right: 10px;
     background: #ffffff;
@@ -227,7 +225,7 @@ div.mj-stclose label{
     color: #ffffff;
 }
 .mj-siright{
-    /*display: none;*/
+    display: none;
     padding: 12px 5px 0;
     width: 25px;
     height: 110px;

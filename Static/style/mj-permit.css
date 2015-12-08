@@ -98,6 +98,10 @@
 }
 .mj-imglB p{
     color: #888;
+    width: 185px;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .mj-tip{
     position: absolute;
