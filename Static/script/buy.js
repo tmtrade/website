@@ -2,7 +2,6 @@
  * 登录js
  * author：Xuni
  **********************************************************/
-var _MANGER_URL = "<?=MANAGER_URL?>";
 var _sendOnce2  = true;
 var _buyMobile  = false;
 var _buyNeed    = false;
@@ -178,7 +177,7 @@ function doBuy(mobile)
         success: function(data){
             if (data.code == 1){
                 clearBuy();
-                window.location = _MANGER_URL+"buyer/ready/";
+                window.location = _manger_url + "buyer/ready/";
             }else{
                 getLayer($('#mj-submitteF'));
             }
@@ -186,6 +185,22 @@ function doBuy(mobile)
     });
 }
 
+function getLayer(obj)
+{
+    $(".mj-bcTips").hide();
+    obj.show();
+    layer.open({
+        type: 1,
+        title: false,
+        closeBtn: false,
+        skin: 'yourclass',
+        content: obj
+    });
+
+    $(".mj-close").bind("click",function(){
+        layer.closeAll();
+    });
+}
 
 function clearBuy()
 {

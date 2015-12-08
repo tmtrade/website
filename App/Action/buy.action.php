@@ -35,7 +35,7 @@ class BuyAction extends AppAction
         $content    = $this->input('content', 'string', '');
         $name       = $this->input('name', 'string', '');
         $sid        = $this->input('sid', 'string', '');
-        $area       = $this->input('sid', 'string', '');
+        $area       = $this->input('area', 'string', '');
 
 
         if ( isCheck($mobile) != 2 || $content == ''){
@@ -94,7 +94,7 @@ class BuyAction extends AppAction
     public function addTemp()
     {
         if ( !$this->isAjax() ) $this->redirect('', '/');
-        
+
         $mobile     = $this->input('mobile', 'string', '');
         $content    = $this->input('content', 'string', '');
         $name       = $this->input('name', 'string', '');

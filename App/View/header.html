@@ -9,11 +9,12 @@
     <script src="<?=StaticDir?>script/login_new.js"></script>
     <link rel="stylesheet" href="<?=StaticDir?>style/respond.css"/>
     <script src="<?=StaticDir?>script/respond.min.js"></script>
+    <script language="javascript" src="http://st.chofn.com/code.php"></script>
 </head>
 <body>
-<input type="hidden" name="sid" id="sid">
-<input type="hidden" name="area" id="area">
 <div class="mj-header">
+<input type="hidden" name="sid" id="sid" value="" />
+<input type="hidden" name="area" id="area" value="" />
     <div class="w1180 mj-nav f-clearfix">
         <ul class="mj-header_left fl">
             <li><span class="security"><i class="uj_icon1"></i>安全保障</span></li>
@@ -210,7 +211,7 @@
 </div>
 
 <script type="text/javascript">
-
+    var _manger_url = "<?=MANAGER_URL?>";
     $(document).ready(function(){
         $(".mj-search-submit").click(function (){
             var input_kw = $("input[name='kw']");
