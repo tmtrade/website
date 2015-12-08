@@ -121,10 +121,18 @@
 }
 .mj-imglB p{
     color: #888;
-    width: 185px;
+}
+.mj-imglB p em{
+    width: 84px;
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: inline-block;
+    font-style: normal;
+    vertical-align: middle;
+}
+.mj-imglB p label{
+    vertical-align: middle;
 }
 .mj-tip{
     position: absolute;

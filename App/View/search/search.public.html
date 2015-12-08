@@ -136,7 +136,7 @@
                     </li>
                     <li>
                         <div class="mj-liIn">
-                            <span>商标名称/商标号</span>
+                            <span id="spanva">商标名称/商标号</span>
                             <input type="text" value="<?=$kw?>" id="keywords"/>
                             <!--<a class="mj-laBtn">确定</a>-->
                         </div>
@@ -164,7 +164,7 @@
                             </div>
                             <div class="mj-imglB">
                                 <span>(<?=$v['class']?>类)</span>
-                                <p title="<?=$v['name']?>"><?=mb_substr($v['name'],0,10,'utf8')?>&nbsp;&nbsp;<?=$CLASSES[$v['class']]?></p>
+                                <p title="<?=$v['name']?>"><em><?=mb_substr($v['name'],0,10,'utf8')?></em><label><?=$CLASSES[$v['class']]?></label></p>
                             </div>
                         </a>
                     </li>
@@ -297,6 +297,7 @@
 		if(_kw == $('#keywords').attr('placeholder')){
 			_kw = '';
 		}
+
 		var obj = new objURL('/?'+_whereStr);
 		obj.set('kw',_kw==0?'':$.trim(_kw));
 		obj.set('c', _class==0?'':_class);
@@ -306,7 +307,7 @@
         obj.set('sn', _sN==0?'':_sN);
         var params = obj.strparams();
         window.location = _urlSearch+params+_maodian;
-	})
+	});
 	var _isshow = 0;
 	
 	//提交URL
@@ -507,5 +508,6 @@
             }
         });
     });
+
 
 </script>
