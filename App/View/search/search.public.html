@@ -496,7 +496,14 @@
     });
 
     $("#keywords").each(function(){
+
         var spanT= $(this).parent().find("span").text();
+        var check1 = $(this).val();
+        if (check1.length>0) {
+            $(this).parent().find($("span")).text("");
+        }else{
+            $(this).parent().find($("span")).text(spanT);
+        }
         $(this).focus(function(){
             $(this).parent().find($("span")).text("");
         });
