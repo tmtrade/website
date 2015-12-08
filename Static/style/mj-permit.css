@@ -50,7 +50,7 @@
 
 /*Í¼Æ¬ÁÐ±í start*/
 .mj_goods_check {
-    margin: 30px 0 15px;
+  /*  margin: 30px 0 15px;*/
 }
 .mj_goods_check li {
     float: left;
