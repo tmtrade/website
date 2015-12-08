@@ -10,6 +10,7 @@ $(function(){
 		_parent.after(_copy);
 		_copy.find('input').val('');
 		_copy.find('.g-td2').html('');
+		priceCheck();
 	}).on('click', '.remove', function(){
 		$(this).parent().parent().parent().remove();
 	});
@@ -147,18 +148,23 @@ $(function(){
 		});
 	});
 
-	$('.input-price').bind("blur",function(){
-		var thisval = $(this).val();
-		var preg = /^[1-9][\d]{0,7}$/;
-		var tip = $(this).parent().parent().next();
-		if(!preg.test(thisval)){
-			$(this).val('');
-			tip.html('<i class="us-icon uj_icon44"></i>商标出售底价不正确');
-			tip.show();
-		}else{
-			tip.hide();
-		}
-	})
+	
+	priceCheck();
+	//价格循环检查
+	function priceCheck(){
+		$('.input-price').bind("blur",function(){
+			var thisval = $(this).val();
+			var preg = /^[1-9][\d]{0,7}$/;
+			var tip = $(this).parent().parent().next();
+			if(!preg.test(thisval)){
+				$(this).val('');
+				tip.html('<i class="us-icon uj_icon44"></i>商标出售底价不正确');
+				tip.show();
+			}else{
+				tip.hide();
+			}
+		})
+	}
 
 	$('.input-phone').bind("blur",function(){
 		var thisval = $(this).val();
