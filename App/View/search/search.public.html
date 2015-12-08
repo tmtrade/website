@@ -293,6 +293,9 @@
 	//搜索提交
 	$('#sSubmit').click(function(){
 		var _kw = $('#keywords').val();
+		if(_kw == $('#keywords').attr('placeholder')){
+			_kw = '';
+		}
 		var obj = new objURL('/?'+_whereStr);
 		obj.set('kw',_kw==0?'':$.trim(_kw));
 		obj.set('c', _class==0?'':_class);
@@ -364,12 +367,12 @@
                 _isshow = 0;
             }
         }else{
-            if($(window).scrollTop()>=305){
+            if($(window).scrollTop()>=320){
                 _nav.addClass("mj-navT");
                 $("#mj-dnul").show();
                 $("#sept").addClass("sept");
                 _isshow = 1;
-            }else if($(window).scrollTop()<=305){
+            }else if($(window).scrollTop()<=320){
                 _nav.removeClass("mj-navT");
                 $("#sept").removeClass("sept");
                 $("#mj-dnul").hide();
