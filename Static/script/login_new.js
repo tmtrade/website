@@ -145,11 +145,14 @@ function letLogin()
                 $('#loginTips').show();
                 //登录成功
                 setTimeout(function(){
-                    if ( doBuyFunc == '') window.location.reload();
+                    if ( doBuyFunc == '') {
+                        window.location.reload();
+                        return false;
+                    }
                     var func = doBuyFunc;
                     boxHide('mj-loginModel');
                     window[func](_val);
-                }, 200);
+                }, 100);
             }else if (data.code == 2){
                 $('#loginTips > em').html('请输入手机号或密码');
                 $('#loginTips').show();

@@ -98,9 +98,32 @@ class TempModule extends AppModule
             $this->load('buy')->removeTemp($rol);
             $r['eq'] = array('username' => $uname);
             $this->import('user')->remove($r);
+            //推送求购到分配系统
+            $this->pushTrack($temp['need'], $temp['name'], $uname, $temp['sid'], $temp['area']);
             return true;
         }
         return false;
+    }
+
+    public function pushTrack($need, $contact, $mobile, $sid, $area)
+    {
+        $post['source']     = 0;
+        $post['username']   = 0;//顾问id
+        $post['company']    = '';//公司名称
+        $post['pttype']     = 1; //类型（1：求购 2：出售）
+        $post['subject']    = '';//注册名称
+        $post['remarks']    = $sale['need'];//备注
+        $post['name']       = $sale['contact'];//联系人
+        $post['address']    = '';//客户联系地址
+        $post['postcode']   = '';//客户邮编
+        $post['tel']        = $sale['phone'];//电话
+        $post['email']      = '';//邮件
+        $post['area']       = $sale['sidArea'];//
+        $post['sid']        = $sale['sid'];
+
+        $json = $this->importBi('CrmPassport')->insertCrmMember($post);//联系人id
+        $output             =  (array)json_decode($json);
+        return $output;
     }
 
 }

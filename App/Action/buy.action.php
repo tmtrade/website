@@ -37,7 +37,6 @@ class BuyAction extends AppAction
         $sid        = $this->input('sid', 'string', '');
         $area       = $this->input('area', 'string', '');
 
-
         if ( isCheck($mobile) != 2 || $content == ''){
             $this->returnAjax(array('code'=>2));//信息不正确
         }
@@ -75,6 +74,8 @@ class BuyAction extends AppAction
         }
         $res = $this->load('buy')->create($buy);
         if ( $res ) {
+            //推送求购到分配系统
+            $this->load('temp')->pushTrack($content, $name, $mobile, $sid, $area);
             //if ( $userinfo ) $this->load('passport')->setLogin($userinfo);
             $this->returnAjax(array('code'=>1));//成功
         }

@@ -67,7 +67,7 @@ class PassportAction extends AppAction
                 $flag = array('code'=>1);
             }else{
                 $flag = array('code'=>0);
-            }            
+            }
         }else{
             $flag = array('code'=>6);//该账号不存在
             //判断是否在临时数据库中存在
@@ -326,7 +326,7 @@ class PassportAction extends AppAction
      *
      * @return  array
      */
-    private function setMsgCode($mobile, $prefix='valid', $length=4, $type='NUMBER')
+    private function setMsgCode($mobile, $fix='valid', $length=4, $type='NUMBER')
     {
         $code   = randCode($length, $type);
         $prefix = C('COOKIE_PREFIX');
@@ -336,7 +336,7 @@ class PassportAction extends AppAction
         Session::set($mbNo, $mobile, $this->codeTime);
         $msgTemp = C('MSG_TEMPLATE');
         $content = Session::get($cname);
-        $msg     = sprintf($msgTemp['valid'], $content);
+        $msg     = sprintf($msgTemp[$fix], $content);
         return $this->load('outmsg')->sendMsg($mobile, $msg);
     }
 
