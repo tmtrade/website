@@ -48,7 +48,7 @@ $(document).ready(function(){
             success: function(data){
                 if (data.code == 1){
                     _sendOnce = false;
-                    timer(60, $("#dl_wjmm"), 'wjmm');
+                    timer(60, $("#dl_wjmm"), 'wjmm', '忘记密码');
                     $('#loginTips > em').html('动态密码已发送');
                     $('#loginTips').show();
                     $("#dl_ts").show();
@@ -94,7 +94,7 @@ $(document).ready(function(){
             success: function(data){
                 if (data.code == 1){
                     _sendOnce2 = false;
-                    timer(60, $("#dl_fsmm"), 'fsmm');
+                    timer(60, $("#dl_fsmm"), 'fsmm', '发送密码');
                     $('#loginTips > em').html('密码已发送');
                     $('#loginTips').show();
                     $("#dl_ts").show();
@@ -273,20 +273,20 @@ function loginout()
 }
 
 //倒计时
-function timer(count, obj, type)
+function timer(count, obj, type, title)
 {
      window.setTimeout (function () {
          count --;
          obj.text(count + "s");
          if(count > -1){
-             timer(count, obj, type);
+             timer(count, obj, type, title);
          }else{
             if (type == 'wjmm'){
                 _sendOnce = true;
             }else{
                 _sendOnce2 = true;
             }
-            obj.text('重新获取');
+            obj.text(title);
          }
      },1000);
 }
