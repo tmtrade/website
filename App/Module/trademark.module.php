@@ -291,10 +291,10 @@ class TrademarkModule extends AppModule
     {
         $total      = 0;
         $r1['eq']   = array('id' => $tmid , 'class' => $class);
-        $r1['col']  = array('auto','pid','trademark');
+        $r1['col']  = array('auto','proposer_id','trademark');
         $tmArr      = $this->import('tm')->find($r1);
         if( !empty($tmArr) ){
-            $r['eq']    = array('id' => $tmid, 'class' => $class, 'pid' => $tmArr['pid'],'trademark' => $tmArr['trademark']);
+            $r['eq']    = array('proposer_id' => $tmArr['proposer_id'],'trademark' => $tmArr['trademark']);
             $r['notIn'] = array('auto'=>array($tmArr['auto']));
             $r['col']   = array('COUNT( * ) AS total');
             $data       = $this->import('tm')->find($r);
