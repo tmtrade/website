@@ -1,5 +1,8 @@
 
 /*banner*/
+.mj-dd{
+    display: block!important;
+}
 .mj-banner {
     position: relative;
     height: 480px;
