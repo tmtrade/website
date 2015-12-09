@@ -35,7 +35,7 @@ class DetectionAction extends AppAction
         21 => '商标存在<em>许可</em>流程，若要购买 ，请与卖方确认许可合同条约是否限制转让，并将转让事宜通知被许可方，建议在协议中进行责任约定，将风险降到最低。',
         22 => '商标存在<em>续展</em>流程，若要购买，建议在协议中进行责任约定，例如：若续展不成功，导致商标无效的赔偿条款，将风险降到最低。',
         23 => '商标存在<em>近似</em>风险，若要购买，建议将近似商标一起购买/注销，将购买风险降到最低。',
-        24 => '商标有<em>变更流程，若要购买，建议确定商标所有权归卖方后再行购买。',
+        24 => '商标有<em>变更</em>流程，若要购买，建议确定商标所有权归卖方后再行购买。',
     );
     public $checkTyep   = array(
         1 => '争议检测',
@@ -511,10 +511,10 @@ class DetectionAction extends AppAction
     */
     public function getTmInfo($id)
     {
-        $info   = $this->load('trademark')->getInfo($id,array('auto','class','trademark','pid','goods'));
+        $info   = $this->load('trademark')->getInfo($id,array('auto','class','trademark','pid','proposer_id','goods'));
         if( $info['pid'] > 0 ){
-            $proArr = $this->load('proposer')->get($id);//获取申请人
-            $img    = $this->load('trademark')->getImg($id);//获取图片
+            $proArr = $this->load('proposer')->get($info['proposer_id']);//获取申请人
+            $img    = $this->load('trademark')->getImg($info['auto']);//获取图片
             $plat   = $this->load('sale')->getTrademarkPlatform($info['class']);//获取平台
             if( !empty($plat) ){
                 $clo        = array('clog','clob','cloq','cloz','clozs','clozy','clof','cloo');//标签云的class
