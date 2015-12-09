@@ -87,7 +87,7 @@
                         <div class="biaoinner_txt" style="visibility: hidden;">
                             <i style="font-style: normal;">检测分数</i><br/>
                             <span>
-                                <strong>0</strong>
+                                <strong class="grade">0</strong>
                                 <b></b>
                             </span>
                         </div>
@@ -116,10 +116,12 @@
                     </dd>
                 </dl>
                 <dl style="display: none;">
-                    <!--<dt>检测动态</dt>
-                    <dd>还有 <span class="color-fc7d28" id="xiang">11</span> 项目检测项目 ，请勿关闭网页</dd>
-                    <dd>正在 检测商标号 xxxxxx 的质量</dd>
-                    <dd>当前正在进行 <span class="color-fc7d28" id="zhiliang">质押检测</span>  ...</dd>-->
+                    <dt>检测动态</dt>
+                    <dd>还有 <span class="color-fc7d28" id="xiang">13</span> 项目检测项目 ，请勿关闭网页</dd>
+                    <dd>正在 检测商标号 <span class="sbid"></span> 的质量</dd>
+                    <dd>当前正在进行 <span class="color-fc7d28" id="zhiliang"></span>  ...</dd>
+                </dl>                
+                <dl style="display: none;">
                     <div class="mj-anright">
                         <div class="mj-anrT">
                             <b>蒙顶山</b>
@@ -134,7 +136,7 @@
                         </div>
                         <div class="mj-anrB"></div>
                     </div>
-                </dl>
+                </dl>                
             </form>
         </div>
     </div>
@@ -178,6 +180,10 @@
         var _animateBox = _janimate.find('.ml-animate_biaobox');
         var _ieNextNum = _ieBox.find('strong');
         var _animateNextNum = _animateBox.find('.biaoinner_txt');
+
+
+        var _animateNextNumI = _animateNextNum.find('i');
+        var _animateNextNumStrong = _animateNextNum.find('strong');
 
         var _formDl = null;
         var _rightcircle = _janimate.find('.rightcircle');
@@ -226,69 +232,6 @@
             return _css;
         }		
 		
-        function submitTestData(dom){
-			return false;
-            _animateNextNum.css('visibility', 'visible').find('i').html('商标检测中');
-            /**
-             * 如果有分类执行下面
-             */
-            //$(dom.trademarkName).next().css('visibility', 'visible');
-            //return false;
-            /** end  */
-
-            if( _formDl === null ){
-                _formDl = $(dom).find('dl');
-            }
-            _formDl.css('display','none').eq(1).css('display','block');
-            var _name = $.trim(dom.trademarkName.value);
-            _anquandun.addClass('heartbeat');
-//            $.ajax({
-//                url : ''
-//            }).done(function(data){
-					if( _ie ){
-						_ieNextNum.html('10');
-						_anquandun.css('visibility','hidden').next().css('visibility','visible').html('灰常严重');
-					}else{
-						var _resultNum = 55;
-						var _css = coutAnimateFun(_resultNum);
-						var _tipTxt = '';
-						var _timeNum = 800;
-						setTimeout(function(){
-							if( _resultNum <= 50 ){
-								_tipTxt = '深红';
-								_mlAnimateBiaobox.addClass('error');
-								_rightcircle.css(_css);
-							}else if( _resultNum > 50 && _resultNum <= 80 ){
-								_tipTxt = '橘红';
-								_mlAnimateBiaobox.addClass('error1');
-								_rightcircle.css(_css[0]);
-								setTimeout(function(){
-									_leftcircle.css(_css[1]);
-								},_timeNum);
-							}else if( _resultNum > 80 && _resultNum < 100 ){
-								_tipTxt = '黄';
-								_mlAnimateBiaobox.addClass('error2');
-								_rightcircle.css(_css[0]);
-								setTimeout(function(){
-									_leftcircle.css(_css[1]);
-								},_timeNum);
-							}else{
-								_tipTxt = '绿';
-								_mlAnimateBiaobox.addClass('error3');
-								_rightcircle.css(_css[0]);
-								setTimeout(function(){
-									_leftcircle.css(_css[1]);
-								},_timeNum);
-							}
-							_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(_tipTxt);
-							_animateNextNum.html(_resultNum);
-						}, 1000);
-					}
-//            }).error(function(){
-//
-//            });
-            return false;
-        }
         var load_img = [];
         load_img.push( 'style/img/anquandun.png' );
         load_img.push( 'style/img/ul-bg2.png' );
@@ -322,6 +265,9 @@
 		
 		//开始
 		var tradId	= 0;
+		var sbNum	= 13;
+		var atNum	= 7.7;
+		var _tipTxt = '';
 		$(document).ready(function(e) {
 			//离开输入框检查
 			$(document).on('blur','.trademarkName',function(){
@@ -351,37 +297,77 @@
 				}else{
 					return false;
 				}
-				$.ajax({
-					 type		: "get",
-					 //data		: {"tradname" : tradname,"class" :optVal},
-					 url		: "/detection/checkscoreajax/?tradname="+tradname+"&class="+optVal,
-					 dataType	: "json",
-					 beforeSend : function(){
-						 _anquandun.css('visibility','hidden').next().css('visibility','visible').html('检查中...');
-					 },
-					 success	: function(data){
-						var myobj = eval(data);
-						setScore(myobj.result.total);
-						$('.mj-anrT').find('b').text(myobj.info.trademark);
-						$('.mj-anrT').find('em').text('第'+myobj.info.class+'类');
-						markObj  = eval(myobj.result.mark);
-						if( markObj ){
-							markString = '';
-							advice     = '<br/><b>建议：</b>在协议中进行责任约定，将风险降到最低。';
-							$('.prompt').html(markObj[0]);
-							for(var i=1;i<markObj.length;i++){  
-								markString +='<p>'+markObj[i]+advice+'</p>';
-							}
-							$('.mj-anrB').html(markString);
-						}
-						setTradInfo(myobj.info);
-						setTradContent();
-					 }
-				 });
+				if( sbNum > 0 ){
+					_animateNextNum.css('visibility', 'visible');
+					_animateNextNumI.html('检测中.');
+					 sbNum = parseInt(sbNum - 1);
+					 _anquandun.addClass('heartbeat');
+					 animateAjax(tradname,optVal,sbNum,atNum,0);
+				}
 				return false;
 			});
 			//END
         });
+		var _MYOBJ = '';
+		function animateAjax(tradname,optVal,num,atnum,isdata){
+				sbNum = parseInt(num);
+				atNum = atnum + 7.7;
+				$.ajax({
+					 type		: "get",
+					 //data		: {"tradname" : tradname,"class" :optVal},
+					 url		: "/detection/checkscoreajax/?tradname="+tradname+"&class="+optVal+"&steps="+sbNum+"&isdata="+isdata,
+					 dataType	: "json",
+					 beforeSend : function(){
+						 setTradContent(1);
+					 },
+					 success	: function(data){
+						if( !_MYOBJ ){
+							_MYOBJ = eval(data);
+							checkstr = _MYOBJ.check;
+						}else{
+							chObj  = eval(data);
+							checkstr = chObj.check;
+						}				 
+						if( sbNum > 0 ){
+							sbNum = sbNum-1;
+							//setScore(atNum);
+							setCourseScore(_MYOBJ.result.total,atNum);
+							$('#xiang').html(sbNum);
+							$('#zhiliang').html(checkstr);
+							$('.grade').html(atNum);
+							_animateNextNumStrong.text(parseInt(atNum)+"%");
+							//console.log(sbNum);
+							setTimeout(function(){								
+								animateAjax(tradname,optVal,sbNum,atNum,1);
+							}, 1000);
+						}else{
+							setContent(_MYOBJ);
+						}
+					 }
+				 });			
+		}
+		//设置监测后的提示
+		function setContent(obj){
+			myarray = getMsgTxt(obj.result.total);
+			_animateNextNumI.html('检测分数');
+			_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(myarray[0]);
+			_animateNextNumStrong.text(obj.result.total);
+			
+			$('.mj-anrT').find('b').text(obj.info.trademark);
+			$('.mj-anrT').find('em').text('第'+obj.info.class+'类');
+			markObj  = eval(obj.result.mark);
+			if( markObj ){
+				markString = '';
+				advice     = '<br/><b>建议：</b>在协议中进行责任约定，将风险降到最低。';
+				$('.prompt').html(obj.result.msg);
+				for(var i=0;i<markObj.length;i++){  
+					markString +='<p>'+markObj[i]+advice+'</p>';
+				}
+				$('.mj-anrB').html(markString);
+			}
+			setTradInfo(obj.info);
+			setTradContent(2);	
+		}
 		//设置商标信息
 		function setTradInfo(infoObj){
 			$('.imgtb').attr('src',infoObj.imgurl);
@@ -398,69 +384,103 @@
 			}
 			$('.mj-cBottom').show();
 		}
-		function setTradContent(){
+		function setTradContent(num){
 			dom = $('.ml-testtrademark_form');
 			if( _formDl === null ){
                 _formDl = $(dom).find('dl');
             }
-            _formDl.css('display','none').eq(1).css('display','block');
-            _anquandun.addClass('heartbeat');	
+			
+            _formDl.css('display','none').eq(num).css('display','block');
 		}
-		function setScore(num){
-			var _resultNum = parseInt(num);
-			if( _resultNum <= 50 ){
-				_tipTxt 	= '高级风险';
-				iconClass	= 'uj_icon34';
-			}else if( _resultNum > 50 && _resultNum <= 80 ){
-				_tipTxt 	= '中级风险';
-				iconClass	= 'uj_icon34';
-			}else if( _resultNum > 80 && _resultNum < 100 ){
-				_tipTxt 	= '低级风险';
-				iconClass	= 'uj_icon32';
-			}else{
-				_tipTxt 	= '安全';
-				iconClass	= 'uj_icon32';
-			}
+		function setScore(snum){
+			var _resultNum = snum;
+			myarray 	= getMsgTxt(_resultNum);
+			iconClass	= myarray[1];
 			if( _ie ){
 				_ieNextNum.html(_resultNum);
 				_anquandun.css('visibility','hidden').next().css('visibility','visible').html(_tipTxt);
 			}else{
 				var _css = coutAnimateFun(_resultNum);
-				var _tipTxt = '';
-				var _timeNum = 800;
+				var _timeNum = 500;
 				setTimeout(function(){
 					if( _resultNum <= 50 ){
-						_tipTxt = '高级风险';
 						_mlAnimateBiaobox.addClass('error');
 						_rightcircle.css(_css[0]);
 					}else if( _resultNum > 50 && _resultNum <= 80 ){
-						_tipTxt = '中级风险';
 						_mlAnimateBiaobox.addClass('error1');
 						_rightcircle.css(_css[0]);
 						setTimeout(function(){
 							_leftcircle.css(_css[1]);
 						},_timeNum);
 					}else if( _resultNum > 80 && _resultNum < 100 ){
-						_tipTxt = '低级风险';
 						_mlAnimateBiaobox.addClass('error2');
 						_rightcircle.css(_css[0]);
 						setTimeout(function(){
 							_leftcircle.css(_css[1]);
 						},_timeNum);
 					}else{
-						_tipTxt = '安全';
 						_mlAnimateBiaobox.addClass('error3');
 						_rightcircle.css(_css[0]);
 						setTimeout(function(){
 							_leftcircle.css(_css[1]);
 						},_timeNum);
 					}
-					_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(_tipTxt);
-					_animateNextNum.html(_resultNum);
 				}, 500);
 			}
 			$('#uj_icons').removeClass();
-			$('#uj_icons').addClass('us-icon '+iconClass);		
+			$('#uj_icons').addClass('us-icon '+iconClass);
+		}
+		function setCourseScore(count,snum){
+			var _resultNum = snum;
+			myarray 	= getMsgTxt(count);
+			iconClass	= myarray[1];
+			if( _ie ){
+				_ieNextNum.html(_resultNum);
+				_anquandun.css('visibility','hidden').next().css('visibility','visible').html(_tipTxt);
+			}else{
+				var _css = coutAnimateFun(_resultNum);
+				var _timeNum = 500;
+				setTimeout(function(){
+					if( count <= 50 ){
+						_mlAnimateBiaobox.addClass('error');
+						_rightcircle.css(_css[0]);
+					}else if( count > 50 && count <= 80 ){
+						_mlAnimateBiaobox.addClass('error1');
+						_rightcircle.css(_css[0]);
+					}else if( count > 80 && count < 100 ){
+						_mlAnimateBiaobox.addClass('error2');
+						_rightcircle.css(_css[0]);
+					}else{
+						_mlAnimateBiaobox.addClass('error3');
+						_rightcircle.css(_css[0]);
+					}
+					setTimeout(function(){
+							if(_css[1]){
+								_leftcircle.css(_css[1]);
+							}
+					},_timeNum);
+				}, 500);
+			}
+			$('#uj_icons').removeClass();
+			$('#uj_icons').addClass('us-icon '+iconClass);
+		}
+		//返回分数对应的值
+		function getMsgTxt(number){
+			var myArray =new Array()
+			if( number <= 50 ){
+				myArray[0] 	= '高级风险';
+				myArray[1]	= 'uj_icon34';
+			}else if( number > 50 && number <= 80 ){
+				myArray[0] 	= '中级风险';
+				myArray[1]	= 'uj_icon34';
+			}else if( number > 80 && number < 100 ){
+				myArray[0] 	= '低级风险';
+				myArray[1]	= 'uj_icon32';
+			}else{
+				myArray[0] 	= '非常安全';
+				myArray[1]	= 'uj_icon32';
+			}
+			return myArray;
 		}
 		//获取商标检查结果数据包
 		function getTrInfo(){

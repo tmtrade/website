@@ -26,7 +26,7 @@ class CheckcountModule extends AppModule
         $count = $this->import('checkcount')->getCount($tradid);
         if( $count > 0 ){
             $data['hits']   = $count + 1;
-            $r['number']    = $tradid;
+            $r['eq']['number']    = $tradid;
             $this->import('checkcount')->update($data,$r);
         }else{
             $data['hits']   = 1;

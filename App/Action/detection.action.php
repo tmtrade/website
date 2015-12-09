@@ -37,10 +37,32 @@ class DetectionAction extends AppAction
         23 => '商标存在近似风险，若要购买，建议将近似商标一起购买/注销，将购买风险降到最低。',
         24 => '商标有变更流程，若要购买，建议确定商标所有权归卖方后再行购买。',
     );
+    public $checkTyep   = array(
+        1 => '争议检测',
+        2 => '撤三检测',
+        3 => '撤销注册复审',
+        4 => '注销检测',
+        5 => '申请中监测',
+        6 => '无效监测',
+        7 => '质押检测',
+        8 => '冻结检测',
+        9 => '转让检测',
+        10 => '许可检测',
+        11 => '续展期检测',
+        12 => '近似监测',
+        13 => '变更监测',
+        14 => '争议检测',
+    );
+    public $totalmsg   = array(
+        1  => '总评：商标存在被无效/已无效风险，建议根据报告规避风险。',
+        2  => '总评：商标存在被转让/冻结/质押风险，建议根据报告规避风险。',
+        3  => '总评：商标存在许可/续展/近似风险，建议根据报告规避风险。',
+        4  => '总评：恭喜，此商标状态安全。',
+    );
     public function index()
     {
         $count  = $this->load('checkcount')->getAllCount();
-        $sj     = date('Y年m月d',time());
+        $sj     = date('Y年m月d日',time());
         $this->set('count',$count);
         $this->set('sj',$sj);
         $this->display();
@@ -71,16 +93,24 @@ class DetectionAction extends AppAction
         $info       = $array = array();
         $tradid     = $this->input('tradname', 'string', '');
         $class      = $this->input('class', 'int', '');
-        $id         = $this->load('trademark')->getTid($tradid,$class);
-        $this->load('checkcount')->click($tradid);
-        if( $id > 0 ){
-            $info       = $this->getTmInfo($id);
-            $twoArr     = $this->load('trademark')->getTwoStageInfo($tradid,$class);
-            $threeArr   = $this->load('trademark')->getThreeStageInfo($tradid,$class);
-            $alikeCount = $this->load('trademark')->getAlikeBrand($tradid,$class);
-            $array      = $this->getScoreInfo($twoArr,$threeArr,$alikeCount);
+        $steps      = $this->input('steps', 'int', '');
+        $isdata     = $this->input('isdata', 'int', '');
+        if( $isdata == 0 ){
+            $id         = $this->load('trademark')->getTid($tradid,$class);
+            $this->load('checkcount')->click($tradid);
+            if( $id > 0 ){
+                $info       = $this->getTmInfo($id);
+                $twoArr     = $this->load('trademark')->getTwoStageInfo($tradid,$class);
+                $threeArr   = $this->load('trademark')->getThreeStageInfo($tradid,$class);
+                $alikeCount = $this->load('trademark')->getAlikeBrand($tradid,$class);
+                $array      = $this->getScoreInfo($twoArr,$threeArr,$alikeCount);
+                $check      = $this->getDynamic($steps);
+                $result     = array('info' => $info,'result' => $array,'check' => $check);
+            }
+        }else{
+            $check  = $this->getDynamic($steps);
+            $result = array('check' => $check);
         }
-        $result = array('info' => $info,'result' => $array);
         $this->returnAjax($result);
     }
     /**
@@ -100,7 +130,9 @@ class DetectionAction extends AppAction
             $three_status == 3 && $result[] = 2;
         }else{//规则2
             $is2  = $this->getStatus($threeArr,'无效宣告中');
-            if($is2){
+            $noArr= array('无效宣告完成');
+            $isNO = $this->getNoStatus($threeArr,$noArr);
+            if( $is2 == true && $isNO == false ){
                 $result[] = 1;
             }
         }
@@ -125,7 +157,11 @@ class DetectionAction extends AppAction
         }else{//规则2
             $is3  = $this->getStatus($threeArr,'撤销连续三年停止使用注册商标中');
             $is4  = $this->getStatus($threeArr,'撤销三年不使用待审中');
-            if( $is3 == true || $is4 == true ){
+
+            $noArr= array('撤销连续三年停止使用注册商标申请完成','撤销三年不使用审理完成');
+            $isNO = $this->getNoStatus($threeArr,$noArr);
+
+            if( ($is3 == true || $is4 == true) && $isNO == false ){
                 $result[] = 3;
             }
         }
@@ -152,7 +188,9 @@ class DetectionAction extends AppAction
             $is4  = $this->getStatus($threeArr,'撤销注册复审待审中');
             $is5  = $this->getStatus($threeArr,'撤销注册不当复审待审中');
             $is6  = $this->getStatus($threeArr,'撤销注册商标复审中');
-            if( $is4 == true || $is5 == true || $is6 == true ){
+            $noArr= array('撤销注册商标复审完成','撤销注册复审完成','撤销注册不当复审完成');
+            $isNO = $this->getNoStatus($threeArr,$noArr);
+            if( ($is4 == true || $is5 == true || $is6 == true) && $isNO == false ){
                 $result[] = 6;
             }
         }
@@ -178,13 +216,18 @@ class DetectionAction extends AppAction
             $three_status == 3 && $result[] = 11;
         }else{
             $is4  = $this->getStatus($threeArr,'部分注销');
+
             $is5  = $this->getStatus($threeArr,'商标注销申请中');
             $is6  = $this->getStatus($threeArr,'消亡注销待审中');
             $is7  = $this->getStatus($threeArr,'注册人死亡/终止注销商标申请中');
             $is8  = $this->getStatus($threeArr,'部分注销、期满未续展注销商标中');
+
+            $noArr= array('商标注销申请完成','商标注销完成','消亡注销完成','注册人死亡/终止注销商标申请完成');
+            $isNO = $this->getNoStatus($threeArr,$noArr);
+
             if( $is4 == true  ){//规则2
                 $result[] = 10;
-            }elseif( $is5 == true || $is6 == true || $is7 == true || $is8 == true  ){//规则3
+            }elseif( ($is5 == true || $is6 == true || $is7 == true || $is8 == true) && $isNO == false ){//规则3
                 $result[] = 9;
             }
         }
@@ -217,7 +260,10 @@ class DetectionAction extends AppAction
     public function rules6($twoArr,$threeArr)
     {
         $result = array();
-        if( $twoArr['three_status'] == 3 ){
+        $noArr  = array('无效宣告完成','撤销连续三年停止使用注册商标申请完成','撤销三年不使用审理完成',
+            '撤销注册商标复审完成','撤销注册复审完成','撤销注册不当复审完成','商标注销申请完成','商标注销完成','消亡注销完成','注册人死亡/终止注销商标申请完成');
+        $isNO   = $this->getNoStatus($threeArr,$noArr);
+        if( $twoArr['three_status'] == 3 && $isNO == false ){
             $result[] = 13;
         }
         return $result;
@@ -309,7 +355,9 @@ class DetectionAction extends AppAction
     {
         $result = array();
         $is1    = $this->getStatus($threeArr,'商标续展中');
-        if( $is1 == true ){
+        $noArr  = array('商标续展完成');
+        $isNO   = $this->getNoStatus($threeArr,$noArr);
+        if( $is1 == true && $noArr == false ){
             $result[] = 22;
         }
         return $result;
@@ -324,7 +372,7 @@ class DetectionAction extends AppAction
     public function rules12($alikeCount)
     {
         $result = array();
-        $alikeCount > 0 ? $result[] = 24 : '';
+        $alikeCount > 0 ? $result[] = 23 : '';
         return $result;
     }
     /**
@@ -338,9 +386,11 @@ class DetectionAction extends AppAction
     public function rules13($twoArr,$threeArr)
     {
         $result = array();
-        $result = array();
         $is1    = $this->getStatus($threeArr,'变更商标申请人/注册人名义/地址中');
-        if( $is1 == true ){
+        $isNo1  = $this->getStatus($threeArr,'变更商标申请人/注册人名义/地址完成');
+        $isNo2  = $this->getStatus($threeArr,'商标变更完成');
+        $isNo3  = $this->getStatus($threeArr,'变更完成');
+        if( $is1 == true && ( $isNo1 == true || $isNo2 == true || $isNo3 == true ) ){
             $result[] = 24;
         }
         return $result;
@@ -386,17 +436,28 @@ class DetectionAction extends AppAction
             $b == 1 && $total = $total - 30;
             $c == 1 && $total = $total - 10;
         }
-        $array = array('total' => $total,'mark' => $mark);
+        $msg   = $this->getTotalMsg($total);
+        $array = array('total' => $total,'mark' => $mark,'msg' => $msg);
         return $array;
     }
+
+    public function getDynamic($steps)
+    {
+        $string = '';
+        if( array_key_exists($steps,$this->checkTyep) ){
+            $string = $this->checkTyep[$steps];
+        }
+        return $string;
+    }
+
     /**
-    * 获取状态是否存在
+    * 获取状态是否在数组里面
     * @since    2015-12-06
     * @author   haydn
     * @param    array   $array  三级数组
     * @param    string  $name   检查字符串
     * @param    string  $name   检查字符串
-    * @return   array
+    * @return   bool	true|false
     */
     public function getStatus($array,$name)
     {
@@ -407,6 +468,33 @@ class DetectionAction extends AppAction
         }
         return false;
     }
+    /**
+    * 获取状态不在数组里面
+    * @since    2015-12-06
+    * @author   haydn
+    * @param    array   $array  三级数组
+    * @param    string  $name   检查字符串
+    * @param    string  $name   检查字符串
+    * @return   bool    true|false
+    */
+    public function getNoStatus($array1,$array2)
+    {
+        $status = array();
+        foreach( $array1 as $k => $v ){
+            $status[] = $v['status'];
+        }
+        if( count($status) > 0 ){
+            foreach( $array2 as $k => $v ){
+                if( in_array($v,$status) ){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
     /**
     * 获取商标状态
     * @since    2015-12-06
@@ -432,11 +520,32 @@ class DetectionAction extends AppAction
                     }
                 }
             }
-            $info['pname']  = $proArr['name'];
+            $info['pname']  = !empty($proArr['name']) ? $proArr['name'] : '无';
             $info['imgurl'] = $img;
             $info['plat']   = $platform;
         }
         return $info;
+    }
+    /**
+    * 获取商标分数
+    * @since    2015-12-06
+    * @author   haydn
+    * @param    int     $num   分数
+    * @return   string  $msg   分数对应的评语
+    */
+    public function getTotalMsg($num)
+    {
+        $msg = '';
+        if( $num <= 50 ){
+            $msg = $this->totalmsg[1];
+        }else if( $num > 50 && $num <= 80 ){
+            $msg = $this->totalmsg[2];
+        }else if( $num > 80 && $num < 100 ){
+            $msg = $this->totalmsg[3];
+        }else{
+           $msg = $this->totalmsg[4];
+        }
+        return $msg;
     }
 }
 ?>
