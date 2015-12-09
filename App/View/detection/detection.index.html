@@ -283,6 +283,7 @@
 		var atNum	= 7.7;
 		var _tipTxt = '';
 		$(document).ready(function(e) {
+			setDefault();
 			//离开输入框检查
 			$(document).on('blur','.trademarkName',function(){
 				getTrInfo();
@@ -589,6 +590,18 @@
 			D = myDate.getDate();        //获取当前日(1-31)
 			ymd = Y+'年'+M+'月'+D+'日';
 			return  ymd;	
+		}
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) return decodeURI(r[2]); return null;
+		}
+		function setDefault(){
+			_tid   = getQueryString('tid');
+			_class = getQueryString('class');
+			if( _tid ){
+				$('.trademarkName').val(_tid);
+			}
 		}
     </script>
     
