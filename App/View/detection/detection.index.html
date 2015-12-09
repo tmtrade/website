@@ -49,7 +49,7 @@
                     <li class="speaer"  style="display:none"></li>
                     <li><i class="us-icon uj_icon29"></i>
                     	<!-- JiaThis Button BEGIN -->
-                            <a href="javascript:;" class="jiathis jiathis_txt" target="_blank">分享</a>
+                            <a href="javascript:;" class="jiathis jiathis_txt">分享</a>
                             <script type="text/javascript" >
                             var jiathis_config={
                                 siteNum:4,
@@ -69,10 +69,10 @@
             
             <div class="ml-animate ml-animate-load" id="janimate">
                 <div class="ml-animate_bg">
-                    <img src="../../../Static/style/img/ul-bg2.png" alt=""/>
+                    <img src="<?=StaticDir?>style/img/ul-bg2.png" alt=""/>
                 </div>
                 <div class="ml-animate_iebiaobox" style="display: none;">
-                    <img src="../../../Static/style/img/ul-bg3.png" class="biao1"/>
+                    <img src="<?=StaticDir?>style/img/ul-bg3.png" class="biao1"/>
                     <div class="anquandun"></div>
                     <div class="anquandun_tit">非常安全</div>
                     <span>
@@ -254,15 +254,15 @@
         }		
 		
         var load_img = [];
-        load_img.push( '../../../Static/style/img/anquandun.png' );
-        load_img.push( '../../../Static/style/img/ul-bg2.png' );
+        load_img.push( '<?=StaticDir?>style/img/anquandun.png' );
+        load_img.push( '<?=StaticDir?>style/img/ul-bg2.png' );
         loading();
         function loading() {
             jQuery.imgpreload(load_img,{
                 all: function() {
                     _janimate.removeClass('ml-animate-load');
                     if( _ie ){
-                        _ieBox.css({'display':'block'});
+                        //_ieBox.css({'display':'block'});
                     }else{
                         _animateBox.removeAttr('style');
                         setTimeout(function(){

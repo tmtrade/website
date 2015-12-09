@@ -55,15 +55,15 @@
 .error2 .a8,
 .error2 .a9,
 .error2 .anquandun_tit{
-    color: #F7F910;
+    color: #28b9fc;
 }
 .error2 .rightcircle{
-    border-top-color: #F7F910;
-    border-right-color: #F7F910;
+    border-top-color: #28b9fc;
+    border-right-color: #28b9fc;
 }
 .error2 .leftcircle{
-    border-bottom-color: #F7F910;
-    border-left-color: #F7F910;
+    border-bottom-color: #28b9fc;
+    border-left-color: #28b9fc;
 }
 
 
@@ -78,7 +78,7 @@
 .error3 .a8,
 .error3 .a9,
 .error3 .anquandun_tit{
-    color: #31db4c;
+    color: #31db4d;
 }
 .error3 .rightcircle{
     border-top-color: #31db4c;
