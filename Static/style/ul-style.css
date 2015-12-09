@@ -31,7 +31,7 @@ body{
 }
 .ml-testtrademark .ml-testtrademark_form{
     float: left;
-    /*width: 300px;*/
+    width: 320px;
     margin-left: 690px;
     padding-top: 150px;
     position: relative;
@@ -95,6 +95,7 @@ body{
 
 .buttonsubmit{
     display: block;
+    width: 290px;
     background: #fc7d28;
     text-align: center;
     padding: 8px 0;
@@ -814,9 +815,7 @@ body{
     vertical-align: middle;
 }
 .mj-anright{
-   /* position: absolute;
-    left: 670px;
-    top: 220px;*/
+   margin-top: 45px;
 }
 .mj-anrT{}
 .mj-anrT b{
