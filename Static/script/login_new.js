@@ -250,6 +250,7 @@ function checkLoginUser()
 
 //调整用弹层方法
 function getLogin(title){
+    $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
     $("#loginUser").val('');
     $("#loginPass").val('');
     $("#dl_ts").hide();
