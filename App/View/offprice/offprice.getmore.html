@@ -13,7 +13,7 @@
             </label>
         </div>
         <div class="mj-imglB">
-            <p title="<?=$v['name']?>"><?=mb_substr($v['name'],0,10,'utf8')?>&nbsp;&nbsp;<?=$CLASSES[$v['class']]?></p>
+            <p title="<?=$v['name']?>"><em><?=mb_substr($v['name'],0,10,'utf8')?></em><label><?=$CLASSES[$v['class']]?></label></p>
              <span class="mj-imgspan"><label><strong>
              <? if ($v['guideprice'] <= $v['salePrice']){echo '10';}else{$zk = (($v['salePrice'])/($v['guideprice']))*10;echo number_format($zk,1);}?>
              </strong>折</label> <b><em>￥</em><em><?=$v['salePrice']?></em></b></span>
