@@ -40,6 +40,7 @@ $(document).ready(function(){
                 success: function(data){
                     if (data.code == 1){
                         getBuy();
+                        $("#dl_ts").hide();
                         doBuyFunc = 'doBuy';
                         $("#loginUser").val(_mobile);
                         $("#loginUser").blur();

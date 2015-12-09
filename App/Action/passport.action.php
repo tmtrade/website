@@ -164,6 +164,11 @@ class PassportAction extends AppAction
             $this->returnAjax(array('code'=>0));//获取数据失败
         }elseif ( $res['code'] == 1 ){
             $this->returnAjax(array('code'=>1));//账号正确
+        }else{
+            //是邮箱且未注册的
+            if ( isCheck($account) == 1 ){
+                $this->returnAjax(array('code'=>3));
+            }
         }
         //判断是否在临时数据库中存在
         $user = $this->load('temp')->isExist($account);

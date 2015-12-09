@@ -49,7 +49,7 @@ $(document).ready(function(){
                 if (data.code == 1){
                     _sendOnce = false;
                     timer(60, $("#dl_wjmm"), 'wjmm');
-                    $('#loginTips > em').html('临时密码已发送');
+                    $('#loginTips > em').html('动态密码已发送');
                     $('#loginTips > em').show();
                     $("#dl_ts").show();
                 }else if (data.code == 2){
@@ -57,7 +57,7 @@ $(document).ready(function(){
                     $('#loginTips > em').show();
                     _sendOnce = true;
                 }else if (data.code == 3){
-                    $('#loginTips > em').html('该账号已存在，请输入密码直接登录');
+                    $('#loginTips > em').html('该号尚未注册，点击发送密码，我们将会以短信形式将密码发送到该手机号');
                     $('#loginTips > em').show();
                     _sendOnce = true;
                 }else{
@@ -167,7 +167,7 @@ function letLogin()
                 $('#loginTips > em').show();
                 _sendOnce = true;
             }else if (data.code == 6){
-                $('#loginTips > em').html('该账号未注册');
+                $('#loginTips > em').html('该号尚未注册，点击发送密码，我们将会以短信形式将密码发送到该手机号');
                 $('#loginTips > em').show();
                 _sendOnce = true;
             }else{
@@ -250,6 +250,10 @@ function checkLoginUser()
 
 //调整用弹层方法
 function getLogin(title){
+    $("#loginUser").val('');
+    $("#loginPass").val('');
+    $("#dl_ts").hide();
+    $('#loginTips').hide();
     if (title){
         $("#dl_title").html(title);
     }else{
