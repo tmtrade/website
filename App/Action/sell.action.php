@@ -110,6 +110,10 @@ class SellAction extends AppAction
 				$sales['number']   = $item;
 				$sales['phone']    = $data['phone'];
 				$sales['contact']  = $data['contact'];
+				$sales['sid']      = $data['sid'];
+				$sales['sidArea']  = $data['area'];
+				
+				
 				$sales['price']    = $data['price'][$key];
 				//检查传过来的数据
 				$this->checkselldata($sales);
