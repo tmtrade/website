@@ -111,7 +111,8 @@
     color: #888;
 }
 .mj-imglB p em{
-    width: 84px;
+    margin-right: 5px;
+    width: 94px;
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
