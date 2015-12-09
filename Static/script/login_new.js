@@ -189,19 +189,19 @@ function checkUser()
         $('#loginTips').show();
         return false;
     }
-    if (!isNaN(_val) && _val.length != 11){
+    if (isNaN(_val) || _val.length != 11){
         _loginSend = false;
         $('#loginTips > em').html('请输入正确的手机号');
         $('#loginTips').show();
         return false;
     }
-    var _em = /([a-z0-9]*[-_.]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[.][a(www.111cn.net)-z]{2,3}([.][a-z]{2})?/i;
-    if (isNaN(_val) && !_em.test(_val) ){
-        _loginSend = false;
-        $('#loginTips > em').html('请输入正确的手机号');
-        $('#loginTips').show();
-        return false;
-    }
+    // var _em = /([a-z0-9]*[-_.]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[.][a(www.111cn.net)-z]{2,3}([.][a-z]{2})?/i;
+    // if (isNaN(_val) && !_em.test(_val) ){
+    //     _loginSend = false;
+    //     $('#loginTips > em').html('请输入正确的手机号');
+    //     $('#loginTips').show();
+    //     return false;
+    // }
     _loginSend = true;
     return true;
 }

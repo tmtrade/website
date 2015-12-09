@@ -43,7 +43,7 @@ class PassportAction extends AppAction
             $this->returnAjax(array('code'=>2));//账号或密码为空
         }
         $cateId = isCheck($account);//判断账号是什么类型（1：邮箱，2：手机，3：其他）
-        if ( $cateId == 3 ){
+        if ( $cateId != 2 ){
             $this->returnAjax(array('code'=>3));//账号不正确
         }
         $res = $this->load('passport')->login($account, $password, $cateId);
@@ -156,7 +156,7 @@ class PassportAction extends AppAction
         if ( empty($account) ){
             $this->returnAjax(array('code'=>2));//账号为空
         }
-        if ( isCheck($account) == 3 ){
+        if ( isCheck($account) != 2 ){
             $this->returnAjax(array('code'=>3));//账号格式不正确
         }
         $res = $this->load('passport')->exist($account, isCheck($account));
@@ -166,9 +166,9 @@ class PassportAction extends AppAction
             $this->returnAjax(array('code'=>1));//账号正确
         }else{
             //是邮箱且未注册的
-            if ( isCheck($account) == 1 ){
-                $this->returnAjax(array('code'=>3));
-            }
+            //if ( isCheck($account) == 1 ){
+            //    $this->returnAjax(array('code'=>3));
+            //}
         }
         //判断是否在临时数据库中存在
         $user = $this->load('temp')->isExist($account);
