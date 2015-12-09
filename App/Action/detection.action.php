@@ -110,6 +110,7 @@ class DetectionAction extends AppAction
             $check  = $this->getDynamic($steps);
             $result = array('check' => $check);
         }
+        $this->rules6($twoArr,$threeArr);
         $this->returnAjax($result);
     }
     /**
@@ -262,7 +263,7 @@ class DetectionAction extends AppAction
         $noArr  = array('无效宣告完成','撤销连续三年停止使用注册商标申请完成','撤销三年不使用审理完成',
             '撤销注册商标复审完成','撤销注册复审完成','撤销注册不当复审完成','商标注销申请完成','商标注销完成','消亡注销完成','注册人死亡/终止注销商标申请完成');
         $isNO   = $this->getNoStatus($threeArr,$noArr);
-        if( $twoArr['three_status'] == 3 && $isNO == false ){
+        if( $twoArr['three_status'] == '3' && $isNO == false ){
             $result[] = 13;
         }
         return $result;
@@ -512,6 +513,7 @@ class DetectionAction extends AppAction
     public function getTmInfo($id)
     {
         $info   = $this->load('trademark')->getInfo($id,array('auto','class','trademark','pid','proposer_id','goods'));
+        $info['class_id'] = $info['class'];
         if( $info['pid'] > 0 ){
             $proArr = $this->load('proposer')->get($info['proposer_id']);//获取申请人
             $img    = $this->load('trademark')->getImg($info['auto']);//获取图片
@@ -523,7 +525,7 @@ class DetectionAction extends AppAction
                 foreach( $platArr as $k => $v ){
                     if( array_key_exists($v,$platIn) ){
                         $rand       = array_rand($clo,1);
-                        $platform[] = array('class' => $clo[$rand],'name' => $platIn[$v]);
+                        $platform[] = array('classname' => $clo[$rand],'name' => $platIn[$v]);
                     }
                 }
             }

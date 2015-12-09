@@ -227,7 +227,7 @@ class TrademarkModule extends AppModule
     public function getTrademarkByIds($tmid)
     {
         $r['eq']    = array('id' => $tmid);
-        $r['col']   = array('auto','id','class');
+        $r['col']   = array('auto','id','class as class_id');
         $r['limit'] = 100;
         $data       = $this->import('tm')->findAll($r);
         return $data;
@@ -249,7 +249,7 @@ class TrademarkModule extends AppModule
         $r['col']       = array('tid','trademark_id','class_id','three_status');
         $r['limit']     = 100;
         $data           = $this->import('second')->find($r);
-        return $data;
+        return $data[0];
     }
     /**
     * 获取三级状态信息

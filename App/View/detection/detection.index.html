@@ -373,7 +373,7 @@
 			_animateNextNumStrong.text(obj.result.total);
 
 			$('.mj-anrT').find('b').text(obj.info.trademark);
-			$('.mj-anrT').find('em').text('第'+obj.info.class+'类');
+			$('.mj-anrT').find('em').text('第'+obj.info.class_id+'类');
 			markObj  = eval(obj.result.mark);
 			if( markObj ){
 				markString = '';
@@ -397,7 +397,7 @@
 			if( platObj ){
 				platStr = '';
 				for(var i=1;i<platObj.length;i++){
-					platStr +='<li><a href="javascript:void(0);" class="'+platObj[i].class+'">'+platObj[i].name+'</a></li>';
+					platStr +='<li><a href="javascript:void(0);" class="'+platObj[i].classname+'">'+platObj[i].name+'</a></li>';
 				}
 				$('.mj-amin').html(platStr);
 			}
@@ -411,51 +411,13 @@
 
             _formDl.css('display','none').eq(num).css('display','block');
 		}
-		function setScore(snum){
-			var _resultNum = snum;
-			myarray 	= getMsgTxt(_resultNum);
-			iconClass	= myarray[1];
-			if( _ie ){
-				_ieNextNum.html(_resultNum);
-				_anquandun.css('visibility','hidden').next().css('visibility','visible').html(_tipTxt);
-			}else{
-				var _css = coutAnimateFun(_resultNum);
-				var _timeNum = 500;
-				setTimeout(function(){
-					if( _resultNum <= 50 ){
-						_mlAnimateBiaobox.addClass('error');
-						_rightcircle.css(_css[0]);
-					}else if( _resultNum > 50 && _resultNum <= 80 ){
-						_mlAnimateBiaobox.addClass('error1');
-						_rightcircle.css(_css[0]);
-						setTimeout(function(){
-							_leftcircle.css(_css[1]);
-						},_timeNum);
-					}else if( _resultNum > 80 && _resultNum < 100 ){
-						_mlAnimateBiaobox.addClass('error2');
-						_rightcircle.css(_css[0]);
-						setTimeout(function(){
-							_leftcircle.css(_css[1]);
-						},_timeNum);
-					}else{
-						_mlAnimateBiaobox.addClass('error3');
-						_rightcircle.css(_css[0]);
-						setTimeout(function(){
-							_leftcircle.css(_css[1]);
-						},_timeNum);
-					}
-				}, 500);
-			}
-			$('#uj_icons').removeClass();
-			$('#uj_icons').addClass('us-icon '+iconClass);
-		}
+
 		function setCourseScore(count,snum){
 			var _resultNum = snum;
 			myarray 	= getMsgTxt(count);
 			iconClass	= myarray[1];
 			if( _ie ){
 				_ieNextNum.html(_resultNum);
-				_anquandun.css('visibility','hidden').next().css('visibility','visible').html(_tipTxt);
 			}else{
 				var _css = coutAnimateFun(_resultNum);
 				var _timeNum = 500;
@@ -552,7 +514,7 @@
 			var optionObjs	= eval(optionObj);
 			optString		= '';
 			for(var i=0;i<optionObjs.length;i++){
-				classId	= optionObjs[i].class;
+				classId	= optionObjs[i].class_id;
 				optString = $("<option>").val(classId).text("第"+classId+"类");
 				$(defObj).append(optString);
 			}

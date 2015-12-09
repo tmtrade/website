@@ -13,6 +13,7 @@ body{
 }
 .ml-testtrademark .ml-testtrademark_tit{
     position: absolute;
+	*position: inherit;
     width: 88%;
     border-bottom: 1px solid #d6d6d6;
     margin: 0 80px 0 80px;
