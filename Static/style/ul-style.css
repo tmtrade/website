@@ -58,11 +58,12 @@ body{
     display: inline-block;
     padding: 7px 14px;
     outline: none;
-    width: 88%;
+    width: 260px;
     position: relative;
     z-index: 1;
 }
 .ml-testtrademark .ml-testtrademark_form .error{
+    width: 245px;
     border: 1px solid #ffddb2;
     background: url(img/ul-bg1.png) no-repeat 15px center #fff7e1;
     font-size: 12px;
