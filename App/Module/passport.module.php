@@ -115,7 +115,7 @@ class PassportModule extends AppModule
 
         $msgTemp = C('MSG_TEMPLATE');
         $msg = sprintf($msgTemp['register'], $pass);
-        return $this->load('outmsg')->sendMsg($mobile, $msg);
+        //return $this->load('outmsg')->sendMsg($mobile, $msg);
     }
 
     /**
