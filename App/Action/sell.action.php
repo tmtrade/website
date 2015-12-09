@@ -138,7 +138,11 @@ class SellAction extends AppAction
 					//添加数据
 					$tradeId = $this->addSellDataToSql($result,$sales,$detail);
 					
-					if($tradeId){ $num['num'] ++;}
+					if($tradeId){ 
+						$num['num'] ++;
+						$need = "商标号：".$item;
+						$this->load('temp')->pushTrack($need, $sales['contact'], $sales['phone'], $sales['sid'], $sales['sidArea'], 2);
+					}
 				}else{
 					$num['state'] = -2; //商标数据不存在
 				}

@@ -105,21 +105,21 @@ class TempModule extends AppModule
         return false;
     }
 
-    public function pushTrack($need, $contact, $mobile, $sid, $area)
+    public function pushTrack($need, $contact, $mobile, $sid, $area,$pttype = 1)
     {
         $post['source']     = 0;
-        $post['username']   = 0;//顾问id
+        $post['username']   = 46;//顾问id
         $post['company']    = '';//公司名称
-        $post['pttype']     = 1; //类型（1：求购 2：出售）
+        $post['pttype']     = $pttype; //类型（1：求购 2：出售）
         $post['subject']    = '';//注册名称
-        $post['remarks']    = $sale['need'];//备注
-        $post['name']       = $sale['contact'];//联系人
+        $post['remarks']    = $need;//备注
+        $post['name']       = $contact;//联系人
         $post['address']    = '';//客户联系地址
         $post['postcode']   = '';//客户邮编
-        $post['tel']        = $sale['phone'];//电话
+        $post['tel']        = $mobile;//电话
         $post['email']      = '';//邮件
-        $post['area']       = $sale['sidArea'];//
-        $post['sid']        = $sale['sid'];
+        $post['area']       = $area;//
+        $post['sid']        = $sid;
 
         $json = $this->importBi('CrmPassport')->insertCrmMember($post);//联系人id
         $output             =  (array)json_decode($json);
