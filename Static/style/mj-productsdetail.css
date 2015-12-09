@@ -5,7 +5,7 @@ em{
     display: none;
 }
 .mj-dt:hover .mj-dd{
-    display: block;
+    display: block!important;
 }*/
 .mj-content_top{
     padding-top: 50px;

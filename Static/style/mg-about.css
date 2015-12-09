@@ -4,7 +4,7 @@
     display: none;
 }
 .mj-dt:hover .mj-dd{
-    display: block;
+    display: block!important;
 }
 .w1000{
     width: 1000px;

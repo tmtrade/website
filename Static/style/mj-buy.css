@@ -2,7 +2,7 @@
     display: none;
 }
 .mj-dt:hover .mj-dd{
-    display: block;
+    display: block!important;
 }
 
 
