@@ -39,7 +39,7 @@ $(document).ready(function(){
                 dataType: "json",
                 success: function(data){
                     if (data.code == 1){
-                        getBuy();
+                        getLogin();
                         $("#dl_ts").hide();
                         doBuyFunc = 'doBuy';
                         $("#loginUser").val(_mobile);
@@ -52,7 +52,7 @@ $(document).ready(function(){
                         $(".mj-eed").show();
                     }else if (data.code == -1){//未注册
                         addTempBuy();
-                        getBuy(_buyTitle);
+                        getLogin(_buyTitle);
                         doBuyFunc = 'doBuy';
                         $("#dl_ts").show();
                         $("#loginUser").val(_mobile);
@@ -114,16 +114,6 @@ $(document).ready(function(){
     });
 
 });
-
-//调整用弹层方法
-function getBuy(title){
-    if (title){
-        $("#dl_title").html(title);
-    }else{
-        $("#dl_title").html(_defLogin);
-    }
-    CHOFN.loginShow();
-}
 
 function addTempBuy()
 {
