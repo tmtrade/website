@@ -118,7 +118,7 @@
                 <dl style="display: none;">
                     <dt>检测动态</dt>
                     <dd>还有 <span class="color-fc7d28" id="xiang">13</span> 项目检测项目 ，请勿关闭网页</dd>
-                    <dd>正在 检测商标号 <span class="sbid"></span> 的质量</dd>
+                    <dd>正在 检测商标号 <span class="sbnumber"></span> 的质量</dd>
                     <dd>当前正在进行 <span class="color-fc7d28" id="zhiliang"></span>  ...</dd>
                 </dl>                
                 <dl style="display: none;">
@@ -298,11 +298,12 @@
 					return false;
 				}
 				if( sbNum > 0 ){
+					$('.sbnumber').text(tradname);
 					_animateNextNum.css('visibility', 'visible');
-					_animateNextNumI.html('检测中.');
-					 sbNum = parseInt(sbNum - 1);
-					 _anquandun.addClass('heartbeat');
-					 animateAjax(tradname,optVal,sbNum,atNum,0);
+					_animateNextNumI.html('商标检测中');
+					sbNum = parseInt(sbNum - 1);
+					_anquandun.addClass('heartbeat');
+					animateAjax(tradname,optVal,sbNum,atNum,0);
 				}
 				return false;
 			});
@@ -335,7 +336,7 @@
 							$('#xiang').html(sbNum);
 							$('#zhiliang').html(checkstr);
 							$('.grade').html(atNum);
-							_animateNextNumStrong.text(parseInt(atNum)+"%");
+							//_animateNextNumStrong.text(parseInt(atNum)+"%");
 							//console.log(sbNum);
 							setTimeout(function(){								
 								animateAjax(tradname,optVal,sbNum,atNum,1);
