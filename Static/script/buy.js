@@ -2,7 +2,6 @@
  * 登录js
  * author：Xuni
  **********************************************************/
-var _sendOnce2  = true;
 var _buyMobile  = false;
 var _buyNeed    = false;
 var _buyTitle   = "<h6>亲，提交成功了</h6><p>系统已将登录密码发送到你手机，登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
@@ -40,7 +39,7 @@ $(document).ready(function(){
                 dataType: "json",
                 success: function(data){
                     if (data.code == 1){
-                        getBuy('');
+                        getBuy();
                         doBuyFunc = 'doBuy';
                         $("#loginUser").val(_mobile);
                         $("#loginUser").blur();
@@ -52,10 +51,13 @@ $(document).ready(function(){
                         $(".mj-eed").show();
                     }else if (data.code == -1){//未注册
                         addTempBuy();
-                        $("#dl_ts").show();
                         getBuy(_buyTitle);
                         doBuyFunc = 'doBuy';
+                        $("#dl_ts").show();
                         $("#loginUser").val(_mobile);
+                        $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("");
+                        $("#dl_wjmm").hide();//忘记密码(已存在账号)
+                        $("#dl_fsmm").show();//发送密码(不存在账号)
                         $("#dl_fsmm").click();
                     }else{
                         //请求失败
