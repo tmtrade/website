@@ -19,6 +19,8 @@ class SelladdsellForm extends AppForm
         'price'    	=> array( 'field' => 'price', 'match' => array('', '', ''), ),
         'contact'   => array( 'field' => 'contact', 'method' => 'fieldString', ),
         'phone'  	=> array( 'field' => 'phone', 'method' => 'fieldString', ),
+		'sid'    	=> array( 'field' => 'sid', 'match' => array('', '', ''), ),
+		'area'  	=> array( 'field' => 'area', 'match' => array('', '', ''), ),
     );
 
     /**

@@ -239,7 +239,9 @@ function submitSell(){
 }
 
 function addSell(){
-	var content = $('#addsell').serialize();
+	var sid  = $('#sid').val();
+	var area = $('#area').val();
+	var content = $('#addsell').serialize()+"&sid="+sid+"&area="+area;
 	$.ajax({
 		type: "post",
 		url: "/sell/addsell",

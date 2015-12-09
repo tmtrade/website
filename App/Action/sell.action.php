@@ -100,7 +100,7 @@ class SellAction extends AppAction
 			}
 			foreach($data['number'] as $key => $item){
 				$item = trim($item);
-				$saleData = $this->load("sale")->getSaleByNum($item,$sales['userId']);
+				$saleData = $this->load("sale")->getSaleByNum($item,$sales['userId'],$data['phone']);
 				
 				if($saleData){
 					$num['old'] ++;
@@ -113,16 +113,11 @@ class SellAction extends AppAction
 				$sales['sid']      = $data['sid'];
 				$sales['sidArea']  = $data['area'];
 				
-				
 				$sales['price']    = $data['price'][$key];
 				//检查传过来的数据
 				$this->checkselldata($sales);
-				
-				
 				//商标信息
 				$result   = $this->load('trademark')->getTrademarks($sales['number']);
-				
-				
 				if($result){
 					$sales['guideprice'] = $this->getSalePrice($sales['price']);
 					$sales['source']     = 4; //来源，前台展示页
@@ -134,21 +129,16 @@ class SellAction extends AppAction
 					$sales['group']      = $this->load('sale')->emptyreplace($result[0]['group']);
 					/*认证状态*/
 					$approves  = $this->getApprove($sales);
-					
-					
 					$sales['type']           = $approves['type'];
 					$sales['approveStatus']  = $approves['status'];
 					$sales['date']  	     = time();
 					//商标详细信息
 					$detail['number']        = $sales['number']; 
 					$detail['area']          = 1;
-					
 					//添加数据
 					$tradeId = $this->addSellDataToSql($result,$sales,$detail);
 					
-					if($tradeId){
-						$num['num'] ++;
-					}
+					if($tradeId){ $num['num'] ++;}
 				}else{
 					$num['state'] = -2; //商标数据不存在
 				}

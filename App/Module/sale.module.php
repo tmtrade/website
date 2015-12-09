@@ -188,11 +188,16 @@ class SaleModule extends AppModule
 	 * @param	array		$param  用户名称
 	 * @return	array
 	 */
-	public function getSaleByNum($number,$userid)
+	public function getSaleByNum($number,$userid,$phone = "")
 	{	
 		$r['limit'] = 1;
 		$r['eq']['number'] = $number;
-		$r['eq']['userId'] = $userid;
+		if($userid){
+			$r['eq']['userId'] = $userid;
+		}elseif($phone){
+			$r['eq']['phone']  = $phone;
+		}
+		
 		$r['in']        = array('status' => array('1','5'));
         $data = $this->import("sale")->find($r);
         return $data;
