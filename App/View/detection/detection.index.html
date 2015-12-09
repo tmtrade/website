@@ -208,7 +208,7 @@
 
         var _formDl = null;
         var _rightcircle = _janimate.find('.rightcircle');
-        var _leftcircle = _janimate.find('.leftcircle');		
+        var _leftcircle = _janimate.find('.leftcircle');
         /**
          *
          * 用于添加 error10 ... error100
@@ -230,7 +230,7 @@
          * heartbeat
          */
         var _anquandun = _janimate.find('.anquandun');
-		
+
         function coutAnimateFun(num, css){
             var _min = 0;
             var _max = 0;
@@ -251,8 +251,8 @@
             });
             if( _min > 0 ) coutAnimateFun(_min, _css);
             return _css;
-        }		
-		
+        }
+
         var load_img = [];
         load_img.push( '<?=StaticDir?>style/img/anquandun.png' );
         load_img.push( '<?=StaticDir?>style/img/ul-bg2.png' );
@@ -281,8 +281,8 @@
         },function(){
             $(this).removeClass("mj-ddahoverc");
         });
-		
-		
+
+
 		//开始
 		var tradId	= 0;
 		var sbNum	= 13;
@@ -299,7 +299,7 @@
 			$(document).on('click','.buttonsubmit',function(){
 				isTid = getTrInfo();
 				if( !isTid ){
-					return false;	
+					return false;
 				}
 				optNum		= $('.defineselect option').length;
 				tradname	= $.trim($('.trademarkName').val());
@@ -348,7 +348,7 @@
 						}else{
 							chObj  = eval(data);
 							checkstr = chObj.check;
-						}				 
+						}
 						if( sbNum > 0 ){
 							sbNum = sbNum-1;
 							setCourseScore(_MYOBJ.result.total,atNum);
@@ -356,14 +356,14 @@
 							$('#zhiliang').html(checkstr);
 							//_animateNextNumStrong.text(parseInt(atNum)+"%");
 							//console.log(sbNum);
-							setTimeout(function(){								
+							setTimeout(function(){
 								animateAjax(tradname,optVal,sbNum,atNum,1);
 							}, 1000);
 						}else{
 							setContent(_MYOBJ);
 						}
 					 }
-				 });			
+				 });
 		}
 		//设置监测后的提示
 		function setContent(obj){
@@ -371,7 +371,7 @@
 			_animateNextNumI.html('检测分数');
 			_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(myarray[0]);
 			_animateNextNumStrong.text(obj.result.total);
-			
+
 			$('.mj-anrT').find('b').text(obj.info.trademark);
 			$('.mj-anrT').find('em').text('第'+obj.info.class+'类');
 			markObj  = eval(obj.result.mark);
@@ -379,13 +379,13 @@
 				markString = '';
 				advice     = '<br/><b>建议：</b>在协议中进行责任约定，将风险降到最低。';
 				$('.prompt').html(obj.result.msg);
-				for(var i=0;i<markObj.length;i++){  
+				for(var i=0;i<markObj.length;i++){
 					markString +='<p>'+markObj[i]+advice+'</p>';
 				}
 				$('.mj-anrB').html(markString);
 			}
 			setTradInfo(obj.info);
-			setTradContent(2);	
+			setTradContent(2);
 		}
 		//设置商标信息
 		function setTradInfo(infoObj){
@@ -396,7 +396,7 @@
 			platObj  = eval(infoObj.plat);
 			if( platObj ){
 				platStr = '';
-				for(var i=1;i<platObj.length;i++){  
+				for(var i=1;i<platObj.length;i++){
 					platStr +='<li><a href="javascript:void(0);" class="'+platObj[i].class+'">'+platObj[i].name+'</a></li>';
 				}
 				$('.mj-amin').html(platStr);
@@ -408,7 +408,7 @@
 			if( _formDl === null ){
                 _formDl = $(dom).find('dl');
             }
-			
+
             _formDl.css('display','none').eq(num).css('display','block');
 		}
 		function setScore(snum){
@@ -505,11 +505,11 @@
 		function getTrInfo(){
 			isTmId = tradAlert();
 			if(!isTmId){
-				return false;	
+				return false;
 			}
 			tradname = $.trim($('.trademarkName').val());
 			if( tradId == tradname ){
-				return true;	
+				return true;
 			}
 			var tId = 0;
 			$(".defineselect option:not(:first)").remove();//清空除去第一个的项目
@@ -551,7 +551,7 @@
 			}
 			var optionObjs	= eval(optionObj);
 			optString		= '';
-			for(var i=0;i<optionObjs.length;i++){  
+			for(var i=0;i<optionObjs.length;i++){
 				classId	= optionObjs[i].class;
 				optString = $("<option>").val(classId).text("第"+classId+"类");
 				$(defObj).append(optString);
@@ -566,7 +566,7 @@
 				$('.error').show();
 			}else{
 				$('.error').hide();
-			}	
+			}
 			$('.error').html(msgString);
 		}
 		function tradAlert(){
@@ -586,7 +586,7 @@
 		function checkTradName(){
 			tradname = $.trim($('.trademarkName').val());
 			isTrue	 = /^([a-z0-9]){1,10}$/i.test(tradname);
-			return isTrue;	
+			return isTrue;
 		}
 		//获取时间
 		function getDates(){
@@ -595,7 +595,7 @@
 			M = myDate.getMonth();       //获取当前月份(0-11,0代表1月)
 			D = myDate.getDate();        //获取当前日(1-31)
 			ymd = Y+'年'+M+'月'+D+'日';
-			return  ymd;	
+			return  ymd;
 		}
 		function getQueryString(name) {
 			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
