@@ -50,19 +50,19 @@ $(document).ready(function(){
                     _sendOnce = false;
                     timer(60, $("#dl_wjmm"), 'wjmm');
                     $('#loginTips > em').html('动态密码已发送');
-                    $('#loginTips > em').show();
+                    $('#loginTips').show();
                     $("#dl_ts").show();
                 }else if (data.code == 2){
                     $('#loginTips > em').html('请输入正确的手机号');
-                    $('#loginTips > em').show();
+                    $('#loginTips').show();
                     _sendOnce = true;
                 }else if (data.code == 3){
                     $('#loginTips > em').html('该号尚未注册，点击发送密码，我们将会以短信形式将密码发送到该手机号');
-                    $('#loginTips > em').show();
+                    $('#loginTips').show();
                     _sendOnce = true;
                 }else{
                     $('#loginTips > em').html('发送失败');
-                    $('#loginTips > em').show();
+                    $('#loginTips').show();
                     _sendOnce = true;
                 }
             }
@@ -96,19 +96,19 @@ $(document).ready(function(){
                     _sendOnce2 = false;
                     timer(60, $("#dl_fsmm"), 'fsmm');
                     $('#loginTips > em').html('密码已发送');
-                    $('#loginTips > em').show();
+                    $('#loginTips').show();
                     $("#dl_ts").show();
                 }else if (data.code == 2){
                     $('#loginTips > em').html('请输入正确的手机号');
-                    $('#loginTips > em').show();
+                    $('#loginTips').show();
                     _sendOnce2 = true;
                 }else if (data.code == 3){
                     $('#loginTips > em').html('该账号已存在，请输入密码直接登录');
-                    $('#loginTips > em').show();
+                    $('#loginTips').show();
                     _sendOnce2 = true;
                 }else{
                     $('#loginTips > em').html('发送失败');
-                    $('#loginTips > em').show();
+                    $('#loginTips').show();
                     _sendOnce2 = true;
                 }
             }
@@ -142,7 +142,7 @@ function letLogin()
         success: function(data){
             if (data.code == 1){
                 $('#loginTips > em').html('登录成功');
-                $('#loginTips > em').show();
+                $('#loginTips').show();
                 //登录成功
                 setTimeout(function(){
                     if ( doBuyFunc == '') window.location.reload();
@@ -152,27 +152,27 @@ function letLogin()
                 }, 200);
             }else if (data.code == 2){
                 $('#loginTips > em').html('请输入手机号或密码');
-                $('#loginTips > em').show();
+                $('#loginTips').show();
                 _sendOnce = true;
             }else if (data.code == 3){
                 $('#loginTips > em').html('请输入正确的手机号');
-                $('#loginTips > em').show();
+                $('#loginTips').show();
                 _sendOnce = true;
             }else if (data.code == 4){
                 $('#loginTips > em').html('密码不正确');
-                $('#loginTips > em').show();
+                $('#loginTips').show();
                 _sendOnce = true;
             }else if (data.code == 5){
                 $('#loginTips > em').html('手机号已修改');
-                $('#loginTips > em').show();
+                $('#loginTips').show();
                 _sendOnce = true;
             }else if (data.code == 6){
                 $('#loginTips > em').html('该号尚未注册，点击发送密码，我们将会以短信形式将密码发送到该手机号');
-                $('#loginTips > em').show();
+                $('#loginTips').show();
                 _sendOnce = true;
             }else{
                 $('#loginTips > em').html('发送失败');
-                $('#loginTips > em').show();
+                $('#loginTips').show();
                 _sendOnce = true;
             }
         }
@@ -255,6 +255,8 @@ function getLogin(title){
     $("#loginPass").val('');
     $("#dl_ts").hide();
     $('#loginTips').hide();
+    $("#dl_wjmm").show();//忘记密码(已存在账号)
+    $("#dl_fsmm").hide();//发送密码(不存在账号)
     if (title){
         $("#dl_title").html(title);
     }else{
