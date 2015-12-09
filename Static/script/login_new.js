@@ -39,7 +39,6 @@ $(document).ready(function(){
             $('#loginTips').show();
             return false;
         }
-        $("#dl_ts").show();
         //通过验证，可发送密码
         $.ajax({
             type: "post",
@@ -52,6 +51,7 @@ $(document).ready(function(){
                     timer(60, $("#dl_wjmm"), 'wjmm');
                     $('#loginTips > em').html('临时密码已发送');
                     $('#loginTips > em').show();
+                    $("#dl_ts").show();
                 }else if (data.code == 2){
                     $('#loginTips > em').html('请输入正确的手机号');
                     $('#loginTips > em').show();
@@ -85,7 +85,6 @@ $(document).ready(function(){
             return false;
         }
 
-        $("#dl_ts").show();
         //通过验证，可发送密码
         $.ajax({
             type: "post",
@@ -98,6 +97,7 @@ $(document).ready(function(){
                     timer(60, $("#dl_fsmm"), 'fsmm');
                     $('#loginTips > em').html('密码已发送');
                     $('#loginTips > em').show();
+                    $("#dl_ts").show();
                 }else if (data.code == 2){
                     $('#loginTips > em').html('请输入正确的手机号');
                     $('#loginTips > em').show();
