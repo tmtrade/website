@@ -57,6 +57,9 @@ $(document).ready(function(){
                         $(".reg-tip em").html("操作失败，请稍后重试");
                         $(".mj-eed").show();
                     }
+                },
+                error: function(data){
+                    getLayer($('#mj-submitteF'));
                 }
             });
         }else{
@@ -129,7 +132,7 @@ function addTempBuy()
                 getLogin(_buyTitle);
                 doBuyFunc = 'doBuy';
                 $("#dl_ts").show();
-                $("#loginUser").val(_mobile);
+                $("#loginUser").val(mobile);
                 $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("");
                 $("#dl_wjmm").hide();//忘记密码(已存在账号)
                 $("#dl_fsmm").show();//发送密码(不存在账号)
@@ -164,6 +167,9 @@ function addBuy()
             }else{
                 getLayer($('#mj-submitteF'));
             }
+        },
+        error: function(data){
+            getLayer($('#mj-submitteF'));
         }
     });
 }
@@ -187,6 +193,9 @@ function doBuy(mobile)
             }else{
                 getLayer($('#mj-submitteF'));
             }
+        },
+        error: function(data){
+            getLayer($('#mj-submitteF'));
         }
     });
 }
