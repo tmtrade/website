@@ -76,9 +76,10 @@ class TempModule extends AppModule
      */
     public function moveTempToReal($userId, $uname, $sid)
     {
-        $role['eq']     = array('mobile' => $uname);
-        $role['notIn']  = array('status' => array(2));
-
+        $role['eq']     = array(
+            'mobile' => $uname,
+            'status'=>0,
+            );
         $temp = $this->load('buy')->findTemp($role);
         if ( empty($temp) ) return true;
 
