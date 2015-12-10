@@ -79,8 +79,9 @@
                 <div class="ml-animate_iebiaobox" style="display: none;">
                     <img src="<?=StaticDir?>style/img/ul-bg3.png" class="biao1"/>
                     <div class="anquandun"></div>
-                    <div class="anquandun_tit">非常安全</div>
-                    <span>
+                    <div class="anquandun_tit">非常安全</div>                    
+                    <span style="top:64%">
+                    	<div class="iecheck"></div>
                         <strong></strong>
                         <b></b>
                     </span>
@@ -204,10 +205,11 @@
         var _janimate = $('#janimate');
         var _ie = $.browser.msie;
         var _ieBox = _janimate.find('.ml-animate_iebiaobox');
-        var _animateBox = _janimate.find('.ml-animate_biaobox');
-        var _ieNextNum = _ieBox.find('strong');
+		var _ieNextNum = _ieBox.find('strong');
+		var _ieNextNumI = _ieBox.find('b');
+		
+        var _animateBox = _janimate.find('.ml-animate_biaobox');		
         var _animateNextNum = _animateBox.find('.biaoinner_txt');
-
 
         var _animateNextNumI = _animateNextNum.find('i');
         var _animateNextNumStrong = _animateNextNum.find('strong');
@@ -333,9 +335,13 @@
 			}
 			if( sbNum > 0 ){
 				$('.sbnumber').text(tradname);
-				_animateNextNum.css('visibility', 'visible');
-				_animateNextNumI.html('商标检测中');
-				_anquandun.addClass('heartbeat');
+				if( _ie ){
+					$('.iecheck').html('商标检测中');
+				}else{
+					_animateNextNum.css('visibility', 'visible');
+					_animateNextNumI.html('商标检测中');
+					_anquandun.addClass('heartbeat');
+				}
 				animateAjax(tradname,optVal,sbNum,atNum,0);
 			}
 			return false;	
@@ -379,10 +385,14 @@
 		//设置监测后的提示
 		function setContent(obj){
 			myarray = getMsgTxt(obj.result.total);
-			_animateNextNumI.html('检测分数');
-			_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(myarray[0]);
-			_animateNextNumStrong.text(obj.result.total);
-
+			if( _ie ){
+				$('.iecheck').html('检测分数');
+				_ieNextNum.text(obj.result.total);
+			}else{
+				_animateNextNumI.html('检测分数');
+				_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(myarray[0]);
+				_animateNextNumStrong.text(obj.result.total);
+			}
 			$('.mj-anrT').find('b').text(obj.info.trademark);
 			$('.mj-anrT').find('em').text('第'+obj.info.class_id+'类');
 			markObj  = eval(obj.result.mark);
