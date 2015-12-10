@@ -110,9 +110,6 @@ class SellAction extends AppAction
 				$sales['number']   = $item;
 				$sales['phone']    = $data['phone'];
 				$sales['contact']  = $data['contact'];
-				$sales['sid']      = $data['sid'];
-				$sales['sidArea']  = $data['area'];
-				
 				$sales['price']    = $data['price'][$key];
 				//检查传过来的数据
 				$this->checkselldata($sales);
@@ -141,7 +138,7 @@ class SellAction extends AppAction
 						$num['num'] ++;
 						/**写入分配系统**/
 						$need = "商标号:".$item." 价格：".$sales['price']." 联系人：".$sales['contact']."  联系电话：".$sales['phone'];
-						$this->load('temp')->pushTrack($need, $sales['contact'], $sales['phone'], $sales['sid'], $sales['sidArea'], 2);
+						$this->load('temp')->pushTrack($need, $sales['contact'], $sales['phone'], $data['sid'], $data['sidArea'], 2);
 						/**写入分配系统 END**/
 					}
 				}else{
