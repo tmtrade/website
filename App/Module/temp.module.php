@@ -111,10 +111,10 @@ class TempModule extends AppModule
     public function pushTrack($need, $contact, $mobile, $sid, $area,$pttype = 1)
     {
         $post['source']     = 0;
-        $post['username']   = 861;//顾问id
+        $post['username']   = 'Yally';//顾问id
         $post['company']    = '';//公司名称
         $post['pttype']     = $pttype; //类型（1：求购 2：出售）
-        $post['subject']    = '';//注册名称
+        $post['subject']    = $pttype == 1 ? "求购商标" : "出售商标";//注册名称
         $post['remarks']    = $need;//备注
         $post['name']       = $contact;//联系人
         $post['address']    = '';//客户联系地址
