@@ -140,7 +140,7 @@ class TrademarkAction extends AppAction
 			$user = $this->userInfo;
 			$isExist = array(
 				'loginUserId'		=> $this->userId,
-				'source'			=> 4, //来源展示页
+				'source'			=> 10, //来源展示页
 				'name'				=> $sale['name'],
 				'class'				=> $sale['class'],
 				'contact'			=> $this->nickname,
@@ -187,7 +187,7 @@ class TrademarkAction extends AppAction
 		
 		$isExist = array(
 			'phone'					=> $phone,
-			'source'				=> 4,//来源展示页
+			'source'				=> 10,//来源一只禅
 			'name'					=> $sale['trademark'],
 			'class'					=> $sale['class'],
 			'buyType'				=> 1,
@@ -237,7 +237,7 @@ class TrademarkAction extends AppAction
 		
 		$isExist = array(
 			'phone'					=> $phone,
-			'source'				=> 4,//来源展示页
+			'source'				=> 10,//来源展示页
 			'name'					=> $sale['trademark'],
 			'class'					=> $sale['class'],
 			'buyType'				=> 1,

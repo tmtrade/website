@@ -120,7 +120,7 @@ class SellAction extends AppAction
 				$result   = $this->load('trademark')->getTrademarks($sales['number']);
 				if($result){
 					$sales['guideprice'] = $this->getSalePrice($sales['price']);
-					$sales['source']     = 4; //来源，前台展示页
+					$sales['source']     = 10; //来源，前台展示页
 					$sales['status']     = 5; //销售状态
 					$sales['memo']       = count($result) > 1 ? "该商标为一标多类，必须捆绑出售".$result['rows'][0]['auto'] : ""; 
 					$sales['name']       = $result[0]['trademark'];
