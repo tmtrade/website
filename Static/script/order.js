@@ -77,11 +77,13 @@ function getOrderState(phone){
 //生成我要买订单
 function createOrderByPhone(phone){
 	if(_tid > 0){
+		var sid     = $('#sid').val();
+		var sidArea = $('#area').val();
 		var result = false ;
 		$.ajax({
             type: "post",
             url: "/trademark/addBuyByPhone",
-            data: {tid:_tid,phone:phone},
+            data: {tid:_tid,phone:phone,sid:sid,sidArea:sidArea},
             dataType: "json",
 			async:false,
             success: function(data){
@@ -109,11 +111,13 @@ function createOrderByPhone(phone){
 //生成我要买订单
 function createOrder(saleid){
 	$('#addorder').attr('href',buyUrl);
+	var sid     = $('#sid').val();
+	var sidArea = $('#area').val();
 	if(saleid > 0){
 		$.ajax({
             type: "post",
             url: "/trademark/addBuy",
-            data: {saleid:saleid},
+            data: {saleid:saleid,sid:sid,sidArea:sidArea},
             dataType: "json",
             success: function(data){
 				if (data > 0){

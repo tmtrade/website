@@ -125,6 +125,8 @@ class TrademarkAction extends AppAction
 	{
 		$saleid = $this->input('saleid','int');
 		$phone  = $this->input('phone','string');
+		$sid    = $this->input('sid','string');
+		$sidArea  = $this->input('sidArea','string');
 		
 		if($this->userInfo){
 			//查询商标是否存在
@@ -154,6 +156,10 @@ class TrademarkAction extends AppAction
 			}else{
 				$isExist['date']	= time();
 				$result				= $this->load("buy")->create($isExist);
+				/**写入分配系统**/
+				$need = $isExist['need'];
+				$this->load('temp')->pushTrack($need, $user['nickname'], $user['mobile'], $sid, $sidArea, 1);
+				/**写入分配系统 END**/		
 			}
 		}else{
 			$result = -3; //未登录
@@ -216,6 +222,8 @@ class TrademarkAction extends AppAction
 		$result = 1;
 		$tid = $this->input('tid','int');
 		$phone  = $this->input('phone','string');
+		$sid    = $this->input('sid','string');
+		$sidArea  = $this->input('sidArea','string');
 		
 		//查询商标是否存在
 		//$sale = $this->load("sale")->getSaleById($saleid);
@@ -250,6 +258,10 @@ class TrademarkAction extends AppAction
 		}else{
 			$isExist['date']	= time();
 			$result					= $this->load("buy")->create($isExist);
+			/**写入分配系统**/
+			$need = $isExist['need'];
+			$this->load('temp')->pushTrack($need, "", $phone, $sid, $sidArea, 1);
+			/**写入分配系统 END**/		
 		}
 		echo $result;
 	}

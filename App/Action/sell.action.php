@@ -137,11 +137,12 @@ class SellAction extends AppAction
 					$detail['area']          = 1;
 					//添加数据
 					$tradeId = $this->addSellDataToSql($result,$sales,$detail);
-					
 					if($tradeId){ 
 						$num['num'] ++;
-						$need = "商标号：".$item;
+						/**写入分配系统**/
+						$need = "商标号:".$item;
 						$this->load('temp')->pushTrack($need, $sales['contact'], $sales['phone'], $sales['sid'], $sales['sidArea'], 2);
+						/**写入分配系统 END**/
 					}
 				}else{
 					$num['state'] = -2; //商标数据不存在
@@ -275,9 +276,7 @@ class SellAction extends AppAction
 			$sales['sblength']  = $this->load('sale')->getTrademarkLength($item['trademark']);
 			$sales['platform']  = $this->load('sale')->getTrademarkPlatform($item['class']);
 			$sales['types']     = $this->load('sale')->getTrademarkType($item['trademark']);
-			
 			$tradeId = $this->load('sale')->addSale($sales);
-			
 			$detail['saleId']    = $tradeId;
 			$detail['name']      = $item['trademark'];
 			$detail['class']     = $item['class'];
