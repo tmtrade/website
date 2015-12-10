@@ -120,7 +120,6 @@ class TempModule extends AppModule
         $post['email']      = '';//邮件
         $post['area']       = $area;//
         $post['sid']        = $sid;
-
         $json = $this->importBi('CrmPassport')->insertCrmMember($post);//联系人id
         $output             =  (array)json_decode($json);
         return $output;
