@@ -51,7 +51,8 @@
                 <span class="sj">结果仅供参考 检测时间：<?=$sj?></span>
                 <ul>
                     <li style="display:none"><a href="">下载报告</a></li>
-                    <li class="speaer"  style="display:none"></li>
+                    <li class="comeagain" style="display:none"><a href="/detection/">再来一条</a></li>
+                    <li class="speaer" style="display:none"></li>
                     <li><i class="us-icon uj_icon29"></i>
                     	<!-- JiaThis Button BEGIN -->
                             <a href="javascript:;" class="jiathis jiathis_txt">分享</a>
@@ -80,7 +81,7 @@
                     <img src="<?=StaticDir?>style/img/ul-bg3.png" class="biao1"/>
                     <div class="anquandun"></div>
                     <div class="anquandun_tit">非常安全</div>                    
-                    <span style="top:64%">
+                    <span style="top:64%;display:none" id="ietishi">
                     	<div class="iecheck"></div>
                         <strong></strong>
                         <b></b>
@@ -327,7 +328,7 @@
 			}else if( optNum >= 3 ){
 				optVal = $('.defineselect').find("option:selected").val();
 				if( optVal == 0){
-					setSpanWarn('您输入的商标号有多条分类信息，请选择其中一条');
+					setSpanWarn('未找到该商标，请检查商标号是否正确');
 					return false;
 				}
 			}else{
@@ -336,6 +337,7 @@
 			if( sbNum > 0 ){
 				$('.sbnumber').text(tradname);
 				if( _ie ){
+					$('#ietishi').show();
 					$('.iecheck').html('商标检测中');
 				}else{
 					_animateNextNum.css('visibility', 'visible');
@@ -393,6 +395,7 @@
 				_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(myarray[0]);
 				_animateNextNumStrong.text(obj.result.total);
 			}
+			$('.speaer,.comeagain').show();
 			$('.mj-anrT').find('b').text(obj.info.trademark);
 			$('.mj-anrT').find('em').text('第'+obj.info.class_id+'类');
 			markObj  = eval(obj.result.mark);
@@ -429,7 +432,6 @@
 			if( _formDl === null ){
                 _formDl = $(dom).find('dl');
             }
-
             _formDl.css('display','none').eq(num).css('display','block');
 		}
 
@@ -551,7 +553,7 @@
 		}
 		//警告提示
 		function setSpanWarn(str){
-			var sbQuery = '<a href="http://www.yizhchan.com">通过商标名查询请点击此处</a>';
+			var sbQuery = '';//'<a href="http://www.yizhchan.com">通过商标名查询请点击此处</a>';
 			msgString   = '';
 			if(str){
 				msgString = '<span>'+str+'</span>'+sbQuery;
