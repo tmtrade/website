@@ -253,7 +253,6 @@ class PassportAction extends AppAction
         }else{
             $flag = array('code'=>0);//发送失败
         }
-        $flag = array('code'=>1);//正确
         $this->returnAjax($flag);
     }
 

@@ -102,6 +102,9 @@ class BuyAction extends AppAction
         $sid        = $this->input('sid', 'string', '');
         $area       = $this->input('area', 'string', '');
 
+        if ( $this->isLogin ){
+            $this->returnAjax(array('code'=>2)); //已登录不添加临时
+        }
         $userinfo = $this->load('passport')->get($mobile,2);
         if ( $userinfo ) $this->returnAjax(array('code'=>2)); //已注册不添加临时
         $user = $this->load('temp')->isExist($mobile);

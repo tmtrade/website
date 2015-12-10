@@ -52,14 +52,6 @@ $(document).ready(function(){
                         $(".mj-eed").show();
                     }else if (data.code == -1){//未注册
                         addTempBuy();
-                        getLogin(_buyTitle);
-                        doBuyFunc = 'doBuy';
-                        $("#dl_ts").show();
-                        $("#loginUser").val(_mobile);
-                        $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("");
-                        $("#dl_wjmm").hide();//忘记密码(已存在账号)
-                        $("#dl_fsmm").show();//发送密码(不存在账号)
-                        $("#dl_fsmm").click();
                     }else{
                         //请求失败
                         $(".reg-tip em").html("操作失败，请稍后重试");
@@ -113,6 +105,10 @@ $(document).ready(function(){
         }
     });
 
+    $("#closeFailed").click(function(){
+        $(".mj-close").click();
+    });
+
 });
 
 function addTempBuy()
@@ -129,18 +125,21 @@ function addTempBuy()
         data: {mobile:mobile,content:need,name:name,sid:sid,area:area},
         dataType: "json",
         success: function(data){
-            if (data.code == 1){
-                //成功
+            if (data.code == 1){//成功
+                getLogin(_buyTitle);
+                doBuyFunc = 'doBuy';
+                $("#dl_ts").show();
+                $("#loginUser").val(_mobile);
+                $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("");
+                $("#dl_wjmm").hide();//忘记密码(已存在账号)
+                $("#dl_fsmm").show();//发送密码(不存在账号)
+                $("#dl_fsmm").click();
             }else{
-                setTimeout(function(){
-                    addTempBuy();
-                },100);
+                getLayer($('#mj-submitteF'));
             }
         },
         error: function(data){
-            setTimeout(function(){
-                addTempBuy();
-            },100);
+            getLayer($('#mj-submitteF'));
         }
     });
 }
