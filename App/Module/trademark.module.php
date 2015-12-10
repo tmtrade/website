@@ -249,7 +249,7 @@ class TrademarkModule extends AppModule
         $r['col']       = array('tid','trademark_id','class_id','three_status');
         $r['limit']     = 100;
         $data           = $this->import('second')->find($r);
-        return $data[0];
+        return !empty($data) ? $data[0] : array();
     }
     /**
     * 获取三级状态信息
