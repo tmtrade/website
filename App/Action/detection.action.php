@@ -110,7 +110,6 @@ class DetectionAction extends AppAction
             $check  = $this->getDynamic($steps);
             $result = array('check' => $check);
         }
-        $this->rules6($twoArr,$threeArr);
         $this->returnAjax($result);
     }
     /**
@@ -357,7 +356,7 @@ class DetectionAction extends AppAction
         $is1    = $this->getStatus($threeArr,'商标续展中');
         $noArr  = array('商标续展完成');
         $isNO   = $this->getNoStatus($threeArr,$noArr);
-        if( $is1 == true && $noArr == false ){
+        if( $is1 == true && $isNO == false ){
             $result[] = 22;
         }
         return $result;
@@ -389,7 +388,7 @@ class DetectionAction extends AppAction
         $is1    = $this->getStatus($threeArr,'变更商标申请人/注册人名义/地址中');
         $noArr  = array('变更商标申请人/注册人名义/地址完成','商标变更完成','变更完成');
         $isNO   = $this->getNoStatus($threeArr,$noArr);
-        if( $is1 == true && $noArr == false ){
+        if( $is1 == true && $isNO == false ){
             $result[] = 24;
         }
         return $result;

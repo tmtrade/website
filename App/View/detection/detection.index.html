@@ -297,7 +297,7 @@
 				}else{
 					window.clearInterval(letop); 
 				}
-			},100);
+			},1000);
 			setDefault();
 			//离开输入框检查
 			$(document).on('blur','.trademarkName',function(){
@@ -306,38 +306,42 @@
 			//END
 			//点击提交
 			$(document).on('click','.buttonsubmit',function(){
-				isTid = getTrInfo();
-				if( !isTid ){
-					return false;
-				}
-				optNum		= $('.defineselect option').length;
-				tradname	= $.trim($('.trademarkName').val());
-				if(!tradname){
-					setSpanWarn('请输入商标号');
-					return false;
-				}
-				if( optNum == 2 ){
-					optVal = $('.defineselect option:last').val();
-				}else if( optNum >= 3 ){
-					optVal = $('.defineselect').find("option:selected").val();
-					if( optVal == 0){
-						setSpanWarn('您输入的商标号有多条分类信息，请选择其中一条');
-						return false;
-					}
-				}else{
-					return false;
-				}
-				if( sbNum > 0 ){
-					$('.sbnumber').text(tradname);
-					_animateNextNum.css('visibility', 'visible');
-					_animateNextNumI.html('商标检测中');
-					_anquandun.addClass('heartbeat');
-					animateAjax(tradname,optVal,sbNum,atNum,0);
-				}
-				return false;
+				tradSubmit();
 			});
 			//END
         });
+		//提交开始检查
+		function tradSubmit(){
+			isTid = getTrInfo();
+			if( !isTid ){
+				return false;
+			}
+			optNum		= $('.defineselect option').length;
+			tradname	= $.trim($('.trademarkName').val());
+			if(!tradname){
+				setSpanWarn('请输入商标号');
+				return false;
+			}
+			if( optNum == 2 ){
+				optVal = $('.defineselect option:last').val();
+			}else if( optNum >= 3 ){
+				optVal = $('.defineselect').find("option:selected").val();
+				if( optVal == 0){
+					setSpanWarn('您输入的商标号有多条分类信息，请选择其中一条');
+					return false;
+				}
+			}else{
+				return false;
+			}
+			if( sbNum > 0 ){
+				$('.sbnumber').text(tradname);
+				_animateNextNum.css('visibility', 'visible');
+				_animateNextNumI.html('商标检测中');
+				_anquandun.addClass('heartbeat');
+				animateAjax(tradname,optVal,sbNum,atNum,0);
+			}
+			return false;	
+		}
 		var _MYOBJ = '';
 		function animateAjax(tradname,optVal,num,atnum,isdata){
 				sbNum = parseInt(num);
@@ -573,11 +577,19 @@
 			var r = window.location.search.substr(1).match(reg);
 			if (r != null) return decodeURI(r[2]); return null;
 		}
+		//从详细页面点击过来
 		function setDefault(){
 			_nid   = getQueryString('nid');
 			_class = getQueryString('class');
 			if( _nid ){
 				$('.trademarkName').val(_nid);
+				defObj = $('.defineselect');
+				optString		= '';
+				for(var i=0;i<1;i++){
+					optString = $("<option>").val(_class).text("第"+_class+"类");
+					$(defObj).append(optString);
+				}
+				tradSubmit();
 			}
 		}
     </script>
