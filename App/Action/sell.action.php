@@ -140,7 +140,7 @@ class SellAction extends AppAction
 					if($tradeId){ 
 						$num['num'] ++;
 						/**写入分配系统**/
-						$need = "商标号:".$item;
+						$need = "商标号:".$item."价格：".$sales['price'];
 						$this->load('temp')->pushTrack($need, $sales['contact'], $sales['phone'], $sales['sid'], $sales['sidArea'], 2);
 						/**写入分配系统 END**/
 					}
