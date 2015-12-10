@@ -83,6 +83,7 @@
     margin-top: 12px;
     display: table;
     height: 95px;
+    line-height: 95px;
     text-align: center;
     width: 100%;
     position: relative;
@@ -90,8 +91,10 @@
     cursor: pointer;
 }
 .mj-imglT span {
-    display: table-cell;
+   /* display: table-cell;*/
     vertical-align: middle;
+    display: inline-block;
+    width: 186px;
 }
 .mj-imglT label img{
     max-width: 150px;
