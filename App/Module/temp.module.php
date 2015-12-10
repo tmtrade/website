@@ -92,7 +92,7 @@ class TempModule extends AppModule
             'phone'         => $uname,
             'need'          => $temp['need'],
             'sid'           => $temp['sid'],
-            'area'          => $temp['area'],
+            //'area'          => $temp['area'],
             'contact'       => $temp['name'],
             'date'          => time(),
             'loginUserId'   => $userId,
