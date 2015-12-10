@@ -128,6 +128,20 @@ function addTempBuy()
         url: "/buy/addTemp/",
         data: {mobile:mobile,content:need,name:name,sid:sid,area:area},
         dataType: "json",
+        success: function(data){
+            if (data.code == 1){
+                //成功
+            }else{
+                setTimeout(function(){
+                    addTempBuy();
+                },100);
+            }
+        },
+        error: function(data){
+            setTimeout(function(){
+                addTempBuy();
+            },100);
+        }
     });
 }
 
