@@ -18,6 +18,7 @@
 	.prompt span{
 		color:#fa761e;
 	}
+	.ckepopBottom { display:none; }
 	</style>
     <script type="text/javascript">
         var _static_dir = "<?=StaticDir?>";
@@ -62,7 +63,8 @@
                                 boldNum:3,
                                 shortUrl:false,
                                 hideMore:true,
-								pic:_static_dir+"style/img/logo.png"
+								pic:"#"
+
                             }
                             </script>
                         <!-- JiaThis Button END -->
@@ -79,8 +81,8 @@
                     <div class="anquandun"></div>
                     <div class="anquandun_tit">非常安全</div>
                     <span>
-                        <strong>0</strong>
-                        <b>%</b>
+                        <strong></strong>
+                        <b></b>
                     </span>
                 </div>
                 <div class="ml-animate_biaobox" style="display: none;">
@@ -293,15 +295,7 @@
 		var atNum	= 7.7;
 		var _tipTxt = '';
 		$(document).ready(function(e) {
-			letop = setInterval(function(){
-				isLinkHide = $(".link_01").is(":hidden");
-				if( isLinkHide == false ){
-					$('.link_01').prev().remove();
-					$('.link_01').hide();
-				}else{
-					window.clearInterval(letop); 
-				}
-			},1000);
+			
 			setDefault();
 			//离开输入框检查
 			$(document).on('blur','.trademarkName',function(){
@@ -434,7 +428,8 @@
 			myarray 	= getMsgTxt(count);
 			iconClass	= myarray[1];
 			if( _ie ){
-				_ieNextNum.html(_resultNum);
+				//_resultNum = parseInt(_resultNum);
+				//_ieNextNum.html(_resultNum);
 			}else{
 				var _css = coutAnimateFun(_resultNum);
 				var _timeNum = 500;
@@ -540,7 +535,7 @@
 					isCz = true;	
 				}
 			}
-			if( isCz == true ){
+			if( isCz == true ){//
 				$(".defineselect option[value='"+_class+"']").attr("selected", true); 
 			}
 		}
