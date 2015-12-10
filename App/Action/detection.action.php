@@ -53,8 +53,8 @@ class DetectionAction extends AppAction
         13 => '变更监测',
     );
     public $totalmsg   = array(
-        1  => '总评：商标存在被<span>无效/已无效</span>风险，建议根据报告规避风险。',
-        2  => '总评：商标存在被<span>转让/冻结/质押</span>风险，建议根据报告规避风险。',
+        1  => '总评：商标存在<span>被无效/已无效</span>风险，建议根据报告规避风险。',
+        2  => '总评：商标存在<span>被转让/冻结/质押</span>风险，建议根据报告规避风险。',
         3  => '总评：商标存在<span>许可/续展/近似</span>风险，建议根据报告规避风险。',
         4  => '总评：恭喜，此商标状态安全。',
     );
@@ -387,10 +387,9 @@ class DetectionAction extends AppAction
     {
         $result = array();
         $is1    = $this->getStatus($threeArr,'变更商标申请人/注册人名义/地址中');
-        $isNo1  = $this->getStatus($threeArr,'变更商标申请人/注册人名义/地址完成');
-        $isNo2  = $this->getStatus($threeArr,'商标变更完成');
-        $isNo3  = $this->getStatus($threeArr,'变更完成');
-        if( $is1 == true && ( $isNo1 == true || $isNo2 == true || $isNo3 == true ) ){
+        $noArr  = array('变更商标申请人/注册人名义/地址完成','商标变更完成','变更完成');
+        $isNO   = $this->getNoStatus($threeArr,$noArr);
+        if( $is1 == true && $noArr == false ){
             $result[] = 24;
         }
         return $result;
