@@ -207,7 +207,7 @@
         var _ie = $.browser.msie;
         var _ieBox = _janimate.find('.ml-animate_iebiaobox');
 		var _ieNextNum = _ieBox.find('strong');
-		var _ieNextNumI = _ieBox.find('b');
+		var _ieNextNumB = _ieBox.find('b');
 		
         var _animateBox = _janimate.find('.ml-animate_biaobox');		
         var _animateNextNum = _animateBox.find('.biaoinner_txt');
@@ -392,9 +392,10 @@
 				_ieNextNum.text(obj.result.total);
 			}else{
 				_animateNextNumI.html('检测分数');
-				_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(myarray[0]);
 				_animateNextNumStrong.text(obj.result.total);
 			}
+			_anquandun.removeClass('heartbeat').css('opacity','0').next().css('visibility','visible').html(myarray[0]);
+
 			$('.speaer,.comeagain').show();
 			$('.mj-anrT').find('b').text(obj.info.trademark);
 			$('.mj-anrT').find('em').text('第'+obj.info.class_id+'类');
