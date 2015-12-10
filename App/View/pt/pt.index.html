@@ -37,7 +37,7 @@
             <form action="http://st.chofn.com/searchform.php?submit=3" method="post" name="form1" id="form1" class="ml-form" onSubmit="return formFun(this, 1);">
                 <input type="hidden" name="tid" id="tid" value="3">
                 <input type="hidden" name="sid" id="sid" value="">
-                <input type="hidden" name="tipurl" id="tipurl" value="http://pt.chofn.com/buy/" />
+                <input type="hidden" name="tipurl" id="tipurl" value="<? echo SITE_URL;?>pt/" />
                 <div class="ml-form_cont">
                     <h1>我的购买需求</h1>
                     <div class="ml-form_cont2">
@@ -121,7 +121,7 @@
                     <span>一治疗肝郁的中药组合物</span>
                     <span class="one">防疲劳眼镜</span>
                     <div class="f-text-center">
-                        <input type="submit" value="提交购买需求" onClick="consultation();" id="rediana-11" />
+                        <input type="button" value="提交购买需求" onClick="consultation();" id="rediana-11" />
                     </div>
                 </form>
             </div>
