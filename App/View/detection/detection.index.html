@@ -518,6 +518,7 @@
 		}
 		//设置select的值
 		function setSelect(isHide,optionObj){
+			_class = getQueryString('class');
 			defObj = $('.defineselect');
 			if( isHide == 1 ){
 				$(defObj).css({'visibility' :'visible'});//显示
@@ -526,10 +527,17 @@
 			}
 			var optionObjs	= eval(optionObj);
 			optString		= '';
+			var isCz		= false;
 			for(var i=0;i<optionObjs.length;i++){
 				classId	= optionObjs[i].class_id;
 				optString = $("<option>").val(classId).text("第"+classId+"类");
 				$(defObj).append(optString);
+				if( classId == _class && _class > 0){//检查url传来值是否合法
+					isCz = true;	
+				}
+			}
+			if( isCz == true ){
+				$(".defineselect option[value='"+_class+"']").attr("selected", true); 
 			}
 		}
 		//警告提示
