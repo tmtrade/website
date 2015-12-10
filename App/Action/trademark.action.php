@@ -257,7 +257,7 @@ class TrademarkAction extends AppAction
 			$result = -2; //数据已经存在
 		}else{
 			$isExist['date']	= time();
-			$result					= $this->load("buy")->create($isExist);
+			$result				= $this->load("buy")->create($isExist);
 			/**写入分配系统**/
 			$need = $isExist['need'];
 			$this->load('temp')->pushTrack($need, "", $phone, $sid, $sidArea, 1);
