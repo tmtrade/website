@@ -79,14 +79,15 @@ class PassportAction extends AppAction
                 $this->checkMsgCode($account, $password, false, false);
             }
             $userId = $this->load('passport')->register($account, $user['password'], 2);//注册账号
-            if ( !$userId ) $this->returnAjax(array('code'=>0));//登录失败
+            if ( !$userId ) $this->returnAjax(array('code'=>0));//登录失败s
+            //处理临时求购信息
+            $this->load('temp')->moveTempToReal($userId, $account, $sid);
 
             $userinfo = $this->load('passport')->get($account);
             if ( !empty($userinfo) ){
                 $this->setLogin($userinfo);
+                $this->unsetMsgCode();
                 $flag = array('code'=>1);
-                //处理临时求购信息
-                $this->load('temp')->moveTempToReal($userId, $account, $sid);
             }else{
                 $flag = array('code'=>0);
             }

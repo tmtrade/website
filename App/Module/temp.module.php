@@ -76,12 +76,16 @@ class TempModule extends AppModule
      */
     public function moveTempToReal($userId, $uname, $sid)
     {
+        //删除临时用户
+        $r['eq'] = array('username' => $uname);
+        $this->import('user')->remove($r);
+
         $role['eq']     = array(
             'mobile' => $uname,
             'status'=>0,
             );
         $temp = $this->load('buy')->findTemp($role);
-        if ( empty($temp) ) return true;
+        if ( empty($temp) )  return true;
 
         $buy = array(
             'source'        => 10,
@@ -97,8 +101,6 @@ class TempModule extends AppModule
         if ( $res ){
             $rol['eq'] = array('mobile' => $uname);
             $this->load('buy')->removeTemp($rol);
-            $r['eq'] = array('username' => $uname);
-            $this->import('user')->remove($r);
             //推送求购到分配系统
             $this->pushTrack($temp['need'], $temp['name'], $uname, $temp['sid'], $temp['area']);
             return true;
