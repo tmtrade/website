@@ -532,7 +532,7 @@ class DetectionAction extends AppAction
                 }
             }
             $info['pname']  = !empty($proArr['name']) ? $proArr['name'] : '无';
-            $info['imgurl'] = $img;
+            $info['imgurl'] = !empty($img) ? $img : '/Static/images/img1.png';
             $info['plat']   = $platform;
         }
         return $info;
