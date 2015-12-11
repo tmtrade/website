@@ -44,7 +44,7 @@ class BuyAction extends AppAction
             'source'    => 10,
             'phone'     => $mobile,
             'need'      => $content,
-            'sid'       => $sid,
+            //'sid'       => $sid,
             //'area'      => $area,
             'contact'   => $name,
             'date'      => time(),

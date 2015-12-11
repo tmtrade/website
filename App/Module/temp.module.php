@@ -91,7 +91,7 @@ class TempModule extends AppModule
             'source'        => 10,
             'phone'         => $uname,
             'need'          => $temp['need'],
-            'sid'           => $temp['sid'],
+            //'sid'           => $temp['sid'],
             //'area'          => $temp['area'],
             'contact'       => $temp['name'],
             'date'          => time(),

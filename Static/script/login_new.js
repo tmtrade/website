@@ -42,7 +42,7 @@ $(document).ready(function(){
         //通过验证，可发送密码
         $.ajax({
             type: "post",
-            url: "/passport/sendMsgCodeNew",
+            url: "/passport/sendMsgCodeNew/",
             data: {m:_val},
             dataType: "json",
             success: function(data){
@@ -88,7 +88,7 @@ $(document).ready(function(){
         //通过验证，可发送密码
         $.ajax({
             type: "post",
-            url: "/passport/sendRegCode",
+            url: "/passport/sendRegCode/",
             data: {m:_val},
             dataType: "json",
             success: function(data){
@@ -136,7 +136,7 @@ function letLogin()
     }
     $.ajax({
         type: "post",
-        url: "/passport/login",
+        url: "/passport/login/",
         data: {uname:_val,upass:_pw},
         dataType: "json",
         success: function(data){
@@ -217,7 +217,7 @@ function checkLoginUser()
     if ( !_loginSend ) return false;
     $.ajax({
         type: "post",
-        url: "/passport/existAccount",
+        url: "/passport/existAccount/",
         data: {account:_val},
         dataType: "json",
         success: function(data){

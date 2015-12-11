@@ -34,7 +34,7 @@ $(document).ready(function(){
             $("#buyPass").val('');
             $.ajax({
                 type: "post",
-                url: "/passport/existAccount",
+                url: "/passport/existAccount/",
                 data: {account:_mobile},
                 dataType: "json",
                 success: function(data){
