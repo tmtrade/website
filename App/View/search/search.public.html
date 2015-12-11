@@ -89,7 +89,7 @@
                         <!--<label class="mj-mt26"></label>-->
                         <div class="select_boxs select_boxW">
 							<span class="mj-textS" tid="<?=$p?>" id="mj-leb">
-                                <?if ( empty($c) ){echo '类别';}else{echo $c.'类-'.$CLASSES[$c];}?>
+                                <?if ( empty($c) ){echo '商标类别';}else{echo $c.'类-'.$CLASSES[$c];}?>
                             </span>	
                             <dl class="mj-mdl" id="mj-lbList">
                                 <a href="javascript:;" class="mj-close"></a>
@@ -123,7 +123,7 @@
                     <li>
                         <div class="select_boxs">
 							<span class="mj-textS" tid="<?=$p?>" class="mj-textS">
-                                <?if ( empty($p) ){echo '平台';}else{echo $PLATFORM[$p];}?>
+                                <?if ( empty($p) ){echo '入驻平台';}else{echo $PLATFORM[$p];}?>
                             </span>
                             <ul class="son_ul" style="display: none;">
 								<li tid="0" onclick="createUrl('_plat','0')">全部</li>
