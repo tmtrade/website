@@ -74,6 +74,39 @@ function getOrderState(phone){
 	return result;
 }
 
+
+//生成我要买订单
+function createOrderFromTrak(){
+	if(_tid > 0){
+		var sid     = $('#sid').val();
+		var sidArea = $('#area').val();
+		var result = false ;
+		$.ajax({
+            type: "post",
+            url: "/trademark/addBuyByPhone",
+            data: {tid:_tid,sid:sid,sidArea:sidArea},
+            dataType: "json",
+			async:false,
+            success: function(data){
+				if (data > 0){
+					result = true;
+					sellok();          
+                }else if (data.code == -2){
+					str = "您已购买过该商品！";
+                    sellNo(str);
+                }else if (data.code == -4){
+					str = "商标数据不存在";
+                    sellNo(str);
+                }else{
+					str = "操作失败";
+                    sellNo(str);
+                }
+            }
+        });
+	}
+	
+}
+
 //生成我要买订单
 function createOrderByPhone(phone){
 	if(_tid > 0){

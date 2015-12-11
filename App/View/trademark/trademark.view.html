@@ -10,7 +10,7 @@
     <div class="w1180 f-clearfix">
         <div class="mj-cTleft fl">
             <div class="mj-cTl_img f-clearfix">
-                <span><img src="<?php if($detail['bzpic']){echo  $detail['bzpic']; }elseif($detail['imgurl']){echo  $detail['imgurl']; }else{echo "/Static/images/img1.png";}?>" alt=""/></span>
+                <span><img src="<?php if($detail['bzpic']){echo  $detail['bzpic']; }elseif($detail['imgurl']){echo  $detail['imgurl']; }else{echo "/Static/images/img1.png";}?>" alt="" onerror="this.src='http://g.chaofan.wang/guanjia/Public/Images/default_big.jpg'" /></span>
                 <p class="mj-tip">
 				<?if ($detail['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
                 <?if ($detail['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
@@ -175,7 +175,13 @@
 									<b>&nbsp;</b>
 								</strong>
 								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>此商标未在行业出售-我们有渠道短时间联系到他</p>
-								<a href='javascript:void(0)' class="mj-priceTxtt_link" id='addorder' >我有兴趣</a>
+								<?php
+								if($baystate == 1){
+									echo "<a href='".MANAGER_URL."buyer/ready/' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
+								}else{
+									echo "<a href='javascript:createOrderFromTrak();' class=\"mj-priceTxtt_link\" id='addorder'>我有兴趣</a>";
+								}
+								?>
 							</div>
 							
 				<?php

@@ -68,17 +68,19 @@ class TrademarkAction extends AppAction
 			MessageBox::halt('未找到相关数据3！');
 		}
 		$baystate = 0;
-		//查询订单是否存在
-		if($this->userInfo && $data['id']){
-			$user 		= $this->userInfo;
-			$buyData 	= $this->load("buy")->getDataBySale($data['name'],$data['class'],$user['userId']);
-			$baystate 	= $buyData ? 1 : 0;
-		}
+		
+
 		//读取推荐商标
 		$tj  	= $this->load("sale")->getDetailtj($class,6,$data['tid']);
 		$data  	= empty($data) ? $info : $data;
 		$detail = (empty($data) || empty($detail)) ? $infoDetail : $detail;
-
+		
+		//查询订单是否存在
+		if($this->userInfo){
+			$user 		= $this->userInfo;
+			$buyData 	= $this->load("buy")->getDataBySale($data['name'],$data['class'],$user['userId']);
+			$baystate 	= $buyData ? 1 : 0;
+		}
 		$title 	= $data['trademark'] ? $data['trademark'] : $data['name'];
 		//设置页面TITLE
 		$this->set('TITLE', $this->getTitle($data,$detail['goods']));
@@ -135,7 +137,6 @@ class TrademarkAction extends AppAction
 		
 		if($this->userInfo){
 			//查询商标是否存在
-			
 			$sale = $this->load("sale")->getSaleById($saleid);
 			if(!$sale){
 				$result = -4; //商标数据不存在
