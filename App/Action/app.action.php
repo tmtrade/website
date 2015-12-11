@@ -157,6 +157,9 @@ abstract class AppAction extends Action
 		$this->userEmail 	= '';
 		$this->userInfo 	= '';
 		$this->isLogin 		= false;
+
+		//设置用户信息到页面
+		$this->setUserView();
 	}
 }
 ?>

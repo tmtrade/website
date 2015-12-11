@@ -250,8 +250,7 @@ class SaleModule extends AppModule
 			if($v['platform']){
 				$arr = explode(",",$v['platform']);
 				foreach($arr as $key => $item){
-					if(!in_array($arrAll,$item)){
-						
+					if(!empty($arrAll) && !in_array($arrAll,$item)){
 						$arrAll[] = $item;
 					}
 				}

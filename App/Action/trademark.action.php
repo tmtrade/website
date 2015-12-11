@@ -81,14 +81,14 @@ class TrademarkAction extends AppAction
 			$buyData 	= $this->load("buy")->getDataBySale($data['name'],$data['class'],$user['userId']);
 			$baystate 	= $buyData ? 1 : 0;
 		}
-		$title 	= $data['trademark'] ? $data['trademark'] : $data['name'];
+		$title 	= empty($data['trademark']) ? $data['name'] : $data['trademark'];
 		//设置页面TITLE
 		$this->set('TITLE', $this->getTitle($data,$detail['goods']));
 
 		//电话旁边联系人信息
 		$this->set("contact",$this->getPhoneName($tid,$class,$issale)); 
 		$data['group'] = $this->emptyreplace($data['group']);
-		$this->set("info",$info);
+		$this->set("info",empty($info)?array():$info);
 		$this->set("data",$data);
 		$this->set("tid",$tid);
 		$this->set("userMobile",$this->userMobile);

@@ -46,6 +46,7 @@ class PotentialAction extends AppAction
         $this->set('p', $platform);
         $this->set('t', $type);
         $this->set('sn', $number);
+        $this->set('kw', '');
         $this->set('searchList', empty($res['rows']) ? array() : $res['rows']);
         $this->set('has', empty($res['rows']) ? false : true);
         $this->set('_number', $this->_number);
