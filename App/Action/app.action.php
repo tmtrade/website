@@ -21,7 +21,11 @@ abstract class AppAction extends Action
 	
 	public $isLogin  	= false;
 
-	public $pageTitle 	= '一只蝉 - 超凡集团旗下 - 无形资产交易平台 - 多、快、安';
+	public $pageTitle 	= '一只蝉：百万注册商标转让平台网-独家100%签定风险赔付协议';
+	
+	public $pageKey 	= '商标转让,商标转让网,注册商标转让,转让商标,商标买卖,商标交易,商标交易网';
+	
+	public $pageDescription 	= '一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台-商标转让-专利转让';
 
 	/**
 	 * 前置操作(框架自动调用)
@@ -40,6 +44,8 @@ abstract class AppAction extends Action
 		$this->set('_action_', $this->action);
 
 		$this->set('TITLE', $this->pageTitle);//页面title
+		$this->set('keywords', $this->pageKey);//页面keywords
+		$this->set('description', $this->pageDescription);//页面description
 		$this->set('CLASSES', C('CLASSES'));//国际分类
 		$this->set('CATEGORY', C('CATEGORY'));//分类
 		$this->set('CATEGORY_ITEMS', C('CATEGORY_ITEMS'));//分类群组

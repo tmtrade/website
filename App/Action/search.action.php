@@ -13,6 +13,34 @@ class SearchAction extends AppAction
     public $pageTitle   = '3.5秒快速查找 - 一只蝉';
     private $_number    = 30;
 
+	public function getTitle($data)
+	{	
+		$title  = "";
+		if($data['class']){$title .= $data['class']."类_";}
+		if($data['group']){
+			$group = "";
+			$title .= $group."_";
+		}
+		if($data['types']){
+			$type = "";
+			$title .= $type."_";
+		}
+		if($data['sblength']){
+			$sblength = "";
+			$title .= $sblength."_";
+		}
+		if($data['platform']){
+			$platform
+			$title .= $platform."_";
+		}
+		if($data['keyword']){
+			$keyword
+			$title .= $keyword;
+		}
+		$title .= "商标转让|买卖|交易 – 一只蝉";
+		return $title;
+	}
+	
 	public function index()
 	{
         $keyword    = $this->input('kw', 'string', '');
@@ -42,7 +70,8 @@ class SearchAction extends AppAction
         $strArr     = $this->getFormData();
         $whereStr   = http_build_query($strArr);
         //debug($whereStr);
-
+		//设置页面TITLE
+		$this->set('TITLE', $this->getTitle($params);
         $this->set('c', $class);
         $this->set('kw', $keyword);
         $this->set('g', $group);

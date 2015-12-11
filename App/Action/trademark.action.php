@@ -10,11 +10,16 @@
  */
 class TrademarkAction extends AppAction
 {
-    public $pageTitle   = '%s - 一只蝉';
-
+	
 	public function index()
 	{
 		$this->display();
+	}
+
+	public function getTitle($data,$goods)
+	{
+		$title = $data['name']."_".$data['class']."类_".$goods."商标转让|买卖|交易 – 一只蝉";
+		return $title;
 	}
 	
 	public function view()
@@ -76,7 +81,7 @@ class TrademarkAction extends AppAction
 
 		$title 	= $data['trademark'] ? $data['trademark'] : $data['name'];
 		//设置页面TITLE
-		$this->set('TITLE', sprintf($this->pageTitle, $title));
+		$this->set('TITLE', $this->getTitle($data,$detail['goods']));
 
 		//电话旁边联系人信息
 		$this->set("contact",$this->getPhoneName($tid,$class,$issale)); 

@@ -148,7 +148,6 @@ class SellAction extends AppAction
 		}else{
 			$num['state'] = -2; //商标数据不存在
 		}
-		
 		$num['all'] = $num['num'] + $num['old'];
 		echo json_encode($num);
 	}
