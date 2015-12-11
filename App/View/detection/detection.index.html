@@ -371,11 +371,11 @@
 						if( sbNum > 0 ){
 							sbNum = sbNum-1;
 							setCourseScore(_MYOBJ.result.total,atNum);
-							$('#xiang').html(sbNum);
-							$('#zhiliang').html(checkstr);
 							//_animateNextNumStrong.text(parseInt(atNum)+"%");
 							//console.log(sbNum);
 							setTimeout(function(){
+								$('#xiang').html(sbNum);
+								$('#zhiliang').html(checkstr);
 								animateAjax(tradname,optVal,sbNum,atNum,1);
 							}, 1500);
 						}else{
