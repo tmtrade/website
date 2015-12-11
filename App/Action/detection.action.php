@@ -319,7 +319,9 @@ class DetectionAction extends AppAction
         $result = array();
         $is1    = $this->getStatus($threeArr,'商标转让中');
         $is2    = $this->getStatus($threeArr,'商标转让待审中');
-        if( $is1 == true || $is2 == true ){
+        $noArr  = array('商标转让完成');
+        $isNO   = $this->getNoStatus($threeArr,$noArr);
+        if( ($is1 == true || $is2 == true) && $isNO == false ){
             $result[] = 17;
         }
         return $result;
