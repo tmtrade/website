@@ -30,11 +30,11 @@ class SearchAction extends AppAction
 			$title .= $sblength."_";
 		}
 		if($data['platform']){
-			$platform
+			$platform = "";
 			$title .= $platform."_";
 		}
 		if($data['keyword']){
-			$keyword
+			$keyword = "";
 			$title .= $keyword;
 		}
 		$title .= "商标转让|买卖|交易 – 一只蝉";
@@ -71,7 +71,7 @@ class SearchAction extends AppAction
         $whereStr   = http_build_query($strArr);
         //debug($whereStr);
 		//设置页面TITLE
-		$this->set('TITLE', $this->getTitle($params);
+		$this->set('TITLE', $this->getTitle($params));
         $this->set('c', $class);
         $this->set('kw', $keyword);
         $this->set('g', $group);
