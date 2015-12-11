@@ -41,5 +41,30 @@ class GroupModule extends AppModule
         return $list;
     }
 	
+    /**
+     * 获取群组中文名
+     * 
+     * @author  martin
+     * @since   2015/12/11
+     *
+     * @access  public
+     * @param   int     $class      国际分类(1-45)
+     *
+     * @return  array   $list       群组号对应群组中文名称的数组
+     */
+    public function getGroupName($number)
+    {
+		if(empty($number)){
+			return "";
+		}
+        $r['eq']    = array('group' => $number);
+        $r['limit'] = 1;
+        $data = $this->import('group')->find($r);
+		if($data){
+			return $data['cn_name'];
+		}else{
+			return '';
+		}
+    }
 }
 ?>

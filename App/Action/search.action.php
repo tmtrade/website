@@ -15,30 +15,31 @@ class SearchAction extends AppAction
 
 	public function getTitle($data)
 	{	
-		$title  = "";
-		if($data['class']){$title .= $data['class']."类_";}
-		if($data['group']){
-			$group = "";
-			$title .= $group."_";
+		$titleArr  = array();
+		if(!empty($data['class'])){
+			$titleArr[] = $data['class']."类";
 		}
-		if($data['types']){
-			$type = "";
-			$title .= $type."_";
+		if(!empty($data['group'])){
+			$titleArr[] = $this->load('group')->getGroupName($data['group']);
 		}
-		if($data['sblength']){
-			$sblength = "";
-			$title .= $sblength."_";
+		if(!empty($data['types'])){
+			$typeconfig	= C('TYPES');
+			$titleArr[] = $typeconfig[$data['types']];
 		}
-		if($data['platform']){
-			$platform = "";
-			$title .= $platform."_";
+		if(!empty($data['sblength'])){
+			$sbconfig	= C('SBNUMBER');
+			$titleArr[] = $sbconfig[$data['sblength']];
 		}
-		if($data['keyword']){
+		if(!empty($data['platform'])){
+			$sbplatform	= C('PLATFORM_IN');
+			$titleArr[] = $sbplatform[$data['platform']];
+		}
+		if(!empty($data['keyword'])){
 			$keyword = "";
-			$title .= $keyword;
+			$titleArr[] = $data['keyword'];
 		}
-		$title .= "商标转让|买卖|交易 – 一只蝉";
-		return $title;
+		$titleArr[] = "商标转让|买卖|交易 – 一只蝉";
+		return implode("_", $titleArr);
 	}
 	
 	public function index()
