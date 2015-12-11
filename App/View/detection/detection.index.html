@@ -64,7 +64,7 @@
                                 boldNum:3,
                                 shortUrl:false,
                                 hideMore:true,
-								pic:"#"
+								pic:"<?=$hostpic?>"
 
                             }
                             </script>
@@ -147,7 +147,7 @@
                     <dt>检测动态</dt>
                     <dd>正在 检测商标号 <span class="sbnumber"></span> 的质量</dd>
                     <dd>当前正在进行 <span class="color-fc7d28" id="zhiliang"></span>  ...</dd>
-                    <dd>还有 <span class="color-fc7d28" id="xiang">13</span> 项目检测项目 ，请勿关闭网页</dd>
+                    <dd>还有 <span class="color-fc7d28" id="xiang">13</span> 条检测项目，请勿关闭网页</dd>
                 </dl>                
                 <dl style="display: none;">
                     <div class="mj-anright">
@@ -384,7 +384,7 @@
 					 }
 				 });
 		}
-		//设置监测后的提示
+		//设置检测后的提示
 		function setContent(obj){
 			myarray = getMsgTxt(obj.result.total);
 			if( _ie ){

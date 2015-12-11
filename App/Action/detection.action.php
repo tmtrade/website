@@ -42,15 +42,15 @@ class DetectionAction extends AppAction
         2 => '撤三检测',
         3 => '撤销注册复审',
         4 => '注销检测',
-        5 => '申请中监测',
-        6 => '无效监测',
+        5 => '申请中检测',
+        6 => '无效检测',
         7 => '质押检测',
         8 => '冻结检测',
         9 => '转让检测',
         10 => '许可检测',
         11 => '续展期检测',
-        12 => '近似监测',
-        13 => '变更监测',
+        12 => '近似检测',
+        13 => '变更检测',
     );
     public $totalmsg   = array(
         1  => '总评：商标存在<span>被无效/已无效</span>风险，建议根据报告规避风险。',
@@ -62,8 +62,10 @@ class DetectionAction extends AppAction
     {
         $count  = $this->load('checkcount')->getAllCount();
         $sj     = date('Y年m月d日',time());
+		$host	= 'http://'.$_SERVER['HTTP_HOST'].'/Static/style/img/mj-qrcode.png';
         $this->set('count',$count);
         $this->set('sj',$sj);
+		$this->set('hostpic',$host);
         $this->display();
     }
     /**
@@ -233,7 +235,7 @@ class DetectionAction extends AppAction
         return $result;
     }
     /**
-    * 申请中监测规则
+    * 申请中检测规则
     * @since    2015-12-06
     * @author   haydn
     * @param    array $twoArr   二级数组
@@ -249,7 +251,7 @@ class DetectionAction extends AppAction
         return $result;
     }
     /**
-    * 无效监测规则
+    * 无效检测规则
     * @since    2015-12-06
     * @author   haydn
     * @param    array $twoArr   二级数组
@@ -362,7 +364,7 @@ class DetectionAction extends AppAction
         return $result;
     }
     /**
-    * 近似监测规则
+    * 近似检测规则
     * @since    2015-12-06
     * @author   haydn
     * @param    int     $twoArr   申请相同数量
@@ -375,7 +377,7 @@ class DetectionAction extends AppAction
         return $result;
     }
     /**
-    * 变更监测规则
+    * 变更检测规则
     * @since    2015-12-06
     * @author   haydn
     * @param    array $twoArr   二级数组
