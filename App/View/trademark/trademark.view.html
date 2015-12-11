@@ -161,18 +161,21 @@
 									<em></em>
 									<b>&nbsp;</b>
 								</strong>
-								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>此商标未在行业出售-我们有渠道短时间联系到他</p>
+                                <p class="mj-priceTxtt_ie7"></p>
 								<?php
 								if($baystate == 1){
 									echo "<a href='".MANAGER_URL."buyer/ready/' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
 								}else{
-									echo "<a href='javascript:createOrderFromTrak();' class=\"mj-priceTxtt_link\" id='addorder'>我有兴趣</a>";
+									echo "<a href='javascript:createOrderFromTrak();' class=\"mj-priceTxtt_link\" id='addorder'>提交需求</a>";
 								}
 								?>
+                                <br/>
+                                <br/>
+                                <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
 							</div>
 				<?php
 						}else{
-							echo "<div class=\"mj-pricebtn\"><p class=\"mj-priceTxtt_ie7\"><b>温馨提示：</b>未在行业出售--我们有渠道短时间联系到他</p><br><a href='javascript:goLook();'>查看价格</a></div>";
+							echo "<div class=\"mj-pricebtn\"><p class=\"mj-priceTxtt_ie7\"></p><a href='javascript:goLook();'>我有兴趣</a><br/><br/><p class=\"mj-priceTxtt_ie7\"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p><br></div>";
 						}
 						
 					}else{
