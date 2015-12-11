@@ -421,7 +421,7 @@
 			platObj  = eval(infoObj.plat);
 			if( platObj ){
 				platStr = '';
-				for(var i=1;i<platObj.length;i++){
+				for(var i=0;i<platObj.length;i++){
 					platStr +='<li><a href="javascript:void(0);" class="'+platObj[i].classname+'">'+platObj[i].name+'</a></li>';
 				}
 				$('.mj-amin').html(platStr);
