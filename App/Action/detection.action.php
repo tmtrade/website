@@ -516,6 +516,7 @@ class DetectionAction extends AppAction
     {
         $info   = $this->load('trademark')->getInfo($id,array('auto','class','trademark','pid','proposer_id','goods'));
         $info['class_id'] = $info['class'];
+		$info['trademark']= !empty($info['trademark']) ? $info['trademark'] : '商标号：'.$id;
         if( $info['pid'] > 0 ){
             $proArr = $this->load('proposer')->get($info['proposer_id']);//获取申请人
             $img    = $this->load('trademark')->getImg($info['auto']);//获取图片
