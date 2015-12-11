@@ -149,6 +149,33 @@
                     </div>
 				<?php
 					}else{
+					//
+					if(!$data['date']){ 
+						if($isLogin){
+				?>
+							<!--价格-->
+							<div class="mj-priceTxtt">
+								<strong>
+									<em>￥</em>
+									<span>议价</span>
+									<em></em>
+									<b>&nbsp;</b>
+								</strong>
+								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>此商标未在行业出售-我们有渠道短时间联系到他</p>
+								<?php
+								if($baystate == 1){
+									echo "<a href='".MANAGER_URL."buyer/ready/' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
+								}else{
+									echo "<a href='javascript:createOrderFromTrak();' class=\"mj-priceTxtt_link\" id='addorder'>我有兴趣</a>";
+								}
+								?>
+							</div>
+				<?php
+						}else{
+							echo "<div class=\"mj-pricebtn\"><p class=\"mj-priceTxtt_ie7\"><b>温馨提示：</b>未在行业出售--我们有渠道短时间联系到他</p><br><a href='javascript:goLook();'>查看价格</a></div>";
+						}
+						
+					}else{
 					if($isLogin){//是否登录
 						//if($data['isBargain'] == 2){//商品定价方案为售价
 						if($data['guideprice'] > 0){
@@ -174,20 +201,14 @@
 									<em></em>
 									<b>&nbsp;</b>
 								</strong>
-								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>此商标未在行业出售-我们有渠道短时间联系到他</p>
-								<?php
-								if($baystate == 1){
-									echo "<a href='".MANAGER_URL."buyer/ready/' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
-								}else{
-									echo "<a href='javascript:createOrderFromTrak();' class=\"mj-priceTxtt_link\" id='addorder'>我有兴趣</a>";
-								}
-								?>
+								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
 							</div>
-							
 				<?php
 						}
 					}else{
-						echo "<div class=\"mj-pricebtn\"><p class=\"mj-priceTxtt_ie7\"><b>温馨提示：</b>未在行业出售--我们有渠道短时间联系到他</p><br><a href='javascript:goLook();'>查看价格</a></div>";
+						echo "<div class=\"mj-pricebtn\"><a href='javascript:goLook();'>查看价格</a></div>";
+					}
+					
 					}
 				}
 				?>
