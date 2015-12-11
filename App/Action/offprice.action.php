@@ -14,6 +14,7 @@ class OffpriceAction extends AppAction
     private $_number    = 20;
     private $_col       = array('id', 'tid', 'number', 'class', 'name', 'guideprice', 'salePrice');
 
+
     public function index()
     {
         $class      = $this->input('c', 'int', 0);
@@ -44,7 +45,9 @@ class OffpriceAction extends AppAction
         $res['rows']    = $this->getOffpriceList($res['rows']);
         $strArr         = $this->getFormData();
         $whereStr       = http_build_query($strArr);
-
+		
+		//设置页面TITLE
+		$this->set('TITLE', $this->load('search')->getTitle($params));
         $this->set('c', $class);
         $this->set('g', $group);
         $this->set('p', $platform);

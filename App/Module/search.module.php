@@ -16,7 +16,38 @@ class SearchModule extends AppModule
     public $models = array(
         'sale'      => 'sale',
         'second'    => 'secondStatus',
+		 'group' => 'group',
     );
+	
+	//获取查询的TITLE
+	public function getTitle($data)
+	{	
+		$titleArr  = array();
+		if(!empty($data['class'])){
+			$titleArr[] = $data['class']."类";
+		}
+		if(!empty($data['group'])){
+			$titleArr[] = $this->load('group')->getGroupName($data['group']);
+		}
+		if(!empty($data['types'])){
+			$typeconfig	= C('TYPES');
+			$titleArr[] = $typeconfig[$data['types']];
+		}
+		if(!empty($data['sblength'])){
+			$sbconfig	= C('SBNUMBER');
+			$titleArr[] = $sbconfig[$data['sblength']];
+		}
+		if(!empty($data['platform'])){
+			$sbplatform	= C('PLATFORM_IN');
+			$titleArr[] = $sbplatform[$data['platform']];
+		}
+		if(!empty($data['keyword'])){
+			$keyword = "";
+			$titleArr[] = $data['keyword'];
+		}
+		$titleArr[] = "商标转让|买卖|交易 – 一只蝉";
+		return implode("_", $titleArr);
+	}
 
     /**
      * 快速筛选结果

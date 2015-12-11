@@ -40,7 +40,9 @@ class PotentialAction extends AppAction
         $res        = $this->load('search')->getSaleList($params, $start, $this->_number);
         $strArr     = $this->getFormData();
         $whereStr   = http_build_query($strArr);
-
+		
+		//设置页面TITLE
+		$this->set('TITLE', $this->load('search')->getTitle($params));
         $this->set('c', $class);
         $this->set('g', $group);
         $this->set('p', $platform);

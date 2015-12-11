@@ -13,34 +13,7 @@ class SearchAction extends AppAction
     public $pageTitle   = '3.5秒快速查找 - 一只蝉';
     private $_number    = 30;
 
-	public function getTitle($data)
-	{	
-		$titleArr  = array();
-		if(!empty($data['class'])){
-			$titleArr[] = $data['class']."类";
-		}
-		if(!empty($data['group'])){
-			$titleArr[] = $this->load('group')->getGroupName($data['group']);
-		}
-		if(!empty($data['types'])){
-			$typeconfig	= C('TYPES');
-			$titleArr[] = $typeconfig[$data['types']];
-		}
-		if(!empty($data['sblength'])){
-			$sbconfig	= C('SBNUMBER');
-			$titleArr[] = $sbconfig[$data['sblength']];
-		}
-		if(!empty($data['platform'])){
-			$sbplatform	= C('PLATFORM_IN');
-			$titleArr[] = $sbplatform[$data['platform']];
-		}
-		if(!empty($data['keyword'])){
-			$keyword = "";
-			$titleArr[] = $data['keyword'];
-		}
-		$titleArr[] = "商标转让|买卖|交易 – 一只蝉";
-		return implode("_", $titleArr);
-	}
+	
 	
 	public function index()
 	{
@@ -72,7 +45,7 @@ class SearchAction extends AppAction
         $whereStr   = http_build_query($strArr);
         //debug($whereStr);
 		//设置页面TITLE
-		$this->set('TITLE', $this->getTitle($params));
+		$this->set('TITLE', $this->load('search')->getTitle($params));
         $this->set('c', $class);
         $this->set('kw', $keyword);
         $this->set('g', $group);
