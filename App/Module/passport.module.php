@@ -113,6 +113,12 @@ class PassportModule extends AppModule
         $userId = $this->load('temp')->create($mobile, $pass, $sid);
         if ( !$userId ) return false;
 
+        //判断是否在临时数据库中存在
+        $user = $this->load('temp')->isExist($account);
+        if ( !empty($user['password']) ){
+            $pass = $user['password'];
+        }
+
         $msgTemp = C('MSG_TEMPLATE');
         $msg = sprintf($msgTemp['register'], $pass);
         return $this->load('outmsg')->sendMsg($mobile, $msg);
