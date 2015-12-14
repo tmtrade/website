@@ -533,8 +533,9 @@ class AnquanAction extends AppAction
                     }
                 }
             }
+            $isimg          = $this->isImg($img);
             $info['pname']  = !empty($proArr['name']) ? $proArr['name'] : '无';
-            $info['imgurl'] = !empty($img) ? $img : '/Static/images/img1.png';
+            $info['imgurl'] = $isimg == true ? $img : '/Static/images/img1.png';
             $info['plat']   = $platform;
         }
         return $info;
@@ -559,6 +560,21 @@ class AnquanAction extends AppAction
            $msg = $this->totalmsg[4];
         }
         return $msg;
+    }
+    /**
+    * 检查图片是否存在
+    * @since    2015-12-14
+    * @author   haydn
+    * @param    string  $url   图片地址
+    * @return   bool
+    */
+    public function isImg($url)
+    {
+        $array = '';
+        if( !empty($url) ){
+            $array = getimagesize($url);
+        }
+        return !empty($array) ? true : false;
     }
 }
 ?>
