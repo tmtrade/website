@@ -62,7 +62,7 @@ class DetectionAction extends AppAction
     {
         $count  = $this->load('checkcount')->getAllCount();
         $sj     = date('Y年m月d日',time());
-		$host	= 'http://'.$_SERVER['HTTP_HOST'].'/Static/style/img/mj-qrcode.png';
+		$host	= 'http://'.$_SERVER['HTTP_HOST'].'/Static/style/img/mj-qrcode.gif';//'http://www.tmmark.com/images/mj-qrcode.gif';//
         $this->set('count',$count);
         $this->set('sj',$sj);
 		$this->set('hostpic',$host);
