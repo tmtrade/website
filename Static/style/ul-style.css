@@ -913,6 +913,9 @@ body{
 .mj-cbCen a>span{
     display: table-cell;
     vertical-align: middle;
+    width: 184px;
+    display: inline-block\9;
+    line-height: 115px\9;
 }
 .mj-cbCen a>span img{
     max-width: 180px;
