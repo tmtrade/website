@@ -110,12 +110,13 @@ class PassportModule extends AppModule
         }
         $pass   = randCode($length);//生成8位随机密码
         if ( isCheck($mobile) != 2 ) return false;
-        $userId = $this->load('temp')->create($mobile, $pass, $sid);
-        if ( !$userId ) return false;
 
         //判断是否在临时数据库中存在
         $user = $this->load('temp')->isExist($account);
-        if ( !empty($user['password']) ){
+        if ( empty($user['password']) ){
+            $userId = $this->load('temp')->create($mobile, $pass, $sid);
+            if ( !$userId ) return false;
+        }else{
             $pass = $user['password'];
         }
 
