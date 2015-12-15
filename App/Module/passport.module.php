@@ -114,7 +114,7 @@ class PassportModule extends AppModule
         //判断是否在临时数据库中存在
         $user = $this->load('temp')->isExist($account);
         if ( empty($user['password']) ){
-            $userId = $this->load('temp')->create($mobile, $pass, $sid);
+            $userId = $this->load('temp')->saveInfo($mobile, $pass, $sid);
             if ( !$userId ) return false;
         }else{
             $pass = $user['password'];

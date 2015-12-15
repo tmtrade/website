@@ -52,7 +52,7 @@ class TempModule extends AppModule
      * @param	array	$data	数据
      * @return	void
      */
-    public function create($uname, $upass, $sid, $memo)
+    public function saveInfo($uname, $upass, $sid, $memo)
     {
         $data = array(
             'username'  => $uname,
