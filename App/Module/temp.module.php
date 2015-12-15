@@ -102,7 +102,10 @@ class TempModule extends AppModule
             $rol['eq'] = array('mobile' => $uname);
             $this->load('buy')->removeTemp($rol);
             //推送求购到分配系统
-            $this->pushTrack($temp['need'], $temp['name'], $uname, $temp['sid'], $temp['area']);
+            $info = $this->pushTrack($temp['need'], $temp['name'], $uname, $temp['sid'], $temp['area']);
+            if ( $info['data']['id'] > 0 ){
+                $this->load('buy')->saveSaleInfo(array('crmInfoId'=>$info['data']['id']), $res);
+            }
             return true;
         }
         return false;
@@ -124,7 +127,7 @@ class TempModule extends AppModule
         $post['area']       = $area;//
         $post['sid']        = $sid;
         $json = $this->importBi('CrmPassport')->insertCrmMember($post);//联系人id
-        $output             =  (array)json_decode($json);
+        $output             =  json_decode($json, 1);
         return $output;
     }
 
