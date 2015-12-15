@@ -97,15 +97,15 @@ class TempModule extends AppModule
             'date'          => time(),
             'loginUserId'   => $userId,
             );
+        //推送求购到分配系统
+        $info = $this->pushTrack($temp['need'], $temp['name'], $uname, $temp['sid'], $temp['area']);
+        if ( $info['data']['id'] > 0 ){
+            $buy['crmInfoId'] = $info['data']['id'];
+        }
         $res = $this->load('buy')->create($buy);//创建求购信息
         if ( $res ){
             $rol['eq'] = array('mobile' => $uname);
             $this->load('buy')->removeTemp($rol);
-            //推送求购到分配系统
-            $info = $this->pushTrack($temp['need'], $temp['name'], $uname, $temp['sid'], $temp['area']);
-            if ( $info['data']['id'] > 0 ){
-                $this->load('buy')->saveSaleInfo(array('crmInfoId'=>$info['data']['id']), $res);
-            }
             return true;
         }
         return false;

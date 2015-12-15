@@ -72,13 +72,14 @@ class BuyAction extends AppAction
         if ( $this->load('buy')->find($role) ){
             $this->returnAjax(array('code'=>1));
         }
+        //推送求购到分配系统
+        $info = $this->load('temp')->pushTrack($content, $name, $mobile, $sid, $area);
+        if ( $info['data']['id'] > 0 ){
+            $buy['crmInfoId'] = $info['data']['id'];
+        }
         $res = $this->load('buy')->create($buy);
         if ( $res ) {
-            //推送求购到分配系统
-            $info = $this->load('temp')->pushTrack($content, $name, $mobile, $sid, $area);
-            if ( $info['data']['id'] > 0 ){
-                $this->load('buy')->saveSaleInfo(array('crmInfoId'=>$info['data']['id']), $res);
-            }
+           
             $this->returnAjax(array('code'=>1));//成功
         }
         $this->returnAjax(array('code'=>4)); //未成功
