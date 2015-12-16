@@ -61,7 +61,7 @@
 
 /*Í¼Æ¬ÁÐ±í end*/
 .mj-imglists{
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .mj-imglists ul{
     margin-right: -30px;
@@ -140,15 +140,16 @@
 }
 .mj-tip label {
     display: inline-block;
-    width: 21px;
-    height: 21px;
+    width: 20px;
+    height: 20px;
     border-radius: 2px;
     text-align: center;
-    line-height: 21px;
-    color: #fff;
+    line-height: 20px;
+    color: #FC7D28;
     font-size: 12px;
+    border: solid 1px #FC7D28;
 }
-.mj-tThe {
+/*.mj-tThe {
     background: #ff6a6a;
 }
 .mj-tJing {
@@ -159,7 +160,7 @@
 }
 .mj-tShow {
     background: #a0adc0;
-}
+}*/
 
 .mj-priceI{
     display: none;
@@ -228,6 +229,7 @@
 }
 .mj-imglists li:hover{
     border: solid 1px #fc7e2a;
+    border-bottom-color: #fff;
 }
 .mj-inputs{
     width: 65px;
@@ -386,5 +388,37 @@
     background:#ff7200;
     text-align:center;
     line-height:13px;
+}
+
+
+.mj-imglists li:hover .mj-listButn{
+    display: block;
+}
+.mj-listButn{
+    display: none;
+    position: relative;
+    top: 8px;
+    left: -1px;
+    padding: 15px 0;
+    width: 280px;
+    background: #fff;
+    border: solid 1px #fc7e2a;
+    text-align: center;
+    border-top: none;
+    z-index: 61;
+}
+.mj-listButn a{
+    display: inline-block;
+    width: 100px;
+    height: 35px;
+    background: #4ba5de;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 2px;
+}
+.mj-listButn a:hover{
+    background: #268ACA;
 }
 

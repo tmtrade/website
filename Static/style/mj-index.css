@@ -292,17 +292,18 @@
     right: 5px;
     z-index: 60;
 }
-.mj-ddTop .mj-tip label{
+.mj-tip label {
     display: inline-block;
-    width: 21px;
-    height: 21px;
+    width: 20px;
+    height: 20px;
     border-radius: 2px;
     text-align: center;
-    line-height: 21px;
-    color: #fff;
+    line-height: 20px;
+    color: #FC7D28;
     font-size: 12px;
+    border: solid 1px #FC7D28;
 }
-.mj-tShow{
+/*.mj-tShow{
     background: #a0adc0;
 }
 .mj-tThe{
@@ -313,7 +314,7 @@
 }
 .mj-tZheng {
     background: #30ccc1;
-}
+}*/
 /*.mj-ddImg{
     margin-top: 15px;
     height: 70px;
