@@ -191,8 +191,14 @@ class TrademarkAction extends AppAction
 		$tid    = $this->input('tid','int');
 		$sale = $this->load("trademark")->getInfo($tid,'name,class');
 		
+		if ( empty($phone) ){
+			$_phone = empty($this->userMobile) ? $this->userEmail : $this->userMobile;
+		}else{
+			$_phone = $phone;
+		}
+		
 		$isExist = array(
-			'phone'					=> $phone,
+			'phone'					=> $_phone,
 			'source'				=> 10,//来源一只禅
 			'name'					=> $sale['trademark'],
 			'class'					=> $sale['class'],
@@ -225,11 +231,11 @@ class TrademarkAction extends AppAction
 	 */
 	public function addBuyByPhone()
 	{
-		$result = 1;
-		$tid = $this->input('tid','int');
-		$phone  = $this->input('phone','string');
-		$sid    = $this->input('sid','string');
-		$sidArea  = $this->input('sidArea','string');
+		$result 	= 1;
+		$tid 		= $this->input('tid','int');
+		$phone  	= $this->input('phone','string');
+		$sid    	= $this->input('sid','string');
+		$sidArea  	= $this->input('sidArea','string');
 		
 		//查询商标是否存在
 		//$sale = $this->load("sale")->getSaleById($saleid);
@@ -240,9 +246,15 @@ class TrademarkAction extends AppAction
 			echo $result;
 			exit;
 		}
+
+		if ( empty($phone) ){
+			$_phone = empty($this->userMobile) ? $this->userEmail : $this->userMobile;
+		}else{
+			$_phone = $phone;
+		}
 		
 		$isExist = array(
-			'phone'					=> $phone,
+			'phone'					=> $_phone,
 			'source'				=> 10,//来源展示页
 			'name'					=> $sale['trademark'],
 			'class'					=> $sale['class'],
