@@ -16,6 +16,23 @@ class PassportBi extends Bi
 
 
 	/**
+	 * 通过userID获取账户信息（可多个）
+	 * 
+	 * @access	public
+	 * @param	array	$userIds	用户ID数组
+	 *
+	 * @return	array   返回账户所有信息(空为账户不存在)
+	 */
+	public function getListByIds($userIds)
+	{
+		
+		$param = array(
+			'ids' => $userIds,
+			);
+		return $this->request("passport/getListByIds/", $param);
+	}
+
+	/**
 	 * 获取账户信息
 	 * 
 	 * @access	public

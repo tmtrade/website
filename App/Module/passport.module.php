@@ -34,6 +34,26 @@ class PassportModule extends AppModule
         }
         return false;
     }
+
+    /**
+     * 通过用户ID获取账号信息
+     * 
+     * @author  Xuni
+     * @since   2015-11-05
+     *
+     * @access  public
+     * @param   array   $userIds      用户ID数组
+     *
+     * @return  array   $data       用户信息
+     */
+    public function getListByIds($userIds)
+    {
+        $res = $this->importBi('passport')->getListByIds($userIds);
+        if ( isset($res['code']) && $res['code'] == 1 ){
+            return empty($res['data']) ? array() : (array)$res['data'];
+        }
+        return false;
+    }
 	
     /**
      * 账户登录
