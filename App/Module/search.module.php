@@ -164,9 +164,8 @@ class SearchModule extends AppModule
             }
             $_r['eq'] = array(
                 'trademark_id'   => $params['keyword'],
-                'status3'       => 0,
-                'status26'      => 0,
                 'isShow'    => 1,
+                'status26'      => 0,
                 );
             if ( !empty($params['class']) ) $r['eq']['class_id'] = $params['class'];
 
@@ -183,9 +182,8 @@ class SearchModule extends AppModule
         if ( !empty($params['class']) ){
             $r['eq'] = array(
                 'class_id'     => $params['class'],
-                'status3'   => 0,
-                'status26'  => 0,
                 'isShow'    => 1,
+                'status26'  => 0,
                 );
             if ( !empty($params['platform']) ){
                 $pItems = C('PLATFORM_ITEMS');
@@ -216,9 +214,8 @@ class SearchModule extends AppModule
         }
         if ( empty($r['eq']) ){
             $r['eq'] = array(
-                'status3'   => 0,
-                'status26'  => 0,
                 'isShow'    => 1,
+                'status26'  => 0,
                 );
         }
         if ( $isInGroup ){
