@@ -71,13 +71,13 @@
     position: relative;
     margin: 0 17px 10px 0;
     width: 280px;
-    height: 264px;
+    height: 273px;
     background: #fff;
     border: solid 1px #f0f0f0;
 }
 
 .mj-imglT {
-    margin-top: 10px;
+    margin-top: 15px;
     display: table;
     height: 175px;
     text-align: center;
@@ -129,19 +129,15 @@
 
 .mj-tip{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 10px;
     z-index: 60;
 }
-.mj-ddTop .mj-tip {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-}
+
 .mj-tip label {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 2px;
     text-align: center;
     line-height: 20px;
@@ -222,7 +218,7 @@
 .mj-imglists li>label{
     display: inline-block;
     width: 282px;
-    height: 266px;
+    height: 273px;
 }
 .mj-imglists li:hover .mj-priceI{
     display: block;
@@ -399,7 +395,7 @@
     position: relative;
     top: 8px;
     left: -1px;
-    padding: 15px 0;
+    padding-bottom: 15px;
     width: 280px;
     background: #fff;
     border: solid 1px #fc7e2a;

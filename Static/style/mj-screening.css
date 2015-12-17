@@ -74,13 +74,13 @@
     position: relative;
     margin: 0 12px 10px 0;
     width: 184px;
-    height: 172px;
+    height: 190px;
     background: #fff;
     border: solid 1px #f0f0f0;
 }
 
 .mj-imglT {
-    margin-top: 12px;
+    margin-top: 20px;
     display: table;
     height: 95px;
     line-height: 95px;
@@ -111,7 +111,7 @@
     color: #999;
 }
 .mj-imglB p{
-    color: #888;
+    color: #666;
 }
 .mj-imglB p em{
     margin-right: 5px;
@@ -128,19 +128,14 @@
 }
 .mj-tip{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 10px;
     z-index: 60;
-}
-.mj-ddTop .mj-tip {
-    position: absolute;
-    top: 5px;
-    right: 5px;
 }
 .mj-tip label {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 2px;
     text-align: center;
     line-height: 20px;
@@ -218,7 +213,7 @@
 .mj-imglists li>a{
     display: inline-block;
     width: 186px;
-    height: 174px;
+    height: 190px;
 }
 .mj-imglists li:hover{
     border: solid 1px #fc7e2a;
@@ -255,7 +250,7 @@
     position: relative;
     top: -2px;
     left: -1px;
-    padding: 15px 0;
+    padding-bottom: 15px;
     width: 184px;
     background: #fff;
     border: solid 1px #fc7e2a;
