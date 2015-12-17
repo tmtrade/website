@@ -53,14 +53,15 @@ em{
 }
 .mj-tip label {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 2px;
     text-align: center;
-    line-height: 20px;
+    line-height: 18px;
     color: #FC7D28;
     font-size: 12px;
     border: solid 1px #FC7D28;
+    background: #fff;
 }
 /*.mj-tThe {
     background: #ff6a6a;
@@ -681,8 +682,8 @@ em{
     margin-top: 20px;
     width: 380px;
     height: 74px;
-    background: url(img/mj-jcbg.jpg) no-repeat right;
-    border: solid 1px #4fc011;
+    background: #fff;
+    border: solid 1px #4ba5de;
 }
 .mj-jcimg>label{
     display: inline-block;
@@ -705,12 +706,15 @@ em{
     margin-top: 22px;
     width: 95px;
     height: 30px;
-    background: #4fc011;
+    background: #4ba5de;
     text-align: center;
     line-height: 30px;
     font-size: 14px;
     color: #fff;
     border-radius: 2px;
+}
+.mj-jcimg>a:hover{
+    background: #268ACA;
 }
 
 
