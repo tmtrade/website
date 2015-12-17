@@ -240,7 +240,12 @@ class PassportAction extends AppAction
         }
 
         $userinfo = $this->load('passport')->get($mobile);
-        if ( !empty($userinfo) ) {
+        if ( empty($userinfo) ) {
+            $user = $this->load('temp')->isExist($mobile);
+            if ( !empty($user) ){
+                $this->returnAjax(array('code'=>3));//该手机号已注册
+            }
+        }else{
             $this->returnAjax(array('code'=>3));//该手机号已注册
         }
 
