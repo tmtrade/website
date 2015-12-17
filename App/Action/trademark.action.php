@@ -144,13 +144,18 @@ class TrademarkAction extends AppAction
 				exit;
 			}
 			$user = $this->userInfo;
+			if ( empty($phone) ){
+				$_phone = empty($this->userMobile) ? $this->userEmail : $this->userMobile;
+			}else{
+				$_phone = $phone;
+			}
 			$isExist = array(
 				'loginUserId'		=> $this->userId,
 				'source'			=> 10, //来源展示页
 				'name'				=> $sale['name'],
 				'class'				=> $sale['class'],
 				'contact'			=> $this->nickname,
-				'phone'				=> $this->userMobile,
+				'phone'				=> $_phone,
 				'buyType'			=> 1,
 				'need'				=> "商标号:".$sale['number'].",类别:".$sale['class'],
 			);

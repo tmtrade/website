@@ -54,6 +54,27 @@ class PassportModule extends AppModule
         }
         return false;
     }
+
+    /**
+     * 根据账号ID 添加并激活手机号
+     * 
+     * @author  Xuni
+     * @since   2015-11-05
+     *
+     * @access  public
+     * @param   int     $mobile     手机号
+     * @param   int     $userId     用户ID
+     *
+     * @return  bool    成功/失败     
+     */
+    public function changeMoblie($userId, $mobile)
+    {
+        $res = $this->importBi('passport')->changeMobile($userId, $mobile);
+        if ( isset($res['code']) && $res['code'] == 1 ){
+            return true;
+        }
+        return false;
+    }
 	
     /**
      * 账户登录
@@ -133,7 +154,7 @@ class PassportModule extends AppModule
 
         //判断是否在临时数据库中存在
         $user = $this->load('temp')->isExist($account);
-        if ( empty($user['password']) ){
+        if ( empty($user) ){
             $userId = $this->load('temp')->saveInfo($mobile, $pass, $sid);
             if ( !$userId ) return false;
         }else{

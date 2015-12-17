@@ -192,6 +192,11 @@
 									<b>&nbsp;元</b>
 								</strong>
 								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
+                                <? if($baystate == 1){ ?>
+                                    <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>
+                                <? }else{ ?>
+                                    <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我想购买</a></div>
+                                <? } ?>
 							</div>
 				<?php	
 						}else{//商品定价方案为义价
@@ -205,6 +210,11 @@
 									<b>&nbsp;</b>
 								</strong>
 								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
+                                <? if($baystate == 1){ ?>
+                                    <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>
+                                <? }else{ ?>
+                                    <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我有兴趣</a></div>
+                                <? } ?>
 							</div>
 				<?php
 						}
@@ -433,6 +443,39 @@
         </div>
     </div>
 </div>
+
+<!-- 新增登录框弹出框 -->
+<div class="mj-loginModel" id="verifyMoblie"  style="display: none;">
+    <span class="ms-close mj-close" onclick="boxHide('mj-loginModel')"></span>
+    <div class="mj-lmTop" id="dl_title">
+        <h6>绑定手机号码</h6>
+        <p style="margin-left: 10px;">绑定手机号码以便于交易专员联系到你</p>
+    </div>
+    <div class="mj-lmBottom">
+        <div class="ms-errorTips">
+            <p class="reg-tip" id="vmTips" style="display:none"><i class="us-icon us-icon19"></i><em></em></p>
+        </div>
+        <div class="ms-phoneInput f-clearfix">
+            <div class="mj-form-wrappers fl" style="width: 158px;">
+                <span class="mj-inpuVs mj-mlspan">请输入手机号码</span>
+                <div class="ms-input mj-input">
+                    <i class="us-icon uj-icon5"></i>
+                    <input type="text" id="vmNumber">
+                </div>
+            </div>
+            <a href="javascript:;" class="ms-sent" id="vm_hqyzm">获取验证码</a>
+        </div>
+        <div class="mj-form-wrappers">
+            <span class="mj-inpuVs mj-mlspan">请输入手机验证码</span>
+            <div class="ms-input mj-input">
+                <i class="us-icon us-iconmi"></i>
+                <input type="input" id="vmCode" onkeydown="if(event.keyCode==13) bindMoblie();" >
+            </div>
+        </div>
+        <a href="javascript:;" ctype="e" class="ms-loginBtn" id="vm_sub">绑定</a>
+    </div>
+</div>
+
 <script>
 function consultation(){
 	window.open("http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165");

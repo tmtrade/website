@@ -1,3 +1,6 @@
+
+_sendOnceVm     = true;
+_checkNumber    = true;
 $(function(){
 	
 	$(".qd-close").bind("click",function(){
@@ -7,6 +10,52 @@ $(function(){
 	$(".mj-close").bind("click",function(){
 		layer.closeAll();
 	});
+
+    $("#vmNumber").blur(function (){
+        checkMobile();
+    })
+
+    $("#vm_sub").click(function (){
+        bindMoblie();
+    });
+    
+    $("#vm_hqyzm").click(function (){
+        if ( !_sendOnceVm ) return false;
+        var _this   = $("#vmNumber");
+        var _val    = $.trim(_this.val());
+
+        _checkMobile();
+        if ( !_checkNumber ) return false;
+
+        //通过验证，可发送密码
+        $.ajax({
+            type: "post",
+            url: "/passport/sendBindCode/",
+            data: {m:_val},
+            dataType: "json",
+            success: function(data){
+                if (data.code == 1){
+                    _sendOnceVm = false;
+                    vm_timer(60, $("#vm_hqyzm"));
+                    $('#vmTips > em').html('验证码已发送');
+                    $('#vmTips').show();
+                }else if (data.code == 2){
+                    $('#vmTips > em').html('请输入正确的手机号');
+                    $('#vmTips').show();
+                    _sendOnceVm = true;
+                }else if (data.code == 3){
+                    $('#vmTips > em').html('该手机号码已注册，请使用该号登录');
+                    $('#vmTips').show();
+                    _sendOnceVm = true;
+                }else{
+                    $('#vmTips > em').html('发送失败');
+                    $('#vmTips').show();
+                    _sendOnceVm = true;
+                }
+            }
+         });
+        return false;
+    });
 })
 
 $("#telInput2").bind("blur",function(){
@@ -14,6 +63,132 @@ $("#telInput2").bind("blur",function(){
 	checkCallPhone($(this));
 	
 })
+
+function bindMoblie()
+{
+    var _this   = $("#vmNumber");
+    var _pass   = $("#vmCode");
+    var _val    = $.trim(_this.val());
+    var _pw    = $.trim(_pass.val());
+
+    _checkMobile();
+    if ( !_checkNumber ) return false;
+
+    if (_pw == '' || _pw == '请输入手机验证码') {
+        $('#vmTips > em').html('请输入手机验证码');
+        $('#vmTips').show();
+        return false;
+    }
+
+    $.ajax({
+        type: "post",
+        url: "/passport/bindMobile/",
+        data: {mobile:_val,code:_pw},
+        dataType: "json",
+        success: function(data){
+            if (data.code == 1){
+                $('#vmTips > em').html('绑定成功');
+                $('#vmTips').show();
+                //绑定成功
+                setTimeout(function(){
+                    window.location.reload();
+                    return false;
+                }, 100);
+            }else if (data.code == 2){
+                $('#vmTips > em').html('请输入手机号');
+                $('#vmTips').show();
+            }else if (data.code == 3){
+                $('#vmTips > em').html('请输入正确的手机号');
+                $('#vmTips').show();
+            }else if (data.code == 4){
+                $('#vmTips > em').html('请输入正确的校验码');
+                $('#vmTips').show();
+            }else if (data.code == 5){
+                $('#vmTips > em').html('手机号已修改');
+                $('#vmTips').show();
+            }else if (data.code == 6){
+                $('#vmTips > em').html('该手机号码已注册，请使用该号登录');
+                $('#vmTips').show();
+            }else{
+                $('#vmTips > em').html('发送失败');
+                $('#vmTips').show();
+            }
+        }
+    });
+}
+
+function checkMobile()
+{
+    var _this   = $("#vmNumber");
+    var _val    = $.trim(_this.val());
+    _checkMobile();
+    if ( !_checkNumber ) return false;
+    $.ajax({
+        type: "post",
+        url: "/passport/existAccount/",
+        data: {account:_val},
+        dataType: "json",
+        success: function(data){
+            if (data.code == 1){
+                _checkNumber = false;
+                $('#vmTips > em').html('该手机号码已注册，请使用该号登录');
+                $('#vmTips').show();
+            }else if (data.code == 2){//空
+                _checkNumber = false;
+                $('#vmTips > em').html('请输入手机号');
+                $('#vmTips').show();
+            }else if (data.code == 3){//账号不正确（不是邮箱或手机号）
+                _checkNumber = false;
+                $('#vmTips > em').html('请输入正确的手机号');
+                $('#vmTips').show();
+            }else if (data.code == -1){//未注册
+                _checkNumber = true;
+                //$('#vmTips > em').html('该号尚未注册，点击发送密码，我们将会以短信形式将密码发送到该手机号');
+                $('#vmTips').hide();
+            }else{
+                //请求失败
+                _checkNumber = false;
+                $('#vmTips > em').html('操作失败，请稍后重试');
+                $('#vmTips').show();
+            }
+        }
+    });
+}
+
+function _checkMobile()
+{
+    var _this   = $("#vmNumber");
+    var _val    = $.trim(_this.val());
+    if (_val == '' || _val == '请输入手机号'){
+        _checkNumber = false;
+        $('#vmTips > em').html('请输入手机号');
+        $('#vmTips').show();
+        return false;
+    }
+    if (isNaN(_val) || _val.length != 11){
+        _checkNumber = false;
+        $('#vmTips > em').html('请输入正确的手机号');
+        $('#vmTips').show();
+        return false;
+    }
+    _checkNumber = true;
+    return true;
+}
+
+//倒计时
+function vm_timer(count, obj)
+{
+     window.setTimeout (function () {
+         count --;
+         obj.text(count + "s");
+         if(count > -1){
+             vm_timer(count, obj);
+         }else{
+            _sendOnceVm = true;
+            obj.text('重新获取');
+         }
+     },1000);
+}
 
 //验证打电话的电话输入
 function checkCallPhone(obj){
@@ -78,6 +253,10 @@ function getOrderState(phone){
 //生成我要买订单
 function createOrderFromTrak(){
 	if(_tid > 0){
+        if ( _mobile == '' ){
+            getVerify();
+            return false;
+        }
 		var sid     = $('#sid').val();
 		var sidArea = $('#area').val();
 		var result = false ;
@@ -220,4 +399,9 @@ function getLayer(obj){
 	$(".mj-close").bind("click",function(){
 		layer.closeAll();
 	});
+}
+
+function getVerify()
+{
+    CHOFN.VerifyShow();
 }
