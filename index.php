@@ -2,8 +2,6 @@
 /**
  * 项目入口
  */
-header("Location: http://yizhchan.chaofan.wang");
-exit;
 set_time_limit(0);							//设置程序运行超时时间
 ob_start();									//打开磁盘缓冲(加快速度)
 define('WebDir', '.');						//定义项目路径

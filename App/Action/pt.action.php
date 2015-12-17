@@ -1,6 +1,6 @@
 <?
 /**
- * 快速成交
+ * 专利页面
  *
  * @package Action
  * @author  Martin
