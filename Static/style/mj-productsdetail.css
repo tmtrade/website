@@ -557,6 +557,10 @@ em{
     background: #fff;
     border: solid 1px #f0f0f0;
 }
+.mj-imglists li:hover{
+    border: solid 1px #fc7d28;
+    border-bottom-color: #fc6f28!important;
+}
 .mj-imglT{
     display: table;
     height: 140px;
