@@ -322,14 +322,15 @@ function createOrderByPhone(phone){
 
 //生成我要买订单
 function createOrder(saleid){
+    if ( _mobile == '' ){
+        getVerify();
+        return ;
+    }
 	$('#addorder').attr('href',buyUrl);
 	var sid     = $('#sid').val();
 	var sidArea = $('#area').val();
+    
 	if(saleid > 0){
-        if ( _mobile == '' ){
-            getVerify();
-            return ;
-        }
 		$.ajax({
             type: "post",
             url: "/trademark/addBuy",
