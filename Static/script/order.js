@@ -326,6 +326,10 @@ function createOrder(saleid){
 	var sid     = $('#sid').val();
 	var sidArea = $('#area').val();
 	if(saleid > 0){
+        if ( _mobile == '' ){
+            getVerify();
+            return false;
+        }
 		$.ajax({
             type: "post",
             url: "/trademark/addBuy",

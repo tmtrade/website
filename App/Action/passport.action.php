@@ -388,7 +388,6 @@ class PassportAction extends AppAction
         $prefix = C('COOKIE_PREFIX');
         $cname   = $prefix.$this->mvName;
         if ( $code != Session::get($cname) ){
-            echo "<$code>"."<".Session::get($cname).'>';
             $this->returnAjax(array('code'=>4));//验证码不正确
         }
         $mbNo   = $prefix.$this->mbNo;
