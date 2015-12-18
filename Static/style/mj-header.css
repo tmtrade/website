@@ -445,7 +445,7 @@ table {
     font-style: normal;
 }
 .mj-navitems li.mj-brn{
-    border-right: none;
+   /* border-right: none;*/
 }
 .mj-navitems li.mj-brn span{
     color: #4ba5de;
