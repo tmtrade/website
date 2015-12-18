@@ -168,8 +168,8 @@ class TrademarkAction extends AppAction
 				$isExist['date']	= time();
 				$result				= $this->load("buy")->create($isExist);
 				/**写入分配系统**/
-				$need = $isExist['need']."联系人：". $user['nickname']."联系电话：".$user['mobile'];
-				$this->load('temp')->pushTrack($need, $user['nickname'], $user['mobile'], $sid, $sidArea, 1);
+				$need = $isExist['need']."联系人：". $user['nickname']."联系电话：".$_phone;
+				$this->load('temp')->pushTrack($need, $user['nickname'], $_phone, $sid, $sidArea, 1);
 				/**写入分配系统 END**/		
 			}
 		}else{
@@ -282,8 +282,8 @@ class TrademarkAction extends AppAction
 			$isExist['date']	= time();
 			$result				= $this->load("buy")->create($isExist);
 			/**写入分配系统**/
-			$need = $isExist['need']."联系电话：".$phone;
-			$this->load('temp')->pushTrack($need, "", $phone, $sid, $sidArea, 1);
+			$need = $isExist['need']."联系电话：".$_phone;
+			$this->load('temp')->pushTrack($need, "", $_phone, $sid, $sidArea, 1);
 			/**写入分配系统 END**/		
 		}
 		echo $result;
