@@ -255,7 +255,7 @@ function createOrderFromTrak(){
 	if(_tid > 0){
         if ( _mobile == '' ){
             getVerify();
-            return false;
+            return ;
         }
 		var sid     = $('#sid').val();
 		var sidArea = $('#area').val();
@@ -328,7 +328,7 @@ function createOrder(saleid){
 	if(saleid > 0){
         if ( _mobile == '' ){
             getVerify();
-            return false;
+            return ;
         }
 		$.ajax({
             type: "post",
