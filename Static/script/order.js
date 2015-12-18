@@ -44,7 +44,7 @@ $(function(){
                     $('#vmTips').show();
                     _sendOnceVm = true;
                 }else if (data.code == 3){
-                    $('#vmTips > em').html('该手机号码已注册，请使用该号登录');
+                    $('#vmTips > em').html('该手机已经绑定，请更换其他号码');
                     $('#vmTips').show();
                     _sendOnceVm = true;
                 }else{
@@ -107,7 +107,7 @@ function bindMoblie()
                 $('#vmTips > em').html('手机号已修改');
                 $('#vmTips').show();
             }else if (data.code == 6){
-                $('#vmTips > em').html('该手机号码已注册，请使用该号登录');
+                $('#vmTips > em').html('该手机已经绑定，请更换其他号码');
                 $('#vmTips').show();
             }else{
                 $('#vmTips > em').html('发送失败');
@@ -131,7 +131,7 @@ function checkMobile()
         success: function(data){
             if (data.code == 1){
                 _checkNumber = false;
-                $('#vmTips > em').html('该手机号码已注册，请使用该号登录');
+                $('#vmTips > em').html('该手机已经绑定，请更换其他号码');
                 $('#vmTips').show();
             }else if (data.code == 2){//空
                 _checkNumber = false;
