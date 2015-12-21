@@ -316,7 +316,7 @@ class TrademarkAction extends AppAction
 		$phoneArr = array('15811270065','15811378137','15810761501','15811132605','15810113823','15811137365');
 		$phoneid = ceil(substr($tid,-1)/3*2) > 5 ? 5 : ceil(substr($tid,-1)/3*2);
 		$phone = $phoneArr[$phoneid];
-		$contact['phone'] = substr($phone,0,3).'*****'.substr($phone,-3);
+		$contact['phone'] = $phone;
 		return $contact;
 	}
 	
