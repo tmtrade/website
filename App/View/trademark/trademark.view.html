@@ -35,14 +35,16 @@
                     <span class="mj-cTr_top_r">
 					<em>
 					<?php 
+						$str = "申请中";
 						if($detail['status'] == '已注册'){
 							echo "<img src='".StaticDir."style/slice/ul-icon1.png' alt=''/>";
+							$str = "注册商标";
 						}elseif($detail['status'] == '申请中'){
 							echo "<img src='".StaticDir."style/slice/ul-icon1s.png' alt=''/>";
 						}
 					?>
 					</em>
-					<span><?=$detail['status']?></span>
+					<span><?=$str?></span>
 					</span>
                 </li>
 				<?php if($detail['valueAnalysis']){ echo "<li>".$detail['valueAnalysis']."</li>";} ?>
