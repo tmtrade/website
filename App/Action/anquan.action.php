@@ -38,7 +38,7 @@ class AnquanAction extends AppAction
         24 => '商标存在<em>变更</em>流程，若要购买，建议确定商标所有权归卖方后再行购买。',
     );
     public $checkTyep   = array(
-        1 => '无效检测',
+        1 => '争议检测',
         2 => '撤销检测',
         3 => '复审检测',
         4 => '权利检测',
