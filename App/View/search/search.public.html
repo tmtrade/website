@@ -150,7 +150,7 @@
                 <ul class="f-clearfix" id="s-all-list">
                 <? foreach ($searchList as $k => $v) { ?>
                     <li>
-                        <a href="/trademark/view/?tid=<?=$v['tid']?>&class=<?=$v['class']?>" target="_blank">
+                        <a href="/d-<?=$v['tid']?>-<?=$v['class']?>" target="_blank">
                             <p class="mj-tip">
                                 <?if ($v['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
                                 <?if ($v['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>

@@ -66,7 +66,7 @@
             <ul class="piclist f-clearfix">
              <?php foreach($offpriceList as $k => $v){ ?>
                 <li <? if ($k==3){ echo 'style="margin-right:0px;"';}?>>
-                    <a href="/trademark/view/?tid=<?=$v['tid']?>&class=<?=$v['class']?>" target="_blank">
+                    <a href="/d-<?=$v['tid']?>-<?=$v['class']?>" target="_blank">
                         <!--<div class="mj-ddTop">
                             <h5>全球五金第一品牌</h5>
                             <span>索亿商贸</span>

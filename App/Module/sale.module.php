@@ -115,7 +115,7 @@ class SaleModule extends AppModule
 		$data['notId'] = array();
         foreach($data['rows'] as $k => $item){
 			//$data['rows'][$k]['imgurl'] = $this->getImg($item['id']); 
-			$data['rows'][$k]['url']    = "/trademark/view/?tid=".$item['tid']."&class=".$item['class']; 
+			$data['rows'][$k]['url']    = "/d-".$item['tid']."-".$item['class']; 
 			$data['rows'][$k]['name']   = mbSub($item['name'],0,4); 
             $data['rows'][$k]['source'] = isset( $this->source[$item['source']] ) ? $this->source[$item['source']] : $item['source'];
 			$data['rows'][$k]['classes']  = isset( $this->classes[$item['class']] ) ? $this->classes[$item['class']] : $item['class'];
@@ -287,7 +287,7 @@ class SaleModule extends AppModule
         $data = $this->import('sale')->findAll($r);
         foreach($data['rows'] as $k => $item){
 			$data['rows'][$k]['imgurl'] = $this->getImg($item['id']); 
-			$data['rows'][$k]['url']    = "/trademark/view/?tid=".$item['tid']."&class=".$item['class']; 
+			$data['rows'][$k]['url']    = "/d-".$item['tid']."-".$item['class']; 
 			$data['rows'][$k]['name']   = mbSub($item['name'],0,4); 
             $data['rows'][$k]['source'] = isset( $this->source[$item['source']] ) ? $this->source[$item['source']] : $item['source'];
 			$data['rows'][$k]['classes']  = isset( $this->classes[$item['class']] ) ? $this->classes[$item['class']] : $item['class'];

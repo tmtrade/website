@@ -24,11 +24,17 @@ class TrademarkAction extends AppAction
 	
 	public function view()
 	{
-		$tid 	= $this->input("tid","int");
-		$class 	= $this->input("class","int");
+		$tag = $this->input('d-view', 'string', '');
+		if ( $tag ){
+			if ( strpos($tag, '-') === false ) $this->redirect('未找到页面', '/index/error');
+			list($tid, $class) = explode('-', $tag);
+		}else{
+			$tid 	= $this->input("tid","int");
+			$class 	= $this->input("class","int");
+		}
 		$issale = 0;
 		if ( $tid <= 0 || $class <= 0 || !in_array($class, range(1, 45)) ){
-			MessageBox::halt('未找到相关数据2！');
+			$this->redirect('未找到页面', '/index/error');
 		}
 
 		$this->set("platformIn",C('PLATFORM_IN'));
