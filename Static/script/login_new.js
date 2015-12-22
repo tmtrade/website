@@ -253,13 +253,14 @@ function checkLoginUser()
 
 //调整用弹层方法
 function getLogin(title){
-    $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
     $("#loginUser").val('');
     $("#loginPass").val('');
+    $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+    $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
     $("#dl_ts").hide();
     $('#loginTips').hide();
-    $("#dl_wjmm").show();//忘记密码(已存在账号)
-    $("#dl_fsmm").hide();//发送密码(不存在账号)
+    $("#dl_wjmm").hide();//忘记密码(已存在账号)
+    $("#dl_fsmm").show();//发送密码(不存在账号)
     if (title){
         $("#dl_title").html(title);
     }else{
