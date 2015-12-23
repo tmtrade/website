@@ -237,7 +237,7 @@ function getOrderState(phone){
 	if(_tid){
 		$.ajax({
             type: "post",
-            url: "/trademark/getOrderState",
+            url: "/trademark/getOrderState/",
             data: {tid:_tid,phone:phone},
 			async:false,
             dataType: "json",
@@ -262,7 +262,7 @@ function createOrderFromTrak(){
 		var result = false ;
 		$.ajax({
             type: "post",
-            url: "/trademark/addBuyByPhone",
+            url: "/trademark/addBuyByPhone/",
             data: {tid:_tid,sid:sid,sidArea:sidArea},
             dataType: "json",
 			async:false,
@@ -294,7 +294,7 @@ function createOrderByPhone(phone){
 		var result = false ;
 		$.ajax({
             type: "post",
-            url: "/trademark/addBuyByPhone",
+            url: "/trademark/addBuyByPhone/",
             data: {tid:_tid,phone:phone,sid:sid,sidArea:sidArea},
             dataType: "json",
 			async:false,
@@ -333,7 +333,7 @@ function createOrder(saleid){
 	if(saleid > 0){
 		$.ajax({
             type: "post",
-            url: "/trademark/addBuy",
+            url: "/trademark/addBuy/",
             data: {saleid:saleid,sid:sid,sidArea:sidArea},
             dataType: "json",
             success: function(data){
