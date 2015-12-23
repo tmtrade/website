@@ -146,12 +146,12 @@ table {
     height: 40px;
     padding: 15px 0 28px 4px;
 }
-.mj-logo a{
+/*.mj-logo a{
     display: block;
     width: 167px;
     height: 74px;
     background: url(img/logo.png) no-repeat;
-}
+}*/
 .mj-search_con{
     position: relative;
     margin: 27px 0;
