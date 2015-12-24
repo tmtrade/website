@@ -8,7 +8,7 @@ $rules[] = array(
     '#/d-#',
     array('mod' => 'trademark', 'action' => 'view'),
     array(
-        'd-view' => '#((\d+-)([\w_-])*)#',
+        'd-view' => '#((\d+-)([\w_-])*).html#',
         ),
 );
 
