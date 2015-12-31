@@ -119,6 +119,12 @@
     text-align: center;
 }
 
+.mj-footerB_text a{
+    font-size: 12px;
+    color: #b7b7b7;
+    text-align: center;
+}
+
 /* ²à±ßÀ¸ */
 /* ms-sidebar */
 .mj-sidebar{
