@@ -1,0 +1,47 @@
+<? require(ViewDir.'/header.html'); ?>
+
+<link rel="stylesheet" href="<?=StaticDir?>style/mg-about.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/normalize.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/mg-buySell.css"/>
+<div class="g-cia">
+    <div class="w1180">
+        <div class="g-cib">
+            <div class="g-cib-a1 f-clearfix">
+                <ul>
+				<? $i = 1; foreach($categoryList as $k=>$item){ ?>
+                    <li class="mg-invoice-li g-cib-a1-li<? echo $i;?> <? if ($nav == $k){echo 'cuk';}?>"><a href="/faq/news/?c=<? echo $k;?>"><i></i><? echo $item; ?><em></em></a></li>
+				<? $i++; } ?>
+                </ul>
+            </div>
+
+            <div class="g-cib-a2">
+                <div class="f-clearfix">
+                    <div class="g-cib-a2-b2 mg-tab-itme" style="display: block;">
+                        <h5><? echo $category;?></h5>
+						<? $i = 1; foreach ($list as $k=>$item){ ?>
+                        <div class="g-cib-a2-b2-d1 cur">
+                            <a href="<? echo $item['url']; ?>"><? echo $i;?>.&nbsp;&nbsp;&nbsp;<? echo $item['title']; ?></a>
+                        </div>
+						<? $i++; } ?>
+
+                    </div>
+
+                </div>
+				<!--
+                <div class="g-cib-a3">
+                    <a href=""><</a>
+                    <a href="" class="cua">1</a>
+                    <a href="">2</a>
+                    <a href="">></a>
+                </div>
+				-->
+
+                </div>
+
+			</div>
+    </div>
+</div>
+
+
+
+<? require(ViewDir.'/footer.html'); ?>
