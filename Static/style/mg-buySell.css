@@ -114,6 +114,9 @@
     font-size: 18px;
     font-weight: normal;
     margin-bottom: 12px;
+	text-align:center;
+	border-bottom:1px #ededed solid;
+	padding-bottom:15px;
 }
 .g-cib-a2-b2-d1 a{
     font-size: 14px;
