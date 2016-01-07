@@ -378,6 +378,7 @@
 .ms-noticeList dt a{
     font-size: 15px;
     margin-left: 20px;
+	color:#fc7d28;
 }
 .ms-noticeList dt{
     position: relative;
