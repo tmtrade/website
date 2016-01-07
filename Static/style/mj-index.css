@@ -347,28 +347,46 @@
 }
 .ms-noticeList{
     float: left;
+    padding-right: 20px;
 }
 .ms-dealList{
     float: right;
+    border-left: solid 1px #ddd;
+    padding-left: 15px;
+    margin: 7px 0;
+    height: 40px;
+    line-height: 40px;
 }
 .ms-noticeList dt,
 .ms-dealList dt{
     display: inline-block;
     *display: inline;
     zoom: 1;
-    margin-right: 15px;
+    /*margin-right: 15px;*/
     font-size: 14px;
     vertical-align: middle;
     line-height:32px;
 }
+
+.ms-noticeList dd li a{
+    display: inline-block;
+    max-width: 210px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ms-noticeList dt a{
+    font-size: 15px;
+    margin-left: 20px;
+}
 .ms-noticeList dt{
     position: relative;
     height: 24px;
-    width: 88px;
+    /*width: 88px;*/
     line-height: 24px;
     color: #fff;
     font-size: 12px;
-    padding: 0 0 0 10px;
+   /* padding: 0 10px;*/
 }
 .ms-noticeList dt span{
     display: inline-block;
@@ -379,6 +397,7 @@
 .ms-noticeList dt i{
     display: inline-block;
     position: absolute;
+	margin-top:2px;
 }
 .ms-dealList dt{
     color: #444444;
@@ -393,6 +412,7 @@
     vertical-align: middle;
     font-size: 14px;
     height: 25px;
+	width:230px;
     line-height: 25px;
     overflow: hidden;
 }

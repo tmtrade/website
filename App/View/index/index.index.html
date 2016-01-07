@@ -91,14 +91,28 @@
 <!-- ms-news start -->
 <div class="ms-column w1180">
     <div class="f-clearfix mj-newb">
+	
         <dl class="ms-noticeList">
-            <dt><span>最新公告</span><i class="uj_icon12"></i></dt>
+            <dt><span>最新公告</span><i class="uj_icon12"></i> <a href="/faq/news/?c=45">[商标新闻]</a></dt>
             <dd>
-                <ul>
-                    <li><a href="javascript:;">超凡无形资产交易平台2.0全新改版上线</a></li>
+                <ul class="mj-uli">
+				<? foreach ($news['page'] as $item){ ?>
+                    <li><a href="<? echo $item['url'];?>"><? echo $item['title'];?></a></li>
+				<? } ?>
                 </ul>
             </dd>
         </dl>
+        <dl class="ms-noticeList">
+            <dt><a href="/faq/news/?c=47">[商标转让问答]</a></dt>
+            <dd>
+                <ul class="mj-uli">
+				<? foreach ($news['faq'] as $item){ ?>
+                    <li><a href="<? echo $item['url'];?>"><? echo $item['title'];?></a></li>
+				<? } ?>
+                </ul>
+            </dd>
+        </dl>
+
         <dl class="ms-dealList mj_deaLlist">
             <dt><i class="us-icon us-icon6"></i>热门交易</dt>
             <dd>
@@ -565,6 +579,23 @@
         //最新交易记录切换
         jQuery(".allFocusJ").slide({ mainCell:".m3list", effect:"topLoop", vis:4, opp:true, autoPlay:true, delayTime:800 });
         
+       //新闻滚动
+       jQuery(".ms-noticeList").slide({ mainCell:".mj-uli", effect:"topLoop",autoPlay:true, delayTime:1000});
+        $("input").each(function(){
+            var spanT= $(this).parent().parent().find($(".mj-inpuV")).text();
+            $(this).focus(function(){
+                $(this).parent().parent().find($(".mj-inpuV")).text("");
+            });
+            $(this).blur(function(){
+
+                if($(this).val()===""){
+                    $(this).parent().parent().find($(".mj-inpuV")).text(spanT);
+                }else{
+                    $(this).parent().parent().find($(".mj-inpuV")).text("");
+                }
+            });
+        });
+
         //快速成交商标切换
         $(".mj-link1-dt ul li").click(function(){
             $(this).addClass("liclickc").siblings().removeClass("liclickc");

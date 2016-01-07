@@ -30,10 +30,10 @@
                 </div>
 
                 <div class="g-cib-a4">
-                    <? if(!empty($maxId)) {?><a href="/faq/views/?id=<? echo $maxId['id'];?>&act=cfdt&c=<? echo $maxId['categoryId'];?>" class="next1"> < &nbsp;
+                    <? if(!empty($maxId)) {?><a href="<? echo $maxId['url'];?>" class="next1"> < &nbsp;
                     上一篇：<? echo $maxId['title'];?></a><? } ?>
 
-                    <? if(!empty($minId)) {?><a href="/faq/views/?id=<? echo $minId['id'];?>&act=cfdt&c=<? echo $minId['categoryId'];?>" class="next2">下一篇：<? echo $minId['title'];?> &nbsp; > </a>
+                    <? if(!empty($minId)) {?><a href="<? echo $minId['url'];?>" class="next2">下一篇：<? echo $minId['title'];?> &nbsp; > </a>
 					<? } ?>
                 </div>
 

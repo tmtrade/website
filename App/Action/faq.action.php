@@ -13,7 +13,6 @@ class FaqAction extends AppAction
 	public $seotime		= '一只蝉';
 	public $keyword		= '商标转让,商标转让网,注册商标转让,转让商标,商标买卖,商标交易,商标交易网';
 	public $description	= '一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台-商标转让-专利转让';
-	public $url			= 'http://wm.chofn.net/api/';
 	public $categoryId	= array(45, 46, 47, 48, 49);
 	public $category	= array(
 						45	=> '商标新闻',
@@ -61,27 +60,6 @@ class FaqAction extends AppAction
     }
 
 
-	//调用对应接口
-	public function getList($array,$act)
-	{
-		foreach($array as $k => $v){
-			$len 		= mb_strlen($v['title'],'utf-8');
-			$thumtitle	= $len > 20 ? mb_substr($v['title'],0,20,'utf-8').'...' : $v['title'];
-			$list[$k]['url'] 				= '/faq/views/?id='.$v['id'].'&act='.$act.'&c='.$v['categoryId'];	
-			$list[$k]['thumtitle']		= $thumtitle;	
-			$list[$k]['title']			= $v['title'];
-			$list[$k]['img']			= $v['attachmentId'];
-			$list[$k]['content']		= $v['content'];
-			$list[$k]['title']			= $v['title'];
-			$list[$k]['keyword']		= $v['keyword'];
-			$list[$k]['introduction']	= $v['introduction'];
-			$list[$k]['id']				= $v['id'];
-			
-			
-		}
-		return $list;
-	}
-
 
 	//得到栏目对应的文章
 	public function news()
@@ -90,21 +68,7 @@ class FaqAction extends AppAction
 		if(!in_array($c,$this->categoryId)){
 			$c		= 45;
 		}
-		$list		= array();
-		$actionName = 'article';
-		$funName 	= 'getArticleList';
-		$param		= array(
-			'maxId' 		=> 0,
-			'minId' 		=> 0,
-			'categoryId' 	=> $c,
-			'limit' 		=> 20,
-			'order' 		=> array('showOrder' => 'DESC'),
-		);
-		$client 	= new Yar_client($this->url.$actionName);
-		$data 		= $client->$funName($param);
-		if(!empty($data['rows'])){
-			$list = $this->getList($data['rows'],'cfdt');
-		}
+		$list		= $this->load('faq')->newsList($c,0);
 
 
 		$title   = $this->category[$c] . ' - '.$this->seotime;
@@ -124,61 +88,22 @@ class FaqAction extends AppAction
 	{
 		$id			= $this->input("id","int");
 		$c			= $this->input("c","int");
-		if(!in_array($c,$this->categoryId)){
-			$c		= 45;
-		}
-		$list		= array();
-		$actionName = 'article';
-		$funName 	= 'getArticleList';
-		$param		= array(
-			'maxId' 		=> 0,
-			'minId' 		=> 0,
-			'categoryId' 	=> $c,
-			'id' 			=> $id,
-			'limit' 		=> 1,
-			'order' 		=> array('showOrder' => 'DESC'),
-		);
-		$client 	= new Yar_client($this->url.$actionName);
-		$data 		= $client->$funName($param);
+		
+		$data		= $this->load('faq')->newsList($c,$id);
 
 
-		//上一条
-		$param		= array(
-			'maxId' 		=> 0,
-			'minId' 		=> 0,
-			'categoryId' 	=> $c,
-			'maxId' 		=> $id,
-			'limit' 		=> 1,
-			'order' 		=> array('showOrder' => 'DESC'),
-		);
-		$maxId 		= $client->$funName($param);
-
-		//上一条
-		$param		= array(
-			'maxId' 		=> 0,
-			'minId' 		=> 0,
-			'categoryId' 	=> $c,
-			'minId' 		=> $id,
-			'limit' 		=> 1,
-			'order' 		=> array('showOrder' => 'DESC'),
-		);
-
-		$minId 		= $client->$funName($param);
-
-		if(!empty($data['rows'])){
-			$list = $this->getList($data['rows'],'cfdt');
-		}
-
+		$maxId		= $this->load('faq')->newsList($c, 0, 1, 0, $id);
+		$minId		= $this->load('faq')->newsList($c, 0, 1, $id, 0);
 		$title   = $list[0]['title'].' - '.$this->category[$c] . ' - '.$this->seotime;
 		$this->set("categoryId", $this->categoryId);
 		$this->set("categoryList", $this->category);
-		$this->set("list", $list[0]);
+		$this->set("list", $data[0]);
 		$this->set("category", $this->category[$c]);
 		$this->set("TITLE", $title);
 		$this->set("keyword", $this->keyword);
 		$this->set("nav", $c);
-		$this->set("maxId", $maxId['rows'][0]);
-		$this->set("minId", $minId['rows'][0]);
+		$this->set("maxId", $maxId[0]);
+		$this->set("minId", $minId[0]);
         $this->display();
 	}
 

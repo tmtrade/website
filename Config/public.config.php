@@ -327,6 +327,7 @@ $define = array(
     ),
 
 	'IMAGE_HOST' => 'http://tr.chofn.net/',
+	'WM_HOST'	=> 'http://wm.chofn.net/api/',
     'COOKIE_PREFIX' => 'tw_',//网站cookie前缀
     'PUBLIC_USER' => 'ChOfNuSeR',//公用用户登录信息标识
     'PUBLIC_USER_TIME' => 1800,//用户登录信息有效时间
