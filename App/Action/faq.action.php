@@ -89,7 +89,7 @@ class FaqAction extends AppAction
 		$id			= $this->input("id","int");
 		$c			= $this->input("c","int");
 		
-		$data		= $this->load('faq')->newsList($c,$id);
+		$data		= $this->load('faq')->newsList(0,$id);
 
 
 		$maxId		= $this->load('faq')->newsList($c, 0, 1, 0, $id);
