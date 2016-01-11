@@ -63,8 +63,8 @@ class IndexAction extends AppAction
 			'isBargain' => '2',
 			);
 		$offprice	= $this->load('search')->getSaleList($params, 0, 4);
-		$news['page']	= $this->load('faq')->newsList(45, 0, 5);
-		$news['faq']	= $this->load('faq')->newsList(47, 0, 5);
+		$news['page']	= $this->load('faq')->newsList(50, 0, 5);
+		$news['faq']	= $this->load('faq')->newsList(45, 0, 5);
 		$this->set('offpriceList', $this->load('sale')->getIndexOffprice());
 		
 		$this->set('dataTM',$dataTM);
