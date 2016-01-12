@@ -90,7 +90,6 @@ class TrademarkAction extends AppAction
 		$title 	= empty($data['trademark']) ? $data['name'] : $data['trademark'];
 		//设置页面TITLE
 		$this->set('TITLE', $this->getTitle($data,$detail['goods']));
-
 		//电话旁边联系人信息
 		$this->set("contact",$this->getPhoneName($tid,$class,$issale)); 
 		$data['group'] = $this->emptyreplace($data['group']);
