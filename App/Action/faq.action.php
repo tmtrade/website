@@ -77,7 +77,7 @@ class FaqAction extends AppAction
 		$this->set("list", $list);
 		$this->set("category", $this->category[$c]);
 		$this->set("TITLE", $title);
-		$this->set("keyword", $this->keyword);
+		$this->set("keywords", $this->keyword);
 		$this->set("nav", $c);
 		$this->set("description", $this->description);
         $this->display();
@@ -91,16 +91,16 @@ class FaqAction extends AppAction
 		
 		$data		= $this->load('faq')->newsList(0,$id);
 
-
 		$maxId		= $this->load('faq')->newsList($c, 0, 1, 0, $id);
 		$minId		= $this->load('faq')->newsList($c, 0, 1, $id, 0);
-		$title   = $list[0]['title'].' - '.$this->category[$c] . ' - '.$this->seotime;
+		$title   = $data[0]['title'].' - '.$this->category[$c] . ' - '.$this->seotime;
+
 		$this->set("categoryId", $this->categoryId);
 		$this->set("categoryList", $this->category);
 		$this->set("list", $data[0]);
 		$this->set("category", $this->category[$c]);
 		$this->set("TITLE", $title);
-		$this->set("keyword", $this->keyword);
+		$this->set("keywords", $data[0]['thumtitle']);
 		$this->set("nav", $c);
 		$this->set("maxId", $maxId[0]);
 		$this->set("minId", $minId[0]);
