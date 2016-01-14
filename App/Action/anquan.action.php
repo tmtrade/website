@@ -53,9 +53,9 @@ class AnquanAction extends AppAction
         13 => '变更检测',
     );
     public $totalmsg   = array(
-        1  => '总评：商标存在<span>被无效/已无效</span>风险，建议根据报告规避风险。',
-        2  => '总评：商标存在<span>被转让/冻结/质押</span>风险，建议根据报告规避风险。',
-        3  => '总评：商标存在<span>许可/续展/近似</span>风险，建议根据报告规避风险。',
+        1  => '总评：商标存在<strong style="font-weight: normal">被无效/已无效</strong>风险，建议根据报告规避风险。',
+        2  => '总评：商标存在<strong style="font-weight: normal">被转让/冻结/质押</strong>风险，建议根据报告规避风险。',
+        3  => '总评：商标存在<strong style="font-weight: normal">许可/续展/近似</strong>风险，建议根据报告规避风险。',
         4  => '总评：恭喜，此商标状态安全。',
     );
     public function index()
@@ -413,7 +413,7 @@ class AnquanAction extends AppAction
         $fiftyArr   = array(1,2,4,5,6);//五十
         $thirtyArr  = array(7,8,9);//三十
         $tenArr     = array(10,11,12,13);//十
-        $array      = $arr = $mark = array();
+        $array      = $arr = $mark = $points = array();
         $threeArr   = array_sort($threeArr,'date','desc');
         for( $i == 1; $i < 14; $i++ ){
             $funName    = 'rules'.$i;
@@ -428,10 +428,13 @@ class AnquanAction extends AppAction
             foreach( $arr as $k => $v ){
                 if( in_array($k,$fiftyArr) ){
                     $a = 1;
+                    $points[$k] = 50;
                 }elseif( in_array($k,$thirtyArr) ){
                     $b = 1;
+                    $points[$k] = 30;
                 }elseif( in_array($k,$tenArr) ){
                     $c = 1;
+                    $points[$k] = 10;
                 }
                 $mark[] = $this->magic[$v[0]];
             }
@@ -440,7 +443,7 @@ class AnquanAction extends AppAction
             $c == 1 && $total = $total - 10;
         }
         $msg   = $this->getTotalMsg($total);
-        $array = array('total' => $total,'mark' => $mark,'msg' => $msg);
+        $array = array('total' => $total,'mark' => $mark,'msg' => $msg,'points' => $points);
         return $array;
     }
     /**
