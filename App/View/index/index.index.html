@@ -582,18 +582,17 @@
        //新闻滚动
        jQuery(".ms-noticeList").slide({ mainCell:".mj-uli", effect:"topLoop",autoPlay:true, delayTime:1000});
        
-	   
-	   $("input[name='text']").each(function(){
-            var spanT= $(this).parent().parent().find($(".mj-inpuV")).text();
+	   $("input[type='text']").each(function(){
+            var spanT= $(this).parent().find($(".mj-inpuV")).text();
             $(this).focus(function(){
-                $(this).parent().parent().find($(".mj-inpuV")).text("");
+                $(this).parent().find($(".mj-inpuV")).text("");
             });
             $(this).blur(function(){
 
                 if($(this).val()===""){
-                    $(this).parent().parent().find($(".mj-inpuV")).text(spanT);
+                    $(this).parent().find($(".mj-inpuV")).text(spanT);
                 }else{
-                    $(this).parent().parent().find($(".mj-inpuV")).text("");
+                    $(this).parent().find($(".mj-inpuV")).text("");
                 }
             });
         });
