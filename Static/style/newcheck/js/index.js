@@ -336,13 +336,13 @@ function getBjinfo(number){
 		myArray[0] 	= '中级风险';
 		myArray[1]	= 'pr';
 		myArray[2]	= 'style2';
-		myArray[3]	= 'pr.png';
+		myArray[3]	= 'safe-c.png';
 		myArray[4]	= 'cicles';
 	}else if( number > 80 && number < 100 ){
 		myArray[0] 	= '低级风险';
 		myArray[1]	= 'blue';
 		myArray[2]	= 'style2';
-		myArray[3]	= 'blue.png';
+		myArray[3]	= 'safe-c.png';
 		myArray[4]	= 'cicles';
 	}else{
 		myArray[0] 	= '非常安全';
