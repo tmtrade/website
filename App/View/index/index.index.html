@@ -581,7 +581,9 @@
         
        //新闻滚动
        jQuery(".ms-noticeList").slide({ mainCell:".mj-uli", effect:"topLoop",autoPlay:true, delayTime:1000});
-        $("input").each(function(){
+       
+	   
+	   $("input[name='text']").each(function(){
             var spanT= $(this).parent().parent().find($(".mj-inpuV")).text();
             $(this).focus(function(){
                 $(this).parent().parent().find($(".mj-inpuV")).text("");
