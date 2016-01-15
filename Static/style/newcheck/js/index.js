@@ -300,7 +300,7 @@ function setPage(obj){
 	}else{
 		$('.style1').show();
 	}
-	$('.cicle').addClass(myArray[4]);//字体颜色
+	//$('.cicle').addClass(myArray[4]);//字体颜色
 	$('.result').addClass(myArray[1]);//背景颜色
 	$('.gunimg').attr('src','/Static/style/newcheck/images/'+myArray[3]);
 	$('.result').show();
