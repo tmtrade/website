@@ -91,7 +91,7 @@ function animateAjax(tradname,optVal,num,isdata,nber){
 				if( !_MYOBJ ){
 					_MYOBJ = eval(data);
 					checkstr = _MYOBJ.check;
-					$('.sbcontent').html('('+_MYOBJ.info.trademark+')');
+					$('.sbcontent').html('('+_MYOBJ.info.trademark+'&nbsp;第'+_MYOBJ.info.class_id+'类)');
 				}else{
 					chObj  = eval(data);
 					checkstr = chObj.check;
