@@ -65,6 +65,8 @@ class IndexAction extends AppAction
 		$offprice	= $this->load('search')->getSaleList($params, 0, 4);
 		$news['page']	= $this->load('faq')->newsList(50, 0, 5);
 		$news['faq']	= $this->load('faq')->newsList(45, 0, 5);
+		$news['link']	= $this->load('faq')->newsList(47, 0, 10);
+
 		$this->set('offpriceList', $this->load('sale')->getIndexOffprice());
 		
 		$this->set('dataTM',$dataTM);
