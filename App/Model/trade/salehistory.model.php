@@ -6,10 +6,10 @@
  * 
  * @package	Model
  * @author	void
- * @since	2015-07-22
+ * @since	2015-12-28
  */
-class SaleTrademarkModel extends AppModel
+class SaleHistoryModel extends AppModel
 {
-
+	
 }
 ?>
