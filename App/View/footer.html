@@ -51,10 +51,7 @@
         </div>
 		<div class="mj-footer_nav">
 
-            <ul class="f-clearfix">
-				<? foreach ($news['link'] as $item){ ?>
-                    <li><a href="<? echo $item['content'];?>" target="_blank"><? echo $item['title'];?></a></li>
-				<? } ?>
+            <ul class="f-clearfix" id="links">
             </ul>
         </div>
         <div class="mj-footer_center f-clearfix">
@@ -318,6 +315,21 @@
                 $(this).parent().parent().find($(".mj-inpuVs")).text("");
             }
         });
+    });
+
+    $(function(){
+		$.ajax({
+             type: "GET",
+             url: "/index/links/",
+             dataType: "json",
+             success: function(data){
+				var page = '';
+				for(i=0; i<data.length;i++){
+                    page += '<li><a href="' + data[i]['content'] + '" target="_blank">' + data[i]['title'] + '</a></li>';
+				}
+				$("#links").html(page);
+			}
+         });
     });
     $("#mj-stclose").click(function(){
         $(".mj-stclose").hide(300);

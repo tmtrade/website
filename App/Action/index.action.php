@@ -63,10 +63,6 @@ class IndexAction extends AppAction
 			'isBargain' => '2',
 			);
 		$offprice	= $this->load('search')->getSaleList($params, 0, 4);
-		$news['page']	= $this->load('faq')->newsList(50, 0, 5);
-		$news['faq']	= $this->load('faq')->newsList(45, 0, 5);
-		$news['link']	= $this->load('faq')->newsList(47, 0, 10);
-
 		$this->set('offpriceList', $this->load('sale')->getIndexOffprice());
 		
 		$this->set('dataTM',$dataTM);
@@ -76,8 +72,21 @@ class IndexAction extends AppAction
 		$this->set('dataJP',$dataJP);
 		$this->set('dataTS',$dataTS);
 		$this->set('classes',C('CLASSES'));
-		$this->set('news',$news);
 		$this->display();
+	}
+
+	public function newlist()	
+	{
+		$news['page']	= $this->load('faq')->newsList(50, 0, 5);
+		$news['faq']	= $this->load('faq')->newsList(45, 0, 5);
+		echo json_encode($news);
+		exit;
+	}
+	public function links()
+	{
+		$link	= $this->load('faq')->newsList(47, 0, 10);
+		echo json_encode($link);
+		exit;
 	}
 }
 ?>

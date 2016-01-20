@@ -95,20 +95,14 @@
         <dl class="ms-noticeList">
             <dt><span>最新公告</span><i class="uj_icon12"></i> <a href="/faq/news/?c=50">[商标新闻]</a></dt>
             <dd>
-                <ul class="mj-uli">
-				<? foreach ($news['page'] as $item){ ?>
-                    <li><a href="<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></li>
-				<? } ?>
+                <ul class="mj-uli" id="news_page">
                 </ul>
             </dd>
         </dl>
         <dl class="ms-noticeList">
             <dt><a href="/faq/news/?c=45">[商标转让问答]</a></dt>
             <dd>
-                <ul class="mj-uli">
-				<? foreach ($news['faq'] as $item){ ?>
-                    <li><a href="<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></li>
-				<? } ?>
+                <ul class="mj-uli" id="news_faq">
                 </ul>
             </dd>
         </dl>
@@ -579,8 +573,6 @@
         //最新交易记录切换
         jQuery(".allFocusJ").slide({ mainCell:".m3list", effect:"topLoop", vis:4, opp:true, autoPlay:true, delayTime:800 });
         
-       //新闻滚动
-       jQuery(".ms-noticeList").slide({ mainCell:".mj-uli", effect:"topLoop",autoPlay:true, delayTime:1000});
        
 	   $("input[type='text']").each(function(){
             var spanT= $(this).parent().find($(".mj-inpuV")).text();
@@ -612,6 +604,30 @@
             $(this).addClass("liclickc").siblings().removeClass("liclickc");
             $('#mj-categoryCon3>ul:eq('+$(this).index()+')').show().siblings().hide();
         });
+
+		$.ajax({
+             type: "GET",
+             url: "/index/newlist/",
+             dataType: "json",
+             success: function(data){
+				var page = '';
+				for(i=0; i<data['page'].length;i++){
+					page += '<li><a href="' + data['page'][i]['url'] + '" target="_blank">' + data['page'][i]['title'] + '</a></li>';
+				}
+				$("#news_page").html(page);
+
+				
+				var faq = '';
+				for(i=0; i<data['faq'].length;i++){
+					faq += '<li><a href="' + data['faq'][i]['url'] + '" target="_blank">' + data['faq'][i]['title'] + '</a></li>';
+				}
+				$("#news_faq").html(faq);
+
+			   //新闻滚动
+			   jQuery(".ms-noticeList").slide({ mainCell:".mj-uli", effect:"topLoop",autoPlay:true, delayTime:1000});
+				
+			}
+         });
 
     });
 
