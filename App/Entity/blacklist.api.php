@@ -9,12 +9,12 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class ApproveApi extends Entity
+class BlacklistApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'approve';
+	public $tableKey = 'blacklist';
 
 	/**
 	 * 数据表主键

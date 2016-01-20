@@ -9,7 +9,7 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class ProposerNewApi extends Entity
+class ProposernewApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]

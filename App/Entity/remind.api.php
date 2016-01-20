@@ -9,12 +9,12 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class TrackApi extends Entity
+class RemindApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'track';
+	public $tableKey = 'remind';
 
 	/**
 	 * 数据表主键

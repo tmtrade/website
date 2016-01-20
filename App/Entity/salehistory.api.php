@@ -9,12 +9,12 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class BuyDealApi extends Entity
+class SaleHistoryApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'buyDeal';
+	public $tableKey = 'saleHistory';
 
 	/**
 	 * 数据表主键

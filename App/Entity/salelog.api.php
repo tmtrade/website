@@ -9,12 +9,12 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class NoteApi extends Entity
+class SaleLogApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'note';
+	public $tableKey = 'saleLog';
 
 	/**
 	 * 数据表主键

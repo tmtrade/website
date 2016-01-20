@@ -5,20 +5,20 @@
  +------------------------------------------------------------------------------
  * @mobile	13183857698
  * @qq		78252859
- * @author  vomsgid <lkf5_303@163.com>
+ * @author  void <lkf5_303@163.com>
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class MessageApi extends Entity
+class PhoneApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'message';
+	public $tableKey = 'phone';
 
 	/**
 	 * 数据表主键
 	 */
-	public $pk       = 'msgid';
+	public $pk       = 'id';
 }
 ?>

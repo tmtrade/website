@@ -9,12 +9,12 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class NoticeTypeApi extends Entity
+class SaleTminfoApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'noticeType';
+	public $tableKey = 'saleTminfo';
 
 	/**
 	 * 数据表主键

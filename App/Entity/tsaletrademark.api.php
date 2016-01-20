@@ -9,12 +9,12 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class NoticeApi extends Entity
+class TsaleTrademarkApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'notice';
+	public $tableKey = 'tsaleTrademark';
 
 	/**
 	 * 数据表主键

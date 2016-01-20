@@ -9,12 +9,12 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class DealApi extends Entity
+class SaleContactApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'deal';
+	public $tableKey = 'saleContact';
 
 	/**
 	 * 数据表主键
