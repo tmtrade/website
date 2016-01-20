@@ -1,6 +1,17 @@
+body ::selection {
+    color:#FFFFFF;
+    background-color:#00BC00;
+    text-shadow:none;
+}
+body ::-moz-selection {
+    color:#FFFFFF;
+    background-color:#00BC00;
+    text-shadow:none;
+}
+
 .body {
     background: #aad2e2;
-	font-family:"微软雅黑"
+	font-family:"微软雅黑";
 }
 
 .wrap {
@@ -100,24 +111,44 @@
     width: 380px;
     height: 46px;
     border: 1px solid #dadada;
-    border-radius: 25px;
-    background: #fff;
+	background: #fff;
     margin-top: 10px;
     box-shadow: 0 0 2px #000;
     position: relative;
-
+    -moz-border-radius: 25px; 
+   -webkit-border-radius: 25px; 
+   border-radius: 25px;  
+	z-index:2;
+	 behavior: url(../images/ie-css3.htc);
 }
 .error {
-    position: absolute;
-    background: url("../images/error.png") no-repeat;
-    width: 260px;
+    position: absolute;  
+	background:#fff3bc url(../images/error-icn.png) no-repeat 15px 11px;
+	border-image:url(../images/error-ic2.png) 30 30 round;
+	border-radius:100px;
+	-moz-border-radius:100px; 
     height: 38px;
     font-size: 12px;
-    color: #f60;
-    
-    line-height: 44px;
+    color: #f60;  
+    line-height: 38px;
     text-indent: 40px;
+	padding-right:12px;
+	top: 58px;
     display: none;
+	
+	*+left:0px;
+}
+
+.error:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff3bc;
+    position: absolute;
+    top: -8px;
+    left: 22px;
 }
 
 .text {
@@ -131,6 +162,11 @@
     text-indent: 24px;
     font-size: 14px;
     color: #999;
+	
+	
+	*+margin-top:15px;
+	*+padding-left:10px;
+	*+text-indent:4px;
     /*font-family: "Microsoft YaHei";*/
 }
 
@@ -162,7 +198,7 @@
 
 .head-form p {
     font-size: 12px;
-    margin-top: 20px;
+    margin-top:20px;
     color: #fff;
     font-weight: normal;
     margin-left: 10px;
@@ -178,7 +214,7 @@
 
 .classify span {
     cursor: pointer;
-    color: #bbb;
+    color: #666;
     font-size: 14px;
 }
 
@@ -194,8 +230,8 @@
     border: 1px solid #dadada;
     margin-left: -300px;
     position: relative;
-    background: #fff;
-    width: 560px;
+    background-color: #ffffff;
+   /* width: 560px;*/
     z-index: 1000;
     font-size: 0;
     border-radius: 10px;
@@ -226,7 +262,8 @@
     line-height: 40px;
     text-align: center;
     cursor: pointer;
-    color: #666;
+    color: #666;	
+	*+float:left;
 }
 
 .classify li:hover {
@@ -441,6 +478,10 @@
     width: 86px;
     height: 86px;
     border-radius: 50%;
+	border-radius-top:100px;
+	border-radius-left:100px;
+	border-radius-right:100px;
+	border-radius-bottom:100px;
     text-align: center;
     background: #fff;
     color: #71b300;
@@ -450,7 +491,7 @@
 .cicle span strong {
     display: block;
     font-size: 32px;
-    margin-top: 15px;
+    margin-top:5px;
     font-family: "Arial";
     font-weight: normal;
 
@@ -627,6 +668,7 @@
 
 .ul {
     font-size: 0;
+
 }
 
 .ul .red {
@@ -642,18 +684,30 @@
     display: inline-block;
     position: relative;
     text-align: center;
+	*+text-align: center;
     width: 81px;
     height: 81px;
-    margin: 30px 15px;
+    margin: 30px 15px;	
     background: url("../images/y-g.png") no-repeat;
     border-radius: 50%;
+	*display:block;
+	*+float:left;
+	*+margin-left:10px;
+	*+margin-top:30px;
+	
+	
+	
 }
 
 .ul li img {
+    display:inline-block;
     width: 72px;
-    position: absolute;
-    left: 9px;
-    top: 9px;
+  /*  position: absolute;
+    left: 9px;*/
+   /* top: 9px;
+	*+left:-9px;*/
+
+	
 }
 
 .ul div {
