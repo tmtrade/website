@@ -10,9 +10,9 @@
  */
 class IndexAction extends AppAction
 {
-	// public $caches  	= array('index');
-	// public $cacheId  	= 'redis';
-	// public $expire  	= 36000;
+	public $caches  	= array('index');
+	public $cacheId  	= 'redis';
+	public $expire  	= 3600;
 
 	public function index()
 	{
