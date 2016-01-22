@@ -10,17 +10,20 @@
  */
 class IndexAction extends AppAction
 {
+	public $caches  	= array('index');
+	public $cacheId  	= 'redis';
+	public $expire  	= 36000;
+
 	public function index()
 	{
-		
 		//天猫
 		$paramTM = array('platform' => 2,'label' => '4');
-		$dataTM = $this->load('sale')->getSaleList($paramTM,8);
+		$dataTM = $this->load('internal')->getSaleList($paramTM,8);
 		//京东
 		$notIdArr = $dataTM['notId'];
 		$paramJD = array('platform' => 1,'label' => '4');
 		if (!empty($dataTM['notId'])) $paramJD['notId']    = $notIdArr;
-		$dataJD = $this->load('sale')->getSaleList($paramJD,8);
+		$dataJD = $this->load('internal')->getSaleList($paramJD,8);
 		
 		//大型超市
 		if($notIdArr && $dataJD['notId']){
@@ -30,17 +33,17 @@ class IndexAction extends AppAction
 		}
 		$paramDXCS = array('platform' => 7,'label' => '4');
 		if (!empty($notIdArr)) $paramDXCS['notId'] = $notIdArr;
-		$dataDXCS = $this->load('sale')->getSaleList($paramDXCS,8);
+		$dataDXCS = $this->load('internal')->getSaleList($paramDXCS,8);
 		
 		//潜力
 		$paramQL['label'] = "2";
-		$dataQL = $this->load('sale')->getSaleList($paramQL,8);
+		$dataQL = $this->load('internal')->getSaleList($paramQL,8);
 		
 		//精品
 		$paramJP['label'] = array('1','2');
 		$notIdArrQL = $dataQL['notId'];
 		if (!empty($dataQL['notId'])) $paramJP['notId'] = $notIdArrQL;
-		$dataJP = $this->load('sale')->getSaleList($paramJP,8);
+		$dataJP = $this->load('internal')->getSaleList($paramJP,8);
 
 		//特色
 		if($notIdArrQL && $dataJP['notId']){
@@ -50,7 +53,7 @@ class IndexAction extends AppAction
 		}
 		$paramTS['label'] = array('3','2');
 		if (!empty($notIdArrQL)) $paramTS['notId'] = $notIdArrQL;
-		$dataTS = $this->load('sale')->getSaleList($paramTS,8);
+		$dataTS = $this->load('internal')->getSaleList($paramTS,8);
 		
 		//最新购买需求
 		$buyInfo = $this->load('buy')->getNewsBuy(10);
@@ -63,6 +66,10 @@ class IndexAction extends AppAction
 			'isBargain' => '2',
 			);
 		$offprice	= $this->load('search')->getSaleList($params, 0, 4);
+		$news['page']	= $this->load('faq')->newsList(50, 0, 5);
+		$news['faq']	= $this->load('faq')->newsList(45, 0, 5);
+		$news['link']	= $this->load('faq')->newsList(47, 0, 10);
+
 		$this->set('offpriceList', $this->load('sale')->getIndexOffprice());
 		
 		$this->set('dataTM',$dataTM);
@@ -72,6 +79,7 @@ class IndexAction extends AppAction
 		$this->set('dataJP',$dataJP);
 		$this->set('dataTS',$dataTS);
 		$this->set('classes',C('CLASSES'));
+		$this->set('news',$news);
 		$this->display();
 	}
 

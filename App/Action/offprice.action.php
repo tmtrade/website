@@ -12,7 +12,7 @@ class OffpriceAction extends AppAction
 {
     public $pageTitle   = '特价商标 - 一只蝉';
     private $_number    = 20;
-    private $_col       = array('id', 'tid', 'number', 'class', 'name', 'guideprice', 'salePrice');
+    private $_col       = array('id', 'tid', 'number', 'class', 'name', 'price', 'salePrice');
 
 
     public function index()
@@ -36,13 +36,13 @@ class OffpriceAction extends AppAction
         $params = array(
             'class'     => $class,
             'group'     => $group,
-            'isBargain' => '2',//这次不上
+            'isOffprice' => '1',
             'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
             'types'     => $type,
             'sblength'  => $number,
             );
         $res            = $this->load('search')->getSaleList($params, $start, $this->_number, $this->_col);
-        $res['rows']    = $this->getOffpriceList($res['rows']);
+        //$res['rows']    = $this->getOffpriceList($res['rows']);
         $strArr         = $this->getFormData();
         $whereStr       = http_build_query($strArr);
 		
@@ -73,27 +73,14 @@ class OffpriceAction extends AppAction
         $params = array(
             'class'     => $class,
             'group'     => $group,
-            'isBargain' => '2',//这次不上
+            'isOffprice' => '1',
             'platform'  => $platform == 99 ? 0 : $platform,//99自营为全部0
             'types'     => $type,
             'sblength'  => $number,
             );
         $list           = $this->load('search')->getSaleList($params, $start, $this->_number, $this->_col);
-        $list['rows']   = $this->getOffpriceList($list['rows']);
         $this->set('searchList', empty($list['rows']) ? array() : $list['rows']);
         $this->display();
-    }
-
-    private function getOffpriceList($data)
-    {
-        if ( empty($data) ) return array();
-        foreach ($data as $k => $v) {
-            $img        = $this->load('saletrademark')->getOffpriceImg($v['id']);
-            $imgUrl    = empty($img['bzpic']) ? $img['tjpic'] : $img['bzpic'];
-
-            $data[$k]['imgUrl'] = empty($imgUrl) ? $v['imgUrl'] : TRADE_URL.$imgUrl;
-        }
-        return $data;
     }
 
 }

@@ -10,14 +10,10 @@ class BuyModule extends AppModule
 	* 引用业务模型
 	*/
 	public $models = array(
-		'buy'			=> 'buy',
-        'temp'          => 'tempbuy',
-		'sale'			=> 'sale',
-        'member'		=> 'member',
-		'track'			=> 'track',
-		'buydeal'		=> 'buydeal',
-		'history'		=> 'history',
-		'saletrademark' => 'saletrademark',
+		'buy'			=> 'tbuy',
+        'temp'          => 'ttempbuy',
+		'sale'			=> 'tsale',
+		'saletrademark' => 'tsaletrademark',
 	);
 
     /**
@@ -150,30 +146,6 @@ class BuyModule extends AppModule
     {
         return $this->import("buy")->create($data);
     }
-
-	/**
-     * 保存交易详情
-     * @author	martin
-     * @since	2015-08-04
-     *
-     * @access	public
-     * @param	array 	$data	    页面提交信息
-     * @param	array	$item		求购商标列表
-     * @param	array	$user		用户信息
-     * @return	void
-     */	
-	public function saveSaleInfo($deal,$buyId)
-	{
-		$c['eq']		= array('buyId' => $buyId,'status' => 1);
-		$count			= $this->import("buydeal")->count($c);
-		if(empty($count)){
-			$bool		= $this->import("buydeal")->create($deal);
-		}else{
-			$d['eq']	= array('buyId' => $buyId, 'status' => 1);
-			$bool		= $this->import("buydeal")->modify($deal, $d);
-		}
-		return $bool;
-	}
 	
 	/**
      * 最新购买需求

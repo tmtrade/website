@@ -6,7 +6,7 @@
 //定义商标详情规则
 $rules[] = array(
     '#/d-#',
-    array('mod' => 'trademark', 'action' => 'view'),
+    array('mod' => 'detail', 'action' => 'view'),
     array(
         'd-view' => '#((\d+-)([\w_-])*).html#',
         ),

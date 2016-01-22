@@ -75,7 +75,7 @@ class FaqModule extends AppModule
 		if(!empty($id)){
 			$param['id'] = $id;
 		}
-		$client 	= new Yar_client( C('WM_HOST') .  $actionName);
+		$client 	= new Yar_client( WM_HOST .  $actionName);
 		$data 		= $client->$funName($param);
 		if(!empty($data['rows'])){
 			$list = $this->getList($data['rows'],'cfdt');

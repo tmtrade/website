@@ -5,7 +5,7 @@ class TempModule extends AppModule
 	* 引用业务模型
 	*/
 	public $models = array(
-        'user'      => 'tempuser',
+        'user'      => 'ttempuser',
 	);
 
     /**

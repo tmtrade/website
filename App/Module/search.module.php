@@ -4,9 +4,9 @@
  *
  * 快速筛选出商标信息，主要从出售信息列表中搜索数据，次要从商标库里搜索数据
  * 
- * @package	Module
- * @author	Xuni
- * @since	2015-11-09
+ * @package Module
+ * @author  Xuni
+ * @since   2015-11-09
  */
 class SearchModule extends AppModule
 {
@@ -16,38 +16,38 @@ class SearchModule extends AppModule
     public $models = array(
         'sale'      => 'sale',
         'second'    => 'secondStatus',
-		 'group' => 'group',
+        'group'     => 'group',
     );
-	
-	//获取查询的TITLE
-	public function getTitle($data)
-	{	
-		$titleArr  = array();
-		if(!empty($data['class'])){
-			$titleArr[] = $data['class']."类";
-		}
-		if(!empty($data['group'])){
-			$titleArr[] = $this->load('group')->getGroupName($data['group']);
-		}
-		if(!empty($data['types'])){
-			$typeconfig	= C('TYPES');
-			$titleArr[] = $typeconfig[$data['types']];
-		}
-		if(!empty($data['sblength'])){
-			$sbconfig	= C('SBNUMBER');
-			$titleArr[] = $sbconfig[$data['sblength']];
-		}
-		if(!empty($data['platform'])){
-			$sbplatform	= C('PLATFORM_IN');
-			$titleArr[] = $sbplatform[$data['platform']];
-		}
-		if(!empty($data['keyword'])){
-			$keyword = "";
-			$titleArr[] = $data['keyword'];
-		}
-		$titleArr[] = "商标转让|买卖|交易 – 一只蝉";
-		return implode("_", $titleArr);
-	}
+    
+    //获取查询的TITLE
+    public function getTitle($data)
+    {   
+        $titleArr  = array();
+        if(!empty($data['class'])){
+            $titleArr[] = $data['class']."类";
+        }
+        if(!empty($data['group'])){
+            $titleArr[] = $this->load('group')->getGroupName($data['group']);
+        }
+        if(!empty($data['types'])){
+            $typeconfig = C('TYPES');
+            $titleArr[] = $typeconfig[$data['types']];
+        }
+        if(!empty($data['sblength'])){
+            $sbconfig   = C('SBNUMBER');
+            $titleArr[] = $sbconfig[$data['sblength']];
+        }
+        if(!empty($data['platform'])){
+            $sbplatform = C('PLATFORM_IN');
+            $titleArr[] = $sbplatform[$data['platform']];
+        }
+        if(!empty($data['keyword'])){
+            $keyword = "";
+            $titleArr[] = $data['keyword'];
+        }
+        $titleArr[] = "商标转让|买卖|交易 – 一只蝉";
+        return implode("_", $titleArr);
+    }
 
     /**
      * 快速筛选结果
@@ -89,12 +89,12 @@ class SearchModule extends AppModule
     public function getSaleList($params, $start=0, $limit=30, $col=array())
     {
         if ( !empty($params['keyword']) ){
-            $r['raw'] = " area = 1 and tid > 0 and (`name` LIKE '%".$params['keyword']."%' OR `number` = '".$params['keyword']."') ";
+            $r['raw'] = " tid > 0 and (`name` LIKE '%".$params['keyword']."%' OR `number` = '".$params['keyword']."') ";
         }else{
-            $r['raw'] = " area = 1 and tid > 0 ";
+            $r['raw'] = " tid > 0 ";
         }
         if ( !empty($params['class']) ){
-            $r['eq'] = array('class'=>$params['class']);
+            $r['ft']['class'] = $params['class'];
         }
         if ( !empty($params['group']) ){
             $r['ft']['group'] = $params['group'];
@@ -106,21 +106,27 @@ class SearchModule extends AppModule
             $r['ft']['label'] = $params['label'];
         }
         if ( !empty($params['types']) ){
-            $r['ft']['types'] = $params['types'];
+            $r['ft']['type'] = $params['types'];
         }
         if ( !empty($params['sblength']) ){
-            $r['ft']['sblength'] = $params['sblength'];
+            $r['ft']['length'] = $params['sblength'];
         }
         //这次不上
-        if ( !empty($params['isBargain']) ){
-            //$r['eq']['isBargain'] = $params['isBargain'];
-            $_raw_    = ' `salePrice` > 0 and (`salePriceDate` = 0 OR `salePriceDate` > unix_timestamp(now())) ';
-            $r['raw'] = empty($r['raw']) ? $_raw_ : $r['raw'].' and '.$_raw_ ;
+        if ( !empty($params['isOffprice']) ){
+            $_raw_    = ' `priceType` = 1 AND `isOffprice` = 1 AND (`salePriceDate` = 0 OR `salePriceDate` > unix_timestamp(now())) ';
+            $r['raw'] = empty($r['raw']) ? $_raw_ : $r['raw'].' AND '.$_raw_ ;
         }
         if ( !empty($params['saleType']) ){
-            $r['eq']['saleType'] = $params['saleType'];
+            if ( $params['saleType'] == 3 ){
+                $r['eq']['isSale']      = 1;
+                $r['eq']['isLicense']   = 1;
+            }elseif( $params['saleType'] == 2 ){
+                $r['eq']['isLicense'] = 1;
+            }elseif( $params['saleType'] == 1 ){
+                $r['eq']['isSale'] = 1;
+            }
         }
-        $r['group'] = array('tid'=>'asc');
+        //$r['group'] = array('tid'=>'asc');
         $r['index'] = array($start, $limit);
         if ( empty($col) ){
             $r['col']   = array('id', 'tid', 'number', 'class', 'name');
@@ -128,7 +134,7 @@ class SearchModule extends AppModule
             $r['col']   = $col;
         }
         $r['order'] = array('isTop' => 'desc','date'=>'desc');
-        $r['notIn'] = array('status'=>array(2,3,4,6));
+        $r['eq']['status'] = 1;
 
         $count  = $this->import('sale')->count($r);
         $res    = $this->import('sale')->find($r);
@@ -312,48 +318,34 @@ class SearchModule extends AppModule
     {
         $data['isOffprice'] = false;
         $data['isBest']     = false;
-        $data['isLicence']  = false;
+        $data['isLicense']  = false;
         $data['isApprove']  = false;
 
         if ( empty($data['tid']) ) return $data;
-		
-		if ( $data['id'] ){
-			$img	= $this->load('saletrademark')->getOffpriceImg($data['id']);
-            $imgUrl	= empty($img['bzpic']) ? $img['tjpic'] : $img['bzpic'];
-			if ( empty($imgUrl) ) {
-				$data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
-			}else{
-				$data['imgUrl'] = TRADE_URL.$imgUrl;
-			}
-		}else{
-			$data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
-		}
         
-        $r['limit'] = 100;
-        $r['eq'] = array(
-            'area'  => 1,
-            'tid'   => $data['tid'],
-        );
-        $r['notIn']   = array('status'=>array(2,3,4,6));
-        $res = $this->import('sale')->find($r);
-        if ( empty($res) ) return $data;
-        
-        foreach ($res as $k => $v) {
-            if ( !$data['isOffprice'] && $v['salePrice'] > 0 ){
-                $data['isOffprice'] = true;
-            }
-            if ( !$data['isBest'] && strpos($v['label'], '1') !== false ){
-                $data['isBest'] = true;
-            }
-            if ( !$data['isLicence'] && $v['saleType'] == 2 ){
-                $data['isLicence'] = true;
-            }
-            if ( !$data['isApprove'] && $v['approveStatus'] == 2){
-                $data['isApprove'] = true;
-            }
+        if ( $data['id'] ){
+            $data['imgUrl'] = $this->load('internal')->getViewImg($data['id']);
+        }else{
+            $data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
         }
+        
+        if ( empty($data['id']) ) return $data;
+
+        $sale = $this->load('internal')->getSaleInfo($data['id'], 0, 0);
+        if ( empty($sale) ) return $data;
+        
+        if ( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] >= time()) ){
+            $data['isOffprice'] = true;
+        }
+        if ( strpos($sale['label'], '1') !== false ){
+            $data['isBest'] = true;
+        }
+        if ( $sale['isLicense'] == 1 ){
+            $data['isLicense'] = true;
+        }
+
         return $data;
     }
-	
+    
 }
 ?>

@@ -196,7 +196,7 @@
                             <div class="mj-imglB">
                                 <p title="<?=$v['name']?>"><?=mb_substr($v['name'],0,10,'utf8')?>&nbsp;&nbsp;<?=$CLASSES[$v['class']]?></p>
                                  <span class="mj-imgspan"><label><strong>
-                                 <? if ($v['guideprice'] <= $v['salePrice']){echo '10';}else{$zk = (($v['salePrice'])/($v['guideprice']))*10;echo number_format($zk,1);}?>
+                                 <? if ($v['price'] <= $v['salePrice']){echo '10';}else{$zk = (($v['salePrice'])/($v['price']))*10;echo number_format($zk,1);}?>
                                  </strong>折</label> <b><em>￥</em><em><?=$v['salePrice']?></em></b></span>
                             </div>
                         </a>
@@ -240,7 +240,7 @@
     var _has        = "<?=$has?>";
     var _class      = "<?=$c?>";
     var _group      = "<?=$g?>";
-	//var _kw         = "<?=$kw?>";
+	var _kw         = "";
 	var _sT			= "<?=$t?>"; //商标类型，（中文，英文、、、）
     var _sN			= "<?=$sn?>";//商标名称长度，（一个中文或字母、、、）
 	var _plat		= "<?=$p?>"; //入驻平台，（天猫，京东、、、）
@@ -282,7 +282,7 @@
 	$('.mj-laBtn').click(function(){
 		var _kw = $('#keywords').val();
 		var obj = new objURL('/?'+_whereStr);
-		obj.set('kw',_kw==0?'':$.trim(_kw));
+		obj.set('kw',_kw==''?'':$.trim(_kw));
 		obj.set('c', _class==0?'':_class);
 		obj.set('g', _group==0?'':_group);
         obj.set('p', _plat==0?'':_plat);
@@ -319,7 +319,7 @@
 				break;
 		}
 		var obj = new objURL('/?'+_whereStr);
-		obj.set('kw',_kw==0?'':_kw);
+		obj.set('kw',_kw==''?'':_kw);
 		obj.set('c', _class==0?'':_class);
 		obj.set('g', _group==0?'':_group);
         obj.set('p', _plat==0?'':_plat);
@@ -364,7 +364,7 @@
 	$('#sSubmit').click(function(){
 		var _kw = $('#keywords').val();
 		var obj = new objURL('/?'+_whereStr);
-		obj.set('kw',_kw==0?'':$.trim(_kw));
+		obj.set('kw',_kw==''?'':$.trim(_kw));
 		obj.set('c', _class==0?'':_class);
 		obj.set('g', _group==0?'':_group);
         obj.set('p', _plat==0?'':_plat);
