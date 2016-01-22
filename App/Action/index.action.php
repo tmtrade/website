@@ -10,9 +10,9 @@
  */
 class IndexAction extends AppAction
 {
-	public $caches  	= array('index');
-	public $cacheId  	= 'redis';
-	public $expire  	= 36000;
+	// public $caches  	= array('index');
+	// public $cacheId  	= 'redis';
+	// public $expire  	= 36000;
 
 	public function index()
 	{
@@ -70,7 +70,7 @@ class IndexAction extends AppAction
 		$news['faq']	= $this->load('faq')->newsList(45, 0, 5);
 		$news['link']	= $this->load('faq')->newsList(47, 0, 10);
 
-		$this->set('offpriceList', $this->load('sale')->getIndexOffprice());
+		$this->set('offpriceList', $this->load('internal')->getIndexOffprice());
 		
 		$this->set('dataTM',$dataTM);
 		$this->set('dataJD',$dataJD);
