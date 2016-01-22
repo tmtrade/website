@@ -92,7 +92,6 @@ class InternalModule extends AppModule
 			$data['rows'][$k]['imgurl'] = $this->getViewImg($v['id']); 
 			$data['rows'][$k]['url']    = "/d-".$v['tid']."-".$v['class'].".html"; 
 			$data['rows'][$k]['_name']   = mbSub($v['name'],0,4); 
-			//$data['rows'][$k]['classes']  = isset( $classTitle[$v['class']] ) ? $this->classes[$v['class']] : $v['class'];
 			
 			array_push($data['notId'], $v['id']);
         }
@@ -169,7 +168,90 @@ class InternalModule extends AppModule
         return $res['id'];
     }
 
+    //判断联系人信息是否存在
+    public function existContact($number, $userId, $phone)
+    {
+        if ( empty($number) ) return false;
 
-	
+        $r['eq'] = array('number'=>$number);
+        if ( $userId > 0 ){
+            $r['eq']['userId'] = $userId;
+        }
+        if ( !empty($phone) ){
+            $r['eq']['phone'] = $phone;
+        }
+        $count = $this->import('contact')->count($r);
+        return ($count > 0) ? true : false;
+    }
+
+	//打包新增出售（走事务）
+    public function addAll($data)
+    {
+        if ( empty($data) || empty($data['sale']) || empty($data['saleTminfo']) || empty($data['saleContact']) ){
+            return false;
+        }
+        $sale       = $data['sale'];
+        $tminfo     = $data['saleTminfo'];
+        $contact    = $data['saleContact'];
+
+        $this->begin('sale');
+        $saleId = $this->addSale($sale);
+        if ( $saleId <= 0 ) {
+            $this->rollBack('sale');
+            return false;
+        }
+        $tminfoId   = $this->addTminfo($tminfo, $saleId);//添加包装信息
+        $contactId  = $this->addContact($contact, $saleId);//添加联系人
+        $black      = $this->load('blacklist')->setBlack($sale['number']);//加入黑名单
+        if ( $tminfoId && $contactId && $black ) {
+            return $this->commit('sale');
+        } 
+        $this->rollBack('sale');
+        return false;
+    }
+
+    //添加出售基础信息
+    protected function addSale($data)
+    {
+        if ( $this->existSale($data['number']) ) return false;
+
+        return $this->import('sale')->create($data);
+    }
+
+    //添加商标基础信息
+    protected function addTminfo($data, $saleId)
+    {
+        if ( $this->existTminfo($data['number']) ) return false;
+
+        $data['saleId'] = $saleId;
+        return $this->import('tminfo')->create($data);
+    }
+
+    //添加出售联系人信息（可多个）
+    public function addContact($data, $saleId)
+    {
+        //判断是否二维数组
+        if ( is_array(current($data)) ){
+            foreach ($data as $k => $v) {
+                $res = $this->addContact($v, $saleId);
+                if ( !$res ) return false;
+            }
+            return $res;
+        }        
+        $data['saleId'] = $saleId;
+        return $this->import('contact')->create($data);
+    }
+
+    //判断是否商标包装信息是否存在
+    public function existTminfo($number)
+    {
+        if ( empty($number) ) return false;
+        $r['eq'] = array('number'=>$number);
+        $res = $this->import('tminfo')->find($r);
+        if ( empty($res) ) return false;
+        return true;
+    }
+
+    
 }
 ?>

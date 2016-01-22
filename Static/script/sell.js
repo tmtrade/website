@@ -44,10 +44,11 @@ $(function(){
 			$.ajax({
 				url : '/sell/getselldata/',
 				data : {number:_val},
-				method: 'post'
+				method: 'post',
+				dataType:"json",
 			}).done(function(data){
-				var obj = eval('(' + data + ')');
-				if(obj == ''){
+				var obj = data;
+				if(obj['status'] == '2'){
 					tip.html('<i class="us-icon uj_icon44"></i>商标信息不存在,请重新填写');
 					tip.show();
 					table.hide();
@@ -251,15 +252,12 @@ function addSell(){
 
 			if (data.state == 1){
 				sellok(data);
-				// }else if (data.state == -2){
-				// str = "商标不存在";
-				// sellNo(str);
-				// }else if (data.state == -3){
-				// str = "提交的数据不正确";
-				// sellNo(str);
-				// }else{
-				// str = "操作失败";
-				// sellNo(str);
+			}else if (data.state == -2){
+				var msg = data.msg == undefined ? '提交的数据不正确' : data.msg;
+				sellNo(msg);
+			}else{
+				str = "操作失败，请稍后重试";
+				sellNo(str);
 			}
 		}
 	});
@@ -281,6 +279,7 @@ function sellok(data){
 	$('.allsell').html(data['all']);
 	$('.oldsell').html(data['old']);
 	$('.newsell').html(data['num']);
+	$('.errorell').html(data['error']);
 	var obj ;
 	if(data['old'] == 0){ //全部是新的
 		obj = $("#mj-submitok");
@@ -293,7 +292,7 @@ function sellok(data){
 		type: 1,
 		title: false,
 		closeBtn: false,
-		skin: 'yourclass',
+		area: ['500px', '240px'],
 		content: obj
 	});
 	$(".mj-close,.mj-boBtn1").bind("click",function(){

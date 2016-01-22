@@ -161,6 +161,7 @@ class TrademarkModule extends AppModule
         $info['imgUrl']         = $this->getImg($number);
         $info['group']          = $this->groupReplace($info['group']);
         $info['status']         = $this->getFirst($info['tid']);
+        $info['second']         = $this->getSecond($info['tid']);
         $proposer               = $this->load('proposer')->getNew($info['pid']);
         $info['proName']        = empty($proposer['cnName']) ? '' : $proposer['cnName'];
 
@@ -288,6 +289,34 @@ class TrademarkModule extends AppModule
         return $Seconds[$second['three_status']];
     }
 
+    /**
+    * 商标二级状态数据列表
+    *
+    * @author   Xuni
+    * @since    2015-10-22
+    *
+    * @access   public
+    * @return   void
+    */
+    public function getSecond($tid)
+    {
+        if ( intval($tid) <= 0 ) return array();
+
+        $r['eq']    = array('tid'=>$tid);
+        $second     = $this->import('second')->find($r);
+
+        if ( empty($second) ) return array();
+
+        $list       = array();
+        $Seconds    = C("SecondStatus");
+        foreach (range(1, 28) as $v) {
+            $key = 'status'.$v;
+            if ($second[$key] == 1){
+                $list[$v] = $Seconds[$v];
+            }
+        }
+        return $list;
+    }
 
     /**
     * 通过商标号获取商标信息(多条数据)

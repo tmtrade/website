@@ -9,7 +9,7 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class SaleApi extends BaseCacheApi
+class SaleApi extends Entity//BaseCacheApi
 {
 	/**
 	 * 数据表键[表的唯一标识]
@@ -24,11 +24,11 @@ class SaleApi extends BaseCacheApi
     /**
      * 缓存组件标识id
      */
-    public $cacheId = 'redis';
+    //public $cacheId = 'redis';
 
     /**
      * 过期时间(60分钟)
      */
-    public $expire  = 600;
+   // public $expire  = 600;
 }
 ?>
