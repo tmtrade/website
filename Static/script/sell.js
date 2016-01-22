@@ -243,13 +243,16 @@ function addSell(){
 	var sid  = $('#sid').val();
 	var area = $('#area').val();
 	var content = $('#addsell').serialize()+"&sid="+sid+"&area="+area;
+	var index = layer.load(1, {
+	    shade: [0.1,'#fff'] //0.1透明度的白色背景
+	});
 	$.ajax({
 		type: "post",
 		url: "/sell/addsell",
 		data: content,
 		dataType: "json",
 		success: function(data){
-
+			layer.close(index);
 			if (data.state == 1){
 				sellok(data);
 			}else if (data.state == -2){
