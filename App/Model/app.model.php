@@ -33,6 +33,19 @@ abstract class AppModel extends Model
 	}
 
 	/**
+	 * 缓存开关
+	 *
+	 * @access	public
+	 * @param	bool	$open	缓存标识(true开启缓存、false关闭缓存)
+	 * @return	void
+	 */
+	public function setCache($open = true)
+	{
+		$this->createEntity($this->entity)->slice($this->slice);
+		$this->createEntity($this->entity)->setCache($open);
+	}
+
+	/**
 	 * 通过主键id获取信息(1条数据)
 	 * @author	void
 	 * @since	2015-01-13
