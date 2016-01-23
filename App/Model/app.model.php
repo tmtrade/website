@@ -41,8 +41,10 @@ abstract class AppModel extends Model
 	 */
 	public function setCache($open = true)
 	{
-		$this->createEntity($this->entity)->slice($this->slice);
-		$this->createEntity($this->entity)->setCache($open);
+		if ( method_exists($this->createEntity($this->entity), 'setCache') ) {
+			$this->createEntity($this->entity)->slice($this->slice);
+			$this->createEntity($this->entity)->setCache($open);
+		}
 	}
 
 	/**
