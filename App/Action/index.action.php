@@ -11,8 +11,8 @@
 class IndexAction extends AppAction
 {
 	//public $caches  	= array('index');
-	public $cacheId  	= 'redis';
-	public $expire  	= 3600;//1小时
+	//public $cacheId  	= 'redis';
+	//public $expire  	= 3600;//1小时
 
 	public function index()
 	{
