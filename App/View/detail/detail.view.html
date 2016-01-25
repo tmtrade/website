@@ -4,18 +4,15 @@
 <script src="<?=StaticDir?>script/layer/layer.js"></script>
 <script src="<?=StaticDir?>script/backcallandtongji.js"></script>
 <!--content start-->
-<input type="hidden" name="sid" id="sid"  />
-<input type="hidden" name="area" id="area" />
 <div class="mj-content_top">
     <div class="w1180 f-clearfix">
         <div class="mj-cTleft fl">
             <div class="mj-cTl_img f-clearfix">
-                <span><img src="<?php if($detail['bzpic']){echo  $detail['bzpic']; }elseif($detail['imgurl']){echo  $detail['imgurl']; }else{echo "/Static/images/img1.png";}?>" alt="" onerror="this.src='http://g.chaofan.wang/guanjia/Public/Images/default_big.jpg'" /></span>
+                <span><img src="<?php if(empty($tips['imgUrl'])){echo $info['imgUrl']; }else{echo $tips['imgUrl'];}?>" alt="" onerror="this.src='<?=$StaticDir?>images/img1.png'" /></span>
                 <p class="mj-tip">
-				<?if ($detail['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
-                <?if ($detail['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
-                <?if ($detail['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
-                <!-- <?if ($detail['isApprove'] == true){?><label class="mj-tZheng" title="已认证">证</label><?};?> -->
+				<?if ($tips['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
+                <?if ($tips['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
+                <?if ($tips['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
                 </p>
             </div>
             <p class="mj-cTl_imgText f-clearfix">
@@ -25,21 +22,21 @@
             <div class="mj-jcimg f-clearfix">
                 <label><img src="<?=StaticDir?>style/img/mj-xiimg1.png" alt=""/></label>
                 <p>独家开发商标风险检测系统<br/>安全检测准确率 <strong>95.93 </strong>%</p>
-                <a href="/anquan/?nid=<?=$data['number']?>&class=<?=$data['class']?>" target="_blank">检测此商标</a>
+                <a href="/anquan/?nid=<?=$info['number']?>&class=<?=$class?>" target="_blank">检测此商标</a>
             </div>
         </div>
         <div class="mj-cTright">
             <ul class="mj-cTr_top">
                 <li>
-                    <b><?=$data['name']?></b>
+                    <b><?=$info['name']?></b>
                     <span class="mj-cTr_top_r">
 					<em>
 					<?php 
 						$str = "申请中";
-						if($detail['status'] == '已注册'){
+						if($info['status'] == '已注册'){
 							echo "<img src='".StaticDir."style/slice/ul-icon1.png' alt=''/>";
 							$str = "注册商标";
-						}elseif($detail['status'] == '申请中'){
+						}elseif($info['status'] == '申请中'){
 							echo "<img src='".StaticDir."style/slice/ul-icon1s.png' alt=''/>";
 						}
 					?>
@@ -47,8 +44,7 @@
 					<span><?=$str?></span>
 					</span>
                 </li>
-				<?php if($detail['valueAnalysis']){ echo "<li>".$detail['valueAnalysis']."</li>";} ?>
-                
+				<?php if($sale['tminfo']['value']){ echo "<li>".$sale['tminfo']['value']."</li>";} ?>                
                 <li class="mj-libs">
                     此商标可入驻：
 					<?php
@@ -107,126 +103,114 @@
                 </li>-->
             </ul>
 			<?php 
-				if($data['status'] && in_array($data['status'],array(2,3,4))){
+				if($isSale==false){
 					echo "<label class=\"mj-xiimg\"></label>";
 				}
 			?>
             <ul class="mj-cTr_center">
                 <li>
-                    <span><label>分类：</label>第<?=$data['class']?>类-<?=$data['classValue']?>  </span>
-                    <span><label>当前群组：</label><?=$data['group']?></span>
+                    <span><label>分类：</label>第<?=$class?>类-<?=$CLASSES[$class]?>  </span>
+                    <span><label>当前群组：</label><?=$info['group']?></span>
                 </li>
                 <li>
-                    <span><label>商品列表：</label><?=$detail['goods']?></span>
+                    <span><label>商品列表：</label><?=$info['goods']?></span>
                 </li>
                 <li>
-                    <span class="mj-spanColorb"><label>申请人 :  </label><a href="<?=GUANJIA_URL?>search/proposerQuery/?t=5&n=<?=$data['proposerId']?>" target="_blank"><?=$detail['proposer']?></a></span>
+                    <span class="mj-spanColorb"><label>申请人 :  </label>
+                    <!-- <a href="<?=GUANJIA_URL?>search/proposerQuery/?t=5&n=<?=$info['pid']?>" target="_blank"> -->
+                    <?=$info['proName']?>
+                   <!--  </a> -->
+                    </span>
                 </li>
             </ul>
-            <div class="mj-cTr_bottom f-clearfix" <?php if($data['status'] && in_array($data['status'],array(2,3,4))){ echo "style=;display:none;'";}?>>
+            <div class="mj-cTr_bottom f-clearfix" <?php if($isSale==false){ echo "style=;display:none;'";}?>>
 				<div class="mj-cTr_bLeft fl">
-				<?php 
-					if(($data['salePrice'] > 0 && $data['salePriceDate'] == 0) ||  ($data['salePrice'] > 0 && $data['salePriceDate'] > time())){
-				?>
-					 <!--价格促销-->
-					<div class="mj-priceTxtt">
+            <!-- 出售中 -->
+            <? if ( !empty($sale) ){ ?>
+                    <!-- 基本信息部分 -->
+                <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ 
+                ?>
+                        <!--特价价格促销-->
+                        <div class="mj-priceTxtt">
+                            <strong>
+                                <em>￥</em>
+                                <span><?=$sale['salePrice']?></span>
+                                <b>&nbsp;元</b>
+                            </strong>
+                            <span>（原价：<b class="mj-priceTxtt_b"><?=$sale['price']?></b> 元)</span>
+                            <br />
+                            <label><?php if($sale['salePriceDate'] > 0){
+                                echo date('Y-m-d H:i',$sale['salePriceDate']);
+                                }else{echo "永久";} ?></label>有效<br />
+                    <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
+                        <!--定价商品-->
+                        <div class="mj-priceTxtt">
+                            <strong>
+                                <em>￥</em>
+                                <span><?=$sale['price']?></span>
+                                <em>.00</em>
+                                <b>&nbsp;元</b>
+                            </strong>
+                            <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
+                    <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
+                        <!--议价商品-->
+                        <div class="mj-priceTxtt">
+                            <strong>
+                                <em>￥</em>
+                                <span>议价</span>
+                                <em></em>
+                                <b>&nbsp;</b>
+                            </strong>
+                            <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
+                    <?}else{?>
+                        <div class="mj-pricebtn"><a href='javascript:goLook();'>查看价格</a></div>
+                    <?}?>
+                    <!--操作部分-->
+                    <? if($baystate == 1){ ?>
+                        <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>;
+                    <? }else{ ?>
+                            <!--特价价格促销-->
+                            <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ 
+                            ?>
+                                <?if($isLogin){ ?>
+                                    <a href='javascript:createOrder(<?=$sale['id']?>);' class="mj-priceTxtt_link" id='addorder' >立即抢购</a>;
+                                <? }else{ ?>
+                                    <a href='javascript:goBuy();' class=\"mj-priceTxtt_link\">立即抢购</a>";
+                                <?} ?>
+                            <!--定价商品-->
+                            <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
+                                    <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我想购买</a></div>
+                            <!--议价商品-->
+                            <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
+                                    <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我有兴趣</a></div>
+                            <?}?>
+                    <?  } ?>
+                    </div>
+            <? }else{ ?>
+            <!-- 来自商标库 -->
+                <? if($isLogin){ ?>
+                    <!--价格-->
+                    <div class="mj-priceTxtt">
                         <strong>
                             <em>￥</em>
-                            <span><?=$data['salePrice']?></span>
-                            <b>&nbsp;元</b>
+                            <span>议价</span>
+                            <em></em>
+                            <b>&nbsp;</b>
                         </strong>
-                        <span>（原价：<b class="mj-priceTxtt_b"><?=$data['guideprice']?></b> 元)</span>
-                        <br /><label><?php if($data['salePriceDate'] > 0){echo date('Y-m-d H:i',$data['salePriceDate']);}else{echo "永久";} ?></label>有效<br />
-						<?php
-						if($baystate == 1){
-							echo "<a href='".MANAGER_URL."buyer/ready/' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
-						}else{
-							if($isLogin){
-								echo "<a href='javascript:createOrder(".$data['id'].");' class=\"mj-priceTxtt_link\" id='addorder' >立即抢购</a>";
-							}else{
-								echo "<a href='javascript:goBuy();' class=\"mj-priceTxtt_link\">立即抢购</a>";
-							}
-						}
-						?>    
+                        <p class="mj-priceTxtt_ie7"></p>
+                        <? if($baystate == 1){ ?>
+                            <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>
+                        <? }else{ ?>
+                            <a href='javascript:createOrderFromTrak();' class="mj-priceTxtt_link" id='addorder'>提交需求</a>
+                        <? } ?>
+                        <br/>
+                        <br/>
+                        <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
                     </div>
-				<?php
-					}else{
-					//
-					if(!$data['date']){ 
-						if($isLogin){
-				?>
-							<!--价格-->
-							<div class="mj-priceTxtt">
-								<strong>
-									<em>￥</em>
-									<span>议价</span>
-									<em></em>
-									<b>&nbsp;</b>
-								</strong>
-                                <p class="mj-priceTxtt_ie7"></p>
-								<?php
-								if($baystate == 1){
-									echo "<a href='".MANAGER_URL."buyer/ready/' class=\"mj-priceTxtt_link\">你已经购买过该商标</a>";
-								}else{
-									echo "<a href='javascript:createOrderFromTrak();' class=\"mj-priceTxtt_link\" id='addorder'>提交需求</a>";
-								}
-								?>
-                                <br/>
-                                <br/>
-                                <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
-							</div>
-				<?php
-						}else{
-							echo "<div class=\"mj-pricebtn\"><p class=\"mj-priceTxtt_ie7\"></p><a href='javascript:goLook();'>我有兴趣</a><br/><br/><p class=\"mj-priceTxtt_ie7\"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p><br></div>";
-						}
-						
-					}else{
-					if($isLogin){//是否登录
-						//if($data['isBargain'] == 2){//商品定价方案为售价
-						if($data['guideprice'] > 0){
-				?>			
-							<!--价格-->
-							<div class="mj-priceTxtt">
-								<strong>
-									<em>￥</em>
-									<span><?=$data['guideprice']?></span>
-									<em>.00</em>
-									<b>&nbsp;元</b>
-								</strong>
-								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
-                                <? if($baystate == 1){ ?>
-                                    <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>
-                                <? }else{ ?>
-                                    <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我想购买</a></div>
-                                <? } ?>
-							</div>
-				<?php	
-						}else{//商品定价方案为义价
-				?>
-					<!--价格-->
-							<div class="mj-priceTxtt">
-								<strong>
-									<em>￥</em>
-									<span>议价</span>
-									<em></em>
-									<b>&nbsp;</b>
-								</strong>
-								<p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
-                                <? if($baystate == 1){ ?>
-                                    <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>
-                                <? }else{ ?>
-                                    <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我有兴趣</a></div>
-                                <? } ?>
-							</div>
-				<?php
-						}
-					}else{
-						echo "<div class=\"mj-pricebtn\"><a href='javascript:goLook();'>查看价格</a></div>";
-					}
-					
-					}
-				}
-				?>
+                <? }else{ ?>
+                    <div class="mj-pricebtn"><p class="mj-priceTxtt_ie7"></p><a href='javascript:goLook();'>我有兴趣</a><br/><br/><p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p><br></div>
+                <? } ?> 
+            <?} ?>	
                 </div>
                 <div class="mj-cTr_bRight fr">
                     <dl>
@@ -314,14 +298,9 @@
             <div class="mj-content_bottom-swtich_content">
                 <div class="edit">
 				<?php
-				
-					$intro = str_replace("/Static/editor/attached/",TRADE_URL."/Static/editor/attached/",$detail['intro']);
-					$introTwo = str_replace("/Static/editor/attached/",TRADE_URL."/Static/editor/attached/",$detail['introTwo']);
+					$intro = str_replace("/Static/editor/attached/",TRADE_URL."/Static/editor/attached/",$sale['tminfo']['intro']);
 					if(!empty($intro)){
 						echo '<div class="intro">'.$intro."</div>";
-					}
-					if(!empty($introTwo)){
-						echo '<div class="intro">'.$introTwo."</div>";
 					}
 				?>
                 </div>
@@ -366,26 +345,23 @@
         <div class="mj-content_bottom-inter">
             <div class="mj-content_bottom-inter_t f-clearfix">
                 <span>或许您还对以下商标感兴趣</span>
-                <a href="/search/index/?c=<?=$data['class']?>">查看更多>></a>
+                <a href="/search/index/?c=<?=$class?>">查看更多>></a>
             </div>
             <div class="mj-imglists">
                 <ul class="f-clearfix">
-					<?php
-						if($tj){
-							foreach($tj['rows'] as $val){
-					?>
+					<? foreach($tj as $val){ ?>
 					<li>
-                        <a href="<?php echo $val['url']?>" class="mj-imglT mj-imglT-detail">
-                            <span><img src="<?php echo $val['imgurl']?>" alt="<?php echo $val['name']?>"></span>
+                        <a href="<?php echo $val['viewUrl']?>" class="mj-imglT mj-imglT-detail">
+                            <span><img src="<?php echo $val['imgUrl']?>" alt="<?php echo $val['name']?>"></span>
+                            <p class="mj-tip">
+                            <?if ($val['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
+                            <?if ($val['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
+                            <?if ($val['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
+                            </p>
                         </a>
-                        <div class="mj-imglB"><?php echo $val['name']?> <?php echo $val['classes']?></div>
+                        <div class="mj-imglB"><?php echo $val['name']?> <?php echo $CLASSES[$val['class']]?></div>
                     </li>
-					<?php
-							
-							}
-						}
-					?>
-                   
+					<? } ?>
                 </ul>
             </div>
         </div>
@@ -490,7 +466,7 @@ function consultation(){
 <script>
 var _isLogin = "<?=$isLogin?>";
 var _mobile  = "<?=$userMobile?>";
-var _saleid  = "<?=$data['id']?>";
+var _saleid  = "<?=$sale['id']?>";
 var _tid     = "<?=$tid?>";
 var baystate = "<?=$baystate?>";
 var buyUrl   = "<?=MANAGER_URL?>buyer/ready/";

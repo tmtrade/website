@@ -261,7 +261,7 @@ class SellAction extends AppAction
 	protected function _addContact($saleId, $number, $data, $key, $userId)
 	{
 		//商标信息
-		$info = $this->load('trademark')->getInfo($number, array('auto as `tid`'));
+		$info = $this->load('trademark')->getTmInfo($number);
         if ( empty($info) || empty($info['tid']) ) return false;
 
 		$contact = array(

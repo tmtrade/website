@@ -20,8 +20,9 @@ class TrademarkModule extends AppModule
     protected $col = array(
         'auto as `tid`', 'id as `number`',
         'trademark as `name`','class',
-        'pid','valid_end','goods','group',
-        'group_concat(distinct class) as `strclass`'
+        'pid','valid_end','group_concat(distinct `goods`) as `goods`',
+        'group_concat(distinct `group` order by `group` asc) as `group`',
+        'group_concat(distinct `class`) as `strclass`'
     );
 
     /**
@@ -127,7 +128,7 @@ class TrademarkModule extends AppModule
     public function getTmPlatform($class)
     {
         $strArr = array();
-        $platform = C("SALE_PLATFORM");
+        $platform = C("PLATFORM_ITEMS");
         if ( is_array($class) ){
             foreach ($class as $c) {
                 $resArr = $this->getTmPlatform($c);
@@ -135,8 +136,7 @@ class TrademarkModule extends AppModule
             }
         }else{
             foreach($platform as $key => $val){
-                $arrVal = explode(",",$val['value']);
-                if(in_array($class,$arrVal)){
+                if(in_array($class, $val)){
                     $strArr[] = $key;  
                 }
             }
@@ -157,13 +157,13 @@ class TrademarkModule extends AppModule
 
         if(empty($info) || empty($info['tid'])) return array();
 
-        $info['class']          = array_filter( explode(',', $info['strclass']) );
-        $info['imgUrl']         = $this->getImg($number);
-        $info['group']          = $this->groupReplace($info['group']);
-        $info['status']         = $this->getFirst($info['tid']);
-        $info['second']         = $this->getSecond($info['tid']);
-        $proposer               = $this->load('proposer')->getNew($info['pid']);
-        $info['proName']        = empty($proposer['cnName']) ? '' : $proposer['cnName'];
+        $info['class']      = array_filter( explode(',', $info['strclass']) );
+        $info['imgUrl']     = $this->getImg($number);
+        $info['group']      = $this->groupReplace($info['group']);
+        $info['status']     = $this->getFirst($info['tid']);
+        $info['second']     = $this->getSecond($info['tid']);;
+        $proposer           = $this->load('proposer')->getNew($info['pid']);
+        $info['proName']    = empty($proposer['cnName']) ? '' : $proposer['cnName'];
 
         return $info;
     }
@@ -241,11 +241,11 @@ class TrademarkModule extends AppModule
     * @access   public
     * @return   void
     */
-    public function getInfo($number, $field = '')
+    public function getInfo($tid, $field = '')
     {
-        if ( intval($number) <= 0 ) return array();
+        if ( intval($tid) <= 0 ) return array();
 
-        $r['eq']    = array('id'=>$number);
+        $r['eq']    = array('auto'=>$tid);
         if ( !empty($field) &&  is_array($field) ){
             $r['col'] = $field;
         }

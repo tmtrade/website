@@ -19,6 +19,7 @@ class PhoneModule extends AppModule
     {
         $r['limit'] = 10000;
         $r['col']   = array('phone');
+        $r['order'] = array('date'=>'desc');
         if ( !empty($not) ) $r['raw'] = " phone != '".$not."' ";
         $res = $this->import('phone')->find($r);
 
@@ -36,6 +37,17 @@ class PhoneModule extends AppModule
         return $list[$randKey];
     }
 
+    public function getSexPhone()
+    {
+        $r['limit'] = 6;
+        $r['col']   = array('phone');
+        $r['order'] = array('date'=>'asc');
+        $res = $this->import('phone')->find($r);
+
+        if ( empty($res) ) return array();
+        $list = arrayColumn($res, 'phone');
+        return $list;
+    }
 
 }
 ?>

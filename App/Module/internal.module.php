@@ -121,7 +121,7 @@ class InternalModule extends AppModule
         $r['eq'] = array(
             'id' => $saleId,
             );
-        $info = $this->import('sale')->find($r);
+        $info = $this->import('sale')->setCache(false)->find($r);
         if ( empty($info) ) return array();
         if ( $contact ) $info['contact']    = $this->getSaleContact($saleId);
         if ( $tminfo ) $info['tminfo']      = $this->getSaleTminfo($saleId);
@@ -153,7 +153,7 @@ class InternalModule extends AppModule
         $r['eq'] = array(
             'saleId' => $saleId,
             );
-        return $this->import('tminfo')->find($r);
+        return $this->import('tminfo')->setCache(false)->find($r);
     }
 
 
@@ -163,7 +163,7 @@ class InternalModule extends AppModule
         if ( empty($number) ) return false;
         $r['eq']    = array('number'=>$number);
         $r['col']   = array('id');
-        $res = $this->import('sale')->find($r);
+        $res = $this->import('sale')->setCache(false)->find($r);
         if ( empty($res) ) return false;
         return $res['id'];
     }
@@ -252,6 +252,25 @@ class InternalModule extends AppModule
         return true;
     }
 
+    //随机获取推荐的商标
+    public function getReferrer($class, $limit, $notin)
+    {
+        if ( empty($class) ) return array();
+        if ( $notin ){
+            $r['notIn'] = array('number'=>array($notin));
+        }
+        $r['ft']   = array('class'=>$class);
+        $total      = $this->import('sale')->count($r);
+        if ( $total <= 0 ) array();
+        if ( $total > $limit ){
+            $rand       = rand(0, $total-$limit);
+            $r['index'] = array($rand, $limit);
+        }else{
+            $r['limit'] = $limit;
+        }
+        $res = $this->import('sale')->find($r);
+        return $res;
+    }
     
 }
 ?>

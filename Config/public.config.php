@@ -241,7 +241,7 @@ $define = array(
         '6'  => '聚美优品',
     ),
     'PLATFORM_URL' => array(
-        '99'  => '/faq/rule/',
+        //'99'  => '/faq/rule/',
         '1'  => '/faq/rule/#r6',
         '2'  => '/faq/rule/#r7',
         '7'  => '/faq/rule/#r1',

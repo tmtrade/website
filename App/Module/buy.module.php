@@ -76,6 +76,19 @@ class BuyModule extends AppModule
         return $this->import('temp')->remove($r);
     }
 
+    //判断用户是否购买过
+    public function isBuy($name, $userId)
+    {
+        $r['eq'] = array(
+            'name'          => $name,
+            'loginUserId'   => $userId,
+        );
+        $r['raw'] = ' status != 4 ';
+        $count = $this->import("buy")->count($r);
+
+        return ($count > 0) ? true : false;
+    }
+
 	/**
      * 通过saleId获取数据
      * @author	Jeany
@@ -105,13 +118,14 @@ class BuyModule extends AppModule
      * @param	array	$data	数组
 	 * @return	array
 	 */
-	public function isExist( $data)
+	public function isExist( $data )
 	{
 		foreach($data as $key => $val){
 			$r['eq'][$key] = $val;
 		}
-        $r['limit']         = 1;
-        $data               = $this->import('buy')->find($r);
+        $r['limit'] = 1;
+        $r['raw']   = ' status != 4 ';
+        $data       = $this->import('buy')->find($r);
 		return $data;
 	}
 

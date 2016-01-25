@@ -30,6 +30,7 @@ abstract class AppModel extends Model
 	 */
 	public function init()
 	{
+		$this->setCache(true);
 	}
 
 	/**
@@ -45,6 +46,7 @@ abstract class AppModel extends Model
 			$this->createEntity($this->entity)->slice($this->slice);
 			$this->createEntity($this->entity)->setCache($open);
 		}
+		return $this->createEntity($this->entity);
 	}
 
 	/**

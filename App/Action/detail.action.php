@@ -26,92 +26,72 @@ class DetailAction extends AppAction
 	{
 		$tag = $this->input('d-view', 'string', '');
 		if ( $tag ){
-			//if ( strpos($tag, '-') === false ) $this->redirect('未找到页面', '/index/error');
-			//list($number, $class) = explode('-', $tag);
 			$number = $tag;
 		}else{
-			//$tid 	= $this->input("tid","int");
-			//$class 	= $this->input("class","int");
 			$number = $this->input("n","string");
 		}
 		$issale = 0;
+		if ( empty($number) || !preg_match('/^[0-9a-zA-Z]+$/',$number) ){
+			$this->redirect('未找到页面1', '/index/error');
+		}
 
-		// if ( $tid <= 0 || $class <= 0 || !in_array($class, range(1, 45)) ){
-		// 	$this->redirect('未找到页面', '/index/error');
-		// }
+		$info 	= $this->load('trademark')->getTmInfo($number);
+		if ( empty($info) ){
+			$this->redirect('未找到页面2', '/index/error');
+		}
 
+		$this->set("platformIn", C('PLATFORM_IN'));
+		$this->set("platformUrl", C('PLATFORM_URL'));
+		$this->set("platformItems", C('PLATFORM_ITEMS'));
 
-		$this->set("platformIn",C('PLATFORM_IN'));
-		$this->set("platformUrl",C('PLATFORM_URL'));
-		$this->set("platformItems",C('PLATFORM_ITEMS'));
-
-		$sale = $this->load('internal')->getSaleInfo($number, 0, 1);
-		if ( empty($sale) ){	
-			
+		$tid 	= $info['tid'];
+		$class 	= current($info['class']);
+		$_class = implode(',', $info['class']);
+		$other 	= $this->load('trademark')->getTmOther($number);//商标其他信息
+		$saleId = $this->load('internal')->existSale($number);//是否出售
+		if ( $saleId <= 0 ){//不是出售信息中的
+			$platform 	= $other['platform'];
+			$contact	= $this->getPhoneName($tid, $class);//获取联系人信息
+			$isSale 	= $this->load('blacklist')->isBlack($number) ? false : true;
+			$tips = $sale = array();
 		}else{
+			$sale 		= $this->load('internal')->getSaleInfo($saleId, 0, 1);
+			$contact['name']	= '婵妹妹';
+			$contact['phone']	= $sale['viewPhone'];
+			$platform 	= explode(',', $sale['platform']);
+			$isSale  	= $sale['status'] == 1 ? true : false;
+			$tips 		= $this->load('search')->getTips($sale);
+		}
 
-		}	
-	
-		//出售列表里面有的数据
-		$data   = $detail = array();
-        $data 	= $this->load("sale")->getDetail($tid,$class,true);
-		/**如果是点击过来不存在出售的商标，那就查询下架商标是否存在**/
-		if(!$data){
-			$data 	= $this->load("sale")->getDetail($tid,$class);
-		}
-		
-		if ( $data ){
-			$detail  		= $this->load("sale")->getTrademarkDetail($data['id'], $tid);
-			$detail['tid'] 	= $data['tid'];
-			$detail 		= $this->load('search')->getTips($detail);
-			$platform		= $this->load("sale")->getPlatform($data);
-		}else{
-			$issale = 1;
-			//原始商标数据里面的数据
-			$info = $this->load('trademark')->trademarks($tid,$class);
-			if($info){
-				$infoDetail = $this->load('trademark')->trademarkDetail($info);
-				$classes 			= C('CLASSES') ;
-				$info['name'] 		= $info['trademark'];
-				$info['classValue'] = $classes[$info['class']];
-				$info['number'] 	= $info['id'];
-				if ( $infoDetail ){
-					$infoDetail['tid'] = $info['auto'];
-					$infoDetail = $this->load('search')->getTips($infoDetail);
-				}
-			}
-		}
-		if ( empty($info)  && empty($data) ){
-			MessageBox::halt('未找到相关数据3！');
-		}
-		$baystate = 0;
-		
+		$title['name'] 	= $info['name'];
+		$title['class']	= $class;
+		$goods 			= current( explode(',', $info['goods']) );
+		//设置页面TITLE
+		$this->set('TITLE', $this->getTitle($title,$goods));
 
 		//读取推荐商标
-		$tj  	= $this->load("sale")->getDetailtj($class,6,$data['tid']);
-		$data  	= empty($data) ? $info : $data;
-		$detail = (empty($data) || empty($detail)) ? $infoDetail : $detail;
+		$refer 	= $this->load("internal")->getReferrer($_class, 6, $number);
+		$tj 	= $this->load('search')->getListTips($refer);
 		
 		//查询订单是否存在
-		if($this->userInfo){
-			$user 		= $this->userInfo;
-			$buyData 	= $this->load("buy")->getDataBySale($data['name'],$data['class'],$user['userId']);
-			$baystate 	= $buyData ? 1 : 0;
+		if($this->isLogin){
+			$baystate = $this->load("buy")->isBuy($info['name'], $this->userId);
+		}else{
+			$baystate = 0;
 		}
-		$title 	= empty($data['trademark']) ? $data['name'] : $data['trademark'];
-		//设置页面TITLE
-		$this->set('TITLE', $this->getTitle($data,$detail['goods']));
+
 		//电话旁边联系人信息
-		$this->set("contact",$this->getPhoneName($tid,$class,$issale)); 
-		$data['group'] = $this->emptyreplace($data['group']);
-		$this->set("info",empty($info)?array():$info);
-		$this->set("data",$data);
-		$this->set("tid",$tid);
-		$this->set("userMobile",$this->userMobile);
-		$this->set("detail",$detail);
-		$this->set("platform",$platform);
-		$this->set("tj",$tj);
-		$this->set("baystate",$baystate);	
+		$this->set("contact", $contact); 
+		$this->set("info", $info);
+		$this->set("sale", $sale);
+		$this->set("tips", $tips);
+		$this->set("tid", $tid);
+		$this->set("class", $class);
+		$this->set("isSale", $isSale);
+		$this->set("userMobile", $this->userMobile);
+		$this->set("platform", $platform);
+		$this->set("tj", $tj);
+		$this->set("baystate", $baystate);
 		$this->display();
 	}
 	
@@ -132,15 +112,14 @@ class DetailAction extends AppAction
 		$sid    = $this->input('sid','string');
 		$sidArea  = $this->input('sidArea','string');
 		
-		if($this->userInfo){
+		if($this->isLogin){
 			//查询商标是否存在
-			$sale = $this->load("sale")->getSaleById($saleid);
+			$sale = $this->load("internal")->getSaleInfo($saleid,0,0);
 			if(!$sale){
 				$result = -4; //商标数据不存在
 				echo $result;
 				exit;
 			}
-			$user = $this->userInfo;
 			if ( empty($phone) ){
 				$_phone = empty($this->userMobile) ? $this->userEmail : $this->userMobile;
 			}else{
@@ -190,8 +169,8 @@ class DetailAction extends AppAction
 		//$saleid = $this->input('saleid','int');
 		//$sale	= $this->load("sale")->getSaleById($saleid);
 		$phone  = $this->input('phone','string');
-		$tid    = $this->input('tid','int');
-		$sale = $this->load("trademark")->getInfo($tid,'name,class');
+		$tid    = $this->input('tid','string');
+		$sale 	= $this->load("trademark")->getInfo($tid,'name,class');
 		
 		if ( empty($phone) ){
 			$_phone = empty($this->userMobile) ? $this->userEmail : $this->userMobile;
@@ -208,7 +187,7 @@ class DetailAction extends AppAction
 			'need'					=> "商标号:".$sale['id'].",类别:".$sale['class'],
 		);
 		
-		if(!empty($this->userId)){
+		if( $this->isLogin ){
 			$isExist['loginUserId'] = $this->userId;
 			$isExist['contact']		= $this->nickname;
 		}else{
@@ -294,24 +273,21 @@ class DetailAction extends AppAction
 	*/ 
 	public function getPhoneName($tid,$class,$issale = 0) 
 	{ 
+		$name = "赵 钱 孙 李 周 吴 郑 王 冯 陈 褚 卫 蒋 沈 韩 杨 朱 秦 尤 许 何 吕 施 张 孔 曹 严 华 金 魏 陶 姜 戚 谢 邹 喻 
+		柏 水 窦 章 云 苏 潘 葛 奚 范 彭 郎 鲁 韦 昌 马 苗 凤 花 方 俞 任 袁 柳 酆 鲍 史 唐 费 廉 岑 薛 雷 贺 倪 汤 刘 母 白 
+		滕 殷 罗 毕 郝 邬 安 常 乐 于 时 傅 皮 卞 齐 康 伍 余 元 卜 顾 孟 平 黄 和 穆 萧 尹 姚 邵 湛 汪 祁 毛 禹 狄 欧阳 慕容  
+		米 贝 明 臧 计 伏 成 戴 谈 宋 茅 庞 熊 纪 舒 屈 项 祝 董 梁 杜 阮 蓝 闵 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 蒲 崔 沙 
+		梅 盛 林 刁 锺 徐 邱 骆 高 夏 蔡 田 樊 胡 凌 霍 虞 万 支 柯 昝 管 卢 莫 经 房 裘 缪 干 解 应 宗 丁 宣 贲 邓";
 		
-		if($issale){
-			$contact['name'] = "蝉妹妹";
-		}else{
-			$name = "赵 钱 孙 李 周 吴 郑 王 冯 陈 褚 卫 蒋 沈 韩 杨 朱 秦 尤 许 何 吕 施 张 孔 曹 严 华 金 魏 陶 姜 戚 谢 邹 喻 
-			柏 水 窦 章 云 苏 潘 葛 奚 范 彭 郎 鲁 韦 昌 马 苗 凤 花 方 俞 任 袁 柳 酆 鲍 史 唐 费 廉 岑 薛 雷 贺 倪 汤 刘 母 白 
-			滕 殷 罗 毕 郝 邬 安 常 乐 于 时 傅 皮 卞 齐 康 伍 余 元 卜 顾 孟 平 黄 和 穆 萧 尹 姚 邵 湛 汪 祁 毛 禹 狄 欧阳 慕容  
-			米 贝 明 臧 计 伏 成 戴 谈 宋 茅 庞 熊 纪 舒 屈 项 祝 董 梁 杜 阮 蓝 闵 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 蒲 崔 沙 
-			梅 盛 林 刁 锺 徐 邱 骆 高 夏 蔡 田 樊 胡 凌 霍 虞 万 支 柯 昝 管 卢 莫 经 房 裘 缪 干 解 应 宗 丁 宣 贲 邓";
-			$lastTid = ceil(substr($tid,-1)/3)*$class;
-			if($class%2==0){$sex=1;}else{$sex=2;}
-			$gender = array(1=>'先生',2=>'女士');
-			$nameArr = explode(" ",$name);
-			$contact['name']  = $nameArr[$lastTid].$gender[$sex];
-		}
-		$phoneArr = array('15811270065','15811378137','15810761501','15811132605','15810113823','15811137365');
-		$phoneid = ceil(substr($tid,-1)/3*2) > 5 ? 5 : ceil(substr($tid,-1)/3*2);
-		$phone = $phoneArr[$phoneid];
+		$lastTid 	= ceil(substr($tid,-1)/3)*$class;
+		$sex 		= ($class % 2 == 0) ? 1 : 2;
+		$gender 	= array(1 => '先生', 2 => '女士');
+		$nameArr 	= explode(" ", $name);
+		$contact['name']  	= $nameArr[$lastTid].$gender[$sex];
+
+		$phoneArr 	= $this->load('phone')->getSexPhone();
+		$phoneid 	= ceil(substr($tid,-1)/3*2) > 5 ? 5 : ceil(substr($tid,-1)/3*2);
+		$phone 		= empty($phoneArr[$phoneid]) ? '' : $phoneArr[$phoneid];
 		$contact['phone'] = $phone;
 		return $contact;
 	}

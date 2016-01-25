@@ -24,7 +24,7 @@ class BlacklistModule extends AppModule
             'trademark_id' => $number
             );
         $r['raw'] = " `isShow` != 1 ";
-        $res = $this->import('second')->find($r);
+        $res = $this->import('second')->setCache(false)->find($r);
         if ( empty($res) ) return false;
         return true;
     }
