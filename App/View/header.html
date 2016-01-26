@@ -34,12 +34,11 @@
             <li>交易损失，全额100%赔付</li>
         </ul>
         <ul class="mj-header_right fr">
-        <? if ($isLogin==true){ ?>
-            <li>
+            <li id="_login_yes">
                 <div class="mj-cols">
                     <!--已登录状态-->
                     <div class="Is_logged">
-                        <a href="javascript:;"><?=$nickname?></a>
+                        <a href="javascript:;" id="_nickname"><?=$nickname?></a>
                         <i class="us-icon uj_icon7"></i>
                         <div class="mj-cols_list">
                             <ul>
@@ -55,8 +54,7 @@
                     </div>
                 </div>
             </li>
-        <?}else{?>
-            <li>
+            <li id="_login_no">
                 <div class="mj-cols">
                     <!--未登录状态-->
                     <span class="Not_logged" style="display: block;">
@@ -65,14 +63,13 @@
                     </span>
                 </div>
             </li>
-            <li class="spacer"></li>
-            <li>
+            <li class="spacer xs_login_"></li>
+            <li class="xs_login_">
                 <div class="mj-cols">
                     <i class="uj_icon3"></i>
                     <a href="<?=MANAGER_URL?>register" target="_blank">注册</a>
                 </div>
             </li>
-        <?}?>
             <li class="spacer"></li>
             <li>
                 <a href="/faq/question/" target="_blank">交易常见问题</a>
@@ -226,7 +223,29 @@
 
 <script type="text/javascript">
     var _manger_url = "<?=MANAGER_URL?>";
+    var _isLogin = false;
+    var _mobile  = "";
+
+    $("#_login_yes").hide();
     $(document).ready(function(){
+        //js加载user
+        $.getJSON('/index/loginInfo/', function(data){
+            if ( data == '' || data == undefined ) return false;
+            if ( data.isLogin ) {
+                $(".xs_login_").hide();
+                $("#_login_no").hide();
+                _isLogin = true;
+                _mobile  = data.userMobile;
+                $("#_nickname").text(data.nickname);
+                $("#_login_yes").show();
+            }else{
+                $("#_login_yes").hide();
+                _isLogin = false;
+                _mobile  = '';
+                $("#_login_no").show();
+                $(".xs_login_").show();
+            }
+        });
         $(".mj-search-submit").click(function (){
             var input_kw = $("input[name='kw']");
             var kw_value = $.trim($("input[name='kw']").val());

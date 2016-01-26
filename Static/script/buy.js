@@ -155,12 +155,16 @@ function addBuy()
     var sid     = $.trim( $("#sid").val() );
     var area    = $.trim( $("#area").val() );
 
+    var index = layer.load(1, {
+        shade: [0.6,'#000000'] //0.1透明度的白色背景
+    });
     $.ajax({
         type: "post",
         url: "/buy/add/",
         data: {mobile:mobile,content:need,name:name,sid:sid,area:area},
         dataType: "json",
         success: function(data){
+            layer.close(index);
             if (data.code == 1){
                 clearBuy();
                 getLayer($('#mj-submitteS'));
@@ -169,6 +173,7 @@ function addBuy()
             }
         },
         error: function(data){
+            layer.close(index);
             getLayer($('#mj-submitteF'));
         }
     });

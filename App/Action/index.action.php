@@ -79,6 +79,18 @@ class IndexAction extends AppAction
 		$this->display();
 	}
 
+	public function loginInfo()
+	{
+		$user = array();
+		if ( $this->isAjax() ){
+			$user['nickname'] 	= $this->nickname;
+			$user['userMobile']	= $this->userMobile;
+			$user['isLogin']	= $this->isLogin;
+			$this->returnAjax($user);
+		}
+		$this->returnAjax(array('isLogin'=>false));
+	}
+
 	public function newlist()	
 	{
 		$news['page']	= $this->load('faq')->newsList(50, 0, 5);

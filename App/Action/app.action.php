@@ -115,6 +115,10 @@ abstract class AppAction extends Action
 		$this->userEmail 	= $user['email'];
 		$this->userInfo 	= $user;
 		$this->isLogin 		= true;
+
+		$name = empty($this->nickname) ? (empty($this->userMobile) ? $this->userEmail : $this->userMobile) : $this->nickname;	
+		$this->nickname 	= $name;
+		
 		//设置用户信息到页面
 		$this->setUserView();
 	}
