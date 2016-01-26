@@ -76,6 +76,7 @@ class UrgencyAction extends AppAction
         $list   = $this->load('search')->getSaleList($params, $start, $this->_number);
         
         $this->set('searchList', empty($list['rows']) ? array() : $list['rows']);
+        $this->set('c', $class);
         $this->display();
     }
 

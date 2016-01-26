@@ -10,18 +10,13 @@
  */
 class DetailAction extends AppAction
 {
-	
-	public function index()
-	{
-		$this->display();
-	}
-
 	public function getTitle($data,$goods)
 	{
 		$title = $data['name']."_".$data['class']."类_".$goods."商标转让|买卖|交易 – 一只蝉";
 		return $title;
 	}
 	
+	//商品详情
 	public function view()
 	{
 		$tag = $this->input('d-view', 'string', '');
@@ -166,11 +161,11 @@ class DetailAction extends AppAction
 	public function getOrderState()
 	{
 		$result = 1;
-		//$saleid = $this->input('saleid','int');
-		//$sale	= $this->load("sale")->getSaleById($saleid);
 		$phone  = $this->input('phone','string');
 		$tid    = $this->input('tid','string');
-		$sale 	= $this->load("trademark")->getInfo($tid,'name,class');
+
+		$col 	= array('`trademark` as `name`','id','`class`');
+		$sale 	= $this->load("trademark")->getInfo($tid,$col);
 		
 		if ( empty($phone) ){
 			$_phone = empty($this->userMobile) ? $this->userEmail : $this->userMobile;
@@ -181,7 +176,7 @@ class DetailAction extends AppAction
 		$isExist = array(
 			'phone'					=> $_phone,
 			'source'				=> 10,//来源一只禅
-			'name'					=> $sale['trademark'],
+			'name'					=> $sale['name'],
 			'class'					=> $sale['class'],
 			'buyType'				=> 1,
 			'need'					=> "商标号:".$sale['id'].",类别:".$sale['class'],
@@ -218,9 +213,8 @@ class DetailAction extends AppAction
 		$sid    	= $this->input('sid','string');
 		$sidArea  	= $this->input('sidArea','string');
 		
-		//查询商标是否存在
-		//$sale = $this->load("sale")->getSaleById($saleid);
-		$sale = $this->load("trademark")->getInfo($tid,'name,class,id');
+		$col 	= array('`trademark` as `name`','id','`class`');
+		$sale 	= $this->load("trademark")->getInfo($tid,$col);
 		
 		if(!$sale){
 			$result = -4; //商标数据不存在

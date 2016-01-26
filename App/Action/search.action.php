@@ -80,6 +80,7 @@ class SearchAction extends AppAction
         $list   = $this->load('search')->search($params, $start, $this->_number);
         
         $this->set('searchList', $list);
+        $this->set('c', $class);
         $this->display();
     }
 

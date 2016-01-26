@@ -19,10 +19,8 @@ class TrademarkModule extends AppModule
 
     protected $col = array(
         'auto as `tid`', 'id as `number`',
-        'trademark as `name`','class',
-        'pid','valid_end','group_concat(distinct `goods`) as `goods`',
-        'group_concat(distinct `group` order by `group` asc) as `group`',
-        'group_concat(distinct `class`) as `strclass`'
+        'trademark as `name`', '`class`', 'pid', 
+        'valid_end', '`goods`', '`group`',
     );
 
     /**
@@ -152,18 +150,30 @@ class TrademarkModule extends AppModule
     {
         $r['eq']    = array('id' => $number);
         $r['col']   = $this->col;
+        $r['limit'] = 100;
+        $data       = $this->findTm($r);
+        if(empty($data)) return array();
 
-        $info       = $this->findTm($r);
+        $items    = array();
+        $info   = current($data);
+        $class  = arrayColumn($data, 'class');
 
         if(empty($info) || empty($info['tid'])) return array();
+        foreach ($data as $k => $v) {
+            $items[$k] = array(
+                'class'     => $v['class'],
+                'group'     => $this->groupReplace($v['group']),
+                'goods'     => $v['goods'],
+                );
+        }
 
-        $info['class']      = array_filter( explode(',', $info['strclass']) );
+        $info['items']      = $items;
+        $info['class']      = array_filter( $class );
         $info['imgUrl']     = $this->getImg($number);
         $info['group']      = $this->groupReplace($info['group']);
         $info['status']     = $this->getFirst($info['tid']);
-        $info['second']     = $this->getSecond($info['tid']);;
-        $proposer           = $this->load('proposer')->getNew($info['pid']);
-        $info['proName']    = empty($proposer['cnName']) ? '' : $proposer['cnName'];
+        $info['second']     = $this->getSecond($info['tid']);
+        $info['proName']    = $this->load('proposer')->getNewName($info['pid']);
 
         return $info;
     }

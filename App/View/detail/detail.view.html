@@ -8,7 +8,7 @@
     <div class="w1180 f-clearfix">
         <div class="mj-cTleft fl">
             <div class="mj-cTl_img f-clearfix">
-                <span><img src="<?php if(empty($tips['imgUrl'])){echo $info['imgUrl']; }else{echo $tips['imgUrl'];}?>" alt="" onerror="this.src='<?=$StaticDir?>images/img1.png'" /></span>
+                <span><img src="<?php if(empty($tips['imgUrl'])){echo $info['imgUrl']; }else{echo $tips['imgUrl'];}?>" alt="" onerror="this.src='<?=StaticDir?>images/img1.png'" /></span>
                 <p class="mj-tip">
 				<?if ($tips['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
                 <?if ($tips['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="mj-cTright">
-            <ul class="mj-cTr_top">
+            <ul class="mj-cTr_top f-clearfix">
                 <li>
                     <b><?=$info['name']?></b>
                     <span class="mj-cTr_top_r">
@@ -44,7 +44,7 @@
 					<span><?=$str?></span>
 					</span>
                 </li>
-				<?php if($sale['tminfo']['value']){ echo "<li>".$sale['tminfo']['value']."</li>";} ?>                
+				<?php if($sale['tminfo']['value']){ echo "<li>".$sale['tminfo']['value']."</li>";} ?>
                 <li class="mj-libs">
                     此商标可入驻：
 					<?php
@@ -71,42 +71,32 @@
 					}
 					?>
                 </li>
-                <!--<li class="mj-libs mj-liptb f-clearfix">
-                    <span class="mj-liptb_t">交易风险核查：</span>
-
-                    &lt;!&ndash;状态一&ndash;&gt;
-                    <div class="mj-safety">
-                        <i class="us-icon uj_icon32"></i>
-                        <p>
-                            经系统检验分析：<br/>
-                            <span>安全系数99% &#45;&#45; 商标本身无风险</span>
-                        </p>
-                    </div>
-                    &lt;!&ndash;状态二&ndash;&gt;
-                   &lt;!&ndash; <div class="mj-safety">
-                        <i class="us-icon uj_icon33"></i>
-                        <p>
-                            经系统检验分析：<br/>
-                            风险原因：
-                            <em>你的人太丑</em>
-                        </p>
-                    </div>&ndash;&gt;
-                    &lt;!&ndash;状态三&ndash;&gt;
-                    &lt;!&ndash;<div class="mj-safety">
-                        <i class="us-icon uj_icon34"></i>
-                        <p>
-                            <strong>风险系数90%,建议不要购买 </strong><br/>
-                            风险原因：
-                            <em>你的人太丑</em>
-                        </p>
-                    </div>&ndash;&gt;
-                </li>-->
+        <? if ( count($info['items']) > 1 ){?> 
+                <li class="mj-libs f-clearfix">
+                    <p class="mj-xpst f-clearfix"><span>申请人 :  <em style="color:#48aff1;"><?=$info['proName']?></em>  当前商标共注册 <em style="color:#48aff1;"><?=count($info['items'])?></em> 条分类，转让将会将所有分类共同转让</span> <label id="showMore">全部分类<i class="us-icon mj-iconj1"></i></label></p>
+                    <dl class="mj-dlList f-clearfix">
+                    <? foreach ($info['items'] as $ky => $vl) { ?>
+                        <dd>
+                            <a href="javascript:void(0);">第<?=$vl['class']?>类-<?=$CLASSES[$vl['class']]?> <i class="us-icon mj-iconj1"></i></a>
+                            <div class="mj-ddTips">
+                                <dl class="f-clearfix">
+                                    <dt>群组</dt>
+                                <? foreach (explode(',', $vl['group']) as $grp) { ?>
+                                    <dd><?=$grp?></dd>
+                                <? } ?>
+                                </dl>
+                                <div class="mj-dtB">
+                                    <p>商品列表</p>
+                                    <span><?=$vl['goods']?></span>
+                                </div>
+                            </div>
+                        </dd>
+                    <? } ?>
+                    </dl>
+                </li>
             </ul>
-			<?php 
-				if($isSale==false){
-					echo "<label class=\"mj-xiimg\"></label>";
-				}
-			?>
+        <?}else{?>
+            </ul>
             <ul class="mj-cTr_center">
                 <li>
                     <span><label>分类：</label>第<?=$class?>类-<?=$CLASSES[$class]?>  </span>
@@ -123,6 +113,10 @@
                     </span>
                 </li>
             </ul>
+        <?}?>
+            <? if($isSale==false){
+                    echo "<label class=\"mj-xiimg\"></label>";
+                } ?>
             <div class="mj-cTr_bottom f-clearfix" <?php if($isSale==false){ echo "style=;display:none;'";}?>>
 				<div class="mj-cTr_bLeft fl">
             <!-- 出售中 -->
@@ -173,9 +167,9 @@
                             <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ 
                             ?>
                                 <?if($isLogin){ ?>
-                                    <a href='javascript:createOrder(<?=$sale['id']?>);' class="mj-priceTxtt_link" id='addorder' >立即抢购</a>;
+                                    <a href='javascript:createOrder(<?=$sale['id']?>);' class="mj-priceTxtt_link" id='addorder' >立即抢购</a>
                                 <? }else{ ?>
-                                    <a href='javascript:goBuy();' class=\"mj-priceTxtt_link\">立即抢购</a>";
+                                    <a href='javascript:goBuy();' class="mj-priceTxtt_link">立即抢购</a>
                                 <?} ?>
                             <!--定价商品-->
                             <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
@@ -184,7 +178,7 @@
                             <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
                                     <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我有兴趣</a></div>
                             <?}?>
-                    <?  } ?>
+                    <?  } ?> 
                     </div>
             <? }else{ ?>
             <!-- 来自商标库 -->
@@ -210,6 +204,7 @@
                 <? }else{ ?>
                     <div class="mj-pricebtn"><p class="mj-priceTxtt_ie7"></p><a href='javascript:goLook();'>我有兴趣</a><br/><br/><p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p><br></div>
                 <? } ?> 
+                </div>
             <?} ?>	
                 </div>
                 <div class="mj-cTr_bRight fr">
@@ -231,7 +226,6 @@
                     </dl>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -471,12 +465,54 @@ var _tid     = "<?=$tid?>";
 var baystate = "<?=$baystate?>";
 var buyUrl   = "<?=MANAGER_URL?>buyer/ready/";
 
-    function goLook()
-    {   
-        getLogin(_viewTitle);
+
+$(function(){
+    var $category = $('.mj-dlList>dd:gt(9)');
+    $category.hide();
+    var $toggleBtn = $('#showMore');
+    $toggleBtn.toggle(function(){
+        $category.show();
+    },function(){
+        $category.hide();
+    });
+});
+
+$(function(){
+    var _windowWidth = $(window).width();  //当前窗口的宽度度
+    var offSet = null;
+    $('.mj-dlList > dd').hover(function(){
+        var obj = $(this),
+                objOffSet = obj.offset().left,
+                objWindth = obj.outerWidth();
+        if(parseInt(objOffSet) > parseInt(_windowWidth / 2 + objWindth)){
+            obj.find(".mj-ddTips").addClass("mj-trst");
+        }
+    },function(){
+
+    });
+});
+
+/* 得到页面偏移位置（滚动条偏移位置）  */
+function getPageOffset(){
+    var pageOffset = {};
+    if(window.innerWidth){
+        pageOffset.x = window.pageXOffset;
+        pageOffset.y = window.pageYOffset;
+    }else if(document.documentElement && document.documentElement.clientWidth){
+        pageOffset.x = document.documentElement.scrollLeft;
+        pageOffset.y = document.documentElement.scrollTop;
+    }else if(document.body.clientWidth){
+        pageOffset.x = document.body.scrollLeft;
+        pageOffset.y = document.body.scrollTop;
     }
-    function goBuy()
-    {
-        getLogin(_wantTitle);
-    }
+    return pageOffset;
+}
+function goLook()
+{   
+    getLogin(_viewTitle);
+}
+function goBuy()
+{
+    getLogin(_wantTitle);
+}
 </script>

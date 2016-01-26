@@ -66,7 +66,7 @@
             <ul class="piclist f-clearfix">
              <?php foreach($offpriceList as $k => $v){ ?>
                 <li <? if ($k==3){ echo 'style="margin-right:0px;"';}?>>
-                    <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" target="_blank">
+                    <a href="<?=$v['viewUrl']?>" target="_blank">
                         <!--<div class="mj-ddTop">
                             <h5>全球五金第一品牌</h5>
                             <span>索亿商贸</span>
@@ -76,7 +76,7 @@
                             </p>
                         </div>-->
                         <div class="mj-ddImg">
-                            <img src="<?=$v['imgurl']?>" onerror="this.src='/Static/images/img1.png'" />
+                            <img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" />
                         </div>
                     </a>
                 </li>
@@ -151,13 +151,13 @@
 						foreach($dataTM['rows'] as $key => $val){
 					?>
 					<li>
-                        <a href="<?=$val['url']?>"  target="_blank">
+                        <a href="<?=$val['viewUrl']?>"  target="_blank">
                             <div class="mj-logoimg">
                                 <label class="mj-imglT">
-                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                    <span><img src="<?=$val['imgUrl']?>" /></span>
                                 </label>
                             </div>
-                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                            <p class="mj-cateText"><?=$val['_name']?> <?=$val['classes']?></p>
                         </a>
                     </li>
 					<?php
@@ -176,13 +176,13 @@
 						foreach($dataJD['rows'] as $key => $val){
 					?>
 					<li>
-                        <a href="<?=$val['url']?>"  target="_blank">
+                        <a href="<?=$val['viewUrl']?>"  target="_blank">
                             <div class="mj-logoimg">
                                 <label class="mj-imglT">
-                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                    <span><img src="<?=$val['imgUrl']?>" /></span>
                                 </label>
                             </div>
-                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                            <p class="mj-cateText"><?=$val['_name']?> <?=$val['classes']?></p>
                         </a>
                     </li>
 					<?php
@@ -200,13 +200,13 @@
 						foreach($dataDXCS['rows'] as $key => $val){
 					?>
 					<li>
-                        <a href="<?=$val['url']?>"  target="_blank">
+                        <a href="<?=$val['viewUrl']?>"  target="_blank">
                             <div class="mj-logoimg">
                                 <label class="mj-imglT">
                                     <span><img src="<?=$val['imgurl']?>" /></span>
                                 </label>
                             </div>
-                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                            <p class="mj-cateText"><?=$val['_name']?> <?=$val['classes']?></p>
                         </a>
                     </li>
 					<?php
@@ -271,13 +271,13 @@
 						foreach($dataQL['rows'] as $key => $val){
 					?>
 					<li>
-                        <a href="<?=$val['url']?>"  target="_blank">
+                        <a href="<?=$val['viewUrl']?>"  target="_blank">
                             <div class="mj-logoimg">
                                 <label class="mj-imglT">
-                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                    <span><img src="<?=$val['imgUrl']?>" /></span>
                                 </label>
                             </div>
-                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                            <p class="mj-cateText"><?=$val['_name']?> <?=$val['classes']?></p>
                         </a>
                     </li>
 					<?php
@@ -295,13 +295,13 @@
 						foreach($dataJP['rows'] as $key => $val){
 					?>
 					<li>
-                        <a href="<?=$val['url']?>"  target="_blank">
+                        <a href="<?=$val['viewUrl']?>"  target="_blank">
                             <div class="mj-logoimg">
                                 <label class="mj-imglT">
-                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                    <span><img src="<?=$val['imgUrl']?>" /></span>
                                 </label>
                             </div>
-                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                            <p class="mj-cateText"><?=$val['_name']?> <?=$val['classes']?></p>
                         </a>
                     </li>
 					<?php
@@ -319,13 +319,13 @@
 						foreach($dataTS['rows'] as $key => $val){
 					?>
 					<li>
-                        <a href="<?=$val['url']?>"  target="_blank">
+                        <a href="<?=$val['viewUrl']?>"  target="_blank">
                             <div class="mj-logoimg">
                                 <label class="mj-imglT">
-                                    <span><img src="<?=$val['imgurl']?>" /></span>
+                                    <span><img src="<?=$val['imgUrl']?>" /></span>
                                 </label>
                             </div>
-                            <p class="mj-cateText"><?=$val['name']?> <?=$val['classes']?></p>
+                            <p class="mj-cateText"><?=$val['_name']?> <?=$val['classes']?></p>
                         </a>
                     </li>
 					<?php

@@ -13,7 +13,7 @@
             </label>
         </div>
         <div class="mj-imglB">
-            <span><?=$v['class']?>类 - <label><?=$CLASSES[$v['class']]?></label></span>
+            <span><?if($c){$_cc=array($c);}else{$_cc = explode(',', $v['class']);}echo current($_cc);?>类 - <label><?=$CLASSES[current($_cc)]?></label></span>
             <p title="<?=$v['name']?>"><em><?=mb_substr($v['name'],0,10,'utf8')?></em></p>
         </div>
     </a>
