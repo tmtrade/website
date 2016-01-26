@@ -36,6 +36,8 @@ class BuyAction extends AppAction
         $name       = $this->input('name', 'string', '');
         $sid        = $this->input('sid', 'string', '');
         $area       = $this->input('area', 'string', '');
+		//来源，是专题来的就是2，是不用判断是否登录，其他地方来源默认1，需要判断是否登录
+		$source       = $this->input('source', 'int', '1');
 
         if ( isCheck($mobile) != 2 || $content == ''){
             $this->returnAjax(array('code'=>2));//信息不正确
@@ -49,16 +51,18 @@ class BuyAction extends AppAction
             'contact'   => $name,
             'date'      => time(),
             );
-        if ( $this->userId ){
-            $buy['loginUserId'] = $this->userId;
-        }else{
-            $userinfo = $this->load('passport')->get($mobile);
-            if ( empty($userinfo) ){
-                $this->returnAjax(array('code'=>4)); //未成功
-            }else{
-                $buy['loginUserId'] = $userinfo['id'];
-            }
-        }
+		if($source == 1){
+			if ( $this->userId ){
+				$buy['loginUserId'] = $this->userId;
+			}else{
+				$userinfo = $this->load('passport')->get($mobile);
+				if ( empty($userinfo) ){
+					$this->returnAjax(array('code'=>4)); //未成功
+				}else{
+					$buy['loginUserId'] = $userinfo['id'];
+				}
+			}
+		}
         $role = array(
             'eq' => array(
                 'source'        => 10,

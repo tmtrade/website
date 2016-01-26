@@ -1,0 +1,300 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>zhuanti/css/style.css"/>
+<input type="hidden" name="sid" id="sid"  />
+<input type="hidden" name="area" id="area" />
+<div class="sb-gmban1">
+    <!--<img src="images/sb-ban1.png">-->
+    <!--商标购买损失-->
+    <div class="logo-loss">
+        <p class="loss-frist"><label>商标购买损失-<a>24</a>小时</label><b>100%</b>全额赔付</p>
+        <p class="loss-second">一只蝉 : 国内商标购买唯一 <span>独立签订《100%风险赔付协议》</span>平台</p>
+    </div>
+</div>
+<!--购买之前体检-->
+<div class="sb-gmban2">
+    <!--<img src="images/sb-ban2.png">-->
+    <!---->
+    <div class="logo-health">
+        <p>购买之前先<b>体检</b>,买的商标更安全</p>
+        <label>心里有底，不被忽悠 -为了避免未提前了解所购商标质量而导致不能正常使用，建议你在购买商标之前先做体检</label>
+        <a href="/anquan/"> 检测我相中的商标</a>
+    </div>
+</div>
+<!--购买步骤-->
+<div class="sb-gmban3">
+    <div class="tree-step">
+        <h3>上午看中,下午就用 -<span>简单3步</span>解决购买商标急用烦恼</h3>
+        <label>签完立即对外使用，无需再等8-10个月的转让流程</label>
+        <div class="go-setp">
+            <img src="<?=StaticDir?>zhuanti/images/go-setp.png">
+            <p class="step-ms">
+                <span class="step-ms1">1.确定购买意向</span>
+                <span class="step-ms2">2.双方签订 <br/><label>《商标独占许可使用协议》</label></span>
+                <span class="step-ms3">3.立即使用</span>
+            </p>
+            <div class="buy-sure">
+                <img src="<?=StaticDir?>zhuanti/images/jt.png" class="jt">
+                <form method="post" >
+                       <ul>
+                           <li class="spec-req">
+                               <textarea  name="content" id="buyNeed"></textarea>
+							    <label style="display:none;" id="buyNeedTip">请输入对商标的特殊要求  如：25类鞋子</label>
+                           </li>
+						   <li class="contact">
+                               <div>
+                                   <input type="tel"  id="buyMoblie"  />
+                                   <a href="javascript:void(0)" id="subBuy">填写商标购买需求</a>
+                               </div>
+                               <label style="display:none;" id="buyMoblieTip">你输正确的电话号码</label>
+                           </li>
+                       </ul>
+					   <!--
+					   <span>信息不正确</span>
+					   -->
+                </form>
+                <p>确定你商标购买意向后一只蝉督促卖方与买方签订《商标独占许可使用协议》，签完立即对外使用，无需再等8-10个月的转让流程</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--把好关卡-->
+<div class="sb-gmban4">
+    <div class="logo-customs">
+        <h3>把好商标安全关卡，才能守护整个商标生命</h3>
+        <h6>一只蝉商标购买平台-我们还会帮你解决 --</h6>
+        <ul>
+            <li class="fist">
+                <img src="<?=StaticDir?>zhuanti/images/step-1.png">
+                <p>商标核心背景调查</p>
+                <a href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165">帮我调查</a>
+            </li>
+            <li>
+                <img src="<?=StaticDir?>zhuanti/images/step-2.png">
+                <p>核实转让公证真伪</p>
+                <a href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165">帮我调查</a>
+            </li>
+            <li id="two1" onmouseover="jc('two',1,2)">
+                <img src="<?=StaticDir?>zhuanti/images/step-3.png">
+                <p>商标出售价格评估</p>
+                <a href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165" >我要深入评估</a>
+            </li>
+            <li id="two2" onmouseover="jc('two',2,2)">
+                <img src="<?=StaticDir?>zhuanti/images/step-4.png">
+                <p>判断购买商标平台入驻</p>
+                <a href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165">帮我判断</a>
+            </li>
+
+            <li class="jc">
+                <img src="<?=StaticDir?>zhuanti/images/step-5.png">
+                <p class="jc-time">
+                    10年独家<br/>
+                    商标安全监测
+                </p>
+
+            </li>
+        </ul>
+        <div class="logo-thorough-main">
+            <div class="logo-thorough assess" id="con_two_1">
+                <img src="<?=StaticDir?>zhuanti/images/jt-1.png" class="jt-1" >
+                <p>与专业资产评估机构深入合作，杜绝卖家漫天要价<br/>
+                   <span>让你买的放心，不花冤枉钱</span>
+                </p>
+            </div>
+            <div class="logo-thorough judge"  id="con_two_2">
+                <img src="<?=StaticDir?>zhuanti/images/jt-1.png" class="jt-1">
+                <h5>近10家主流电商平台及大型超市协作，判断购买商标平台入驻<br/> </h5>
+                 <p>
+                     <a><img src="<?=StaticDir?>zhuanti/images/block.jpg">京东</a> <a><img src="<?=StaticDir?>zhuanti/images/block.jpg">天猫</a> <a><img src="<?=StaticDir?>zhuanti/images/block.jpg">亚马逊</a>
+                     <a><img src="<?=StaticDir?>zhuanti/images/block.jpg">1号店</a> <a><img src="<?=StaticDir?>zhuanti/images/block.jpg">美丽说</a><br/>
+                     <a><img src="<?=StaticDir?>zhuanti/images/block.jpg">聚美优品</a>
+                     <a><img src="<?=StaticDir?>zhuanti/images/block.jpg">大型商超</a>
+                 </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--资源最多的交易平台-->
+<div class="sb-gmban5">
+    <h3>一只蝉：商标购买行业出售资源最多的交易平台</h3>
+    <ul>
+        <li class="zssb">
+
+            <p>
+                <b>30</b>万在售商标
+            </p>
+        </li>
+        <li class="xzsb">
+
+            <p>
+                <b>180</b>余万闲置商标
+            </p>
+        </li>
+        <li class="bzy">
+
+            <p>
+                资源高其他平台<b>15</b>倍
+            </p>
+        </li>
+    </ul>
+    <div class="yzc-jj">
+        <div>
+            <p><span></span>21种商标筛选方法</p><br/>
+            <p><span></span>30多家机构合作</p><br/>
+            <p><span></span>13年商标代理资源</p><br/>
+        </div>
+    </div>
+</div>
+<!--一只蝉:快速买到放心商标-->
+<div class="sb-gmban6">
+    <h3>一只蝉:快速买到放心商标</h3>
+    <h6>颠覆20年商标购买标准流程，建立独家购买保障体系，让购买的商标放心使用</h6>
+    <div class="yzc-trading">
+        <div class="trading-sys">
+             <h2>一只蝉交易体系</h2>
+            <ul>
+                <li style="top:12px;left: 0px;">
+                    <p>1.独家商标风险报告</p><br/>
+                    保障商标质量安全
+                </li>
+                <li style="top:12px;right: 40px;">
+                    <p>2.价格预评估(<span style="color: #4a99f5">19项</span>)</p><br/>
+                    保障商标质量安全
+                </li>
+                <li style="top:165px;right:40px;">
+                   <p> 3.购买需求匹配</p>
+                </li>
+                <li style="top:142px;left: 0px;">
+                    <p>4.签定转让协议</p><br/>
+                    <label>
+                        签定《100%赔付协议》
+                        获得“独占许可权”
+                    </label>
+                </li>
+                <li style="top:290px;right:50px;">
+                    <p>5.转让公证</p><br/>
+                    <label>
+                        只能在一只蝉与政府同时<br/>
+                        认可的公证机构进行2次核实
+                    </label>
+                </li>
+                <li style="top:300px;left: 0px;">
+                    <p>6.当天代办转让手续</p><br/>
+                    ( 超凡内部强硬规制制度 )
+                </li>
+                <li style="top:445px;right:40px;">
+                    <p>7.转让成功</p><br/>
+                    终身免费监测
+                </li>
+            </ul>
+        </div>
+        <img src="<?=StaticDir?>zhuanti/images/vs.png"  class="vs">
+        <div class="tradi-model">
+            <ul>
+                <h4>传统模式</h4>
+                <li style="margin-top:75px;">1.购买需求匹配</li>
+                <li style="margin-top:110px;">2.签订转让协议</li>
+                <li style="margin-top:85px;">
+                    3. 三方公证<br/>
+                    <label>可能出现虚假、欺骗危险</label>
+                </li>
+                <li>
+                    4. 转让手续办理<br/>
+                    <label>快则7天，慢则30天内</label>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<!--底部-->
+<div class="sb-bottom">
+    <div class="sb-bottom-main">
+        <ul>
+            <li class="link">
+               <h3>购买商标帮助/注意事项</h3>
+                <p>
+                    <a href="http://www.yizhchan.com/faq/views/?id=806&act=cfdt&c=45">购买商标需要准备的资料</a><br/>
+                    <a href="http://www.yizhchan.com/faq/views/?id=807&act=cfdt&c=45">注册商标转让的详细流程</a><br/>
+                    <a href="http://www.yizhchan.com/faq/views/?id=808&act=cfdt&c=45">商标交易需注意的5大风险 </a><br/>
+                    <a href="http://www.yizhchan.com/faq/views/?id=816&act=cfdt&c=45">签订商标购买协议需警惕4大陷阱</a><br/>
+                    <a href="http://www.yizhchan.com/faq/views/?id=809&act=cfdt&c=45">商标转让的费用有哪些？</a><br/>
+
+                </p>
+            </li>
+            <li class="link">
+                <h3>一只蝉平台帮助</h3>
+                <p>
+                    <a href="http://www.yizhchan.com/faq/views/?id=810&act=cfdt&c=45">购买后，怎么才能尽快使用上商标？</a><br/>
+                    <a href="http://www.yizhchan.com/faq/views/?id=811&act=cfdt&c=45">付款后，卖家不转让或跑了怎么办？</a><br/>
+                    <a href="http://www.yizhchan.com/faq/views/?id=812&act=cfdt&c=45">怎么判断卖家商标公证书的真伪？</a><br/>
+                    <a href="http://www.yizhchan.com/faq/views/?id=813&act=cfdt&c=45">怎么识别卖家是否冒充商标持有人？</a><br/>
+                    <a href="http://www.yizhchan.com/faq/views/?id=814&act=cfdt&c=45">购买的商标不能正常使用怎么办？</a><br/>
+
+                </p>
+            </li>
+            <li class="contact-us">
+                <h3>联系我们</h3>
+                <div>
+                    <label>全国免费热线：<b>4006-929-199</b></label><br/>
+                     <a href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165" class="zx-btn">在线咨询</a><br/>
+                     <p>
+                         <a href=""><img src="<?=StaticDir?>zhuanti/images/bt-ic1.png"></a>
+                         <a href=""><img src="<?=StaticDir?>zhuanti/images/bt-ic2.png"></a>
+                         <a href=""><img src="<?=StaticDir?>zhuanti/images/bt-ic3.png"></a>
+                         <a href=""><img src="<?=StaticDir?>zhuanti/images/bt-ic4.png"></a>
+                     </p>
+                </div>
+            </li>
+        </ul>
+        <div class="sb-bottom-mess">
+            <p>
+                <a href="/about">关于超凡</a>
+                <a href="/about/articleList/?type=xxpl">投资者关系</a>
+                <a href="/about/cgal/">成功案例 </a>
+                <a href="/about/zytd/">专业团队</a>
+                <a href="/about/lxwm/">联系我们</a>
+                <a href="http://job.chaofan.wang/">超凡招聘</a>
+                <a href="/help/copyright">版权声明</a>
+            </p>
+            <label>ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2015 北京超凡知识产权代理有限公司</label>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="<?=StaticDir?>zhuanti/js/common.js"></script>
+<script type="text/javascript">
+    var orequire=document.getElementById("buyNeed");
+    orequire.onfocus=function()
+    {
+        if(this.value == '对商标的特殊要求  如：25类鞋子'){
+            this.value = ''
+        }
+        this.className = 'cgkug';
+    }
+    orequire.onblur=function()
+    {
+        if(this.value ==''){
+            this.value = '对商标的特殊要求  如：25类鞋子'
+        }
+        this.className = '';
+    }
+
+
+    function jc(name,curr,n)
+    {
+        for(i=1;i<=n;i++)
+        {
+            var menu=document.getElementById(name+i);
+            var cont=document.getElementById("con_"+name+"_"+i);
+            menu.className=i==curr ? "up" : "";
+            if(i==curr){
+                cont.style.display="block";
+            }else{
+                cont.style.display="none";
+            }
+        }
+    }
+</script>
+</body>
+</html>
