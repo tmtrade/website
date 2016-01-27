@@ -21,24 +21,31 @@ class DetailAction extends AppAction
 	{
 		$tag = $this->input('short', 'string', '');
 		if ( $tag ){
-			$number = $tag;
+			if ( strpos($tag, '-') === false ) $this->redirect('未找到页面1', '/index/error');
+			list($tid, $class) = explode('-', $tag);
 		}else{
-			$number = $this->input("n","string");
+			$this->redirect('未找到页面2', '/index/error');
 		}
-		$issale = 0;
-		if ( empty($number) || !preg_match('/^[0-9a-zA-Z]+$/',$number) ){
-			$this->redirect('未找到页面1', '/index/error');
+		$_info = $this->load('trademark')->getInfo($tid,array('`id` as `number`','class'));
+		if ( empty($_info) || empty($_info['number']) ){
+			$this->redirect('未找到页面3', '/index/error');
+		}elseif( !in_array($class, range(1,45)) || $class != $_info['class'] ){
+			$this->redirect('未找到页面4', '/index/error');
 		}
+		//if ( empty($number) || !preg_match('/^[0-9a-zA-Z]+$/',$number) ){
+		//	$this->redirect('未找到页面1', '/index/error');
+		//}
 
 		$info 	= $this->load('trademark')->getTmInfo($number);
 		if ( empty($info) ){
-			$this->redirect('未找到页面2', '/index/error');
+			$this->redirect('未找到页面5', '/index/error');
 		}
 
 		$this->set("platformIn", C('PLATFORM_IN'));
 		$this->set("platformUrl", C('PLATFORM_URL'));
 		$this->set("platformItems", C('PLATFORM_ITEMS'));
 
+		$issale = 0;
 		$tid 	= $info['tid'];
 		$class 	= current($info['class']);
 		$_class = implode(',', $info['class']);
