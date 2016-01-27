@@ -43,7 +43,7 @@ class InternalModule extends AppModule
 		}
         $role['limit']  = 4;
         $role['col']    = array('id', 'tid', 'number', 'class', 'name');
-        $role['order']  = array('date'=>'desc');
+        $role['order']  = array('isTop'=>'desc','date'=>'desc');
         $role['raw']    = ' ( isSale = 1 AND `status` = 1 AND priceType = 1 AND isOffprice = 1 AND (`salePriceDate` = 0  OR `salePriceDate` > unix_timestamp(now())) )';
         $list = $this->import('sale')->find($role);
         foreach ($list as $k => $v) {
