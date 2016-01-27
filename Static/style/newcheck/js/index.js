@@ -304,7 +304,16 @@ function setPage(obj){
 	$('.result').addClass(myArray[1]);//背景颜色
 	$('.gunimg').attr('src','/Static/style/newcheck/images/'+myArray[3]);
 	$('.result').show();
+	downloadPDF(obj.pdf);
 }
+function downloadPDF(pdfname){
+	if( pdfname ){
+		$('#dowpdf').on('click',function(){
+			window.open('/anquan/downPDF/?id='+pdfname);	
+		});
+	}
+}
+
 function fenxiang(){
 	var jiathis_config={
 		siteNum:4,
