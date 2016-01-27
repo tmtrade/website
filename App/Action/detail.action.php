@@ -185,6 +185,7 @@ class DetailAction extends AppAction
 			'source'				=> 10,//来源一只禅
 			'name'					=> $sale['name'],
 			'class'					=> $sale['class'],
+			'memo'					=> $sale['id'],
 			'buyType'				=> 1,
 			'need'					=> "商标号:".$sale['id'].",类别:".$sale['class'],
 		);
@@ -240,6 +241,7 @@ class DetailAction extends AppAction
 			'source'				=> 10,//来源展示页
 			'name'					=> $sale['name'],
 			'class'					=> $sale['class'],
+			'memo'					=> $sale['id'],
 			'buyType'				=> 1,
 			'need'					=> "商标号:".$sale['id'].",类别:".$sale['class'],
 		);
