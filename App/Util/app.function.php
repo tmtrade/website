@@ -9,31 +9,31 @@
 * @return array
 */
 function arrayColumn(array $array, $column_key, $index_key=null){
-    if(function_exists('array_column')){
-        return array_column($array, $column_key, $index_key);
-    }
-    $result = array();
-    foreach($array as $arr){
-        if(!is_array($arr)) continue;
+	if(function_exists('array_column')){
+		return array_column($array, $column_key, $index_key);
+	}
+	$result = array();
+	foreach($array as $arr){
+		if(!is_array($arr)) continue;
 
-        if(is_null($column_key)){
-            $value = $arr;
-        }else{
-            $value = $arr[$column_key];
-        }
-        if(!is_null($index_key)){
-            $key = $arr[$index_key];
-            $result[$key] = $value;
-        }else{
-            $result[] = $value;
-        }
-    }
-    return $result;
+		if(is_null($column_key)){
+			$value = $arr;
+		}else{
+			$value = $arr[$column_key];
+		}
+		if(!is_null($index_key)){
+			$key = $arr[$index_key];
+			$result[$key] = $value;
+		}else{
+			$result[] = $value;
+		}
+	}
+	return $result;
 }
 
 function C($key)
 {
-    return LoadConfig::get($key);
+	return LoadConfig::get($key);
 }
 
 /**
@@ -43,23 +43,23 @@ function C($key)
 */
 function getClientIp()
 {
-    if ( getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown') )
-    {
-        $onlineip = getenv('HTTP_CLIENT_IP');
-    }
-    elseif ( getenv('HTTP_X_FORWARDED_FOR') && strcasecmp(getenv('HTTP_X_FORWARDED_FOR'), 'unknown') )
-    {
-        $onlineip = getenv('HTTP_X_FORWARDED_FOR');
-    }
-    elseif ( getenv('REMOTE_ADDR') && strcasecmp(getenv('REMOTE_ADDR'), 'unknown') )
-    {
-        $onlineip = getenv('REMOTE_ADDR');
-    }
-    elseif ( isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown') )
-    {
-        $onlineip = $_SERVER['REMOTE_ADDR'];
-    }
-    return $onlineip;
+	if ( getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown') )
+	{
+		$onlineip = getenv('HTTP_CLIENT_IP');
+	}
+	elseif ( getenv('HTTP_X_FORWARDED_FOR') && strcasecmp(getenv('HTTP_X_FORWARDED_FOR'), 'unknown') )
+	{
+		$onlineip = getenv('HTTP_X_FORWARDED_FOR');
+	}
+	elseif ( getenv('REMOTE_ADDR') && strcasecmp(getenv('REMOTE_ADDR'), 'unknown') )
+	{
+		$onlineip = getenv('REMOTE_ADDR');
+	}
+	elseif ( isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown') )
+	{
+		$onlineip = $_SERVER['REMOTE_ADDR'];
+	}
+	return $onlineip;
 }
 
 /**
@@ -73,18 +73,18 @@ function getClientIp()
 */
 function goUrl($desc, $url, $scripts = array(), $seconds = 1)
 {
-    $msgFile = ResourceDir.'/default/redirect.html';
-    $path    = '/'.ResourceDir.'/';
-    $js      = '';
+	$msgFile = ResourceDir.'/default/redirect.html';
+	$path    = '/'.ResourceDir.'/';
+	$js      = '';
 
-    foreach ( $scripts as $script ) {
-        $js .= $script;
-    }
+	foreach ( $scripts as $script ) {
+		$js .= $script;
+	}
 
-    $tipInfo  = "$desc <br>请稍后,系统正在自动跳转........";
-    $gotoUrl  = "<meta http-equiv='Refresh' content='$seconds; url=$url'>";
-    require($msgFile);
-    exit();
+	$tipInfo  = "$desc <br>请稍后,系统正在自动跳转........";
+	$gotoUrl  = "<meta http-equiv='Refresh' content='$seconds; url=$url'>";
+	require($msgFile);
+	exit();
 }
 
 /**
@@ -96,28 +96,28 @@ function goUrl($desc, $url, $scripts = array(), $seconds = 1)
 */
 function getPageBar($pager, $script = true)
 {
-    if ( empty($pager) || !is_array($pager) ) {
-        return '';
-    }
+	if ( empty($pager) || !is_array($pager) ) {
+		return '';
+	}
 
-    $html = '共'.$pager['recordNum'].'条/'. '共' . $pager['pageNum'] . '页' . '&nbsp;';
+	$html = '共'.$pager['recordNum'].'条/'. '共' . $pager['pageNum'] . '页' . '&nbsp;';
 
-    if ( $pager['pageNum'] > 10 ) {
-        $html .= '<a href="' . $pager['first'] . '">首页</a>' . '&nbsp;' .
-        '<a href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .
-        '<a href="' . $pager['next']  . '">下页</a>' . '&nbsp;' .$pager['point'].
-        '<a href="' . $pager['last']  . '">尾页</a>' . '&nbsp;' ;
-    } else {
-        $html .= '<a href="' . $pager['first'] . '">首页</a>' . '&nbsp;' .
-        '<a href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .
-        '<a href="' . $pager['next']  . '">下页</a>' . '&nbsp;' .
-        '<a href="' . $pager['last']  . '">尾页</a>' . '&nbsp;' ;
-    }
+	if ( $pager['pageNum'] > 10 ) {
+		$html .= '<a href="' . $pager['first'] . '">首页</a>' . '&nbsp;' .
+		'<a href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .
+		'<a href="' . $pager['next']  . '">下页</a>' . '&nbsp;' .$pager['point'].
+		'<a href="' . $pager['last']  . '">尾页</a>' . '&nbsp;' ;
+	} else {
+		$html .= '<a href="' . $pager['first'] . '">首页</a>' . '&nbsp;' .
+		'<a href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .
+		'<a href="' . $pager['next']  . '">下页</a>' . '&nbsp;' .
+		'<a href="' . $pager['last']  . '">尾页</a>' . '&nbsp;' ;
+	}
 
 
-    $html .= $script ? $pager['jump'] : '';
+	$html .= $script ? $pager['jump'] : '';
 
-    return $html;
+	return $html;
 }
 
 /**
@@ -128,7 +128,7 @@ function getPageBar($pager, $script = true)
 */
 function halt($msg)
 {
-    SpringException::throwException($msg);
+	SpringException::throwException($msg);
 }
 
 /**
@@ -140,18 +140,18 @@ function halt($msg)
 */
 function arrayOne($list, $cols = array())
 {
-    if ( empty($list) || (empty($cols) || !is_array($cols)) ) return $list;
+	if ( empty($list) || (empty($cols) || !is_array($cols)) ) return $list;
 
-    $temp   = array();
-    $length = count($cols);
-    foreach ($list as $data) {
-        if ( $length == 1 ) {
-            $temp[] = isset($data[$cols[0]]) ? $data[$cols[0]] : '';
-        } else {
-            $temp[$data[$cols[0]]] = isset($data[$cols[1]]) ? $data[$cols[1]] : '';
-        }
-    }
-    return $temp;
+	$temp   = array();
+	$length = count($cols);
+	foreach ($list as $data) {
+		if ( $length == 1 ) {
+			$temp[] = isset($data[$cols[0]]) ? $data[$cols[0]] : '';
+		} else {
+			$temp[$data[$cols[0]]] = isset($data[$cols[1]]) ? $data[$cols[1]] : '';
+		}
+	}
+	return $temp;
 }
 
 /**
@@ -163,7 +163,7 @@ function arrayOne($list, $cols = array())
 */
 function strExist($str1, $str2)
 {
-    return !(strpos($str2, $str1) === FALSE);
+	return !(strpos($str2, $str1) === FALSE);
 }
 
 
@@ -179,37 +179,37 @@ function strExist($str1, $str2)
 */
 function randCode($len, $format='')
 {
-    $is_abc = $is_numer = 0;
-    $password = $tmp ='';
-    switch($format){
-        case 'ALL':
-            $chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz23456789';
-            break;
-        case 'CHAR':
-            $chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-            break;
-        case 'NUMBER':
-            $chars='0123456789';
-            break;
-        default :
-            $chars='abcdefghjklmnpqrstuvwxyz23456789';
-            break;
-    }
-    mt_srand((double)microtime()*1000000*getmypid());
-    while(strlen($password)<$len){
-        $tmp =substr($chars,(mt_rand()%strlen($chars)),1);
-        if(($is_numer <> 1 && is_numeric($tmp) && $tmp > 0 )|| $format == 'CHAR'){
-            $is_numer = 1;
-        }
-        if(($is_abc <> 1 && preg_match('/[a-zA-Z]/',$tmp)) || $format == 'NUMBER'){
-            $is_abc = 1;
-        }
-        $password.= $tmp;
-    }
-    if($is_numer <> 1 || $is_abc <> 1 || empty($password) ){
-        $password = randCode($len,$format);
-    }
-    return $password;
+	$is_abc = $is_numer = 0;
+	$password = $tmp ='';
+	switch($format){
+		case 'ALL':
+			$chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz23456789';
+			break;
+		case 'CHAR':
+			$chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+			break;
+		case 'NUMBER':
+			$chars='0123456789';
+			break;
+		default :
+			$chars='abcdefghjklmnpqrstuvwxyz23456789';
+			break;
+	}
+	mt_srand((double)microtime()*1000000*getmypid());
+	while(strlen($password)<$len){
+		$tmp =substr($chars,(mt_rand()%strlen($chars)),1);
+		if(($is_numer <> 1 && is_numeric($tmp) && $tmp > 0 )|| $format == 'CHAR'){
+			$is_numer = 1;
+		}
+		if(($is_abc <> 1 && preg_match('/[a-zA-Z]/',$tmp)) || $format == 'NUMBER'){
+			$is_abc = 1;
+		}
+		$password.= $tmp;
+	}
+	if($is_numer <> 1 || $is_abc <> 1 || empty($password) ){
+		$password = randCode($len,$format);
+	}
+	return $password;
 }
 
 
@@ -224,25 +224,25 @@ function randCode($len, $format='')
 */
 function getFile($path, $ext = '.php')
 {
-    static $tree = array();
-    $list        = array();
-    $length      = strlen($ext);
+	static $tree = array();
+	$list        = array();
+	$length      = strlen($ext);
 
-    if ( is_dir($path) ) {
-        $files = scandir($path);
-        foreach ( $files as $file ) {
-            if ( $file != "." && $file != ".." ) {
-                if ( is_dir($path."/".$file) ) {
-                    getFile($path."/".$file);
-                } else {
-                    substr($file, -$length) == $ext && $list[] = $path."/".$file;
-                }
-            }
-        }
-        $tree[$path] = $list;
-        $list        = array();
-    }
-    return $tree;
+	if ( is_dir($path) ) {
+		$files = scandir($path);
+		foreach ( $files as $file ) {
+			if ( $file != "." && $file != ".." ) {
+				if ( is_dir($path."/".$file) ) {
+					getFile($path."/".$file);
+				} else {
+					substr($file, -$length) == $ext && $list[] = $path."/".$file;
+				}
+			}
+		}
+		$tree[$path] = $list;
+		$list        = array();
+	}
+	return $tree;
 }
 
 /**
@@ -255,19 +255,19 @@ function getFile($path, $ext = '.php')
 */
 function isCheck( $account )
 {
-    $mobile = "/^(13|14|15|16|17|18)\d{9}$/";
-    $email  = "/([a-z0-9]*[-_.]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[.][a(www.111cn.net)-z]{2,3}([.][a-z]{2})?/i";
-    if(preg_match($email ,$account))
-    {
-        return 1;
+	$mobile = "/^(13|14|15|16|17|18)\d{9}$/";
+	$email  = "/([a-z0-9]*[-_.]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[.][a(www.111cn.net)-z]{2,3}([.][a-z]{2})?/i";
+	if(preg_match($email ,$account))
+	{
+		return 1;
 
-    } elseif (preg_match( $mobile ,$account))
-    {
-        return 2;
-    } else
-    {
-        return 3;
-    }
+	} elseif (preg_match( $mobile ,$account))
+	{
+		return 2;
+	} else
+	{
+		return 3;
+	}
 }
 
 /**
@@ -279,8 +279,8 @@ function isCheck( $account )
 */
 function debug( $data , $pattern = '')
 {
-    echo "<pre>";
-    die(empty($pattern) ? print_r($data) : var_dump($data));
+	echo "<pre>";
+	die(empty($pattern) ? print_r($data) : var_dump($data));
 }
 
 /**
@@ -292,7 +292,7 @@ function debug( $data , $pattern = '')
 */
 function length($str , $iconv = 'utf-8')
 {
-    return iconv_strlen($str , $iconv);
+	return iconv_strlen($str , $iconv);
 }
 
 /**
@@ -308,8 +308,8 @@ function length($str , $iconv = 'utf-8')
 */
 function urlParamEncode($str)
 {
-    $data = Encrypt::encode($str);
-    return base64_encode($data);
+	$data = Encrypt::encode($str);
+	return base64_encode($data);
 }
 
 /**
@@ -327,9 +327,9 @@ function urlParamEncode($str)
 */
 function makeToken($email, $time, $uid = 0)
 {
-    $params = $email . '||' . $uid ;
-    $key 	= md5($time);
-    return urlParamEncode($key . '||' . $params);
+	$params = $email . '||' . $uid ;
+	$key 	= md5($time);
+	return urlParamEncode($key . '||' . $params);
 }
 
 /**
@@ -347,11 +347,11 @@ function makeToken($email, $time, $uid = 0)
 */
 function mbSub( $conect , $min = 0 , $leng = 100 , $en='utf-8')
 {
-    $output = mb_substr($conect , $min , $leng , $en);
-    if(mb_strlen($conect,$en) > $leng ){
-        $output .= "...";
-    }
-    return $output;
+	$output = mb_substr($conect , $min , $leng , $en);
+	if(mb_strlen($conect,$en) > $leng ){
+		$output .= "...";
+	}
+	return $output;
 }
 
 /**
@@ -368,36 +368,36 @@ function mbSub( $conect , $min = 0 , $leng = 100 , $en='utf-8')
 */
 function symbol( $name )
 {
-    $arr = array(
-        '０' => '0', '１' => '1', '２' => '2', '３' => '3', '４' => '4',
-        '５' => '5', '６' => '6', '７' => '7', '８' => '8', '９' => '9',
-        'Ａ' => 'A', 'Ｂ' => 'B', 'Ｃ' => 'C', 'Ｄ' => 'D', 'Ｅ' => 'E',
-        'Ｆ' => 'F', 'Ｇ' => 'G', 'Ｈ' => 'H', 'Ｉ' => 'I', 'Ｊ' => 'J',
-        'Ｋ' => 'K', 'Ｌ' => 'L', 'Ｍ' => 'M', 'Ｎ' => 'N', 'Ｏ' => 'O',
-        'Ｐ' => 'P', 'Ｑ' => 'Q', 'Ｒ' => 'R', 'Ｓ' => 'S', 'Ｔ' => 'T',
-        'Ｕ' => 'U', 'Ｖ' => 'V', 'Ｗ' => 'W', 'Ｘ' => 'X', 'Ｙ' => 'Y',
-        'Ｚ' => 'Z', 'ａ' => 'a', 'ｂ' => 'b', 'ｃ' => 'c', 'ｄ' => 'd',
-        'ｅ' => 'e', 'ｆ' => 'f', 'ｇ' => 'g', 'ｈ' => 'h', 'ｉ' => 'i',
-        'ｊ' => 'j', 'ｋ' => 'k', 'ｌ' => 'l', 'ｍ' => 'm', 'ｎ' => 'n',
-        'ｏ' => 'o', 'ｐ' => 'p', 'ｑ' => 'q', 'ｒ' => 'r', 'ｓ' => 's',
-        'ｔ' => 't', 'ｕ' => 'u', 'ｖ' => 'v', 'ｗ' => 'w', 'ｘ' => 'x',
-        'ｙ' => 'y', 'ｚ' => 'z',
-        '（' => '(', '）' => ')', '［' => '[', '］' => ']', '【' => '[',
-        '】' => ']', '〖' => '[', '〗' => ']', '「' => '[', '」' => ']',
-        '『' => '[', '』' => ']', '｛' => '{', '｝' => '}', '《' => '<',
-        '》' => '>',
-        '％' => '%', '＋' => '+', '—' => '-', '－' => '-', '～' => '-',
-        '：' => ':', '。' => '.', '、' => ',', '，' => ',',
-        '；' => ';', '？' => '?', '！' => '!', '…' => '-', '‖' => '|',
-        '＂' => '"', '＇' => '`', '｀' => '`', '｜' => '|', '〃' => '"',
-        '　' => ' ' , '＆'=>'&'
-    );
-    foreach( $arr as $key=>$val)
-    {
-        $name = str_replace($key , $val , $name);
-    }
+	$arr = array(
+		'０' => '0', '１' => '1', '２' => '2', '３' => '3', '４' => '4',
+		'５' => '5', '６' => '6', '７' => '7', '８' => '8', '９' => '9',
+		'Ａ' => 'A', 'Ｂ' => 'B', 'Ｃ' => 'C', 'Ｄ' => 'D', 'Ｅ' => 'E',
+		'Ｆ' => 'F', 'Ｇ' => 'G', 'Ｈ' => 'H', 'Ｉ' => 'I', 'Ｊ' => 'J',
+		'Ｋ' => 'K', 'Ｌ' => 'L', 'Ｍ' => 'M', 'Ｎ' => 'N', 'Ｏ' => 'O',
+		'Ｐ' => 'P', 'Ｑ' => 'Q', 'Ｒ' => 'R', 'Ｓ' => 'S', 'Ｔ' => 'T',
+		'Ｕ' => 'U', 'Ｖ' => 'V', 'Ｗ' => 'W', 'Ｘ' => 'X', 'Ｙ' => 'Y',
+		'Ｚ' => 'Z', 'ａ' => 'a', 'ｂ' => 'b', 'ｃ' => 'c', 'ｄ' => 'd',
+		'ｅ' => 'e', 'ｆ' => 'f', 'ｇ' => 'g', 'ｈ' => 'h', 'ｉ' => 'i',
+		'ｊ' => 'j', 'ｋ' => 'k', 'ｌ' => 'l', 'ｍ' => 'm', 'ｎ' => 'n',
+		'ｏ' => 'o', 'ｐ' => 'p', 'ｑ' => 'q', 'ｒ' => 'r', 'ｓ' => 's',
+		'ｔ' => 't', 'ｕ' => 'u', 'ｖ' => 'v', 'ｗ' => 'w', 'ｘ' => 'x',
+		'ｙ' => 'y', 'ｚ' => 'z',
+		'（' => '(', '）' => ')', '［' => '[', '］' => ']', '【' => '[',
+		'】' => ']', '〖' => '[', '〗' => ']', '「' => '[', '」' => ']',
+		'『' => '[', '』' => ']', '｛' => '{', '｝' => '}', '《' => '<',
+		'》' => '>',
+		'％' => '%', '＋' => '+', '—' => '-', '－' => '-', '～' => '-',
+		'：' => ':', '。' => '.', '、' => ',', '，' => ',',
+		'；' => ';', '？' => '?', '！' => '!', '…' => '-', '‖' => '|',
+		'＂' => '"', '＇' => '`', '｀' => '`', '｜' => '|', '〃' => '"',
+		'　' => ' ' , '＆'=>'&'
+	);
+	foreach( $arr as $key=>$val)
+	{
+		$name = str_replace($key , $val , $name);
+	}
 
-    return $name;
+	return $name;
 }
 
 
@@ -405,28 +405,28 @@ function symbol( $name )
 function quickSort($array)
 {
 
-    $length=count($array);
-    $left_array=array();
-    $right_array=array();
-    if($length<=1){
-        return $array;
-    }
+	$length=count($array);
+	$left_array=array();
+	$right_array=array();
+	if($length<=1){
+		return $array;
+	}
 
-    $key=$array[0];
-    //注意这里的i一定要等于1，也就是从数组的第二个值开始比较，因为第一个值已经是被选定为对比值了
-    for($i=1;$i<$length;$i++){
-        if($array[$i]['id']>$key['id']){
-            $right_array[]=$array[$i];
-        }else{
-            $left_array[]=$array[$i];
-        }
-    }
+	$key=$array[0];
+	//注意这里的i一定要等于1，也就是从数组的第二个值开始比较，因为第一个值已经是被选定为对比值了
+	for($i=1;$i<$length;$i++){
+		if($array[$i]['id']>$key['id']){
+			$right_array[]=$array[$i];
+		}else{
+			$left_array[]=$array[$i];
+		}
+	}
 
 
-    $left_array=quickSort($left_array);
-    $right_array=quickSort($right_array);
-    $data = array_merge($right_array,array($key),$left_array);
-    return $data;
+	$left_array=quickSort($left_array);
+	$right_array=quickSort($right_array);
+	$data = array_merge($right_array,array($key),$left_array);
+	return $data;
 }
 /**
 * 二维数组按照某个键名的排序
@@ -440,15 +440,52 @@ function quickSort($array)
 */
 function array_sort($array,$keys,$type='asc')
 {
-    $keysvalue = array();
-    foreach ( $array as $k => $v ){
-        $keysvalue[$k] = $v[$keys];
-    }
-    if( $type == 'asc' ){
-        array_multisort($keysvalue,SORT_ASC,$array);
-    }else{
-        array_multisort($keysvalue,SORT_DESC,$array);
-    }
-    return $array;
+	$keysvalue = array();
+	foreach ( $array as $k => $v ){
+		$keysvalue[$k] = $v[$keys];
+	}
+	if( $type == 'asc' ){
+		array_multisort($keysvalue,SORT_ASC,$array);
+	}else{
+		array_multisort($keysvalue,SORT_DESC,$array);
+	}
+	return $array;
+}
+/**
+* 网页转换成pdf
+* @author   haydn
+* @since    2016-01-27
+* @param    string  $file		网页地址
+* @param    string  $filepdf	pdf文件保存地址
+* @return   int		$success	返回（0：成功 1：失败）
+*/
+function makePDF($file,$filepdf)
+{
+	$pdfexe = C('HTMLTOPDF');
+	exec("{$pdfexe} {$file} {$filepdf}",$out,$success);
+	return $success;
+}
+
+/**
+* 创建目录
+* @author   haydn
+* @since    2016-01-27
+* @param    string  $filename	目录地址
+* @return   bool	
+*/
+function mkdirs($filename)
+{
+	$dir	= $filename;
+	$errmsg = '';
+	$dir 	= explode('/', $dir);
+	foreach($dir as $v){
+		if($v){
+			@$d .= $v . '/';
+			if(!is_dir($d)){
+				$state = mkdir($d, 0777);
+			}
+		}
+	}
+	return true;
 }
 ?>

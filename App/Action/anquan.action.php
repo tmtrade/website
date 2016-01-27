@@ -90,7 +90,7 @@ class AnquanAction extends AppAction
     public function checkScoreAjax()
     {
 
-        !$this->isAjax() && $this->redirect('', '/');
+        //!$this->isAjax() && $this->redirect('', '/');
         $info       = $array = array();
         $tradid     = $this->input('tradname', 'string', '');
         $class      = $this->input('class', 'int', '');
@@ -107,7 +107,8 @@ class AnquanAction extends AppAction
                 $alikeCount = $this->load('trademark')->getAlikeBrand($tradid,$class);
                 $array      = $this->getScoreInfo($twoArr,$threeArr,$alikeCount);
                 $check      = $this->getDynamic($steps);
-                $result     = array('info' => $info,'result' => $array,'check' => $check);
+                $result     = array('info' => $info,'result' => $array,'check' => $check,'pdf' => $pdf);
+                $pdf		= $this->setPdf($result);
             }
         }else{
             $check  = $this->getDynamic($steps);
@@ -579,5 +580,85 @@ class AnquanAction extends AppAction
         }
         return !empty($array) ? true : false;
     }
+    /**
+    * 生成pdf文件
+    * @since    2016-01-27
+    * @author   haydn
+    * @param    array   $array  检查结果数据包
+    * @return   string	$down	pdf下载名称
+    */
+    private function setPdf($array)
+    {
+		$type 	= $array['result']['total'] == 100 ? 1 : 2;
+		$url	= WebDir.'/uploadfile/template/risky_'.$type.'.html';
+		if( file_exists($url) ){
+			$time		= time();
+			$host		= 'http://'.$_SERVER['HTTP_HOST'].'/uploadfile/template/';
+			$zong		= !empty($array['result']['msg']) ? $array['result']['msg'] : '';//总评
+			$list		= '';
+			if( !empty($array['result']['mark']) ){
+				foreach($array['result']['mark'] as $k => $v){
+					$list .= '.'.$v.'<br>';
+				}
+			}
+			$sj			= date('Y年m月d日');
+			$search		= array('{$host}','{$name}','{$class}','{$zong}','{$list}','{$shijian}');
+			$replace	= array($host,$array['info']['trademark'],$array['info']['class'],$zong,$list,$sj);
+			//获取模板并替换	
+			$contents 	= file_get_contents($url);
+			$contents	= str_replace($search,$replace,$contents);
+			$file		= WebDir.'/uploadfile/report/'.date('Y-m-d',time()).'/';
+			!file_exists($file) && mkdirs($file);//创建文件夹
+			//生成pdf
+			$htmlUrl	= $file.$time.'.html';
+			$pdfUrl		= $file.$time.'.pdf';
+			file_put_contents($htmlUrl,$contents);
+			$isOk		= makePDF($htmlUrl,$pdfUrl);
+			$down		= $isOk == 0 ? $time : '';
+			return $down;
+		}
+		return false;
+    }
+    /**
+    * 下载pdf文件
+    * @since 	2016-01-27
+    * @author 	haydn
+    * @return	void
+    */
+    public function downPDF()
+    {
+		$id			= $this->input('id', 'int', '');
+		$dowFile	= WebDir.'/uploadfile/report/';
+		$string		= date('Y-m-d',$id);
+		$file		= $dowFile.$string.'/';
+		!file_exists($file) && exit('文件错误下载失败');//文件目录
+		
+		$filePdf= $file.$id.'.pdf';
+		!file_exists($filePdf) && exit('PDF文件不存在下载失败');//pdf文件
+		$downname	= '检查报告';
+		$this->startDownPDF($filePdf,$downname);
+		
+    }
+    /**
+    * 下载文件
+    * @since 	2016-01-27
+    * @author 	haydn
+    * @param	string	$pdffile	下载路径
+    * @param	string	$downname	文件名称
+    * @return	void
+    */
+    private function startDownPDF($pdffile,$downname)
+	{
+		$fp 	 = fopen($pdffile,"r");
+		$size	 = filesize($pdffile);
+		$downname= iconv('utf-8', 'gbk',$downname);
+		header("Content-type: application/pdf");
+		header("Accept-Ranges: bytes"); 
+		header("Accept-Length: ".$size); 
+		header("Content-Disposition: attachment; filename=".$downname.".pdf"); // 输出文件内容 
+		echo fread($fp,$size); 
+		fclose($fp);
+	}
+    
 }
 ?>
