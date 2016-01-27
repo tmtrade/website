@@ -5,6 +5,18 @@ a{text-decoration:none;}
 img {border:none; }
 .fl {float:left; }
 .fr {float:right; }
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color:#a9bed7;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color:#a9bed7;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color:#a9bed7;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color:#a9bed7;
+}
 /*img{width: 100%; height: auto;display: block;}*/
 
 
@@ -25,18 +37,18 @@ img {border:none; }
 
 }
 .logo-loss .loss-frist{
-    font-size:56px;
+    font-size:26px;
     color: #569dee;
 }
 .logo-loss .loss-frist b{
     display: inline-block;
-    margin-left:10px;
-    margin-right:16px;
-    font-size: 94px;
+    margin-left:5px;
+    margin-right:5px;
+    font-size:40px;
     font-weight: bold;
 }
 .logo-loss .loss-frist label{
-    font-size: 34px;
+    font-size:28px;
     color: #666666;
 }
 .logo-loss .loss-frist a{
@@ -44,12 +56,18 @@ img {border:none; }
 }
 .logo-loss .loss-second{
     color: #666666;
-    font-size:27px;
-    margin-top: 5px;
+    font-size:22px;
+    margin-top:15px;
 
 }
+.logo-loss .loss-second b{
+    color: #fc7d28;
+    font-size:25px;
+    font-weight: normal;
+    margin-right: 5px;
+}
 .logo-loss .loss-second span{
-    font-size:22px;
+    font-size:18px;
     color: #ffffff;
     background: #569dee;
     padding: 6px 5px;
@@ -59,6 +77,23 @@ img {border:none; }
     margin-right: 5px;
 
 }
+/*@media all and (max-width: 1500px) {*/
+    /*.logo-loss .loss-frist label {*/
+        /*font-size: 28px;*/
+    /*}*/
+    /*.logo-loss .loss-frist b{*/
+        /*font-size:54px;*/
+    /*}*/
+    /*.logo-loss .loss-frist{*/
+        /*font-size: 27px;*/
+    /*}*/
+    /*.logo-loss .loss-second{*/
+        /*font-size: 22px;*/
+    /*}*/
+    /*.logo-loss .loss-second span{*/
+        /*font-size: 20px;*/
+    /*}*/
+/*}*/
 .sb-gmban2{
     width: 100%;
     height: 1034px;
@@ -81,8 +116,26 @@ img {border:none; }
 .logo-health p b{
     font-size: 50px;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left:5px;
+    margin-right: 0px;
+}
+.logo-health label b{
+   margin-left: 2px;
+}
+.logo-health label span{
+
+    font-weight: bold;
     margin-right: 5px;
+
+
+}
+@media all and (max-width: 1200px) {
+    .logo-health p{
+        font-size: 36px;
+    }
+    .logo-health p b{
+        font-size: 47px;
+    }
 }
 .logo-health label{
     display: block;
@@ -201,9 +254,14 @@ img {border:none; }
     line-height: 43px;
     color: #a9bed7;
     font-size: 12px;
-    text-indent: 55px;
+    font-family: "宋体" !important;
+    text-indent:40px;
     border-radius:5px;
     transition:all 1s;
+}
+.error{
+
+
 }
 .cgkug{
     color:#333 !important;
@@ -220,14 +278,22 @@ img {border:none; }
     color: #666666;
     font-size: 14px;
 }
+
 .buy-sure ul li.contact input{
     width: 198px;
     height: 43px;
     border: 1px solid #d7e4f3;
+    color: #333333;
     border-radius: 3px;
     background: url("../images/phone-ic.png") no-repeat 10px 11px;
-    text-indent: 30px;
+    text-indent: 32px;
+    font-size: 12px;
+    font-family: "宋体" !important;
 }
+input::-webkit-input-placeholder{
+    color:#a9bed7;
+}
+
 .buy-sure ul li.contact a{
     display: block;
     width: 170px;
@@ -246,15 +312,14 @@ img {border:none; }
 }
 .buy-sure p{
     width: 895px;
-    margin:0px auto 40px;
+    margin: 0px auto 40px;
     text-align: center;
     color: #fc775d;
     font-size: 15px;
-    margin-top:5px;
-    margin-bottom:35px;
-    border-top:1px solid #e9eef3;
-    padding-top: 20px;
-
+    margin-top: -10px;
+    margin-bottom: 35px;
+    border-top: 1px solid #e9eef3;
+    padding-top: 10px;
 }
 
 .sb-gmban4{
@@ -281,15 +346,16 @@ img {border:none; }
 
 .logo-customs h6{
     font-size: 20px;
-    text-align: center;
+    text-align:left;
+    text-indent: 10px;
     color: #ffffff;
-    margin-top: 15px;
+    margin-top:70px;
     font-weight: normal;
 }
 .logo-customs ul{
     overflow: hidden;
     margin: auto;
-    margin-top:70px;
+    margin-top:30px;
     width:1190px;
 
 }
@@ -356,6 +422,7 @@ img {border:none; }
     margin-left: 532px;
     display: none;
 }
+
 .assess p{
     padding-top: 15px;
     padding-left:25px;
@@ -367,6 +434,7 @@ img {border:none; }
     padding-right: 10px;
     display: none;
 }
+
 .judge h5{
     color: #418de5;
     font-size: 14px;
@@ -385,6 +453,13 @@ img {border:none; }
 .judge p a img{
 
     margin-right: 5px;
+}
+.two1 a:hover .assess{
+    display: block;
+
+}
+.two2 a:hover .judge{
+    display: block;
 }
 .logo-thorough{
     margin-top: 25px;
@@ -521,7 +596,7 @@ img {border:none; }
     width:1100px;
     margin: auto;
     margin-top:60px;
-    overflow: hidden;
+   
 }
 
 .trading-sys{
@@ -566,9 +641,22 @@ img {border:none; }
 .trading-sys ul li  label{
     display: inline-block;
     text-align:left;
-    margin-top:0px;
+    margin-top:-5px;
     line-height: 20px;
     margin-left:30px;
+}
+
+.trading-sys ul li span.ssh{
+    display:inline-block;
+    font-size: 14px;
+    position:absolute;
+    top: -8px;
+    right: -12px;
+
+}
+.trading-sys ul li span.ssh img{
+    /*width:46px;*/
+    /*height:30px;*/
 }
 .yzc-trading img.vs{
     float: left;
@@ -592,7 +680,7 @@ img {border:none; }
     text-align: center;
     color: #666666;
     font-size: 19px;
-    margin-top:75px;
+    margin-top:70px;
 
 }
 .tradi-model ul li label{
@@ -607,6 +695,7 @@ img {border:none; }
 
 .sb-bottom-main{
     width: 1180px;
+    position: relative;
     margin: auto;
     overflow: hidden;
     margin-top:55px;
@@ -647,6 +736,9 @@ img {border:none; }
 .sb-bottom-main ul li.link p a:hover{
     text-decoration: underline;
 }
+/*.sb-bottom-main ul li.contact-us{*/
+    /*position: relative;*/
+/*}*/
 .sb-bottom-main ul li.contact-us div{
     overflow: hidden;
 
@@ -690,6 +782,21 @@ img {border:none; }
     height: 38px;
 }
 
+a.weixin span{
+
+    display: inline-block;
+    position: absolute;
+    bottom: 60px;
+    right: 230px;
+    display: none;
+}
+a.weixin span img{
+    width:100px !important;
+    height:100px !important;
+}
+a.weixin:hover .xs-weixin{
+    display:block;
+}
 .sb-bottom-mess{
     overflow: hidden;
     padding-bottom: 45px;
