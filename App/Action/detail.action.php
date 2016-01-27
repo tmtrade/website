@@ -238,7 +238,7 @@ class DetailAction extends AppAction
 		$isExist = array(
 			'phone'					=> $_phone,
 			'source'				=> 10,//来源展示页
-			'name'					=> $sale['trademark'],
+			'name'					=> $sale['name'],
 			'class'					=> $sale['class'],
 			'buyType'				=> 1,
 			'need'					=> "商标号:".$sale['id'].",类别:".$sale['class'],
