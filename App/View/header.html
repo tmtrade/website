@@ -170,23 +170,13 @@
         </div>
         <div class="mj-navitems fl">
             <ul class="f-clearfix">
-				<?if ($_mod_ == 'search'){?> 
-					<li>
-						<a href="/licence">
-							<span>租用/许可商标</span>
-							<em>短期租用商标</em>
-							<i class="uj_icon27"></i>
-						</a>
-					</li>
-				<?}else{?> 
-					<li class="mj-brn">
-						<a href="/search">
-							<span>商标在线筛选</span>
-							<em>全国189万闲置商标</em>
-							<i class="uj_icon27"></i>
-						</a>
-					</li>
-				<?}?>
+				<li <?if ($_mod_ == 'search'){echo 'class="mj-lihc"';}?>>
+					<a href="/search">
+						<span>商标在线筛选</span>
+						<em>全国189万闲置商标</em>
+						<i class="uj_icon27"></i>
+					</a>
+				</li>
                 <li <?if ($_mod_ == 'urgency'){echo 'class="mj-lihc"';}?> >
                     <a href="/urgency">
                         <span>快速成交商标</span>
