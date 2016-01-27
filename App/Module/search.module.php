@@ -328,7 +328,7 @@ class SearchModule extends AppModule
         }else{
             $data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
         }
-        $data['viewUrl'] = SITE_URL.'d-'.$data['number'].'.html';
+        $data['viewUrl'] = '/d-'.$data['tid'].'-'.$data['class'].'.html';
         
         if ( empty($data['id']) ) return $data;
 

@@ -26,8 +26,9 @@ class DetailAction extends AppAction
 		}else{
 			$this->redirect('未找到页面2', '/index/error');
 		}
-		$_info = $this->load('trademark')->getInfo($tid,array('`id` as `number`','class'));
-		if ( empty($_info) || empty($_info['number']) ){
+		$_info 	= $this->load('trademark')->getInfo($tid,array('`id` as `number`','class'));
+		$number = $_info['number'];
+		if ( empty($_info) || empty($number) ){
 			$this->redirect('未找到页面3', '/index/error');
 		}elseif( !in_array($class, range(1,45)) || $class != $_info['class'] ){
 			$this->redirect('未找到页面4', '/index/error');
@@ -35,7 +36,6 @@ class DetailAction extends AppAction
 		//if ( empty($number) || !preg_match('/^[0-9a-zA-Z]+$/',$number) ){
 		//	$this->redirect('未找到页面1', '/index/error');
 		//}
-
 		$info 	= $this->load('trademark')->getTmInfo($number);
 		if ( empty($info) ){
 			$this->redirect('未找到页面5', '/index/error');
