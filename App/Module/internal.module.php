@@ -145,7 +145,7 @@ class InternalModule extends AppModule
             $r['limit'] = 1;
         }
 
-        return $this->import('contact')->find($r);
+        return $this->import('contact')->setCache(false)->find($r);
     }
 
     //获取商品ID（saleId）下的商标包装信息
@@ -154,7 +154,7 @@ class InternalModule extends AppModule
         $r['eq'] = array(
             'saleId' => $saleId,
             );
-        return $this->import('tminfo')->setCache(false)->find($r);
+        return $this->import('tminfo')->find($r);
     }
 
 
