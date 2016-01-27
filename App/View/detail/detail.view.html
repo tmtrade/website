@@ -122,64 +122,66 @@
             <!-- 出售中 -->
             <? if ( !empty($sale) ){ ?>
                     <!-- 基本信息部分 -->
-                <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ 
-                ?>
+                <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ ?>
+                    <!--特价价格促销-->
+                    <div class="mj-priceTxtt">
+                        <strong>
+                            <em>￥</em>
+                            <span><?=$sale['salePrice']?></span>
+                            <b>&nbsp;元</b>
+                        </strong>
+                        <span>（原价：<b class="mj-priceTxtt_b"><?=$sale['price']?></b> 元)</span>
+                        <br />
+                        <label><?php if($sale['salePriceDate'] > 0){
+                            echo date('Y-m-d H:i',$sale['salePriceDate']);
+                            }else{echo "永久";} ?></label>有效<br />
+                <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
+                    <!--定价商品-->
+                    <div class="mj-priceTxtt">
+                        <strong>
+                            <em>￥</em>
+                            <span><?=$sale['price']?></span>
+                            <em>.00</em>
+                            <b>&nbsp;元</b>
+                        </strong>
+                        <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
+                <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
+                    <!--议价商品-->
+                    <div class="mj-priceTxtt">
+                        <strong>
+                            <em>￥</em>
+                            <span>议价</span>
+                            <em></em>
+                            <b>&nbsp;</b>
+                        </strong>
+                        <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
+                <?}?>
+                <!--操作部分-->
+                <? if($baystate == 1){ ?>
+                    <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>;
+                </div>
+                <? }else{ ?>
                         <!--特价价格促销-->
-                        <div class="mj-priceTxtt">
-                            <strong>
-                                <em>￥</em>
-                                <span><?=$sale['salePrice']?></span>
-                                <b>&nbsp;元</b>
-                            </strong>
-                            <span>（原价：<b class="mj-priceTxtt_b"><?=$sale['price']?></b> 元)</span>
-                            <br />
-                            <label><?php if($sale['salePriceDate'] > 0){
-                                echo date('Y-m-d H:i',$sale['salePriceDate']);
-                                }else{echo "永久";} ?></label>有效<br />
-                    <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
+                        <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ 
+                        ?>
+                            <?if($isLogin){ ?>
+                                <a href='javascript:createOrder(<?=$sale['id']?>);' class="mj-priceTxtt_link" id='addorder' >立即抢购</a>
+                            <? }else{ ?>
+                                <a href='javascript:goBuy();' class="mj-priceTxtt_link">立即抢购</a>
+                            <?} ?>
+                            </div>
                         <!--定价商品-->
-                        <div class="mj-priceTxtt">
-                            <strong>
-                                <em>￥</em>
-                                <span><?=$sale['price']?></span>
-                                <em>.00</em>
-                                <b>&nbsp;元</b>
-                            </strong>
-                            <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
-                    <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
+                        <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
+                                <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我想购买</a></div>
+                            </div>
                         <!--议价商品-->
-                        <div class="mj-priceTxtt">
-                            <strong>
-                                <em>￥</em>
-                                <span>议价</span>
-                                <em></em>
-                                <b>&nbsp;</b>
-                            </strong>
-                            <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
-                    <?}else{?>
-                        <div class="mj-pricebtn"><a href='javascript:goLook();'>查看价格</a></div>
-                    <?}?>
-                    <!--操作部分-->
-                    <? if($baystate == 1){ ?>
-                        <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>;
-                    <? }else{ ?>
-                            <!--特价价格促销-->
-                            <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ 
-                            ?>
-                                <?if($isLogin){ ?>
-                                    <a href='javascript:createOrder(<?=$sale['id']?>);' class="mj-priceTxtt_link" id='addorder' >立即抢购</a>
-                                <? }else{ ?>
-                                    <a href='javascript:goBuy();' class="mj-priceTxtt_link">立即抢购</a>
-                                <?} ?>
-                            <!--定价商品-->
-                            <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
-                                    <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我想购买</a></div>
-                            <!--议价商品-->
-                            <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
-                                    <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我有兴趣</a></div>
-                            <?}?>
-                    <?  } ?> 
-                    </div>
+                        <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
+                                <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我有兴趣</a></div>
+                            </div>
+                        <?}else{?>
+                                <div class="mj-pricebtn"><a href='javascript:goLook();'>查看价格</a></div> 
+                        <?}?> 
+                <?  } ?>
             <? }else{ ?>
             <!-- 来自商标库 -->
                 <? if($isLogin){ ?>

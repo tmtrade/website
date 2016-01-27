@@ -12,8 +12,14 @@ class TrademarkAction extends AppAction
 {
 	public function view()
 	{
-		$tid 	= $this->input("tid","int");
-		$class 	= $this->input("class","int");
+		$tag = $this->input('short', 'string', '');
+		if ( $tag ){
+			if ( strpos($tag, '-') === false ) $this->redirect('未找到页面', '/index/error');
+			list($tid, $class) = explode('-', $tag);
+		}else{
+			$tid 	= $this->input("tid","int");
+			$class 	= $this->input("class","int");
+		}
 
 		if ( empty($tid) || empty($class) ){
 			$this->redirect('未找到页面', '/index/error/');
@@ -26,7 +32,7 @@ class TrademarkAction extends AppAction
 			$this->redirect('未找到页面', '/index/error/');
 		}
 
-		$this->redirect('', '/d-'.$info['number'].'.html');
+		$this->redirect('', '/goods-'.$info['number'].'.html');
 	}
 
 }

@@ -19,7 +19,7 @@ class DetailAction extends AppAction
 	//商品详情
 	public function view()
 	{
-		$tag = $this->input('d-view', 'string', '');
+		$tag = $this->input('short', 'string', '');
 		if ( $tag ){
 			$number = $tag;
 		}else{
