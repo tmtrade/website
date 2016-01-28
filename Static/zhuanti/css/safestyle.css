@@ -597,9 +597,9 @@ body,html{
     color: #888888;
 }
 
-
-
-
+.mj-dt:hover .mj-dd{
+    display: block!important;
+}
 
 
 

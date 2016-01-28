@@ -822,6 +822,9 @@ a.weixin:hover .xs-weixin{
 
 
 
+.mj-dt:hover .mj-dd{
+    display: block!important;
+}
 
 
 

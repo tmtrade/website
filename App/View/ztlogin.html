@@ -1,0 +1,268 @@
+<div class="mj-sidebar">
+    <div class="mj-stclose">
+        <label id="mj-stclose">X关闭</label>
+    </div>
+    <div class="mj-sidebarCon">
+        <a href="http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165" target="_blank"  style="border: none;padding: 0;"><span><i class="us-icon us-icon14"></i><br>免费咨询<b></b></span></a>
+        <a href="javascript:;" onclick="consultation()">购买<br>商标</a>
+        <a href="javascript:;" onclick="consultation()">出售<br>商标</a>
+        <a href="javascript:;" onclick="consultation()">购买<br>专利</a>
+        <a href="javascript:;" onclick="consultation()">出售<br>专利</a>
+        <a href="javascript:;" onclick="consultation()">其他<br>服务</a>
+        <div class="ms-call">
+            <a href="javascript:;"><i class="us-icon us-icon15"></i><br>免费<br>电话</a>
+            <div class="ms-sidebarTel">
+                <p><em>4006-929-199</em></p>
+                <span class="jxwz">电话免费开通在线管理平台账户(国内唯一)</span>
+                <input type="text" id="telInput" name="telInput" placeholder="输入电话号码">
+                <a href="javascript:;" id="callBtn">立即免费通话</a><br>
+            </div>
+        </div>
+        <a href="javascript:" class="mj-topIcon"><i class="uj_icon25"></i><br>顶部</a>
+    </div>
+    <div class="mj-siright">
+        <i class="us-icon us-icon14"></i>
+        <em>免费咨询</em>
+    </div>
+</div>
+<!--分类弹框-->
+<div class="w1180">
+    <div class="mj-models" style="display:none;">
+        <a href="javascript:;" class="mj-close"></a>
+        <ul class="f-clearfix">
+            <li cid="0"><a href="javascript:;">所有分类</a></li>
+            <? foreach ($CLASSES as $key => $value) { ?>
+                <li cid="<?=$key?>"><a href="javascript:;"><?echo $key.'类-'.$value?></a></li>
+            <? } ?>
+        </ul>
+    </div>
+</div>
+
+<div id="center" class="progress_bar">
+    <div id="loading"><div></div></div>
+</div>
+
+<!-- 新增登录框弹出框 -->
+<div class="mj-loginModel" id="loginFormDiv"  style="display: none;">
+    <span class="ms-close mj-close" onclick="boxHide('mj-loginModel')"></span>
+    <div class="mj-lmTop" id="dl_title">
+        <h6>登录</h6>
+        <p style="margin-left: 10px;"></p>
+    </div>
+    <div class="mj-lmBottom">
+        <div class="ms-errorTips">
+            <p class="reg-tip" id="loginTips" style="display:none"><i class="us-icon us-icon19"></i><em></em></p>
+        </div>
+        <div class="ms-phoneInput f-clearfix">
+            <div class="mj-form-wrappers fl" style="width: 158px;">
+                <span class="mj-inpuVs mj-mlspan">请输入手机号码</span>
+                <div class="ms-input mj-input">
+                    <i class="us-icon uj-icon5"></i>
+                    <input type="text" id="loginUser">
+                </div>
+            </div>
+            <a href="javascript:;" class="ms-sent" id="dl_wjmm">忘记密码</a>
+            <a href="javascript:;" class="ms-sent" id="dl_fsmm" style="display:none">发送密码</a>
+        </div>
+        <div class="mj-form-wrappers">
+            <span class="mj-inpuVs mj-mlspan">请输入密码</span>
+            <div class="ms-input mj-input">
+                <i class="us-icon us-iconmi"></i>
+                <input type="password" id="loginPass" onkeydown="if(event.keyCode==13) letLogin();" >
+            </div>
+        </div>
+        <div class="mj-lomTip" id="dl_ts" style="display:none">
+            <b>未收到密码: </b>
+            <p>1.手机号错误，请验证后重新输入</p>
+            <p>2.发送失败，人工将电话与您联系</p>
+        </div>
+        <a href="javascript:;" ctype="e" class="ms-loginBtn" id="dl_sub">立即登录</a>
+    </div>
+</div>
+
+<script src="<?=StaticDir?>script/backcallandtongji.js">
+</script><script language="javascript" src="http://st.chofn.com/?action=sid&area=3&tid=2"></script>
+<script type="text/javascript">
+    //分类弹框
+    //$(".mj-models").hide(); //初始ul隐藏
+
+    var CHOFN = (function($,chofn){
+       var __loginBox = $('#loginFormDiv');
+       chofn.loginShow = function(obj){
+           __loginBox.show();
+           boxBg();
+           reCal(__loginBox);
+       };
+       var __loginBoxs = $('#buyFormDiv');
+       chofn.BuyShow = function(obj){
+           __loginBoxs.show();
+           boxBg();
+           reCal(__loginBoxs);
+       };
+       var __verifyBoxs = $('#verifyMoblie');
+       chofn.VerifyShow = function(obj){
+           __verifyBoxs.show();
+           boxBg();
+           reCal(__verifyBoxs);
+       };
+       return chofn;
+    })(jQuery,CHOFN || {});
+   
+
+    //ms-hoverList  //免费通知
+    $('.ms-imglist-ul li,.ms-call').hover(function(){
+        $(this).addClass('current');
+    },function(){
+        $(this).removeClass('current');
+    });
+    //当点击跳转链接后，回到页面顶部位置
+    $(".mj-topIcon").click(function(){
+        $('body,html').animate({scrollTop:0},1000);
+        return false;
+    });
+
+   var isOpen = 0;
+   //弹出层居中
+   function reCal(obj){
+       var screenWidth,screenHeigth,scollTop,objLeft,objTop;
+       function box(){
+           screenWidth = $(window).width(); //当前窗口的宽度
+           screenHeigth = $(window).height();  //当前窗口的高度
+           scollTop = $(document).scrollTop(); //获取滚动条距顶部的偏移
+           objLeft = (screenWidth - obj.outerWidth()) / 2; //弹出框距离左侧距离
+           objTop = (screenHeigth - obj.outerHeight()) / 2; //弹出框距离顶部的距离
+           //css定位弹出层
+           obj.css({
+               left: objLeft,
+               top:  objTop
+           });
+       };
+       box();
+       isOpen = 1; //弹出框设定一个变量 置为1 说明弹出框是打开状态
+       //当浏览器窗口大小改变时或者滚动条滚动时...
+       $(window).on('resize scroll',function(){
+           //判断此变量是否为1 如果是就执行
+           if(isOpen == 1){
+               box();
+           }
+       });
+   };
+   //生成弹层背景
+   function boxBg(){
+       var boxbg = $(document.createElement('div')),
+               docheight = $(document).height();
+       boxbg.addClass('ms-boxBg');
+       $('body').append(boxbg);
+       $('.ms-boxBg').css({
+           opacity: "0.6",
+           height: docheight
+       });
+   };
+   //关闭弹层
+   function boxHide(objId){
+       $('.'+objId).hide();
+       $('.ms-boxBg').remove();
+       isOpen = 0;
+       doBuyFunc = '';
+   };
+
+    $("input").each(function(){
+        var spanT= $(this).parent().parent().find($(".mj-inpuVs")).text();
+        $(this).focus(function(){
+            $(this).parent().parent().find($(".mj-inpuVs")).text("");
+        });
+        $(this).blur(function(){
+            if($(this).val()===""){
+                $(this).parent().parent().find($(".mj-inpuVs")).text(spanT);
+            }else{
+                $(this).parent().parent().find($(".mj-inpuVs")).text("");
+            }
+        });
+    });
+
+    $(function(){
+		$.ajax({
+             type: "GET",
+             url: "/index/links/",
+             dataType: "json",
+             success: function(data){
+				var page = '';
+				for(i=0; i<data.length;i++){
+                    page += '<li><a href="' + data[i]['content'] + '" target="_blank">' + data[i]['title'] + '</a></li>';
+				}
+				$("#links").html(page);
+			}
+         });
+    });
+    $("#mj-stclose").click(function(){
+        $(".mj-stclose").hide(300);
+        $(".mj-sidebarCon").hide(300);
+        $(".mj-siright").show(300);
+    });
+    $(".mj-siright").click(function(){
+        $(".mj-stclose").show(300);
+        $(".mj-sidebarCon").show(300);
+        $(".mj-siright").hide(300);
+    });
+	
+	if($(window).width() > 1320){
+        $(".mj-siright").hide();
+        $(".mj-stclose").show();
+        $(".mj-sidebarCon").show();
+	}
+    if($(window).width() < 1320){
+        $(".mj-siright").show();
+        $(".mj-stclose").hide();
+        $(".mj-sidebarCon").hide();
+    }
+    var $wind = $(window);//将浏览器加入缓存中
+
+    var win = $wind.outerWidth()//首先获取浏览器的宽度
+
+    $wind.resize(function(){
+//浏览器变化宽度的动作。
+        var newW = $wind.outerWidth();
+        if(newW<1320){
+            $(".mj-siright").show();
+            $(".mj-stclose").hide();
+            $(".mj-sidebarCon").hide();
+            $("#mj-stclose").click(function(){
+                $(".mj-stclose").hide(300);
+                $(".mj-sidebarCon").hide(300);
+                $(".mj-siright").show(300);
+            });
+            $(".mj-siright").click(function(){
+                $(".mj-stclose").show(300);
+                $(".mj-sidebarCon").show(300);
+                $(".mj-siright").hide(300);
+            });
+        }else{
+            $(".mj-siright").hide();
+            $(".mj-stclose").show();
+            $(".mj-sidebarCon").show();
+            $("#mj-stclose").click(function(){
+                $(".mj-stclose").hide(300);
+                $(".mj-sidebarCon").hide(300);
+                $(".mj-siright").show(300);
+            });
+            $(".mj-siright").click(function(){
+                $(".mj-stclose").show(300);
+                $(".mj-sidebarCon").show(300);
+                $(".mj-siright").hide(300);
+            });
+        }
+
+    });
+
+
+    $(document).ready(function(){
+        var doc=document,inputs=doc.getElementsByTagName('input'),supportPlaceholder='placeholder'in doc.createElement('input'),placeholder=function(input){var text=input.getAttribute('placeholder'),defaultValue=input.defaultValue;
+            if(defaultValue==''){
+                input.value=text}
+            input.onfocus=function(){
+                if(input.value===text){this.value=''}};
+            input.onblur=function(){if(input.value===''){this.value=text}}};
+        if(!supportPlaceholder){
+            for(var i=0,len=inputs.length;i<len;i++){var input=inputs[i],text=input.getAttribute('placeholder');
+                if(input.type==='text'&&text){placeholder(input)}}}});
+</script>
