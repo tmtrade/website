@@ -59,7 +59,7 @@ class DetailAction extends AppAction
 		}else{
 			$sale 		= $this->load('internal')->getSaleInfo($saleId, 0, 1);
 			$contact['name']	= '婵妹妹';
-			$contact['phone']	= $sale['viewPhone'];
+			$contact['phone']	= empty($sale['viewPhone']) ? '18602868321' : $sale['viewPhone'];
 			$platform 	= explode(',', $sale['platform']);
 			$isSale  	= $sale['status'] == 1 ? true : false;
 			$tips 		= $this->load('search')->getTips($sale);
@@ -290,7 +290,7 @@ class DetailAction extends AppAction
 
 		$phoneArr 	= $this->load('phone')->getSexPhone();
 		$phoneid 	= ceil(substr($tid,-1)/3*2) > 5 ? 5 : ceil(substr($tid,-1)/3*2);
-		$phone 		= empty($phoneArr[$phoneid]) ? '' : $phoneArr[$phoneid];
+		$phone 		= empty($phoneArr[$phoneid]) ? '18602868321' : $phoneArr[$phoneid];
 		$contact['phone'] = $phone;
 		return $contact;
 	}
