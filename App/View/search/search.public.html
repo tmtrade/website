@@ -155,7 +155,6 @@
                                 <?if ($v['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
                                 <?if ($v['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
                                 <?if ($v['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
-                                <?if ($v['isApprove'] == true){?><label class="mj-tZheng" title="已认证">证</label><?};?>
                             </p>
                             <div class="mj-imglT">
                                 <label class="mj-imglT">
@@ -168,7 +167,7 @@
                             </div>
                         </a>
                         <div class="mj-listButn">
-                            <a href="/anquan/?nid=<?=$v['number']?>&class=<?=$v['class']?>" target="_blank">检测此商标</a>
+                            <a href="<?=$v['safeUrl']?>" target="_blank">检测此商标</a>
                         </div>
                     </li>
                 <? } ?>
