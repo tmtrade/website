@@ -24,5 +24,5 @@ $(function(){
 
 
 function consultation(){
-    window.open("http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165");
+    window.open("http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165");
 }
