@@ -94,7 +94,7 @@ $(document).ready(function(){
     $("#buyNeed").blur(function(){
         var _this = $(this);
         _buyNeed = false;
-        var _mj_input = _this.val();
+        var _mj_input = $.trim( _this.val() );
         if(_mj_input == ""){
             $(".mj-eed").show();
             $(".reg-tip em").text("请填写购买需求");
