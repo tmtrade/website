@@ -29,12 +29,10 @@ $('#subBuy').click(function(){
 $('#buyMoblie').blur(function(){
 	mobile = $('#buyMoblie').val();
 	if(!mobile){
-		$('#buyMoblie').focus();
 		$('#buyMoblieTip').text('手机号不能为空');
 		$('#buyMoblieTip').show();
 		return false;
 	}else if(!verifyPhoneNum(mobile)){
-		$('#buyMoblie').focus();
 		$('#buyMoblieTip').text('手机号码不正确');
 		$('#buyMoblieTip').show();
 		return false;
