@@ -11,10 +11,38 @@
 class BuyAction extends AppAction
 {
     public $pageTitle   = '我要买 - 一只蝉';
-
+	public $fkcookie    = 'fkcookie';
+	 
     public function index()
     {
-        $this->display();
+		$fkcookie = $this->fkcookie;
+		if(Session::get($fkcookie)){
+			$fkcookieNum = Session::get($fkcookie);	
+		}
+		
+		if($fkcookieNum){
+			if($fkcookieNum == 1){
+				$urlHtml = "zhuanti/zhuanti.peifu.html";
+			}else{
+				$urlHtml = "zhuanti/zhuanti.safeguard.html";
+			}
+		}else{
+			$num = rand(1,2);
+			Session::set($this->fkcookie, $num, 1000000000000);
+			if($num == 1){
+				$urlHtml = "zhuanti/zhuanti.peifu.html";
+			}else{
+				$urlHtml = "zhuanti/zhuanti.safeguard.html";
+			}
+		}
+		$this->display($urlHtml);
+    }
+	
+	
+	public function buyold()
+    {	
+		$urlHtml = "buy/buy.index.html";
+		$this->display($urlHtml);
     }
 
     /**
