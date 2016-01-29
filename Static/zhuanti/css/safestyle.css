@@ -603,6 +603,10 @@ color: #ff5555;
     color: #888888;
 }
 
+.mj-dt:hover .mj-dd{
+    display: block!important;
+}
+
 
 
 
