@@ -30,7 +30,7 @@ class DetailAction extends AppAction
 		$number = $_info['number'];
 		if ( empty($_info) || empty($number) ){
 			$this->redirect('未找到页面3', '/index/error');
-		}elseif( !in_array($class, range(1,45)) || $class != $_info['class'] ){
+		}elseif( !in_array($class, range(1,45)) ){
 			$this->redirect('未找到页面4', '/index/error');
 		}
 		//if ( empty($number) || !preg_match('/^[0-9a-zA-Z]+$/',$number) ){
@@ -39,6 +39,9 @@ class DetailAction extends AppAction
 		$info 	= $this->load('trademark')->getTmInfo($number);
 		if ( empty($info) ){
 			$this->redirect('未找到页面5', '/index/error');
+		}
+		if ( !in_array($class, $info['class']) ){
+			$this->redirect('未找到页面6', '/index/error');
 		}
 
 		$this->set("platformIn", C('PLATFORM_IN'));

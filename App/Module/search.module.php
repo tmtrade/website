@@ -328,7 +328,8 @@ class SearchModule extends AppModule
         }else{
             $data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
         }
-        $data['viewUrl'] = '/d-'.$data['tid'].'-'.$data['class'].'.html';
+        $_class = current( explode(',', $data['class']) );
+        $data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';
         $data['safeUrl'] = '/anquan/?nid='.$data['number'].'&class='.$data['class'];
         
         if ( empty($data['id']) ) return $data;

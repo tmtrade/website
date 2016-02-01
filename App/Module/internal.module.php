@@ -47,8 +47,9 @@ class InternalModule extends AppModule
         $role['raw']    = ' ( isSale = 1 AND `status` = 1 AND priceType = 1 AND isOffprice = 1 AND (`salePriceDate` = 0  OR `salePriceDate` > unix_timestamp(now())) )';
         $list = $this->import('sale')->find($role);
         foreach ($list as $k => $v) {
+            $_class = current( explode(',', $v['class']) );
             $list[$k]['imgUrl']     = TRADE_URL.$items[$v['id']];
-            $list[$k]['viewUrl']    = '/d-'.$v['tid'].'-'.$v['class'].'.html';
+            $list[$k]['viewUrl']    = '/d-'.$v['tid'].'-'.$_class.'.html';
         }
         return $list;
     }
@@ -90,8 +91,9 @@ class InternalModule extends AppModule
 		$data['notId'] = array();
         $classTitle = C('CLASSES');
         foreach($data['rows'] as $k => $v){
+            $_class = current( explode(',', $v['class']) );
 			$data['rows'][$k]['imgUrl'] = $this->getViewImg($v['id']); 
-			$data['rows'][$k]['viewUrl']    = "/d-".$v['tid'].'-'.$v['class'].".html"; 
+			$data['rows'][$k]['viewUrl']    = "/d-".$v['tid'].'-'.$_class.".html"; 
 			$data['rows'][$k]['_name']   = mbSub($v['name'],0,4);
 			
 			array_push($data['notId'], $v['id']);
