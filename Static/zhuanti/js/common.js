@@ -10,7 +10,7 @@ $('#subBuy').click(function(){
 	}
 
 	mobile = $('#buyMoblie').val();
-	if(!mobile){
+	if(mobile == '' || mobile == "请填写你的联系电话，方便我们联系你"){
 		$('#buyMoblie').focus();
 		$('#buyMoblieTip').text('手机号不能为空');
 		$('#buyMoblieTip').show();
@@ -26,20 +26,20 @@ $('#subBuy').click(function(){
 	addBuy();
 })
 
-$('#buyMoblie').blur(function(){
-	mobile = $('#buyMoblie').val();
-	if(!mobile){
-		$('#buyMoblieTip').text('手机号不能为空');
-		$('#buyMoblieTip').show();
-		return false;
-	}else if(!verifyPhoneNum(mobile)){
-		$('#buyMoblieTip').text('手机号码不正确');
-		$('#buyMoblieTip').show();
-		return false;
-	}else{
-		$('#buyMoblieTip').hide();
-	}
-})
+// $('#buyMoblie').blur(function(){
+	// mobile = $('#buyMoblie').val();
+	// if(!mobile){
+		// $('#buyMoblieTip').text('手机号不能为空');
+		// $('#buyMoblieTip').show();
+		// return false;
+	// }else if(!verifyPhoneNum(mobile)){
+		// $('#buyMoblieTip').text('手机号码不正确');
+		// $('#buyMoblieTip').show();
+		// return false;
+	// }else{
+		// $('#buyMoblieTip').hide();
+	// }
+// })
 
 function addBuy()
 {
