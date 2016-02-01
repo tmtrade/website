@@ -16,6 +16,7 @@ class BuyAction extends AppAction
     public function index()
     {
 		$fkcookie = $this->fkcookie;
+
 		if(Session::get($fkcookie)){
 			$fkcookieNum = Session::get($fkcookie);	
 		}
@@ -28,7 +29,7 @@ class BuyAction extends AppAction
 			}
 		}else{
 			$num = rand(1,2);
-			Session::set($this->fkcookie, $num, 1000000000000);
+			Session::set($fkcookie, $num, 100000);
 			if($num == 1){
 				$urlHtml = "zhuanti/zhuanti.peifu.html";
 			}else{
