@@ -28,7 +28,7 @@
         <div class="mj-cTright">
             <ul class="mj-cTr_top f-clearfix">
                 <li>
-                    <b><?=$info['name']?></b>
+                    <b><?=empty($info['name'])?'【暂无商标名称】':$info['name']?></b>
                     <span class="mj-cTr_top_r">
 					<em>
 					<?php 
