@@ -56,7 +56,6 @@ class DetailAction extends AppAction
 		$saleId = $this->load('internal')->existSale($number);//是否出售
 		if ( $saleId <= 0 ){//不是出售信息中的
 			$platform 	= $other['platform'];
-			$contact	= $this->getPhoneName($tid, $class, 0);//获取联系人信息
 			$isSale 	= $this->load('blacklist')->isBlack($number) ? false : true;
 			$tips = $sale = array();
 			
