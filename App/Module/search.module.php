@@ -326,7 +326,7 @@ class SearchModule extends AppModule
         if ( $data['id'] ){
             $data['imgUrl'] = $this->load('internal')->getViewImg($data['id']);
         }else{
-            $data['imgUrl'] = $this->load('trademark')->getImg($data['tid']);
+            $data['imgUrl'] = $this->load('trademark')->getImg($data['number']);
         }
         $_class = current( explode(',', $data['class']) );
         $data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';

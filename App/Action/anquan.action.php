@@ -524,7 +524,7 @@ class AnquanAction extends AppAction
 		$info['trademark']= !empty($info['trademark']) ? $info['trademark'] : '商标号：'.$info['id'];
         if( $info['pid'] > 0 ){
             $proArr = $this->load('proposer')->get($info['proposer_id']);//获取申请人
-            $img    = $this->load('trademark')->getImg($info['auto']);//获取图片
+            $img    = $this->load('trademark')->getImg($info['id']);//获取图片
             $plat   = $this->load('sale')->getTrademarkPlatform($info['class']);//获取平台
             if( !empty($plat) ){
                 $clo        = array('clog','clob','cloq','cloz','clozs','clozy','clof','cloo');//标签云的class
