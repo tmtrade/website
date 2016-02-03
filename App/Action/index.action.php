@@ -68,6 +68,15 @@ class IndexAction extends AppAction
 		$offprice	= $this->load('search')->getSaleList($params, 0, 4);
 
 		$this->set('offpriceList', $this->load('internal')->getIndexOffprice());
+		$_news = $this->com('redis')->get('_news_tmp');
+		if(empty($_news)){
+			$news['page']	= $this->load('faq')->newsList(array('c'=>50,'limit'=>5));
+			$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>5));
+			$news['link']	= $this->load('faq')->newsList(array('c'=>47,'limit'=>10));
+			$this->com('redis')->set('_news_tmp', $news, 3600);
+		}else{
+			$news = $_news;
+		}
 
 		$this->set('dataTM',$dataTM);
 		$this->set('dataJD',$dataJD);
@@ -76,6 +85,7 @@ class IndexAction extends AppAction
 		$this->set('dataJP',$dataJP);
 		$this->set('dataTS',$dataTS);
 		$this->set('classes',C('CLASSES'));
+		$this->set('news',$news);
 		$this->display();
 	}
 
@@ -90,7 +100,7 @@ class IndexAction extends AppAction
 		}
 		$this->returnAjax(array('isLogin'=>false));
 	}
-
+        //获取新闻
 	public function newlist()	
 	{
 		$news['page']	= $this->load('faq')->newsList(50, 0, 5);
@@ -98,6 +108,7 @@ class IndexAction extends AppAction
 		echo json_encode($news);
 		exit;
 	}
+	//获取友情链接
 	public function links()
 	{
 		$link	= $this->load('faq')->newsList(47, 0, 10);
