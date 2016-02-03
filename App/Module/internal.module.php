@@ -92,9 +92,10 @@ class InternalModule extends AppModule
         $classTitle = C('CLASSES');
         foreach($data['rows'] as $k => $v){
             $_class = current( explode(',', $v['class']) );
-			$data['rows'][$k]['imgUrl'] = $this->getViewImg($v['id']); 
-			$data['rows'][$k]['viewUrl']    = "/d-".$v['tid'].'-'.$_class.".html"; 
+			$data['rows'][$k]['imgUrl']  = $this->getViewImg($v['id']); 
+			$data['rows'][$k]['viewUrl'] = "/d-".$v['tid'].'-'.$_class.".html"; 
 			$data['rows'][$k]['_name']   = mbSub($v['name'],0,4);
+            $data['rows'][$k]['classes'] = $classTitle[$_class];
 			
 			array_push($data['notId'], $v['id']);
         }
