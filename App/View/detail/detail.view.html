@@ -158,7 +158,7 @@
                 <?}?>
                 <!--操作部分-->
                 <? if($baystate == 1){ ?>
-                    <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>;
+                    <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>;
                 </div>
                 <? }else{ ?>
                         <!--特价价格促销-->
@@ -195,7 +195,7 @@
                         </strong>
                         <p class="mj-priceTxtt_ie7"></p>
                         <? if($baystate == 1){ ?>
-                            <a href='<?=MANAGER_URL?>buyer/ready/' class="mj-priceTxtt_link">你已经购买过该商标</a>
+                            <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
                         <? }else{ ?>
                             <a href='javascript:createOrderFromTrak();' class="mj-priceTxtt_link" id='addorder'>提交需求</a>
                         <? } ?>
@@ -372,7 +372,7 @@
         <span class="mj-bconLeft"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
         <div class="mj-bconRight">
             <h1 id="bugphoneTip">您已购买过该商品！</h1>
-            <a href="<?=MANAGER_URL?>buyer/ready/" class="mj-boBtn1">点击此处查看！</a>
+            <a href="javascript:;" onclick="layer.closeAll();" class="mj-boBtn1">点击此处关闭！</a>
             <a href="javascript:callPhone($(this))" class="mj-boBtn2 callphone">继续拨打电话</a>
         </div>
     </div>
@@ -384,7 +384,7 @@
         <span class="mj-bconLeft"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
         <div class="mj-bconRight">
             <h1 class="errorReason">您已购买过该商品！</h1>
-            <a href="<?=MANAGER_URL?>buyer/ready/" class="mj-boBtn1">点击此处查看！</a>
+            <a href="javascript:;" onclick="layer.closeAll();" class="mj-boBtn1">点击此处关闭！</a>
         </div>
     </div>
 </div>
@@ -396,7 +396,7 @@
         <div class="mj-bconRight">
             <h2>恭喜您，订单已提交！</h2>
             <p>请保持电话畅通，以便交易专员联系到您</p>
-            <a href="<?=MANAGER_URL?>buyer/ready/" class="mj-boBtn1">点击此处查看！</a>
+            <a href="javascript:;" onclick="layer.closeAll();" class="mj-boBtn1">点击此处查看！</a>
         </div>
     </div>
 </div>
@@ -466,7 +466,7 @@ var _mobile  = "<?=$userMobile?>";
 var _saleid  = "<?=$sale['id']?>";
 var _tid     = "<?=$tid?>";
 var baystate = "<?=$baystate?>";
-var buyUrl   = "<?=MANAGER_URL?>buyer/ready/";
+var buyUrl   = 'javascript:;';//"<?=MANAGER_URL?>buyer/ready/";
 
 
 $(function(){
