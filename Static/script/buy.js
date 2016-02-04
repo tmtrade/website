@@ -194,7 +194,8 @@ function doBuy(mobile)
         success: function(data){
             if (data.code == 1){
                 clearBuy();
-                window.location = _manger_url + "buyer/ready/";
+                //window.location = _manger_url + "buyer/ready/";
+                getLayer($('#mj-submitteS'));
             }else{
                 getLayer($('#mj-submitteF'));
             }
