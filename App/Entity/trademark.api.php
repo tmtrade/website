@@ -29,6 +29,6 @@ class TrademarkApi extends BaseCacheApi
     /**
      * 过期时间(60分钟)
      */
-    public $expire  = 600;
+    public $expire  = 3600;
 }
 ?>
