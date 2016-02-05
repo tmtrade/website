@@ -58,8 +58,15 @@ class FaqModule extends AppModule
 	
 
 	//得到栏目对应的文章
-	public function newsList($c = 0, $id = 0,$limit = 20, $minId = 0, $maxId = 0)
+	public function newsList($param)
 	{
+		$c			= isset($param['c']) ? $param['c'] : 0;
+		$id			= isset($param['id']) ? $param['id'] : 0;
+		$limit		= isset($param['limit']) ? $param['limit'] : 20;
+		$minId		= isset($param['minId']) ? $param['minId'] : 0;
+		$maxId		= isset($param['maxId']) ? $param['maxId'] : 0;
+		$page		= isset($param['page']) ? $param['page'] : 0;
+
 		$list		= array();
 		$actionName = 'article';
 		$funName 	= 'getArticleList';
@@ -68,6 +75,7 @@ class FaqModule extends AppModule
 			'minId' 		=> $minId,
 			'limit' 		=> $limit,
 			'order' 		=> array('showOrder' => 'DESC'),
+			'page' 			=> $page,
 		);
 		if(!empty($c)){
 			$param['categoryId'] = $c;
@@ -75,6 +83,7 @@ class FaqModule extends AppModule
 		if(!empty($id)){
 			$param['id'] = $id;
 		}
+
 		$client 	= new Yar_client( WM_HOST .  $actionName);
 		$data 		= $client->$funName($param);
 		if(!empty($data['rows'])){

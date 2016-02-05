@@ -10,14 +10,14 @@
  */
 class IndexAction extends AppAction
 {
-    public $caches  	= array('index');
+    //public $caches  	= array('index');
 	public $cacheId  	= 'redisHtml';
 	public $expire  	= 3600;//1小时
 
 	public function index()
 	{
 		//清除缓存（注意：清除前要关闭缓存配置，否则不会执行到这里）
-		//$this->com('qcache')->select(5)->clear();
+		$this->com('qcache')->select(5)->clear();
 
 		//天猫
 		$paramTM = array('platform' => 2,'label' => '4');
@@ -72,10 +72,11 @@ class IndexAction extends AppAction
 
 		$this->set('offpriceList', $this->load('internal')->getIndexOffprice());
 		$_news = $this->com('redis')->get('_news_tmp');
+		$_news = array();
 		if(empty($_news)){
 			$news['page']	= $this->load('faq')->newsList(array('c'=>50,'limit'=>5));
 			$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>5));
-			$news['link']	= $this->load('faq')->newsList(array('c'=>47,'limit'=>10));
+			$news['link']	= $this->load('faq')->newsList(array('c'=>47,'limit'=>5));
 			$this->com('redis')->set('_news_tmp', $news, 3600);
 		}else{
 			$news = $_news;

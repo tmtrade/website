@@ -92,9 +92,12 @@
     <div class="f-clearfix mj-newb">
 	
         <dl class="ms-noticeList">
-            <dt><span>最新公告</span><i class="uj_icon12"></i> <a href="/faq/news/?c=50">[商标新闻]</a></dt>
+            <dt><span>一只蝉公告</span><i class="uj_icon12"></i> <a href="/faq/news/?c=50">[商标新闻]</a></dt>
             <dd>
                 <ul class="mj-uli" id="news_page">
+				<? foreach ($news['page'] as $item){ ?>
+                    <li><a href="<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></li>
+				<? } ?>
                 </ul>
             </dd>
         </dl>
@@ -102,6 +105,9 @@
             <dt><a href="/faq/news/?c=45">[商标转让问答]</a></dt>
             <dd>
                 <ul class="mj-uli" id="news_faq">
+				<? foreach ($news['faq'] as $item){ ?>
+                    <li><a href="<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></li>
+				<? } ?>
                 </ul>
             </dd>
         </dl>
@@ -600,8 +606,10 @@
             $(this).addClass("liclickc").siblings().removeClass("liclickc");
             $('#mj-categoryCon3>ul:eq('+$(this).index()+')').show().siblings().hide();
         });
+	   //新闻滚动
+	   jQuery(".ms-noticeList").slide({ mainCell:".mj-uli", effect:"topLoop",autoPlay:true, delayTime:1000});
 
-		$.ajax({
+		/*$.ajax({
              type: "GET",
              url: "/index/newlist/",
              dataType: "json",
@@ -619,11 +627,10 @@
 				}
 				$("#news_faq").html(faq);
 
-			   //新闻滚动
-			   jQuery(".ms-noticeList").slide({ mainCell:".mj-uli", effect:"topLoop",autoPlay:true, delayTime:1000});
 				
 			}
          });
+		 */
 
     });
 

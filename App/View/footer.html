@@ -52,6 +52,9 @@
 		<div class="mj-footer_nav">
 
             <ul class="f-clearfix" id="links">
+				<? foreach ($news['link'] as $item){ ?>
+                    <li><a href="<? echo $item['content'];?>" target="_blank"><? echo $item['title'];?></a></li>
+				<? } ?>
             </ul>
         </div>
         <div class="mj-footer_center f-clearfix">
@@ -316,7 +319,7 @@
             }
         });
     });
-
+	/*
     $(function(){
 		$.ajax({
              type: "GET",
@@ -331,6 +334,7 @@
 			}
          });
     });
+	*/
     $("#mj-stclose").click(function(){
         $(".mj-stclose").hide(300);
         $(".mj-sidebarCon").hide(300);
