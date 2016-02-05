@@ -19,7 +19,7 @@ class TrademarkApi extends BaseCacheApi
 	/**
 	 * 数据表主键
 	 */
-	public $pk       = 'id';
+	public $pk       = 'auto';
     
     /**
      * 缓存组件标识id
@@ -27,8 +27,8 @@ class TrademarkApi extends BaseCacheApi
     public $cacheId = 'redis';
 
     /**
-     * 过期时间(60分钟)
+     * 过期时间(360分钟)
      */
-    public $expire  = 3600;
+    public $expire  = 21600;
 }
 ?>

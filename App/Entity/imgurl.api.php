@@ -27,8 +27,8 @@ class ImgurlApi extends BaseCacheApi
     public $cacheId = 'redis';
 
     /**
-     * 过期时间(60分钟)
+     * 过期时间(360分钟)
      */
-    public $expire  = 3600;
+    public $expire  = 21600;
 }
 ?>
