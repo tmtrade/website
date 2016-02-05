@@ -10,14 +10,14 @@
  */
 class IndexAction extends AppAction
 {
-    //public $caches  	= array('index');
+    public $caches  	= array('index');
 	public $cacheId  	= 'redisHtml';
 	public $expire  	= 3600;//1小时
 
 	public function index()
 	{
 		//清除缓存（注意：清除前要关闭缓存配置，否则不会执行到这里）
-		$this->com('qcache')->select(5)->clear();
+		//$this->com('qcache')->select(5)->clear();
 
 		//天猫
 		$paramTM = array('platform' => 2,'label' => '4');

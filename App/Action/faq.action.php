@@ -64,12 +64,20 @@ class FaqAction extends AppAction
 	//得到栏目对应的文章
 	public function news()
 	{
-		$c			= $this->input("c","int");
+		$c				= $this->input("c","int");
+		$page			= $this->input("page","int");
+		$page			= $page == 0 ? 1 : $page;
+		$limit			= 15;
 		if(!in_array($c,$this->categoryId)){
-			$c		= 45;
+			$c	= 45;
 		}
-		$list		= $this->load('faq')->newsList($c,0);
+		$list			= $this->load('faq')->newsList(array('c'=>$c,'page'=>$page,'limit'=>$limit));
 
+
+		$total			= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1000000));
+		$pager			= $this->pager(count($total), $limit);
+        
+		$pageBar		= empty($list) ? '' : getPageBar($pager);
 
 		$title   = $this->category[$c] . ' - '.$this->seotime;
 		$this->set("categoryId", $this->categoryId);
@@ -80,6 +88,7 @@ class FaqAction extends AppAction
 		$this->set("keywords", $this->keyword);
 		$this->set("nav", $c);
 		$this->set("description", $this->description);
+		$this->set("pageBar", $pageBar);
         $this->display();
 	}
 
@@ -89,10 +98,10 @@ class FaqAction extends AppAction
 		$id			= $this->input("id","int");
 		$c			= $this->input("c","int");
 		
-		$data		= $this->load('faq')->newsList(0,$id);
+		$data		= $this->load('faq')->newsList(array('id'=>$id));
 
-		$maxId		= $this->load('faq')->newsList($c, 0, 1, 0, $id);
-		$minId		= $this->load('faq')->newsList($c, 0, 1, $id, 0);
+		$maxId		= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1,'maxId'=>$id));
+		$minId		= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1,'minId'=>$id));
 		$title   = $data[0]['title'].' - '.$this->category[$c] . ' - '.$this->seotime;
 
 		$this->set("categoryId", $this->categoryId);
