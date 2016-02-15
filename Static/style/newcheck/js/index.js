@@ -1,9 +1,12 @@
 $(function () {
     $(".classify ").on("click", "span", function () {
-        //$(".classify ul").toggle();
 		classList = $.trim($(".classify ul").html());
 		if(!classList){
-			setWarn('请先输入商标号');
+			tname = $.trim($('.trademarkName').val());
+			if( !tname ){
+				setWarn('请先输入商标号');
+			}
+			return false;
 		}else{
 			$(".classify ul").show();
 		}
@@ -89,8 +92,8 @@ function animateAjax(tradname,optVal,num,isdata,nber){
 			 },
 			 success	: function(data){
 				if( !_MYOBJ ){
-					_MYOBJ = eval(data);
-					checkstr = _MYOBJ.check;
+					_MYOBJ 		= eval(data);
+					checkstr 	= _MYOBJ.check;
 					$('.sbcontent').html('('+_MYOBJ.info.trademark+'&nbsp;第'+_MYOBJ.info.class_id+'类)');
 				}else{
 					chObj  = eval(data);
@@ -107,6 +110,7 @@ function animateAjax(tradname,optVal,num,isdata,nber){
 							$('.check-'+checkon).parent().removeClass('active');
 						}
 						$('.check-'+check).parent().addClass('active');
+						$('.check-'+check).parent().removeClass('hui');
 						scoreVal = pointsCheck(parseInt(nber),koufen);
 						//console.log(score+"===="+isin+"===="+parseInt(nber),koufen);
 						if(scoreVal > 0){
@@ -117,21 +121,22 @@ function animateAjax(tradname,optVal,num,isdata,nber){
 							$('.problem').text(problemVal);
 							//扣分
 							scoreOld 	= $('.score').text();
+							MYarray		= getBjinfo(scoreOld);
 							//console.log(scoreOld+"==="+scoreVal);
 							scoreOld	= scoreOld - scoreVal;
 							$('.score').text(scoreOld);
-							setJc(scoreOld);							
+							setJc(scoreOld);	
+							$('#process').removeClass();
+							$('#process').addClass(MYarray[5]);						
 						}
 						nber 		= nber+1;
-						$('.zhiliang').html(checkstr);						
+						$('.zhiliang').html(checkstr);
 						animateAjax(tradname,optVal,sbNum,1,nber);
 					}, 800);
 				}else{
 					$('.check-13').parent().removeClass('active');
 					setPage(_MYOBJ);
-					//setContent(_MYOBJ);
 				}
-				//$('.sbcontent').html('('++')');
 			 }
 		 });
 }
@@ -159,6 +164,7 @@ function getTrInfo(){
 				if(myobj.total==0){
 					msgString = '未找到该商标，请检查商标号是否正确。';
 					setWarn(msgString);
+					setError();
 				}else{
 					setWarn();
 					num = myobj.total > 1 ? 1 : 0;
@@ -255,6 +261,7 @@ function setSelect(isHide,optionObj){
 function setClasslist(){
 	optTest = $('.classlist li:eq(0)').html();
 	$('.msgclass').html(optTest);
+	$('.msgclass').addClass('leibie');
 	optVal	= $('.classlist li:eq(0)').data('cid');
 	$('.sbclassid').val(optVal);
 }
@@ -266,7 +273,7 @@ function pointsCheck(num,array){
 	}
 	return score;
 }	
-
+//提示显示
 function setWarn(string){
 	if(string){
 		$('.error').html(string);
@@ -283,6 +290,7 @@ function setPage(obj){
 	$('.result').addClass(myArray[1]);
 	$('.scorezong').html('<strong>'+number+'</strong>'+myArray[0]);
 	$('.wrapongoing').hide();//隐藏检查页面
+	$('.scorezong').addClass(myArray[5]);//设置分数颜色
 	//显示错误列表
 	if(myArray[2]=='style2'){
 		$('.result').removeClass('safe');//删除默认色
@@ -291,7 +299,7 @@ function setPage(obj){
             riskId 	= $(this).attr('id');
 			riskArr = riskId.split('che_');
 			checkId = pointsCheck(riskArr[1],obj.result.points);//具体显示错误类型
-			console.log(riskId+"----"+checkId+"----"+riskArr[1]);
+			//console.log(riskId+"----"+checkId+"----"+riskArr[1]);
 			if( checkId <= 0 ){
 				$(this).remove();
 			}
@@ -304,6 +312,7 @@ function setPage(obj){
 	$('.result').addClass(myArray[1]);//背景颜色
 	$('.gunimg').attr('src','/Static/style/newcheck/images/'+myArray[3]);
 	$('.result').show();
+	$('.mybuy').attr('href','/d-'+obj.info.auto+'-'+obj.info.class_id+'.html');
 	downloadPDF(obj.pdf);
 }
 function downloadPDF(pdfname){
@@ -313,7 +322,7 @@ function downloadPDF(pdfname){
 		});
 	}
 }
-
+//分享
 function fenxiang(){
 	var jiathis_config={
 		siteNum:4,
@@ -333,32 +342,37 @@ function setJc(number){
 	$('.gunimg').attr('src','/Static/style/newcheck/images/'+myArray[3]);
 	$('#cicle').addClass(myArray[4]);//添加得分色
 }
+//样式
 function getBjinfo(number){
-	var myArray = new Array()
+	var myArray = new Array();
 	if( number <= 50 ){
 		myArray[0] 	= '高级风险';
 		myArray[1]	= 'risk';//总体样式
 		myArray[2]	= 'style2';
 		myArray[3]	= 'risk-c.png';//滚动图片
 		myArray[4]	= 'red';
+		myArray[5]	= 'color1';//字体颜色
 	}else if( number > 50 && number <= 80 ){
 		myArray[0] 	= '中级风险';
 		myArray[1]	= 'pr';
 		myArray[2]	= 'style2';
-		myArray[3]	= 'safe-c.png';
+		myArray[3]	= 'pr.png';
 		myArray[4]	= 'cicles';
+		myArray[5]	= 'color2';
 	}else if( number > 80 && number < 100 ){
 		myArray[0] 	= '低级风险';
-		myArray[1]	= 'blue';
+		myArray[1]	= 'sdary';
 		myArray[2]	= 'style2';
-		myArray[3]	= 'safe-c.png';
+		myArray[3]	= 'sdg.png';
 		myArray[4]	= 'cicles';
+		myArray[5]	= 'color3';
 	}else{
 		myArray[0] 	= '非常安全';
 		myArray[1]	= 'safe';
 		myArray[2]	= 'style1';
 		myArray[3]	= 'safe-c.png';
 		myArray[4]	= 'cicles';
+		myArray[5]	= 'color4';
 	}
 	return myArray;
 }
@@ -371,4 +385,10 @@ function setDefault(){
 		$('.sbclassid').val(_class);
 		tradSubmit();
 	}
+}
+//错误清空相关数据
+function setError(){
+	$(".msgclass").removeClass('leibie')
+	$('.msgclass').html('类别<i></i>');
+	$('.classlist').html('');
 }

@@ -484,7 +484,7 @@ body ::-moz-selection {
 	border-radius-bottom:100px;
     text-align: center;
     background: #fff;
-    color: #71b300;
+    /*color: #71b300;*/
     font-size: 12px;
 }
 
@@ -680,6 +680,14 @@ body ::-moz-selection {
     color: #ff9500;
 }
 
+.ul .hui {
+    background: url("../images/y-h.png") no-repeat;
+
+}
+
+.ul .hui span {
+    color: #dddddd;
+}
 .ul li {
     display: inline-block;
     position: relative;
@@ -917,6 +925,14 @@ body ::-moz-selection {
     margin-left: 10px;
 }
 
+.sdary .process {
+    background: url('../images/sdary.png') no-repeat;
+}
+
+.sdary .back {
+    background: url('../images/backsdary.png') no-repeat;
+}
+
 .risk .process {
     background: url('../images/risk.png') no-repeat;
 }
@@ -1095,4 +1111,23 @@ body ::-moz-selection {
 .wrapongoing,.result,.style1,.style2,.chehide{
 	display:none;
 	
+}
+#checksh-02,#checksh-03,#checksh-04,#checksh-05,#checksh-06,#checksh-07,#checksh-08,#checksh-09,#checksh-10,#checksh-11,#checksh-12,#checksh-13{
+	display:none;
+}
+.color1{
+	color:#F00;	
+}
+.color2{
+	color:#fd924a;	
+}
+.color3{
+	color:#28b9fc;	
+}
+.color4{
+	color:#58c21c;	
+}
+.leibie{
+	color:#000;
+	font-weight:bold;
 }
