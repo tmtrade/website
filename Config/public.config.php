@@ -296,8 +296,8 @@ $define = array(
         'newValid'  => "%s（动态登录密码），仅本次有效，请在10分钟内使用。工作人员不会向你索要，请勿向任何人泄露。",
         'validBind' => "%s（手机绑定校验码），仅本次有效请在10分钟内使用。工作人员不会向你索要，请勿向任何人泄露。如非本人操作，请忽略。",
         ),
-    'HTMLTOPDF' 	=> 'D:\wkhtmltopdf\bin\wkhtmltopdf.exe'    
-
+    //'HTMLTOPDF' 	=> 'D:\wkhtmltopdf\bin\wkhtmltopdf.exe'    
+	'HTMLTOPDF' 	=> '/usr/bin/wkhtmltopdf'
 );
 
 
