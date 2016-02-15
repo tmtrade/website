@@ -654,7 +654,8 @@ class AnquanAction extends AppAction
 		$url	= WebDir.'/uploadfile/template/risky_'.$type.'.html';
 		if( file_exists($url) ){
 			$time		= time();
-			$host		= 'http://'.$_SERVER['HTTP_HOST'].'/uploadfile/template/';
+			//$host		= 'http://'.$_SERVER['HTTP_HOST'].'/uploadfile/template/';
+			$host		= 'http://ip.chofn.com/yzc/aq1/';
 			$zong		= !empty($array['result']['msg']) ? $array['result']['msg'] : '';//总评
 			$list		= '';
 			if( !empty($array['result']['mark']) ){
