@@ -2,7 +2,7 @@
     <div class="process">
         <a href="javascript:;" class="back"></a>
         <div class="head-top">
-            <a href="javascript:;" id="fastLogin"><img src="<?=StaticDir?>style/newcheck/images/user.png" alt=""/>
+            <a href="javascript:;" class="fastlogin" style="display:none"><img src="<?=StaticDir?>style/newcheck/images/user.png" alt=""/>
                 <i></i>
             </a>
             <a href="javascript:;" class="jiathis jiathis_txt"><img src="<?=StaticDir?>style/newcheck/images/other.png" alt=""/> <i></i></a>
@@ -14,11 +14,11 @@
                 <span class="scorezong"></span>
             </div>
             <div class="check">
-                <h1>商标名称<span class="sbcontent"></span>检测完毕</h1>
+                <h1><span class="sbcontent" style="font-size:24px"></span><span style="font-size:20px">检测完毕</span></h1>
                 <span>
-                    <a href="/" class="purchase button">￥我要买</a>
-                    <a href="/" class="purchase button-01">我要卖</a>
-                    <a href="/" class="interlinkage">GO一只蝉 ></a>
+                    <a href="#" class="purchase button mybuy" target="_blank">￥我要买</a>
+                    <a href="/sell" class="purchase button-01" target="_blank">我要卖</a>
+                    <a href="/" class="interlinkage" target="_blank">GO一只蝉 ></a>
                 </span>
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <img src="<?=StaticDir?>style/newcheck/images/comp.png">
                 <div class="success">
                     <h1><b class="bl">恭喜</b>,此商标状态安全！<span>检测日期:<?=$sj?></span></h1>
-                    <span>若要购买,可联系我们进行深入背景调查,确保商品质量万无一失，联系我们></span>
+                    <span>若要购买,可联系我们进行深入背景调查,确保商品质量万无一失，<a href="javascript:;" onclick="consultation()" style="text-decoration: underline;">联系我们></a></span>
                 </div>
         	</div>
         </div>
