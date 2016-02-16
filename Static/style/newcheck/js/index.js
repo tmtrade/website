@@ -295,6 +295,7 @@ function setPage(obj){
 	if(myArray[2]=='style2'){
 		$('.result').removeClass('safe');//删除默认色
 		$('.le').html(obj.result.msg);//总评
+		/*
 		$('.risk-ul li').each(function(index, element) {
             riskId 	= $(this).attr('id');
 			riskArr = riskId.split('che_');
@@ -303,7 +304,9 @@ function setPage(obj){
 			if( checkId <= 0 ){
 				$(this).remove();
 			}
-        });
+        });*/
+		setCheckList(obj);
+		
 		$('.style2').show();
 	}else{
 		$('.style1').show();
@@ -392,4 +395,34 @@ function setError(){
 	$(".msgclass").removeClass('leibie')
 	$('.msgclass').html('类别<i></i>');
 	$('.classlist').html('');
+}
+//设置检查完毕后错误列表显示
+function setCheckList(obj){
+	isarr = isArray(obj.result.mark);
+	if(isarr){
+		i 		= 1;
+		strhtml = '';
+		for(var key in obj.result.mark){
+				num  	= i < 10 ? '0'+i : i;
+				array 	= obj.result.mark[key].split('，');
+				string  = '';
+				for(var k in array){
+					if( k > 0 ){
+						string+=array[k];
+					}
+				}
+    			strhtml+= '<li class="chehide">'+
+                    '<div class="icon"><i class="check-'+num+'"></i></div>'+
+                    '<div class="risk-brand">'+
+                        '<p>'+array[0]+'</p>'+
+                        '<span>'+string+'</span>'+
+                    '</div>'+
+                '</li>';
+				i++;
+		}
+		$('.risk-ul').html(strhtml);
+	}
+}
+function isArray(obj) {   
+  return Object.prototype.toString.call(obj) === '[object Array]';    
 }

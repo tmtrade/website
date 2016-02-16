@@ -993,6 +993,9 @@ body ::-moz-selection {
 
 .risk-brand > span {
     color: #999;
+	height:60px;
+	overflow:hidden;
+	display:block;
 }
 
 .download .file {
