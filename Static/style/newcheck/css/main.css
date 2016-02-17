@@ -819,6 +819,56 @@ body ::-moz-selection {
     color: #ccc;
 }
 
+
+@-webkit-keyframes spinner-circle-clipper {
+    0% {		
+		 -webkit-transform:rotate(0deg);
+        }
+    100% {
+	    
+		 -webkit-transform:rotate(180deg);
+
+    }
+}
+@-moz-keyframes spinner-circle-clipper {
+    0% {	
+		 -moz-transform:rotate(0deg);
+    }
+    100% {
+	    
+		 -moz-transform:rotate(180deg);
+      
+    }
+}
+
+@-ms-keyframes spinner-circle-clipper {
+    0% {	
+		 -ms-transform:rotate(0deg);
+    }
+    100% {    
+		 -ms-transform:rotate(180deg);
+    }
+}
+
+@-o-keyframes spinner-circle-clipper {
+    0% {		
+		 -o-tranform:rotate(0deg);
+    }
+    100% {	    
+		 -o-tranform:rotate(180deg);
+    }
+}
+
+@keyframes spinner-circle-clipper {
+    0% {
+	
+        transform: rotate(0deg);
+    }
+    100% {
+	     transform:rotate(180deg);
+    }
+}
+
 .active i {
     position: absolute;
     left: 0;
@@ -829,17 +879,13 @@ body ::-moz-selection {
     height: 84px;
     z-index: 100;
     background: url("../images/blue.png") no-repeat;
-    animation: spinner-circle-clipper 0.5s linear infinite;
+    -webkit-animation: spinner-circle-clipper 0.5s linear infinite;
+	-moz-animation: spinner-circle-clipper 0.5s linear infinite;
+	-ms-animation: spinner-circle-clipper 0.5s linear infinite;
+	-o-animation:  spinner-circle-clipper 0.5s linear infinite;
+	animation: spinner-circle-clipper 0.5s linear infinite;
 }
 
-@keyframes spinner-circle-clipper {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(180deg);
-    }
-}
 
 .process-foot {
     position: absolute;
@@ -1109,7 +1155,7 @@ body ::-moz-selection {
     font-family: "Microsoft YaHei";
     font-size: 24px;
     line-height: 30px;
-    font-weight: normal;
+    
 }
 
 .success span {
