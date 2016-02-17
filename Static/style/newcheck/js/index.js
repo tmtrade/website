@@ -119,6 +119,10 @@ function animateAjax(tradname,optVal,num,isdata,nber){
 							problemVal 	= $('.problem').text();
 							problemVal	= parseInt(problemVal)+1;
 							$('.problem').text(problemVal);
+							isbred		= $('.problem').hasClass('fxpro');
+							if(!isbred){
+								$('.problem').addClass('fxpro');
+							}
 							//扣分
 							scoreOld 	= $('.score').text();
 							MYarray		= getBjinfo(scoreOld);
