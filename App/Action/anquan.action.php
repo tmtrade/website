@@ -601,7 +601,20 @@ class AnquanAction extends AppAction
 		$id			= $this->input('id', 'string', '');
 		$filePdf	= $this->createPdf($id);//生成pdf文件
 		if( !empty($filePdf) ){
+			$time		= date('Y-m-d',time());
 			$downname	= '检查报告';
+			$array 		= explode('_',$id);
+			if( !empty($array[1]) ){
+				$info   	= $this->load('trademark')->getInfo($array[1],array('auto','class','trademark','id'));
+				if( !empty($info['trademark']) ){
+					$tname		= mb_strlen($info['trademark'],'utf-8') > 10 ? mb_substr($info['trademark'],0,10,'utf-8') : $info['trademark'];
+					$tname		= str_replace(array(';',',',' '),'',$tname);
+					$downname	= $info['id'].$tname;
+				}else{
+					$downname	= '商标号：'.$info['id'].' ';
+				}
+			}
+			$downname	= $downname.$time;
 			$this->startDownPDF($filePdf,$downname);//下载文件
 		}
 	}
@@ -639,13 +652,13 @@ class AnquanAction extends AppAction
 	*/
 	private function startDownPDF($pdffile,$downname)
 	{
-		$fp 	 = fopen($pdffile,"r");
-		$size	 = filesize($pdffile);
-		$downname= iconv('utf-8', 'gbk',$downname);
+		$fp		= fopen($pdffile,"r");
+		$size	= filesize($pdffile);
+		$name	= iconv('utf-8', 'gbk',$downname);
 		header("Content-type: application/pdf");
 		header("Accept-Ranges: bytes"); 
 		header("Accept-Length: ".$size); 
-		header("Content-Disposition: attachment; filename=".$downname.".pdf"); // 输出文件内容 
+		header("Content-Disposition: attachment; filename=".$name.".pdf"); // 输出文件内容 
 		echo fread($fp,$size); 
 		fclose($fp);
 	}
@@ -679,7 +692,7 @@ class AnquanAction extends AppAction
 			$contents	= str_replace($search,$replace,$contents);
 			$file		= WebDir.'/uploadfile/report/'.date('Y-m-d',$time).'/';
 			!file_exists($file) && mkdirs($file);//创建文件夹
-			$fileId		= $time.rand(1000,9999);
+			$fileId		= $time.rand(1000,9999).'_'.$array['info']['auto'];
 			$htmlUrl	= $file.$fileId.'.html';
 			file_put_contents($htmlUrl,$contents);
 			return $fileId;
