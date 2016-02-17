@@ -521,7 +521,13 @@ class AnquanAction extends AppAction
 	*/
 	public function getTmInfo($id)
 	{
+		$issj	= 0;//隐藏
 		$info   = $this->load('trademark')->getInfo($id,array('auto','class','trademark','pid','proposer_id','goods','id'));
+		$saleId = $this->load('internal')->existSale($info['id']);//是否出售
+		if( $saleId > 0 ){
+			$isUp 	= $this->load('internal')->isSaleUp($saleId);//是否上架
+			$issj	= $isUp == true ? 1 : 0;
+		}
 		$info['class_id'] 	= $info['class'];
 		$info['trademark']	= !empty($info['trademark']) ? $info['trademark'] : '商标号：'.$info['id'];
 		$info['tradabb']	= mb_strlen($info['trademark'],'utf-8') > 20 ? mb_substr($info['trademark'],0,20,'utf-8').'...' : $info['trademark'];
@@ -544,6 +550,7 @@ class AnquanAction extends AppAction
 			$info['pname']  = !empty($proArr['name']) ? $proArr['name'] : '无';
 			$info['imgurl'] = $isimg == true ? $img : '/Static/images/img1.png';
 			$info['plat']   = $platform;
+			$info['issj']   = $issj;
 		}
 		return $info;
 	}
