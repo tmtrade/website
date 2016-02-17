@@ -678,15 +678,18 @@ class AnquanAction extends AppAction
 			//$host		= 'http://'.$_SERVER['HTTP_HOST'].'/uploadfile/template/';
 			$host		= 'http://ip.chofn.com/yzc/aq1/';
 			$zong		= !empty($array['result']['msg']) ? $array['result']['msg'] : '';//总评
-			$list		= '';
+			$list		= $page = '';
 			if( !empty($array['result']['mark']) ){
+				$i = 0;
 				foreach($array['result']['mark'] as $k => $v){
 					$list .= '.'.$v.'<br>';
+					$i++;
 				}
+				$page	= $i > 3 ? 'page' : '';
 			}
 			$sj			= date('Y年m月d日');
-			$search		= array('{$host}','{$name}','{$class}','{$zong}','{$list}','{$shijian}');
-			$replace	= array($host,$array['info']['trademark'],$array['info']['class'],$zong,$list,$sj);
+			$search		= array('{$host}','{$name}','{$class}','{$zong}','{$list}','{$shijian}','{$page}');
+			$replace	= array($host,$array['info']['trademark'],$array['info']['class'],$zong,$list,$sj,$page);
 			//获取模板并替换	
 			$contents 	= file_get_contents($url);
 			$contents	= str_replace($search,$replace,$contents);
