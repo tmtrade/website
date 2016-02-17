@@ -96,14 +96,15 @@ body ::-moz-selection {
 }
 
 .head-form h1 {
-    font-size: 50px;
+   /* font-size: 50px;*/
+   font-size:24px;
     color: #fff;
     font-family: "Microsoft YaHei";
     font-weight: normal;
 }
 
 .head-form h1 span {
-    font-size: 37px;
+    font-size:16px;
     font-weight: normal;
 }
 
@@ -124,7 +125,7 @@ body ::-moz-selection {
 .error {
     position: absolute;  
 	background:#fff3bc url(../images/error-icn.png) no-repeat 15px 11px;
-	border-image:url(../images/error-ic2.png) 30 30 round;
+
 	border-radius:100px;
 	-moz-border-radius:100px; 
     height: 38px;
@@ -224,6 +225,13 @@ body ::-moz-selection {
     height: 6px;
     display: inline-block;
     margin: 0 5px;
+}
+.classify i.down{
+	  transform:rotate(180deg);
+	-ms-transform:rotate(180deg); 	/* IE 9 */
+	-moz-transform:rotate(180deg); 	/* Firefox */
+	-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+	-o-transform:rotate(180deg); 	
 }
 
 .classify ul {
@@ -514,7 +522,7 @@ body ::-moz-selection {
 }
 
 .check h1 {
-    font-size: 24px;
+    font-size: 24px !important;
     line-height: 40px;
     font-family: "Microsoft YaHei";
     font-weight: normal;
@@ -1079,6 +1087,8 @@ body ::-moz-selection {
 .safe-content img {
     float: left;
     display: block;
+	vertical-align: middle;
+    margin-top: 25px;
 }
 
 .success {
@@ -1133,4 +1143,20 @@ body ::-moz-selection {
 .leibie{
 	color:#000;
 	font-weight:bold;
+}
+span.problem{
+    color:#FFFFFF;
+		  
+}
+span.fxpro{
+font-size:16px;
+font-weight: bold;
+font-weight: bold !important;
+   
+}
+
+.mj-footer{
+    width: 100%;
+    width: 100%!important;
+    
 }
