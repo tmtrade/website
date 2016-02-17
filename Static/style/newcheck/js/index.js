@@ -408,9 +408,10 @@ function setCheckList(obj){
 				string  = '';
 				for(var k in array){
 					if( k > 0 ){
-						string+=array[k];
+						string+=array[k]+'，';
 					}
 				}
+				string = string.substring(0,string.length-1);
     			strhtml+= '<li class="chehide">'+
                     '<div class="icon"><i class="check-'+num+'"></i></div>'+
                     '<div class="risk-brand">'+
