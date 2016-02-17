@@ -317,6 +317,9 @@ function setPage(obj){
 	$('.result').show();
 	$('.mysell').attr('href','/sell/?id='+obj.info.auto);//我要买
 	$('.mybuy').attr('href','/d-'+obj.info.auto+'-'+obj.info.class_id+'.html');//我要卖
+	if(obj.info.issj==1){
+		$('.mysell').show();	
+	}
 	downloadPDF(obj.pdf);
 }
 function downloadPDF(pdfname){
