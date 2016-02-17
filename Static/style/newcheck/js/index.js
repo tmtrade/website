@@ -315,7 +315,7 @@ function setPage(obj){
 	$('.result').addClass(myArray[1]);//背景颜色
 	$('.gunimg').attr('src','/Static/style/newcheck/images/'+myArray[3]);
 	$('.result').show();
-	$('.mybuy').attr('href','/sell/?id='+obj.info.auto);//我要买
+	$('.mybuy').attr('href','/sell/?id='+obj.info.id);//我要买
 	$('.mysell').attr('href','/d-'+obj.info.auto+'-'+obj.info.class_id+'.html');//我要卖
 	if(obj.info.issj==1){
 		$('.mysell').show();	
