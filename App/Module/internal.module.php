@@ -275,6 +275,16 @@ class InternalModule extends AppModule
         $res = $this->import('sale')->find($r);
         return $res;
     }
+
+    //判断商品是否上架
+    public function isSaleUp($saleId)
+    {
+        if ( empty($saleId) ) return false;
+        $r['eq'] = array('id'=>$saleId,'status'=>1);
+        $isUp = $this->import('sale')->count($r);
+        if ( $isUp ) return true;
+        return false;
+    }
     
 }
 ?>
