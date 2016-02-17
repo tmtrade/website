@@ -42,7 +42,7 @@
 						<ul>
 							<li class="g-int1">
 								<em class="mj-inpuV">商标号</em>
-								<input type="text" name="number[]" class="input-number" value="" />
+								<input type="text" name="number[]" class="input-number" value="<?=$numid?>" />
 							</li>
 							<li class="g-int2">
 								<em class="mj-inpuV">出售底价</em>
@@ -190,6 +190,7 @@
 		});*/
 		
 		$(function(){
+			_number = getQueryString('id');
 			if(_number){
 				$('.input-number').val(_number);
 				$('.input-number').focus();
@@ -216,4 +217,9 @@
 //				$(this).parent().find($(".mj-inpuV")).text("");
 //			}
 		});
+function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) return decodeURI(r[2]); return null;
+}
 </script>
