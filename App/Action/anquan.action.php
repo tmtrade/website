@@ -602,7 +602,7 @@ class AnquanAction extends AppAction
 		$filePdf	= $this->createPdf($id);//生成pdf文件
 		if( !empty($filePdf) ){
 			$time		= date('Y-m-d',time());
-			$downname	= '检查报告';
+			$exp		= '商标检测报告';
 			$array 		= explode('_',$id);
 			if( !empty($array[1]) ){
 				$info   	= $this->load('trademark')->getInfo($array[1],array('auto','class','trademark','id'));
@@ -611,10 +611,10 @@ class AnquanAction extends AppAction
 					$tname		= str_replace(array(';',',',' '),'',$tname);
 					$downname	= $info['id'].$tname;
 				}else{
-					$downname	= $info['id'].'商标检测报告';
+					$downname	= $info['id'];
 				}
 			}
-			$downname	= $downname.$time;
+			$downname	= $downname.$exp.$time;
 			$this->startDownPDF($filePdf,$downname);//下载文件
 		}
 	}
