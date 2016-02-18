@@ -149,6 +149,7 @@ var tradId = 0;
 function getTrInfo(){
 	isTmId = tradAlert();
 	if(!isTmId){
+		setError();
 		return false;
 	}
 	tradname = $.trim($('.trademarkName').val());
