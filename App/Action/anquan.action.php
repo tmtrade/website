@@ -689,7 +689,7 @@ class AnquanAction extends AppAction
 			}
 			$sj			= date('Y年m月d日');
 			$search		= array('{$host}','{$name}','{$class}','{$zong}','{$list}','{$shijian}','{$page}');
-			$replace	= array($host,$array['info']['trademark'],$array['info']['class'],$zong,$list,$sj,$page);
+			$replace	= array($host,$array['info']['id'],$array['info']['class'],$zong,$list,$sj,$page);
 			//获取模板并替换	
 			$contents 	= file_get_contents($url);
 			$contents	= str_replace($search,$replace,$contents);
