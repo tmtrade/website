@@ -1,4 +1,4 @@
-body ::selection {
+﻿body ::selection {
     color:#FFFFFF;
     background-color:#00BC00;
     text-shadow:none;
@@ -96,15 +96,15 @@ body ::-moz-selection {
 }
 
 .head-form h1 {
-   /* font-size: 50px;*/
-   font-size:24px;
+     font-size: 50px;
+   /*font-size:24px;*/
     color: #fff;
     font-family: "Microsoft YaHei";
     font-weight: normal;
 }
 
 .head-form h1 span {
-    font-size:16px;
+    font-size:36px;
     font-weight: normal;
 }
 
