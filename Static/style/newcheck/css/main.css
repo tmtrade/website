@@ -16,9 +16,10 @@ body ::-moz-selection {
 
 .wrap {
     width: 900px;
-    margin: 30px auto;
+   /* margin: 30px auto;*/
     height: 600px;
     box-shadow: 5px 5px 10px #7d9aa6;
+	float:left;
 }
 .wrap.current{
     display: block;
@@ -1206,3 +1207,100 @@ font-weight: bold !important;
     width: 100%!important;
     
 }
+
+
+
+/*添加还可以选择列表*/
+
+.anquan-all{
+	width:1200px;
+	margin:auto;
+	overflow:hidden;
+	
+	}
+.xz-lb{
+	width:170px;
+	overflow:hidden;
+	float:right;
+	margin-top:15px;
+	margin-right:25px;
+	}
+.xz-lb h3{
+	color:#FFF;
+	font-family:"微软雅黑";
+	font-size:15px;
+	-webkit-text-shadow:0 2px 5px rgba(0,0,0,0.6);
+	-o-text-shadow:0 2px 5px rgba(0,0,0,0.6);
+	-ms-text-shadow:0 2px 5px rgba(0,0,0,0.6);
+	-moz-text-shadow:0 2px 5px rgba(0,0,0,0.6);
+	text-shadow:0 2px 5px rgba(0,0,0,0.6);
+	
+	}
+.xz-lb ul{	 
+	 height:295px;	
+	 margin-top:10px;
+	 background:#eeece2;
+	 overflow:hidden;
+	 -webkit-border-radius:10px;
+	 -o-border-radius:10px;
+	 -ms-border-radius:10px;
+	 -moz-border-radius:10px;
+	 border-radius:10px;
+	/* box-shadow:0 10px 5px rgba(0,0,0,0.3);
+	 -webkit-box-shadow:0 10px 5px rgba(0,0,0,0.3);
+	 -o-box-shadow:0 10px 5px rgba(0,0,0,0.3);
+	 -ms-box-shadow:0 10px 5px rgba(0,0,0,0.3);
+	 -moz-box-shadow:0 10px 5px rgba(0,0,0,0.3);*/
+	}
+.xz-lb ul li{
+	width:100%;
+	height:46px;
+	line-height:46px;
+	border-bottom:1px solid #d9d2ca;
+	border-top:1px solid #fefefe;
+	}
+.xz-lb ul li a{
+	display:inline-block;
+	width:100%;
+	height:46px;
+	color:#7a7057;
+	font-size:15px;
+	font-family:"微软雅黑";
+	text-align:left;
+	text-indent:15px;
+	}
+.xz-lb ul li a  span{
+	display:inline-block;
+	width:8px;
+	height:14px;
+	background:url(../images/lb-ico.png) no-repeat 0px 0px;
+	margin-top:5px;
+	margin-right:35px;
+	 
+	}
+.xz-lb ul li a.on{
+	color:#FFF;
+	-webkit-text-shadow:0 0 5px  #000;
+	-o-text-shadow:0 0 5px  #000;
+	-ms-text-shadow: 0 0 5px #000;
+	-moz-text-shadow: 0 0 5px  #000;
+	text-shadow:0 0 5px #000;
+	background:url(../images/lb-hover.png) no-repeat 0px center;
+	}
+.xz-lb ul li a:hover{
+	color:#FFF;
+	-webkit-text-shadow:0 0 5px  #000;
+	-o-text-shadow:0 0 5px  #000;
+	-ms-text-shadow: 0 0 5px #000;
+	-moz-text-shadow: 0 0 5px  #000;
+	text-shadow:0 0 5px #000;
+	background:url(../images/lb-hover.png) no-repeat 0px center;
+	}
+	
+.xz-lb ul li a:hover span{
+	background:url(../images/lb-ico1.png) no-repeat 0px 0px;
+	}
+	
+.xz-lb ul li a.on span{
+	background:url(../images/lb-ico1.png) no-repeat 0px 0px;
+	}
