@@ -59,9 +59,11 @@ function tradSubmit(){
 	}
 	optNum	=  $('.classlist li').length;
 	if( optNum == 1 ){
+		$('.classify').hide();
 		optVal	= $('.classlist li:eq(0)').data('cid');
 		$('.sbclassid').val(optVal);
 	}else if( optNum >= 2 ){
+		$('.classify').show();
 		optVal = $('.sbclassid').val();
 		if( optVal == 0){
 			setWarn('该商标号有多条分类，请选择具体类别');
@@ -191,7 +193,7 @@ function getTrInfo(){
 function tradAlert(){
 	tradname	= $.trim($('.trademarkName').val());
 	if( !tradname ){
-		setWarn('请输入商标号');
+		setWarn('您还未输入商标号');
 		return false;
 	}
 	istrname	= checkTradName(tradname);
@@ -258,7 +260,10 @@ function setSelect(isHide,optionObj){
 	}
 	$('.classlist').html(optString);
 	if(optionObjs.length==1){
+		$('.classify').hide();
 		setClasslist();
+	}else{
+		$('.classify').show();
 	}
 	if( isCz == true ){//
 		$(".defineselect option[value='"+_class+"']").attr("selected", true); 
