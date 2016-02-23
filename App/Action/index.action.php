@@ -10,8 +10,8 @@
  */
 class IndexAction extends AppAction
 {
-    public $caches  	= array('index');
-	public $cacheId  	= 'redisHtml';
+ 	public $caches  	= array('index');
+	public $cacheId 	= 'redisHtml';
 	public $expire  	= 3600;//1小时
 
 	public function index()
@@ -72,11 +72,10 @@ class IndexAction extends AppAction
 
 		$this->set('offpriceList', $this->load('internal')->getIndexOffprice());
 		$_news = $this->com('redis')->get('_news_tmp');
-		$_news = array();
 		if(empty($_news)){
 			$news['page']	= $this->load('faq')->newsList(array('c'=>50,'limit'=>5));
 			$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>5));
-			$news['link']	= $this->load('faq')->newsList(array('c'=>47,'limit'=>5));
+			$news['link']	= $this->load('faq')->newsList(array('c'=>47,'limit'=>20));
 			$this->com('redis')->set('_news_tmp', $news, 3600);
 		}else{
 			$news = $_news;
