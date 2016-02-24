@@ -684,6 +684,12 @@ em{
     font-size: 14px;
     color: #555;
 }
+.mj_mainText li a{
+    padding-bottom: 22px;
+    font-size: 14px;
+    color: #555;
+}
+
 .mj-jcimg{
     margin-top: 20px;
     width: 380px;
