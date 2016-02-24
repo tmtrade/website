@@ -1278,7 +1278,7 @@ font-weight: bold !important;
 	margin-right:35px;
 	 
 	}
-.xz-lb ul li a.on{
+/*.xz-lb ul li a.on{
 	color:#FFF;
 	-webkit-text-shadow:0 0 5px  #000;
 	-o-text-shadow:0 0 5px  #000;
@@ -1286,7 +1286,7 @@ font-weight: bold !important;
 	-moz-text-shadow: 0 0 5px  #000;
 	text-shadow:0 0 5px #000;
 	background:url(../images/lb-hover.png) no-repeat 0px center;
-	}
+	}*/
 .xz-lb ul li a:hover{
 	color:#FFF;
 	-webkit-text-shadow:0 0 5px  #000;
@@ -1301,6 +1301,6 @@ font-weight: bold !important;
 	background:url(../images/lb-ico1.png) no-repeat 0px 0px;
 	}
 	
-.xz-lb ul li a.on span{
+/*.xz-lb ul li a.on span{
 	background:url(../images/lb-ico1.png) no-repeat 0px 0px;
-	}
+	}*/
