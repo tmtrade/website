@@ -16,10 +16,10 @@ body ::-moz-selection {
 
 .wrap {
     width: 900px;
-    margin: 30px auto;
+   /* margin: 30px auto;*/
     height: 600px;
     box-shadow: 5px 5px 10px #7d9aa6;
-	/*float:left;*/
+	float:left;
 }
 .wrap.current{
     display: block;
@@ -1216,6 +1216,7 @@ font-weight: bold !important;
 	width:1200px;
 	margin:auto;
 	overflow:hidden;
+
 	
 	}
 .xz-lb{
