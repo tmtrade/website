@@ -58,7 +58,6 @@ function tradSubmit(){
 	if( !isTid ){
 		return false;
 	}
-	
 	optNum	=  $('.classlist li').length;
 	if( optNum == 1 ){
 		optVal	= $('.classlist li:eq(0)').data('cid');
@@ -162,7 +161,7 @@ function getTrInfo(){
 	}
 	tradname = $.trim($('.trademarkName').val());
 	if( tradId == tradname ){
-		//return true;
+		return true;
 	}
 	var tId = 0;
 	$.ajax({
