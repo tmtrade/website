@@ -205,6 +205,7 @@ function tradAlert(){
 	tradname	= $.trim($('.trademarkName').val());
 	if( !tradname ){
 		setWarn('请输入商标号');
+		$('.classify').hide();
 		return false;
 	}
 	istrname	= checkTradName(tradname);
