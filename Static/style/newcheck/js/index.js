@@ -32,7 +32,10 @@ $(document).ready(function(e) {
 	//END
 	//点击提交
 	$(document).on('click','.submit',function(){
-		tradSubmit();
+		sidVal = $('.sbclassid').val();
+		if(sidVal>0){
+			tradSubmit();
+		}
 	});
 	//END
 	//分享
@@ -174,8 +177,10 @@ function getTrInfo(){
 					$('.classify').hide();
 				}else{
 					setWarn();
-					num = myobj.total > 1 ? 1 : 0;
+					num 	= myobj.total > 1 ? 1 : 0;
+					sidVal 	= myobj.total > 1 ? myobj.rows.class_id : 0;
 					$('.classify').show();
+					$('.sbclassid').val(sidVal);
 					setError();
 					setSelect(num,myobj.rows);
 				}
