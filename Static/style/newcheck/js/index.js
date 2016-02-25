@@ -33,8 +33,10 @@ $(document).ready(function(e) {
 	//点击提交
 	$(document).on('click','.submit',function(){
 		sidVal = $('.sbclassid').val();
-		if(sidVal>0){
+		if( sidVal > 0 ){
 			tradSubmit();
+		}else{
+			setWarn('该商标号有多条分类，请选择具体类别');
 		}
 	});
 	//END
