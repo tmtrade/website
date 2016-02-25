@@ -260,12 +260,11 @@ class InternalModule extends AppModule
     public function getReferrer($class, $limit, $notin)
     {
         if ( empty($class) ) return array();
-        if ( $notin ){
-            $r['notIn'] = array('number'=>array($notin));
-        }
-        $r['ft']   = array('class'=>$class);
+        $r['ft']    = array('class'=>$class);
+        $r['eq']    = array('status'=>1);
         $total      = $this->import('sale')->count($r);
-        if ( $total <= 0 ) array();
+        $total      = $total - count($notIn);//计算除notin数据外有多少数据
+        if ( $total <= 0 ) return array();
         if ( $total > $limit ){
             $rand       = rand(0, $total-$limit);
             $r['index'] = array($rand, $limit);
