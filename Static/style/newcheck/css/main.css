@@ -1213,7 +1213,8 @@ font-weight: bold !important;
 /*添加还可以选择列表*/
 
 .anquan-all{
-	width:1200px;
+	width:1140px;
+	max-width:1140px;
 	position: absolute;
     top: 50%;
     margin-top: -300px;
@@ -1221,6 +1222,16 @@ font-weight: bold !important;
     margin-left: -600px;
 	overflow:hidden;
 	}
+@media screen and (min-width:581px) and (max-width:1140px){
+    .anquan-all{
+		margin-left:-320px;
+		}
+}
+@media screen  and (max-width:580px) {
+    .anquan-all{
+		margin-left:-100px;
+		}
+}
 .xz-lb{
 	width:170px;
 	overflow:hidden;
