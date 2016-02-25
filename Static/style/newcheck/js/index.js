@@ -1,3 +1,4 @@
+var totalVal = 0;
 $(function () {
     $(".classify ").on("click", "span", function () {
 		classList = $.trim($(".classify ul").html());
@@ -32,12 +33,7 @@ $(document).ready(function(e) {
 	//END
 	//点击提交
 	$(document).on('click','.submit',function(){
-		sidVal = $('.sbclassid').val();
-		if( sidVal > 0 ){
-			tradSubmit();
-		}else{
-			setWarn('该商标号有多条分类，请选择具体类别');
-		}
+		tradSubmit();
 	});
 	//END
 	//分享
@@ -62,6 +58,7 @@ function tradSubmit(){
 	if( !isTid ){
 		return false;
 	}
+	
 	optNum	=  $('.classlist li').length;
 	if( optNum == 1 ){
 		optVal	= $('.classlist li:eq(0)').data('cid');
@@ -73,6 +70,10 @@ function tradSubmit(){
 			return false;
 		}
 	}else{
+		return false;
+	}
+	sidVal = $('.sbclassid').val();
+	if( sidVal == 0 ){
 		return false;
 	}
 	if( optVal > 0 ){
@@ -177,6 +178,7 @@ function getTrInfo(){
 					setWarn(msgString);
 					setError();
 					$('.classify').hide();
+					totalVal = myobj.total;
 				}else{
 					setWarn();
 					num 	= myobj.total > 1 ? 1 : 0;
@@ -295,8 +297,9 @@ function setWarn(string){
 		$('.error').html(string);
 		$('.error').show();
 		setTimeout(function(){
-			$('.error').hide(700);
-		},2000);
+			$('.error').html('');
+			$('.error').hide(300);
+		},3000);
 	}else{
 		$('.error').html('');
 		$('.error').hide();
