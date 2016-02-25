@@ -156,12 +156,13 @@ function getTrInfo(){
 	isTmId = tradAlert();
 	if(!isTmId){
 		setError();
+		$('.classlist').hide();
 		tradId = 0;
 		return false;
 	}
 	tradname = $.trim($('.trademarkName').val());
 	if( tradId == tradname ){
-		return true;
+		//return true;
 	}
 	var tId = 0;
 	$.ajax({
