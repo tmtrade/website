@@ -1,4 +1,6 @@
-var totalVal = 0;
+var totalVal 	= 0;
+var globalMsg 	= '';
+
 $(function () {
     $(".classify ").on("click", "span", function () {
 		classList = $.trim($(".classify ul").html());
@@ -161,6 +163,9 @@ function getTrInfo(){
 	}
 	tradname = $.trim($('.trademarkName').val());
 	if( tradId == tradname ){
+		if(globalMsg){
+			setWarn(globalMsg);
+		}
 		return true;
 	}
 	var tId = 0;
@@ -178,7 +183,8 @@ function getTrInfo(){
 					setWarn(msgString);
 					setError();
 					$('.classify').hide();
-					totalVal = myobj.total;
+					totalVal 	= myobj.total;
+					globalMsg 	= msgString;
 				}else{
 					setWarn();
 					num 	= myobj.total > 1 ? 1 : 0;
