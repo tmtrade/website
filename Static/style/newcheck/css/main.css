@@ -1214,10 +1214,12 @@ font-weight: bold !important;
 
 .anquan-all{
 	width:1200px;
-	margin:auto;
+	position: absolute;
+    top: 50%;
+    margin-top: -300px;
+    left: 50%;
+    margin-left: -600px;
 	overflow:hidden;
-
-	
 	}
 .xz-lb{
 	width:170px;
