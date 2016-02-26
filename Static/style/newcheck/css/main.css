@@ -1125,10 +1125,11 @@ body ::-moz-selection {
 }
 
 .interlinkage {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 10px;
-    padding-bottom: 19px;
+   color: #fff;
+text-decoration: none;
+margin-left: 10px;
+
+vertical-align:top;
 }
 
 .safe-content img {
