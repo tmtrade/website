@@ -1088,7 +1088,7 @@ body ::-moz-selection {
     /*border: 1px solid #fff;*/
     color: #fff;
     text-decoration: none;
-    /*     text-indent: -299999px; */
+       text-indent: -299999px; 
     width: 65px;
     height: 24px;
 }
