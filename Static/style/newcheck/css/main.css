@@ -1088,7 +1088,7 @@ body ::-moz-selection {
     /*border: 1px solid #fff;*/
     color: #fff;
     text-decoration: none;
-    text-indent: -299999px;
+    /*     text-indent: -299999px; */
     width: 65px;
     height: 24px;
 }
@@ -1128,6 +1128,7 @@ body ::-moz-selection {
     color: #fff;
     text-decoration: none;
     margin-left: 10px;
+    padding-bottom: 19px;
 }
 
 .safe-content img {
@@ -1219,7 +1220,7 @@ font-weight: bold !important;
     margin-top: -300px;
     left: 50%;
     margin-left: -600px;
-	overflow:hidden;
+	
 	}
 @media screen and (min-width:581px) and (max-width:1140px){
     .anquan-all{
