@@ -519,6 +519,8 @@ body ::-moz-selection {
     margin-left: 20px;
     color: #fff;
     margin-top: 15px;
+	width:600px\9\0; 
+	
 }
 
 .check h1 {
@@ -526,6 +528,8 @@ body ::-moz-selection {
     line-height: 40px;
     font-family: "Microsoft YaHei";
     font-weight: normal;
+	width:100%\9\0; 
+	
 }
 
 .check h1 span {
@@ -863,9 +867,13 @@ body ::-moz-selection {
     0% {
 	
         transform: rotate(0deg);
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+		-ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
     }
     100% {
 	     transform:rotate(180deg);
+		 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+		-ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
     }
 }
 
