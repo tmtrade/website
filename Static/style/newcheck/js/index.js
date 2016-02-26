@@ -91,6 +91,7 @@ function animateAjax(tradname,optVal,num,isdata,nber){
 		//atNum = atnum + 7.6;
 		//setTradContent(1);
 		$.ajax({
+			 cache      : false,
 			 type		: "get",
 			 url		: "/anquan/checkscoreajax/?tradname="+tradname+"&class="+optVal+"&steps="+sbNum+"&isdata="+isdata,
 			 dataType	: "json",
@@ -170,6 +171,7 @@ function getTrInfo(){
 	}
 	var tId = 0;
 	$.ajax({
+		 cache      : false,
 		 type		: "post",
 		 async		: false,
 		 data		: {"tradname" : tradname},
