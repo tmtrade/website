@@ -44,7 +44,13 @@ $(document).ready(function(e) {
 	});
 	//END
 	$(document).on('click','.back',function(){
-		window.location = '/anquan/';
+		host = window.location.host;
+		if(host='jingling.yizhchan.com'){
+			url = 'http://jingling.yizhchan.com/';	
+		}else{
+			url = '/anquan/';	
+		}
+		window.location = url;
 	});
 });
  
@@ -344,9 +350,9 @@ function setPage(obj){
 	}
 	//$('.cicle').addClass(myArray[4]);//字体颜色
 	$('.result').addClass(myArray[1]);//背景颜色
-	$('.gunimg').attr('src','/Static/style/newcheck/images/'+myArray[3]);
+	$('.gunimg').attr('src','http://www.yizhchan.com/Static/style/newcheck/images/'+myArray[3]);
 	$('.result').show();
-	$('.mybuy').attr('href','/sell/?id='+obj.info.id);//我要买
+	$('.mybuy').attr('href','http://www.yizhchan.com/sell/?id='+obj.info.id);//我要买
 	$('.mysell').attr('href','/d-'+obj.info.auto+'-'+obj.info.class_id+'.html');//我要卖
 	if(obj.info.issj==1){
 		$('.mysell').show();	
