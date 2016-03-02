@@ -82,5 +82,98 @@ $tbl['checkcount'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['module'] = array(
+	'name'		=> $prefix.'module',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
+$tbl['moduleClass'] = array(
+	'name'		=> $prefix.'module_class',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
+$tbl['moduleClassItems'] = array(
+	'name'		=> $prefix.'module_class_items',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
+$tbl['modulePic'] = array(
+	'name'		=> $prefix.'module_pic',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+$tbl['moduleLink'] = array(
+	'name'		=> $prefix.'module_link',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+$tbl['indexBasic'] = array(
+    'name'      => $prefix.'index_basic',
+    'dbId'      => $dbId, 
+    'configFile'=> $configFile,
+);
+
+$tbl['industry'] = array(
+	'name'		=> $prefix.'industry',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['industryClass'] = array(
+	'name'		=> $prefix.'industry_class',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['industryClassItems'] = array(
+	'name'		=> $prefix.'industry_class_items',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['industryPic'] = array(
+	'name'		=> $prefix.'industry_pic',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['channel'] = array(
+	'name'		=> $prefix.'channel',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['channelItems'] = array(
+	'name'		=> $prefix.'channel_items',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+$tbl['classGroup'] = array(
+	'name'		=> $prefix.'class_group',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['topic'] = array(
+	'name'		=> $prefix.'topic',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['topicItems'] = array(
+	'name'		=> $prefix.'topic_items',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['userSaleHistory'] = array(
+	'name'		=> $prefix.'user_sale_history',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 
 ?>
