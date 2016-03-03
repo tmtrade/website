@@ -1,0 +1,183 @@
+.select_boxs {
+    display: inline-block;
+    width: 83px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #e9e9e9;
+    padding-left: 15px;
+    background: #fff url(../images/mj-icon7.png) no-repeat 80px center;
+    position: relative;
+}
+div.select_boxW{
+    width: 139px;
+    background: #fff url(../images/mj-icon7.png) no-repeat 135px center;
+}
+.select_boxs span {
+    cursor: pointer;
+    display: block;
+    padding-left: 0;
+    width: 100%;
+    color: #666;
+    overflow: hidden;
+}
+.son_ul {
+    padding-left: 0;
+    width: 97px;
+    position: absolute;
+    left: 0;
+    top: 36px;
+    border: 1px solid #e9e9e9;
+    background: #fff;
+    z-index: 558;
+}
+ul.son_uls{
+    width: 153px;
+}
+ul.son_uls li{
+    width: 138px;
+}
+.select_boxs ul li {
+    cursor: pointer;
+}
+.son_ul li {
+    display: block;
+    line-height: 30px;
+    padding-left: 15px;
+    color: #666;
+    width: 82px;
+}
+.son_ul li:hover{
+    background: #ff8b3e;
+    color: #fff;
+}
+.mj_goods_check li label {
+    display: inline-block;
+    margin:-30px 10px 0 0;
+    text-align: right;
+    font-size: 12px;
+    color: #666;
+    vertical-align: middle;
+}
+.mj_goods_check li{
+    margin-right: 15px;
+}
+.mj_goods_check li.mj-determine{
+    padding: 0;
+    width: 50px;
+    height: 37px;
+    line-height: 37px;
+    background: #48aff1;
+    border-radius: 3px;
+}
+.mj_goods_check li.mj-determine:hover{
+    background: #268ACA;
+}
+.mj_goods_check li.mj-determine a{
+    display:inline-block;
+    width: 50px;
+    height: 43px;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
+.mj-navT{
+    position: fixed;
+    margin-top: 0!important;
+    top: 0;
+    z-index: 558;
+    background-color: #fff;
+    width: 100%;
+    border-bottom: solid 1px #ccc;
+}
+
+/*列表页浮动样式*/
+.select_boxs{
+    position: relative;
+}
+.mj-ulw{
+    width: 290px;
+}
+.mj-mdl{
+    display: none;
+    position: absolute;
+    left: -205px!important;
+    top: 45px!important;
+    padding: 20px;
+    width: 700px;
+    background: #fff;
+    color: #666;
+    z-index: 5555;
+    border: 1px solid rgb(121, 121, 122);
+    box-shadow: rgb(154, 154, 155) -1px 2px 2px;
+}
+.mj-mdl dt{
+    font-size: 14px;
+    border-bottom: dashed 1px #ddd;
+}
+.mj-mdl dd{
+    padding: 10px 10px 0 10px;
+}
+.mj-mdl dd a{
+    display: inline-block;
+    padding: 0 5px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #666;
+    text-decoration: none;
+    background: #ffffff;
+}
+.mj-mdl dd a.current, .mj-mdl dd a:hover {
+    background: #fc7d28;
+    color: #fff;
+}
+.mj-bapo{
+    width: 100%;
+    height: 100%;
+}
+.mj-liIn{
+    position: relative;
+    padding-left: 10px;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #e9e9e9;
+    vertical-align: middle;
+}
+.mj-liIn span{
+    font-size: 12px;
+    color: #999;
+}
+.mj-liIn input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 10px;
+    width: 100px;
+    height: 36px;
+    background: url('../other/8DAG4xA3+Ev9g4AAAAAElFTkSuQmCC');
+    border: none;
+    vertical-align: middle;
+    outline: none;
+    line-height: 36px\9;
+    z-index: 2;
+}
+.mj-laBtn{
+    display: inline-block;
+    margin-left: -3px;
+    width: 60px;
+    height: 38px;
+    line-height: 38px;
+    background: #48aff1;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+#mj-dnul{
+    display: none;
+}
+.sept{
+    padding-top: 80px;
+}

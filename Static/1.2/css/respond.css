@@ -1,0 +1,65 @@
+/* media */
+
+
+@media only screen and (min-width: 1px) and (max-width: 1180px){
+    .mj-content{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    #gla{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .g-mail{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .mj-banner{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .mj-buyCon{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .mj-mNav{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .mj-content_bottom{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .sp-1,.sp-2,.sp-3,.sp-4,.sp-5,.sp-6,.sp-7{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .mj-tHeader{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+}
+/*
+@media only screen and (max-width: 1270px){
+        .mj-siright{
+            display: block;
+        }
+        .mj-stclose{
+            display: none;
+        }
+        .mj-sidebarCon{
+            display: none;
+        }
+
+}
+*/

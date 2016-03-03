@@ -1,0 +1,510 @@
+<? require(ViewDir.'/header.html'); ?>
+
+<!--mj-banner start-->
+<div class="mj-banner">
+
+    <div class="w1180 mj-formW">
+
+        <div class="mj-from">
+
+            <form id="buyForm" action="/buy/add/">
+
+                <div class="mj-from-title">
+
+                    <label></label><span>商标购买快捷登记</span><label></label>
+
+                    <p>线下专家10分钟为你快速匹配商标</p>
+
+                </div>
+
+                <div class="ms-errorTips mj-eed">
+
+                    <p class="reg-tip"><i class="us-icon us-icon19"></i><em></em></p>
+
+                </div>
+
+                <div class="mj-form-wrapper">
+
+                    <span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>
+
+                    <i class="us-icon uj-icon4"></i>
+
+                    <input type="text" id="buyNeed" name="content" maxlength="100">
+
+                </div>
+
+                <div class="mj_form_wpo f-clearfix">
+
+                    <div class="mj-form-wrapper w178 fl">
+
+                        <span class="mj-inpuV">留下电话方便卖家联系你</span>
+
+                        <i class="us-icon uj-icon5"></i>
+
+                        <input id="buyMoblie" type="text" name="mobile" style="width: 155px;padding-left: 5px;">
+
+                    </div>
+
+                    <div class="mj_form_wrapper_input fr">
+
+                        <span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>
+
+                        <input type="text" name="buyName" id="buyName" maxlength="8">
+
+                    </div>
+
+                </div>
+
+
+
+                <a href="javascript:;" class="mj-from-btn">立即登记</a>
+                <p class="mj-from-txt">我们将严格保密您的个人信息</p>
+
+
+            </form>
+            <!--添加最新交易-->
+            <div class="mj-newjy">
+                <h3><img src="<?=StaticDir?>1.2/images/jy-ic.png">最新交易记录</h3>
+                <div class="bd">
+                    <ul>
+                        <li>
+                            <img src="<?=StaticDir?>1.2/images/buy.png">
+                            <p>
+                                <span>张先生<a>（135****8025）</a></span>
+                                <font>“25类 用于天猫服装分类的 XX”</font>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="<?=StaticDir?>1.2/images/buy2.png">
+                            <p>
+                                <span>张先生<a>（135****8025）</a></span>
+                                <font>“25类 用于天猫服装分类的 XX”</font>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mj-bannerIimg">
+        <div class="bd">
+            <ul class="mj-banner-img">
+                <?
+                    $bannerStr = '';
+                    foreach($banners as $banner){
+                        $url = TRADE_URL.substr($banner['pic'],1);
+                        $bannerStr .= "<li class='mj-banner-itme' style='background:url({$url}) #CCE1F3 center 0 no-repeat;'><a href='{$banner['link']}' target='_blank'></a></li>";
+                    }
+                    echo $bannerStr;
+                ?>
+            </ul>
+
+        </div>
+        <div class="hd">
+            <ul class="f-clearfix">
+                <?
+                    $bannerBar = '';
+                    for($i=1,$len=count($banners);$i<=$len;++$i){
+                        $bannerBar .= "<li></li>";
+                    }
+                    echo $bannerBar;
+                ?>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+<!--mj-banner end-->
+<!--活动推荐start-->
+<div class="yzc-Activities w1180">
+    <div class="hd">
+        <a class="og_prev prev"></a>
+        <a class="og_next next"></a>
+    </div>
+    <div class="bd picbox">
+        <ul>
+            <li>
+                <a href="#" target="_blank">
+                    <h3>
+                        11活动标题<br/>
+                        <span>活动标题</span>
+                    </h3>
+                    <img src="<?=StaticDir?>1.2/images/acti-pic1.png">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <h3>
+                        22活动标题<br/>
+                        <span>活动标题</span>
+                    </h3>
+                    <img src="<?=StaticDir?>1.2/images/acti-pic2.png">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <h3>
+                        33活动标题<br/>
+                        <span>活动标题</span>
+                    </h3>
+                    <img src="<?=StaticDir?>1.2/images/acti-pic3.png">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <h3>
+                        44活动标题<br/>
+                        <span>活动标题</span>
+                    </h3>
+                    <img src="<?=StaticDir?>1.2/images/acti-pic4.png">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <h3>
+                        55活动标题<br/>
+                        <span>活动标题</span>
+                    </h3>
+                    <img src="<?=StaticDir?>1.2/images/acti-pic5.png">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <h3>
+                        6666活动标题<br/>
+                        <span>活动标题</span>
+                    </h3>
+                    <img src="<?=StaticDir?>1.2/images/acti-pic3.png">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <h3>
+                        7777活动标题<br/>
+                        <span>活动标题</span>
+                    </h3>
+                    <img src="<?=StaticDir?>1.2/images/acti-pic4.png">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                    <h3>
+                        888活动标题<br/>
+                        <span>活动标题</span>
+                    </h3>
+                    <img src="<?=StaticDir?>1.2/images/acti-pic5.png">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--活动推荐end-->
+<!--商标分类start-->
+<div class="yzc-Brand w1180">
+    <div class="hd">
+        <ul class="Brand-tit">
+            <li>
+                <a>
+                    商标全类
+                </a>
+            </li>
+            <li>
+                推荐分类
+            </li>
+        </ul>
+    </div>
+    <div class="bd">
+        <ul class="brand-fl">
+            <li>
+                <a><span>&bull;01类</span> 化工原料 </a>
+                <a><span>&bull;02类</span>  化工原料 </a>
+                <a><span>&bull;03类</span>  化工原料 </a>
+                <a><span>&bull;04类</span>  化工原料 </a>
+                <a><span>&bull;05类</span> 化工原料 </a>
+                <a><span>&bull;06类</span>  化工原料 </a>
+                <a><span>&bull;07类</span>  化工原料 </a>
+                <a><span>&bull;08类</span>  化工原料 </a>
+                <a><span>&bull;09类</span>  化工原料 </a>
+            </li>
+            <li>
+                <a><span>&bull;01类</span> 化工原料 </a>
+                <a><span>&bull;02类</span>  化工原料 </a>
+                <a><span>&bull;03类</span>  化工原料 </a>
+                <a><span>&bull;04类</span>  化工原料 </a>
+                <a><span>&bull;05类</span> 化工原料 </a>
+                <a><span>&bull;06类</span>  化工原料 </a>
+                <a><span>&bull;07类</span>  化工原料 </a>
+                <a><span>&bull;08类</span>  化工原料 </a>
+                <a><span>&bull;09类</span>  化工原料 </a>
+            </li>
+            <li>
+                <a><span>&bull;01类</span> 化工原料 </a>
+                <a><span>&bull;02类</span>  化工原料 </a>
+                <a><span>&bull;03类</span>  化工原料 </a>
+                <a><span>&bull;04类</span>  化工原料 </a>
+                <a><span>&bull;05类</span> 化工原料 </a>
+                <a><span>&bull;06类</span>  化工原料 </a>
+                <a><span>&bull;07类</span>  化工原料 </a>
+                <a><span>&bull;08类</span>  化工原料 </a>
+                <a><span>&bull;09类</span>  化工原料 </a>
+            </li>
+            <li>
+                <a><span>&bull;01类</span> 化工原料 </a>
+                <a><span>&bull;02类</span>  化工原料 </a>
+                <a><span>&bull;03类</span>  化工原料 </a>
+                <a><span>&bull;04类</span>  化工原料 </a>
+                <a><span>&bull;05类</span> 化工原料 </a>
+                <a><span>&bull;06类</span>  化工原料 </a>
+                <a><span>&bull;07类</span>  化工原料 </a>
+                <a><span>&bull;08类</span>  化工原料 </a>
+                <a><span>&bull;09类</span>  化工原料 </a>
+            </li>
+
+        </ul>
+        <ul class="tj-recom">
+            <? foreach($recommendClasses as $rClass): ?>
+            <li>
+                <p>
+                    <label><img src="<?=(TRADE_URL.substr($rClass['pic'],1))?>"></label>
+                    <!--<span><b>衣</b>Clothes</span>-->
+                    <span><b><?=$rClass['link']?></b></span>
+                </p>
+                <div class="tj-recom-hover">
+                    <? foreach($rClass['class'] as $class): ?>
+                    <label><a><?=$class?> </a></label>
+                    <? endforeach; ?>
+                </div>
+            </li>
+            <? endforeach; ?>
+        </ul>
+    </div>
+
+
+</div>
+
+<!--商标分类end-->
+<!--类别展示start-->
+<div class="sbzs" id="sbzs">
+    <!--1F / 服装鞋帽-->
+    <!--<div class="yzc-category w1180" id="cloth">-->
+    <? foreach($modules as $module): ?>
+    <div class="yzc-category w1180">
+        <div class="yzc-category-tit">
+            <h3 class="fl"><img src="<?=StaticDir?>1.2/images/cate-ico1.png">1F <span> / </span><?=$module['name']?></h3>
+            <div class="parHd" style="position:relative;z-index:9999;">
+                <ul class="fr">
+                    <? foreach($module['class'] as $class): ?>
+                    <li><?=$module['name']?><span></span></li>
+                    <? endforeach; ?>
+                </ul>
+            </div>
+        </div>
+        <div class="parBd" style="position:relative;z-index:9;">
+            <? foreach($module['class'] as $class): ?>
+            <div class="brandlist-show">
+                <div class="yzc-categorypic-show fl">
+                    <div  class="slideBox">
+                        <div class="shd">
+                            <p>
+                                <? for($i=1,$len=count($module['pic']);$i<=$len;++$i): ?>
+                                <? if($i==1): ?>
+                                <a class="on">1</a>
+                                <? else: ?>
+                                <a><?=$i?></a>
+                                <? endif; ?>
+                                <? endfor; ?>
+                            </p>
+                        </div>
+                        <div class="sbd">
+                            <ul>
+                                <? foreach($module['pic'] as $pic): ?>
+                                <li><a href="<?=$module['link']?>" target="_blank"><img src="<?=$module['pic']?>" /></a></li>
+                                <? endforeach; ?>
+                            </ul>
+                        </div>
+                        <!-- 下面是前/后按钮代码 -->
+                        <a class="sprev" href="javascript:void(0)"></a>
+                        <a class="snext" href="javascript:void(0)"></a>
+                    </div>
+
+                    <div class="cate-list">
+                        <? foreach($module['link'] as $link): ?>
+                        <p>
+                            <a class="fl" class="<?=$link['class']?>" href="<?=$link['link']?>"><span>></span><?=$link['title']?></a>
+                        </p>
+                        <? endforeach; ?>
+                    </div>
+                </div>
+                <ul class="yzc-categorbrand fr">
+                    <? foreach($class['items'] as $item): ?>
+                    <li>
+                        <div class="brand-show">
+                            <span><img src="<?=(TRADE_URL.substr($item['embellish'],1))?>"></span>
+                            <p><b><?=$item['name']?></b><?=$item['class']?></p>
+                        </div>
+                        <div class="brand-buy">
+                            <span><img src="<?=(TRADE_URL.substr($item['embellish'],1))?>"></span>
+                            <p><b><?=$item['name']?></b><?=$item['class']?></p>
+                            <font>
+                                <a href="" class="first">
+                                    <img src="<?=StaticDir?>1.2/images/catebuy1.png">
+                                    询 价
+                                </a>
+                                <a href="" class="sec">
+                                    <img src="<?=StaticDir?>1.2/images/cate-ck.png">
+                                    联系卖家
+                                </a>
+                            </font>
+                        </div>
+                    </li>
+                    <? endforeach; ?>
+                </ul>
+            </div>
+            <? endforeach; ?>
+        </div>
+    </div>
+    <? endforeach; ?>
+</div>
+
+<!--类别展示end-->
+<!--成功案列start-->
+<div class="w1180 succeed-al" id="succal">
+    <a href=""><h3>成功案例</h3></a>
+    <ul class="succeed-al-main">
+        <li>
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front">
+                        <dl>
+                            <font>格伦贝拉<span style="background: #ff9f8c;">服装鞋帽25类</span></font>
+                            <p>
+                                <label>使用商品：</label>服装鞋帽、服装配饰<br/>
+                                <label>购  买 人：</label> 慈先生<br/>
+                                <label>服务顾问：</label>陈艾<br/>
+                            </p>
+                        </dl>
+                        <img src="<?=StaticDir?>1.2/images/al1.png">
+                    </div>
+                    <div class="back">
+                        <img src="<?=StaticDir?>1.2/images/overturn.png">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front">
+                        <dl>
+                            <font>Hesiod<span style="background: #ffc061;">化妆清洁3类</span></font>
+                            <p>
+                                <label>使用商品：</label>清洁用品、化妆品<br/>
+                                <label>购  买 人：</label> 某商贸公司<br/>
+                                <label>服务顾问：</label>王桂华<br/>
+                            </p>
+                        </dl>
+                        <img src="<?=StaticDir?>1.2/images/al2.png">
+                    </div>
+                    <div class="back">
+                        <img src="<?=StaticDir?>1.2/images/overturn.png">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front">
+                        <dl>
+                            <font>麦普森<span style="background: #8cdcff;">3C数码9类</span></font>
+                            <p>
+                                <label>使用商品：</label>计算机、数码产品<br/>
+                                <label>购  买 人：</label> 王先生<br/>
+                                <label>服务顾问：</label>寇飞<br/>
+                            </p>
+                        </dl>
+                        <img src="<?=StaticDir?>1.2/images/al3.png">
+                    </div>
+                    <div class="back">
+                        <img src="<?=StaticDir?>1.2/images/overturn.png">
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--成功案列end-->
+<!--商标新闻start-->
+<div class="brand-ques w1180">
+
+    <div class="fl">
+        <h3> 商标新闻</h3>
+        <div class="Tradenews">
+            <dl>
+                <dt>
+                    <img src="<?=StaticDir?>1.2/images/brand1.png">
+                </dt>
+                <dd>
+                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                    <a hidden="">更多 ></a>
+                </dd>
+            </dl>
+            <div class="btm">
+                <p>
+                    <span class="fl">[商标新闻] 我是一条新闻标题新闻标题题新闻</span> <label class="fr">2015-15-15</label>
+                </p>
+                <p>
+                    <span class="fl">[商标新闻] 我是一条新闻标题新闻标题题新闻</span> <label class="fr">2015-15-15</label>
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="fr">
+        <h3> 商标转让问答</h3>
+        <div class="trademark">
+            <dl>
+                <dt>
+                    <img src="<?=StaticDir?>1.2/images/brand2.png">
+                </dt>
+                <dd>
+                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                </dd>
+            </dl>
+            <div class="btm">
+                <p>
+                    <span class="fl">[商标新闻] 我是一条新闻标题新闻标题题新闻</span> <label class="fr">2015-15-15</label>
+                </p>
+                <p>
+                    <span class="fl">[商标新闻] 我是一条新闻标题新闻标题题新闻</span> <label class="fr">2015-15-15</label>
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!--商标新闻end-->
+<!--订阅商标start-->
+<div class="yzc-take">
+    <div class="w1180">
+        <a class="take1" href="">快速筛选出好标</a>
+        <a class="take2" href="">联系我们-免费为你找</a>
+    </div>
+
+</div>
+<!--订阅商标end-->
+<? require(ViewDir.'/footer.html'); ?>
