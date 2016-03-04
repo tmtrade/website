@@ -179,15 +179,15 @@ class IndexModule extends AppModule
         //添加额外信息
         foreach($data as $k=>&$item){
             //判断商品是否销售中
-            $rst = $this->load('Trademark')->isSale($item['number']);
+            $rst = $this->load('Sale')->isSale($item['number']);
             if(!rst){
                 unset($data[$k]);
                 continue;
             }
             //得到所属分类名
-            $item['class'] = $this->load('Trademark')->getClassByNumber($item['number']);
+            $item['class'] = $this->load('Sale')->getClassByNumber($item['number']);
             //得到商标包装图
-            $item['embellish'] = $this->load('Trademark')->getSaleTmInfoByNumber($item['number'],'embellish');
+            $item['embellish'] = $this->load('Sale')->getSaleTmInfoByNumber($item['number'],'embellish');
         }
         return $data;
     }

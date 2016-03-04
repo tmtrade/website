@@ -5,7 +5,7 @@
  * Date: 2016/3/3 0003
  * Time: 下午 15:55
  */
-class TrademarkModule extends AppModule{
+class SaleModule extends AppModule{
     public $models = array(
         'saleTminfo'		=> 'SaleTminfo',
         'sale'		=> 'Sale',
