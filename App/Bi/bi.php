@@ -29,5 +29,23 @@ abstract class Bi extends RpcClient
 		
 		return $response;
 	}
+
+	/**
+	 * 发送请求(curl请求)
+	 * @author	void
+	 * @since	2016-01-16
+	 *
+	 * @access	public
+	 * @param	string	$name	请求的接口
+	 * @param	string  $param	提交的参数
+	 * @return	array
+	 */
+	public function invoke($name, $param)
+	{
+		$response = httpRequest($this->url.$name, 1, http_build_query($param));
+		$response = json_decode($response, true);
+
+		return isset($response['body']['data']) ? $response['body']['data'] : array();
+	}
 }
 ?>

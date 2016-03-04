@@ -2,81 +2,190 @@
 /**
  * 商标查询接口
  *
- * 对商标名称进行近似查询
+ * 商标近似查询、商标详情
+ * 商标名称查询（状态查询）、商标号查询（状态查询）、获取申请人商标列表（状态查询）
  *
  * @package	Bi
- * @author	Xuni
- * @since	2015-11-10
+ * @author	void
+ * @since	2016-02-19
  */
 class TrademarkBi extends Bi
 {
 	/**
 	 * 接口标识
 	 */
-	//public $apiId = 2;
+	public $apiId = 5;
 
 	/**
-	 * 近似查询商标
-	 *
-	 * @param	array	$param		提交的参数(keyword,classId)
-	 * @param	string	$method		0为GET、1为POST
+	 * 商标近似查询
 	 * 
-	 * @return	array 	$data
-	 */
-	public function searchLike(array $params, $page=1, $num=20, $method=1)
-	{
-		if ( empty($params['keyword']) ) return array();
-
-		$params['key'] 	= SEARCH_KEY;
-		$params['page'] = $page > 0 ? $page : 1;
-		$params['num'] 	= ($num > 0 && $num < 5000) ? $num : 20;
-
-		$param 	= http_build_query($params);
-		$res 	= $this->httpRequest($param, $method);
-		return json_decode($res, true);
-	}
-
-	private function makeParams(&$item, $key)
-	{
-		$item = $key.'='.$item;
-	}
-	
-	/**
-	 * 模拟HTTP请求
+	 * @author	void
+	 * @since	2016-02-23
 	 *
-	 * @param	string	$param		提交的参数
-	 * @param	string	$method		0为GET、1为POST
-	 * @param	int		$timeout	超时时间（秒）
-	 * @return	string
+	 * @access	public
+	 * @param	string	$keyword		商标名
+	 * @param	string	$classId		类别（多个用逗号分隔）
+	 * @param	string	$groupCode		群组（多个用逗号分隔）
+	 * @param	int		$timeType		时间类型（0未知、1申请日期、2注册日期、3有效日期）
+	 * @param	int		$startTime		开始时间（时间戳）
+	 * @param	int		$endTime		结束时间（时间戳）
+	 * @param	int		$startNumber	开始公告期号
+	 * @param	int		$endNumber		结束公告期号
+	 * @param	int		$num			每页多少条	
+	 * @param	int		$page			当前页码
+	 * @return	array
 	 */
-	private function httpRequest($param = '', $method = 1, $timeout = 10)
+	public function search($reqParam)
 	{
-		$userAgent 	= "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)";
-		$ch        	= curl_init();
+		extract($reqParam);
+		$param = array(
+			'keyword'     => isset($keyword)     ? $keyword     : '',
+			'classId'     => isset($classId)     ? $classId     : 0,
+			'groupCode'   => isset($groupCode)   ? $groupCode   : '',
+			'timeType'    => isset($timeType)    ? $timeType    : 0,
+			'startTime'   => isset($startTime)   ? $startTime   : 0,
+			'endTime'     => isset($endTime)     ? $endTime     : 0,
+			'startNumber' => isset($startNumber) ? $startNumber : 0,
+			'endNumber'   => isset($endNumber)   ? $endNumber   : 0,
+			'num'         => isset($num)         ? $num         : 20,
+			'page'        => isset($page)        ? $page        : 1,
+			);
+		
+		$data = $this->invoke("Trademark/search/", $param);
 
-		$url 		= $method == 0 ? 'trademark/search/?'.$param : 'trademark/search/';
-		curl_setopt($ch, CURLOPT_URL, SEARCH_URL.$url); 
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-		if ( $method == 1 ) {
-			curl_setopt($ch, CURLOPT_POST, 1); 
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $param); 
-		}
-		curl_setopt($ch, CURLOPT_TIMEOUT, $timeout); 
-		curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
-		curl_setopt( $ch,CURLOPT_HTTPHEADER, array(
-		'Accept-Language: zh-cn',
-		'Connection: Keep-Alive',
-		'Cache-Control: no-cache',
-		));
-		$document = curl_exec($ch); 
-		$info     = curl_getinfo($ch); 
-		if ( $info['http_code'] == "405" ) {
-			curl_close($ch);
-			return 'error';
-		}
-		curl_close($ch);
-		return $document;
+		return array(
+			'classCount'  => isset($data['classCount'])  ? $data['classCount']  : array(),
+			'weightCount' => isset($data['weightCount']) ? $data['weightCount'] : array(),
+			'total'       => isset($data['total'])       ? $data['total']       : 0,
+			'rows'        => isset($data['rows'])        ? $data['rows']        : array(),
+			);
 	}
 
+	/**
+	 * 商标详情
+	 * 
+	 * @author	void
+	 * @since	2016-02-19
+	 *
+	 * @access	public
+	 * @param	int		$id		商标id
+	 * @return	array
+	 */
+	public function getDetail($id)
+	{
+		return $this->invoke("Trademark/getDetail/", array('id' => $id));
+	}
+
+	/**
+	 * 商标名称查询（状态查询）
+	 * @author	void
+	 * @since	2016-02-19
+	 *
+	 * @access	public
+	 * @param	string	$keyword		商标名
+	 * @param	string	$classId		类别（多个用逗号分隔）
+	 * @param	int		$timeType		时间类型（0未知、1申请日期、2注册日期、3有效日期）
+	 * @param	int		$startTime		开始时间（时间戳）
+	 * @param	int		$endTime		结束时间（时间戳）
+	 * @param	int		$startNumber	开始公告期号
+	 * @param	int		$endNumber		结束公告期号
+	 * @param	int		$statusId		状态id（1-28）
+	 * @param	int		$order			排序（1为申请日期升序、2为降序）
+	 * @param	int		$num			每页多少条	
+	 * @param	int		$page			当前页码
+	 * @return	array
+	 */
+	public function nameSearch($reqParam)
+	{
+		extract($reqParam);
+		$param = array(
+			'name'        => isset($keyword)     ? $keyword     : '',
+			'classId'     => isset($classId)     ? $classId     : 0,
+			'timeType'    => isset($timeType)    ? $timeType    : 0,
+			'startTime'   => isset($startTime)   ? $startTime   : 0,
+			'endTime'     => isset($endTime)     ? $endTime     : 0,
+			'startNumber' => isset($startNumber) ? $startNumber : 0,
+			'endNumber'   => isset($endNumber)   ? $endNumber   : 0,
+			'statusId'    => isset($statusId)    ? $statusId    : 0,
+			'order'       => isset($order)       ? $order       : 1,
+			'num'         => isset($num)         ? $num         : 20,
+			'page'        => isset($page)        ? $page        : 1,
+			);
+		
+		$data = $this->invoke("StatusQuery/nameSearch/", $param);
+
+		return array(
+			'classCount'  => isset($data['classCount'])  ? $data['classCount']  : array(),
+			'statusCount' => isset($data['statusCount']) ? $data['statusCount'] : array(),
+			'total'       => isset($data['total'])       ? $data['total']       : 0,
+			'rows'        => isset($data['rows'])        ? $data['rows']        : array(),
+			);
+	}
+
+	/**
+	 * 申请人商标查询（状态查询，按申请人ID查询）
+	 * @author	void
+	 * @since	2016-03-03
+	 *
+	 * @access	public
+	 * @param	int		$proposerId	申请人id
+	 * @param	int		$classId	商标类别id
+	 * @param	int		$statusId	状态id
+	 * @param	int		$order		排序
+	 * @param	int		$num		返回条数
+	 * @param	int		$page		页码
+	 * @return	array
+	 */
+	public function proposerTmsearch($reqParam)
+	{
+		extract($reqParam);
+		$param = array(
+			'proposerId' => $proposerId,
+			'classId'    => $classId,
+			'statusId'   => $statusId,
+			'order'      => $order,
+			'num'        => $num,
+			'page'       => $page,
+			);
+		
+		$data = $this->invoke("StatusQuery/getProposerTrademarkList/", $param);
+
+		return array(
+			'classCount'  => isset($data['classCount'])  ? $data['classCount']  : array(),
+			'statusCount' => isset($data['statusCount']) ? $data['statusCount'] : array(),
+			'total'       => isset($data['total'])       ? $data['total']       : 0,
+			'rows'        => isset($data['rows'])        ? $data['rows']        : array(),
+			);
+	}
+
+	/**
+	 * 商标号查询（状态查询）
+	 * @author	void
+	 * @since	2016-03-03
+	 *
+	 * @access	public
+	 * @param	string	$keyword	商标号
+	 * @param	int		$num		返回条数
+	 * @param	int		$page		页码
+	 * @return	array
+	 */
+	public function codeSearch($reqParam)
+	{
+		extract($reqParam);
+		$param = array(
+			'code' => $keyword,
+			'num'  => $num,
+			'page' => $page,
+			);
+		
+		$data = $this->invoke("StatusQuery/codeSearch/", $param);
+
+		return array(
+			'classCount'  => isset($data['classCount'])  ? $data['classCount']  : array(),
+			'weightCount' => isset($data['weightCount']) ? $data['weightCount'] : array(),
+			'total'       => isset($data['total'])       ? $data['total']       : 0,
+			'rows'        => isset($data['rows'])        ? $data['rows']        : array(),
+			);
+	}
 }
 ?>

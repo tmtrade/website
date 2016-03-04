@@ -19,6 +19,9 @@ body{
     margin: 0;
     background-color: #f5f5f5;
 }
+img{
+    border: none !important;
+}
 /*清除浮动*/
 .f-clearfix:after {
     clear: both;

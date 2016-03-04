@@ -1,0 +1,434 @@
+/*
+    ɸѡҳ��ʽ
+*/
+.ms-filterWrapper{
+    padding-top: 15px;
+}
+.ms-filterResults{
+    position: relative;
+    min-height: 25px;
+}
+.ms-filterResults span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    line-height: 25px;
+    color: #666;
+    font-weight: bold;
+}
+.ms-filterResultsList{
+    padding-left: 75px;
+}
+.ms-filterResultsList li{
+    float: left;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 10px;
+    border: 1px solid #e3e3e3;
+    background: #ffffff;
+    margin: 0 10px 10px 0;
+}
+.ms-filterResultsList li a{
+    color: #666666;
+}
+.ms-filterResultsList li:hover{
+    border: 1px solid #ff6d6d;
+}
+.ms-filterResultsList li:hover a{
+    color: #ff6d6d;
+}
+.ms-condition{
+    border: 1px solid #eaeaea;
+    margin-top: 5px;
+}
+.ms-conditionList{
+    position: relative;
+    background: #ffffff;
+    min-height: 40px;
+}
+.ms-conditionList > span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 1px;
+    line-height: 40px;
+    width: 100px;
+    text-align: center;
+    color: #999999;
+    background: #fafafa;
+}
+.ms-conditionList-main{
+    padding: 10px 100px 0 100px;
+    border-bottom: 1px dashed #e3e3e3;
+}
+.ms-noBorder .ms-conditionList-main{
+    border-bottom: 0 none;
+}
+.ms-conditionList-main li{
+    float: left;
+    padding: 0 15px 10px;
+    height: 20px;
+    line-height: 20px;
+}
+.ms-conditionList-main input[type="checkbox"]{
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.ms-advancedFilter > ul > li > a,
+.ms-conditionList-main label,
+.ms-conditionList-main li a{
+    color: #666666;
+}
+.ms-advancedFilter > ul > li > a:hover,
+.ms-conditionList-main label:hover,
+.ms-conditionList-main li a:hover{
+    color: #ff5656;
+}
+.ms-condition-btn{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.ms-condition-btn > a,
+.ms-condition-btn > span{
+    display: inline-block;
+    margin: 5px;
+    height: 20px;
+    width: 42px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    color: #666;
+    border: 1px solid #e3e3e3;
+}
+.ms-condition-btn > a{
+    color: #fff;
+    background: #FF5656;
+    border: 1px solid #FF5656;
+}
+.ms-conditionBtn span:hover,
+.ms-condition-btn > span:hover{
+    border: 1px solid #FF5656;
+    color: #FF5656;
+}
+.ms-condition-btn > a:hover{
+    background: #f25252;
+    border: 1px solid #f25252;
+}
+.ms-advancedFilter{
+    position: relative;
+    padding: 10px 0 0 105px;
+}
+.ms-advancedFilter ul li a:hover .us-icon24{
+    background-image: url("../images/us-icon3_cur.png");
+}
+.ms-advancedFilter > ul > li{
+    float: left;
+}
+.ms-advancedFilter > ul > li > a{
+    display: block;
+    padding: 0 15px 10px;
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid #ffffff;
+}
+.ms-advancedFilter .ms-conditionList-main{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    padding: 10px 100px 0 10px;
+    background: #ffffff;
+    z-index: 3;
+    border: 1px solid #ff6666;
+    display: none;
+}
+.ms-advancedFilter > ul > li:hover > a{
+    border: 1px solid #ff6666;
+    border-bottom: 0 none;
+    background: #ffffff;
+    position: relative;
+    z-index: 4;
+}
+.ms-conditionList-main.cur .ms-conditionCheckbox,
+.ms-conditionList-main.cur .ms-condition-btn,
+.ms-advancedFilter > ul > li:hover .ms-conditionList-main{
+    display: block;
+}
+.ms-conditionList-main.cur .ms-conditionRadio,
+.ms-conditionList-main.cur .ms-multi,
+.ms-condition-btn,
+.ms-conditionCheckbox{
+    display: none;
+}
+.ms-conditionBtn{
+    position: absolute;
+    top: 10px;
+    right: 8px;
+}
+.ms-conditionBtn span{
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 8px;
+    color: #666666;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid #e3e3e3;
+}
+.ms-conditionBtn .ms-conditionMore{
+    padding: 0 12px 0 0;
+    background: url("../images/us-icon3.png") right center no-repeat;
+}
+.ms-conditionBtn .ms-conditionMore.cur{
+    background: url("../images/us-icon3_cur.png") right center no-repeat;
+    color: #ff6d6d;
+}
+.ms-conditionBtn .ms-conditionMore,
+.ms-conditionBtn .ms-conditionMore:hover{
+    border: 0 none;
+}
+.ms-setHeight{
+    height: 30px;
+    overflow: hidden;
+}
+
+
+/* ms-filterSearch */
+.ms-filterSearchMain{
+    padding-top: 15px;
+}
+.ms-filterSearchMain p{
+    float: right;
+    line-height: 28px;
+    color: #666666;
+}
+.ms-filterSearchMain p span{
+    color: #ff5656;
+}
+.ms-filterSearch{
+    height: 26px;
+    width: 184px;
+    border: 1px solid #e3e3e3;
+    background: #ffffff;
+}
+.ms-filterSearch input[type="text"]{
+    height: 26px;
+    line-height: 26px\9;
+    width: 135px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 0 none;
+    outline: none;
+}
+
+
+.ms-filtersList{
+    padding-top: 15px;
+}
+/* ms-filterMain */
+.ms-filterMain{
+    float: left;
+    width: 962px;
+}
+.ms-filtersList > ul{
+    width: 102%;
+}
+.ms-filtersList > ul > li{
+    position: relative;
+    float: left;
+    width: 184px;
+    height: 227px;
+    margin: 0 10px 10px 0;
+}
+.ms-filtersList > ul > li > div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 182px;
+    height: 225px;
+    border: 1px solid #eaeaea;
+    overflow: hidden;
+}
+.ms-filterCenter{
+    width: 162px;
+    padding: 10px;
+    background: #ffffff;
+    position: relative;
+}
+.ms-collect{
+    position: absolute;
+    top: 3px;
+    right: 10px;
+}
+.ms-collect.cur .us-icon20,
+.ms-collect:hover .us-icon20{
+    background-image: url("../images/xin_cur.png");
+}
+.ms-filtersImg{
+    display: table-cell;
+    *display: inline-block;
+    width: 162px;
+    height: 130px;
+    text-align: center;
+    vertical-align: middle;
+    *font-size: 102px;
+}
+.ms-filtersImg img{
+    max-height: 130px;
+    max-width: 162px;
+    vertical-align: middle;
+}
+.ms-filtersListTxt{
+    text-align: center;
+    line-height: 22px;
+}
+.ms-filtersListTxt p{
+    color: #999999;
+}
+.ms-filtersListTxt em{
+    font-style: normal;
+    padding: 0 5px;
+    color: #ff6666;
+}
+.ms-filterBtn{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.ms-filterBtn a{
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    line-height: 30px;
+    width: 75px;
+    text-align: center;
+    margin: 0 2px;
+    color: #ffffff;
+    border-radius: 3px;
+}
+.ms-filterBtn .ms-inquiry{
+    background: #ff8b3e;
+}
+.ms-filterBtn .ms-inquiry:hover{
+    background: #f5843a;
+}
+.ms-filterBtn .ms-seller{
+    background: #ff5656;
+}
+.ms-filterBtn .ms-seller:hover{
+    background: #f74f4f;
+}
+.ms-sortMain{
+    position: absolute;
+    top: 0;
+    right: -20px;
+    bottom: 0;
+    width: 110px;
+    padding: 10px 15px;
+    background: #f5f5f5;
+    display: none;
+}
+.ms-sortList > li{
+    line-height: 20px;
+    color: #666;
+}
+.ms-sortList > li > span{
+    color: #999;
+}
+.ms-sortMore{
+    border-top: 1px solid #e3e3e3;
+    margin-top: 6px;
+    padding-top: 6px;
+    text-align: center;
+}
+.ms-sortMore a{
+    color: #48aff1;
+}
+.ms-sortMore a:hover{
+    text-decoration: underline;
+}
+.ms-filtersList > ul > li:hover > div{
+    height: 275px;
+    border: 1px solid #ff5656;
+    z-index: 1;
+}
+.ms-filtersList > ul > li:hover > div.ms-filterMany{
+    width: 302px;
+}
+.ms-filtersList > ul > li:hover > div.ms-filterMany .ms-sortMain{
+    display: block;
+}
+
+/* ms-recommend */
+.ms-recommend{
+    float: right;
+    width: 166px;
+    padding: 0 20px;
+    border: 1px solid #eaeaea;
+    background: #ffffff;
+}
+.ms-recommend > dt{
+    position: relative;
+    margin-top: 20px;
+    height: 30px;
+    border-top: 1px solid #e3e3e3;
+    background: #ffffff;
+}
+.ms-recommend > dt > span{
+    position: absolute;
+    color: #666666;
+    top: -16px;
+    left: 50%;
+    margin-left: -25%;
+    height: 30px;
+    line-height: 30px;
+    background: #ffffff;
+    padding: 0 10px;
+}
+.ms-recommend > dt > img{
+    position: absolute;
+    right: -18px;
+    top: -18px;
+}
+.ms-recommend > dd{
+    border-top: 1px solid #e3e3e3;
+    margin-top: -1px;
+    padding: 15px 0;
+    position: relative;
+}
+.ms-recommend > dd .ms-filtersListTxt{
+    background: rgba(255,255,255,.9);
+    background: url("../images/imgBg.png") repeat\9;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    bottom: 15px;
+    right: 0;
+    display: none;
+}
+.ms-recommend > dd:hover .ms-filtersListTxt{
+    display: block;
+}
+.ms-recommend > dd .ms-filtersListTxt h6 a{
+    color: #333333;
+    font-size: 12px;
+}
+.ms-recommend > dd .ms-filtersListTxt h6 a:hover{
+    color: #ff6d6d;
+}
+.ms-recommend > dd .ms-filtersListTxt > div,
+.ms-recommend > dd > span{
+    display: table-cell;
+    *display: inline-block;
+    width: 166px;
+    height: 95px;
+    vertical-align: middle;
+    text-align: center;
+    *font-size: 74px;
+}
+.ms-recommend > dd > span > img{
+    max-width: 166px;
+    max-height: 95px;
+    vertical-align: middle;
+}
