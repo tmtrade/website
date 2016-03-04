@@ -47,4 +47,20 @@ class TrademarkModule extends AppModule{
         }
         return $info;
     }
+
+    /**
+     * 判断商标是否销售中
+     * @author dower
+     * @param $number
+     * @return bool
+     */
+    public function isSale($number){
+        $r['eq'] = array('number'=>$number);
+        $r['col'] = array('status');
+        $result = $this->import('sale')->find($r);
+        if($result && $result['status']==1){
+            return true;
+        }
+        return false;
+    }
 }

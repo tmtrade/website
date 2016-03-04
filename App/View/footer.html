@@ -88,46 +88,12 @@
 <!--底部end-->
 <!--漂浮楼层start-->
 <ul class="float-floor" id="float-floor">
+    <?foreach($modules as $k=>$module):?>
     <li>
-        <a>1F</a>
-        <a class="etitle" style="display: block">服饰</a>
+        <a><?=($k+1)?>F</a>
+        <a class="etitle" <?=(($k==0)?'style="display: block"':'')?> ><?=(mb_substr($module['name'],0,2,'utf-8'))?></a>
     </li>
-    <li>
-        <a>2F</a>
-        <a class="etitle">美妆</a>
-    </li>
-    <li>
-        <a>3F</a>
-        <a class="etitle">手机</a>
-    </li>
-    <li>
-        <a>4F</a>
-        <a class="etitle">家电</a>
-    </li>
-    <li>
-        <a>5F</a>
-        <a class="etitle">数码</a>
-    </li>
-    <!--<li>-->
-    <!--<a>6F</a>-->
-    <!--<a class="etitle">运动</a>-->
-    <!--</li>-->
-    <!--<li>-->
-    <!--<a>7F</a>-->
-    <!--<a class="etitle">居家</a>-->
-    <!--</li>-->
-    <!--<li>-->
-    <!--<a>8F</a>-->
-    <!--<a class="etitle">母婴</a>-->
-    <!--</li>-->
-    <!--<li>-->
-    <!--<a>9F</a>-->
-    <!--<a class="etitle">食品</a>-->
-    <!--</li>-->
-    <!--<li>-->
-    <!--<a>10F</a>-->
-    <!--<a class="etitle">图书</a>-->
-    <!--</li>-->
+    <?endforeach;?>
 </ul>
 <!--漂浮楼层end-->
 <div id="center" class="progress_bar">

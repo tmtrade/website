@@ -67,20 +67,22 @@
                 <h3><img src="<?=StaticDir?>1.2/images/jy-ic.png">最新交易记录</h3>
                 <div class="bd">
                     <ul>
+                        <? foreach($tradeInfo as $item): ?>
                         <li>
                             <img src="<?=StaticDir?>1.2/images/buy.png">
                             <p>
-                                <span>张先生<a>（135****8025）</a></span>
-                                <font>“25类 用于天猫服装分类的 XX”</font>
+                                <span><?=$item['contact']?><a>（<?=$item['phone']?>）</a></span>
+                                <font>“第<?=$item['class']?>类商标, <?=$item['className']?>”</font>
                             </p>
                         </li>
-                        <li>
+                        <? endforeach; ?>
+                        <!--<li>
                             <img src="<?=StaticDir?>1.2/images/buy2.png">
                             <p>
                                 <span>张先生<a>（135****8025）</a></span>
                                 <font>“25类 用于天猫服装分类的 XX”</font>
                             </p>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
             </div>
@@ -127,78 +129,17 @@
     </div>
     <div class="bd picbox">
         <ul>
+            <? foreach($ads as $ad): ?>
             <li>
-                <a href="#" target="_blank">
+                <a href="<?=$ad['link']?>" target="_blank">
                     <h3>
-                        11活动标题<br/>
+                        活动标题<br/>
                         <span>活动标题</span>
                     </h3>
-                    <img src="<?=StaticDir?>1.2/images/acti-pic1.png">
+                    <img src="<?=(TRADE_URL.substr($ad['pic'],1))?>">
                 </a>
             </li>
-            <li>
-                <a href="#" target="_blank">
-                    <h3>
-                        22活动标题<br/>
-                        <span>活动标题</span>
-                    </h3>
-                    <img src="<?=StaticDir?>1.2/images/acti-pic2.png">
-                </a>
-            </li>
-            <li>
-                <a href="#" target="_blank">
-                    <h3>
-                        33活动标题<br/>
-                        <span>活动标题</span>
-                    </h3>
-                    <img src="<?=StaticDir?>1.2/images/acti-pic3.png">
-                </a>
-            </li>
-            <li>
-                <a href="#" target="_blank">
-                    <h3>
-                        44活动标题<br/>
-                        <span>活动标题</span>
-                    </h3>
-                    <img src="<?=StaticDir?>1.2/images/acti-pic4.png">
-                </a>
-            </li>
-            <li>
-                <a href="#" target="_blank">
-                    <h3>
-                        55活动标题<br/>
-                        <span>活动标题</span>
-                    </h3>
-                    <img src="<?=StaticDir?>1.2/images/acti-pic5.png">
-                </a>
-            </li>
-            <li>
-                <a href="#" target="_blank">
-                    <h3>
-                        6666活动标题<br/>
-                        <span>活动标题</span>
-                    </h3>
-                    <img src="<?=StaticDir?>1.2/images/acti-pic3.png">
-                </a>
-            </li>
-            <li>
-                <a href="#" target="_blank">
-                    <h3>
-                        7777活动标题<br/>
-                        <span>活动标题</span>
-                    </h3>
-                    <img src="<?=StaticDir?>1.2/images/acti-pic4.png">
-                </a>
-            </li>
-            <li>
-                <a href="#" target="_blank">
-                    <h3>
-                        888活动标题<br/>
-                        <span>活动标题</span>
-                    </h3>
-                    <img src="<?=StaticDir?>1.2/images/acti-pic5.png">
-                </a>
-            </li>
+            <? endforeach; ?>
         </ul>
     </div>
 </div>
@@ -221,50 +162,30 @@
     <div class="bd">
         <ul class="brand-fl">
             <li>
-                <a><span>&bull;01类</span> 化工原料 </a>
-                <a><span>&bull;02类</span>  化工原料 </a>
-                <a><span>&bull;03类</span>  化工原料 </a>
-                <a><span>&bull;04类</span>  化工原料 </a>
-                <a><span>&bull;05类</span> 化工原料 </a>
-                <a><span>&bull;06类</span>  化工原料 </a>
-                <a><span>&bull;07类</span>  化工原料 </a>
-                <a><span>&bull;08类</span>  化工原料 </a>
-                <a><span>&bull;09类</span>  化工原料 </a>
+                <? foreach($allClass[0] as $class): ?>
+                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <? endforeach; ?>
             </li>
             <li>
-                <a><span>&bull;01类</span> 化工原料 </a>
-                <a><span>&bull;02类</span>  化工原料 </a>
-                <a><span>&bull;03类</span>  化工原料 </a>
-                <a><span>&bull;04类</span>  化工原料 </a>
-                <a><span>&bull;05类</span> 化工原料 </a>
-                <a><span>&bull;06类</span>  化工原料 </a>
-                <a><span>&bull;07类</span>  化工原料 </a>
-                <a><span>&bull;08类</span>  化工原料 </a>
-                <a><span>&bull;09类</span>  化工原料 </a>
+                <? foreach($allClass[1] as $class): ?>
+                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <? endforeach; ?>
             </li>
             <li>
-                <a><span>&bull;01类</span> 化工原料 </a>
-                <a><span>&bull;02类</span>  化工原料 </a>
-                <a><span>&bull;03类</span>  化工原料 </a>
-                <a><span>&bull;04类</span>  化工原料 </a>
-                <a><span>&bull;05类</span> 化工原料 </a>
-                <a><span>&bull;06类</span>  化工原料 </a>
-                <a><span>&bull;07类</span>  化工原料 </a>
-                <a><span>&bull;08类</span>  化工原料 </a>
-                <a><span>&bull;09类</span>  化工原料 </a>
+                <? foreach($allClass[2] as $class): ?>
+                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <? endforeach; ?>
             </li>
             <li>
-                <a><span>&bull;01类</span> 化工原料 </a>
-                <a><span>&bull;02类</span>  化工原料 </a>
-                <a><span>&bull;03类</span>  化工原料 </a>
-                <a><span>&bull;04类</span>  化工原料 </a>
-                <a><span>&bull;05类</span> 化工原料 </a>
-                <a><span>&bull;06类</span>  化工原料 </a>
-                <a><span>&bull;07类</span>  化工原料 </a>
-                <a><span>&bull;08类</span>  化工原料 </a>
-                <a><span>&bull;09类</span>  化工原料 </a>
+                <? foreach($allClass[3] as $class): ?>
+                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <? endforeach; ?>
             </li>
-
+            <li>
+                <? foreach($allClass[4] as $class): ?>
+                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <? endforeach; ?>
+            </li>
         </ul>
         <ul class="tj-recom">
             <? foreach($recommendClasses as $rClass): ?>
@@ -290,12 +211,11 @@
 <!--商标分类end-->
 <!--类别展示start-->
 <div class="sbzs" id="sbzs">
-    <!--1F / 服装鞋帽-->
     <!--<div class="yzc-category w1180" id="cloth">-->
-    <? foreach($modules as $module): ?>
-    <div class="yzc-category w1180">
+    <? foreach($modules as $tk=>$module): ?>
+    <div class="yzc-category w1180" <?=(($tk==0)?'':'id="cloth"')?>>
         <div class="yzc-category-tit">
-            <h3 class="fl"><img src="<?=StaticDir?>1.2/images/cate-ico1.png">1F <span> / </span><?=$module['name']?></h3>
+            <h3 class="fl"><img src="<?=StaticDir?>1.2/images/cate-ico1.png"><?=($tk+1)?>F <span> / </span><?=$module['name']?></h3>
             <div class="parHd" style="position:relative;z-index:9999;">
                 <ul class="fr">
                     <? foreach($module['class'] as $class): ?>
@@ -323,7 +243,7 @@
                         <div class="sbd">
                             <ul>
                                 <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="<?=$module['link']?>" target="_blank"><img src="<?=$module['pic']?>" /></a></li>
+                                <li><a href="<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.substr($pic['pic'],1))?>" /></a></li>
                                 <? endforeach; ?>
                             </ul>
                         </div>
@@ -335,7 +255,10 @@
                     <div class="cate-list">
                         <? foreach($module['link'] as $link): ?>
                         <p>
-                            <a class="fl" class="<?=$link['class']?>" href="<?=$link['link']?>"><span>></span><?=$link['title']?></a>
+                            <a class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>"><span>></span><?=$link[0]['title']?></a>
+                            <?if(isset($link[1])):?>
+                            <a class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>"><span>></span><?=$link[1]['title']?></a>
+                            <?endif;?>
                         </p>
                         <? endforeach; ?>
                     </div>
