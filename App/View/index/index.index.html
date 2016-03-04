@@ -255,9 +255,9 @@
                     <div class="cate-list">
                         <? foreach($module['link'] as $link): ?>
                         <p>
-                            <a class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>"><span>></span><?=$link[0]['title']?></a>
+                            <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>"><span>></span><?=$link[0]['title']?></a>
                             <?if(isset($link[1])):?>
-                            <a class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>"><span>></span><?=$link[1]['title']?></a>
+                            <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>"><span>></span><?=$link[1]['title']?></a>
                             <?endif;?>
                         </p>
                         <? endforeach; ?>

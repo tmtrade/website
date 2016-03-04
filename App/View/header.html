@@ -10,13 +10,117 @@
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/import-comm.css"/>
     <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery-1.8.3.min.js"></script>
     <script src="<?=StaticDir?>1.2/js/layer/layer.js"></script>
-    <script src="<?=StaticDir?>1.2/js/login_new.js"></script>
+    <script src="<?=StaticDir?>1.2/js/login.js"></script>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/respond.css"/>
     <script src="<?=StaticDir?>1.2/js/respond.min.js"></script>
     <script language="javascript" src="<?=StaticDir?>1.2/other/code.php"></script>
     <script src="<?=StaticDir?>1.2/js/iealert.js"></script>
     <script src="<?=StaticDir?>1.2/js/scroll.js"></script>
     <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/style.css" />
+    <!--登录模块-->
+    <?php
+        $jsapiToken	= 'chaofnwang';
+        $timestamp	= time();
+        $nonceStr 	= md5('nonceStr'.$time.rand(100000000,999999999));
+        $url 		= "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+        $signature	= sha1("jsapi_ticket={$jsapiToken}&noncestr={$nonceStr}&timestamp={$timestamp}&url={$url}");
+    ?>
+    <script src="http://uc.test.chofn.net/Static/script/user/script/usernetwork.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            ucNetwork.config('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
+            ucNetwork.setLogin('fastLogin');//设置登录
+            //商标购买快捷登记
+            $('#button').click(function(){
+                name 	= $('#name').val();
+                tel 	= $('#tel').val();
+                subject = $('#subject').val();
+                if( !tel ){
+                    alert('请输入手机');
+                    return false;
+                }
+                if( !name ){
+                    alert('请输入姓名');
+                    return false;
+                }
+                if( !subject ){
+                    alert('请输入内容');
+                    return false;
+                }
+                data	= new Array();
+                data['name'] 	= name;
+                data['tel'] 	= tel;
+                data['subject'] = subject;
+                ucNetwork.submitData(data);
+            });
+            //获取验证码
+            $('#dl_fsmm').click(function(){
+                mobile 	= $('#loginUser').val();
+                if(!mobile){
+                    alert('请输入手机');
+                    return false;
+                }
+                ucNetwork.sendCode(mobile,$(this),'点击获取验证码');
+
+            });
+            //验证码登录
+            $('#button4').click(function(){
+                mobile 	= $('#loginUser').val();
+                code 	= $('#loginPass').val();
+                if(!mobile){
+                    alert('请输入手机');
+                    return false;
+                }
+                if(!code){
+                    alert('请输入验证码');
+                    return false;
+                }
+                ucNetwork.verifyCode(mobile,code);
+            });
+            //密码登录
+            $('#button3').click(function(){
+                account 	= $('#account').val();
+                password 	= $('#password').val();
+                if(!account){
+                    alert('请输入账号');
+                    return false;
+                }
+                if(!password){
+                    alert('请输入密码');
+                    return false;
+                }
+                ucNetwork.userLog(account,password);
+            });
+            function submitDataCallback(Obj){
+                console.log(Obj);
+                $.each(Obj,function(i,n){
+                    alert(n.msg);
+                    alert(n.code);
+                });
+            }
+
+            //发送验证码
+            function sendCodeCallback(Obj,htmlobj,title){
+                $.each(Obj,function(i,n){
+                    if(n.code > 0 ){//发送成功
+                        timer(60, $('#aaa'), title);//倒计时
+                    }else{
+                        alert(n.msg);
+                    }
+                });
+            }
+            //验证验证码是否合法
+            function verifyCodeCallback(Obj,account,code){
+                $.each(Obj,function(i,n){
+                    if(n.code==1){
+                        ucNetwork.logCode(account,code);
+                    }else{
+                        alert(n.mess);
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 <body>
 <!--头部-->
@@ -48,6 +152,7 @@
                         <i class="uj_icon2"></i>
 
                         <a href="javascript:;" id="fastLogin">快捷登录</a>
+                        <a href="javascript:;" class="fastLogin">快捷登录2</a>
 
                     </span>
 
