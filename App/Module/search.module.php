@@ -63,19 +63,20 @@ class SearchModule extends AppModule
      *
      * @return  array   $list       群组号对应群组中文名称的数组
      */
-    public function search($params, $start=0, $limit=30)
+    public function search($params, $page=1, $limit=30, $type=1)
     {
-        $res = $this->getSaleList($params, $start, $limit);
-        if ( count($res['rows']) >= $limit ){
-            return $res['rows'];
+        if ( $type == 1 ){
+            return $this->getSaleList($params, $page, $limit);
+        }elseif ( $type == 2 ){
+            $list = $this->getTmList($params, $page, $limit);
+            return array('rows'=>$list);
         }
-        $notInIds   = arrayColumn($res['rows'], 'tid');
-        $need       = $limit - count($res['rows']);
-        $started    = ($start - $res['total']) < 0 ? 0 : ($start - $res['total']);
-        $tmList     = $this->getTmList($params, $started, $need, $notInIds);
 
-        $list       = array_merge($res['rows'], $tmList);
-        return $list;
+        $result = array(
+            'rows'  => array(),
+            'total' => 0,
+            );
+        return $result;
     }
 
     /**
@@ -152,7 +153,7 @@ class SearchModule extends AppModule
      *
      * @return  array   $list       群组号对应群组中文名称的数组
      */
-    public function getSaleList($params, $start=0, $limit=30, $col=array())
+    public function getSaleList($params, $page=1, $limit=30, $col=array())
     {
         $result = array(
             'rows'  => array(),
@@ -213,24 +214,20 @@ class SearchModule extends AppModule
 
         $r['index'] = array($start, $limit);
         if ( empty($col) ){
-            $r['col']   = array('id', 'tid', 'number', 'class', 'name');
+            $r['col']   = array('id', 'tid', 'number', 'class', 'name', 'group');
         }else{
             $r['col']   = $col;
         }
         $r['eq']['status']  = 1;
         $r['eq']['isSale']  = 1;
 
-        $r['order'] = array('isTop' => 'desc');
-        $count  = $this->import('sale')->count($r);
-        $res    = $this->import('sale')->find($r);
-        $list   = $this->getListTips($res);
+        $r['page']      = $page;
+        $r['limit']     = $limit;
+        $r['order']     = array('isTop' => 'desc');
+        $res            = $this->import('sale')->findAll($r);
+        $res['rows']    = $this->getListTips($res['rows']);
 
-        $result = array(
-            'rows'  => $list,
-            'total' => $count,
-            );
-
-        return $result;
+        return $res;
     }
 
     /**
@@ -244,7 +241,7 @@ class SearchModule extends AppModule
      *
      * @return  array   $list       群组号对应群组中文名称的数组
      */
-    public function getTmList($params, $start, $limit, $notInIds)
+    public function getTmList($params, $page=1, $limit=30)
     {
         $r['eq'] = array('isShow'=>1);
         //判断类别        
@@ -299,9 +296,16 @@ class SearchModule extends AppModule
         }
 
         $isInGroup = false;
-        if ( count($r['in']['class_id']) == 1 && !empty($params['group']) ){
-            $isInGroup = true;
+        if ( !empty($params['group']) ){
+            $r['ft']['group'] = $params['group'];
+            //$isInGroup = true;
+            //$r['page']  = 1;
+            //$r['limit'] = 10000;
         }
+
+        $r['index'] = array(($page - 1) * $limit, $limit);
+        $r['limit'] = $limit;
+        
         if ( !empty($params['type']) ){
             $r['eq']['type'] = $params['type'];
         }
@@ -309,16 +313,19 @@ class SearchModule extends AppModule
             $r['eq']['nums'] = $params['length'];
         }
 
-        $r['index'] = array($start, $limit);
         $r['col']   = array('tid', 'trademark_id as `number`', 'class_id as `class`', 'trademark as `name`', 'group');
 
-        $res3   = $this->import('second')->find($r);
+        $list   = $this->import('second')->find($r);
+        $list   = $this->getListTips($list);
         //处理MySQL不走索引而效率慢的问题
-        if ( $isInGroup ){
-            $items  = $this->makeInGroup($res3, $params['group']);
-            $res3   = array_splice($items, $start, $limit);
-        }
-        $list   = $this->getListTips($res3);
+        //if ( $isInGroup && !empty($list['rows']) ){
+        //    $list['total']  = count($list['rows']);
+        //    $start          = ($page - 1) * $limit;
+        //    $items          = $this->makeInGroup($list['rows'], $params['group']);
+        //    $list['rows']   = array_splice($items, $start, $limit);
+        //}
+        //$list['rows']   = $this->getListTips($list['rows']);
+
         return $list;
     }
 
@@ -431,6 +438,31 @@ class SearchModule extends AppModule
         // }
 
         return $data;
+    }
+
+
+    public function getClassGroup($class=0, $group=1)
+    {
+        if ( $class == 0 && $group != 1 ){
+            $r['eq'] = array('parent'=>0);
+        }elseif ( $class != 0 && $group == 1 ){
+            $r['eq'] = array('parent'=>$class);
+        }
+        $r['order'] = array('parent'=>'asc','number'=>'asc');
+        $r['limit'] = 1000;
+
+        $_class = $_group = array();
+        $res    = $this->import('class')->find($r);
+        if ( empty($res) ) return array();
+
+        foreach ($res as $k => $v) {
+            if ( $v['parent'] == '0' ){
+                $_class[$v['number']] = empty($v['title']) ? $v['name'] : $v['title'];
+            }elseif ( $v['parent'] != 0 ){
+                $_group[$v['parent']][$v['number']] = empty($v['title']) ? $v['name'] : $v['title'];
+            }
+        }
+        return array($_class, $_group);
     }
     
 }

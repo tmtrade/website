@@ -18,6 +18,8 @@ class SearchAction extends AppAction
 	//筛选页
 	public function index()
 	{
+        $page = $this->input('_p', 'int', 1);//分类
+
         // $_rr = array(
         //     'keyword'       => '不不',
         //     'classId'       => '',
@@ -31,7 +33,7 @@ class SearchAction extends AppAction
         //debug($this->_searchArr); 
         //debug($params);
 
-        $res    = $this->load('search')->search($params, 0, $this->_number);
+        $res    = $this->load('search')->search($params, $page, $this->_number, 1);
         //debug($res);
         if ( !empty($this->_searchArr) ){
             foreach ($this->_searchArr as $k => $v) {
@@ -39,13 +41,27 @@ class SearchAction extends AppAction
             }
             $whereStr   = http_build_query($this->_searchArr);
         }
+        $_cls = empty($this->_searchArr['c']) ? 0 : intval($this->_searchArr['c']);
+        $classGroup = $this->load('search')->getClassGroup($_cls, 1);
+        
+        list($_class, $_group) = $classGroup;
 
         //$strArr     = $this->getFormData();
         //debug($whereStr);
 		//设置页面TITLE
 		//$this->set('TITLE', $this->load('search')->getTitle($params));
 
-        $this->set('searchList', $res);
+        if ( !empty($_class) ){
+            $this->set('_CLASS', $_class);
+        }elseif ( !empty($_group) ){
+            $this->set('_GROUP', $_group);
+        }
+
+        
+        $this->set('PLATFORM', C('PLATFORM_IN'));//平台列表
+        $this->set('NUMBER', C('SBNUMBER'));//商标字数
+        $this->set('searchList', $res['rows']);
+        $this->set('total', $res['total']);
         $this->set('has', empty($res) ? false : true);
         $this->set('_number', $this->_number);
         $this->set('whereStr', $whereStr);
@@ -80,16 +96,17 @@ class SearchAction extends AppAction
         //未搜索关键词
         if ( $keyword == '' ){
             //类别
-            if ( !empty($_class) ){
+            if ( !empty($_class) && count($_class) != 45 ){
                 $params['class'] = implode(',', $_class);
                 $this->_searchArr['c'] = $params['class'];
                 //类别包含的群组
                 if ( count($_class) == 1 && !empty($_group) ){
-                    $params['group'] = implode(',', $_group);
-                    //unset($params['class']);
-                    //$groupList = $this->load('group')->getClassGroups(current($_class));
-                    //$this->set('groupList', $groupList);
-                    $this->_searchArr['g'] = $params['group'];
+                    $_cls = intval($params['class']);
+                    list(,$group_) = $this->load('search')->getClassGroup($_cls, 1);
+                    if ( count($group_[$_cls]) != count($_group) ){
+                        $params['group'] = implode(',', $_group);
+                    }
+                    $this->_searchArr['g'] = implode(',', $_group);
                 }
             }
             //组合类型
@@ -98,7 +115,7 @@ class SearchAction extends AppAction
                 $this->_searchArr['t'] = $params['type'];
             }
             //商标字数
-            if ( !empty($_length) ){
+            if ( !empty($_length) && count($_length) != count(C('SBNUMBER')) ){
                 $params['length'] = implode(',', $_length);
                 $this->_searchArr['sn'] = $params['length'];
             }
@@ -108,7 +125,7 @@ class SearchAction extends AppAction
                 $this->_searchArr['d'] = $params['date'];
             }
             //平台入驻
-            if ( !empty($_platform) ){
+            if ( !empty($_platform) && count($_platform) != count(C('PLATFORM_IN')) ){
                 $params['platform'] = implode(',', $_platform);
                 $this->_searchArr['p'] = $params['platform'];
             }
