@@ -381,7 +381,7 @@ $(document).ready(function(){
 
     //js加载user
 
-    $.getJSON('/index/loginInfo/', function(data){
+    /*$.getJSON('/index/loginInfo/', function(data){
 
         if ( data == '' || data == undefined ) return false;
 
@@ -413,7 +413,7 @@ $(document).ready(function(){
 
         }
 
-    });
+    });*/
 
     $(".mj-search-submit").click(function (){
 
