@@ -310,7 +310,31 @@ class SearchModule extends AppModule
             }
         }
 
-        $isInGroup = false;
+        //注册日期
+        if ( !empty($params['date']) ){
+            if ( $params['date'] == '5' ){
+                $_last = $this->getDateList('last');
+                $_time = strtotime($_last.'-01-01');
+                $r['raw'] .= " AND regDate < $_time ";
+            }elseif ( $params['date'] == '9' ){
+                $r['eq']['regDate'] = '0';
+            }elseif ( $params['date'] > 2000 ){
+                $_start = strtotime($params['date'].'-01-01');
+                $_end   = strtotime($params['date'].'-12-31');
+                $r['scope']['regDate'] = array($_start, $_end);
+            }
+        }
+
+        //组合类型
+        if ( !empty($params['type']) ){
+            $r['ft']['nums'] = $params['type'];
+        }
+        //商标字数
+        if ( !empty($params['length']) ){
+            $r['ft']['length'] = $params['length'];
+        }
+
+        //$isInGroup = false;
         if ( !empty($params['group']) ){
             $r['ft']['group'] = $params['group'];
             //$isInGroup = true;

@@ -57,3 +57,131 @@ img{
 .fr{
     float: right;
 }
+
+/*底部浮动客服*/
+.fdkf-ss{
+    position: fixed;
+    left: 0px;
+    bottom: 20px;
+}
+
+.fdkf-zk{
+    height: 137px;
+    background:rgba(0,0,0,0.6);
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    display: none;
+}
+.fdkf-zk ul{
+    position: relative;
+}
+.fdkf-zk span.gb-ss{
+    display: block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top:5px;
+    right:0px;
+    background: url("../images/btm-cha.png") no-repeat center top;
+}
+.fdkf-zk li{
+    float: left;
+    margin-left: 15px;
+
+}
+.fdkf-zk li.btm-tel{
+    display: inline-block;
+    width: 232px;
+    height: 110px;
+    background: url("../images/btm-tel.png") no-repeat top center;
+    position: relative;
+    margin-top: 15px;
+}
+
+.fdkf-zk li.btm-tel a{
+    display: inline-block;
+    padding: 5px 16px;
+    background: #ff8b3e;
+    border-radius: 5px;
+    color: #ffffff;
+    position: absolute;
+    right:35px;
+    bottom:35px;
+}
+.fdkf-zk li.btm-tel a img{
+    margin-bottom:-3px;
+}
+.fdkf-zk li.btm-pel{
+    margin-left:65px;
+}
+.fdkf-zk li.btm-tj{
+   float: right;
+   margin-right: 45px;
+
+}
+.fdkf-zk li.btm-tj p{
+    margin-top:18px;
+}
+.fdkf-zk li.btm-tj div{
+    margin-top:12px;
+
+}
+.fdkf-zk li.btm-tj div select{
+   width: 197px;
+    height: 33px;
+    border: 1px solid #dadada;
+    color: #777777;
+    text-indent: 15px;
+    float: left;
+}
+.fdkf-zk li.btm-tj div input{
+    width: 174px;
+    height: 33px;
+    border: 1px solid #dadada;
+    color: #777777;
+    text-indent: 15px;
+    float: left;
+    margin-left: 15px;
+}
+.fdkf-zk li.btm-tj div  a{
+    display: inline-block;
+    padding:7px 16px;
+    background: #ff5656;
+    border-radius:3px;
+    float: left;
+    margin-left: 15px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
