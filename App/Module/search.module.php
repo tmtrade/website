@@ -153,8 +153,9 @@ class SearchModule extends AppModule
      *
      * @return  array   $list       群组号对应群组中文名称的数组
      */
-    public function getSaleList($params, $page=1, $limit=30, $col=array())
+    public function getSaleList($params, $page=1, $limit=30)
     {
+        //debug($params);
         $result = array(
             'rows'  => array(),
             'total' => 0,
@@ -178,7 +179,9 @@ class SearchModule extends AppModule
                             unset($params['group']);
                         }
                     }
+                    //debug($_arr);
                     $_res = $this->searchLike($_arr, '31,32', 1, 100);
+                    //debug($_res);
                     if ( empty($_res['rows']) ) return $result;
                     $numberList = array_unique( arrayColumn($_res['rows'], 'code') );
                     if ( empty($numberList) ) return $result;
@@ -189,41 +192,53 @@ class SearchModule extends AppModule
                     break;
             }
         }
+        //注册日期
+        if ( !empty($params['date']) ){
+            if ( $params['date'] == '5' ){
+                $_last = $this->getDateList('last');
+                $_time = strtotime($_last.'-01-01');
+                $r['raw'] .= " AND regDate < $_time ";
+            }elseif ( $params['date'] == '9' ){
+                $r['eq']['regDate'] = '0';
+            }elseif ( $params['date'] > 2000 ){
+                $_start = strtotime($params['date'].'-01-01');
+                $_end   = strtotime($params['date'].'-12-31');
+                $r['scope']['regDate'] = array($_start, $_end);
+            }
+        }
+        //分类
         if ( !empty($params['class']) && empty($params['group']) ){
             $r['ft']['class'] = $params['class'];
         }
-        if (  !empty($params['class']) && !empty($params['group']) ){
+        //群组
+        if ( !empty($params['class']) && !empty($params['group']) ){
             $r['ft']['group'] = $params['group'];
         }
+        //平台
         if ( !empty($params['platform']) ){
             $r['ft']['platform'] = $params['platform'];
         }
-        if ( !empty($params['label']) ){
-            $r['ft']['label'] = $params['label'];
-        }
+        //组合类型
         if ( !empty($params['type']) ){
             $r['ft']['type'] = $params['type'];
         }
+        //商标字数
         if ( !empty($params['length']) ){
             $r['ft']['length'] = $params['length'];
         }
-        //这次不上
+        //特价
         if ( !empty($params['isOffprice']) ){
             $r['raw'] .= ' `priceType` = 1 AND `isOffprice` = 1 AND (`salePriceDate` = 0 OR `salePriceDate` > unix_timestamp(now())) ';
         }
 
-        $r['index'] = array($start, $limit);
-        if ( empty($col) ){
-            $r['col']   = array('id', 'tid', 'number', 'class', 'name', 'group');
-        }else{
-            $r['col']   = $col;
-        }
         $r['eq']['status']  = 1;
         $r['eq']['isSale']  = 1;
 
+        $r['col']       = array('id', 'tid', 'number', 'class', 'name', 'group');
         $r['page']      = $page;
         $r['limit']     = $limit;
         $r['order']     = array('isTop' => 'desc');
+        //debug($r);
         $res            = $this->import('sale')->findAll($r);
         $res['rows']    = $this->getListTips($res['rows']);
 
@@ -446,9 +461,12 @@ class SearchModule extends AppModule
         if ( $class == 0 && $group != 1 ){
             $r['eq'] = array('parent'=>0);
         }elseif ( $class != 0 && $group == 1 ){
-            $r['eq'] = array('parent'=>$class);
+            //$r['eq'] = array('parent'=>$class);
+            $r['raw'] = " (`parent` = '$class' OR `number` = '$class') ";
+        }elseif ( $class != 0 ){
+            $r['eq'] = array('number'=>$class);
         }
-        $r['order'] = array('parent'=>'asc','number'=>'asc');
+        //$r['order'] = array('parent'=>'asc','number'=>'asc');
         $r['limit'] = 1000;
 
         $_class = $_group = array();
@@ -462,8 +480,25 @@ class SearchModule extends AppModule
                 $_group[$v['parent']][$v['number']] = empty($v['title']) ? $v['name'] : $v['title'];
             }
         }
+        ksort($_class);
         return array($_class, $_group);
     }
     
+
+    //生成年份搜索条件
+    public function getDateList($type='')
+    {
+        $year = date('Y') - 1;//去年
+        $_arr = array();
+        for ($i=0; $i < 6; $i++) {
+            $_year = $year - $i;
+            $_arr[$_year] = $_year.'年';
+        }
+        if ( $type == 'last' ) return $_year; 
+        $_arr['5'] = '5年以前';
+        $_arr['9'] = '申请中';
+        return $_arr;
+    }
+
 }
 ?>

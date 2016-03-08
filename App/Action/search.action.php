@@ -30,7 +30,9 @@ class SearchAction extends AppAction
 
         $params = $this->getSearchParams();
 
-        //debug($this->_searchArr); 
+        //$params = $this->load('search')->getDateList('last');
+
+        // debug($this->_searchArr); 
         //debug($params);
 
         $res    = $this->load('search')->search($params, $page, $this->_number, 1);
@@ -38,25 +40,24 @@ class SearchAction extends AppAction
         if ( !empty($this->_searchArr) ){
             foreach ($this->_searchArr as $k => $v) {
                 $this->set($k, $v);
+                $this->set($k.'_title', $this->getSelectTitle($k, $v, $this->_searchArr));
             }
             $whereStr   = http_build_query($this->_searchArr);
         }
         $_cls = empty($this->_searchArr['c']) ? 0 : intval($this->_searchArr['c']);
-        $classGroup = $this->load('search')->getClassGroup($_cls, 1);
-        
+        $classGroup = $this->load('search')->getClassGroup();
+        //debug($classGroup);
         list($_class, $_group) = $classGroup;
 
         //$strArr     = $this->getFormData();
-        //debug($whereStr);
+        //debug($this->_searchArr);
 		//设置页面TITLE
 		//$this->set('TITLE', $this->load('search')->getTitle($params));
 
-        if ( !empty($_class) ){
-            $this->set('_CLASS', $_class);
-        }elseif ( !empty($_group) ){
-            $this->set('_GROUP', $_group);
-        }
-
+        $this->set('_CLASS', $_class);
+        $this->set('_GROUP', $_group);
+        $this->set('_DATE', $this->load('search')->getDateList());
+        $this->set('_NAME', C('SBNAME'));
         
         $this->set('PLATFORM', C('PLATFORM_IN'));//平台列表
         $this->set('NUMBER', C('SBNUMBER'));//商标字数
@@ -83,10 +84,10 @@ class SearchAction extends AppAction
 
         $_class     = $this->strToArr($class);
         $_group     = $this->strToArr($group);
-        $_name      = $this->strToArr($name);
+        //$_name      = $this->strToArr($name);
         $_type      = $this->strToArr($type);
         $_length    = $this->strToArr($length);
-        $_date      = $this->strToArr($date);
+        //$_date      = $this->strToArr($date);
         $_platform  = $this->strToArr($platform);
 
         $params = array(
@@ -120,11 +121,12 @@ class SearchAction extends AppAction
                 $this->_searchArr['sn'] = $params['length'];
             }
             //高级筛选，注册日期
-            if ( !empty($_date) ){
-                $params['date'] = implode(',', $_date);
-                $this->_searchArr['d'] = $params['date'];
+            if ( !empty($date) ){
+                //$params['date'] = implode(',', $_date);
+                $params['date']         = $date;
+                $this->_searchArr['d']  = $params['date'];
             }
-            //平台入驻
+            //高级筛选，平台入驻
             if ( !empty($_platform) && count($_platform) != count(C('PLATFORM_IN')) ){
                 $params['platform'] = implode(',', $_platform);
                 $this->_searchArr['p'] = $params['platform'];
@@ -134,7 +136,7 @@ class SearchAction extends AppAction
         //有关键词，无搜索项类型或搜索项类型为3：适用服务
         if ( empty($keytype) || $keytype == 3 || !in_array($keytype, range(1,3)) ){
             $res = $this->load('search')->getServiceCondition($keyword);
-            //无数据并没有搜索项（走商标名称搜索）
+            //适用服务无数据并没有搜索项（走商标名称搜索）
             if ( empty($res) && $keytype != 3 ){
                 $params['keytype']  = 1;
                 $params['name']     = $keyword;
@@ -145,16 +147,13 @@ class SearchAction extends AppAction
             if ( $keytype == 3 && empty($res) ) return array();
 
             //判断适用服务是否可用
-            if ( count($res['class']) > 1 ){
+            if ( count($res['class']) > 0 ){
                 $params['class'] = implode(',', $res['class']);
-            }elseif ( count($res['class']) == 1 ){
-                if ( empty($res['group']) ){
-                    return array();
-                }else{
-                    //$groupList = $this->load('group')->getClassGroups(current($res['class']));
-                    //$this->set('groupList', $groupList);
+                if ( !empty($res['group']) ){
                     $params['group'] = implode(',', $res['group']);
                 }
+            }else{
+                return array();
             }
 
             //组合类型
@@ -163,21 +162,22 @@ class SearchAction extends AppAction
                 $this->_searchArr['t'] = $params['type'];
             }
             //商标字数
-            if ( !empty($_length) ){
+            if ( !empty($_length) && count($_length) != count(C('SBNUMBER')) ){
                 $params['length'] = implode(',', $_length);
                 $this->_searchArr['sn'] = $params['length'];
             }
             //高级筛选，注册日期
-            if ( !empty($_date) ){
-                $params['date'] = implode(',', $_date);
-                $this->_searchArr['d'] = $params['date'];
+            if ( !empty($date) ){
+                //$params['date'] = implode(',', $_date);
+                $params['date']         = $date;
+                $this->_searchArr['d']  = $params['date'];
             }
-            //平台入驻
-            if ( !empty($_platform) ){
+            //高级筛选，平台入驻
+            if ( !empty($_platform) && count($_platform) != count(C('PLATFORM_IN')) ){
                 $params['platform'] = implode(',', $_platform);
                 $this->_searchArr['p'] = $params['platform'];
             }
-            $params['keytype']  = 3;
+            $params['keytype']      = 3;
             $this->_searchArr['kt'] = $params['keytype'];
 
             return $params;
@@ -195,8 +195,9 @@ class SearchAction extends AppAction
                 $this->_searchArr['g'] = $params['group'];
             }
             //商标名称筛选
-            if ( !empty($_name) ){
-                $params['_name'] = implode(',', $_name);
+            if ( !empty($name) ){
+                //$params['_name'] = implode(',', $_name);
+                $params['_name'] = $name;
                 $this->_searchArr['n'] = $params['_name'];
             }
             //组合类型
@@ -205,17 +206,18 @@ class SearchAction extends AppAction
                 $this->_searchArr['t'] = $params['type'];
             }
             //商标字数
-            if ( !empty($_length) ){
+            if ( !empty($_length) && count($_length) != count(C('SBNUMBER')) ){
                 $params['length'] = implode(',', $_length);
                 $this->_searchArr['sn'] = $params['length'];
             }
             //高级筛选，注册日期
-            if ( !empty($_date) ){
-                $params['date'] = implode(',', $_date);
-                $this->_searchArr['d'] = $params['date'];
+            if ( !empty($date) ){
+                //$params['date'] = implode(',', $_date);
+                $params['date']         = $date;
+                $this->_searchArr['d']  = $params['date'];
             }
-            //平台入驻
-            if ( !empty($_platform) ){
+            //高级筛选，平台入驻
+            if ( !empty($_platform) && count($_platform) != count(C('PLATFORM_IN')) ){
                 $params['platform'] = implode(',', $_platform);
                 $this->_searchArr['p'] = $params['platform'];
             }
@@ -228,6 +230,59 @@ class SearchAction extends AppAction
             return $params;
         }
         return $params;
+    }
+
+    protected function getSelectTitle($title, $value, $all)
+    {
+        if ( empty($value) || empty($title) ) return $value;
+
+        $_arr = array_filter( explode(',', $value) );
+        if ( empty($_arr) ) return $value;
+
+        $_str = '';
+        switch ($title) {
+            case 'kw':
+                $S      = C('SBSEARCH');
+                $kt     = intval($all['kt']) <= 0 ? 1 : intval($all['kt']);
+                $_str   = $S[$kt].':'.$value;
+                break;
+            case 'c':
+                list($cArr,) = $this->load('search')->getClassGroup(0, 0);
+                foreach ($_arr as $v) {
+                    $_str .= "$v-".$cArr[$v].' ';
+                }
+                break;
+            case 'g':
+                if ( empty($all['c']) ) return $value;
+                list(,$gArr) = $this->load('search')->getClassGroup(0, 1);
+                foreach ($_arr as $v) {
+                    $_str .= "$v-".$gArr[$all['c']][$v].' ';
+                }
+                break;
+            case 'p':
+                $P = C('PLATFORM_IN');
+                foreach ($_arr as $v) {
+                    $_str .= $P[$v].' ';
+                }
+                break;
+            case 'sn':
+                $N      = C('SBNUMBER');
+                $_hasN  = false;
+                foreach ($_arr as $v) {
+                    if ( $v == '1' || $v == '2' ){
+                        $_hasN = true;
+                    }else{
+                        $_str .= $N[$v].' ';
+                    }
+                }
+                if ( $_hasN ) $_str = $N['1,2'].' '.$_str;
+                break;
+            case 'd':
+                $D      = $this->load('search')->getDateList();
+                $_str   = $D[$value];
+                break;
+        }
+        return $_str;
     }
 
     public function getMore()
