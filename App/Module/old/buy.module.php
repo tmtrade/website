@@ -10,6 +10,7 @@ class BuyModule extends AppModule
 	* 引用业务模型
 	*/
 	public $models = array(
+		//'buy'			=> 'tbuy',
 		'buy'			=> 'tbuy',
         'temp'          => 'ttempbuy',
 		'sale'			=> 'tsale',

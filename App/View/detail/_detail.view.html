@@ -1,0 +1,521 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>style/mj-productsdetail.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/mj-clindquickly.css"/>
+<script src="<?=StaticDir?>script/layer/layer.js"></script>
+<script src="<?=StaticDir?>script/backcallandtongji.js"></script>
+<!--content start-->
+<div class="mj-content_top">
+    <div class="w1180 f-clearfix">
+        <div class="mj-cTleft fl">
+            <div class="mj-cTl_img f-clearfix">
+                <span><img src="<?php if(empty($tips['imgUrl'])){echo $info['imgUrl']; }else{echo $tips['imgUrl'];}?>" alt="" onerror="this.src='<?=StaticDir?>images/img1.png'" /></span>
+                <p class="mj-tip">
+				<?if ($tips['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
+                <?if ($tips['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
+                <?if ($tips['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
+                </p>
+            </div>
+            <p class="mj-cTl_imgText f-clearfix">
+                <!--<span><i class="us-icon uj_icon28"></i>收藏商标，关注价格变化</span>
+                <!--<span class="fr"><i class="us-icon uj_icon29"></i>分享</span>-->
+            </p>
+            <div class="mj-jcimg f-clearfix">
+                <label><img src="<?=StaticDir?>style/img/mj-xiimg1.png" alt=""/></label>
+                <p>独家开发商标风险检测系统<br/>安全检测准确率 <strong>95.93 </strong>%</p>
+                <a href="<?=$tips['safeUrl']?>" target="_blank">检测此商标</a>
+            </div>
+        </div>
+        <div class="mj-cTright">
+            <ul class="mj-cTr_top f-clearfix">
+                <li>
+                    <b><?=empty($info['name'])?'【暂无商标名称】':$info['name']?></b>
+                    <span class="mj-cTr_top_r">
+					<em>
+					<?php 
+						$str = "申请中";
+						if($info['status'] == '已注册'){
+							echo "<img src='".StaticDir."style/slice/ul-icon1.png' alt=''/>";
+							$str = "已注册";
+						}elseif($info['status'] == '申请中'){
+							echo "<img src='".StaticDir."style/slice/ul-icon1s.png' alt=''/>";
+						}
+					?>
+					</em>
+					<span><?=$str?></span>
+					</span>
+                </li>
+				<?php if($sale['tminfo']['value']){ echo "<li>".$sale['tminfo']['value']."</li>";} ?>
+                <li class="mj-libs">
+                    此商标可入驻：
+					<?php
+					foreach($platformIn as $key => $val){
+						$cur = "";
+						if($platform || $data['date']){
+							if($key && in_array($key,$platform)){
+								unset($platformIn[$key]);
+								echo "<a href='".$platformUrl[$key]."' target='_blank' class='cur' >".$val."</a>"; 
+							}
+						}else{
+							foreach($platformItems[$key] as  $item){
+								if(($item && $data['class'] == $item)){
+									unset($platformIn[$key]);
+									echo "<a href='".$platformUrl[$key]."' target='_blank' class='cur' >".$val."</a>"; 
+									break;
+								}
+							}	
+						}
+						
+					}
+					foreach($platformIn as $key => $val){
+						echo "<a href='".$platformUrl[$key]."' target='_blank' >".$val."</a>";
+					}
+					?>
+                </li>
+        <? if ( count($info['items']) > 1 ){?> 
+                <li class="mj-libs f-clearfix">
+                    <p class="mj-xpst f-clearfix"><span>申请人 :  <em style="color:#48aff1;"><?=$info['proName']?></em>  当前商标共注册 <em style="color:#48aff1;"><?=count($info['items'])?></em> 条分类，转让将会将所有分类共同转让</span> <label id="showMore">全部分类<i class="us-icon mj-iconj1"></i></label></p>
+                    <dl class="mj-dlList f-clearfix">
+                    <? foreach ($info['items'] as $ky => $vl) { ?>
+                        <dd>
+                            <a href="javascript:void(0);">第<?=$vl['class']?>类-<?=$CLASSES[$vl['class']]?> <i class="us-icon mj-iconj1"></i></a>
+                            <div class="mj-ddTips">
+                                <dl class="f-clearfix">
+                                    <dt>群组</dt>
+                                <? foreach (explode(',', $vl['group']) as $grp) { ?>
+                                    <dd><?=$grp?></dd>
+                                <? } ?>
+                                </dl>
+                                <div class="mj-dtB">
+                                    <p>商品列表</p>
+                                    <span><?=$vl['goods']?></span>
+                                </div>
+                            </div>
+                        </dd>
+                    <? } ?>
+                    </dl>
+                </li>
+            </ul>
+        <?}else{?>
+            </ul>
+            <ul class="mj-cTr_center">
+                <li>
+                    <span><label>分类：</label>第<?=$class?>类-<?=$CLASSES[$class]?>  </span>
+                    <span><label>当前群组：</label><?=$info['group']?></span>
+                </li>
+                <li>
+                    <span><label>商品列表：</label><?=$info['goods']?></span>
+                </li>
+                <li>
+                    <span class="mj-spanColorb"><label>申请人 :  </label>
+                    <!-- <a href="<?=GUANJIA_URL?>search/proposerQuery/?t=5&n=<?=$info['pid']?>" target="_blank"> -->
+                    <?=$info['proName']?>
+                   <!--  </a> -->
+                    </span>
+                </li>
+            </ul>
+        <?}?>
+            <? if($isSale==false){
+                    echo "<label class=\"mj-xiimg\"></label>";
+                } ?>
+            <div class="mj-cTr_bottom f-clearfix" <?php if($isSale==false){ echo "style=;display:none;'";}?>>
+				<div class="mj-cTr_bLeft fl">
+            <!-- 出售中 -->
+            <? if ( !empty($sale) ){ ?>
+                    <!-- 基本信息部分 -->
+                <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ ?>
+                    <!--特价价格促销-->
+                    <div class="mj-priceTxtt">
+                        <strong>
+                            <em>￥</em>
+                            <span><?=$sale['salePrice']?></span>
+                            <b>&nbsp;元</b>
+                        </strong>
+                        <span>（原价：<b class="mj-priceTxtt_b"><?=$sale['price']?></b> 元)</span>
+                        <br />
+                        <label><?php if($sale['salePriceDate'] > 0){
+                            echo date('Y-m-d H:i',$sale['salePriceDate']);
+                            }else{echo "永久";} ?></label>有效<br />
+                <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
+                    <!--定价商品-->
+                    <div class="mj-priceTxtt">
+                        <strong>
+                            <em>￥</em>
+                            <span><?=$sale['price']?></span>
+                            <em>.00</em>
+                            <b>&nbsp;元</b>
+                        </strong>
+                        <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
+                <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
+                    <!--议价商品-->
+                    <div class="mj-priceTxtt">
+                        <strong>
+                            <em>￥</em>
+                            <span>议价</span>
+                            <em></em>
+                            <b>&nbsp;</b>
+                        </strong>
+                        <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
+                <?}?>
+                <!--操作部分-->
+                <? if($baystate == 1){ ?>
+                    <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
+                </div>
+                <? }else{ ?>
+                        <!--特价价格促销-->
+                        <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ 
+                        ?>
+                            <?if($isLogin){ ?>
+                                <a href='javascript:createOrder(<?=$sale['id']?>);' class="mj-priceTxtt_link" id='addorder' >立即抢购</a>
+                            <? }else{ ?>
+                                <a href='javascript:goBuy();' class="mj-priceTxtt_link">立即抢购</a>
+                            <?} ?>
+                            </div>
+                        <!--定价商品-->
+                        <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
+                                <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我想购买</a></div>
+                            </div>
+                        <!--议价商品-->
+                        <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
+                                <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我有兴趣</a></div>
+                            </div>
+                        <?}else{?>
+                                <div class="mj-pricebtn"><a href='javascript:goLook();'>查看价格</a></div> 
+                        <?}?> 
+                <?  } ?>
+            <? }else{ ?>
+            <!-- 来自商标库 -->
+                <? if($isLogin){ ?>
+                    <!--价格-->
+                    <div class="mj-priceTxtt">
+                        <strong>
+                            <em>￥</em>
+                            <span>议价</span>
+                            <em></em>
+                            <b>&nbsp;</b>
+                        </strong>
+                        <p class="mj-priceTxtt_ie7"></p>
+                        <? if($baystate == 1){ ?>
+                            <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
+                        <? }else{ ?>
+                            <a href='javascript:createOrderFromTrak();' class="mj-priceTxtt_link" id='addorder'>提交需求</a>
+                        <? } ?>
+                        <br/>
+                        <br/>
+                        <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
+                    </div>
+                <? }else{ ?>
+                    <div class="mj-pricebtn"><p class="mj-priceTxtt_ie7"></p><a href='javascript:goLook();'>我有兴趣</a><br/><br/><p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p><br></div>
+                <? } ?> 
+            <?} ?>	
+                </div>
+                <div class="mj-cTr_bRight fr">
+                    <dl>
+                        <dd>
+                            <i class="us-icon uj_icon2"></i><span>联系人：<em><?=$contact['name']?></em></span>
+                            <a href="javascript:;" onclick="consultation()"><i class="us-icon uj_icon30"></i>咨询ta</a>
+                        </dd>
+                        <dd>
+                            <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
+                            <label><?=$contact['phone']?></label>
+                        </dd>
+                        <dd class="mj-cTr_bRight_dd">
+                            <input type="text" id="telInput2" value="<?=$userMobile?>" placeholder="输入电话免费通话"/>
+                            <label for="l-button">
+                                <button type="submit" id="l-button">打给我</button>
+                            </label>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mj-content_bottom">
+    <div class="w1180">
+        <div class="mj-content_bottom-title f-clearfix">
+            <img src="<?=StaticDir?>style/img/l-1.png" class="img" />
+            <span class="mj-content_bottom-title_dashed"></span>
+            <div class="mj-content_bottom-title_item">
+                <i class="us-icon ul-icon2"></i>
+                <img src="<?=StaticDir?>style/img/l-2.png" alt=""/>
+                <p>
+                    <em>24</em>
+                    <span>种风险核查</span>
+                </p>
+            </div>
+            <div class="mj-content_bottom-title_item">
+                <i class="us-icon ul-icon2"></i>
+                <img src="<?=StaticDir?>style/img/l-3.png" alt=""/>
+                <p>
+                    <em>19</em>
+                    <span>项价格评估标准</span>
+                </p>
+            </div>
+            <div class="mj-content_bottom-title_item">
+                <i class="us-icon ul-icon2"></i>
+                <img src="<?=StaticDir?>style/img/l-4.png" alt=""/>
+                <p>
+                    <em>189</em>
+                    <span>万商品匹配</span>
+                </p>
+            </div>
+            <div class="mj-content_bottom-title_item">
+                <i class="us-icon ul-icon2"></i>
+                <img src="<?=StaticDir?>style/img/l-5.png" alt=""/>
+                <p>
+                    <em>3</em>
+                    <span>方赔付协议</span>
+                </p>
+            </div>
+            <div class="mj-content_bottom-title_item">
+                <i class="us-icon ul-icon2"></i>
+                <img src="<?=StaticDir?>style/img/l-6.png" alt=""/>
+                <p>
+                    <em>100</em>
+                    <span>%转让公证审核</span>
+                </p>
+            </div>
+            <div class="mj-content_bottom-title_item last-item">
+                <i class="us-icon ul-icon2"></i>
+                <img src="<?=StaticDir?>style/img/l-7.png" alt=""/>
+                <p>
+                    <span>后期</span>
+                    <em>10</em>
+                    <span>年监测</span>
+                </p>
+            </div>
+        </div>
+        <div class="mj-content_bottom-swtich f-clearfix">
+            <div class="mj-content_bottom-swtich_tit">
+                <span class="cur">商标介绍</span>
+                <!--<span><a href="#process">您可能感兴趣的</a></span>-->
+            </div>
+            <div class="mj-content_bottom-swtich_content">
+                <div class="edit">
+				<?
+                    $intro = $sale['tminfo']['intro'];
+                    $intro = str_replace("/Static/upload/attached/",TRADE_URL."/Static/upload/attached/",$intro);
+                    $intro = str_replace("/Static/editor/php/../../upload/attached/",TRADE_URL."/Static/upload/attached/",$intro);
+					if(!empty($intro)){
+						echo '<div class="intro">'.$intro."</div>";
+					}
+				?>
+                </div>
+                <div class="edit" id="process" >
+					<div class="mj_mainText ">
+						<B>商标交易流程：</B>
+						<ul>
+							<li>1、商标风险核查</li>
+							<li>商标上线销售前，<a href="/" target="_blank">一只蝉</a>会进行全面风险核查，杜绝无效、撤三等商标出现。</li>
+						</ul>
+						<ul>
+							<li>2、商标价格评估</li>
+							<li>一只蝉从商标涵义、商标状态、市场占有率等多方面评估商标价格，杜绝漫天要价，让你买的放心，不花冤枉钱。</li>
+						</ul>
+						<ul>
+							<li>3、购买需求匹配</li>
+							<li>可在线自助选择，系统3.5秒快速匹配，也可选择线下专家一对一匹配，最快10分钟。</li>
+						</ul>
+						<ul>
+							<li>4、签订三方协议</li>
+							<li>确定交易意向后，将与买卖双方签订《商标代购协议》 《商标代售协议》 。<li>
+							<li>①另与卖家签订《独占许可协议》，确保卖家在转让期限内不得将商标出售、许可给第三人，让买家可尽快使用上购买的商标；<li>
+							<li>②另与买家签订《损失100%赔付协议》，承诺先行赔付。一旦出现交易损失，一只蝉将在第一时间给予赔偿，让买家彻底远离赔偿纠纷。</li>
+						</ul>
+						<ul>
+							<li>5、公证审核</li>
+							<li>签订三方协议后，<a href="/" target="_blank">一只蝉</a>将为卖家提供国家政府认可的公证机构，并给出减少公证费的省钱建议（如双方免费转让），降低双方在办理公证手续上的支出。且对最终公证书的真实性进行再次核实，确保双方交易的安全性。</li>
+						</ul>
+						<ul>
+							<li>6、代办转让手续</li>
+							<li>确认材料无误后，一只蝉将资料上报至国家商标局，一月左右将收到转让受通，6-10月后收到转让证明，届时完成转让。</li>
+						</ul>
+						<ul>
+							<li>7、10年商标安全监测</li>
+							<li>转让完成后，在商标的10年有效期内，一只蝉将不间断的提供状态监测服务。有任何异动系统将通知你。</li>
+						</ul>
+					</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mj-content_bottom-inter">
+            <div class="mj-content_bottom-inter_t f-clearfix">
+                <span>或许您还对以下商标感兴趣</span>
+                <a href="/search/index/?c=<?=$class?>">查看更多>></a>
+            </div>
+            <div class="mj-imglists">
+                <ul class="f-clearfix">
+					<? foreach($tj as $val){ ?>
+					<li>
+                        <a href="<?php echo $val['viewUrl']?>" class="mj-imglT mj-imglT-detail">
+                            <span><img src="<?php echo $val['imgUrl']?>" alt="<?php echo $val['name']?>"></span>
+                            <p class="mj-tip">
+                            <?if ($val['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
+                            <?if ($val['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
+                            <?if ($val['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
+                            </p>
+                        </a>
+                        <div class="mj-imglB"><?php echo $val['name']?> <?php echo $CLASSES[$val['class']]?></div>
+                    </li>
+					<? } ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--已购买过 拨打电话弹出层-->
+<div class="mj-boughtM" id="bugphone">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLeft"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h1 id="bugphoneTip">您已购买过该商品！</h1>
+            <a href="javascript:;" onclick="layer.closeAll();" class="mj-boBtn1">点击此处关闭！</a>
+            <a href="javascript:callPhone($(this))" class="mj-boBtn2 callphone">继续拨打电话</a>
+        </div>
+    </div>
+</div>
+<!--提交错误或购买失败-->
+<div class="mj-boughtM" id="mj-error">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLeft"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h1 class="errorReason">您已购买过该商品！</h1>
+            <a href="javascript:;" onclick="layer.closeAll();" class="mj-boBtn1">点击此处关闭！</a>
+        </div>
+    </div>
+</div>
+<!--提交成功弹出层-->
+<div class="mj-boughtM" id="mj-submitte">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>恭喜您，订单已提交！</h2>
+            <p>请保持电话畅通，以便交易专员联系到您</p>
+            <a href="javascript:;" onclick="layer.closeAll();" class="mj-boBtn1">点击此处关闭！</a>
+        </div>
+    </div>
+</div>
+
+<!--未检测到对应的电话号弹出层-->
+<div class="mj-boughtM" id="mj-submittel">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>最后一步，请输入验证码</h2>
+            <input type="text" id="buyMsgCode"/>
+            <!--不能点击状态-->
+            <!--<label class="mj-bconT mj-bclik">重新发送 60s</label>-->
+            <!--可点击状态-->
+            <label class="mj-bconT mj-clickable">发送验证码</label>
+            <span class="mj-bcTips" style="display:none;">验证码错误，请验证后输入</span>
+            <label class="mj-determineBtn">确定</label>
+        </div>
+    </div>
+</div>
+
+<!-- 新增登录框弹出框 -->
+<div class="mj-loginModel" id="verifyMoblie"  style="display: none;">
+    <span class="ms-close mj-close" onclick="boxHide('mj-loginModel')"></span>
+    <div class="mj-lmTop">
+        <h6>绑定手机号码</h6>
+        <p style="margin-left: 10px;">绑定手机号码以便于交易专员联系到你</p>
+    </div>
+    <div class="mj-lmBottom">
+        <div class="ms-errorTips">
+            <p class="reg-tip" id="vmTips" style="display:none"><i class="us-icon us-icon19"></i><em></em></p>
+        </div>
+        <div class="ms-phoneInput f-clearfix">
+            <div class="mj-form-wrappers fl" style="width: 158px;">
+                <span class="mj-inpuVs mj-mlspan">请输入手机号码</span>
+                <div class="ms-input mj-input">
+                    <i class="us-icon uj-icon5"></i>
+                    <input type="text" id="vmNumber">
+                </div>
+            </div>
+            <a href="javascript:;" class="ms-sent" id="vm_hqyzm">获取验证码</a>
+        </div>
+        <div class="mj-form-wrappers">
+            <span class="mj-inpuVs mj-mlspan">请输入手机验证码</span>
+            <div class="ms-input mj-input">
+                <i class="us-icon us-iconmi"></i>
+                <input type="input" id="vmCode" onkeydown="if(event.keyCode==13) bindMoblie();" >
+            </div>
+        </div>
+        <a href="javascript:;" ctype="e" class="ms-loginBtn" id="vm_sub">绑定</a>
+    </div>
+</div>
+
+<script>
+function consultation(){
+	window.open("http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165");
+}
+</script>
+<script src="<?=StaticDir?>script/order.js"></script>
+<!--content end-->
+<? require(ViewDir.'/footer.html'); ?>
+
+<script>
+var _isLogin = "<?=$isLogin?>";
+var _mobile  = "<?=$userMobile?>";
+var _saleid  = "<?=$sale['id']?>";
+var _tid     = "<?=$tid?>";
+var baystate = "<?=$baystate?>";
+var buyUrl   = 'javascript:;';//"<?=MANAGER_URL?>buyer/ready/";
+
+
+$(function(){
+    var $category = $('.mj-dlList>dd:gt(9)');
+    $category.hide();
+    var $toggleBtn = $('#showMore');
+    $toggleBtn.toggle(function(){
+        $category.show();
+    },function(){
+        $category.hide();
+    });
+});
+
+$(function(){
+    var _windowWidth = $(window).width();  //当前窗口的宽度度
+    var offSet = null;
+    $('.mj-dlList > dd').hover(function(){
+        var obj = $(this),
+                objOffSet = obj.offset().left,
+                objWindth = obj.outerWidth();
+        if(parseInt(objOffSet) > parseInt(_windowWidth / 2 + objWindth)){
+            obj.find(".mj-ddTips").addClass("mj-trst");
+        }
+    },function(){
+
+    });
+});
+
+/* 得到页面偏移位置（滚动条偏移位置）  */
+function getPageOffset(){
+    var pageOffset = {};
+    if(window.innerWidth){
+        pageOffset.x = window.pageXOffset;
+        pageOffset.y = window.pageYOffset;
+    }else if(document.documentElement && document.documentElement.clientWidth){
+        pageOffset.x = document.documentElement.scrollLeft;
+        pageOffset.y = document.documentElement.scrollTop;
+    }else if(document.body.clientWidth){
+        pageOffset.x = document.body.scrollLeft;
+        pageOffset.y = document.body.scrollTop;
+    }
+    return pageOffset;
+}
+function goLook()
+{   
+    getLogin(_viewTitle);
+}
+function goBuy()
+{
+    getLogin(_wantTitle);
+}
+</script>

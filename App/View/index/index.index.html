@@ -99,7 +99,7 @@
                     $bannerStr = '';
                     foreach($banners as $banner){
                         $url = TRADE_URL.substr($banner['pic'],1);
-                        $bannerStr .= "<li class='mj-banner-itme' style='background:url({$url}) #CCE1F3 center 0 no-repeat;'><a href='{$banner['link']}' target='_blank'></a></li>";
+                        $bannerStr .= "<li class='mj-banner-itme' style='background:url({$url}) #CCE1F3 center 0 no-repeat;'><a href='http://{$banner['link']}' target='_blank'></a></li>";
                     }
                     echo $bannerStr;
                 ?>
@@ -132,11 +132,11 @@
         <ul>
             <? foreach($ads as $ad): ?>
             <li>
-                <a href="<?=$ad['link']?>" target="_blank">
-                    <h3>
+                <a href="http://<?=$ad['link']?>" target="_blank">
+                    <!--<h3>
                         活动标题<br/>
                         <span>活动标题</span>
-                    </h3>
+                    </h3>-->
                     <img src="<?=(TRADE_URL.substr($ad['pic'],1))?>">
                 </a>
             </li>
@@ -244,7 +244,7 @@
                         <div class="sbd">
                             <ul>
                                 <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.substr($pic['pic'],1))?>" /></a></li>
+                                <li><a href="http://<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.substr($pic['pic'],1))?>" /></a></li>
                                 <? endforeach; ?>
                             </ul>
                         </div>
@@ -256,9 +256,9 @@
                     <div class="cate-list">
                         <? foreach($module['link'] as $link): ?>
                         <p>
-                            <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>"><span>></span><?=$link[0]['title']?></a>
+                            <a target="_blank" class="fl <?=$link[0]['color']?>" href="http://<?=$link[0]['link']?>"><span>></span><?=$link[0]['title']?></a>
                             <?if(isset($link[1])):?>
-                            <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>"><span>></span><?=$link[1]['title']?></a>
+                            <a target="_blank" class="fr <?=$link[1]['color']?>" href="http://<?=$link[1]['link']?>"><span>></span><?=$link[1]['title']?></a>
                             <?endif;?>
                         </p>
                         <? endforeach; ?>
@@ -374,20 +374,18 @@
                     <img src="<?=StaticDir?>1.2/images/brand1.png">
                 </dt>
                 <dd>
-                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
-                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
-                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
-                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                    <? foreach ($news['news'] as $item){ ?>
+                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="http://<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d H:i:s',$item['time']);?></label></p>
+                    <? } ?>
                     <a hidden="">更多 ></a>
                 </dd>
             </dl>
             <div class="btm">
+                <? foreach ($news['baike'] as $item){ ?>
                 <p>
-                    <span class="fl">[商标新闻] 我是一条新闻标题新闻标题题新闻</span> <label class="fr">2015-15-15</label>
+                    <span class="fl">[<a href="" target="_blank">商标百科</a>] <a href="http://<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d H:i:s',$item['time']);?></label>
                 </p>
-                <p>
-                    <span class="fl">[商标新闻] 我是一条新闻标题新闻标题题新闻</span> <label class="fr">2015-15-15</label>
-                </p>
+                <? } ?>
             </div>
         </div>
 
@@ -402,19 +400,17 @@
                     <img src="<?=StaticDir?>1.2/images/brand2.png">
                 </dt>
                 <dd>
-                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
-                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
-                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
-                    <p><span class="fl"><label>&bull;</label>天猫商城入驻商标要求   </span><label class="fr">2015-15-15</label></p>
+                    <? foreach ($news['faq'] as $item){ ?>
+                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="http://<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo $item['time'];?></label></p>
+                    <? } ?>
                 </dd>
             </dl>
             <div class="btm">
+                <? foreach ($news['law'] as $item){ ?>
                 <p>
-                    <span class="fl">[商标新闻] 我是一条新闻标题新闻标题题新闻</span> <label class="fr">2015-15-15</label>
+                    <span class="fl">[<a href="" target="_blank">商标法律</a>] <a href="http://<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo $item['time'];?></label>
                 </p>
-                <p>
-                    <span class="fl">[商标新闻] 我是一条新闻标题新闻标题题新闻</span> <label class="fr">2015-15-15</label>
-                </p>
+                <? } ?>
             </div>
         </div>
 

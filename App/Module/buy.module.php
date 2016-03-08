@@ -231,9 +231,5 @@ class BuyModule extends AppModule
 		}
 		return $strtime;
 	}
-	
-	
-	
-	
 }
 ?>

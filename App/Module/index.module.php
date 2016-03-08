@@ -27,10 +27,10 @@ class IndexModule extends AppModule
         //查询所有数据
         $r['order'] = array('sort'=>'asc');
         $r['limit'] = 1000;
+        $r['neq'] = array('type'=>2);
         $data = $this->import('indexBasic')->find($r);
         $r = array();
         //处理数据
-        $hotwords = array();
         $banners = array();
         $ads = array();
         $recommendClasses = array();
@@ -40,23 +40,6 @@ class IndexModule extends AppModule
                     $banners[] = array(
                         'pic'=>$item['pic'],
                         'other'=>$item['other'],
-				        'link'=>$item['link'],
-                    );
-                    break;
-                case '2':
-                    //处理颜色
-                    if($item['other']==0){
-                        $color = '';
-                    }elseif($item['other']==1){
-                        $color = 'color-red';
-                    }elseif($item['other']==2){
-                        $color = 'color-green';
-                    }else{
-                        $color = 'color-yellow';
-                    }
-                    $hotwords[] = array(
-                        'desc'=>$item['desc'],
-                        'other'=>$color,
 				        'link'=>$item['link'],
                     );
                     break;
@@ -70,7 +53,7 @@ class IndexModule extends AppModule
                     //得到分类的名字
                     $class = explode(',',$item['desc']);
                     //取前6个
-                    $class = array_slice($class,0,6);
+                    //$class = array_slice($class,0,6);
                     $className = array();
                     foreach($class as $v){
                         $r['eq'] = array('id'=>$v);
@@ -86,7 +69,7 @@ class IndexModule extends AppModule
                     break;
             }
         }
-        return array($banners,$hotwords,$ads,$recommendClasses);
+        return array($banners,$ads,$recommendClasses);
     }
 
     /**
@@ -252,9 +235,43 @@ class IndexModule extends AppModule
         $data = array();
         foreach($res as $k=>$item){
             $key = floor($k/9);
+            if($key==0){
+                $item['number'] = '0'.$item['number'];
+            }
             $data[$key][] = $item;
         }
         return $data;
+    }
+
+    /**
+     * 得到所有的热搜数据
+     * @return array
+     */
+    public function getHotWords(){
+        //查询所有数据
+        $r['order'] = array('sort'=>'asc');
+        $r['limit'] = 1000;
+        $r['eq'] = array('type'=>2);
+        $data = $this->import('indexBasic')->find($r);
+        $hotwords = array();
+        foreach($data as $item){
+            //处理颜色
+            if($item['other']==0){
+                $color = '';
+            }elseif($item['other']==1){
+                $color = 'color-red';
+            }elseif($item['other']==2){
+                $color = 'color-green';
+            }else{
+                $color = 'color-yellow';
+            }
+            $hotwords[] = array(
+                'desc'=>$item['desc'],
+                'other'=>$color,
+                'link'=>$item['link'],
+            );
+        }
+        return $hotwords;
     }
 }
 ?>

@@ -14,26 +14,33 @@ class IndexAction extends AppAction
 	public function index()
 	{
 		//得到首页基本基本配置信息
-		list($banners,$hotwords,$ads,$recommendClasses) = $this->load('index')->getIndexBasic();
+		list($banners,$ads,$recommendClasses) = $this->load('index')->getIndexBasic();
 		$this->set('banners',$banners);
-		$this->set('hotwords',$hotwords);
 		$this->set('ads',$ads);
 		$this->set('recommendClasses',$recommendClasses);
-		//得到通栏行业菜单信息
-		list($menuFirst,$menuSecond,$menuThird,$menuPic) = $this->load('index')->getIndustry();
-		$this->set('menuFirst',$menuFirst);
-		$this->set('menuSecond',$menuSecond);
-		$this->set('menuThird',$menuThird);
-		$this->set('menuPic',$menuPic);
 		//得到模块信息
 		$modules = $this->load('index')->getModule();
 		$this->set('modules',$modules);
 		//最新交易记录
 		$tradeInfo = $this->load('buy')->getNewsTrade(10);
+		//$tradeInfo = $this->load('buy')->getNewsTradeInfo(10);
 		$this->set('tradeInfo',$tradeInfo);
 		//得到商标分类信息
 		$allClass = $this->load('index')->getAllClass();
 		$this->set('allClass',$allClass);
+		//得到新闻和问答
+		//$_news = $this->com('redis')->get('_news_tmp');
+		if(empty($_news)){
+			$news['news']	= $this->load('faq')->newsList(array('c'=>50,'limit'=>4));
+			$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>4));
+			$news['link']	= $this->load('faq')->newsList(array('c'=>47,'limit'=>20));
+			$news['baike']	= $this->load('faq')->newsList(array('c'=>53,'limit'=>2));
+			$news['law']	= $this->load('faq')->newsList(array('c'=>51,'limit'=>2));
+			//$this->com('redis')->set('_news_tmp', $news, 3600);
+		}else{
+			$news = $_news;
+		}
+		$this->set('news',$news);
 		$this->display();
 	}
 }

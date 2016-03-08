@@ -37,8 +37,20 @@ abstract class AppAction extends Action
 	 */
 	public function before()
 	{
-		//设置用户信息
-		$this->setLoginUser();
+		/*//设置用户信息
+		$this->setLoginUser();*/
+		//获得热搜数据
+		$hotwords = $this->load('index')->getHotWords();
+		$this->set('hotwords',$hotwords);
+		//得到通栏行业菜单信息
+		list($menuFirst,$menuSecond,$menuThird,$menuPic) = $this->load('index')->getIndustry();
+		$this->set('menuFirst',$menuFirst);
+		$this->set('menuSecond',$menuSecond);
+		$this->set('menuThird',$menuThird);
+		$this->set('menuPic',$menuPic);
+		//获得友情链接数据
+		$frendlyLink = $this->load('faq')->newsList(array('c'=>47,'limit'=>20));
+		$this->set('frendlyLink', $frendlyLink);
 
 		$this->set('_mod_', $this->mod);
 		$this->set('_action_', $this->action);
