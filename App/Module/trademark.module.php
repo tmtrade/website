@@ -15,6 +15,8 @@ class TrademarkModule extends AppModule
         'tm'		=> 'trademark',
         'second'	=> 'secondstatus',
         'third'		=> 'statusnew',
+        'tmclass'   => 'tmclass',
+        'tminfo'        => 'saleTminfo',
     );
 
     protected $col = array(
@@ -169,6 +171,8 @@ class TrademarkModule extends AppModule
 
         $info['items']      = $items;
         $info['class']      = array_filter( $class );
+        $info['lable']      = $this->import('tmclass')->get($info['class'][0],'lable');//获得分类标签
+        $info['value']      = $this->getValue($number);;//获得商标价值描述
         $info['imgUrl']     = $this->getImg($number);
         $info['group']      = $this->groupReplace($info['group']);
         $info['status']     = $this->getFirst($info['tid']);
@@ -276,13 +280,35 @@ class TrademarkModule extends AppModule
     {
         $default = '/Static/images/img1.png';
         if ( intval($number) <= 0 ) return $default;
-
+        //优先获取商标美化图
+        $r['eq'] = array('number'=>$number);
+        $r['col'] = array('indexPic');
+        $rst = $this->import('tminfo')->find($r);
+        if($rst && !empty($rst['indexPic'])){
+            return TRADE_URL.$rst['indexPic'];
+        }
+        $r = array();
+        //无则获取商标图
         $r['eq']    = array('trademark_id'=>$number);
         $img        = $this->import('img')->find($r);
 
         return empty($img) ? $default : $img['url'];
     }
 
+    /**
+     * 获取商标的价值描述
+     * @param $number
+     * @return string
+     */
+    public function getValue($number){
+        $r['eq'] = array('number'=>$number);
+        $r['col'] = array('value');
+        $rst = $this->import('tminfo')->find($r);
+        if($rst && !$rst['value']){
+            return $rst['value'];
+        }
+        return '';
+    }
     public function getFirst($tid, $type='c')
     {
         if ( intval($tid) <= 0 ) return '';
