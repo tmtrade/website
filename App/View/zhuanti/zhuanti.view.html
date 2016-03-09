@@ -7,10 +7,8 @@
     </div>
     <div class="yzc-ztname">
         <div class="yzc-zttit">
-            <h3><?=$topic['title']?></h3>
             <span>
                 <label> <img src="<?=StaticDir?>zhuanti/images/xq-ico.png"><?=date('Y-m-d', $topic['date'])?></label>
-                来源：专题中心
             </span>
         </div>
         <div class="yzc-ztlishow">
@@ -98,8 +96,5 @@
 
         </ul>
     </div>
-</div>
-<div class="mj-pages">
-    <?=$pageBar?>
 </div>
 <? require(ViewDir.'/footer.html'); ?>

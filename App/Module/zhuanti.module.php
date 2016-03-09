@@ -16,15 +16,16 @@ class ZhuantiModule extends AppModule
     );
     
     //专题列表
-    public function getList($id=0, $page, $limit=20)
+    public function getList($id=0, $page, $limit=20,$order=array('sort'=>'asc'))
     {
         $r = array();
         if($id>0){
              $r['notIn']  = array('id' => array($id));
         }
+        $r['eq'] = array('isUse'=>1);
         $r['page']  = $page;
         $r['limit'] = $limit;
-        $r['order'] = array('sort'=>'asc');
+        $r['order'] = $order;
         $res = $this->import('topic')->findAll($r);
         return $res;
     }

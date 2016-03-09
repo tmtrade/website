@@ -40,7 +40,6 @@ class ZhuantiAction extends AppAction
      */
     public function view() 
 	{	
-                $this->rowNum = 2;
 		$id 	= $this->input('id', 'int', '0');
                 $page 	= $this->input('page', 'int');
 		$topic = $topicItems = array();
@@ -51,14 +50,9 @@ class ZhuantiAction extends AppAction
 		$this->set('topic', $topic);
 		$this->set('topicItems', $topicItems);
                 
-                $res 	= $this->load('zhuanti')->getList($id, $page, $this->rowNum);
-                $total 	= empty($res['total']) ? 0 : $res['total'];
+                $res 	= $this->load('zhuanti')->getList($id, $page, 4,array('isMore'=>'asc','sort'=>'asc'));
 		$list 	= empty($res['rows']) ? array() : $res['rows'];
-
-		$pager 		= $this->pagerNew($total, $this->rowNum);
-                $pageBar 	= empty($list) ? '' : getPageBarNew($pager);
                 $this->set('list', $list);
-                $this->set("pageBar",$pageBar);
                 $this->display();
 	}
 
