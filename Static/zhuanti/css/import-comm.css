@@ -1,0 +1,187 @@
+/* 引入公用样式 */
+@import url("../css/mj-header.css");
+@import url("../css/mj-footer.css");
+@import url("../css/us-icon.css");
+@import url("../css/mj-select.css");
+/* 引入全局清除默认浏览器样式 */
+@import url("../css/normalize.css");
+/*重置body*/
+body{
+    font:12px / 1.5  'microsoft yahei', 'helvetica neue', 'hiragino sans gb', 'stheiti','\5FAE\8F6F\96C5\9ED1', 'tahoma',"微软雅黑";
+    /*
+      -webkit-font-smoothing 在win7 Safari 下面会触发属性导致字体模糊 设置 antialiased
+          none  禁用该属性
+          subpixel-antialiased  次像素抗锯齿（默认值
+          antialiased 抗锯齿（效果更明显）
+    */
+    -webkit-font-smoothing:antialiased;
+    text-rendering: optimizespeed;
+    margin: 0;
+    background-color: #f5f5f5;
+}
+img{
+    border: none !important;
+}
+/*清除浮动*/
+.f-clearfix:after {
+    clear: both;
+    display: block;
+    height: 0;
+    font-size: 0;
+    content: ".";
+    visibility: hidden;
+}
+.f-clearfix{
+    zoom: 1;
+}
+.f-hidden{
+    overflow: hidden;
+}
+.f-dn{
+    display: none;
+}
+.w1180{
+    width: 1180px;
+    margin: 0 auto;
+    /*overflow: hidden;*/
+}
+.ms-pt50{
+    padding-top: 50px;
+}
+.ms-pt60{
+    padding-bottom: 50px;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+
+/*底部浮动客服*/
+.fdkf-ss{
+    position: fixed;
+    left: 0px;
+    bottom: 20px;
+}
+
+.fdkf-zk{
+    height: 137px;
+    background:rgba(0,0,0,0.6);
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    display: none;
+}
+.fdkf-zk ul{
+    position: relative;
+}
+.fdkf-zk span.gb-ss{
+    display: block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top:5px;
+    right:0px;
+    background: url("../images/btm-cha.png") no-repeat center top;
+}
+.fdkf-zk li{
+    float: left;
+    margin-left: 15px;
+
+}
+.fdkf-zk li.btm-tel{
+    display: inline-block;
+    width: 232px;
+    height: 110px;
+    background: url("../images/btm-tel.png") no-repeat top center;
+    position: relative;
+    margin-top: 15px;
+}
+
+.fdkf-zk li.btm-tel a{
+    display: inline-block;
+    padding: 5px 16px;
+    background: #ff8b3e;
+    border-radius: 5px;
+    color: #ffffff;
+    position: absolute;
+    right:35px;
+    bottom:35px;
+}
+.fdkf-zk li.btm-tel a img{
+    margin-bottom:-3px;
+}
+.fdkf-zk li.btm-pel{
+    margin-left:65px;
+}
+.fdkf-zk li.btm-tj{
+   float: right;
+   margin-right: 45px;
+
+}
+.fdkf-zk li.btm-tj p{
+    margin-top:18px;
+}
+.fdkf-zk li.btm-tj div{
+    margin-top:12px;
+
+}
+.fdkf-zk li.btm-tj div select{
+   width: 197px;
+    height: 33px;
+    border: 1px solid #dadada;
+    color: #777777;
+    text-indent: 15px;
+    float: left;
+}
+.fdkf-zk li.btm-tj div input{
+    width: 174px;
+    height: 33px;
+    border: 1px solid #dadada;
+    color: #777777;
+    text-indent: 15px;
+    float: left;
+    margin-left: 15px;
+}
+.fdkf-zk li.btm-tj div  a{
+    display: inline-block;
+    padding:7px 16px;
+    background: #ff5656;
+    border-radius:3px;
+    float: left;
+    margin-left: 15px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

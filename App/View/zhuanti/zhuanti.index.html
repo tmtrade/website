@@ -1,0 +1,49 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>zhuanti/css/import-comm.css"/>
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>zhuanti/css/list.css" />
+<div class="ztlist w1180">
+    <h3 class="ztlist-tit">专题中心</h3>
+    <ul>
+        <li>
+            <?php foreach($list as $k=>$v){
+            if(($k+1)%2!=0){
+            ?>
+                <div class="fl">
+                <span>
+                    <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>"  width="553" height="221"></a>
+                </span>
+                    <dl>
+                        <dt>
+                        <h4><?=$v['title']?></h4>
+                        <label><?=date('Y-m-d', $v['date'])?></label>
+                        </dt>
+                        <dd>
+                            <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
+                        </dd>
+                    </dl>
+                </div>
+            <? }else{?>
+                <div class="fr">
+                <span>
+                     <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>"></a>
+                </span>
+                    <dl>
+                        <dt>
+                        <h4><?=$v['title']?></h4>
+                        <label><?=date('Y-m-d', $v['date'])?></label>
+                        </dt>
+                        <dd>
+                            <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li>
+            <? } }?>
+        </li>
+    </ul>
+</div>
+<div class="mj-pages">
+   <?=$pageBar?>
+</div>
+<? require(ViewDir.'/footer.html'); ?>

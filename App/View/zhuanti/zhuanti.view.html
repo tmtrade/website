@@ -1,0 +1,105 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>zhuanti/css/import-comm.css"/>
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>zhuanti/css/list.css" />
+<div class="w1180">
+    <div class="zj-ban">
+        <?php if(!empty($topic['banner'])) {?><img src="<?php echo TRADE_URL.$topic['banner']?>"/><? }?>
+    </div>
+    <div class="yzc-ztname">
+        <div class="yzc-zttit">
+            <h3><?=$topic['title']?></h3>
+            <span>
+                <label> <img src="<?=StaticDir?>zhuanti/images/xq-ico.png"><?=date('Y-m-d', $topic['date'])?></label>
+                来源：专题中心
+            </span>
+        </div>
+        <div class="yzc-ztlishow">
+            <ul>
+                <? foreach($topicItems as $v){?>
+                <li>
+                    <div class="front" style="width: 188px;">
+                        <span>
+                            <img src="<?=$v['tminfo']['imgUrl']?>" width="145" height="89">
+                        </span>
+                        <p>
+                           <font> <?=$v['name']?> <?=$v['sale']['class']?>类</font>
+                            <?=$v['sale']['group']?>
+                        </p>
+                    </div>
+                    <div class="reverse">
+                       <dt>
+                            <a class="cl-red">特</a>
+                            <a class="cl-org">精</a>
+                        </dt>
+                        <span>
+                            <img src="<?=$v['tminfo']['imgUrl']?>" width="145" height="89">
+                        </span>
+                        <p>
+                            <font> <?=mbSub($v['name'],0,10);?> <?=$v['sale']['class']?>类</font>
+                            <?=$v['sale']['group']?>
+                        </p>
+                        <label>
+                            <a href="" class="first cl-red">
+                                <img src="<?=StaticDir?>zhuanti/images/catebuy1.png"/>
+                                询 价
+                            </a>
+                            <a href="" class="sec cl-org">
+                                <img src="<?=StaticDir?>zhuanti/images/cate-ck.png"/>
+                                联系卖家
+                            </a>
+                        </label>
+                    </div>
+                </li>
+                <?}?>
+            </ul>
+        </div>
+
+    </div>
+    <div class="ztlist w1180">
+        <h3 class="ztlist-tit">更多精彩</h3>
+        <ul>
+            <li>
+            <?php foreach($list as $k=>$v){
+            if(($k+1)%2!=0){
+            ?>
+                <div class="fl">
+                <span>
+                    <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>"  width="553" height="221"></a>
+                </span>
+                    <dl>
+                        <dt>
+                        <h4><?=$v['title']?></h4>
+                        <label><?=date('Y-m-d', $v['date'])?></label>
+                        </dt>
+                        <dd>
+                            <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
+                        </dd>
+                    </dl>
+                </div>
+            <? }else{?>
+                <div class="fr">
+                <span>
+                     <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>"></a>
+                </span>
+                    <dl>
+                        <dt>
+                        <h4><?=$v['title']?></h4>
+                        <label><?=date('Y-m-d', $v['date'])?></label>
+                        </dt>
+                        <dd>
+                            <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li>
+            <? } }?>
+        </li>
+
+        </ul>
+    </div>
+</div>
+<div class="mj-pages">
+    <?=$pageBar?>
+</div>
+<? require(ViewDir.'/footer.html'); ?>

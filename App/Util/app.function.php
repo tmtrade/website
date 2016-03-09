@@ -159,6 +159,31 @@ function getPageBar($pager, $script = true)
 }
 
 /**
+* 获取分页条
+*
+* @param	array   $pager   组合要素
+* @param	bool    $script  是否带有下拉
+* @return	string
+*/
+function getPageBarNew($pager, $script = true)
+{
+	if ( empty($pager) || !is_array($pager) ) {
+		return '';
+	}
+
+	$html = "";
+
+	$html .='<a href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .$pager['point'].
+		'<a href="' . $pager['next']  . '">下页</a>' . '&nbsp;' ;
+        
+        $html .= '<span>共' . $pager['pageNum'] . '页</span>' . '&nbsp;';
+        
+	$html .= $script ? $pager['jump'] : '';
+
+	return $html;
+}
+
+/**
 * 中断并输出提示
 *
 * @param  string	$msg	提示信息

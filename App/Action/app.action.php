@@ -55,7 +55,7 @@ abstract class AppAction extends Action
 		$this->set('_mod_', $this->mod);
 		$this->set('_action_', $this->action);
 
-		$this->set('TITLE', $this->pageTitle);//页面title
+		$this->set('title', $this->pageTitle);//页面title
 		$this->set('keywords', $this->pageKey);//页面keywords
 		$this->set('description', $this->pageDescription);//页面description
 		// $this->set('CLASSES', C('CLASSES'));//国际分类

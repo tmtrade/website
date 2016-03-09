@@ -63,4 +63,15 @@ class SaleModule extends AppModule{
         }
         return false;
     }
+    
+    //获取商品信息
+    public function getSaleInfo($number)
+    {
+        $arr['eq'] = array(
+            'number' => $number,
+            );
+        $info = $this->import('sale')->find($arr);
+        if ( empty($info) ) return array();
+        return $info;
+    }
 }
