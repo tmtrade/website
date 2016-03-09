@@ -2,6 +2,65 @@
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/list.css" />
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/mj-index.css" />
+<!--分享网址-->
+<!--qq空间-->
+<script type="text/javascript">
+    (function(){
+        var p = {
+            url:location.href,
+            showcount:'0',/*是否显示分享总数,显示：'1'，不显示：'0' */
+            desc:'默认分享理由',/*默认分享理由(可选)*/
+            summary:'分享摘要',/*分享摘要(可选)*/
+            title:'分享标题',/*分享标题(可选)*/
+            site:'分享来源',/*分享来源 如：腾讯网(可选)*/
+            pics:'http://f1.chofn.net/M00/7E/9D/wKgA7FUuJ2KABro4AAGhg8MzH-4747.png', /*分享图片的路径(可选)*/
+            style:'203',
+            width:22,
+            height:22
+        };
+        var s = [];
+        for(var i in p){
+            s.push(i + '=' + encodeURIComponent(p[i]||''));
+        }
+        document.write(['<a version="1.0" class="qzOpenerDiv" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?',s.join('&'),'" target="_blank">分享</a>'].join(''));
+    })();
+</script>
+<script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset="utf-8"></script>
+<!--新浪微博-->
+<!-- JiaThis Button BEGIN -->
+<div id="ckepop">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<!--微信-->
+<!--腾讯微博-->
+<img src="http://v.t.qq.com/share/images/s/weiboicon16.png" align="absmiddle" border="0" alt="转播到腾讯微博" /> <a href="javascript:void(0)" onclick="postToWb();return false;" style="height:16px;font-size:12px;line-height:16px;">转播到腾讯微博</a><script type="text/javascript">
+    function postToWb(){
+        var _url = encodeURIComponent(document.location);
+        var _assname = encodeURI("");//你注册的帐号，不是昵称
+        var _appkey = encodeURI("125466322");//你从腾讯获得的appkey
+        var _pic = encodeURI('');//（例如：var _pic='图片url1|图片url2|图片url3....）
+        var _t = '';//标题和描述信息
+        var metainfo = document.getElementsByTagName("meta");
+        for(var metai = 0;metai < metainfo.length;metai++){
+            if((new RegExp('description','gi')).test(metainfo[metai].getAttribute("name"))){
+                _t = metainfo[metai].attributes["content"].value;
+            }
+        }
+        _t =  document.title+_t;//请在这里添加你自定义的分享内容
+        if(_t.length > 120){
+            _t= _t.substr(0,117)+'...';
+        }
+        _t = encodeURI(_t);
+
+        var _u = 'http://share.v.t.qq.com/index.php?c=share&a=index&url='+_url+'&appkey='+_appkey+'&pic='+_pic+'&assname='+_assname+'&title='+_t;
+        window.open( _u,'', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+    }
+</script>
 
 <!--商标详情介绍-->
 <div class="brand-details f-clearfix">

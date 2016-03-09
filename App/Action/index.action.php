@@ -13,6 +13,15 @@ class IndexAction extends AppAction
 
 	public function index()
 	{
+		//首页标识
+		$this->set('is_index',true);
+		//登录用户电话号码
+		if(isset($_COOKIE['uc_nickname'])){
+			$this->set('user_tel',$_COOKIE['uc_nickname']);
+		}else{
+			$this->set('user_tel','');
+		}
+
 		//得到首页基本基本配置信息
 		list($banners,$ads,$recommendClasses) = $this->load('index')->getIndexBasic();
 		$this->set('banners',$banners);

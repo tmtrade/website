@@ -220,7 +220,7 @@
             <div class="parHd" style="position:relative;z-index:9999;">
                 <ul class="fr">
                     <? foreach($module['class'] as $class): ?>
-                    <li><?=$module['name']?><span></span></li>
+                    <li><?=$class['name']?><span></span></li>
                     <? endforeach; ?>
                 </ul>
             </div>
@@ -272,7 +272,7 @@
                             <p><b><?=$item['name']?></b><?=$item['class']?></p>
                         </div>
                         <div class="brand-buy">
-                            <span><img src="<?=(TRADE_URL.substr($item['embellish'],1))?>"></span>
+                            <span><a target="_blank" href="<?=$item['viewUrl']?>"><img src="<?=(TRADE_URL.substr($item['embellish'],1))?>"></a></span>
                             <p><b><?=$item['name']?></b><?=$item['class']?></p>
                             <font>
                                 <a href="" class="first">

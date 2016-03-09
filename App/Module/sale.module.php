@@ -13,20 +13,19 @@ class SaleModule extends AppModule{
     );
 
     /**
-     * 根据商标得到分类(第一个)
+     * 根据商标得到sale信息(分类第一个)
      * @author dower
      * @param $number
      * @return mixed
      */
-    public function getClassByNumber($number){
+    public function getSaleInfoByNumber($number,$col = array('tid','class')){
         //得到商标的第一个分类
         $r['eq'] = array('number'=>$number);
-        //$r['col'] = array('class');
+        $r['col'] = $col;
         $rst = $this->import('sale')->find($r);
-        $class = explode(',',$rst['class']);
-        $class = array_pop($class);
+        $rst['className'] = $this->import('class')->get(array_pop(explode($rst['class'],',')),'name');
         //返回商标的分类名
-        return $this->import('class')->get($class,'name');
+        return $rst;
     }
 
     /**

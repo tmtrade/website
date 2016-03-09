@@ -19,6 +19,9 @@
     <script src="<?=StaticDir?>1.2/js/iealert.js"></script>
     <script src="<?=StaticDir?>1.2/js/scroll.js"></script>
     <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/style.css" />
+    <?if(!isset($is_index)):?>
+    <script src="<?=StaticDir?>1.2/js/menu_hide.js"></script>
+    <?endif;?>
     <!--登录模块-->
     <?php
         $jsapiToken	= 'chaofnwang';
@@ -160,6 +163,7 @@
         }
         //发送验证码
         function sendCodeCallback(Obj,htmlobj,title){
+            console.debug(title);
             $.each(Obj,function(i,n){
                 if(n.code > 0 ){//发送成功
                     $('#dl_sub').addClass('yzm');//添加额外的class yzm 判断为验证码登录
@@ -195,10 +199,11 @@
                 $("#dl_fsmm").show();//发送密码(不存在账号)
                 $("#dl_fsmm").addClass('aaaa');//添加类
                 $('#dl_sub').addClass('yzm');//添加额外的class yzm 判断为验证码登录
-                //触发点击事件
+
                 $('.mj-inpuVs').html('');
                 $('#loginUser').val(tel);
-                $('#dl_wjmm').trigger('click');
+                //$('#dl_wjmm').trigger('click');
+                timer(60, $('.aaaa'), '  ');//倒计时
 
                 $("#dl_title").html(title);
             }else{
@@ -231,10 +236,9 @@
     <script language="javascript">
         $(document).ready(function(e) {
             var copyArr = new Array();
-            //setConfig('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
             ucLoginTemp.setLoginTemp();
             //用户是否登录
-            nickname  	= getCookie('uc_nickname');
+            nickname  	= '<?=$user_tel?>';
             if(nickname){
                 //隐藏注册
                 $('.zc').hide();

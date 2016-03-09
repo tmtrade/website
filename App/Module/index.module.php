@@ -168,9 +168,11 @@ class IndexModule extends AppModule
                 continue;
             }
             //得到所属分类名
-            $item['class'] = $this->load('Sale')->getClassByNumber($item['number']);
+            $result = $this->load('Sale')->getSaleInfoByNumber($item['number']);
+            $item['class'] = $result['className'];
+            $item['viewUrl'] = 'd-'.$result['tid'].'-'.$result['class'].'.html';
             //得到商标包装图
-            $item['embellish'] = $this->load('Sale')->getSaleTmInfoByNumber($item['number'],'embellish');
+            $item['embellish'] = $this->load('Sale')->getSaleTmInfoByNumber($item['number'],'indexPic');
         }
         return $data;
     }
