@@ -15,12 +15,25 @@ class SearchAction extends AppAction
     private $_number    = 30;
     private $_searchArr = array();
 
-	//筛选页
+	
+    /**
+     * 筛选页功能
+     *
+     * 处理筛选页筛选功能、不含加载数据
+     * 
+     * @author  Xuni
+     * @since   2016-03-03
+     *
+     * @return  void
+     */
 	public function index()
 	{
-        $page = $this->input('_p', 'int', 1);//分类
+        $page   = $this->input('_p', 'int', 1);//分类
         $params = $this->getSearchParams();
         //debug($params);
+        if ( !empty($params['number']) ){
+            $this->detail($params['number']);
+        }
         $res    = $this->load('search')->search($params, $page, $this->_number, 1); 
         //debug($res);
         if ( !empty($this->_searchArr) ){
@@ -54,6 +67,16 @@ class SearchAction extends AppAction
 		$this->display();
 	}
 
+    /**
+     * 获取搜索参数
+     *
+     * 获取筛选提交的参数并分析
+     * 
+     * @author  Xuni
+     * @since   2016-03-04
+     *
+     * @return  void
+     */
     protected function getSearchParams()
     {
         $keyword    = $this->input('kw', 'string', '');//搜索项
@@ -244,6 +267,16 @@ class SearchAction extends AppAction
         return $params;
     }
 
+    /**
+     * 获取搜索项显示标题
+     *
+     * 处理单个搜索项的中文显示标题
+     * 
+     * @author  Xuni
+     * @since   2016-03-07
+     *
+     * @return  void
+     */
     protected function getSelectTitle($title, $value, $all)
     {
         if ( empty($value) || empty($title) ) return $value;
@@ -303,6 +336,34 @@ class SearchAction extends AppAction
         return $_str;
     }
 
+    protected function detail($number)
+    {
+        $res = $this->load('search')->getNumberInfo($number);
+        if ( $res['code'] == '1' ){
+            $this->redirect('', '/d-'.$res['tid'].'-'.$res['class'].'.html');
+        }else{
+            if ( $res == '3' ){
+                $title = '抱歉！此商标不出售';
+            }elseif( $res == '2' ){
+                $title = '抱歉！没找到相关信息';
+            }
+            $this->set('title', $title);
+            $this->set('tmList', $res['list']);
+            $this->display('search/search.detail.html');
+        }
+        exit;
+    }
+
+    /**
+     * 获取加载数据
+     *
+     * 处理数据加载时，返回相应数据
+     * 
+     * @author  Xuni
+     * @since   2016-03-08
+     *
+     * @return  void
+     */
     public function getMore()
     {
         $page   = $this->input('_p', 'int', 1);

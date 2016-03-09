@@ -83,7 +83,7 @@ class SearchModule extends AppModule
      * 获取适用服务筛选条件
      * 
      * @author  Xuni
-     * @since   2015-11-09
+     * @since   2016-03-04
      *
      * @access  public
      * @param   string      $keyword        关键字
@@ -101,6 +101,17 @@ class SearchModule extends AppModule
         return $this->_service;
     }
 
+    /**
+     * 获取适用服务筛选条件
+     * 
+     * @author  Xuni
+     * @since   2016-03-04
+     *
+     * @access  public
+     * @param   string      $keyword        关键字
+     *
+     * @return  array       $list           类别与群组，多类别时，只返回类别
+     */
     private function _getService($str, $type)
     {
         switch ($type) {
@@ -146,7 +157,7 @@ class SearchModule extends AppModule
      * 获取出售信息相关数据
      * 
      * @author  Xuni
-     * @since   2015-11-10
+     * @since   2016-03-04
      *
      * @access  public
      * @param   int     $class      国际分类(1-45)
@@ -231,6 +242,11 @@ class SearchModule extends AppModule
             $r['raw'] .= ' `priceType` = 1 AND `isOffprice` = 1 AND (`salePriceDate` = 0 OR `salePriceDate` > unix_timestamp(now())) ';
         }
 
+        //商标号
+        if ( !empty($params['number']) ){
+            $r['eq']['number'] = $params['number'];
+        }
+
         $r['eq']['status']  = 1;
         $r['eq']['isSale']  = 1;
 
@@ -249,7 +265,7 @@ class SearchModule extends AppModule
      * 获取商标信息相关数据
      * 
      * @author  Xuni
-     * @since   2015-11-10
+     * @since   2016-03-04
      *
      * @access  public
      * @param   int     $class      国际分类(1-45)
@@ -368,12 +384,37 @@ class SearchModule extends AppModule
         return $list;
     }
 
+    public function getNumberInfo($number)
+    {
+        if ( empty($number) ) return '3';
+
+        $sale = $this->load('sale')->getSaleInfo($number);
+        if ( empty($sale) ){
+            $r['eq']    = array('trademark_id'=>$number);
+            $r['order'] = array('isShow'=>'desc');
+            $r['col']   = array('isShow','tid', 'class_id');
+            $info = $this->import('second')->find($r);
+            if ( empty($info) || empty($info['tid']) ){
+                return '3';
+            }elseif ( $info['isShow'] != 1 ){
+                return '2';
+            }else{
+                return array('code'=>1,'tid'=>$info['tid'], 'class'=>$info['class_id']);
+            }
+        }elseif ($sale['status'] == '1'){
+            $_class = current( explode(',', $sale['class']) );
+            return array('code'=>1,'tid'=>$sale['tid'],'class'=>$_class);
+        }else{
+            return '2';
+        }
+    }
+
     /**
      * 处理带有IN和match条件的数据
      *
      * 把带有IN条件的数据进行PHP字符串匹配处理，完成MySQL不走索引而效率慢的问题。 
      * @author  Xuni
-     * @since   2015-11-24
+     * @since   2016-03-04
      *
      * @access  public
      * @param   array       $data       原始数据
@@ -401,8 +442,9 @@ class SearchModule extends AppModule
      * 近似查询调用
      *
      * @author  Xuni
-     * @since   2015-11-11
+     * @since   2016-03-04
      *
+     * @return  array
      */
     public function searchLike($params, $page=1, $number=1000)
     {
@@ -419,8 +461,9 @@ class SearchModule extends AppModule
      * 处理列表数据
      *
      * @author  Xuni
-     * @since   2015-11-11
+     * @since   2016-03-04
      *
+     * @return  array
      */
     public function getListTips($data)
     {
@@ -441,8 +484,9 @@ class SearchModule extends AppModule
      * 处理列表数据
      *
      * @author  Xuni
-     * @since   2015-11-11
+     * @since   2016-03-04
      *
+     * @return  array
      */
     public function getTips($data)
     {
@@ -479,7 +523,16 @@ class SearchModule extends AppModule
         return $data;
     }
 
-
+    /**
+     * 获取商标分类与群组相关标题
+     *
+     * 获取商标分类与群组相关标题
+     * 
+     * @author  Xuni
+     * @since   2016-03-08
+     *
+     * @return  array
+     */
     public function getClassGroup($class=0, $group=1)
     {
         if ( $class == 0 && $group != 1 ){
@@ -509,7 +562,15 @@ class SearchModule extends AppModule
     }
     
 
-    //生成年份搜索条件
+    
+    /**
+     * 生成年份条件
+     * 
+     * @author  Xuni
+     * @since   2016-03-08
+     *
+     * @return  string
+     */
     public function getDateList($type='')
     {
         $year = date('Y') - 1;//去年
