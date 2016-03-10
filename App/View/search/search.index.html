@@ -314,11 +314,12 @@
                     2 . <a>联系我们</a> 让我们帮你找吧！<br>
                     <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">3秒极速匹配</span> <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">1对1专业服务</span>
                 </font>
-
             </div>
         </div>
-        <div id="tm-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
     <? } ?>
+            </ul>
+            <ul class="f-clearfix" id="tm-all-list">                
+                <div id="tm-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>1.2/images/tm-list-wait.png"></div>
             </ul>
         </div>
         <!-- ms-filtersList end -->
@@ -498,6 +499,7 @@
     // var _class      = "<?=$c?>";
     // var _group      = "<?=$g?>";
     var _times      = 0;
+    var _tmTimes    = 0;
     var _objTime ;
     var _mod        = "<?=$_mod_?>";
     var _buttomView = false;
@@ -569,10 +571,10 @@
 
         $('#s-uploading').show();
         //是否已经在请求中
-        if ( _times != 0 ) return false; 
+        if ( _times != 0 || _tmTimes != 0 ) return false; 
 
         var obj = new objURL('/?'+_whereStr);
-        
+
         if ( !_hasSale ) {
             if ( _startTm == 1 ) {
                 _start = _startTm;
@@ -580,35 +582,41 @@
                 _start++;
             }
             obj.set('_from', '2');
+            _tmTimes      = 1;
         }else{
             _start++;
+            _times      = 1;
         }
 
-        _times      = 1;
         _objTime    = setTimeout(function(){_times = 0;},30000);
 
         obj.set('_p', _start);
         var params = obj.getparams();
         $("#_tmpDiv").load(_moreUrl, params, function(data,status,xml){
             if (data) {
-                $("#s-all-list").append(data);
                 $("#_tmpDiv").html('');
                 $('#s-uploading').hide();
                 clearTimeout(_objTime);
-                _times = 0;
                 if ( !_hasSale ) {
+                    $("#tm-all-list").append(data);
                     if (_startTm == 1) $("#tm-uploading").show();
                     _startTm++;
                     _hasTm = true;
+                    _tmTimes = 0;
+                }else{
+                    $("#s-all-list").append(data);
+                    _times = 0;
                 }
             }else{
                 if ( _hasSale ){
                     _hasSale = false;
+                    _times = 0;
+                    loadMore();
                 }else if ( _hasTm ){
                     _hasTm = false;
+                    _times = 1;
+                    $('#s-uploading').hide();
                 }
-                $('#s-uploading').hide();
-                _times = 1;
             }
         });
     }
