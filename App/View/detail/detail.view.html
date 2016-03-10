@@ -2,7 +2,8 @@
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/list.css" />
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/mj-index.css" />
-
+<!--分享相关js-->
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 <!--商标详情介绍-->
 <div class="brand-details f-clearfix">
     <div class="w1180">
@@ -19,13 +20,13 @@
                    <a> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png">收藏商标</a>
                 </p>
                 <p class="fr">
-                    <a> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
+                    <a href="javascript:;" class="jiathis jiathis_txt"> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
                 </p>
             </div>
         </div>
         <div class="fr">
            <h3><?=$info['name']?>&nbsp;&nbsp;<span> <?if(count($info['class'])==1):?>（<?=$info['class'][0]?>类 <?=$info['lable']?>）<?endif;?> </span> <a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
-            <label class="bm"><?=$info['value']?></label>
+            <label class="bm"><?=$sale['value']?></label>
            <p class="may"><font>此商标可入驻：
                <?php
 					foreach($platformIn as $key => $val){

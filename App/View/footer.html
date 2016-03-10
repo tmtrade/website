@@ -105,5 +105,77 @@
     <div id="loading"><div></div></div>
 
 </div>
+<!-- 新增登录框弹出框 -->
+<div class="mj-loginModel" id="loginFormDiv"  style="display: none;">
+
+    <span class="ms-close mj-close" onclick="boxHide('mj-loginModel')"></span>
+
+    <div class="mj-lmTop" id="dl_title">
+
+        <h6>登录</h6>
+
+        <p style="margin-left: 10px;"></p>
+
+    </div>
+
+    <div class="mj-lmBottom">
+
+        <div class="ms-errorTips">
+
+            <p class="reg-tip" id="loginTips" style="display:none"><i class="us-icon us-icon19"></i><em></em></p>
+
+        </div>
+
+        <div class="ms-phoneInput f-clearfix">
+
+            <div class="mj-form-wrappers fl" style="width: 158px;">
+
+                <span class="mj-inpuVs mj-mlspan">请输入手机号码</span>
+
+                <div class="ms-input mj-input">
+
+                    <i class="us-icon uj-icon5"></i>
+
+                    <input type="text" id="loginUser">
+
+                </div>
+
+            </div>
+
+            <a href="javascript:;" class="ms-sent" id="dl_wjmm">忘记密码</a>
+
+            <a href="javascript:;" class="ms-sent" id="dl_fsmm" style="display:none">发送密码</a>
+
+        </div>
+
+        <div class="mj-form-wrappers">
+
+            <span class="mj-inpuVs mj-mlspan">请输入密码</span>
+
+            <div class="ms-input mj-input">
+
+                <i class="us-icon us-iconmi"></i>
+
+                <input type="password" id="loginPass" onkeydown="if(event.keyCode==13) letLogin();" >
+
+            </div>
+
+        </div>
+
+        <div class="mj-lomTip" id="dl_ts" style="display:none">
+
+            <b>未收到密码: </b>
+
+            <p>1.手机号错误，请验证后重新输入</p>
+
+            <p>2.发送失败，人工将电话与您联系</p>
+
+        </div>
+
+        <a href="javascript:;" ctype="e" class="ms-loginBtn " id="dl_sub">立即登录</a>
+
+    </div>
+
+</div>
 </body>
 </html>

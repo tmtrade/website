@@ -604,7 +604,8 @@ class SearchModule extends AppModule
      * @return mixed
      */
     public function getClassLable($class){
-        return $this->import('class')->get($class,'lable');
+        $res = $this->import('class')->get($class);
+        return $res['label'];
     }
 }
 ?>

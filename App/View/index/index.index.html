@@ -2,6 +2,195 @@
 
 <!--mj-banner start-->
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css"/>
+<!--求购信息发布模块-->
+<script type="text/javascript">
+    $(function(){
+        if(nickname && isIndex){
+            //隐藏快捷登记的相关输入框,将用户电话号码放到该框中
+            $('.mj_form_wpo').hide();
+            $('#buyMoblie').val(nickname);
+        }
+        //求购信息发布事件
+        $('#mj-from-btn').click(function(){
+            //悬浮窗的标题配置
+            //_defLogin   = "<h6>登录</h6> <p style=\"margin-left: 10px;\"></p>";
+            _defLogin   = "<h6>亲，提交成功了</h6><p>登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
+            _buyTitle   = "<h6>亲，提交成功了</h6><p>系统已将登录密码发送到你手机，登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
+            name 	= $.trim($('#buyName').val());
+            tel 	= $.trim($('#buyMoblie').val());
+            subject = $.trim($('#buyNeed').val());
+            //验证手机号码
+            var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+            if(!tel || !mobilereg.test(tel) || tel.length!=11){
+                $(".mj-eed").show();
+                $(".reg-tip em").text('请输入手机号码');
+                return false;
+            }
+            if( !name && !nickname ){
+                $(".mj-eed").show();
+                $(".reg-tip em").show().text('请输入姓名');
+                return false;
+            }
+            if( !subject ){
+                $(".mj-eed").show();
+                $(".reg-tip em").show().text('请输入内容');
+                return false;
+            }
+            data	= new Array();
+            data['name'] 	= name;
+            data['tel'] 	= tel;
+            data['subject'] = subject;
+            ucNetwork.submitData(data);
+        });
+        //验证内容
+        $('#buyNeed').blur(function(){
+            if(!($('#buyNeed').val())){
+                $(".mj-eed").show();
+                $(".reg-tip em").show().text('请输入内容');
+                return false;
+            }
+        });
+        //验证手机号码
+        $('#buyMoblie').blur(function(){
+            tel 	= $('#buyMoblie').val();
+            var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+            if(!tel){
+                $(".mj-eed").show();
+                $(".reg-tip em").text('请输入手机号码');
+                return false;
+            }
+            if(!mobilereg.test(tel) || tel.length!=11){
+                $(".mj-eed").show();
+                $(".reg-tip em").text('请输入正确的手机号码');
+                return false;
+            }
+        });
+        //获取验证码
+        $('#dl_wjmm,#dl_fsmm').click(function(){
+            mobile 	= $.trim($('#loginUser').val());
+            var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+            if(!mobile){
+                $(".mj-eed").show();
+                $(".loginTips em").text('请输入手机号码');
+                return false;
+            }
+            if(!mobilereg.test(mobile) || mobile.length!=11){
+                $(".mj-eed").show();
+                $(".loginTips em").text('请输入正确的手机号码');
+                return false;
+            }
+            ucNetwork.sendCode(mobile,$(this),'点击获取验证码');
+        });
+        //用户登录
+        $('#dl_sub').click(function(){
+            account 	= $.trim($('#loginUser').val());
+            password 	= $.trim($('#loginPass').val());
+            var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+            if(!account){
+                $(".mj-eed").show();
+                $(".loginTips em").text('请输入手机号码');
+                return false;
+            }
+            if(!mobilereg.test(account) || account.length!=11){
+                $(".mj-eed").show();
+                $(".loginTips em").text('请输入正确的手机号码');
+                return false;
+            }
+            if(!password){
+                $(".loginTips em").text('请输入密码');
+                return false;
+            }
+            //判断是验证码登录还是密码登录
+            if($('#dl_sub').hasClass('yzm')){
+                ucNetwork.verifyCode(account,password);//验证码登录
+            }else{
+                ucNetwork.userLog(account,password);//密码登录
+            }
+        });
+    });
+    //快捷登录回调
+    function submitDataCallback(Obj){
+        $.each(Obj,function(i,n){
+            if(nickname){
+                //用户登录情况下
+                if(n.code!=1){
+                    //弹出成功框
+                    getLayer($('#mj-submitteS'));
+                }else{
+                    //弹出失败框
+                    getLayer($('#mj-submitteF'));
+                }
+            }else{
+                //用户未登录情况下
+                if(n.code==1){
+                    //用户不存在
+                    getLogin(_buyTitle,tel);
+                }else if(n.code==2){
+                    //用户存在
+                    getLogin('',tel);
+                }else{
+                    //弹出失败框
+                    getLayer($('#mj-submitteF'));
+                }
+            }
+        });
+    }
+    //发送验证码
+    function sendCodeCallback(Obj,htmlobj,title){
+        $.each(Obj,function(i,n){
+            if(n.code > 0 ){//发送成功
+                $('#dl_sub').addClass('yzm');//添加额外的class yzm 判断为验证码登录
+                timer(60, $('.aaaa'), title);//倒计时
+            }else{
+                console.debug(n.msg);
+            }
+        });
+    }
+    //验证验证码是否合法
+    function verifyCodeCallback(Obj,account,code){
+        $.each(Obj,function(i,n){
+            if(n.code==1){
+                $('.Not_logged').hide();
+                $('.logged').show();
+                ucNetwork.logCode(account,code);
+            }else{
+                console.debug(n.mess);
+            }
+        });
+    }
+    //调用登录弹窗
+    function getLogin(title,tel){
+        $("#loginUser").val('');
+        $("#loginPass").val('');
+        $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+        $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
+        $("#dl_ts").hide();
+        $('#loginTips').hide();
+        if (title){
+            //账户不存在
+            $("#dl_wjmm").hide();//忘记密码(已存在账号)
+            $("#dl_fsmm").show();//发送密码(不存在账号)
+            $("#dl_fsmm").addClass('aaaa');//添加类
+            //触发点击事件
+            $('.mj-inpuVs').html('');
+            $('#loginUser').val(tel);
+            $('#dl_wjmm').trigger('click');
+
+            $("#dl_title").html(title);
+        }else{
+            //账户存在
+            $("#dl_wjmm").addClass('aaaa');//添加类
+            $('.mj-inpuVs').html('');
+            $('#loginUser').val(tel);
+            $("#dl_title").html(_defLogin);
+        }
+        //CHOFN.loginShow();
+        //弹出登录框
+        $('#loginFormDiv').show();
+        boxBg();
+        reCal($('#loginFormDiv'));
+    }
+</script>
 <div class="mj-banner">
 
     <div class="w1180 mj-formW">
@@ -55,8 +244,6 @@
                     </div>
 
                 </div>
-
-
 
                 <a href="javascript:;" class="mj-from-btn" id="mj-from-btn">立即登记</a>
                 <p class="mj-from-txt">我们将严格保密您的个人信息</p>

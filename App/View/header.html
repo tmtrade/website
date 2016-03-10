@@ -33,90 +33,12 @@
     <script type="text/javascript">
         $(document).ready(function(e) {
             ucConfig.setConfig('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
-            $('#mj-from-btn').click(function(){
-                name 	= $.trim($('#buyName').val());
-                tel 	= $.trim($('#buyMoblie').val());
-                subject = $.trim($('#buyNeed').val());
-                //验证手机号码
-                var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
-                if(!tel || !mobilereg.test(tel) || tel.length!=11){
-                    $(".mj-eed").show();
-                    $(".reg-tip em").text('请输入手机号码');
-                    return false;
-                }
-                if( !name && !nickname ){
-                    $(".mj-eed").show();
-                    $(".reg-tip em").show().text('请输入姓名');
-                    return false;
-                }
-                if( !subject ){
-                    $(".mj-eed").show();
-                    $(".reg-tip em").show().text('请输入内容');
-                    return false;
-                }
-                data	= new Array();
-                data['name'] 	= name;
-                data['tel'] 	= tel;
-                data['subject'] = subject;
-                ucNetwork.submitData(data);
-            });
-            //验证内容
-            $('#buyNeed').blur(function(){
-                if(!($('#buyNeed').val())){
-                    $(".mj-eed").show();
-                    $(".reg-tip em").show().text('请输入内容');
-                    return false;
-                }
-            });
-            //验证手机号码
-            $('#buyMoblie').blur(function(){
-                tel 	= $('#buyMoblie').val();
-                var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
-                if(!tel){
-                    $(".mj-eed").show();
-                    $(".reg-tip em").text('请输入手机号码');
-                    return false;
-                }
-                if(!mobilereg.test(tel) || tel.length!=11){
-                    $(".mj-eed").show();
-                    $(".reg-tip em").text('请输入正确的手机号码');
-                    return false;
-                }
-            });
+            var copyArr = new Array();
+            ucLoginTemp.setLoginTemp();
+            //用户是否登录
+            nickname  	= '<?=$user_tel?>';
+            isIndex  	= '<?=$is_index?>';
         });
-        //快捷登录回调
-        function submitDataCallback(Obj){
-            console.debug(Obj);
-            $.each(Obj,function(i,n){
-                if(nickname){
-                    //用户登录情况下
-                    if(n.code!=-1){
-                        //弹出成功框
-                        getLayer($('#mj-submitteS'));
-                    }else{
-                        //弹出失败框
-                        getLayer($('#mj-submitteF'));
-                    }
-                }else{
-                    //用户未登录情况下
-                    if(n.code==1){
-                        //用户不存在
-                        $('#umobile').focus().val(tel);
-                        timer(60, $('#chaofan-ms-sent'), '  ');//倒计时
-                        $('#chaofn_dl_kaccount').trigger('click');
-                        $('#chaofan-mj-login').trigger('click');
-                    }else if(n.code==2){
-                        //用户存在
-                        $('#uemail').focus().val(tel);
-                        $('#chaofn_dl_account').trigger('click');
-                        $('#chaofan-mj-login').trigger('click');
-                    }else{
-                        //弹出失败框
-                        getLayer($('#mj-submitteF'));
-                    }
-                }
-            });
-        }
         //成功失败弹窗
         function getLayer(obj) {
             $(".mj-bcTips").hide();
@@ -132,20 +54,6 @@
                 layer.closeAll();
             });
         }
-    </script>
-    <script language="javascript">
-        $(document).ready(function(e) {
-            var copyArr = new Array();
-            ucLoginTemp.setLoginTemp();
-            //用户是否登录
-            nickname  	= '<?=$user_tel?>';
-            isIndex  	= '<?=$isIndex?>';
-            if(nickname && isIndex){
-                //隐藏快捷登记的相关输入框,将用户电话号码放到该框中
-                $('.mj_form_wpo').hide();
-                $('#buyMoblie').val(nickname);
-            }
-        });
     </script>
 </head>
 <body>

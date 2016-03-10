@@ -59,7 +59,7 @@ class DetailAction extends AppAction
 		}
 		//得到商标的分类描述
 		if(count($info['class']==1)){
-			$info['lable'] = $this->load('search')->getExtSaleInfo($info['class'][0]);
+			$info['lable'] = $this->load('search')->getClassLable($info['class'][0]);
 		}
 		//分配平台数据到页面
 		$this->set("platformIn", C('PLATFORM_IN'));
