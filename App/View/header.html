@@ -30,7 +30,8 @@
         $url 		= "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         $signature	= sha1("jsapi_ticket={$jsapiToken}&noncestr={$nonceStr}&timestamp={$timestamp}&url={$url}");
     ?>
-    <script src="http://uc.test.chofn.net/Static/script/user/script/usernetwork.js"></script>
+    <!--<script src="http://uc.test.chofn.net/Static/script/user/script/usernetwork.js"></script>-->
+    <script src="http://uc.test.chofn.net/Static/script/user/script/user.js"></script>
     <script type="text/javascript">
         $(document).ready(function(e) {
             //ucNetwork.config('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
@@ -198,7 +199,7 @@
                 $("#dl_wjmm").hide();//忘记密码(已存在账号)
                 $("#dl_fsmm").show();//发送密码(不存在账号)
                 $("#dl_fsmm").addClass('aaaa');//添加类
-                $('#dl_sub').addClass('yzm');//添加额外的class yzm 判断为验证码登录
+                //$('#dl_sub').addClass('yzm');//添加额外的class yzm 判断为验证码登录
 
                 $('.mj-inpuVs').html('');
                 $('#loginUser').val(tel);
@@ -232,7 +233,7 @@
             });
         }
     </script>
-    <script src="http://uc.test.chofn.net/Static/script/user/script/userlog.js"></script>
+    <!--<script src="http://uc.test.chofn.net/Static/script/user/script/userlog.js"></script>-->
     <script language="javascript">
         $(document).ready(function(e) {
             var copyArr = new Array();
