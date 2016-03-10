@@ -23,7 +23,7 @@ class BuyAction extends AppAction
 			$fkcookieNum = Session::get($fkcookie);	
 		}
 		if($fkcookieNum){
-			if($fkcookieNum != 1){
+			if($fkcookieNum == 1){
 				$urlHtml = "zhuanti/zhuanti.peifu.html";
 			}else{
 				$urlHtml = "zhuanti/zhuanti.safeguard.html";

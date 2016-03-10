@@ -1,5 +1,6 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" href="<?=StaticDir?>zhuanti/css/safestyle.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/mg-buySell.css"/>
 <!--[if IE]><link type="text/css" rel="stylesheet" href="<?=StaticDir?>zhuanti/css/common.css"/><![endif]-->
 <input type="hidden" name="sid" id="sid"  />
 <input type="hidden" name="area" id="area" />
@@ -177,7 +178,34 @@
     </div>
 
 </div>
+<!--求购已提交弹出层-->
+<div class="mj-boughtM" id="mj-submitteS">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>恭喜，求购提交成功</h2>
+            <p>请保持电话畅通，10分钟内联系你。</p>
+            <a href="<?=MANAGER_URL?>buyer/ready/" class="mj-boBtn1">点击此处查看！</a>
+        </div>
+    </div>
+</div>
+<!--求购已提交失败弹出层-->
+<div class="mj-boughtM" id="mj-submitteF">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2 style="color:#ff6600">求购提交失败，请稍后重试！</h2>
+            <p>可能因为网络问题或其他原因导致</p>
+            <a href="javascript:;" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="<?=StaticDir?>zhuanti/js/common.js"></script>
-
+<script type="text/javascript">
+    var _isLogin = "<?=$isLogin?>";
+    var _mobile  = "<?=$userMobile?>";
+</script>
 </body>
 </html>

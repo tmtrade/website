@@ -53,12 +53,23 @@ function addBuy()
         data: {mobile:mobile,content:need,name:'',sid:sid,area:area,source:2},
         dataType: "json",
         success: function(data){
+            var obj ;
             if (data.code == 1){
                 clearBuy();
-                getLayer($('#mj-submitteS'));
+                obj = $('#mj-submitteS');
             }else{
-                getLayer($('#mj-submitteF'));
+                obj = $('#mj-submitteF');
             }
+            layer.open({
+		type: 1,
+		title: false,
+		closeBtn: false,
+		area: ['485px', '226px'],
+		content: obj
+            });
+            $(".mj-close").bind("click",function(){
+            layer.closeAll();
+    });
         },
         error: function(data){
             alert('服务器错误！');
