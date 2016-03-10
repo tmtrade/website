@@ -622,5 +622,36 @@
     {
         getLogin(_wantTitle);
     }
+    function getLogin(title){
+
+        $("#loginUser").val('');
+
+        $("#loginPass").val('');
+
+        $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+
+        $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
+
+        $("#dl_ts").hide();
+
+        $('#loginTips').hide();
+
+        $("#dl_wjmm").hide();//忘记密码(已存在账号)
+
+        $("#dl_fsmm").show();//发送密码(不存在账号)
+
+        if (title){
+
+            $("#dl_title").html(title);
+
+        }else{
+
+            $("#dl_title").html(_defLogin);
+
+        }
+        console.debug( $("#dl_title"));
+        CHOFN.loginShow();
+
+    }
 </script>
 <? require(ViewDir.'/footer.html'); ?>
