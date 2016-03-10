@@ -27,24 +27,22 @@ class OffpriceAction extends AppAction
      */
     public function index()
     {
-        $class  = $this->input('c', 'string', '');
+        $class  = $this->input('c', 'int', '');
         $group  = $this->input('g', 'string', '');
         $page   = $this->input('_p', 'int', 1);
 
-        $_class = $this->strToArr($class);
-        $_group = $this->strToArr($group);
+        //$_class = $this->strToArr($class);
+        //$_group = $this->strToArr($group);
 
         $this->_searchArr['c']  = $class;
         $this->_searchArr['g']  = $group;
         $this->_searchArr['_p'] = $page;
 
         $params = array('isOffprice'=>'1');
-        if ( count($_class) > 1 ){
-            $params['class'] = implode(',', $_class);
-        }else{
-            $params['class'] = implode(',', $_class);
-            if ( !empty($_group) ){
-                $params['group'] = implode(',', $_group);
+        if ( in_array($class, range(1,45)) ){
+            $params['class'] = $class;
+            if ( !empty($page) ){
+                $params['group'] = $group;
             }
         }
 // debug($params);

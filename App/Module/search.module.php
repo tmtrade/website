@@ -344,11 +344,11 @@ class SearchModule extends AppModule
 
         //组合类型
         if ( !empty($params['type']) ){
-            $r['ft']['nums'] = $params['type'];
+            $r['in']['type'] = explode(',', $params['type']);
         }
         //商标字数
         if ( !empty($params['length']) ){
-            $r['ft']['length'] = $params['length'];
+            $r['in']['nums'] = explode(',', $params['length']);
         }
 
         //$isInGroup = false;
@@ -389,7 +389,8 @@ class SearchModule extends AppModule
     {
         if ( empty($number) ) return '3';
 
-        $sale = $this->load('sale')->getSaleInfo($number);
+        $sale = $this->load('sale')->getSaleInfo($number,0,0);
+        //debug($sale);
         if ( empty($sale) ){
             $r['eq']    = array('trademark_id'=>$number);
             $r['order'] = array('isShow'=>'desc');

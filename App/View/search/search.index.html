@@ -304,10 +304,10 @@
                 </li>
             <? } ?>
         <? } ?>
-    <? }elseif ( empty($searchList) && $kt == 1) { ?>
+    <? }elseif ( empty($searchList) ) { ?>
         <div class="sbhwjg">
             <div class="sbhwjg-main">
-                <h3>抱歉！此商标不出售 / 没找到相关信息</h3>
+                <h3>抱歉！没找到相关信息</h3>
                 <font>
                     建议你：<br>
                     1 . 检查<lable>商标号</lable>，确保输入<lable>正确</lable>。<br>
@@ -420,7 +420,6 @@
         $(".fdkf-ss").show();
     })
 </script>
-<script src="<?=StaticDir?>1.2/js/jquery-1.8.3.min.js"></script>
 <script src="<?=StaticDir?>script/objurl.js"></script>
 
 <script>
@@ -488,9 +487,6 @@
                 .find('.ms-conditionMore').removeClass(curCls).text('更多');
     }
 
-
-
-    var _number     = <?=$_number?>;
     var _start      = 1;
     var _startTm    = 1;
     var _whereStr   = "<?=$whereStr?>";
@@ -501,10 +497,6 @@
     var _hasTm      = 1;
     // var _class      = "<?=$c?>";
     // var _group      = "<?=$g?>";
-    // var _kw         = "<?=$kw?>";
-    // var _sT         = "<?=$t?>"; //商标类型，（中文，英文、、、）
-    // var _sN         = "<?=$sn?>";//商标名称长度，（一个中文或字母、、、）
-    // var _plat       = "<?=$p?>"; //入驻平台，（天猫，京东、、、）
     var _times      = 0;
     var _objTime ;
     var _mod        = "<?=$_mod_?>";
@@ -580,7 +572,7 @@
         if ( _times != 0 ) return false; 
 
         var obj = new objURL('/?'+_whereStr);
-
+        
         if ( !_hasSale ) {
             if ( _startTm == 1 ) {
                 _start = _startTm;
@@ -630,7 +622,6 @@
         }
     });
 
-    $(".mj-dd").remove();
 </script>
 
 <? require(ViewDir.'/footer.html'); ?>

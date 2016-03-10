@@ -418,3 +418,16 @@
     background: #268ACA;
 }
 
+.mj-listButn .ms-inquiry{
+    background: #ff8b3e;
+}
+.mj-listButn .ms-inquiry:hover{
+    background: #f5843a;
+}
+.mj-listButn .ms-seller{
+    background: #ff5656;
+}
+.mj-listButn .ms-seller:hover{
+    background: #f74f4f;
+}
+

@@ -21,11 +21,18 @@
     </div>
     <div class="wjg-cnxh">
         <label class="fl">猜你喜欢</label>
-        <span  class="fr exchange" data-num=0>
-            <img src="<?=StaticDir?>1.2/images/qh-ico.png">
-            换一批
+        <span  class="fr exchange" data-num=0 onclick="goMore('<?=$moreUrl?>');return false;">
+            <img src="<?=StaticDir?>1.2/images/us-icon2.png">
+            查看更多
         </span>
     </div>
+    <script type="text/javascript">
+        function goMore(url)
+        {
+            alert(url);
+            window.location.href = url;
+        }
+    </script>
     <!--<script type="text/javascript">-->
         <!--var ocontuls=$(".ms-filtersList ul.f-clearfix");-->
         <!--$(".exchange").click(function(){-->
@@ -49,255 +56,67 @@
     <!-- ms-filtersList start -->
     <div class="ms-filtersList">
         <ul class="f-clearfix">
+        <?foreach ($tmList as $k => $v) {?>
+            <?$_c_ = explode(',', $v['class']);
+            if ( count($_c_) < 2 ){?>
             <li>
                 <div>
                     <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg3.png" alt=""/></span>
+                        <a href="<?=$v['viewUrl']?>" class="ms-collect cur"><i class="us-icon us-icon20"></i></a>
+                        <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" alt=""/></a></span>
                         <div class="ms-filtersListTxt">
-                            <h6>111梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
+                            <h6><?=$v['name']?></h6>
+                            <p><?=$v['class']?></p>
+                            <p title="<?=$v['group']?>"><?=mb_substr($v['group'], 0, 8, 'UTF-8')?mb_substr($v['group'], 0, 8, 'UTF-8'):'-'?></p>
                         </div>
                         <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+                            <a href="#" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
+                            <a href="#" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
                         </div>
                     </div>
                 </div>
             </li>
-            <li>
-                <div>
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg4.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect cur"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg1.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
+            <?}else{?>
             <li>
                 <div class="ms-filterMany">
                     <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg.png" alt=""/></span>
+                        <a href="<?=$v['viewUrl']?>" class="ms-collect"><i class="us-icon us-icon20"></i></a>
+                        <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=StaticDir?>1.2/images/brand-lg.png" alt=""/></a></span>
                         <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>共<em>25</em>个分类</p>
-                            <p>群组名称</p>
+                            <h6><?=$v['name']?></h6>
+                            <p>共<em><?=count($_c_)?></em>个分类</p>
+                            <p title="<?=$v['group']?>"><?=mb_substr($v['group'], 0, 8, 'UTF-8')?mb_substr($v['group'], 0, 8, 'UTF-8'):'-'?></p>
                         </div>
                         <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+                            <a href="#" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
+                            <a href="#" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
                         </div>
                     </div>
                     <div class="ms-sortMain">
                         <ul class="ms-sortList">
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
+                        <?foreach ($_c_ as $_k => $_v) {
+                            if ( $_k > 10 ) break;
+                        ?>
+                            <li><span><?=$_v?>类</span>-<?=$_CLASS[$_v]?></li>
+                        <?}?>
                         </ul>
                         <div class="ms-sortMore">
-                            <a href="">查看更多&nbsp;&gt;</a>
+                            <a href="<?=$v['viewUrl']?>">查看更多&nbsp;&gt;</a>
                         </div>
                     </div>
                 </div>
             </li>
-            <li>
-                <div>
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg2.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg3.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg4.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect cur"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg1.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="ms-filterMany">
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>共<em>25</em>个分类</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                    <div class="ms-sortMain">
-                        <ul class="ms-sortList">
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                            <li><span>30类</span> - 食品佐料</li>
-                        </ul>
-                        <div class="ms-sortMore">
-                            <a href="">查看更多&nbsp;&gt;</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg2.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg3.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <div class="ms-filterCenter">
-                        <a href="" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><img src="<?=StaticDir?>1.2/images/brand-lg4.png" alt=""/></span>
-                        <div class="ms-filtersListTxt">
-                            <h6>梵秀,FAMXIU</h6>
-                            <p>30类 - 食品佐料</p>
-                            <p>群组名称</p>
-                        </div>
-                        <div class="ms-filterBtn">
-                            <a href="" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                            <a href="" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
+            <?}?>
+        <?}?>
 
+        </ul>
     </div>
     <!-- ms-filtersList end -->
 </div>
 
 <script type="text/javascript">
     
-    $(".mj-dd").remove();
+    //$(".mj-dd").remove();
 </script>
 
 <? require(ViewDir.'/footer.html'); ?>

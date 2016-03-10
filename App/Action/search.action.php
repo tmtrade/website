@@ -336,21 +336,58 @@ class SearchAction extends AppAction
         return $_str;
     }
 
+    /**
+     * 商标号查询
+     *
+     * 处理商标号查询的显示与跳转
+     * 
+     * @author  Xuni
+     * @since   2016-03-10
+     *
+     * @return  void
+     */
     protected function detail($number)
     {
         $res = $this->load('search')->getNumberInfo($number);
         if ( $res['code'] == '1' ){
             $this->redirect('', '/d-'.$res['tid'].'-'.$res['class'].'.html');
-        }else{
-            if ( $res == '3' ){
-                $title = '抱歉！此商标不出售';
-            }elseif( $res == '2' ){
-                $title = '抱歉！没找到相关信息';
-            }
-            $this->set('title', $title);
-            $this->set('tmList', $res['list']);
-            $this->display('search/search.detail.html');
+            exit;
         }
+        //分类显示标题
+        $classGroup = $this->load('search')->getClassGroup(0,0);
+        list($_class,) = $classGroup;
+        $this->set('_CLASS', $_class);//分类
+        //商标号错误
+        if ( $res == '3' ){
+            $title  = '抱歉！没找到相关信息';
+            $params = array('isOffprice'=>'1');
+            $list    = $this->load('search')->getSaleList($params, 1, 6);
+            $url    = "/offprice";
+        }else{//商标不出售
+            $title  = '抱歉！此商标不出售';
+            $info   = $this->load('trademark')->getTmInfo($number);
+            $name   = $info['name'];
+            $class  = implode(',', $info['class']);
+            //获取与它近似商标
+            $param  = array('name'=>$info['name'],'_name'=>'9','class'=>$class);
+            $_like  = $this->load('search')->getSaleList($param, 1, 6);
+            //获取特价商标
+            $last   = 6 + 6 - count($_like['rows']);
+            $params = array('isOffprice'=>'1');
+            $_off   = $this->load('search')->getSaleList($params, 1, $last);
+
+            $list['rows'] = array_merge($_like['rows'], $_off['rows']);
+            //判断更多是特价页还是近似筛选页
+            if ( count($_like['rows']) == 6 )
+                $url    = "/search/?kw=$name&c=$class&kt=1&n=9";
+            else
+                $url    = "/offprice";
+        }
+        $this->set('title', $title);
+        $this->set('moreUrl', $url);
+        $this->set('tmList', $list['rows']);
+        $this->display('search/search.detail.html');
+        
         exit;
     }
 
@@ -371,7 +408,6 @@ class SearchAction extends AppAction
 
         $params = $this->getSearchParams();
         //debug($this->_searchArr);
-        //debug($params);
         $res    = $this->load('search')->search($params, $page, $this->_number, $type);
 
         $this->set('searchList', $res['rows']);
