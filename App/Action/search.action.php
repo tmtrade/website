@@ -43,7 +43,7 @@ class SearchAction extends AppAction
             }
             $whereStr   = http_build_query($this->_searchArr);
         }
-        $_cls = empty($this->_searchArr['c']) ? 0 : intval($this->_searchArr['c']);
+        //$_cls = empty($this->_searchArr['c']) ? 0 : intval($this->_searchArr['c']);
         $classGroup = $this->load('search')->getClassGroup();
         //debug($classGroup);
         list($_class, $_group) = $classGroup;

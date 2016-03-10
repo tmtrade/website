@@ -239,7 +239,7 @@ class SearchModule extends AppModule
         }
         //特价
         if ( !empty($params['isOffprice']) ){
-            $r['raw'] .= ' `priceType` = 1 AND `isOffprice` = 1 AND (`salePriceDate` = 0 OR `salePriceDate` > unix_timestamp(now())) ';
+            $r['raw'] .= ' AND `priceType` = 1 AND `isOffprice` = 1 AND (`salePriceDate` = 0 OR `salePriceDate` > unix_timestamp(now())) ';
         }
 
         //商标号
