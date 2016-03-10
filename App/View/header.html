@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/color.css"/>
     <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery-1.8.3.min.js"></script>
     <script src="<?=StaticDir?>1.2/js/layer/layer.js"></script>
-    <!--<script src="<?=StaticDir?>1.2/js/login.js"></script>-->
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/respond.css"/>
     <script src="<?=StaticDir?>1.2/js/respond.min.js"></script>
     <script language="javascript" src="<?=StaticDir?>1.2/other/code.php"></script>
@@ -30,17 +29,11 @@
         $url 		= "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         $signature	= sha1("jsapi_ticket={$jsapiToken}&noncestr={$nonceStr}&timestamp={$timestamp}&url={$url}");
     ?>
-    <!--<script src="http://uc.test.chofn.net/Static/script/user/script/usernetwork.js"></script>-->
     <script src="http://uc.test.chofn.net/Static/script/user/script/user.js"></script>
     <script type="text/javascript">
         $(document).ready(function(e) {
-            //ucNetwork.config('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
             ucConfig.setConfig('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
             $('#mj-from-btn').click(function(){
-                //悬浮窗的标题配置
-                //_defLogin   = "<h6>登录</h6> <p style=\"margin-left: 10px;\"></p>";
-                _defLogin   = "<h6>亲，提交成功了</h6><p>登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
-                _buyTitle   = "<h6>亲，提交成功了</h6><p>系统已将登录密码发送到你手机，登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
                 name 	= $.trim($('#buyName').val());
                 tel 	= $.trim($('#buyMoblie').val());
                 subject = $.trim($('#buyNeed').val());
@@ -90,49 +83,6 @@
                     return false;
                 }
             });
-            //获取验证码
-            $('#dl_wjmm,#dl_fsmm').click(function(){
-                mobile 	= $.trim($('#loginUser').val());
-                var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
-                if(!mobile){
-                    $(".mj-eed").show();
-                    $(".loginTips em").text('请输入手机号码');
-                    return false;
-                }
-                if(!mobilereg.test(mobile) || mobile.length!=11){
-                    $(".mj-eed").show();
-                    $(".loginTips em").text('请输入正确的手机号码');
-                    return false;
-                }
-                ucNetwork.sendCode(mobile,$(this),'点击获取验证码');
-            });
-
-            //用户登录
-            $('#dl_sub').click(function(){
-                account 	= $.trim($('#loginUser').val());
-                password 	= $.trim($('#loginPass').val());
-                var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
-                if(!account){
-                    $(".mj-eed").show();
-                    $(".loginTips em").text('请输入手机号码');
-                    return false;
-                }
-                if(!mobilereg.test(account) || account.length!=11){
-                    $(".mj-eed").show();
-                    $(".loginTips em").text('请输入正确的手机号码');
-                    return false;
-                }
-                if(!password){
-                    $(".loginTips em").text('请输入密码');
-                    return false;
-                }
-                //判断是验证码登录还是密码登录
-                if($('#dl_sub').hasClass('yzm')){
-                    ucNetwork.verifyCode(account,password);//验证码登录
-                }else{
-                    ucNetwork.userLog(account,password);//密码登录
-                }
-            });
         });
         //快捷登录回调
         function submitDataCallback(Obj){
@@ -151,71 +101,21 @@
                     //用户未登录情况下
                     if(n.code==1){
                         //用户不存在
-                        getLogin(_buyTitle,tel);
+                        $('#umobile').focus().val(tel);
+                        timer(60, $('#chaofan-ms-sent'), '  ');//倒计时
+                        $('#chaofn_dl_kaccount').trigger('click');
+                        $('#chaofan-mj-login').trigger('click');
                     }else if(n.code==2){
                         //用户存在
-                        getLogin('',tel);
+                        $('#uemail').focus().val(tel);
+                        $('#chaofn_dl_account').trigger('click');
+                        $('#chaofan-mj-login').trigger('click');
                     }else{
                         //弹出失败框
                         getLayer($('#mj-submitteF'));
                     }
                 }
             });
-        }
-        //发送验证码
-        function sendCodeCallback(Obj,htmlobj,title){
-            console.debug(title);
-            $.each(Obj,function(i,n){
-                if(n.code > 0 ){//发送成功
-                    $('#dl_sub').addClass('yzm');//添加额外的class yzm 判断为验证码登录
-                    timer(60, $('.aaaa'), title);//倒计时
-                }else{
-                    console.debug(n.msg);
-                }
-            });
-        }
-        //验证验证码是否合法
-        function verifyCodeCallback(Obj,account,code){
-            $.each(Obj,function(i,n){
-                if(n.code==1){
-                    $('.Not_logged').hide();
-                    $('.logged').show();
-                    ucNetwork.logCode(account,code);
-                }else{
-                    console.debug(n.mess);
-                }
-            });
-        }
-        //调用登录弹窗
-        function getLogin(title,tel){
-            $("#loginUser").val('');
-            $("#loginPass").val('');
-            $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
-            $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
-            $("#dl_ts").hide();
-            $('#loginTips').hide();
-            if (title){
-                //账户不存在
-                $("#dl_wjmm").hide();//忘记密码(已存在账号)
-                $("#dl_fsmm").show();//发送密码(不存在账号)
-                $("#dl_fsmm").addClass('aaaa');//添加类
-                //$('#dl_sub').addClass('yzm');//添加额外的class yzm 判断为验证码登录
-
-                $('.mj-inpuVs').html('');
-                $('#loginUser').val(tel);
-                //$('#dl_wjmm').trigger('click');
-                timer(60, $('.aaaa'), '  ');//倒计时
-
-                $("#dl_title").html(title);
-            }else{
-                //账户存在
-                $("#dl_wjmm").addClass('aaaa');//添加类
-                $('#dl_sub').removeClass('yzm');//删除额外的class yzm 判断为密码登录
-                $('.mj-inpuVs').html('');
-                $('#loginUser').val(tel);
-                $("#dl_title").html(_defLogin);
-            }
-            CHOFN.loginShow();
         }
         //成功失败弹窗
         function getLayer(obj) {
@@ -233,16 +133,14 @@
             });
         }
     </script>
-    <!--<script src="http://uc.test.chofn.net/Static/script/user/script/userlog.js"></script>-->
     <script language="javascript">
         $(document).ready(function(e) {
             var copyArr = new Array();
             ucLoginTemp.setLoginTemp();
             //用户是否登录
             nickname  	= '<?=$user_tel?>';
-            if(nickname){
-                //隐藏注册
-                $('.zc').hide();
+            isIndex  	= '<?=$isIndex?>';
+            if(nickname && isIndex){
                 //隐藏快捷登记的相关输入框,将用户电话号码放到该框中
                 $('.mj_form_wpo').hide();
                 $('#buyMoblie').val(nickname);
@@ -303,11 +201,11 @@
                 <div class="chaofan-login"></div>
             </li>
             <li class="spacer xs_login_ zc"></li>
-            <li class="zc">
+            <!--<li class="zc">
 
                 <div class="mj-cols">
 
-                    <!--未注册状态-->
+                    &lt;!&ndash;未注册状态&ndash;&gt;
 
                     <span class="Not_logged" style="display: block;">
 
@@ -319,7 +217,7 @@
 
                 </div>
 
-            </li>
+            </li>-->
             <li class="spacer xs_login_"></li>
             <li>
 
@@ -424,7 +322,7 @@
 
             <form id="searchForm" method="GET" action="/search/index/">
 
-                <input type="text" name="kw" class="inptext"  placeholder="输入你想买的商标名称/商标号"/>
+                <input type="text" name="kw" class="inptext"  placeholder="输入你想买的商标名称/商标号" autocomplete="off"/>
 
                 <!--<ul class="mj-search-box" style="border: 1px solid red;">-->
 
@@ -500,7 +398,7 @@
 
                 </div>
 
-                <div class="mj-dd" style="display: none;">
+                <div class="mj-dd">
                     <? foreach($menuFirst as $first): ?>
                     <dd>
                         <a href="javascript:;">
@@ -567,13 +465,6 @@
         </div>
     </div>
 </div>
-
-
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/mj-index.css"/>
-
-<script src="<?=StaticDir?>1.2/js/layer.js"></script>
-
 <script src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
-
-<script src="<?=StaticDir?>1.2/js/buy.js"></script>
 <!--mj-mNav end-->

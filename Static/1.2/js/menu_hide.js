@@ -3,10 +3,14 @@
  */
 $(function(){
     $('.mj-dd').hide();
+    $('.mj-dtCon').mousemove(function(){
+        $('.mj-dd').show();
+    });
+    $('.mj-dt').mouseleave(function(){
+        $('.mj-dd').hide();
+    });
 });
-$('.mj-dd').mousemove(function(){
-    $('.mj-dd').show();
-});
-$('.mj-dd').mouseleave(function(){
-    $('.mj-dd').hide();
-});
+
+
+
+

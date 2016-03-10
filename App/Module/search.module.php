@@ -20,6 +20,7 @@ class SearchModule extends AppModule
         'second'    => 'secondStatus',
         'group'     => 'group',
         'class'     => 'tmClass',
+        'tminfo'        => 'saleTminfo',
     );
     
     //获取查询的TITLE
@@ -493,9 +494,7 @@ class SearchModule extends AppModule
         //$data['isOffprice'] = false;
         //$data['isBest']     = false;
         //$data['isLicense']  = false;
-
         if ( empty($data['tid']) ) return $data;
-        
         if ( $data['id'] ){
             $data['imgUrl'] = $this->load('internal')->getViewImg($data['id']);
         }else{
@@ -504,7 +503,6 @@ class SearchModule extends AppModule
         $_class = current( explode(',', $data['class']) );
         $data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';
         $data['safeUrl'] = 'http://jingling.yizhchan.com/?nid='.$data['number'].'&class='.$data['class'];
-        
         //if ( empty($data['id']) ) return $data;
 
         //$sale = $this->load('internal')->getSaleInfo($data['id'], 0, 0);
@@ -519,7 +517,6 @@ class SearchModule extends AppModule
         // if ( $sale['isLicense'] == 1 ){
         //     $data['isLicense'] = true;
         // }
-
         return $data;
     }
 
@@ -585,5 +582,28 @@ class SearchModule extends AppModule
         return $_arr;
     }
 
+    /**
+     * 获取商标的额外信息
+     * @param $id
+     * @return string
+     */
+    public function getExtSaleInfo($id){
+        //得到商标价值
+        $r['eq'] = array('saleId'=>$id);
+        $r['col'] = array('value');
+        $data = $this->import('tminfo')->find($r);
+        //得到图片
+        $data['imgUrl'] = $this->load('internal')->getViewImg($id);
+        return $data;
+    }
+
+    /**
+     * 得到分类描述
+     * @param $class
+     * @return mixed
+     */
+    public function getClassLable($class){
+        return $this->import('class')->get($class,'lable');
+    }
 }
 ?>

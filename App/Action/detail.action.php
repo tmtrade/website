@@ -57,6 +57,10 @@ class DetailAction extends AppAction
 		if ( !in_array($class, $info['class']) ){
 			$this->redirect('未找到页面6', '/index/error');
 		}
+		//得到商标的分类描述
+		if(count($info['class']==1)){
+			$info['lable'] = $this->load('search')->getExtSaleInfo($info['class'][0]);
+		}
 		//分配平台数据到页面
 		$this->set("platformIn", C('PLATFORM_IN'));
 		$this->set("platformUrl", C('PLATFORM_URL'));
@@ -85,6 +89,9 @@ class DetailAction extends AppAction
 			$contact['name']	= $this->getPhoneName($tid, $class, 1);//获取联系人信息
 			$contact['phone']	= empty($sale['viewPhone']) ? '18602868321' : $sale['viewPhone'];
 		}
+		//合并商标的额外数据
+		$saleExt = $this->load('search')->getExtSaleInfo($saleId);
+		$sale = array_merge($sale,$saleExt);
 		//设置标题
 		$title['name'] 	= $info['name'];
 		$title['class']	= $class;

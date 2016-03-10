@@ -22,7 +22,6 @@ var CHOFN = (function($,chofn){
     var __loginBoxs = $('#buyFormDiv');
 
     chofn.BuyShow = function(obj){
-        alert(1);
 
         __loginBoxs.show();
 
