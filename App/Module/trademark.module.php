@@ -171,7 +171,8 @@ class TrademarkModule extends AppModule
 
         $info['items']      = $items;
         $info['class']      = array_filter( $class );
-        $info['lable']      = $this->import('tmclass')->get($info['class'][0],'lable');//获得分类标签
+        $classInfo = $this->import('tmclass')->get($info['class'][0]);
+        $info['lable']      = $classInfo['label'];//获得分类标签
         $info['value']      = $this->getValue($number);;//获得商标价值描述
         $info['imgUrl']     = $this->getImg($number);
         $info['group']      = $this->groupReplace($info['group']);
@@ -285,7 +286,7 @@ class TrademarkModule extends AppModule
         $r['col'] = array('indexPic');
         $rst = $this->import('tminfo')->find($r);
         if($rst && !empty($rst['indexPic'])){
-            return TRADE_URL.$rst['indexPic'];
+            return TRADE_URL.substr($rst['indexPic'],1);
         }
         $r = array();
         //无则获取商标图
@@ -304,7 +305,7 @@ class TrademarkModule extends AppModule
         $r['eq'] = array('number'=>$number);
         $r['col'] = array('value');
         $rst = $this->import('tminfo')->find($r);
-        if($rst && !$rst['value']){
+        if($rst && $rst['value']){
             return $rst['value'];
         }
         return '';

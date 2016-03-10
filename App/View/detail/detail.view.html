@@ -83,8 +83,8 @@
             </div>
         </div>
         <div class="fr">
-           <h3><?=$info['name']?><span><?if(count($info['class'])==1):?>（<?=$info['class'][0]?>类 <?=$info['lable']?>）<?endif;?></span><a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
-           <label class="bm"><?=$info['value']?></label>
+           <h3><?=$info['name']?>&nbsp;&nbsp;<span> <?if(count($info['class'])==1):?>（<?=$info['class'][0]?>类 <?=$info['lable']?>）<?endif;?> </span> <a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
+            <label class="bm"><?=$info['value']?></label>
            <p class="may"><font>此商标可入驻：
                <?php
 					foreach($platformIn as $key => $val){
@@ -157,7 +157,7 @@
                 <? if ( !empty($sale) ){ ?>
                     <!--定价部分-->
                     <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ ?>
-                    特价价格促销
+                    <!--特价价格促销-->
                     <div class="mj-priceTxtt">
                         <p class="price">
                             <font>价格</font>
@@ -167,36 +167,52 @@
                         <p class="period"><font>有效期</font> <span><?php if($sale['salePriceDate'] > 0){
                             echo date('Y-m-d H:i',$sale['salePriceDate']);
                             }else{echo "永久";} ?></span>前有效</p>
-                        <p class="sales"><font>促销</font><span>买一送一</span>新客户专享</p>
+                        <?if($topic):?>
+                        <p class="promote"><font>促销</font>
+                            <?foreach($topic as $item):?>
+                            <span><a href="<?=$item['topicUrl']?>" target="_blank"><?=$item['title']?></a></span>
+                            <?endforeach;?>
+                        </p>
+                        <?endif;?>
                     </div>
                     <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
-                    定价商品
+                    <!--定价商品-->
                     <div class="mj-priceTxtt">
                         <p class="price">
                             <font>价格</font>
                             <strong><span>￥</span><?=$sale['salePrice']?></strong>元
                         </p>
                         <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
-                        <p class="sales"><font>促销</font><span>买一送一</span>新客户专享</p>
+                        <?if($topic):?>
+                        <p class="promote"><font>促销</font>
+                            <?foreach($topic as $item):?>
+                            <span><a href="<?=$item['topicUrl']?>" target="_blank"><?=$item['title']?></a></span>
+                            <?endforeach;?>
+                        </p>
+                        <?endif;?>
                     </div>
                     <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
-                    议价商品
+                    <!--议价商品-->
                     <div class="mj-priceTxtt">
                         <p class="price">
                             <font>价格</font>
                             <strong><span>￥</span>议价</strong>
                         </p>
                         <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
-                        <p class="sales"><font>促销</font><span>买一送一</span>新客户专享</p>
+                        <?if($topic):?>
+                        <p class="promote"><font>促销</font>
+                            <?foreach($topic as $item):?>
+                            <span><a href="<?=$item['topicUrl']?>" target="_blank"><?=$item['title']?></a></span>
+                            <?endforeach;?>
+                        </p>
+                        <?endif;?>
                     </div>
-                    <?}else{?>
-                    111111111111111111111111111111111111111111
                     <?}?>
                     <!--操作部分-->
                     <? if($baystate == 1){ ?>
                         <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
                     <? }else{ ?>
-                    <!--特价价格促销-->
+                        <!--特价价格促销-->
                         <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){
                         ?>
                         <?if($isLogin){ ?>
@@ -281,24 +297,35 @@
             </p>
             <div class="main-db">
                 <ul class="recompic">
-                   <? foreach($recordList as $k=>$v){ 
-                   if($k<5){
-                   ?>
-                   <li>
-                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" ><img src="<?=$v['imgUrl']?>"></a>
+                    <li>
+                        <img src="<?=StaticDir?>1.2/images/brand-lg1.png">
                     </li>
-                   <?}}?>
+                    <li>
+                        <img src="<?=StaticDir?>1.2/images/al-img3.png">
+                    </li>
+                    <li>
+                        <img src="<?=StaticDir?>1.2/images/al-img4.png">
+                    </li>
+                    <li>
+                        <img src="<?=StaticDir?>1.2/images/brand-lg7.png">
+                    </li>
                 </ul>
                 <ul class="recompic">
-                   <?if(empty($user_tel)){?>
-                   <p class="p-logo"><a href="javascript:void(0);" id="loginShow">登录</a>保存收藏信息，永不丢失</p>
-                   <?}else{?>
-                   
-                   <?}?>
-                     
+                    <li>
+                        <img src="<?=StaticDir?>1.2/images/brand-lg1.png">
+                    </li>
+                    <li>
+                        <img src="<?=StaticDir?>1.2/images/al-img3.png">
+                    </li>
+                    <li>
+                        <img src="<?=StaticDir?>1.2/images/al-img4.png">
+                    </li>
+                    <li>
+                        <img src="<?=StaticDir?>1.2/images/brand-lg7.png">
+                    </li>
                 </ul>
             </div>
-           
+            <p class="p-logo"><a>登录</a>保存收藏信息，永不丢失</p>
         </div>
     </div>
     <div class="intr-flow fr">
@@ -306,6 +333,26 @@
             <a href="#sbjj" class="on">商标介绍</a>
             <a href="#jylc">交易流程</a>
         </p>
+        <script type="text/javascript">
+            $(window).scroll(function(){
+                if(($(".intr-flow").offset().top-$(document).scrollTop())<=0){
+                    $(".intr-flow-tit").addClass("f-tp");
+                }
+                else{
+                    $(".intr-flow-tit").removeClass("f-tp");
+                }
+            })
+            $(".intr-flow-tit a").eq(0).click(function(){
+                var t=$(".trademark").offset().top;
+                $("html, body").animate({"scrollTop":t});
+            })
+            $(".intr-flow-tit a").eq(1).click(function(){
+                var t=$(".transaction").offset().top;
+                $("html, body").animate({"scrollTop":t});
+            })
+
+
+        </script>
         <div class="detail-recom-main">
             <?if(isset($sale) && !empty($sale['tminfo']['embellish'])):?>
             <div class="trademark">
@@ -508,25 +555,8 @@
     </ul>
 </div>
 <!--成功案列end-->
+<script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
 <script type="text/javascript">
-    //商品详情选项卡
-    jQuery(".record-collect").slide({titCell:".hd a",mainCell:".main-db",effect:"fold",pnLoop:false});
-    $(window).scroll(function(){
-        if(($(".intr-flow").offset().top-$(document).scrollTop())<=0){
-            $(".intr-flow-tit").addClass("f-tp");
-        }
-        else{
-            $(".intr-flow-tit").removeClass("f-tp");
-        }
-    })
-    $(".intr-flow-tit a").eq(0).click(function(){
-        var t=$(".trademark").offset().top;
-        $("html, body").animate({"scrollTop":t});
-    })
-    $(".intr-flow-tit a").eq(1).click(function(){
-        var t=$(".transaction").offset().top;
-        $("html, body").animate({"scrollTop":t});
-    })
     $(".classify-main li").each(function(){
         $(this).hover(
                 function(){
@@ -541,11 +571,7 @@
                 })
 
     })
-    //收藏登录
-    $("#loginShow").click(function(){
-        $("#chaofan-mj-login").click();
-    })
-    
+
     var olis=$(".classify-main li");
     for(var i=0;i<=olis.length;i++){
         if(olis.length>10){
@@ -584,5 +610,17 @@
 
         })
     })
+</script>
+<script>
+    var _wantTitle  = "<h6>登录提交购买意向</h6><p>我们10分钟向你确认需求，你也可登录查看商标转让进度</p>";
+    var _viewTitle  = "<h6>登录查看此商标出售价格</h6><p>一次登录后可查看全站所有出售商标价格</p>";
+    function goLook()
+    {
+        getLogin(_viewTitle);
+    }
+    function goBuy()
+    {
+        getLogin(_wantTitle);
+    }
 </script>
 <? require(ViewDir.'/footer.html'); ?>

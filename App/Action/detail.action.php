@@ -125,9 +125,12 @@ class DetailAction extends AppAction
                 
 		//电话旁边联系人信息
 		$this->set("contact", $contact);
+		//得到商标参与的专题
+		$topic = $this->load('zhuanti')->getTopicByNumber($number);
 		//分配数据
 		$this->set("info", $info);
 		$this->set("sale", $sale);
+		$this->set("topic", $topic);
 		$this->set("tips", $tips);
 		$this->set("tid", $tid);
 		$this->set("class", $class);

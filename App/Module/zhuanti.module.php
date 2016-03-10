@@ -56,7 +56,34 @@ class ZhuantiModule extends AppModule
         }
         return $arr;
     }
-    
-    
+
+    /**
+     * 根据商标获得其参加的专题信息
+     * @param $number
+     * @return array|bool
+     */
+    public function getTopicByNumber($number){
+        $r['eq']['number'] = $number;
+        $r['col'] = array('topicId');
+        $r['limit'] = 6;
+        $rst = $this->import('topicitems')->find($r);
+        $data = array();
+        if($rst){
+            $r = array();
+            foreach($rst as $item){
+                $r['eq']['id'] = $item['topicId'];
+                $r['eq']['isUse'] = 1;
+                $r['col'] = array('title','id');
+                $res = $this->import('topic')->find($r);
+                if($res){
+                    $res['topicUrl'] = '/zhuanti/view/?id='.$res['id'];
+                    $data[] = $res;
+                }
+            }
+            return $data;
+        }else{
+            return false;
+        }
+    }
 }
 ?>

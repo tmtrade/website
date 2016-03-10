@@ -37,8 +37,15 @@ abstract class AppAction extends Action
 	 */
 	public function before()
 	{
-		/*//设置用户信息
-		$this->setLoginUser();*/
+		//设置用户信息
+		//登录用户电话号码
+		if(isset($_COOKIE['uc_nickname'])){
+			$this->set('user_tel',$_COOKIE['uc_nickname']);
+			$this->set('isLogin',true);
+		}else{
+			$this->set('user_tel','');
+			$this->set('isLogin',false);
+		}
 		//获得热搜数据
 		$hotwords = $this->load('index')->getHotWords();
 		$this->set('hotwords',$hotwords);
