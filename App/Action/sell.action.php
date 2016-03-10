@@ -114,7 +114,7 @@ class SellAction extends AppAction
 				$num['num'] ++;
 				/**写入分配系统**/
 				$need = "商标号:".$item." 价格：".$data['price'][$key]." 联系人：".$data['contact']."  联系电话：".$phone;
-				$this->load('crm')->pushTrack($need, $data['contact'], $phone, $data['sid'], $data['area'], 2);
+				$this->load('temp')->pushTrack($need, $data['contact'], $phone, $data['sid'], $data['area'], 2);
 				/**写入分配系统 END**/
 			}else{
 				$num['error'] ++;

@@ -27,6 +27,12 @@ class DetailAction extends AppAction
 	 * @throws SpringException
 	 */
 	public function view(){
+                if(isset($_COOKIE['uc_nickname'])){
+			$this->set('user_tel',$_COOKIE['uc_nickname']);
+		}else{
+			$this->set('user_tel','');
+		}
+                
 		$tag = $this->input('short', 'string', '');
 		//获取参数
 		if ( $tag ){
@@ -93,6 +99,30 @@ class DetailAction extends AppAction
 		}else{
 			$baystate = 0;
 		}
+                
+                //存取浏览记录
+                $prefix = C('COOKIE_PREFIX');
+                $cookie_record = $prefix.C('PUBLIC_RECORD');
+                $is_record = FALSE;
+                $record = $_COOKIE[$cookie_record]; 
+                $record = unserialize($record);
+                foreach ($record as $v){
+                    if($v['tid']==$tid){
+                        $is_record = TRUE;
+                    }
+                }
+                if(!$is_record){
+                    $recordList = array(0=>array("tid"=>$tid,"class"=>$class,"imgUrl"=>$info['imgUrl']));
+                    for($i=0;$i<7;$i++){
+                        if(!empty($record[$i])){
+                            $recordList[] = $record[$i];
+                        }
+                    }
+                    $recordList = serialize($recordList);
+                    setcookie($cookie_record,$recordList,0, Session::$path, Session::$domain);
+                }
+                $this->set("recordList", $record);
+                
 		//电话旁边联系人信息
 		$this->set("contact", $contact);
 		//分配数据

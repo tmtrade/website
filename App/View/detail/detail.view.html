@@ -281,35 +281,24 @@
             </p>
             <div class="main-db">
                 <ul class="recompic">
-                    <li>
-                        <img src="<?=StaticDir?>1.2/images/brand-lg1.png">
+                   <? foreach($recordList as $k=>$v){ 
+                   if($k<5){
+                   ?>
+                   <li>
+                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" ><img src="<?=$v['imgUrl']?>"></a>
                     </li>
-                    <li>
-                        <img src="<?=StaticDir?>1.2/images/al-img3.png">
-                    </li>
-                    <li>
-                        <img src="<?=StaticDir?>1.2/images/al-img4.png">
-                    </li>
-                    <li>
-                        <img src="<?=StaticDir?>1.2/images/brand-lg7.png">
-                    </li>
+                   <?}}?>
                 </ul>
                 <ul class="recompic">
-                    <li>
-                        <img src="<?=StaticDir?>1.2/images/brand-lg1.png">
-                    </li>
-                    <li>
-                        <img src="<?=StaticDir?>1.2/images/al-img3.png">
-                    </li>
-                    <li>
-                        <img src="<?=StaticDir?>1.2/images/al-img4.png">
-                    </li>
-                    <li>
-                        <img src="<?=StaticDir?>1.2/images/brand-lg7.png">
-                    </li>
+                   <?if(empty($user_tel)){?>
+                   <p class="p-logo"><a href="javascript:void(0);" id="loginShow">登录</a>保存收藏信息，永不丢失</p>
+                   <?}else{?>
+                   
+                   <?}?>
+                     
                 </ul>
             </div>
-            <p class="p-logo"><a>登录</a>保存收藏信息，永不丢失</p>
+           
         </div>
     </div>
     <div class="intr-flow fr">
@@ -317,26 +306,6 @@
             <a href="#sbjj" class="on">商标介绍</a>
             <a href="#jylc">交易流程</a>
         </p>
-        <script type="text/javascript">
-            $(window).scroll(function(){
-                if(($(".intr-flow").offset().top-$(document).scrollTop())<=0){
-                    $(".intr-flow-tit").addClass("f-tp");
-                }
-                else{
-                    $(".intr-flow-tit").removeClass("f-tp");
-                }
-            })
-            $(".intr-flow-tit a").eq(0).click(function(){
-                var t=$(".trademark").offset().top;
-                $("html, body").animate({"scrollTop":t});
-            })
-            $(".intr-flow-tit a").eq(1).click(function(){
-                var t=$(".transaction").offset().top;
-                $("html, body").animate({"scrollTop":t});
-            })
-
-
-        </script>
         <div class="detail-recom-main">
             <?if(isset($sale) && !empty($sale['tminfo']['embellish'])):?>
             <div class="trademark">
@@ -539,8 +508,25 @@
     </ul>
 </div>
 <!--成功案列end-->
-<script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript">
+    //商品详情选项卡
+    jQuery(".record-collect").slide({titCell:".hd a",mainCell:".main-db",effect:"fold",pnLoop:false});
+    $(window).scroll(function(){
+        if(($(".intr-flow").offset().top-$(document).scrollTop())<=0){
+            $(".intr-flow-tit").addClass("f-tp");
+        }
+        else{
+            $(".intr-flow-tit").removeClass("f-tp");
+        }
+    })
+    $(".intr-flow-tit a").eq(0).click(function(){
+        var t=$(".trademark").offset().top;
+        $("html, body").animate({"scrollTop":t});
+    })
+    $(".intr-flow-tit a").eq(1).click(function(){
+        var t=$(".transaction").offset().top;
+        $("html, body").animate({"scrollTop":t});
+    })
     $(".classify-main li").each(function(){
         $(this).hover(
                 function(){
@@ -555,7 +541,11 @@
                 })
 
     })
-
+    //收藏登录
+    $("#loginShow").click(function(){
+        $("#chaofan-mj-login").click();
+    })
+    
     var olis=$(".classify-main li");
     for(var i=0;i<=olis.length;i++){
         if(olis.length>10){

@@ -188,6 +188,7 @@ $define = array(
     'COOKIE_PREFIX' => 'tw_',//网站cookie前缀
     'PUBLIC_USER' => 'ChOfNuSeR',//公用用户登录信息标识
     'PUBLIC_USER_TIME' => 1800,//用户登录信息有效时间
+    'PUBLIC_RECORD' => 'record',//用户浏览历史信息标识
 
     'MSG_TEMPLATE' => array(
         'valid'     => "验证码：%s，有效期为10分钟，请尽快使用。",

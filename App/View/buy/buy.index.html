@@ -1,0 +1,190 @@
+<? require(ViewDir.'/header.html'); ?>
+
+<link rel="stylesheet" href="<?=StaticDir?>style/mj-buy.css"/>
+<script src="<?=StaticDir?>script/jquery.SuperSlide.2.1.js"></script>
+<script src="<?=StaticDir?>script/buy.js"></script>
+
+<div class="mj-banner">
+    <div class="w1180 mj-formW">
+        <div class="mj-from">
+            <form id="buyForm" action="/buy/add/">
+                <input type="hidden" name="sid" id="sid" value="" >
+                <input type="hidden" name="area" id="area" value="" >
+                <div class="mj-from-title">
+                    <label></label><span>商标购买快捷登记</span><label></label>
+                    <p>线下专家10分钟为你快速匹配商标</p>
+                </div>
+                <div class="ms-errorTips mj-eed">
+                    <p class="reg-tip"><i class="us-icon us-icon19"></i><em></em></p>
+                </div>
+                <div class="mj-form-wrapper mj-fwH">
+                    <span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>
+                    <i class="us-icon uj-icon4" style="top: 24px;"></i>
+                    <input type="text" id="buyNeed" name="content"  maxlength="100">
+                </div>
+                <div class="mj_form_wpo f-clearfix">
+                    <div class="mj-form-wrapper w178 fl">
+                        <span class="mj-inpuV">留下电话方便卖家联系你</span>
+                        <i class="us-icon uj-icon5"></i>
+                        <input id="buyMoblie" type="text" name="mobile" style="width: 166px;padding-left: 5px;">
+                    </div>
+                    <div class="mj_form_wrapper_input fr">
+                        <span class="mj-inpuV" style="padding-left: 10px;">你的姓氏</span>
+                        <input type="text" name="buyName" id="buyName"  maxlength="8">
+                    </div>
+                </div>
+                <p class="mj-from-txt">信息保密中，请放心填写</p>
+                <a href="javascript:;" class="mj-from-btn">立即登记</a>
+            </form>
+        </div>
+    </div>
+    <div class="mj-bannerIimg">
+        <ul class="mj-banner-img">
+            <li class="mj-banner-itme" style="background: url(<?=StaticDir?>style/img/mj-banner7.jpg) center 0">
+            </li>
+            <li class="mj-banner-itme" style="background: url(<?=StaticDir?>style/img/mj-banner8.jpg) center 0">
+            </li>
+        </ul>
+        <ul class="hd f-clearfix">
+        <li></li>
+        <li></li>
+    </ul>
+    </div>
+</div>
+
+<!--buy content start-->
+<div class="mj-buyCon">
+    <div class="mj_processList">
+        <div class="w1180 mj_processList_con">
+            <span class="mj-tipImg"><img src="<?=StaticDir?>style/img/1-2.png" alt=""/></span>
+            <ul class="f-clearfix">
+                <li>
+                    <label>1</label>
+                    <span>24种风险核查</span>
+                </li>
+                <li>
+                    <label>2</label>
+                    <span>19项价格评估标准</span>
+                </li>
+                <li>
+                    <label>3</label>
+                    <span>189万商品匹配</span>
+                </li>
+                <li>
+                    <label>4</label>
+                    <span>3方赔付协议</span>
+                </li>
+                <li>
+                    <label>5</label>
+                    <span>100%转让公证审核</span>
+                </li>
+                <li>
+                    <label>6</label>
+                    <span>上报国家商标局</span>
+                </li>
+                <li>
+                    <label>7</label>
+                    <span>手续办理</span>
+                </li>
+                <li>
+                    <label>8</label>
+                    <span>获取<em>《商标转让受理通知书》</em></span>
+                </li>
+                <li>
+                    <label>9</label>
+                    <span>得核准转让证明及商标证</span>
+                </li>
+                <li>
+                    <label>10</label>
+                    <span>后期10年监测</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mj_mainText w1180">
+        <ul>
+            <li>1、商标风险核查</li>
+            <li>商标上线销售前，一只蝉会进行全面风险核查，杜绝无效、撤三等商标出现。</li>
+        </ul>
+        <ul>
+            <li>2、商标价格评估</li>
+            <li>一只蝉从商标涵义、商标状态、市场占有率等多方面评估商标价格，杜绝漫天要价，让你买的放心，不花冤枉钱。</li>
+        </ul>
+        <ul>
+            <li>3、购买需求匹配</li>
+            <li>可在线自助选择，系统3.5秒快速匹配，也可选择线下专家一对一匹配，最快10分钟。</li>
+        </ul>
+        <ul>
+			<li>4、签订三方协议</li>
+            <li>确定交易意向后，将与买卖双方签订《商标代购协议》 《商标代售协议》 。<li>
+			<li>①另与卖家签订《独占许可协议》，确保卖家在转让期限内不得将商标出售、许可给第三人，让买家可尽快使用上购买的商标；<li>
+			<li>②另与买家签订《损失100%赔付协议》，承诺先行赔付。一旦出现交易损失，一只蝉将在第一时间给予赔偿，让买家彻底远离赔偿纠纷。</li>
+        </ul>
+        <ul>
+			<li>5、公证审核</li>
+            <li>签订三方协议后，一只蝉将为卖家提供国家政府认可的公证机构，并给出减少公证费的省钱建议（如双方免费转让），降低双方在办理公证手续上的支出。且对最终公证书的真实性进行再次核实，确保双方交易的安全性。</li>
+        </ul>
+        <ul>
+			<li>6、代办转让手续</li>
+            <li>确认材料无误后，一只蝉将资料上报至国家商标局，一月左右将收到转让受通，6-10月后收到转让证明，届时完成转让。</li>
+        </ul>
+        <ul>
+			<li>7、10年商标安全监测</li>
+            <li>转让完成后，在商标的10年有效期内，一只蝉将不间断的提供状态监测服务。有任何异动系统将通知你。</li>
+        </ul>
+    </div>
+</div>
+<!--buy content end-->
+
+<!--求购已提交弹出层-->
+<div class="mj-boughtM" id="mj-submitteS">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>恭喜，求购提交成功</h2>
+            <p>请保持电话畅通，10分钟内联系你。</p>
+            <a href="<?=MANAGER_URL?>buyer/ready/" class="mj-boBtn1">点击此处查看！</a>
+        </div>
+    </div>
+</div>
+<!--求购已提交失败弹出层-->
+<div class="mj-boughtM" id="mj-submitteF">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2 style="color:#ff6600">求购提交失败，请稍后重试！</h2>
+            <p>可能因为网络问题或其他原因导致</p>
+            <a href="javascript:;" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _isLogin = "<?=$isLogin?>";
+    var _mobile  = "<?=$userMobile?>";
+    
+    $(function (){
+        //banner切换
+        jQuery(".mj-banner").slide({ mainCell:".mj-banner-img",effect:"fold", autoPlay:true, delayTime:600, trigger:"click"});
+        $("input").each(function(){
+            var spanT= $(this).parent().find($(".mj-inpuV")).text();
+            $(this).focus(function(){
+                $(this).parent().find($(".mj-inpuV")).text("");
+            });
+            $(this).blur(function(){
+                if($(this).val()===""){
+                    $(this).parent().find($(".mj-inpuV")).text(spanT);
+                }else{
+                    $(this).parent().find($(".mj-inpuV")).text("");
+                }
+            });
+        });
+
+    })
+
+</script>
+
+
+<? require(ViewDir.'/footer.html'); ?>
