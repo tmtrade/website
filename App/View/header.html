@@ -90,7 +90,7 @@
             $.each(Obj,function(i,n){
                 if(nickname){
                     //用户登录情况下
-                    if(n.code!=1){
+                    if(n.code!=-1){
                         //弹出成功框
                         getLayer($('#mj-submitteS'));
                     }else{

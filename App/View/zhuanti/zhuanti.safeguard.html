@@ -63,7 +63,7 @@
             </div>
             <div class="rg">
 				<form action="" method="post">
-                    <textarea placeholder=" 请填写你对商标的特殊要求，如：25类鞋子" id="buyNeed" ></textarea>
+                    <textarea  id="buyNeed" >对商标的特殊要求  如：25类鞋子</textarea>
 					<label style="display:none;" id="buyNeedTip">请填写购买需求</label>
                     <input type="tel" placeholder="请填写你的联系电话，方便我们联系你" value="" id="buyMoblie"/>
 					<label style="display:none;" id="buyMoblieTip">手机号不能为空</label>
@@ -206,6 +206,21 @@
 <script type="text/javascript">
     var _isLogin = "<?=$isLogin?>";
     var _mobile  = "<?=$userMobile?>";
+    var orequire=document.getElementById("buyNeed");
+    orequire.onfocus=function()
+    {
+        if(this.value == '对商标的特殊要求  如：25类鞋子'){
+            this.value = ''
+        }
+        this.className = '';
+    }
+    orequire.onblur=function()
+    {
+        if(this.value ==''){
+            this.value = '对商标的特殊要求  如：25类鞋子'
+        }
+        this.className = 'cgkug';
+    }
 </script>
 </body>
 </html>

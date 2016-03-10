@@ -289,7 +289,7 @@ color: #ff5555;
     width: 525px;
     height: 72px;
     background: #FFF none repeat scroll 0% 0%;
-    color: #333;
+    color: #A9A9A9;
     font-size: 12px;
     font-family: "å®‹ä½“";
     border: medium none;
@@ -297,7 +297,11 @@ color: #ff5555;
     line-height: 20px;
     padding: 8px;
 }
-
+.cgkug{
+    color:#A9A9A9 !important;
+    padding-bottom: 65px !important;
+    transition:all 1s;
+}
 .sub-demand div.rg input{
     width: 542px;
     height:30px;

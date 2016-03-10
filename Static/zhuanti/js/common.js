@@ -25,58 +25,45 @@ $('#subBuy').click(function(){
 	}
 	addBuy();
 })
-
-// $('#buyMoblie').blur(function(){
-	// mobile = $('#buyMoblie').val();
-	// if(!mobile){
-		// $('#buyMoblieTip').text('手机号不能为空');
-		// $('#buyMoblieTip').show();
-		// return false;
-	// }else if(!verifyPhoneNum(mobile)){
-		// $('#buyMoblieTip').text('手机号码不正确');
-		// $('#buyMoblieTip').show();
-		// return false;
-	// }else{
-		// $('#buyMoblieTip').hide();
-	// }
-// })
-
 function addBuy()
 {
     var mobile  = $.trim( $("#buyMoblie").val() );
     var need    = $.trim( $("#buyNeed").val() );
     var sid     = $.trim( $("#sid").val() );
     var area    = $.trim( $("#area").val() );
-    $.ajax({
-        type: "post",
-        url: "/buy/add/",
-        data: {mobile:mobile,content:need,name:'',sid:sid,area:area,source:2},
-        dataType: "json",
-        success: function(data){
-            var obj ;
-            if (data.code == 1){
-                clearBuy();
-                obj = $('#mj-submitteS');
-            }else{
-                obj = $('#mj-submitteF');
-            }
-            layer.open({
-		type: 1,
-		title: false,
-		closeBtn: false,
-		area: ['485px', '226px'],
-		content: obj
-            });
-            $(".mj-close").bind("click",function(){
-            layer.closeAll();
-    });
-        },
-        error: function(data){
-            alert('服务器错误！');
+    var data	= new Array();
+    data['name'] 	= '';
+    data['tel'] 	= mobile;
+    data['subject'] = need;
+    ucNetwork.submitData(data);
+    
+}
+//提交信息回调
+function submitDataCallback(Obj){
+    console.debug(Obj);
+    $.each(Obj,function(i,n){
+         clearBuy();
+         var obj ;
+         //用户登录情况下
+        if(n.code==1 || n.code==2){
+            //弹出成功框
+              obj = $('#mj-submitteS');
+        }else{
+            //弹出失败框
+            obj = $('#mj-submitteF');
         }
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: false,
+            area: ['485px', '226px'],
+            content: obj
+        });
+        $(".mj-close").bind("click",function(){
+            layer.closeAll();
+        });
     });
 }
-
 function clearBuy()
 {
     $("#buyMoblie").val('');
