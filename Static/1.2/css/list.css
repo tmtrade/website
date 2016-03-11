@@ -516,18 +516,18 @@
     float: left;
 }
 .mj-cTr_bLeft {
-    position: relative;
-    z-index: 1;
-    top:15px;
-    left:-28px;
-    margin-right: 35px;
-    padding-bottom: 25px;
-    margin-bottom: 60px;
-    height: 118px;
-    border-right: dashed 1px #e4dfbe;
+	border-right: 1px dashed #e4dfbe;
     float: left;
+    height: 118px;
+    left: -28px;
+    margin-bottom: 60px;
+    margin-right: 100px;
+    min-width: 253px;
+    padding-bottom: 25px;
     padding-right: 40px;
-    min-width: 300px;
+    position: relative;
+    top: 15px;
+    z-index: 1
 }
 .mj-priceTxtt {
     /*padding: 15px 0 0;*/
