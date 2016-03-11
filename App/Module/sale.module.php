@@ -35,16 +35,19 @@ class SaleModule extends AppModule{
      * @param string $field
      * @return array|bool
      */
-    public function getSaleTmInfoByNumber($number,$field=''){
+    public function getSaleTmByNumber($number){
         $r['eq'] = array('number'=>$number);
+        $r['col']   = array('embellish');
         $info = $this->import('saleTminfo')->find($r);
         if($info==false){
             return false;
         }
-        if($field){
-            return $info[$field];
+        //返回包装数据
+        if($info['embellish']){
+            return TRADE_URL.$info['embellish'];
         }
-        return $info;
+        //返回商标图片
+        return $this->load('trademark')->getImg($number);
     }
 
     /**

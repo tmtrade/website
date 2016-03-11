@@ -643,5 +643,26 @@ class SearchModule extends AppModule
         $res = $this->import('class')->get($class);
         return $res['label'];
     }
+
+    /**
+     * 根据群组号得到群组名,'3001-我是群组名'
+     * @param $number
+     * @return array
+     */
+    public function handleGroup($number){
+        $number = explode(',',$number);
+        $data = array();
+        foreach($number as $item){
+            $r['eq']['number'] = $item;
+            $r['col'] = array('name');
+            $rst = $this->import('class')->find($r);
+            if($rst){
+                $data[] = $item.'-'.$rst['name'];
+            }else{
+                $dadt[] = $item;
+            }
+        }
+        return $data;
+    }
 }
 ?>

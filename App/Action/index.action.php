@@ -35,7 +35,6 @@ class IndexAction extends AppAction
 		if(empty($_news)){
 			$news['news']	= $this->load('faq')->newsList(array('c'=>50,'limit'=>4));
 			$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>4));
-			$news['link']	= $this->load('faq')->newsList(array('c'=>47,'limit'=>20));
 			$news['baike']	= $this->load('faq')->newsList(array('c'=>53,'limit'=>2));
 			$news['law']	= $this->load('faq')->newsList(array('c'=>51,'limit'=>2));
 			//$this->com('redis')->set('_news_tmp', $news, 3600);

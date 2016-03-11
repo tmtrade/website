@@ -2,14 +2,12 @@
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/list.css" />
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/mj-index.css" />
-<!--分享相关js-->
-<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 <!--商标详情介绍-->
 <div class="brand-details f-clearfix">
     <div class="w1180">
         <div class="fl">
             <div class="brde-pic">
-                <img src="<?=$info['imgUrl']?>">
+                <img src="<?=$sale['imgUrl']?>" onerror="this.src='/Static/images/img1.png'">
                 <p>
                     <span >独家商标风险检测工具<label>蝉精灵</label>准确率<label>95.93%</label></span>
                     <a href="<?=$tips['safeUrl']?>" target="_blank">检测此商标</a>
@@ -25,7 +23,7 @@
             </div>
         </div>
         <div class="fr">
-           <h3><?=$info['name']?>&nbsp;&nbsp;<span> <?if(count($info['class'])==1):?>（<?=$info['class'][0]?>类 <?=$info['lable']?>）<?endif;?> </span> <a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
+           <h3><?=$info['name']?>&nbsp;&nbsp;<span> <?if(count($info['class'])==1):?>（<?=$info['class'][0]?>类 <?=$info['lable']?>）<?endif;?> </span>&nbsp;&nbsp;<a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
             <label class="bm"><?=$sale['value']?></label>
            <p class="may"><font>此商标可入驻：
                <?php
@@ -66,9 +64,8 @@
                            <div class="multi-show">
                                <h6>群组</h6>
                                <p>
-                                   <? foreach (explode(',', $vl['group']) as $grp) { ?>
-                                   <!--<a>3001-食品用化学品</a>  <a>3001-食品用化学品</a>  <a>3001-食品用化学品</a>-->
-                                   <a>3001-食品用化学品</a>
+                                   <? foreach ($vl['groupName'] as $grp) { ?>
+                                   <a><?=$grp?></a>
                                    <? } ?>
                                </p>
 
@@ -87,7 +84,7 @@
                <ul class="mj-cTr_center">
                        <li>
                            <span><label>分类：</label>第<?=$class?>类-<?=$CLASSES[$class]?>  </span>
-                           <span><label>当前群组：</label><?=$info['group']?></span>
+                           <span><label>当前群组：</label><?=implode(' ',$info['items'][0]['groupName'])?></span>
                        </li>
                        <li>
                            <span><label>商品列表：</label><?=$info['goods']?></span>
@@ -110,13 +107,12 @@
                             echo date('Y-m-d H:i',$sale['salePriceDate']);
                             }else{echo "永久";} ?></span>前有效</p>
                         <?if($topic):?>
-                        <p class="promote"><font>促销</font>
+                        <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
                             <span><a href="<?=$item['topicUrl']?>" target="_blank"><?=$item['title']?></a></span>
                             <?endforeach;?>
                         </p>
                         <?endif;?>
-                    </div>
                     <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
                     <!--定价商品-->
                     <div class="mj-priceTxtt">
@@ -126,13 +122,12 @@
                         </p>
                         <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
                         <?if($topic):?>
-                        <p class="promote"><font>促销</font>
+                        <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
                             <span><a href="<?=$item['topicUrl']?>" target="_blank"><?=$item['title']?></a></span>
                             <?endforeach;?>
                         </p>
                         <?endif;?>
-                    </div>
                     <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
                     <!--议价商品-->
                     <div class="mj-priceTxtt">
@@ -142,13 +137,14 @@
                         </p>
                         <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
                         <?if($topic):?>
-                        <p class="promote"><font>促销</font>
+                        <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
                             <span><a href="<?=$item['topicUrl']?>" target="_blank"><?=$item['title']?></a></span>
                             <?endforeach;?>
                         </p>
                         <?endif;?>
-                    </div>
+                    <?}else{?>
+                        <div class="mj-priceTxtt">
                     <?}?>
                     <!--操作部分-->
                     <? if($baystate == 1){ ?>
@@ -164,12 +160,12 @@
                         <?} ?>
                         <!--定价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
-                        <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我想购买</a></div>
+                        <a href='javascript:createOrderFromTrak();'>我想购买</a>
                         <!--议价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
-                        <div ><p class="mj-priceTxtt_ie7"></p><a href='javascript:createOrderFromTrak();'>我有兴趣</a></div>
+                        <a href='javascript:createOrderFromTrak();'>我有兴趣</a>
                         <?}else{?>
-                        <div class="mj-pricebtn"><a href='javascript:goLook();'>查看价格</a></div>
+                        <a href='javascript:goLook();'>查看价格</a>
                         <?}?>
                     <?}?>
             <?}else{?>
@@ -177,26 +173,23 @@
                     <? if($isLogin){ ?>
                     <!--价格-->
                     <div class="mj-priceTxtt">
-                        <strong>
-                            <em>￥</em>
-                            <span>议价</span>
-                            <em></em>
-                            <b>&nbsp;</b>
-                        </strong>
-                        <p class="mj-priceTxtt_ie7"></p>
+                        <p class="price">
+                            <font>价格</font>
+                            <strong><span>￥</span>议价</strong>
+                        </p>
+                        <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
                         <? if($baystate == 1){ ?>
                         <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
                         <? }else{ ?>
                         <a href='javascript:createOrderFromTrak();' class="mj-priceTxtt_link" id='addorder'>提交需求</a>
                         <? } ?>
-                        <br/>
-                        <br/>
-                        <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
-                    </div>
                     <? }else{ ?>
-                    <div class="mj-pricebtn"><p class="mj-priceTxtt_ie7"></p><a href='javascript:goLook();'>我有兴趣</a><br/><br/><p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p><br></div>
-                    <? } ?>
-            <?}?>
+                        <div class="mj-pricebtn">
+                            <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
+                            <a href='javascript:goLook();'>我有兴趣</a>
+                        <? } ?>
+                <?}?>
+            </div>
             </div>
             <div class="mj-cTr_bRight">
                     <dl>
@@ -215,7 +208,6 @@
                             </label>
                         </dd>
                     </dl>
-                </div>
             </div>
           </div>
         </div>
@@ -228,7 +220,7 @@
             <h2>猜你喜欢</h2>
             <?foreach($tj as $item):?>
             <li>
-                <a href="<?=$item['viewUrl']?>"><img src="<?=$item['imgUrl']?>"></a>
+                <a href="<?=$item['viewUrl']?>"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
             </li>
             <?endforeach;?>
         </ul>
@@ -243,7 +235,7 @@
                    if($k<5){
                    ?>
                    <li>
-                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" ><img src="<?=$v['imgUrl']?>"></a>
+                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" ><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
                     </li>
                    <?}}?>
                 </ul>
@@ -267,7 +259,7 @@
             <div class="trademark">
                 <dl>
                     <dt>
-                        <img src="<?=(TRADE_URL.substr($sale['tminfo']['embellish'],1))?>">
+                        <img src="<?=$sale['imgUrl']?>" onerror="this.src='/Static/images/img1.png'">
                     </dt>
                     <dd>
                         <!--<span>
@@ -543,6 +535,9 @@
     })
 </script>
 <script>
+    function consultation(){
+        window.open("http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165");
+    }
     function goLook()
     {
         $('#chaofan-mj-login').trigger('click');
@@ -552,4 +547,6 @@
         $('#chaofan-mj-login').trigger('click');
     }
 </script>
+<!--分享相关js-->
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 <? require(ViewDir.'/footer.html'); ?>

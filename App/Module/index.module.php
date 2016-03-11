@@ -172,7 +172,7 @@ class IndexModule extends AppModule
             $item['class'] = $result['className'];
             $item['viewUrl'] = 'd-'.$result['tid'].'-'.$result['class'].'.html';
             //得到商标包装图
-            $item['embellish'] = $this->load('Sale')->getSaleTmInfoByNumber($item['number'],'indexPic');
+            $item['embellish'] = $this->load('Sale')->getSaleTmByNumber($item['number']);
         }
         return $data;
     }

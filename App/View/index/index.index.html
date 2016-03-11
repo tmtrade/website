@@ -324,7 +324,7 @@
                         活动标题<br/>
                         <span>活动标题</span>
                     </h3>-->
-                    <img src="<?=(TRADE_URL.substr($ad['pic'],1))?>">
+                    <img src="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'">
                 </a>
             </li>
             <? endforeach; ?>
@@ -379,7 +379,7 @@
             <? foreach($recommendClasses as $rClass): ?>
             <li>
                 <p>
-                    <label><img src="<?=(TRADE_URL.substr($rClass['pic'],1))?>"></label>
+                    <label><img src="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'"></label>
                     <!--<span><b>衣</b>Clothes</span>-->
                     <span><b><?=$rClass['link']?></b></span>
                 </p>
@@ -431,7 +431,7 @@
                         <div class="sbd">
                             <ul>
                                 <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="http://<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.substr($pic['pic'],1))?>" /></a></li>
+                                <li><a href="http://<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
                                 <? endforeach; ?>
                             </ul>
                         </div>
@@ -455,11 +455,11 @@
                     <? foreach($class['items'] as $item): ?>
                     <li>
                         <div class="brand-show">
-                            <span><img src="<?=(TRADE_URL.substr($item['embellish'],1))?>"></span>
+                            <span><img src="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"></span>
                             <p><b><?=$item['name']?></b><?=$item['class']?></p>
                         </div>
                         <div class="brand-buy">
-                            <span><a target="_blank" href="<?=$item['viewUrl']?>"><img src="<?=(TRADE_URL.substr($item['embellish'],1))?>"></a></span>
+                            <span><a target="_blank" href="<?=$item['viewUrl']?>"><img src="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"></a></span>
                             <p><b><?=$item['name']?></b><?=$item['class']?></p>
                             <font>
                                 <a href="" class="first">
