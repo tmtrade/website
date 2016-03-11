@@ -254,23 +254,14 @@
             <div class="mj-newjy">
                 <h3><img src="<?=StaticDir?>1.2/images/jy-ic.png">最新交易记录</h3>
                 <div class="bd">
-                    <ul>
-                        <? foreach($tradeInfo as $item): ?>
+                    <ul><? foreach($tradeInfo as $item): ?>
                         <li>
-                            <img src="<?=StaticDir?>1.2/images/buy.png">
+                            <img src="<?=StaticDir?>1.2/images/<?=($item['pttype']=='出售')?'buy':'buy2'?>.png">
                             <p>
-                                <span><?=$item['contact']?><a>（<?=$item['phone']?>）</a></span>
-                                <font>“第<?=$item['class']?>类商标, <?=$item['className']?>”</font>
+                                <span><?=$item['name']?><a>（<?=$item['tel']?>）</a></span>
+                                <font>“ <?=$item['remarks']?> ”</font>
                             </p>
-                        </li>
-                        <? endforeach; ?>
-                        <!--<li>
-                            <img src="<?=StaticDir?>1.2/images/buy2.png">
-                            <p>
-                                <span>张先生<a>（135****8025）</a></span>
-                                <font>“25类 用于天猫服装分类的 XX”</font>
-                            </p>
-                        </li>-->
+                        </li><? endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -351,27 +342,27 @@
         <ul class="brand-fl">
             <li>
                 <? foreach($allClass[0] as $class): ?>
-                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <a target="_blank" href="search/index/?c=<?=$class['id']?>"><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
                 <? endforeach; ?>
             </li>
             <li>
                 <? foreach($allClass[1] as $class): ?>
-                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <a target="_blank" href="search/index/?c=<?=$class['id']?>"><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
                 <? endforeach; ?>
             </li>
             <li>
                 <? foreach($allClass[2] as $class): ?>
-                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <a target="_blank" href="search/index/?c=<?=$class['id']?>"><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
                 <? endforeach; ?>
             </li>
             <li>
                 <? foreach($allClass[3] as $class): ?>
-                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <a target="_blank" href="search/index/?c=<?=$class['id']?>"><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
                 <? endforeach; ?>
             </li>
             <li>
                 <? foreach($allClass[4] as $class): ?>
-                <a><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
+                <a target="_blank" href="search/index/?c=<?=$class['id']?>"><span>&bull;<?=$class['number']?>类</span> <?=$class['name']?> </a>
                 <? endforeach; ?>
             </li>
         </ul>
@@ -380,13 +371,14 @@
             <li>
                 <p>
                     <label><img src="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'"></label>
-                    <!--<span><b>衣</b>Clothes</span>-->
                     <span><b><?=$rClass['link']?></b></span>
                 </p>
                 <div class="tj-recom-hover">
+                    <a target="_blank" href="search/index/?c=<?=$rClass['classStr']?>">
                     <? foreach($rClass['class'] as $class): ?>
-                    <label><a><?=$class?> </a></label>
+                    <label><?=$class?> </label>
                     <? endforeach; ?>
+                    </a>
                 </div>
             </li>
             <? endforeach; ?>

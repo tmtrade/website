@@ -255,11 +255,10 @@
             <a href="#jylc">交易流程</a>
         </p>
         <div class="detail-recom-main">
-            <?if(isset($sale) && !empty($sale['tminfo']['embellish'])):?>
             <div class="trademark">
                 <dl>
                     <dt>
-                        <img src="<?=$sale['imgUrl']?>" onerror="this.src='/Static/images/img1.png'">
+                        <img src="<?=$info['imgUrl']?>" onerror="this.src='/Static/images/img1.png'">
                     </dt>
                     <dd>
                         <!--<span>
@@ -271,7 +270,6 @@
                     </dd>
                 </dl>
             </div>
-            <?endif;?>
             <div class="transaction" >
                 <h3><span></span>交易流程</h3>
                 <div class="jylc">

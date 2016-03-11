@@ -18,12 +18,12 @@ class SaleModule extends AppModule{
      * @param $number
      * @return mixed
      */
-    public function getSaleInfoByNumber($number,$col = array('tid','class')){
+    public function getSaleInfoByNumber($number,$col = array('tid','class','name')){
         //得到商标的第一个分类
         $r['eq'] = array('number'=>$number);
         $r['col'] = $col;
         $rst = $this->import('sale')->find($r);
-        $rst['className'] = $this->import('class')->get(array_pop(explode($rst['class'],',')),'name');
+        $rst['className'] = $this->import('class')->get(array_pop(explode(',',$rst['class'])),'name');
         //返回商标的分类名
         return $rst;
     }
@@ -44,9 +44,9 @@ class SaleModule extends AppModule{
         }
         //返回包装数据
         if($info['embellish']){
-            return TRADE_URL.$info['embellish'];
+            return $info['embellish'];
         }
-        //返回商标图片
+
         return $this->load('trademark')->getImg($number);
     }
 

@@ -24,8 +24,7 @@ class IndexAction extends AppAction
 		$modules = $this->load('index')->getModule();
 		$this->set('modules',$modules);
 		//最新交易记录
-		$tradeInfo = $this->load('buy')->getNewsTrade(10);
-		//$tradeInfo = $this->load('buy')->getNewsTradeInfo(10);
+		$tradeInfo = $this->load('buy')->getNewsTradeInfo(10);
 		$this->set('tradeInfo',$tradeInfo);
 		//得到商标分类信息
 		$allClass = $this->load('index')->getAllClass();

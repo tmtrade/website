@@ -65,6 +65,7 @@ class IndexModule extends AppModule
                         'pic'=>$item['pic'],
                         'link'=>$item['link'],
                         'class'=>$className,
+                        'classStr'=>$item['desc'],
                     );
                     break;
             }

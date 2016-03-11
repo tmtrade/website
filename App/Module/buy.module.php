@@ -231,5 +231,35 @@ class BuyModule extends AppModule
 		}
 		return $strtime;
 	}
+
+	/**
+	 * 获得指定数量的最新交易信息----接口
+	 * @param $number
+	 * @return mixed
+	 */
+	public function getNewsTradeInfo($number){
+		//调用接口,获得数据
+		$query['id'] 		= array();
+		$query['pttype']	= '';
+		$query['startdate'] = '';
+		$query['enddate'] 	= '';
+		$query['state'] 	= 4;//状态[1：洽谈中 2：已匹配 3：已成交 4：已立案 5：交易关
+		$rst = tradeInfo::getNetwork($query,1,$number);
+		$rst = json_decode($rst)->data;
+		if(!$rst){
+			return array();
+		}
+		//处理数据
+		$data = array();
+		foreach($rst as $item){
+			$data[] = array(
+				'remarks'=>$item->remarks,
+				'pttype'=>$item->pttype,
+				'name'=>trim($item->name) ? substr(trim($item->name),0,3)."**" : "佚名",
+				'tel'=>substr(trim($item->tel),0,3)."****".substr(trim($item->tel),7),
+			);
+		}
+		return $data;
+	}
 }
 ?>
