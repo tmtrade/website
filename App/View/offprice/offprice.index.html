@@ -13,30 +13,17 @@
         <span class="prev"></span>
         <span class="next"></span>
         <ul>
+        <?foreach ($channel['adList'] as $k => $v) {?>            
             <li>
                 <div class="gla_inbox">
-                    <a href="<?=SITE_URL?>d-11376449-43.html" target="_blank"><img src="<?=StaticDir?>style/img/mj-banner6.jpg" /></a>
+                    <a href="<?=$v['link']?>" target="_blank">
+                    <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['desc']?>" /></a>
                     <p class="mj-ad">
-                        “顾客至上”，用尚品美味和极致服务满足顾客的一切享受。
+                        <?=$v['desc']?>
                     </p>
                 </div>
             </li>
-            <li>
-                <div class="gla_inbox">
-                    <a href="<?=SITE_URL?>d-4281020-30.html" target="_blank"><img src="<?=StaticDir?>style/img/mj-banner4.jpg" /></a>
-                    <p class="mj-ad">
-                        竹叶青茶是中国历史名茶之一，属绿茶类，有清热静心之效。
-                    </p>
-                </div>
-            </li>
-            <li>
-                <div class="gla_inbox">
-                    <a href="<?=SITE_URL?>d-12651797-3.html" target="_blank"><img src="<?=StaticDir?>style/img/mj-banner10.jpg" /></a>
-                    <p class="mj-ad">
-                        靓丽雅致，是女性的气质。迷人的风采，是女性美好。
-                    </p>
-                </div>
-            </li>
+        <?}?>
         </ul>
     </div>
 </div>

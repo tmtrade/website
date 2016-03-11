@@ -16,11 +16,13 @@ class SearchModule extends AppModule
      * 引用业务模型
      */
     public $models = array(
-        'sale'      => 'sale',
-        'second'    => 'secondStatus',
-        'group'     => 'group',
-        'class'     => 'tmClass',
+        'sale'          => 'sale',
+        'second'        => 'secondStatus',
+        'group'         => 'group',
+        'class'         => 'tmClass',
         'tminfo'        => 'saleTminfo',
+        'channel'       => 'channel',
+        'channelItems'  => 'channelItems',
     );
     
     //获取查询的TITLE
@@ -581,6 +583,40 @@ class SearchModule extends AppModule
         $_arr['5'] = '5年以前';
         $_arr['9'] = '申请中';
         return $_arr;
+    }
+
+    public function getChannel($index)
+    {
+        if ( empty($index) ) return array();
+
+        $r['eq'] = array('index'=>$index);
+        $channel = $this->import('channel')->find($r);
+        
+        if ( empty($channel) ) return array();
+
+        if ( $channel['isBanner'] != '1' ){
+            unset($channel['banner']);
+        }
+        if ( $channel['isAd'] == '1' ){
+            $channel['adList'] = $this->getChannelItems($channel['id'], 1);
+        }
+        if ( $channel['isAd'] == '1' ){
+            $channel['topList'] = $this->getChannelItems($channel['id'], 2);
+        }
+        return $channel;
+    }
+
+    public function getChannelItems($cid, $type=1)
+    {   
+        if ( empty($cid) || empty($cid) ) return array();
+        $r['eq'] = array(
+            'channelId' => $cid,
+            'type'      => $type,
+            );
+        $r['limit'] = 1000;
+        $r['order'] = array('sort'=>'asc');
+        $items = $this->import('channelItems')->find($r);
+        return $items;
     }
 
     /**

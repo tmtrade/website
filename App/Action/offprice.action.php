@@ -58,6 +58,10 @@ class OffpriceAction extends AppAction
         $classGroup = $this->load('search')->getClassGroup();
         list($_class, $_group) = $classGroup;
 
+        //频道设置
+        $channel = $this->load('search')->getChannel($this->mod);        
+        $this->set('channel', $channel);
+        
         //设置页面TITLE
         //$this->set('TITLE', $this->load('search')->getTitle($params));
 
