@@ -44,5 +44,35 @@ class IndexAction extends AppAction
 		$this->set('news',$news);
 		$this->display();
 	}
+
+	public function searchLog()
+	{
+		$title 	= $this->input('title','string','');
+		if ( empty($title) ){			
+			$prefix = C('SEARCH_HISTORY');
+			$log 	= (array)unserialize( Session::get($prefix) );
+			$list 	= array_filter( array_map('unserialize', $log) );
+			$list 	= array_slice($list, 0, 10);
+		}else{
+			$_title = $title;
+			$list 	= array(
+				array(
+					'title'	=> "按商标名称“ $_title ”搜索结果",
+					'url' 	=> "/search/?kw=$_title&kt=1&n=2",
+					),
+				array(
+					'title'	=> "按商标号“ $_title ”搜索结果",
+					'url' 	=> "/search/?kw=$_title&kt=2",
+					),
+				array(
+					'title'	=> "按适用服务“ $_title ”搜索结果",
+					'url' 	=> "/search/?kw=$_title&kt=3",
+					),
+				);
+		}
+		$this->set('list',$list);
+		$this->display();
+	}
+
 }
 ?>

@@ -199,6 +199,7 @@ $define = array(
     //'HTMLTOPDF' 	=> 'D:\wkhtmltopdf\bin\wkhtmltopdf.exe'    
 	'HTMLTOPDF' 	=> '/usr/bin/wkhtmltopdf',
 	'VIEW_HISTORY'  =>'view_history',
+    'SEARCH_HISTORY'  =>'_search_history_',
 );
 
 

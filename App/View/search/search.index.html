@@ -277,7 +277,7 @@
                     <div class="ms-filterMany">
                         <div class="ms-filterCenter">
                             <a href="<?=$v['viewUrl']?>" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=StaticDir?>1.2/images/brand-lg.png" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
+                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6><?=$v['name']?></h6>
                                 <p>共<em><?=count($_c_)?></em>个分类</p>
@@ -331,46 +331,20 @@
     <!-- ms-recommend start -->
     <dl class="ms-recommend">
         <dt><span>特价商标推荐</span><img src="<?=StaticDir?>1.2/images/xstj.png" alt=""/></dt>
-        <dd>
-            <span><img src="<?=StaticDir?>1.2/images/catepic1.png" alt=""/></span>
-            <div class="ms-filtersListTxt">
-                <div>
-                    <h6><a href="">梵秀,FAMXIU</a></h6>
-                    <p>30类 - 食品佐料</p>
-                    <p>群组名称</p>
+        <?foreach ($offpriceList as $k => $v) {
+            $_c_    = explode(',', $v['class']);
+            $_class = current($_c_);?>
+            <dd>
+                <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></span>
+                <div class="ms-filtersListTxt">
+                    <div>
+                        <h6><a href=""><?=$v['name']?></a></h6>
+                        <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
+                        <p title="<?=$v['group']?>"><?=mb_substr($v['group'], 0, 8, 'UTF-8')?mb_substr($v['group'], 0, 8, 'UTF-8'):'-'?></p>
+                    </div>
                 </div>
-            </div>
-        </dd>
-        <dd>
-            <span><img src="<?=StaticDir?>1.2/images/brand-lg7.png" alt=""/></span>
-            <div class="ms-filtersListTxt">
-                <div>
-                    <h6><a href="">梵秀,FAMXIU</a></h6>
-                    <p>30类 - 食品佐料</p>
-                    <p>群组名称</p>
-                </div>
-            </div>
-        </dd>
-        <dd>
-            <span><img src="<?=StaticDir?>1.2/images/brand-lg6.png" alt=""/></span>
-            <div class="ms-filtersListTxt">
-                <div>
-                    <h6><a href="">梵秀,FAMXIU</a></h6>
-                    <p>30类 - 食品佐料</p>
-                    <p>群组名称</p>
-                </div>
-            </div>
-        </dd>
-        <dd>
-            <span><img src="<?=StaticDir?>1.2/images/brand-lg5.png" alt=""/></span>
-            <div class="ms-filtersListTxt">
-                <div>
-                    <h6><a href="">梵秀,FAMXIU</a></h6>
-                    <p>30类 - 食品佐料</p>
-                    <p>群组名称</p>
-                </div>
-            </div>
-        </dd>
+            </dd>
+        <?}?>
     </dl>
     <!-- ms-recommend end -->
 </div>

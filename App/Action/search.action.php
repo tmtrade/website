@@ -30,12 +30,17 @@ class SearchAction extends AppAction
 	{
         $page   = $this->input('_p', 'int', 1);//分类
         $params = $this->getSearchParams();
-        //debug($params);
+        //处理商标号搜索
         if ( !empty($params['number']) ){
             $this->detail($params['number']);
         }
-        $res    = $this->load('search')->search($params, $page, $this->_number, 1); 
-        //debug($res);
+        $res    = $this->load('search')->search($params, $page, $this->_number, 1);
+
+        //保存搜索历史，方便搜索框处理
+        if ( !empty($res['rows']) ){
+            $this->setSearchLog();
+        }
+        //处理搜索条件
         if ( !empty($this->_searchArr) ){
             foreach ($this->_searchArr as $k => $v) {
                 $this->set($k, $v);
@@ -43,13 +48,16 @@ class SearchAction extends AppAction
             }
             $whereStr   = http_build_query($this->_searchArr);
         }
-        //$_cls = empty($this->_searchArr['c']) ? 0 : intval($this->_searchArr['c']);
         $classGroup = $this->load('search')->getClassGroup();
-        //debug($classGroup);
         list($_class, $_group) = $classGroup;
 
 		//设置页面TITLE
 		//$this->set('TITLE', $this->load('search')->getTitle($params));
+
+        //特价推荐
+        $_arr   = array('isOffprice'=>'1');
+        $list   = $this->load('search')->getSaleList($_arr, 1, 6);
+        $this->set('offpriceList', $list['rows']);
 
         $this->set('_CLASS', $_class);//分类
         $this->set('_GROUP', $_group);//群组
@@ -157,7 +165,7 @@ class SearchAction extends AppAction
             if ( empty($res) && $keytype != 3 ){
                 $params['keytype']  = 1;
                 $params['name']     = $keyword;
-                $this->_searchArr['kt'] = $params['keytype'];
+                $this->_searchArr['kt'] = 1;
                 return $params;
             }
             //选择搜索项为3时，无数据直接返回空，没有相关数据可查询
@@ -350,6 +358,8 @@ class SearchAction extends AppAction
     {
         $res = $this->load('search')->getNumberInfo($number);
         if ( $res['code'] == '1' ){
+            //保存搜索历史，方便搜索框处理
+            $this->setSearchLog($number, 2);
             $this->redirect('', '/d-'.$res['tid'].'-'.$res['class'].'.html');
             exit;
         }
@@ -412,6 +422,62 @@ class SearchAction extends AppAction
 
         $this->set('searchList', $res['rows']);
         $this->display();
+    }
+
+    /**
+     * 保存搜索历史
+     *
+     * @author  Xuni
+     * @since   2016-03-11
+     *
+     * @access  protected
+     */
+    protected function setSearchLog($kw='', $kt=0)
+    {
+        if ( $kw == '' || empty($kt) ){            
+            $_title = $this->_searchArr['kw'];
+            $_type  = $this->_searchArr['kt'];
+        }else{
+            $_title = $kw;
+            $_type  = $kt;
+        }
+        //保存搜索项历史
+        if ( $_title == '' ) return false;
+        switch ($_type) {
+            case '1':
+                $_title = "$_title -> 按商标名称搜索";
+                break;
+            case '2':
+                $_title = "$_title -> 按商标号搜索";
+                break;
+            case '3':
+                $_title = "$_title -> 按适用服务搜索";
+                break;
+            default:
+                $_title = "$_title -> 按适用服务搜索";
+                break;
+        }
+
+        $prefix = C('SEARCH_HISTORY');
+        $_slog  = (array)unserialize( Session::get($prefix) );      
+        $_url   = $_SERVER['REQUEST_URI'];//搜索地址
+        $_log   = array(
+            'title' => $_title,
+            'url'   => $_url,
+            );
+        if ( !in_array(serialize($_log), $_slog) ){
+            array_unshift($_slog, serialize($_log));
+        }else{
+            $_key = array_search(serialize($_log), $_slog);
+            if ( $_key !== false ){
+                $_now = $_slog[$_key];
+                unset($_slog[$_key]);
+                array_unshift($_slog, $_now);
+            }
+        }
+        $_slog = array_slice($_slog, 0, 10);
+        Session::set($prefix, serialize($_slog), 0);
+        return true;
     }
 
     /**

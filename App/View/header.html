@@ -254,15 +254,6 @@
 
             </form>
             <ul class="mj-pull-down">
-                <li>
-                    <span class="fl">商标有“春节快乐”的结果</span><label class="fr">2条</label>
-                </li>
-                <li>
-                    <span class="fl">商标有“春节快乐”的结果</span><label class="fr">2条</label>
-                </li>
-                <li>
-                    <span class="fl">商标有“春节快乐”的结果</span><label class="fr">2条</label>
-                </li>
             </ul>
 
             <p class="tj-fl">
@@ -376,3 +367,63 @@
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/mj-index.css"/>
 <script src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <!--mj-mNav end-->
+<script type="text/javascript">
+    $('input[name="kw"]').focus(function (){
+        var _this   = $(this);
+        var _value  = $.trim( _this.val() );
+        if ( _value == '' ){
+            var _url = '/index/searchLog/';
+            $(".mj-pull-down").load(_url, function(data,status,xml){
+                if (data){
+                    $(".mj-pull-down").show();
+                }else{
+                    $(".mj-pull-down").hide();
+                }
+            });            
+        }else{
+            _autoShow();
+        }
+    });
+
+    $('input[name="kw"]').blur(function (){
+        var _this   = $(this);
+        var _value  = $.trim( _this.val() );
+        if ( _value == '' ){
+            setTimeout(function(){
+                $(".mj-pull-down").hide();
+            },500);
+        }
+    });
+
+    var _autoShowTime = 0;
+    var _autoOpen = 0;
+    function _autoShow(){        
+        if ( _autoShowTime > 0 ){
+            _autoShowTime--;
+            setTimeout(function(){
+                _autoShow();
+            },100);            
+        }else{
+            _autoOpen = 0;
+            var _url = '/index/searchLog/';            
+            setTimeout(function(){
+                $(".mj-pull-down").show();
+            },200);
+            $(".mj-pull-down").load(_url,{title:$('input[name="kw"]').val()});            
+        }
+    }
+    $('input[name="kw"]').keyup(function (){
+        var _this   = $(this);
+        var _value  = $.trim( _this.val() );
+        if ( _value != '' ){
+            _autoShowTime = 5;
+            if (_autoOpen < 1) _autoShow();
+            _autoOpen = 1;            
+        }else{
+            setTimeout(function(){
+                $(".mj-pull-down").hide();
+            },500);
+        }
+    });
+    
+</script>
