@@ -507,7 +507,7 @@
 }
 .mj-cTr_bottom {
     margin-top: 15px;
-    height: 190px;
+    height: 204px;
     background: #fefaf5;
     border: solid 1px #f1ebe3;
     position: relative;
@@ -518,7 +518,7 @@
 .mj-cTr_bLeft {
 	border-right: 1px dashed #e4dfbe;
     float: left;
-    height: 118px;
+    height: 152px;
     left: -28px;
     margin-bottom: 60px;
     margin-right: 100px;
@@ -590,7 +590,7 @@
     color: #fff;
     font-size: 14px;
     border-radius: 2px;
-	margin-top:10px;
+	margin-bottom:5px;
 }
 .mj-priceTxtt a {
     margin-left:62px;
