@@ -63,7 +63,7 @@
                 <div>
                     <div class="ms-filterCenter">
                         <a href="<?=$v['viewUrl']?>" class="ms-collect cur"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" alt=""/></a></span>
+                        <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                         <div class="ms-filtersListTxt">
                             <h6><?=$v['name']?></h6>
                             <p><?=$v['class']?></p>
@@ -81,7 +81,7 @@
                 <div class="ms-filterMany">
                     <div class="ms-filterCenter">
                         <a href="<?=$v['viewUrl']?>" class="ms-collect"><i class="us-icon us-icon20"></i></a>
-                        <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=StaticDir?>1.2/images/brand-lg.png" alt=""/></a></span>
+                        <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=StaticDir?>1.2/images/brand-lg.png" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                         <div class="ms-filtersListTxt">
                             <h6><?=$v['name']?></h6>
                             <p>共<em><?=count($_c_)?></em>个分类</p>
