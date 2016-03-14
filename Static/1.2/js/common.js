@@ -541,25 +541,25 @@ jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev"
 jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fold",pnLoop:false});
 //输入框下拉
 
-$("#searchForm").find("input[name='kw']").focus(function(){
-    $(".mj-pull-down").each(function(){
-        $(this).slideDown();
-    })
-    $(this).blur(function(){
-        $(".mj-pull-down").each(function(){
-            $(this).slideUp();
-        })
-    })
+//$("#searchForm").find("input[name='kw']").focus(function(){
+//    $(".mj-pull-down").each(function(){
+//        $(this).slideDown();
+//    })
+//    $(this).blur(function(){
+//        $(".mj-pull-down").each(function(){
+//            $(this).slideUp();
+//        })
+//    })
 
-})
-$("#searchForm").find("input[name='kw']").keyup(function(){
-    if(($(this).val()).length>0){
+//})
+//$("#searchForm").find("input[name='kw']").keyup(function(){
+//    if(($(this).val()).length>0){
 //        $(".mj-pull-down li").text(($(this).val()));
-        $(".mj-pull-down").show();
-    }else{
-        $(".mj-pull-down").hide();
-    }
-})
+//        $(".mj-pull-down").show();
+//    }else{
+//        $(".mj-pull-down").hide();
+//    }
+//})
 //漂浮楼层
 var oflr=$("#float-floor");
 var sbzs=$(".sbzs>div");
