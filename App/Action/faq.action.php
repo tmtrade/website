@@ -43,7 +43,14 @@ class FaqAction extends AppAction
 		$this->set("title",$pageTitle);
                 $this->display();
     }
-
+    
+    //规则
+	public function rule()
+    {
+		$pageTitle   = '入驻平台规则 - '.$this->seotime;
+		$this->set("title",$pageTitle);
+        $this->display();
+    }
 
 	//得到栏目对应的文章
 	public function news()
@@ -56,10 +63,9 @@ class FaqAction extends AppAction
 			$c	= 45;
 		}
 		$list			= $this->load('faq')->newsList(array('c'=>$c,'page'=>$page,'limit'=>$limit));
-
+                
 		$total			= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1000000));
 		$pager			= $this->pager(count($total), $limit);
-        
 		$pageBar		= empty($list) ? '' : getPageBar($pager);
 
 		$title   = $this->category[$c] . ' - '.$this->seotime;
@@ -67,6 +73,7 @@ class FaqAction extends AppAction
 		$this->set("title", $title);
 		$this->set("keywords", $this->keyword);
 		$this->set("nav", $c);
+                $this->set("category", $this->category[$c]);
 		$this->set("description", $this->description);
 		$this->set("pageBar", $pageBar);
                 $this->display();

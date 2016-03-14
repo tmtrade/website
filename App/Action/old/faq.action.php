@@ -64,7 +64,7 @@ class FaqAction extends AppAction
 	//得到栏目对应的文章
 	public function news()
 	{
-		$c			= $this->input("c","int");
+		$c				= $this->input("c","int");
 		$page			= $this->input("page","int");
 		$page			= $page == 0 ? 1 : $page;
 		$limit			= 15;
@@ -80,7 +80,10 @@ class FaqAction extends AppAction
 		$pageBar		= empty($list) ? '' : getPageBar($pager);
 
 		$title   = $this->category[$c] . ' - '.$this->seotime;
+		$this->set("categoryId", $this->categoryId);
+		$this->set("categoryList", $this->category);
 		$this->set("list", $list);
+		$this->set("category", $this->category[$c]);
 		$this->set("TITLE", $title);
 		$this->set("keywords", $this->keyword);
 		$this->set("nav", $c);
@@ -99,9 +102,12 @@ class FaqAction extends AppAction
 
 		$maxId		= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1,'maxId'=>$id));
 		$minId		= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1,'minId'=>$id));
-		$title   = $data[0]['title'].' - '.$this->seotime;
+		$title   = $data[0]['title'].' - '.$this->category[$c] . ' - '.$this->seotime;
 
+		$this->set("categoryId", $this->categoryId);
+		$this->set("categoryList", $this->category);
 		$this->set("list", $data[0]);
+		$this->set("category", $this->category[$c]);
 		$this->set("TITLE", $title);
 		$this->set("keywords", $data[0]['thumtitle']);
 		$this->set("nav", $c);

@@ -585,7 +585,7 @@
                 </dt>
                 <dd>
                     <? foreach ($news['news'] as $item){ ?>
-                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="http://<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d H:i:s',$item['time']);?></label></p>
+                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="http://<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
                     <? } ?>
                     <a hidden="">更多 ></a>
                 </dd>
@@ -593,7 +593,7 @@
             <div class="btm">
                 <? foreach ($news['baike'] as $item){ ?>
                 <p>
-                    <span class="fl">[<a href="" target="_blank">商标百科</a>] <a href="http://<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d H:i:s',$item['time']);?></label>
+                    <span class="fl">[<a href="" target="_blank">商标百科</a>] <a href="http://<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
                 </p>
                 <? } ?>
             </div>
@@ -611,14 +611,14 @@
                 </dt>
                 <dd>
                     <? foreach ($news['faq'] as $item){ ?>
-                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="http://<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo $item['time'];?></label></p>
+                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="http://<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
                     <? } ?>
                 </dd>
             </dl>
             <div class="btm">
                 <? foreach ($news['law'] as $item){ ?>
                 <p>
-                    <span class="fl">[<a href="" target="_blank">商标法律</a>] <a href="http://<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo $item['time'];?></label>
+                    <span class="fl">[<a href="" target="_blank">商标法律</a>] <a href="http://<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
                 </p>
                 <? } ?>
             </div>
