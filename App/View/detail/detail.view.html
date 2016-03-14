@@ -2,6 +2,8 @@
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/list.css" />
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/mj-index.css" />
+<!--弹窗css-->
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css"/>
 <!--商标详情介绍-->
 <div class="brand-details f-clearfix">
     <div class="w1180">
@@ -147,27 +149,23 @@
                         <div class="mj-priceTxtt">
                     <?}?>
                     <!--操作部分-->
-                    <? if($baystate == 1){ ?>
-                        <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
-                    <? }else{ ?>
                         <!--特价价格促销-->
                         <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){
                         ?>
                         <?if($isLogin){ ?>
-                        <a href='javascript:createOrder();' class="mj-priceTxtt_link" id='addorder' >立即抢购</a>
+                        <a href='javascript:createOrder();' class="mj-priceTxtt_link opt_btn" id='addorder' >立即抢购</a>
                         <? }else{ ?>
-                        <a href='javascript:goBuy();' class="mj-priceTxtt_link">立即抢购</a>
+                        <a href='javascript:goBuy();' class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <?} ?>
                         <!--定价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
-                        <a href='javascript:createOrder();'>我想购买</a>
+                        <a href='javascript:createOrder();' class="opt_btn">我想购买</a>
                         <!--议价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
-                        <a href='javascript:createOrder();'>我有兴趣</a>
+                        <a href='javascript:createOrder();' class="opt_btn">我有兴趣</a>
                         <?}else{?>
-                        <a href='javascript:goLook();'>查看价格</a>
+                        <a href='javascript:goLook();' class="opt_btn">查看价格</a>
                         <?}?>
-                    <?}?>
             <?}else{?>
                     <!-- 来自商标库 -->
                     <? if($isLogin){ ?>
@@ -181,12 +179,12 @@
                         <? if($baystate == 1){ ?>
                         <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
                         <? }else{ ?>
-                        <a href='javascript:createOrder();' class="mj-priceTxtt_link" id='addorder'>提交需求</a>
+                        <a href='javascript:createOrder();' class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
                         <? } ?>
                     <? }else{ ?>
                         <div class="mj-pricebtn">
                             <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
-                            <a href='javascript:goLook();'>我有兴趣</a>
+                            <a href='javascript:goLook();' class="opt_btn">我有兴趣</a>
                         <? } ?>
                 <?}?>
             </div>
@@ -418,7 +416,6 @@
     <input type="hidden" id="trademark">
     <input type="hidden" id="class">
     <input type="hidden" id="remarks">
-    <input type="hidden" id="subject">
 </div>
 <!--成功案列start-->
 <div class="w1180 succeed-al" id="succal">
@@ -568,15 +565,20 @@
 <!--购买相关js-->
 <script type="text/javascript">
     $(function(){
+        //有手机登录情况下 检测该用户是否购买
+        var trademark = "<?=$info['number']?>";
+        var tm_class = "<?=implode(',',$info['class'])?>";
+        ucBuy.isexist(trademark,tm_class);
+        if(login_mobile){
+            //ucBuy.isexist(trademark,tm_class);
+        }
         //给隐藏域赋值
-//        var user_tel = '<?=$user_tel?>';
-        var user_tel = getCookie('uc_nickname');
+        var user_tel = '<?=$user_tel?>';
         $('#tels').val(user_tel);
-        $('#tid').val('<?=$info['tid']?>');
-        $('#trademark').val('<?=$info['number']?>');
-        $('#class').val('<?=implode(',',$info['class'])?>');
-        $('#subject').val('<?=$info['name']?>');
-        $('#remarks').val('<?=$need?>');
+        $('#tid').val("<?=$info['tid']?>");
+        $('#trademark').val(trademark);
+        $('#class').val(tm_class);
+        $('#remarks').val("<?=$need?>");
         if(user_tel){
             $('#telInput2').val(user_tel);
         }
@@ -594,34 +596,36 @@
             buyData['tid'] 			= $('#tid').val();
             buyData['trademark'] 	= $('#trademark').val();
             buyData['class'] 		= $('#class').val();
-            buyData['subject'] 		= $('#subject').val();
+            buyData['subject'] 		= '求购信息';
             buyData['remarks'] 		= remarks;
             //提交数据
-//            console.dir(buyData);
             addToSys(buyData);
         }else{
-            //登录
-            $('#chaofan-mj-login').trigger('click');
+            //分为登录无手机和未登录两种情况
+            if(nick_name){
+                getLayer($('#goCenter'));
+            }else{
+                //登录
+                $('#chaofan-mj-login').trigger('click');
+            }
         }
         return false;
     }
     //生成订单--2  (直接输入电话)
+
+    //失去焦点,检测用户输入的手机号
     $('#telInput2').blur(function(){
         var tel= $('#telInput2').val();
         //验证手机号码
         var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
         if(!tel || !mobilereg.test(tel) || tel.length!=11){
-            $('#telInput2').val('手机号码不合法');
+            $('#telInput2').val('');
             return false;
         }
     });
-    //获得焦点值为空
-    $('#telInput2').focus(function(){
-        $('#telInput2').val('');
-    });
     //生成订单--2
     function createOrderByPhone(){
-        //检测是否有电话号码
+        //检测是否电话号码
         var tel= $('#telInput2').val();
         if(tel){
             //获得数据
@@ -632,13 +636,10 @@
             buyData['tid'] 			= $('#tid').val();
             buyData['trademark'] 	= $('#trademark').val();
             buyData['class'] 		= $('#class').val();
-            buyData['subject'] 		= $('#subject').val();
+            buyData['subject'] 		= '求购信息';
             buyData['remarks'] 		= remarks;
             //提交数据
             addToSys(buyData);
-        }else{
-            //登录
-            $('#telInput2').val('手机号码不能为空');
         }
         return false;
     }
@@ -649,13 +650,22 @@
     //添加回调函数
     function buyAddCallback(Obj){
         $.each(Obj,function(i,n){
-            console.debug(n);
             //弹窗提示
             if(n.code==1){
                 getLayer($('#mj-submitteS'));
             }else{
                 getLayer($('#mj-submitteF'));
             }
+        });
+    }
+    //检测用户是否购买回调
+    function isexistCallback(Obj){
+        $.each(Obj,function(i,n){
+            console.debug(n);
+            //弹窗提示
+//            if(n.code==1){
+//                $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>你已经购买过该商标</a>");
+//            }
         });
     }
     //弹出百度聊天窗口

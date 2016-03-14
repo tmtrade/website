@@ -170,8 +170,11 @@ class IndexModule extends AppModule
             }
             //得到所属分类名
             $result = $this->load('Sale')->getSaleInfoByNumber($item['number']);
-            $item['class'] = $result['className'];
+            $item['classStr'] = $result['className'];
             $item['viewUrl'] = 'd-'.$result['tid'].'-'.$result['class'].'.html';
+            $item['tid'] = $result['tid'];
+            $item['class'] = $result['class'];
+            $item['remarks'] = "商标号:".$item['number'].",类别:".$result['class'].' 联系电话:TEL';
             //得到商标包装图
             $item['embellish'] = $this->load('Sale')->getSaleTmByNumber($item['number']);
         }

@@ -105,13 +105,6 @@ class DetailAction extends AppAction
 		//读取推荐商标
 		$refer 	= $this->load("internal")->getReferrer($_class, 8, $number);
 		$tj 	= $this->load('search')->getListTips($refer);
-		//查询订单是否存在
-		if($this->isLogin){
-			$baystate = $this->load("buy")->isBuy($info['name'], $this->userId);
-		}else{
-			$baystate = 0;
-		}
-                
                 //存取浏览记录
                 $prefix = C('COOKIE_PREFIX');
                 $cookie_record = $prefix.C('PUBLIC_RECORD');
@@ -159,7 +152,6 @@ class DetailAction extends AppAction
 		$this->set("userMobile", $this->userMobile);
 		$this->set("platform", $platform);
 		$this->set("tj", $tj);
-		$this->set("baystate", $baystate);
 		$this->display();
 	}
 

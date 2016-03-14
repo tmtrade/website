@@ -5,17 +5,18 @@
 <!--求购信息发布模块-->
 <script type="text/javascript">
     $(function(){
-        if(nickname && isIndex){
+        //悬浮窗的标题配置
+        _defLogin   = "<h6>登录</h6> <p style=\"margin-left: 10px;\"></p>";
+        _xunjia     = "<h6>登录查询此商标出售价格</h6><p>一次登录后可查看全站所有出售商标价格</p>";
+        _login   = "<h6>亲，提交成功了</h6><p>登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
+        _buyTitle   = "<h6>亲，提交成功了</h6><p>系统已将登录密码发送到你手机，登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
+        if(login_mobile && isIndex){
             //隐藏快捷登记的相关输入框,将用户电话号码放到该框中
             $('.mj_form_wpo').hide();
-            $('#buyMoblie').val(nickname);
+            $('#buyMoblie').val(login_mobile);
         }
         //求购信息发布事件
         $('#mj-from-btn').click(function(){
-            //悬浮窗的标题配置
-            //_defLogin   = "<h6>登录</h6> <p style=\"margin-left: 10px;\"></p>";
-            _defLogin   = "<h6>亲，提交成功了</h6><p>登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
-            _buyTitle   = "<h6>亲，提交成功了</h6><p>系统已将登录密码发送到你手机，登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
             name 	= $.trim($('#buyName').val());
             tel 	= $.trim($('#buyMoblie').val());
             subject = $.trim($('#buyNeed').val());
@@ -26,7 +27,7 @@
                 $(".reg-tip em").text('请输入手机号码');
                 return false;
             }
-            if( !name && !nickname ){
+            if( !name && !login_mobile ){
                 $(".mj-eed").show();
                 $(".reg-tip em").show().text('请输入姓名');
                 return false;
@@ -108,10 +109,47 @@
             }
         });
     });
+    //用户询价
+    function xunjia(obj){
+        //用户是否登录
+        if(login_mobile){
+            //提交到分配系统中
+            //组装提交数据
+            var mydata = $(obj).closest('li').find('.xunjia_data');
+            var remarks = mydata.attr('remarks');
+            remarks = remarks.replace('TEL',login_mobile);
+            var buyData 			= new Array();
+            buyData['tid'] 			= mydata.attr('tid');
+            buyData['trademark'] 	= mydata.attr('number');
+            buyData['class'] 		= mydata.attr('class');
+            buyData['subject'] 		= '求购信息';
+            buyData['remarks'] 		= remarks;
+            //提交数据
+            ucBuy.buyAdd(buyData);
+        }else if(nick_name){
+            //弹出绑定手机框
+            getLayer($('#goCenter'));
+        }else{
+            //弹出登录框
+            getLogin(_xunjia,'',0);
+        }
+        return false;
+    }
+    //添加到分配系统回调函数
+    function buyAddCallback(Obj){
+        $.each(Obj,function(i,n){
+            //弹窗提示
+            if(n.code==1){
+                getLayer($('#mj-submitteS'));
+            }else{
+                getLayer($('#mj-submitteF'));
+            }
+        });
+    }
     //快捷登录回调
     function submitDataCallback(Obj){
         $.each(Obj,function(i,n){
-            if(nickname){
+            if(login_mobile){
                 //用户登录情况下
                 if(n.code!=1){
                     //弹出成功框
@@ -124,10 +162,10 @@
                 //用户未登录情况下
                 if(n.code==1){
                     //用户不存在
-                    getLogin(_buyTitle,tel);
+                    getLogin(_buyTitle,tel,0);
                 }else if(n.code==2){
                     //用户存在
-                    getLogin('',tel);
+                    getLogin(_login,tel,1);
                 }else{
                     //弹出失败框
                     getLayer($('#mj-submitteF'));
@@ -159,14 +197,15 @@
         });
     }
     //调用登录弹窗
-    function getLogin(title,tel){
+    function getLogin(title,tel,isExist){
         $("#loginUser").val('');
         $("#loginPass").val('');
         $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
         $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
         $("#dl_ts").hide();
         $('#loginTips').hide();
-        if (title){
+        var title = title==''?_defLogin:title;
+        if (!isExist){
             //账户不存在
             $("#dl_wjmm").hide();//忘记密码(已存在账号)
             $("#dl_fsmm").show();//发送密码(不存在账号)
@@ -175,15 +214,13 @@
             $('.mj-inpuVs').html('');
             $('#loginUser').val(tel);
             $('#dl_wjmm').trigger('click');
-
-            $("#dl_title").html(title);
         }else{
             //账户存在
             $("#dl_wjmm").addClass('aaaa');//添加类
             $('.mj-inpuVs').html('');
             $('#loginUser').val(tel);
-            $("#dl_title").html(_defLogin);
         }
+        $("#dl_title").html(title);
         //CHOFN.loginShow();
         //弹出登录框
         $('#loginFormDiv').show();
@@ -277,7 +314,7 @@
                     $bannerStr = '';
                     foreach($banners as $banner){
                         $url = TRADE_URL.substr($banner['pic'],1);
-                        $bannerStr .= "<li class='mj-banner-itme' style='background:url({$url}) #CCE1F3 center 0 no-repeat;'><a href='http://{$banner['link']}' target='_blank'></a></li>";
+                        $bannerStr .= "<li class='mj-banner-itme' style='background:url({$url}) #CCE1F3 center 0 no-repeat;'><a href='{$banner['link']}' target='_blank'></a></li>";
                     }
                     echo $bannerStr;
                 ?>
@@ -310,7 +347,7 @@
         <ul>
             <? foreach($ads as $ad): ?>
             <li>
-                <a href="http://<?=$ad['link']?>" target="_blank">
+                <a href="<?=$ad['link']?>" target="_blank">
                     <!--<h3>
                         活动标题<br/>
                         <span>活动标题</span>
@@ -454,7 +491,7 @@
                         <div class="sbd">
                             <ul>
                                 <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="http://<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
+                                <li><a href="<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
                                 <? endforeach; ?>
                             </ul>
                         </div>
@@ -466,9 +503,9 @@
                     <div class="cate-list">
                         <? foreach($module['link'] as $link): ?>
                         <p>
-                            <a target="_blank" class="fl <?=$link[0]['color']?>" href="http://<?=$link[0]['link']?>"><span>></span><?=$link[0]['title']?></a>
+                            <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>"><span>></span><?=$link[0]['title']?></a>
                             <?if(isset($link[1])):?>
-                            <a target="_blank" class="fr <?=$link[1]['color']?>" href="http://<?=$link[1]['link']?>"><span>></span><?=$link[1]['title']?></a>
+                            <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>"><span>></span><?=$link[1]['title']?></a>
                             <?endif;?>
                         </p>
                         <? endforeach; ?>
@@ -477,19 +514,20 @@
                 <ul class="yzc-categorbrand fr">
                     <? foreach($class['items'] as $item): ?>
                     <li>
+                        <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
                         <div class="brand-show">
                             <span><img src="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"></span>
-                            <p><b><?=$item['name']?></b><?=$item['class']?></p>
+                            <p><b><?=$item['name']?></b><?=$item['classStr']?></p>
                         </div>
                         <div class="brand-buy">
                             <span><a target="_blank" href="<?=$item['viewUrl']?>"><img src="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"></a></span>
-                            <p><b><?=$item['name']?></b><?=$item['class']?></p>
+                            <p><b><?=$item['name']?></b><?=$item['classStr']?></p>
                             <font>
-                                <a href="" class="first">
+                                <a href="javascript:;" class="first" onclick="xunjia(this);">
                                     <img src="<?=StaticDir?>1.2/images/catebuy1.png">
                                     询 价
                                 </a>
-                                <a href="" class="sec">
+                                <a href="javacript:void(0)" class="sec" onclick="window.open('http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165');">
                                     <img src="<?=StaticDir?>1.2/images/cate-ck.png">
                                     联系卖家
                                 </a>
@@ -642,7 +680,7 @@
     <div class="mj-bcon f-clearfix">
         <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
         <div class="mj-bconRight">
-            <h2>恭喜，求购提交成功</h2>
+            <h2>恭喜，提交成功</h2>
             <p>请保持电话畅通，10分钟内联系你。</p>
             <a href="javascript:;" onclick="layer.closeAll();" class="mj-boBtn1">点击此处关闭！</a>
         </div>
@@ -654,7 +692,7 @@
     <div class="mj-bcon f-clearfix">
         <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
         <div class="mj-bconRight">
-            <h2 style="color:#ff6600">求购提交失败，请稍后重试！</h2>
+            <h2 style="color:#ff6600">提交失败，请稍后重试！</h2>
             <p>可能因为网络问题或其他原因导致</p>
             <a href="javascript:;" class="mj-boBtn1" id="closeFailed" onclick="layer.closeAll();">点此处关闭！</a>
         </div>

@@ -39,12 +39,14 @@ abstract class AppAction extends Action
 	{
 		//设置用户信息
 		//登录用户电话号码
-		if(isset($_COOKIE['uc_nickname'])){
-			$this->set('user_tel',$_COOKIE['uc_nickname']);
+		if(isset($_COOKIE['uc_mobile'])){
+			$this->set('user_tel',$_COOKIE['uc_mobile']);
+			$this->isLogin 		= true;
 			$this->set('isLogin',true);
 		}else{
 			$this->set('user_tel','');
 			$this->set('isLogin',false);
+			$this->isLogin 		= false;
 		}
 		//获得热搜数据
 		$hotwords = $this->load('index')->getHotWords();

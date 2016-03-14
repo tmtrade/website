@@ -37,8 +37,13 @@
             var copyArr = new Array();
             ucLoginTemp.setLoginTemp();
             //用户是否登录
-            nickname  	= '<?=$user_tel?>';
+            nick_name = getCookie('uc_nickname');
+            login_mobile  	= '<?=$user_tel?>';
             isIndex  	= '<?=$is_index?>';
+            //登录情况下无手机号码, 弹窗提醒,跳转到用户中心绑定
+            if(nick_name && !login_mobile){
+                getLayer($('#goCenter'));
+            }
         });
         //成功失败弹窗
         function getLayer(obj) {
@@ -311,14 +316,14 @@
                                 <?$kkk=0;?>
                                 <?if($second['industryId'] == $first['id']):?>
                                 <li>
-                                    <b><a href="http://<?=$second['link']?>" target="_blank"><?=$second['name']?></a></b>
+                                    <b><a href="<?=$second['link']?>" target="_blank"><?=$second['name']?></a></b>
                                     <p>
                                         <?foreach($menuThird as $third):?>
                                         <?if($third['classId'] == $second['id']):?>
                                         <?$kkk++;?>
                                         <?if($kkk==1):?>
-                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="http://<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'')?>"><?=$third['name']?> </a>
-                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="http://<?=$third['link']?>" target="<?=($third['name']==1?'_blank':'')?>"><?=$third['name']?> </a>
+                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'')?>"><?=$third['name']?> </a>
+                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['name']==1?'_blank':'')?>"><?=$third['name']?> </a>
                                         <?endif;?>
                                         <?endif;?>
                                         <?endforeach;?>
@@ -333,7 +338,7 @@
                                     <? foreach($menuPic as $menuImg): ?>
                                     <? if($menuImg['industryId'] == $first['id']): ?>
                                     <span>
-                                        <a href="http://<?=$menuImg['link']?>" target="_blank"><img src="<?=(TRADE_URL
+                                        <a href=<?=$menuImg['link']?>" target="_blank"><img src="<?=(TRADE_URL
 .substr($menuImg['pic'],1))?>"></a>
                                     </span>
                                     <? endif; ?>
