@@ -5,7 +5,7 @@
         <li>
             <div>
                 <div class="ms-filterCenter">
-                    <a href="<?=$v['viewUrl']?>" class="ms-collect cur"><i class="us-icon us-icon20"></i></a>
+                    <a href="<?=$v['viewUrl']?>" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
                     <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>">
                     <img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                     <div class="ms-filtersListTxt">
@@ -24,7 +24,7 @@
         <li>
             <div class="ms-filterMany">
                 <div class="ms-filterCenter">
-                    <a href="<?=$v['viewUrl']?>" class="ms-collect"><i class="us-icon us-icon20"></i></a>
+                    <a href="<?=$v['viewUrl']?>" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
                     <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                     <div class="ms-filtersListTxt">
                         <h6><?=$v['name']?></h6>

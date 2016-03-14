@@ -461,6 +461,11 @@ class SearchModule extends AppModule
         return $res;
     }
 
+    public function getChannelTop($topList)
+    {
+        if ( empty($topList) ) return array();        
+    }
+
     /**
      * 处理列表数据
      *
@@ -477,8 +482,16 @@ class SearchModule extends AppModule
         }else{
             $_tmp = $data;
         }
-        
+        if ( !empty($_COOKIE['uc_ukey']) ){
+            $numbers    = arrayColumn($_tmp, 'number');
+            $lookList   = $this->load('usercenter')->existLook($numbers);
+        }        
         foreach ($_tmp as $k => $v) {
+            if ( isset($lookList[$v['number']]) ){
+                $v['isLook'] = $lookList[$v['number']];                
+            }else{
+                $v['isLook'] = 2;
+            }
             $data[$k] = $this->getTips($v);
         }
         return $data;
@@ -498,6 +511,7 @@ class SearchModule extends AppModule
         //$data['isBest']     = false;
         //$data['isLicense']  = false;
         if ( empty($data['tid']) ) return $data;
+
         if ( $data['id'] ){
             $data['imgUrl'] = $this->load('internal')->getViewImg($data['id']);
         }else{
@@ -507,6 +521,13 @@ class SearchModule extends AppModule
         $data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';
         $data['safeUrl'] = 'http://jingling.yizhchan.com/?nid='.$data['number'].'&class='.$data['class'];
         //if ( empty($data['id']) ) return $data;
+
+        if ( $data['isLook'] == '2' && !empty($_COOKIE['uc_ukey']) ){
+            $lookList = $this->load('usercenter')->existLook(array($data['number']));
+            $data['isLook'] = isset($lookList[$data['number']]) ? $lookList[$data['number']] : 0;
+        }elseif( !isset($data['isLook']) ){
+            $data['isLook'] = '2';
+        }
 
         //$sale = $this->load('internal')->getSaleInfo($data['id'], 0, 0);
         //if ( empty($sale) ) return $data;

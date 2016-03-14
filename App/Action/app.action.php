@@ -38,16 +38,8 @@ abstract class AppAction extends Action
 	public function before()
 	{
 		//设置用户信息
-		//登录用户电话号码
-		if(isset($_COOKIE['uc_mobile'])){
-			$this->set('user_tel',$_COOKIE['uc_mobile']);
-			$this->isLogin 		= true;
-			$this->set('isLogin',true);
-		}else{
-			$this->set('user_tel','');
-			$this->set('isLogin',false);
-			$this->isLogin 		= false;
-		}
+		$this->setLoginUser();
+
 		//获得热搜数据
 		$hotwords = $this->load('index')->getHotWords();
 		$this->set('hotwords',$hotwords);
@@ -114,32 +106,16 @@ abstract class AppAction extends Action
 	 */
 	protected final function setLoginUser()
 	{
-		$uName = C('PUBLIC_USER');
-        $uTime = C('PUBLIC_USER_TIME');
-		$user = @unserialize( Session::get($uName) );
-		if ( empty($user) || !is_array($user) ){
+		if ( empty($_COOKIE['uc_ukey']) ){
 			$this->removeUser();
 			return false;
+		}else{
+			$this->loginId 		= $_COOKIE['uc_ukey'];
+			$this->nickname 	= $_COOKIE['uc_nickname'];
+			$this->userMobile 	= $_COOKIE['uc_mobile'];
+			$this->isLogin 		= true;
 		}
-		if ( empty($user['userId']) ){
-			$this->removeUser();
-			return false;
-		}
 
-		$info  = serialize($user);
-        Session::set($uName, $info, $uTime);
-
-		$this->userId 		= $user['userId'];
-		$this->username 	= $user['username'];
-		$this->nickname 	= $user['nickname'];
-		$this->userMobile 	= $user['mobile'];
-		$this->userEmail 	= $user['email'];
-		$this->userInfo 	= $user;
-		$this->isLogin 		= true;
-
-		$name = empty($this->nickname) ? (empty($this->userMobile) ? $this->userEmail : $this->userMobile) : $this->nickname;	
-		$this->nickname 	= $name;
-		
 		//设置用户信息到页面
 		$this->setUserView();
 	}
@@ -155,12 +131,9 @@ abstract class AppAction extends Action
 	 */
 	protected final function setUserView()
 	{
-		$name = empty($this->nickname) ? (empty($this->userMobile) ? $this->userEmail : $this->userMobile) : $this->nickname;
-		$this->set('nickname', $name);
-		$this->set('username', $this->username);
+		$this->set('nickname', $this->nickname);
+		$this->set('loginId', $this->loginId);
 		$this->set('userMobile', $this->userMobile);
-		$this->set('userEmail', $this->userEmail);
-		$this->set('userInfo', $this->userInfo);
 		$this->set('isLogin', $this->isLogin);
 	}
 	
@@ -175,12 +148,9 @@ abstract class AppAction extends Action
 	 */
 	protected final function removeUser()
 	{
-		$this->userId 		= '';
-		$this->username 	= '';
+		$this->loginId 		= '';
 		$this->nickname 	= '';
 		$this->userMobile 	= '';
-		$this->userEmail 	= '';
-		$this->userInfo 	= '';
 		$this->isLogin 		= false;
 
 		//设置用户信息到页面

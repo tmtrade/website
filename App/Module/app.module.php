@@ -10,6 +10,12 @@
  */
 abstract class AppModule extends Module
 {
+	public function __construct()
+	{
+		//自定义业务逻辑
+		$this->setLoginUser();
+	}
+	
 	/**
 	 * 获取业务对象(系统对接时使用)
 	 * @author	void
@@ -39,6 +45,32 @@ abstract class AppModule extends Module
 		$objList[$name] = $bi;
 		
 		return $bi;
+	}
+
+	/**
+	 * 设置用户信息数据
+	 *
+	 * @author	Xuni
+	 * @since	2016-03-14
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	protected final function setLoginUser()
+	{
+		if ( empty($_COOKIE['uc_ukey']) ){
+			$this->loginId 		= '';
+			$this->nickname 	= '';
+			$this->userMobile 	= '';
+			$this->isLogin 		= false;
+			return false;
+		}else{
+			$this->loginId 		= $_COOKIE['uc_ukey'];
+			$this->nickname 	= $_COOKIE['uc_nickname'];
+			$this->userMobile 	= $_COOKIE['uc_mobile'];
+			$this->isLogin 		= true;
+		}
+		return true;
 	}
 }
 ?>

@@ -34,7 +34,15 @@ class SearchAction extends AppAction
         if ( !empty($params['number']) ){
             $this->detail($params['number']);
         }
-        $res    = $this->load('search')->search($params, $page, $this->_number, 1);
+        if ( empty($params) ){
+            $res = array('rows'=>array(),'total'=>0);
+        }else{
+            $res = $this->load('search')->search($params, $page, $this->_number, 1);
+        }
+        
+        //频道设置
+        $channel = $this->load('search')->getChannel($this->mod);
+        $this->set('channel', $channel);
 
         //保存搜索历史，方便搜索框处理
         if ( !empty($res['rows']) ){
@@ -168,6 +176,9 @@ class SearchAction extends AppAction
                 $this->_searchArr['kt'] = 1;
                 return $params;
             }
+            $params['keytype']      = 3;
+            $this->_searchArr['kt'] = $params['keytype'];
+
             //选择搜索项为3时，无数据直接返回空，没有相关数据可查询
             if ( $keytype == 3 && empty($res) ) return array();
 
@@ -211,8 +222,6 @@ class SearchAction extends AppAction
                     unset($params['platform']);
                 }
             }
-            $params['keytype']      = 3;
-            $this->_searchArr['kt'] = $params['keytype'];
 
             return $params;
         }elseif ( $keytype == 1 ){//有关键词，搜索项类型为1：商标名称
@@ -417,8 +426,11 @@ class SearchAction extends AppAction
         $type   = $this->input('_from', 'int', 1);
 
         $params = $this->getSearchParams();
-        //debug($this->_searchArr);
-        $res    = $this->load('search')->search($params, $page, $this->_number, $type);
+        if ( empty($params) ){
+            $res = array('rows'=>array(),'total'=>0);
+        }else{
+            $res = $this->load('search')->search($params, $page, $this->_number, $type);
+        }
 
         $this->set('searchList', $res['rows']);
         $this->display();

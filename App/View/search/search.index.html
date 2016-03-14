@@ -258,7 +258,7 @@
                 <li>
                     <div>
                         <div class="ms-filterCenter">
-                            <a href="<?=$v['viewUrl']?>" class="ms-collect cur"><i class="us-icon us-icon20"></i></a>
+                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
                             <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6><?=$v['name']?></h6>
@@ -276,7 +276,7 @@
                 <li>
                     <div class="ms-filterMany">
                         <div class="ms-filterCenter">
-                            <a href="<?=$v['viewUrl']?>" class="ms-collect"><i class="us-icon us-icon20"></i></a>
+                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
                             <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6><?=$v['name']?></h6>
@@ -338,7 +338,7 @@
                 <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></span>
                 <div class="ms-filtersListTxt">
                     <div>
-                        <h6><a href=""><?=$v['name']?></a></h6>
+                        <h6><a href="<?=$v['viewUrl']?>"><?=$v['name']?></a></h6>
                         <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
                         <p title="<?=$v['group']?>"><?=mb_substr($v['group'], 0, 8, 'UTF-8')?mb_substr($v['group'], 0, 8, 'UTF-8'):'-'?></p>
                     </div>
@@ -524,10 +524,27 @@
             str += ","+$(this).val();
         })
         str = str ? str.substr(1) : '';
-        //alert(str);
         if ( str ){
             var tname = $(this).attr('tname');
             createUrl(tname, str);
+        }
+    });
+
+    $(".ms-collect").click(function(){
+        var _this   = $(this);
+        var _number = _this.attr('tnumber');
+        if ( _this.hasClass('cur') ){
+            layer.msg('取消还没开发，请稍等');
+        }else{
+            collectTrademark(_number, 1, function(data){
+                if (data.type == 1){
+                    _this.addClass('cur');
+                    layer.msg(data.mess);
+                }else{
+                    layer.msg(data.mess);
+                }
+                
+            });
         }
     });
 
