@@ -154,16 +154,16 @@
                         <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){
                         ?>
                         <?if($isLogin){ ?>
-                        <a href='javascript:createOrder(<?=$sale['id']?>);' class="mj-priceTxtt_link" id='addorder' >立即抢购</a>
+                        <a href='javascript:createOrder();' class="mj-priceTxtt_link" id='addorder' >立即抢购</a>
                         <? }else{ ?>
                         <a href='javascript:goBuy();' class="mj-priceTxtt_link">立即抢购</a>
                         <?} ?>
                         <!--定价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
-                        <a href='javascript:createOrderFromTrak();'>我想购买</a>
+                        <a href='javascript:createOrder();'>我想购买</a>
                         <!--议价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
-                        <a href='javascript:createOrderFromTrak();'>我有兴趣</a>
+                        <a href='javascript:createOrder();'>我有兴趣</a>
                         <?}else{?>
                         <a href='javascript:goLook();'>查看价格</a>
                         <?}?>
@@ -181,7 +181,7 @@
                         <? if($baystate == 1){ ?>
                         <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
                         <? }else{ ?>
-                        <a href='javascript:createOrderFromTrak();' class="mj-priceTxtt_link" id='addorder'>提交需求</a>
+                        <a href='javascript:createOrder();' class="mj-priceTxtt_link" id='addorder'>提交需求</a>
                         <? } ?>
                     <? }else{ ?>
                         <div class="mj-pricebtn">
@@ -387,6 +387,39 @@
 
     </div>
 </div>
+<!--求购已提交弹出层-->
+<div class="mj-boughtM" id="mj-submitteS">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>恭喜您，订单已提交</h2>
+            <p>请保持电话畅通，以便交易专员联系到您。</p>
+            <a href="javascript:;" onclick="layer.closeAll();" class="mj-boBtn1">点击此处关闭！</a>
+        </div>
+    </div>
+</div>
+<!--求购已提交失败弹出层-->
+<div class="mj-boughtM" id="mj-submitteF">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2 style="color:#ff6600">订单提交失败，请稍后重试！</h2>
+            <p>可能因为网络问题或其他原因导致</p>
+            <a href="javascript:;" class="mj-boBtn1" id="closeFailed" onclick="layer.closeAll();">点此处关闭！</a>
+        </div>
+    </div>
+</div>
+<!--数据提交的隐藏域-->
+<div style="display: none">
+    <input type="hidden" id="tels">
+    <input type="hidden" id="tid">
+    <input type="hidden" id="trademark">
+    <input type="hidden" id="class">
+    <input type="hidden" id="remarks">
+    <input type="hidden" id="subject">
+</div>
 <!--成功案列start-->
 <div class="w1180 succeed-al" id="succal">
     <a href=""><h3>成功案例</h3></a>
@@ -532,10 +565,104 @@
         })
     })
 </script>
-<script>
+<!--购买相关js-->
+<script type="text/javascript">
+    $(function(){
+        //给隐藏域赋值
+//        var user_tel = '<?=$user_tel?>';
+        var user_tel = getCookie('uc_nickname');
+        $('#tels').val(user_tel);
+        $('#tid').val('<?=$info['tid']?>');
+        $('#trademark').val('<?=$info['number']?>');
+        $('#class').val('<?=implode(',',$info['class'])?>');
+        $('#subject').val('<?=$info['name']?>');
+        $('#remarks').val('<?=$need?>');
+        if(user_tel){
+            $('#telInput2').val(user_tel);
+        }
+    });
+    //生成订单
+    function createOrder(){
+        //检测是否有电话号码
+        var tel= $('#tels').val();
+        if(tel){
+            //获得数据
+            var remarks 	= $('#remarks').val();
+            remarks = remarks.replace('TEL',tel);
+            var buyData 			= new Array();
+            buyData['tel'] 			= tel;
+            buyData['tid'] 			= $('#tid').val();
+            buyData['trademark'] 	= $('#trademark').val();
+            buyData['class'] 		= $('#class').val();
+            buyData['subject'] 		= $('#subject').val();
+            buyData['remarks'] 		= remarks;
+            //提交数据
+//            console.dir(buyData);
+            addToSys(buyData);
+        }else{
+            //登录
+            $('#chaofan-mj-login').trigger('click');
+        }
+        return false;
+    }
+    //生成订单--2  (直接输入电话)
+    $('#telInput2').blur(function(){
+        var tel= $('#telInput2').val();
+        //验证手机号码
+        var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+        if(!tel || !mobilereg.test(tel) || tel.length!=11){
+            $('#telInput2').val('手机号码不合法');
+            return false;
+        }
+    });
+    //获得焦点值为空
+    $('#telInput2').focus(function(){
+        $('#telInput2').val('');
+    });
+    //生成订单--2
+    function createOrderByPhone(){
+        //检测是否有电话号码
+        var tel= $('#telInput2').val();
+        if(tel){
+            //获得数据
+            var remarks 	= $('#remarks').val();
+            remarks = remarks.replace('TEL',tel);
+            var buyData 			= new Array();
+            buyData['tel'] 			= tel;
+            buyData['tid'] 			= $('#tid').val();
+            buyData['trademark'] 	= $('#trademark').val();
+            buyData['class'] 		= $('#class').val();
+            buyData['subject'] 		= $('#subject').val();
+            buyData['remarks'] 		= remarks;
+            //提交数据
+            addToSys(buyData);
+        }else{
+            //登录
+            $('#telInput2').val('手机号码不能为空');
+        }
+        return false;
+    }
+    //添加到后台系统中
+    function addToSys(buyData){
+        ucBuy.buyAdd(buyData);
+    }
+    //添加回调函数
+    function buyAddCallback(Obj){
+        $.each(Obj,function(i,n){
+            console.debug(n);
+            //弹窗提示
+            if(n.code==1){
+                getLayer($('#mj-submitteS'));
+            }else{
+                getLayer($('#mj-submitteF'));
+            }
+        });
+    }
+    //弹出百度聊天窗口
     function consultation(){
         window.open("http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165");
     }
+    //打开登录窗口
     function goLook()
     {
         $('#chaofan-mj-login').trigger('click');

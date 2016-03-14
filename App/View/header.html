@@ -29,7 +29,7 @@
         $url 		= "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         $signature	= sha1("jsapi_ticket={$jsapiToken}&noncestr={$nonceStr}&timestamp={$timestamp}&url={$url}");
     ?>
-    <script src="http://uc.test.chofn.net/Static/script/user/script/user.js"></script>
+    <script src="<?=PERSONAL_CENTER?>Static/script/user/script/user.js"></script>
     <script type="text/javascript">
         $(document).ready(function(e) {
             ucConfig.setConfig('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');

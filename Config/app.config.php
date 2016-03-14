@@ -13,6 +13,7 @@ define('SEARCH_KEY', '89eb637c610f94b9d281c458bca42421');
 
 //个人中心URL
 define('MANAGER_URL', 'http://i.chofn.net/');
+define('PERSONAL_CENTER', 'http://uc.test.chofn.net/');
 //一只蝉URL
 define('SITE_URL', 'http://t.chofn.net/');
 //交易站后台URL
