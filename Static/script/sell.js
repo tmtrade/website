@@ -19,7 +19,8 @@ $(function(){
 		var _this = $(this);
 		var tip = _this.parent().parent().next();
 		if($.trim(_this.val()) == ''){
-			tip.show();
+			tip.html('<i class="us-icon uj_icon44"></i>请输入商标号');
+                        tip.show();
 			return false;
 		}
 		var key = 0;

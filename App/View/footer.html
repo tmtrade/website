@@ -177,5 +177,78 @@
     </div>
 
 </div>
+<script type="text/javascript">
+    //分类弹框
+    //$(".mj-models").hide(); //初始ul隐藏
+
+    var CHOFN = (function($,chofn){
+       var __loginBox = $('#loginFormDiv');
+       chofn.loginShow = function(obj){
+           __loginBox.show();
+           boxBg();
+           reCal(__loginBox);
+       };
+       var __loginBoxs = $('#buyFormDiv');
+       chofn.BuyShow = function(obj){
+           __loginBoxs.show();
+           boxBg();
+           reCal(__loginBoxs);
+       };
+       var __verifyBoxs = $('#verifyMoblie');
+       chofn.VerifyShow = function(obj){
+           __verifyBoxs.show();
+           boxBg();
+           reCal(__verifyBoxs);
+       };
+       return chofn;
+    })(jQuery,CHOFN || {});
+   
+
+
+   var isOpen = 0;
+   //弹出层居中
+   function reCal(obj){
+       var screenWidth,screenHeigth,scollTop,objLeft,objTop;
+       function box(){
+           screenWidth = $(window).width(); //当前窗口的宽度
+           screenHeigth = $(window).height();  //当前窗口的高度
+           scollTop = $(document).scrollTop(); //获取滚动条距顶部的偏移
+           objLeft = (screenWidth - obj.outerWidth()) / 2; //弹出框距离左侧距离
+           objTop = (screenHeigth - obj.outerHeight()) / 2; //弹出框距离顶部的距离
+           //css定位弹出层
+           obj.css({
+               left: objLeft,
+               top:  objTop
+           });
+       };
+       box();
+       isOpen = 1; //弹出框设定一个变量 置为1 说明弹出框是打开状态
+       //当浏览器窗口大小改变时或者滚动条滚动时...
+       $(window).on('resize scroll',function(){
+           //判断此变量是否为1 如果是就执行
+           if(isOpen == 1){
+               box();
+           }
+       });
+   };
+   //生成弹层背景
+   function boxBg(){
+       var boxbg = $(document.createElement('div')),
+               docheight = $(document).height();
+       boxbg.addClass('ms-boxBg');
+       $('body').append(boxbg);
+       $('.ms-boxBg').css({
+           opacity: "0.6",
+           height: docheight
+       });
+   };
+   //关闭弹层
+   function boxHide(objId){
+       $('.'+objId).hide();
+       $('.ms-boxBg').remove();
+       isOpen = 0;
+       doBuyFunc = '';
+   };
+</script>
 </body>
 </html>
