@@ -10,6 +10,7 @@
  */
 class ZhuantiAction extends AppAction
 {
+    public $seotime		= '一只蝉';
     /**
      * 专题中心
      * @author  far
@@ -52,7 +53,9 @@ class ZhuantiAction extends AppAction
                 
                 $res 	= $this->load('zhuanti')->getList($id, $page, 4,array('isMore'=>'asc','sort'=>'asc'));
 		$list 	= empty($res['rows']) ? array() : $res['rows'];
+                $title   = $topic['title'] . ' - '.$this->seotime;
                 $this->set('list', $list);
+                $this->set('title', $title);
                 $this->display();
 	}
 

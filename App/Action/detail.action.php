@@ -112,28 +112,34 @@ class DetailAction extends AppAction
 			$baystate = 0;
 		}
                 
-		//存取浏览记录
-		$prefix = C('COOKIE_PREFIX');
-		$cookie_record = $prefix.C('PUBLIC_RECORD');
-		$is_record = FALSE;
-		$record = $_COOKIE[$cookie_record];
-		$record = unserialize($record);
-		foreach ($record as $v){
-			if($v['tid']==$tid){
-				$is_record = TRUE;
-			}
-		}
-		if(!$is_record){
-			$recordList = array(0=>array("tid"=>$tid,"class"=>$class,"imgUrl"=>$info['imgUrl']));
-			for($i=0;$i<7;$i++){
-				if(!empty($record[$i])){
-					$recordList[] = $record[$i];
-				}
-			}
-			$recordList = serialize($recordList);
-			setcookie($cookie_record,$recordList,0, Session::$path, Session::$domain);
-		}
-		$this->set("recordList", $record);
+                //存取浏览记录
+                $prefix = C('COOKIE_PREFIX');
+                $cookie_record = $prefix.C('PUBLIC_RECORD');
+                $is_record = FALSE;
+                $record = $_COOKIE[$cookie_record]; 
+                $record = unserialize($record);
+                foreach ($record as $v){
+                    if($v['tid']==$tid){
+                        $is_record = TRUE;
+                    }
+                }
+                if(!$is_record){
+                    $recordList = array(0=>array("tid"=>$tid,"class"=>$class,"imgUrl"=>$info['imgUrl']));
+                    for($i=0;$i<7;$i++){
+                        if(!empty($record[$i])){
+                            $recordList[] = $record[$i];
+                        }
+                    }
+                    $recordList = serialize($recordList);
+                    setcookie($cookie_record,$recordList,0, Session::$path, Session::$domain);
+                }
+                if(!empty($record)){
+                    $this->set("recordList", $record);
+                }else{//没有浏览记录时推荐5个
+                    $refer 	= $this->load("internal")->getReferrer($_class, 5, $number);
+                    $tj 	= $this->load('search')->getListTips($refer);
+                    $this->set("recordList", $tj);
+                }
                 
 		//电话旁边联系人信息
 		$this->set("contact", $contact);

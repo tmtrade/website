@@ -1,0 +1,29 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>style/import-comm.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/list.css"/>
+   <div class="w1180 contactUs f-clearfix" style="background: #ffffff">
+       <? require(ViewDir.'/faq/left.html'); ?>
+       <div class="contUsrg fr f-clearfix">
+           <div class="trad-certi comSty">
+               <h2 class="lb-tit"><? echo $list['title'];?></h2>
+               <div class="yzzz">
+                   <? echo $list['content']; ?> 
+               </div>
+           </div>
+       </div>
+
+   </div>
+
+<script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
+<script type="text/javascript">
+    var tid = <?=$id?>;
+    if(tid==985){
+        dindex = 0;
+    }else if(tid==987 || tid==988 || tid==989 || tid==990){
+        dindex = 1;
+    }else{
+        dindex = 2;
+    }
+    jQuery(".contUsList").slide({titCell:"h3", targetCell:"ul",defaultIndex:dindex,effect:"slideDown",delayTime:300,trigger:"click",returnDefault:false})
+</script>
+<? require(ViewDir.'/footer.html'); ?>

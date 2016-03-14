@@ -1,0 +1,29 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>style/mg-about.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/news-view.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/import-comm.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/list.css"/>
+   <div class="w1180 contactUs f-clearfix" style="background: #ffffff">
+       <? require(ViewDir.'/faq/left.html'); ?>
+       <div class="contUsrg fr f-clearfix">
+           <div class="trad-certi comSty">
+               <h2 class="lb-tit"><? echo $category;?></h2>
+               <div class="yzzz">
+                    <? $i = 1; foreach ($list as $k=>$item){ ?>
+                        <div class="g-cib-a2-b2-d1 cur">
+                            <a href="<? echo $item['url']; ?>"><? echo $i;?>.&nbsp;&nbsp;&nbsp;<? echo $item['title']; ?></a>
+                        </div>
+                    <? $i++; } ?>
+               </div>
+               
+           </div>
+           <div class="mj-bPage"><?=$pageBar?></div>
+       </div>
+
+   </div>
+
+<script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
+<script type="text/javascript">
+    jQuery(".contUsList").slide({titCell:"h3", targetCell:"ul",defaultIndex:2,effect:"slideDown",delayTime:300,trigger:"click",returnDefault:false})
+</script>
+<? require(ViewDir.'/footer.html'); ?>

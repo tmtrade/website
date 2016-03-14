@@ -604,6 +604,25 @@ $("#float-floor li").each(function(i){
     $(this).click(function(){
         var t=$(".sbzs>div").eq(i).offset().top;
         $("html, body").animate({"scrollTop":t});
-    })
-})
+    });
+});
+
+//简单选项卡
+function jc(name,curr,n)
+{
+    for(var i=1;i<=n;i++)
+    {
+        var menu=document.getElementById(name+i);
+        menu.className=i==curr ? "up" : "";
+    }
+}
+$(".contUstit").each(function(i){
+    $(this).click(function(){
+        $(".contUstit").find('img').attr('src',"/Static/images/cont-rg.png");
+        var imgsrc = $(this).find('img');
+        if(imgsrc.attr('src')=="/Static/images/cont-rg.png"){
+                imgsrc.attr('src',"/Static/images/cont-dw.png");
+        }
+    });
+});
 

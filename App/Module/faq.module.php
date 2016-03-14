@@ -11,7 +11,7 @@
 class FaqModule extends AppModule
 {
 	public $source = array();
-    public $status   = array();
+        public $status   = array();
 	public $area   = array();
 	public $type   = array();
 	public $class   = array();
