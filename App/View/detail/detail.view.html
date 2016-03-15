@@ -18,7 +18,7 @@
             </div>
             <div class="brde-scfx">
                 <p class="fl">
-                   <a> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png">收藏商标</a>
+                   <a class="collect in_collect"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
                 </p>
                 <p class="fr">
                     <a href="javascript:;" class="jiathis jiathis_txt"> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
@@ -194,7 +194,7 @@
                     <dl>
                         <dd>
                             <i class="us-icon uj_icon2"></i><span>商标申请人：<?=$info['proName']?></span>
-                            <a href="javascript:;" onclick="consultation()"><i class="us-icon uj_icon30"></i>咨询ta</a>
+                            <a href="javascript:;" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
@@ -203,7 +203,7 @@
                         <dd class="mj-cTr_bRight_dd">
                             <input id="telInput2" value="" placeholder="输入电话免费通话" type="text">
                             <label for="l-button">
-                                <button type="submit" id="l-button">打给我</button>
+                                <button type="submit" id="l-button" onclick="createOrderByPhone()">打给我</button>
                             </label>
                         </dd>
                     </dl>
@@ -386,30 +386,6 @@
 
     </div>
 </div>
-<!--求购已提交弹出层-->
-<div class="mj-boughtM" id="mj-submitteS">
-    <span class="ms-close mj-close"></span>
-    <div class="mj-bcon f-clearfix">
-        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
-        <div class="mj-bconRight">
-            <h2>恭喜您，订单已提交</h2>
-            <p>请保持电话畅通，以便交易专员联系到您。</p>
-            <a href="javascript:;" onclick="layer.closeAll();" class="mj-boBtn1">点击此处关闭！</a>
-        </div>
-    </div>
-</div>
-<!--求购已提交失败弹出层-->
-<div class="mj-boughtM" id="mj-submitteF">
-    <span class="ms-close mj-close"></span>
-    <div class="mj-bcon f-clearfix">
-        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
-        <div class="mj-bconRight">
-            <h2 style="color:#ff6600">订单提交失败，请稍后重试！</h2>
-            <p>可能因为网络问题或其他原因导致</p>
-            <a href="javascript:;" class="mj-boBtn1" id="closeFailed" onclick="layer.closeAll();">点此处关闭！</a>
-        </div>
-    </div>
-</div>
 <!--数据提交的隐藏域-->
 <div style="display: none">
     <input type="hidden" id="tels">
@@ -569,9 +545,8 @@
         //有手机登录情况下 检测该用户是否购买
         var trademark = "<?=$info['number']?>";
         var tm_class = "<?=implode(',',$info['class'])?>";
-        ucBuy.isexist(trademark,tm_class);
         if(login_mobile){
-            //ucBuy.isexist(trademark,tm_class);
+            ucBuy.isexist(trademark,tm_class);
         }
         //给隐藏域赋值
         var user_tel = login_mobile;
@@ -583,6 +558,25 @@
         if(user_tel){
             $('#telInput2').val(user_tel);
         }
+        //收藏功能
+        $('.collect').click(function(){
+            if($(this).hasClass('in_collect')){
+                //收藏
+                var nowObj = this;//保存当前this
+                collectTrademark(trademark, 1, function(data){
+                    if (data.type == 1){
+                        $(nowObj).removeClass('in_collect');
+                        $(nowObj).find('span').html('取消收藏');
+                        layer.msg(data.mess);
+                    }else{
+                        layer.msg(data.mess);
+                    }
+                });
+            }else{
+                //取消收藏
+                layer.msg('wate......');
+            }
+        });
     });
     //生成订单
     function createOrder(){
@@ -600,7 +594,7 @@
             buyData['subject'] 		= '求购信息';
             buyData['remarks'] 		= remarks;
             //提交数据
-            addToSys(buyData);
+            ucBuy.buyAdd(buyData);
         }else{
             //分为登录无手机和未登录两种情况
             if(nick_name){
@@ -613,7 +607,6 @@
         return false;
     }
     //生成订单--2  (直接输入电话)
-
     //失去焦点,检测用户输入的手机号
     $('#telInput2').blur(function(){
         var tel= $('#telInput2').val();
@@ -640,38 +633,18 @@
             buyData['subject'] 		= '求购信息';
             buyData['remarks'] 		= remarks;
             //提交数据
-            addToSys(buyData);
+            ucBuy.buyAdd(buyData);
         }
         return false;
-    }
-    //添加到后台系统中
-    function addToSys(buyData){
-        ucBuy.buyAdd(buyData);
-    }
-    //添加回调函数
-    function buyAddCallback(Obj){
-        $.each(Obj,function(i,n){
-            //弹窗提示
-            if(n.code==1){
-                getLayer($('#mj-submitteS'));
-            }else{
-                getLayer($('#mj-submitteF'));
-            }
-        });
     }
     //检测用户是否购买回调
     function isexistCallback(Obj){
         $.each(Obj,function(i,n){
-            console.debug(n);
             //弹窗提示
-//            if(n.code==1){
-//                $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>你已经购买过该商标</a>");
-//            }
+            if(n.code==2){
+                $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>您已经购买过该商标</a>");
+            }
         });
-    }
-    //弹出百度聊天窗口
-    function consultation(){
-        window.open("http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165");
     }
     //打开登录窗口
     function goLook()
@@ -684,5 +657,5 @@
     }
 </script>
 <!--分享相关js-->
-<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+<!--<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>-->
 <? require(ViewDir.'/footer.html'); ?>

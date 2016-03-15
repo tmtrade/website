@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/color.css"/>
     <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery-1.8.3.min.js"></script>
     <script src="<?=StaticDir?>1.2/js/layer/layer.js"></script>
-    <script src="<?=StaticDir?>script/login_new.js"></script>
+    <!--<script src="<?=StaticDir?>script/login_new.js"></script>-->
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/respond.css"/>
     <script src="<?=StaticDir?>1.2/js/respond.min.js"></script>
     <script language="javascript" src="<?=StaticDir?>1.2/other/code.php"></script>
@@ -44,6 +44,51 @@
             if(nick_name && !login_mobile){
                 getLayer($('#goCenter'));
             }
+            //悬浮窗提醒标题
+            _defLogin   = "<h6>登录</h6> <p style=\"margin-left: 10px;\"></p>";
+            _xunjia     = "<h6>登录查询此商标出售价格</h6><p>一次登录后可查看全站所有出售商标价格</p>";
+            //获取验证码
+            $('#dl_wjmm,#dl_fsmm').click(function(){
+                mobile 	= $.trim($('#loginUser').val());
+                var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+                if(!mobile){
+                    $(".mj-eed").show();
+                    $(".loginTips em").text('请输入手机号码');
+                    return false;
+                }
+                if(!mobilereg.test(mobile) || mobile.length!=11){
+                    $(".mj-eed").show();
+                    $(".loginTips em").text('请输入正确的手机号码');
+                    return false;
+                }
+                ucNetwork.sendCode(mobile,$(this),'点击获取验证码');
+            });
+            //用户登录
+            $('#dl_sub').click(function(){
+                account 	= $.trim($('#loginUser').val());
+                password 	= $.trim($('#loginPass').val());
+                var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+                if(!account){
+                    $(".mj-eed").show();
+                    $(".loginTips em").text('请输入手机号码');
+                    return false;
+                }
+                if(!mobilereg.test(account) || account.length!=11){
+                    $(".mj-eed").show();
+                    $(".loginTips em").text('请输入正确的手机号码');
+                    return false;
+                }
+                if(!password){
+                    $(".loginTips em").text('请输入密码');
+                    return false;
+                }
+                //判断是验证码登录还是密码登录
+                if($('#dl_sub').hasClass('yzm')){
+                    ucNetwork.verifyCode(account,password);//验证码登录
+                }else{
+                    ucNetwork.userLog(account,password);//密码登录
+                }
+            });
         });
         //成功失败弹窗
         function getLayer(obj) {
@@ -59,6 +104,103 @@
             $(".mj-close").bind("click", function () {
                 layer.closeAll();
             });
+        }
+        //发送验证码
+        function sendCodeCallback(Obj,htmlobj,title){
+            $.each(Obj,function(i,n){
+                if(n.code > 0 ){//发送成功
+                    $('#dl_sub').addClass('yzm');//添加额外的class yzm 判断为验证码登录
+                    timer(60, $('.aaaa'), title);//倒计时
+                }else{
+                    console.debug(n.msg);
+                }
+            });
+        }
+        //验证验证码是否合法
+        function verifyCodeCallback(Obj,account,code){
+            $.each(Obj,function(i,n){
+                if(n.code==1){
+                    $('.Not_logged').hide();
+                    $('.logged').show();
+                    ucNetwork.logCode(account,code);
+                }else{
+                    console.debug(n.mess);
+                }
+            });
+        }
+        //调用登录弹窗
+        function getLogin(title,tel,isExist){
+            $("#loginUser").val('');
+            $("#loginPass").val('');
+            $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+            $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
+            $("#dl_ts").hide();
+            $('#loginTips').hide();
+            var title = title==''?_defLogin:title;
+            if (!isExist){
+                //账户不存在
+                $("#dl_wjmm").hide();//忘记密码(已存在账号)
+                $("#dl_fsmm").show();//发送密码(不存在账号)
+                $("#dl_fsmm").addClass('aaaa');//添加类
+                //触发点击事件
+                $('.mj-inpuVs').html('');
+                $('#loginUser').val(tel);
+                $('#dl_wjmm').trigger('click');
+            }else{
+                //账户存在
+                $("#dl_wjmm").addClass('aaaa');//添加类
+                $('.mj-inpuVs').html('');
+                $('#loginUser').val(tel);
+            }
+            $("#dl_title").html(title);
+            //CHOFN.loginShow();
+            //弹出登录框
+            $('#loginFormDiv').show();
+            boxBg();
+            reCal($('#loginFormDiv'));
+        }
+        //用户询价
+        function xunjia(obj){
+            //用户是否登录
+            if(login_mobile){
+                //提交到分配系统中
+                //组装提交数据
+                var mydata = $(obj).closest('li').find('.xunjia_data');
+                var remarks = mydata.attr('remarks');
+                remarks = remarks.replace('TEL',login_mobile);
+                var buyData 			= new Array();
+                buyData['tid'] 			= mydata.attr('tid');
+                buyData['trademark'] 	= mydata.attr('number');
+                buyData['class'] 		= mydata.attr('class');
+                buyData['subject'] 		= '求购信息';
+                buyData['remarks'] 		= remarks;
+                //提交数据
+                ucBuy.buyAdd(buyData);
+            }else if(nick_name){
+                //弹出绑定手机框
+                getLayer($('#goCenter'));
+            }else{
+                //弹出登录框
+                getLogin(_xunjia,'',0);
+            }
+            return false;
+        }
+        //添加到分配系统回调函数
+        function buyAddCallback(Obj){
+            $.each(Obj,function(i,n){
+                //弹窗提示
+                if(n.code==1){
+                    getLayer($('#mj-submitteS'));
+                }else if(n.code==0){
+                    layer.msg('您已经购买过该商标');
+                }else{
+                    getLayer($('#mj-submitteF'));
+                }
+            });
+        }
+        //聊天函数
+        function goChat(){
+            window.open("http://p.qiao.baidu.com/im/index?siteid=7666620&ucid=1268165");
         }
     </script>
 </head>
