@@ -438,15 +438,16 @@
             <? foreach($recommendClasses as $rClass): ?>
             <li>
                 <p>
-                    <label><img src="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'"></label>
-                    <span><b><?=$rClass['link']?></b></span>
+                  <img src="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'"/>
+                   <!-- <label><img src="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'"></label>-->
+                      <!-- <span><b><?=$rClass['link']?></b></span>-->
                 </p>
                 <div class="tj-recom-hover">
-                    <a target="_blank" href="search/index/?c=<?=$rClass['classStr']?>">
+                   <label>
                     <? foreach($rClass['class'] as $class): ?>
-                    <label><?=$class?> </label>
+                 	<a target="_blank" href="search/index/?c=<?=$rClass['classStr']?>"> <?=$class?>  </a>
                     <? endforeach; ?>
-                    </a>
+                   </label>
                 </div>
             </li>
             <? endforeach; ?>
@@ -471,11 +472,9 @@
                     <? endforeach; ?>
                 </ul>
             </div>
-        </div>
-        <div class="parBd" style="position:relative;z-index:9;">
-            <? foreach($module['class'] as $class): ?>
-            <div class="brandlist-show">
-                <div class="yzc-categorypic-show fl">
+        </div>    
+  	     <div class="f-clearfix">
+      	 <div class="yzc-categorypic-show fl">
                     <div  class="slideBox">
                         <div class="shd">
                             <p>
@@ -511,6 +510,9 @@
                         <? endforeach; ?>
                     </div>
                 </div>
+     	  <div class="parBd" style="position:relative;z-index:9;">
+            <? foreach($module['class'] as $class): ?>
+            <div class="brandlist-show">      
                 <ul class="yzc-categorbrand fr">
                     <? foreach($class['items'] as $item): ?>
                     <li>
@@ -539,6 +541,7 @@
             </div>
             <? endforeach; ?>
         </div>
+     </div>
     </div>
     <? endforeach; ?>
 </div>
