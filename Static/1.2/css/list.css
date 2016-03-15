@@ -1,5 +1,6 @@
 .cl-org{background: #ff8b3e}
 .cl-red{background: #ff5656}
+body{ background:#f5f5f5 !important;}
 /*专题列表页*/
 .ztlist{
     margin-top:45px;
@@ -279,7 +280,7 @@
     border: 1px solid #eeeeee;
 }
 .brand-details div.fl-details .brde-pic img{
-    width: 380px;
+    width: 378px;
     height: 260px;
 }
 .brand-details div.fl-details .brde-pic p{
@@ -513,14 +514,15 @@
     height: 168px;
     background: #fefaf5;
     border: solid 1px #f1ebe3;
-    position: relative;
+	width:747px;
+   /* position: relative;
     z-index: 1;
     padding-right: 360px;
-    float: left;
+    float: left;*/
 }
 .mj-cTr_bLeft {
     position: relative;
-    z-index: 1;
+   /* z-index: 1;
     top:15px;
     left:35px;
     margin-right: 35px;
@@ -530,12 +532,18 @@
     border-right: dashed 1px #e4dfbe;
     float: left;
     padding-right: 40px;
-    min-width: 300px;
+    min-width: 300px;*/
+	height: 118px;
+    border-right: dashed 1px #e4dfbe;
+    float: left;
+	width:380px;
+    margin-top: 25px;
 }
 .mj-priceTxtt {
     /*padding: 15px 0 0;*/
-   margin-top: -25px;
-   box-sizing: content-box;
+      margin-top: -20px;
+    box-sizing: content-box;
+    margin-left: 35px;
 }
 .mj-priceTxtt p{
     overflow: hidden;
@@ -593,16 +601,22 @@
     color: #fff;
     font-size: 14px;
     border-radius: 2px;
+	position:absolute;
+	bottom:-5px;
+	left:22px;
 }
 .mj-priceTxtt a {
     margin-left:62px;
 }
 .mj-cTr_bRight {
 
-    position: absolute;
+   /* position: absolute;
     top: 15px;
-    right: 50px;
-    /*width: 265px;*/
+    right: 50px;*/
+	padding:20px;
+    /*width:322px;*/
+	float:left;
+	
 }
 .mj-cTr_bRight dd {
     padding-top: 10px;
@@ -611,10 +625,19 @@
     margin-right: 10px;
 }
 .mj-cTr_bRight dd span {
+	
     font-size: 14px;
     color: #666;
     vertical-align: middle;
 }
+.mj-cTr_bRight dd span.sqr{
+	display:inline-block;
+	width:175px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	
+	}
 .mj-cTr_bRight dd a {
     display: inline-block;
     width: 97px;
