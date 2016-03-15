@@ -360,7 +360,7 @@
     <ul class="w1180">
         <span class="gb-ss"></span>
         <li class="btm-tel">
-            <a>
+            <a target="_blank" href="javacript:;" onclick="goChat();">
                 <img src="<?=StaticDir?>1.2/images/zx-ico.png">
                 在线咨询
             </a>
@@ -371,14 +371,21 @@
         <li class="btm-tj">
             <p><img src="<?=StaticDir?>1.2/images/btm-wz.png"></p>
             <div>
-                <select oninvalid="请选择商标所属行业">
-                    <option value="请选择商标所属行业">请选择商标所属行业</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
+                <select id="my_select">
+                    <option value="行业:用户未选择行业">请选择商标所属行业</option>
+                    <option value="行业:服装/鞋帽/箱包">服装/鞋帽/箱包</option>
+                    <option value="行业:美妆/清洁用品">美妆/清洁用品</option>
+                    <option value="行业:食品/烟/酒/茶">食品/烟/酒/茶</option>
+                    <option value="行业:电子产品/软件">电子产品/软件</option>
+                    <option value="行业:餐饮住宿/运输">餐饮住宿/运输</option>
+                    <option value="行业:广告/推销/金融">广告/推销/金融</option>
+                    <option value="行业:家用电器/家居">家用电器/家居</option>
+                    <option value="行业:教育/娱乐">教育/娱乐</option>
+                    <option value="行业:药/保健品">药/保健品</option>
+                    <option value="行业:其他行业">其他行业</option>
                 </select>
-                <input type="tel" placeholder="请输入手机号"/>
-                <a>免费推荐</a>
+                <input type="tel" placeholder="请输入手机号" class="freeTel"/>
+                <a href="javascript:;" onclick="freeIntro()">免费推荐</a>
             </div>
         </li>
     </ul>
@@ -561,7 +568,53 @@
         if ( _s == '' ) return false;
         createUrl('_kw', _s, '1');
     }
-
+    //免费推荐----start
+    function freeIntro(){
+        var freeTel = $('.freeTel').val();
+        var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+        if(!freeTel){
+            $('.freeTel').val('请输入手机号');
+            return false;
+        }
+        if(!mobilereg.test(freeTel) || freeTel.length!=11){
+            $('.freeTel').val('手机号不正确');
+            return false;
+        }
+        var freeContent = $('#my_select').val();
+        var data = new Array();
+        data['tel'] 	= freeTel;
+        data['subject'] = freeContent;
+        ucNetwork.submitData(data);
+    }
+    //发布回调
+    function submitDataCallback(Obj){
+        $.each(Obj,function(i,n){
+            if(n.code!=-1){
+                //弹出成功框
+                getLayer($('#mj-submitteS'));
+                $('.gb-ss').click();//关闭此弹窗
+            }else{
+                //弹出失败框
+                getLayer($('#mj-submitteF'));
+            }
+        });
+    }
+    $('.freeTel').blur(function(){
+        var freeTel = $('.freeTel').val();
+        var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+        if(!freeTel){
+            $('.freeTel').val('请输入手机号');
+            return false;
+        }
+        if(!mobilereg.test(freeTel) || freeTel.length!=11){
+            $('.freeTel').val('手机号不正确');
+            return false;
+        }
+    });
+    $('.freeTel').focus(function(){
+        $('.freeTel').val('');
+    });
+    //免费推荐-----end
     //加载剩余数据
     function loadMore(){
         //出售与商标库都没有了

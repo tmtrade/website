@@ -62,7 +62,7 @@
             <p>
                 <span>友情链接：</span>
                 <?foreach($frendlyLink as $item):?>
-                <a target="_blank" href="http://<?=$item['content']?>"><?=$item['thumtitle']?></a>
+                <a target="_blank" href="<?=$item['content']?>"><?=$item['thumtitle']?></a>
                 <?endforeach;?>
                 <br/>
                 <span>分公司：</span>  <a>北京</a>   <a>天津</a>   <a>南京</a> <a>苏州</a><a>杭州 </a>   <a>武汉 </a>   <a>长沙 </a> <a>重庆</a><a>成都 </a><a>广州</a><a>深圳 </a><a>山东</a><a>上海 </a>
@@ -87,20 +87,10 @@
         </div>
 
     
-        <p class="mj-footerB_text"><a href="http://www.miibeian.gov.cn/">ICP证：蜀ICP备15035613号-1</a> 违法和不良信息举报电话: 028-110     Copyright © 2002 - 2015 北京超凡知识产权代理有限公司 </p>
+        <p class="mj-footerB_text"><a href="http://www.miibeian.gov.cn/">ICP证：蜀ICP备15035613号-1</a> 违法和不良信息举报电话: 028-110     Copyright © 2002 - 2016 北京超凡知识产权代理有限公司 </p>
     </div>
 </div>
 <!--底部end-->
-<!--漂浮楼层start-->
-<ul class="float-floor" id="float-floor">
-    <?foreach($modules as $k=>$module):?>
-    <li>
-        <a><?=($k+1)?>F</a>
-        <a class="etitle" <?=(($k==0)?'style="display: block"':'')?> ><?=(mb_substr($module['name'],0,2,'utf-8'))?></a>
-    </li>
-    <?endforeach;?>
-</ul>
-<!--漂浮楼层end-->
 <div id="center" class="progress_bar">
 
     <div id="loading"><div></div></div>

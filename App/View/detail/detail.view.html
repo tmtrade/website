@@ -18,7 +18,11 @@
             </div>
             <div class="brde-scfx">
                 <p class="fl">
-                   <a class="collect in_collect"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
+                    <?if($sale['isLook']):?>
+                    <a class="collect"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>取消收藏</span></a>
+                    <?else:?>
+                    <a class="collect in_collect"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
+                    <?endif;?>
                 </p>
                 <p class="fr">
                     <a href="javascript:;" class="jiathis jiathis_txt"> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
@@ -97,7 +101,7 @@
            </div> 
             <div class="mj-cTr_bottom f-clearfix">
                 <div class="mj-cTr_bLeft">
-                <? if ( !empty($sale) ){ ?>
+                <? if ( isset($sale['id']) ){ ?>
                     <!--定价部分-->
                     <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ ?>
                     <!--特价价格促销-->
@@ -259,7 +263,7 @@
             <div class="trademark">
                 <dl>
                     <dt>
-                        <img src="<?=$info['imgUrl']?>" onerror="this.src='/Static/images/img1.png'">
+                        <img src="<?=$sale['imgUrl']?>" onerror="this.src='/Static/images/img1.png'">
                     </dt>
                     <dd>
                         <!--<span>
@@ -579,21 +583,29 @@
         }
         //收藏功能
         $('.collect').click(function(){
+            var nowObj = this;//保存当前this
             if($(this).hasClass('in_collect')){
                 //收藏
-                var nowObj = this;//保存当前this
                 collectTrademark(trademark, 1, function(data){
                     if (data.type == 1){
                         $(nowObj).removeClass('in_collect');
                         $(nowObj).find('span').html('取消收藏');
-                        layer.msg(data.mess);
+                        layer.msg('收藏成功',{time:1500});
                     }else{
-                        layer.msg(data.mess);
+                        layer.msg('收藏失败',{time:1500});
                     }
                 });
             }else{
                 //取消收藏
-                layer.msg('wate......');
+                deleteCollectTrademark(trademark, 1,function(data){
+                    if (data.type != 0){
+                        $(nowObj).addClass('in_collect');
+                        $(nowObj).find('span').html('收藏商标');
+                        layer.msg('取消成功',{time:1500});
+                    }else{
+                        layer.msg('取消失败',{time:1500});
+                    }
+                });
             }
         });
     });
@@ -676,5 +688,29 @@
     }
 </script>
 <!--分享相关js-->
-<!--<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>-->
+<div class="bdsharebuttonbox" data-tag="share_1">
+    <a class="bds_tsina" data-cmd="tsina"></a>
+    <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+    <!--<a class="bds_baidu" data-cmd="baidu"></a>-->
+    <a class="bds_weixin" data-cmd="weixin"></a>
+    <a class="bds_tqq" data-cmd="tqq"></a>
+    <!--<a class="bds_more" data-cmd="more">更多</a>-->
+</div>
+<script>
+    var myurl = location.href;
+    var myimg = '<?=$sale["imgUrl"]?>';
+    window._bd_share_config = {
+        common : {
+            //bdText : '自定义分享内容',
+            //bdDesc : '自定义分享摘要',
+            bdUrl : myurl,
+            bdPic : myimg,
+            bdSign: 'off'
+        },
+        share : [{
+            "bdSize" : 16
+        }],
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
 <? require(ViewDir.'/footer.html'); ?>

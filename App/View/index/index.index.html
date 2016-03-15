@@ -71,7 +71,7 @@
         $.each(Obj,function(i,n){
             if(login_mobile){
                 //用户登录情况下
-                if(n.code!=1){
+                if(n.code!=-1){
                     //弹出成功框
                     getLayer($('#mj-submitteS'));
                 }else{
@@ -494,7 +494,7 @@
                 </dt>
                 <dd>
                     <? foreach ($news['news'] as $item){ ?>
-                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="http://<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
                     <? } ?>
                     <a class="more" hidden="">更多 ></a>
                 </dd>
@@ -502,7 +502,7 @@
             <div class="btm">
                 <? foreach ($news['baike'] as $item){ ?>
                 <p>
-                    <span class="fl">[<a href="" target="_blank">商标百科</a>] <a href="http://<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
+                    <span class="fl">[<a href="" target="_blank">商标百科</a>] <a href="<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
                 </p>
                 <? } ?>
             </div>
@@ -520,7 +520,7 @@
                 </dt>
                 <dd>
                     <? foreach ($news['faq'] as $item){ ?>
-                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="http://<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="<? echo $item['url'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
                     <? } ?>
                     <a class="more" hidden="">更多 ></a>
                 </dd>
@@ -528,7 +528,7 @@
             <div class="btm">
                 <? foreach ($news['law'] as $item){ ?>
                 <p>
-                    <span class="fl">[<a href="" target="_blank">商标法律</a>] <a href="http://<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
+                    <span class="fl">[<a href="" target="_blank">商标法律</a>] <a href="<? echo $item['url'];?>" target="_blank"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
                 </p>
                 <? } ?>
             </div>
@@ -541,11 +541,21 @@
 <!--订阅商标start-->
 <div class="yzc-take">
     <div class="w1180">
-        <a class="take1" href="">快速筛选出好标</a>
-        <a class="take2" href="">联系我们-免费为你找</a>
+        <a class="take1" target="_blank" href="/search">快速筛选出好标</a>
+        <a class="take2" target="_blank" href="javascript:goChat();">联系我们-免费为你找</a>
     </div>
 
 </div>
-<script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
 <!--订阅商标end-->
+<!--漂浮楼层start-->
+<ul class="float-floor" id="float-floor">
+    <?foreach($modules as $k=>$module):?>
+    <li>
+        <a><?=($k+1)?>F</a>
+        <a class="etitle" <?=(($k==0)?'style="display: block"':'')?> ><?=(mb_substr($module['name'],0,2,'utf-8'))?></a>
+    </li>
+    <?endforeach;?>
+</ul>
+<!--漂浮楼层end-->
+<script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
 <? require(ViewDir.'/footer.html'); ?>
