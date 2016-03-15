@@ -94,6 +94,7 @@
                        </li>
                    </ul>
                <?}?>
+           </div> 
             <div class="mj-cTr_bottom f-clearfix">
                 <div class="mj-cTr_bLeft">
                 <? if ( !empty($sale) ){ ?>
@@ -193,7 +194,7 @@
             <div class="mj-cTr_bRight">
                     <dl>
                         <dd>
-                            <i class="us-icon uj_icon2"></i><span>商标申请人：<?=$info['proName']?></span>
+                            <i class="us-icon uj_icon2"></i><span class="sqr">商标申请人：<?=$info['proName']?></span>
                             <a href="javascript:;" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
                         </dd>
                         <dd>
@@ -212,6 +213,7 @@
         </div>
     </div>
 </div>
+
 <!--商标详情主要内容-->
 <div class="w1180 details-main" style="padding-top: 25px;">
     <div class="detail-recom fl">
@@ -523,29 +525,35 @@
     $(".all-class").each(function(){
         $(this).click(function(){
             var dataindex= $(this).attr("data-index");
-            if(dataindex==1){
-                $(this).css("color","#ff6666");
-                $(this).find("i.fel-down").css("background-image"," url('<?=StaticDir?>1.2/images/xq-up.png')")
-                for(var i=0;i<=olis.length;i++){
-                    if(olis.length>10){
-                        olis.slice(10,i).show();
-                    }
-                    else{
-                        olis.slice(10,i).hide();
-                    }
-                }
-                $(this).attr("data-index","0");
-            }
-            else{
-                $(this).css("color","#666666");
-                $(this).find("i.fel-down").css("background-image"," url('<?=StaticDir?>1.2/images/xq-down.png')")
-                for(var i=0;i<=olis.length;i++){
-                    if(olis.length>10){
-                        olis.slice(10,i).hide();
-                    }
-                }
-                $(this).attr("data-index","1");
-            }
+			if(olis.length<10){
+				 $(this).attr("data-index","1");			
+				}
+		    else{
+					if(dataindex==1){
+					$(this).css("color","#ff6666");
+					$(this).find("i.fel-down").css("background-image"," url('<?=StaticDir?>1.2/images/xq-up.png')")
+					for(var i=0;i<=olis.length;i++){
+						if(olis.length>10){
+							olis.slice(10,i).show();
+						}
+						else{
+							olis.slice(10,i).hide();
+						}
+					}
+					$(this).attr("data-index","0");
+					}
+					else{
+						$(this).css("color","#666666");
+						$(this).find("i.fel-down").css("background-image"," url('<?=StaticDir?>1.2/images/xq-down.png')")
+						for(var i=0;i<=olis.length;i++){
+							if(olis.length>10){
+								olis.slice(10,i).hide();
+							}
+						}
+						$(this).attr("data-index","1");
+					}
+				}
+            
 
         })
     })
