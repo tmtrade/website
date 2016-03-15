@@ -39,8 +39,10 @@ class GoodsBi extends Bi
 		$data = $this->invoke("Goods/search/", $param);
 
 		return array(
-			'total' => isset($data['total']) ? $data['total'] : 0,
-			'rows'  => isset($data['rows'])  ? $data['rows']  : array(),
+			'total'     => isset($data['total']) ? $data['total'] : 0,
+			'rows'      => isset($data['rows'])  ? $data['rows']  : array(),
+			'groupName' => isset($data['groupName'])  ? $data['groupName']  : array(),
+			'goodsName' => isset($data['goodsName'])  ? $data['goodsName']  : array(),
 			);
 	}
 }
