@@ -562,7 +562,7 @@
 .Brand-tit{
    overflow: hidden;
     position: relative;
-    z-index: 999999999;
+    z-index: 9999999;
     margin-bottom: -1px;
 }
 
@@ -745,7 +745,7 @@
 .yzc-category-tit{
     overflow: hidden;
     position: relative;
-    z-index: 999999999;
+    z-index: 9999999;
     margin-bottom: -1px;
 
 }
@@ -828,7 +828,7 @@
 .slideBox{ width:340px; height:368px; overflow:hidden; position:relative; border:1px solid #ddd;  }
 .slideBox .shd{ height:15px; overflow:hidden; position:absolute;  right:5px; bottom:5px; z-index:999; }
 .slideBox .shd p{ overflow:hidden; zoom:1; float:left;  }
-.slideBox .shd p a{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
+.slideBox .shd p a{ float:left; margin-right:2px;  width:15px; height:15px; border-radius:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
 .slideBox .shd p a.on{ background:#f00; color:#fff; }
 /*.slideBox .bd1{ position:relative; height:100%; z-index:0;   }*/
 /*.slideBox .bd1 li{ zoom:1; vertical-align:middle;}*/
@@ -846,7 +846,7 @@
 
 .cate-list{
     width: 340px;
-    height: 140px;
+    height: 130px;
     position: absolute;
     bottom:0px;
     left: 0px;
