@@ -238,7 +238,7 @@
                    <?}}?>
                 </ul>
                 <ul class="recompic">
-                   <?if(empty($user_tel)){?>
+                   <?if(empty($userMobile)){?>
                    <p class="p-logo"><a href="javascript:void(0);" id="loginShow">登录</a>保存收藏信息，永不丢失</p>
                    <?}else{?>
                    
@@ -573,7 +573,7 @@
             //ucBuy.isexist(trademark,tm_class);
         }
         //给隐藏域赋值
-        var user_tel = '<?=$user_tel?>';
+        var user_tel = login_mobile;
         $('#tels').val(user_tel);
         $('#tid').val("<?=$info['tid']?>");
         $('#trademark').val(trademark);
