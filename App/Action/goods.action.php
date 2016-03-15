@@ -36,7 +36,15 @@ class GoodsAction extends AppAction
         }else{
             $result = array('rows'=>array(),'total'=>0);
         }
+        //特价列表
+        $_arr   = array('isOffprice'=>'1');
+        $list   = $this->load('search')->getSaleList($_arr, 1, 8);
+        $this->set('offpriceList', $list['rows']);
 
+        $_title = array_merge($result['groupName'], $result['goodsName']);
+        $_title = implode('，', $_title);
+
+        $this->set('baoTitle', $_title);
         $this->set('has', empty($result['rows']) ? false : true);
         $this->set('whereStr', http_build_query(array('s'=>$_groupGoods)));
         $this->set('list', $result);
@@ -55,7 +63,7 @@ class GoodsAction extends AppAction
         }else{
             $result = array('rows'=>array(),'total'=>0);
         }
-        
+
         $this->set('list', $result);
         $this->display();
     }

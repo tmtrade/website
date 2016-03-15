@@ -64,7 +64,7 @@ class SearchAction extends AppAction
 
         //特价推荐
         $_arr   = array('isOffprice'=>'1');
-        $list   = $this->load('search')->getSaleList($_arr, 1, 6);
+        $list   = $this->load('search')->getSaleList($_arr, 1, 8);
         $this->set('offpriceList', $list['rows']);
 
         $this->set('_CLASS', $_class);//分类

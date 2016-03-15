@@ -8,6 +8,16 @@
     <!-- ms-filterMain start -->
     <div class="ms-filterMain">
         <!-- ms-filters end -->
+        <div class="ms-filters">
+            <div class="ms-filterResults">
+                <span>全部结果&nbsp;&gt;</span>
+                <ul class="ms-filterResultsList f-clearfix">
+                    <? if ( $baoTitle ) { ?>
+                        <li title="<?=$baoTitle?>"><a href="javascript:void(0);"><?=mb_substr($baoTitle,0,40,'utf-8')?></a></li>
+                    <? } ?>
+                </ul>
+            </div>
+        </div>
         <!-- ms-filtersList start -->
         <div class="ms-filtersList">
             <ul class="f-clearfix" id="s-all-list">
@@ -89,7 +99,23 @@
             <button type="button" onclick="changeDD();"></button>
     </div>
     <!-- ms-filterMain end -->
-    
+    <dl class="ms-recommend">
+        <dt><span>特价商标推荐</span><img src="<?=StaticDir?>1.2/images/xstj.png" alt=""/></dt>
+        <?foreach ($offpriceList as $k => $v) {
+            $_c_    = explode(',', $v['class']);
+            $_class = current($_c_);?>
+            <dd>
+                <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></span>
+                <div class="ms-filtersListTxt">
+                    <div>
+                        <h6><a href="<?=$v['viewUrl']?>"><?=$v['name']?></a></h6>
+                        <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
+                        <p title="<?=$v['group']?>"><?=mb_substr($v['group'], 0, 8, 'UTF-8')?mb_substr($v['group'], 0, 8, 'UTF-8'):'-'?></p>
+                    </div>
+                </div>
+            </dd>
+        <?}?>
+    </dl>
     <!-- ms-recommend end -->
 </div>
 
