@@ -311,6 +311,9 @@
    margin-top: 15px;
     color: #999999;
 }
+.brand-details div.fl-details .brde-scfx p a{
+	 color: #999999;
+	}
 .brand-details div.fl-details .brde-scfx p img{
     margin-bottom: -2px;
     margin-right: 5px;
@@ -682,10 +685,11 @@
     width: 95%;
     margin: auto;
     overflow: hidden;
+	
 }
 .trademark{
     overflow: hidden;
-    height: 400px;
+  
 }
 .recompic{
     width:100%;
@@ -771,12 +775,12 @@
 .intr-flow{
     width: 924px;
     background: #ffffff;
+	border:1px solid #eaeaea;
 
 }
 .intr-flow p.intr-flow-tit{
     height: 48px;
     border-bottom: 1px solid #eeeeee;
-	margin-left: 2.5%;
 }
 .f-tp{
     position: fixed;
@@ -802,7 +806,7 @@
 }
 
 .transaction{
-
+	margin-bottom:40px;
 }
 .transaction h3{
     color: #666666;
