@@ -57,7 +57,9 @@ img{
 .fr{
     float: right;
 }
-
+a:-webkit-any-link{
+	-webkit-appearance:none !important;
+	}
 /*底部浮动客服*/
 .fdkf-ss{
     position: fixed;
