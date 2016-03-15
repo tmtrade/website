@@ -351,6 +351,8 @@ table {
 .mj-search_con p.tj-fl{
     overflow: hidden;
     margin-top: 3px;
+    width: 481px;
+	height: 20px;
 }
 .mj-search_con p.tj-fl a{
     display: inline-block;
@@ -986,7 +988,11 @@ table {
     background: #dcdcdc;
     margin: 10px auto;
 }
-
+.mj-ddItems .ddItems-like div span img{
+	display: block;
+    width: 210px;
+    height: 80px;
+	}
 .mj-navitems p{
 
     padding-top: 22px;
