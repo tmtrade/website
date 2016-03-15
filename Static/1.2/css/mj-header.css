@@ -1008,7 +1008,7 @@ table {
 }
 .mj-navitems p a:hover{
     cursor: pointer;
-    text-decoration: underline;
+    color:#ff6666;
 }
 
 /* ��¼���� */
