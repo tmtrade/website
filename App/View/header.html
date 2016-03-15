@@ -303,7 +303,7 @@
 
                 </div>
 
-                <div class="mj-dd">
+                <div class="mj-dd" style="display: block!important;height: 480px;">
                     <? foreach($menuFirst as $first): ?>
                     <dd>
                         <a href="javascript:;">
@@ -374,6 +374,20 @@
 <script src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <!--mj-mNav end-->
 <script type="text/javascript">
+
+  //左边菜单栏
+
+    $(".mj-dd dd").hover(function(){
+
+        $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
+
+    },function(){
+
+        $(this).removeClass("mj-ddahoverc");
+
+    });
+
+
     $('input[name="kw"]').focus(function (){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
