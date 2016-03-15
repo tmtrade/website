@@ -835,6 +835,7 @@ body{ background:#f5f5f5 !important;}
     color: #666666;
     font-size: 16px;
     font-weight: normal;
+	margin-top:20px;
 }
 .transaction h3 span{
     display: inline-block;
