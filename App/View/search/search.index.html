@@ -534,14 +534,21 @@
         var _this   = $(this);
         var _number = _this.attr('tnumber');
         if ( _this.hasClass('cur') ){
-            layer.msg('取消还没开发，请稍等');
+            deleteCollectTrademark(_number, 1,function(data){
+                if (data.type != 0){
+                    _this.removeClass('cur');
+                    layer.msg('取消成功');
+                }else{
+                    layer.msg('取消失败');
+                }
+            });
         }else{
             collectTrademark(_number, 1, function(data){
                 if (data.type == 1){
                     _this.addClass('cur');
-                    layer.msg(data.mess);
+                    layer.msg('收藏成功');
                 }else{
-                    layer.msg(data.mess);
+                    layer.msg('收藏失败');
                 }
                 
             });

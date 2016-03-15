@@ -62,7 +62,7 @@
             <li>
                 <div>
                     <div class="ms-filterCenter">
-                        <a href="<?=$v['viewUrl']?>" class="ms-collect cur"><i class="us-icon us-icon20"></i></a>
+                        <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
                         <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                         <div class="ms-filtersListTxt">
                             <h6><?=$v['name']?></h6>
@@ -80,7 +80,7 @@
             <li>
                 <div class="ms-filterMany">
                     <div class="ms-filterCenter">
-                        <a href="<?=$v['viewUrl']?>" class="ms-collect"><i class="us-icon us-icon20"></i></a>
+                        <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
                         <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                         <div class="ms-filtersListTxt">
                             <h6><?=$v['name']?></h6>
@@ -116,7 +116,31 @@
 
 <script type="text/javascript">
     
-    //$(".mj-dd").remove();
+    $(".ms-collect").click(function(){
+        var _this   = $(this);
+        var _number = _this.attr('tnumber');
+        if ( _this.hasClass('cur') ){
+            deleteCollectTrademark(_number, 1,function(data){
+                if (data.type != 0){
+                    _this.removeClass('cur');
+                    layer.msg('取消成功');
+                }else{
+                    layer.msg('取消失败');
+                }
+            });
+        }else{
+            collectTrademark(_number, 1, function(data){
+                if (data.type == 1){
+                    _this.addClass('cur');
+                    layer.msg('收藏成功');
+                }else{
+                    layer.msg('收藏失败');
+                }
+                
+            });
+        }
+    });
+    
 </script>
 
 <? require(ViewDir.'/footer.html'); ?>
