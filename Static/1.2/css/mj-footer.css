@@ -80,8 +80,8 @@
     text-align:center ;
 
     padding: 22px;
-
-    border-bottom: solid 1px #eee;
+border-bottom: solid 1px #eee;
+    
 
 }
 
@@ -103,21 +103,21 @@
    /* padding-right: 30px;*/
 
     font-size: 14px;
-	color:#666;
+	color:#bbbbbb;
 
 }
 
 .mj-footer_nav li a{
 
     color: #666;
-	padding-left:15px;
-	padding-right:15px;
+	padding-left:25px;
+	padding-right:25px;
 
 }
 
 .mj-footer_nav li a:hover{
 
-    color: #fc7d28;
+    color: #ff6666;
 
     text-decoration: underline;
 
@@ -154,9 +154,7 @@
 }
 
 .mj-footer_bottom{
-
     width: 900px;
-
     margin: 0 auto;
 
 
