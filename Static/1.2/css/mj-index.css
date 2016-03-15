@@ -692,12 +692,16 @@
 .tj-recom li div.tj-recom-hover label a{
 	display:inline-block;
 	width: 100px;
-	text-align:left;
-    margin-left:10px;
+	text-align: center;
+    margin-left:15px;
     color: #666666;
 	margin-top:10px;
 
 }
+.tj-recom li div.tj-recom-hover label a:hover{
+	text-decoration:underline;
+	height:16px;
+	}
 
 .brand-fl{
     overflow: hidden;
@@ -709,6 +713,12 @@
     overflow: hidden;
     padding-left: 45px;
 }
+.brand-fl li p{
+    display: inline-block;
+    width: 120px;
+    text-align: left !important;
+    margin-top: 8px;
+}
 .brand-fl li span{
     color: #999999;
     margin-right:6px;
@@ -718,14 +728,10 @@
 .brand-fl li span label{
     margin-right: 5px;
 }
-.brand-fl li a{
-    display: inline-block;
-    width:120px;
-    text-align: left !important;
-    margin-top:8px;
-	color:#666666;
 
-}
+.brand-fl li a:hover{
+	text-decoration:underline;
+	}
 .brand-fl li a.piont{
     color: #ce0000;
 }
@@ -787,6 +793,9 @@
     float: right;
     margin-top:8px;
 }
+.yzc-category-tit ul.fr li span:last-child{
+	border:none;
+	}
 .yzc-category-tit ul.fr li.on{
 
     border-top: 2px solid #ff6666;
@@ -794,6 +803,9 @@
     border-left: 1px solid #faa1a1;
 
 }
+.yzc-category-tit ul.fr li.on span{
+	border:none;
+	}
 .yzc-category .parBd{
 	position:relative;
 	z-index:9;
@@ -1120,7 +1132,7 @@
 
     border: 1px solid #f0f0f0;
     background: #ffffff;
-    padding: 20px;
+    padding: 20px 25px;
 
     margin-top:8px;
 }
@@ -1136,12 +1148,12 @@
     margin-right: 15px;
 }
 .brand-ques div dl dd{
-    width: 375px;
+    width: 425px;
     float: left;
 }
 .brand-ques  dl dd p{
     overflow: hidden;
-    margin-top: 10px;
+    margin-top:5px;
     font-size: 12px;
     color: #666666;
 }
@@ -1154,10 +1166,11 @@
 	
 	}
 .brand-ques  dl dd a{
-    color: #666666;
+    color: #333333;
 }
 .brand-ques  dl dd p label{
     color: #999999;
+	margin-right: 6px;
 }
 .brand-ques .btm{
     overflow: hidden;
@@ -1170,6 +1183,13 @@
     color: #666666;
     font-size: 12px;
 }
+.brand-ques  a.more{
+	 display:inline-block;
+	 color: #666666;
+	 float:right;
+	 margin-top:5px;
+	 margin-right:5px;
+	}
 .brand-ques .btm p label{
     color: #999999;
 }
