@@ -361,7 +361,8 @@ class SearchModule extends AppModule
             //$r['limit'] = 10000;
         }
 
-        $r['index'] = array(($page - 1) * $limit, $limit);
+        //$r['index'] = array(($page - 1) * $limit, $limit);
+        $r['page']  = $page;
         $r['limit'] = $limit;
         
         if ( !empty($params['type']) ){
@@ -482,7 +483,7 @@ class SearchModule extends AppModule
         }else{
             $_tmp = $data;
         }
-        if ( !empty($_COOKIE['uc_ukey']) ){
+        if ( !empty($this->loginId) ){
             $numbers    = arrayColumn($_tmp, 'number');
             $lookList   = $this->load('usercenter')->existLook($numbers);
         }        

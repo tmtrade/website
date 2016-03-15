@@ -11,6 +11,13 @@
 class GoodsModule extends AppModule
 {
 
+    /**
+     * 引用业务模型
+     */
+    public $models = array(
+        'second'        => 'secondStatus',
+    );
+
 	/**
 	 * 商品查询
 	 *
@@ -26,7 +33,49 @@ class GoodsModule extends AppModule
 	 */
 	public function search($groupGoodsCode, $num, $page)
 	{
-		return $this->importBi('Goods')->search($groupGoodsCode, $num, $page);
+		$res = $this->importBi('Goods')->search($groupGoodsCode, $num, $page);
+
+		if ( empty($res['rows']) ) return array('total'=>0,'rows'=>array());
+		$numbers 		= arrayColumn($res['rows'], 'code');
+		$list 			= $this->getListInfo($numbers);
+		$res['rows'] 	= $this->load('search')->getListTips($list);
+		return $res;
 	}
+
+	public function getListInfo($data)
+	{
+		if ( empty($data) ) return array();
+
+		$list = array();
+		if ( !empty($this->loginId) ){
+            $numbers    = arrayColumn($_tmp, 'number');
+            $lookList   = $this->load('usercenter')->existLook($numbers);
+        } 
+		foreach ($data as $k => $number) {
+			$sale = $this->load('sale')->getSaleInfo($number);
+			if ( empty($sale) ){
+				$info = $this->load('trademark')->getTmInfo($number);
+				$list[$k] = array(
+					'tid' 		=> $info['tid'],
+					'name' 		=> $info['name'],
+					'number' 	=> $info['number'],
+					'class' 	=> implode(',', $info['class']),
+					'group' 	=> $info['group'],
+					);
+			}else{
+				$list[$k] = array(
+					'id' 		=> $sale['id'],
+					'tid' 		=> $sale['tid'],
+					'name' 		=> $sale['name'],
+					'number' 	=> $sale['number'],
+					'class' 	=> $sale['class'],
+					'group' 	=> $sale['group'],
+					);
+			}
+		}
+		return $list;
+	}
+
+
 }
 ?>
