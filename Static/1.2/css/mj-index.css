@@ -565,7 +565,9 @@
     z-index: 9999999;
     margin-bottom: -1px;
 }
-
+.Brand-tit a:hover{
+	cursor:pointer;
+	}
 .Brand-tit li{
     width: 127px;
     height: 37px;
@@ -606,8 +608,8 @@
     border-top: 1px solid #f18f8f;
 }
 
-.tj-recom{
-
+.tj-recom a:hover{
+	cursor:pointer;
 }
 .tj-recom li{
    width: 235px;
@@ -743,6 +745,11 @@
     border-top: 1px solid #f18f8f;
     border-left: 1px solid ;
 }
+.sbzs{
+	position:relative;
+	z-index:1;	
+	
+	}
 .yzc-category{
   width: 1180px;
   overflow: hidden;
@@ -1235,7 +1242,6 @@
     top:128px;
 
 }
-
 /*悬浮楼层*/
 
 .float-floor{
@@ -1246,6 +1252,7 @@
     position:fixed;
     /*display: none;*/
     z-index: 999999999;
+    padding-bottom: 15px;
 }
 @media screen and (max-width:1180px) {
     .float-floor{
@@ -1277,6 +1284,9 @@
     padding-bottom:10px;
 
 }
+.float-floor li:last-child a{
+    border-bottom:none;
+}
 .float-floor li.on{
     background: #ff5656;
 }
@@ -1290,7 +1300,7 @@
 
 
 }
-.float-floor a.etitle{
+/*.float-floor a.etitle{
     position: absolute;
     background: #ffffff;
     color:#ff6666;
@@ -1299,11 +1309,16 @@
     top:0px;
     z-index: 99;
     display: none;
-}
+}*/
 
-.float-floor li a:hover  a.etitle{
+/*.float-floor li a:hover  a.etitle{
     display: block;
-}
+}*/
+
+
+
+
+
 
 
 
