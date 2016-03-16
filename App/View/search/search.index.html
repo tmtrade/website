@@ -631,10 +631,11 @@
                 if ( _hasSale ){
                     _hasSale = false;
                     _times = 0;
+                    _tmTimes = 0;
                     loadMore();
                 }else if ( _hasTm ){
                     _hasTm = false;
-                    _times = 1;
+                    _times = 0;
                     $('#s-uploading').hide();
                 }
             }

@@ -193,11 +193,9 @@ class SearchModule extends AppModule
                             unset($params['group']);
                         }
                     }
-                    //debug($_arr);
-                    $_res = $this->searchLike($_arr, '31,32', 1, 100);
-                    //debug($_res);
+                    $_res = $this->searchLike($_arr, 1, 1000);
                     if ( empty($_res['rows']) ) return $result;
-                    $numberList = array_unique( arrayColumn($_res['rows'], 'code') );
+                    $numberList = array_unique( arrayColumn($_res['rows'], 'code') );//print_r($numberList);
                     if ( empty($numberList) ) return $result;
                     $r['in']['number'] = $numberList;
                     break;
@@ -257,7 +255,7 @@ class SearchModule extends AppModule
         $r['page']      = $page;
         $r['limit']     = $limit;
         $r['order']     = array('isTop' => 'desc');
-        //debug($r);
+
         $res            = $this->import('sale')->findAll($r);
         $res['rows']    = $this->getListTips($res['rows']);
 
@@ -317,11 +315,11 @@ class SearchModule extends AppModule
                             unset($params['group']);
                         }
                     }
-                    $_res = $this->searchLike($_arr, '31,32', 1, 100);
+                    $_res = $this->searchLike($_arr, 1, 100);
                     if ( empty($_res['rows']) ) return $result;
-                    $numberList = array_unique( arrayColumn($_res['rows'], 'tid') );
+                    $numberList = array_unique( arrayColumn($_res['rows'], 'code') );
                     if ( empty($numberList) ) return $result;
-                    $r['in']['tid'] = $numberList;
+                    $r['in']['trademark_id'] = $numberList;
                     break;
                 default:
                     $r['eq']['trademark'] = $params['name'];
@@ -361,16 +359,9 @@ class SearchModule extends AppModule
             //$r['limit'] = 10000;
         }
 
-        //$r['index'] = array(($page - 1) * $limit, $limit);
-        $r['page']  = $page;
+        $r['index'] = array(($page - 1) * $limit, $limit);
+        //$r['page']  = $page;
         $r['limit'] = $limit;
-        
-        if ( !empty($params['type']) ){
-            $r['eq']['type'] = $params['type'];
-        }
-        if ( !empty($params['length']) ){
-            $r['eq']['nums'] = $params['length'];
-        }
 
         $r['col']   = array('tid', 'trademark_id as `number`', 'class_id as `class`', 'trademark as `name`', 'group');
 

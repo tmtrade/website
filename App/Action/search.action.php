@@ -117,7 +117,7 @@ class SearchAction extends AppAction
         $params = array(
             'status' => 1,
         );
-        $this->_searchArr['kw'] = urldecode($keyword);
+        $this->_searchArr['kw'] = $keyword = urldecode($keyword);
         //未搜索关键词
         if ( $keyword == '' ){
             //类别
