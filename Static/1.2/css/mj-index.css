@@ -592,7 +592,7 @@
 
 }
 .yzc-Brand{
-    overflow: hidden;
+   /* overflow: hidden;*/
     margin-top: 10px;
     margin-bottom: 45px;
 }
@@ -667,7 +667,7 @@
 .tj-recom li div.tj-recom-hover{
     width:235px;
 	background:#030;
-    min-height: 71px;
+    min-height:56px;
   /*  overflow: hidden;*/
     background: #ffffff;
     position: absolute;
@@ -676,6 +676,7 @@
     z-index: 999;
    /* text-align: center;*/
     display: none;
+	padding-bottom: 15px;
 }
 .tj-recom li div.dw{
 	position: relative;
@@ -793,9 +794,9 @@
     float: right;
     margin-top:8px;
 }
-.yzc-category-tit ul.fr li span:last-child{
-	border:none;
-	}
+.yzc-category-tit ul.fr li:last-child span{
+	border:none; 
+}
 .yzc-category-tit ul.fr li.on{
 
     border-top: 2px solid #ff6666;
