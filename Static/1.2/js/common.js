@@ -528,17 +528,7 @@ $(document).ready(function(){
 
 });
 
-//交易无缝滚动
-jQuery(".mj-newjy").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});
-//banner焦点图
-jQuery(".mj-bannerIimg").slide({titCell:".hd ul li",mainCell:".bd ul",autoPlay:true});
-//活动推荐点击切换
-jQuery(".yzc-Activities").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:5,easing:"easeOutCirc"});
-//商标分类选项卡
-jQuery(".yzc-Brand").slide({effect:"fold"});
-//类别展示选项卡和焦点图
-jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"leftLoop",autoPlay:true});
-jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fold",pnLoop:false});
+
 //输入框下拉
 
 //$("#searchForm").find("input[name='kw']").focus(function(){
@@ -560,52 +550,9 @@ jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fol
 //        $(".mj-pull-down").hide();
 //    }
 //})
-//漂浮楼层
-var oflr=$("#float-floor");
-var sbzs=$(".sbzs>div");
-var oflis= $("#float-floor li");
-var owf=document.body.clientWidth;
-var owh=$(window).height();
-var oft=(owf-1180)/2-65;
-var ofh=owh/2-190;
-oflr.css({"left":oft,"top":ofh})
-$(window).scroll(function(){
 
 
-    var w_top = $( window ).scrollTop();
-    if( w_top+$( window).height()>$("#cloth").offset().top&&w_top<$("#succal").offset().top){
-        oflr.show();
-        if(owf<1180){
-            oflr.hide();
-        }
 
-    }
-    else{
-        oflr.hide();
-    }
-    for(var i=0;i<$("#float-floor li").length;i++){
-
-        if( w_top>$(".sbzs>div").eq(i).offset().top &&  w_top< $(".sbzs>div").eq(i+1).offset().top){
-            $(oflis[i+1]).find("a.etitle").show();
-        }else{
-            $(oflis[i+1]).find("a.etitle").hide();
-        }
-    }
-
-});
-//    $("#float-floor").find("li").mouseover(function(){
-//       $(this).find("a.etitle").show();
-//        $(this).mouseleave(function(){
-//            $(this).find("a.etitle").hide();
-//        })
-//   })
-
-$("#float-floor li").each(function(i){
-    $(this).click(function(){
-        var t=$(".sbzs>div").eq(i).offset().top;
-        $("html, body").animate({"scrollTop":t});
-    });
-});
 
 //简单选项卡
 function jc(name,curr,n)
