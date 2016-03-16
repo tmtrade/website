@@ -371,7 +371,9 @@
     margin-right: 5px;
 }
 .mj-newjy .bd{
-    margin-top:20px;
+    margin-top: 20px;
+    height: 110px;
+    overflow: hidden;
 }
 .mj-newjy ul{
     height: 90px;
