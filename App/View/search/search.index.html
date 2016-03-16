@@ -92,23 +92,9 @@
                     <div class="ms-conditionList-main">
                         <ul class="f-clearfix ms-conditionRadio">
                         <?foreach ($_NAME as $_k => $_v) {?>
-                            <li><a href="javacript:void(0);" onclick="createUrl('_name','<?=$_k?>');return false;"><?=$_v?></a></li>
+                            <li><a href="javacript:void(0);" <?if($_k == $n){echo 'class="click"';}?> onclick="createUrl('_name','<?=$_k?>');return false;"><?=$_v?></a></li>
                         <?}?>
                         </ul>
-                        <!--
-                        <ul class="f-clearfix ms-conditionCheckbox">
-                            <li><input type="checkbox" id="name-checkbox2" name="name-checkbox2" /><label for="name-checkbox2">完全相同</label></li>
-                            <li><input type="checkbox" id="name-checkbox3" name="name-checkbox3" /><label for="name-checkbox3">前包含</label></li>
-                            <li><input type="checkbox" id="name-checkbox6" name="name-checkbox6" /><label for="name-checkbox6">近似商标</label></li>
-                        </ul>
-                        <div class="ms-condition-btn">
-                            <a href="javascript:;">确定</a>
-                            <span onclick="cancelFun(this);">取消</span>
-                        </div>
-                        <div class="ms-conditionBtn">
-                            <span class="ms-multi" onclick="multi(this);">多选</span>
-                        </div>
-                        -->
                     </div>
                 </div>
                 <? } ?>
@@ -176,25 +162,6 @@
                                         <li><a  href="javascript:void(0);" onclick="createUrl('_date','<?=$_k?>');return false;"><?=$_v?></a></li>
                                     <?}?>
                                     </ul>
-                                    <!--
-                                    <ul class="f-clearfix ms-conditionCheckbox">
-                                        <li><input type="checkbox" id="reg-checkbox2" name="reg-checkbox2" /><label for="reg-checkbox2">2015年</label></li>
-                                        <li><input type="checkbox" id="reg-checkbox3" name="reg-checkbox3" /><label for="reg-checkbox3">2014年</label></li>
-                                        <li><input type="checkbox" id="reg-checkbox4" name="reg-checkbox4" /><label for="reg-checkbox4">2013年</label></li>
-                                        <li><input type="checkbox" id="reg-checkbox5" name="reg-checkbox5" /><label for="reg-checkbox5">2012年</label></li>
-                                        <li><input type="checkbox" id="reg-checkbox6" name="reg-checkbox6" /><label for="reg-checkbox6">2011年</label></li>
-                                        <li><input type="checkbox" id="reg-checkbox7" name="reg-checkbox7" /><label for="reg-checkbox7">2010年</label></li>
-                                        <li><input type="checkbox" id="reg-checkbox8" name="reg-checkbox8" /><label for="reg-checkbox8">5年以前</label></li>
-                                        <li><input type="checkbox" id="reg-checkbox9" name="reg-checkbox9" /><label for="reg-checkbox9">申请中</label></li>
-                                    </ul>
-                                    <div class="ms-condition-btn">
-                                        <a href="">确定</a>
-                                        <span onclick="cancelFun(this);">取消</span>
-                                    </div>
-                                    <div class="ms-conditionBtn">
-                                        <span class="ms-multi" onclick="multi(this);">多选</span>
-                                    </div>
-                                    -->
                                 </div>
                             </li>
                         <? } ?>

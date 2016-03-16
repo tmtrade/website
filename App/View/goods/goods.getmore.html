@@ -3,6 +3,7 @@
     if ( count($_c_) < 2 ) {
     ?>
         <li>
+            <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
             <div>
                 <div class="ms-filterCenter">
                     <a href="<?=$v['viewUrl']?>" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
@@ -22,6 +23,7 @@
         </li>
     <? }else{ ?>
         <li>
+            <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
             <div class="ms-filterMany">
                 <div class="ms-filterCenter">
                     <a href="<?=$v['viewUrl']?>" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
