@@ -88,9 +88,9 @@
     color: #ff5656;
  
 }
-.ms-advancedFilter > ul > li > a.cilk,
-.ms-conditionList-main label.cilk,
-.ms-conditionList-main li a.cilk{
+
+.cilk{
+	display:inline-block;
 	background: #ff6666;
 	color: #ffffff !important;
 	padding: 2px 5px;
