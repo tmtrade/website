@@ -81,6 +81,13 @@
 	padding: 2px 5px;
     color: #666666;
 }
+
+
+.ms-conditionList-main label:hover,
+.ms-conditionList-main li a:hover{
+    color: #ff5656;
+ 
+}
 .ms-advancedFilter > ul > li > a.cilk,
 .ms-conditionList-main label.cilk,
 .ms-conditionList-main li a.cilk{
@@ -88,12 +95,6 @@
 	color: #ffffff !important;
 	padding: 2px 5px;
 	}
-
-.ms-conditionList-main label:hover,
-.ms-conditionList-main li a:hover{
-    color: #ff5656;
- 
-}
 .ms-condition-btn{
     text-align: center;
     padding-bottom: 10px;
