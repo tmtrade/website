@@ -195,7 +195,7 @@ class SearchModule extends AppModule
                     }
                     $_res = $this->searchLike($_arr, 1, 1000);
                     if ( empty($_res['rows']) ) return $result;
-                    $numberList = array_unique( arrayColumn($_res['rows'], 'code') );//print_r($numberList);
+                    $numberList = array_unique( arrayColumn($_res['rows'], 'code') );
                     if ( empty($numberList) ) return $result;
                     $r['in']['number'] = $numberList;
                     break;
@@ -315,11 +315,11 @@ class SearchModule extends AppModule
                             unset($params['group']);
                         }
                     }
-                    $_res = $this->searchLike($_arr, 1, 100);
+                    $_res = $this->searchLike($_arr, 1, 1000);
                     if ( empty($_res['rows']) ) return $result;
-                    $numberList = array_unique( arrayColumn($_res['rows'], 'code') );
+                    $numberList = array_unique( arrayColumn($_res['rows'], 'id') );
                     if ( empty($numberList) ) return $result;
-                    $r['in']['trademark_id'] = $numberList;
+                    $r['in']['tid'] = $numberList;
                     break;
                 default:
                     $r['eq']['trademark'] = $params['name'];
@@ -446,8 +446,8 @@ class SearchModule extends AppModule
     {
         if ( empty($params) ) return array();
 
-        $params['page'] = $page;
-        $params['num']  = $number;
+        $params['page']     = $page;
+        $params['num']      = $number;
 
         $res = $this->importBi('trademark')->search($params);
         return $res;

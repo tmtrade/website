@@ -58,8 +58,8 @@ class IndexAction extends AppAction
 		if ( empty($title) ){			
 			$prefix = C('SEARCH_HISTORY');
 			$log 	= (array)unserialize( Session::get($prefix) );
-			$list 	= array_filter( array_map('unserialize', $log) );
-			$list 	= array_slice($list, 0, 10);
+			//$list 	= array_filter( array_map('unserialize', $log) );
+			$list 	= array_slice($log, 0, 10);
 		}else{
 			$_title = $title;
 			$list 	= array(

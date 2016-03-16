@@ -451,7 +451,7 @@ class SearchAction extends AppAction
      */
     protected function setSearchLog($kw='', $kt=0)
     {
-        if ( $kw == '' || empty($kt) ){            
+        if ( $kw == '' || empty($kt) ){
             $_title = $this->_searchArr['kw'];
             $_type  = $this->_searchArr['kt'];
         }else{
@@ -482,17 +482,14 @@ class SearchAction extends AppAction
             'title' => $_title,
             'url'   => $_url,
             );
-        if ( !in_array(serialize($_log), $_slog) ){
-            array_unshift($_slog, serialize($_log));
-        }else{
-            $_key = array_search(serialize($_log), $_slog);
-            if ( $_key !== false ){
-                $_now = $_slog[$_key];
-                unset($_slog[$_key]);
-                array_unshift($_slog, $_now);
-            }
+        //所有的title
+        $allTitles  = arrayColumn($_slog, 'title');
+        $_key       = array_search($_title, $allTitles);//查询是否有相同的title
+        if ( $_key !== false ){
+            unset($_slog[$_key]);
         }
-        $_slog = array_slice($_slog, 0, 10);
+        array_unshift($_slog, $_log);
+        $_slog = array_slice(array_filter($_slog), 0, 10);
         Session::set($prefix, serialize($_slog), 0);
         return true;
     }

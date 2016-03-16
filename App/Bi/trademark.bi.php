@@ -49,6 +49,7 @@ class TrademarkBi extends Bi
 			'endNumber'   => isset($endNumber)   ? $endNumber   : 0,
 			'num'         => isset($num)         ? $num         : 20,
 			'page'        => isset($page)        ? $page        : 1,
+			'isPart'      => 1,
 			);
 		
 		$data = $this->invoke("Trademark/search/", $param);
