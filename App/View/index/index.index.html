@@ -23,16 +23,19 @@
             if(!tel || !mobilereg.test(tel) || tel.length!=11){
                 $(".mj-eed").show();
                 $(".reg-tip em").text('请输入手机号码');
+				 $(".mj-newjy").css("margin-top","5px");
                 return false;
             }
             if( !name && !login_mobile ){
                 $(".mj-eed").show();
                 $(".reg-tip em").show().text('请输入姓名');
+				 $(".mj-newjy").css("margin-top","5px");
                 return false;
             }
             if( !subject ){
                 $(".mj-eed").show();
                 $(".reg-tip em").show().text('请输入内容');
+				 $(".mj-newjy").css("margin-top","5px");
                 return false;
             }
             data	= new Array();
@@ -46,6 +49,7 @@
             if(!($('#buyNeed').val())){
                 $(".mj-eed").show();
                 $(".reg-tip em").show().text('请输入内容');
+				$(".mj-newjy").css("margin-top","5px");
                 return false;
             }
         });
@@ -56,11 +60,13 @@
             if(!tel){
                 $(".mj-eed").show();
                 $(".reg-tip em").text('请输入手机号码');
+				 $(".mj-newjy").css("margin-top","5px");
                 return false;
             }
             if(!mobilereg.test(tel) || tel.length!=11){
                 $(".mj-eed").show();
                 $(".reg-tip em").text('请输入正确的手机号码');
+				 $(".mj-newjy").css("margin-top","5px");
                 return false;
             }
         });
