@@ -1190,6 +1190,9 @@
 	 margin-top:5px;
 	 margin-right:5px;
 	}
+.brand-ques  a:hover{
+	color: #ff6666;
+	}
 .brand-ques .btm p label{
     color: #999999;
 }
