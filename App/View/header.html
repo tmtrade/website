@@ -54,11 +54,13 @@
                 if(!mobile){
                     $(".mj-eed").show();
                     $(".loginTips em").text('请输入手机号码');
+					  $(".mj-newjy").css("margin-top","5px");
                     return false;
                 }
                 if(!mobilereg.test(mobile) || mobile.length!=11){
                     $(".mj-eed").show();
                     $(".loginTips em").text('请输入正确的手机号码');
+					  $(".mj-newjy").css("margin-top","5px");
                     return false;
                 }
                 ucNetwork.sendCode(mobile,$(this),'点击获取验证码');
@@ -71,15 +73,18 @@
                 if(!account){
                     $(".mj-eed").show();
                     $("#loginTips em").text('请输入手机号码');
+					  $(".mj-newjy").css("margin-top","5px");
                     return false;
                 }
                 if(!mobilereg.test(account) || account.length!=11){
                     $(".mj-eed").show();
                     $("#loginTips em").text('请输入正确的手机号码');
+					  $(".mj-newjy").css("margin-top","5px");
                     return false;
                 }
                 if(!password){
                     $("#loginTips em").text('请输入密码');
+					  $(".mj-newjy").css("margin-top","5px");
                     return false;
                 }
                 //判断是验证码登录还是密码登录
