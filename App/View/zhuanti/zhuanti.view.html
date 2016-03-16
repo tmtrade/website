@@ -36,7 +36,8 @@
                             <?=$v['sale']['group']?>
                         </p>
                         <label>
-                            <a href="javascript:goLook();" class="first cl-red">
+                             <input class="xunjia_data" type="hidden" tid="<?=$v['sale']['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
+                            <a href="javascript:void(0);" onclick="xunjia(this);" class="first cl-red">
                                 <img src="<?=StaticDir?>zhuanti/images/catebuy1.png"/>
                                 询 价
                             </a>
@@ -97,11 +98,4 @@
     </div>
 </div>
 
-
 <? require(ViewDir.'/footer.html'); ?>
-<script>
-function goLook()
-{
-    getLogin(_viewTitle);
-}
-</script>

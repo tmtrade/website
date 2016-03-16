@@ -186,6 +186,7 @@ class DetailAction extends AppAction
 		return $phone;
 	}
         
+        //返回登录用户的收藏列表
         public function ajaxSclist(){
             $arr = $this->input('tid', 'string', '');
             $number = explode(",", $arr);

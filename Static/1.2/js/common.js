@@ -529,7 +529,7 @@ $(document).ready(function(){
 });
 
 //交易无缝滚动
-jQuery(".mj-newjy").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:2,interTime:50,trigger:"click"});
+jQuery(".mj-newjy").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});
 //banner焦点图
 jQuery(".mj-bannerIimg").slide({titCell:".hd ul li",mainCell:".bd ul",autoPlay:true});
 //活动推荐点击切换
