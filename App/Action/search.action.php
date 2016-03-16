@@ -173,6 +173,8 @@ class SearchAction extends AppAction
             if ( empty($res) && $keytype != 3 ){
                 $params['keytype']  = 1;
                 $params['name']     = $keyword;
+                $params['_name']    = 2;
+                $this->_searchArr['n'] = 2;
                 $this->_searchArr['kt'] = 1;
                 return $params;
             }
@@ -242,6 +244,9 @@ class SearchAction extends AppAction
                 //$params['_name'] = implode(',', $_name);
                 $params['_name'] = $name;
                 $this->_searchArr['n'] = $params['_name'];
+            }else{
+                $params['_name'] = 2;
+                $this->_searchArr['n'] = 2;
             }
             //组合类型
             if ( !empty($_type) ){
