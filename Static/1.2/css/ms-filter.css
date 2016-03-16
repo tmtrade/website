@@ -85,16 +85,14 @@
 .ms-conditionList-main label.cilk,
 .ms-conditionList-main li a.cilk{
 	background: #ff6666;
-	color: #ffffff;
+	color: #ffffff !important;
 	padding: 2px 5px;
 	}
 
 .ms-conditionList-main label:hover,
 .ms-conditionList-main li a:hover{
-   /* color: #ff5656;*/
-   background: #ff6666;
-	color: #ffffff;
-	padding: 2px 5px;
+    color: #ff5656;
+ 
 }
 .ms-condition-btn{
     text-align: center;
