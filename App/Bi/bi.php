@@ -11,6 +11,21 @@
 abstract class Bi extends RpcClient
 {
 	/**
+	 * 接口标识
+	 */
+	public $apiId = 0;
+
+	/**
+	 * 接口地址
+	 */
+	public $url   = '';
+
+	/**
+	 * 接口访问令牌
+	 */
+	public $token = '';
+
+	/**
 	 * 发送请求
 	 * @author	void
 	 * @since	2015-03-26
@@ -42,8 +57,9 @@ abstract class Bi extends RpcClient
 	 */
 	public function invoke($name, $param)
 	{
-		$response = httpRequest($this->url.$name, 1, http_build_query($param));
-		$response = json_decode($response, true);
+		$param['token'] = $this->token;
+		$response       = httpRequest($this->url.$name, 1, http_build_query($param));
+		$response       = json_decode($response, true);
 
 		return isset($response['body']['data']) ? $response['body']['data'] : array();
 	}
