@@ -80,6 +80,13 @@
 .ms-conditionList-main li a{
     color: #666666;
 }
+.ms-advancedFilter > ul > li > a.cilk,
+.ms-conditionList-main label.cilk,
+.ms-conditionList-main li a.cilk{
+	background: #ff6666;
+	color: #ffffff;
+	padding: 2px 5px;
+	}
 .ms-advancedFilter > ul > li > a:hover,
 .ms-conditionList-main label:hover,
 .ms-conditionList-main li a:hover{
