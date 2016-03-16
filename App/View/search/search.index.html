@@ -254,6 +254,7 @@
             if ( count($_c_) < 2 ) {
             ?>
                 <li>
+                <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                     <div>
                         <div class="ms-filterCenter">
                             <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
@@ -264,14 +265,15 @@
                                 <p title="<?=$v['group']?>"><?=mb_substr($v['group'], 0, 14, 'UTF-8')?mb_substr($v['group'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="#" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="#" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
                             </div>
                         </div>
                     </div>
                 </li>
             <? }else{ ?>
                 <li>
+                <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                     <div class="ms-filterMany">
                         <div class="ms-filterCenter">
                             <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
@@ -282,8 +284,8 @@
                                 <p title="<?=$v['group']?>"><?=mb_substr($v['group'], 0, 14, 'UTF-8')?mb_substr($v['group'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="#" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="#" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
                             </div>
                         </div>
                         <div class="ms-sortMain">

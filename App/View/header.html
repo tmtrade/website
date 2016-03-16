@@ -167,7 +167,7 @@
                 //组装提交数据
                 var mydata = $(obj).closest('li').find('.xunjia_data');
                 var remarks = mydata.attr('remarks');
-                remarks = remarks.replace('TEL',login_mobile);
+                remarks = remarks + ';电话号码：' + login_mobile;
                 var buyData 			= new Array();
                 buyData['tid'] 			= mydata.attr('tid');
                 buyData['trademark'] 	= mydata.attr('number');
