@@ -139,7 +139,7 @@ class DetailAction extends AppAction
 		//得到商标参与的专题
 		$topic = $this->load('zhuanti')->getTopicByNumber($number);
 		//得到用户订单的need字段
-		$need = "商标号:".$sale['number'].",类别:".implode(',',$info['class']).' 联系电话:TEL';
+		$need = "商标号:".$sale['number'].",类别:".implode(',',$info['class']);
 		//分配数据
 		$this->set("info", $info);
 		$this->set("sale", $sale);

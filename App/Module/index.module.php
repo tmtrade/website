@@ -174,7 +174,7 @@ class IndexModule extends AppModule
             $item['viewUrl'] = 'd-'.$result['tid'].'-'.$result['class'].'.html';
             $item['tid'] = $result['tid'];
             $item['class'] = $result['class'];
-            $item['remarks'] = "商标号:".$item['number'].",类别:".$result['class'].' 联系电话:TEL';
+            $item['remarks'] = "商标号:".$item['number'].",类别:".$result['class'];
             //得到商标包装图
             $item['embellish'] = $this->load('Sale')->getSaleTmByNumber($item['number']);
         }
