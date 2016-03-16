@@ -101,7 +101,7 @@ class DetailAction extends AppAction
 		$title['name'] 	= $info['name'];
 		$title['class']	= $class;
 		$goods 			= current( explode(',', $info['goods']) );
-		$this->set('TITLE', $this->getTitle($title,$goods));
+		$this->set('title', $this->getTitle($title,$goods));
 		//读取推荐商标
 		$refer 	= $this->load("internal")->getReferrer($_class, 8, $number);
 		$tj 	= $this->load('search')->getListTips($refer);
@@ -185,5 +185,14 @@ class DetailAction extends AppAction
 		$phone 		= empty($phoneArr[$phoneid]) ? '18602868321' : $phoneArr[$phoneid];
 		return $phone;
 	}
+        
+        public function ajaxSclist(){
+            $arr = $this->input('tid', 'string', '');
+            $number = explode(",", $arr);
+            foreach ($number as $v){
+                $sclist[] = $this->load('trademark')->getTmInfo($v);
+            }
+            $this->returnAjax($sclist);
+        }
 }
 ?>
