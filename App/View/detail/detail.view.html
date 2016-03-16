@@ -57,6 +57,8 @@
                    }
                ?>
            </font></p>
+            <!--是否上架-->
+            <?if($isSale):?>
            <div class="classify">
                <? if ( count($info['items']) > 1 ){?>
                <div class="classify-tit">
@@ -214,6 +216,11 @@
                     </dl>
             </div>
           </div>
+            <?else:?>
+            <div style="padding-top:50px ">
+                <img src="<?=StaticDir?>1.2/images/nogoods.png">
+            </div>
+            <?endif;?>
         </div>
     </div>
 </div>

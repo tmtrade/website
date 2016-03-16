@@ -10,7 +10,8 @@
         _buyTitle   = "<h6>亲，提交成功了</h6><p>系统已将登录密码发送到你手机，登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
         if(login_mobile && isIndex){
             //隐藏快捷登记的相关输入框,将用户电话号码放到该框中
-            $('.mj_form_wpo').hide();
+            $('.mj_form_wpo').html('');
+            $('.mj_form_wpo').css('height','40px');
             $('#buyMoblie').val(login_mobile);
         }
         //求购信息发布事件
@@ -560,16 +561,15 @@
 </div>
 <!--订阅商标end-->
 <!--漂浮楼层start-->
-<!--<ul class="float-floor" id="float-floor" style="display: none;">
+<ul class="float-floor" id="float-floor" style="display: none;">
     <?foreach($modules as $k=>$module):?>
     <li>
-        <a><?=($k+1)?>F</a>
-        <a class="etitle" <?=(($k==0)?'style="display: block"':'')?> ><?=(mb_substr($module['name'],0,2,'utf-8'))?></a>
+        <a><?=(mb_substr($module['name'],0,2,'utf-8'))?><br/><?=(mb_substr($module['name'],2,2,'utf-8'))?> </a>
     </li>
     <?endforeach;?>
-</ul>-->
+</ul>
 
-   <ul class="float-floor" id="float-floor">
+   <!--<ul class="float-floor" id="float-floor">
       <li>
           <a>服装<br/>鞋帽 </a>
       </li>
@@ -585,7 +585,7 @@
        <li>
            <a>数码</a>
        </li>
-   </ul>
+   </ul>-->
 
 <!--漂浮楼层end-->
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
