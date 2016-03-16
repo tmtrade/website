@@ -218,7 +218,7 @@ class IndexModule extends AppModule
             }elseif($item['show']==2){
                 $item['color'] = 'color-blue';
             }elseif($item['show']==3){
-                $item['color'] = 'color-yellow';
+                $item['color'] = 'color-orrange';
             }else{
                 $item['color'] = '';
             }
@@ -267,9 +267,9 @@ class IndexModule extends AppModule
             }elseif($item['other']==1){
                 $color = 'color-red';
             }elseif($item['other']==2){
-                $color = 'color-green';
+                $color = 'color-blue';
             }else{
-                $color = 'color-yellow';
+                $color = 'color-orrange';
             }
             $hotwords[] = array(
                 'desc'=>$item['desc'],
