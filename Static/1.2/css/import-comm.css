@@ -57,7 +57,7 @@ img{
 .fr{
     float: right;
 }
-a:-webkit-any-link{
+.brand-fl li a:-webkit-any-link{
 	-webkit-appearance:none !important;
 	color:#333;
 	}
