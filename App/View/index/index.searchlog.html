@@ -1,5 +1,7 @@
-<?foreach ($list as $k => $v) {?>    
+<?foreach ($list as $k => $v) {
+	if ( !empty($v['url']) && !empty($v['title']) ) {?>    
     <li>
-        <a href="<?=$v['url']?>"><span class="fl" style="width:100%"><?=$v['title']?></span></a>
+        <a href="<?=$v['url']?>" onclick="layer.load(1,{shade: [0.2,'#000']});"><span class="fl" style="width:100%"><?=$v['title']?></span></a>
     </li>
-<?}?>
+<?	}
+}?>

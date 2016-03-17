@@ -488,7 +488,10 @@ class SearchAction extends AppAction
         if ( $_key !== false ){
             unset($_slog[$_key]);
         }
-        array_unshift($_slog, $_log);
+        if ( !empty($_log['title']) && !empty($_log['url']) ) {
+            array_unshift($_slog, $_log);
+        }
+        
         $_slog = array_slice(array_filter($_slog), 0, 10);
         Session::set($prefix, serialize($_slog), 0);
         return true;
