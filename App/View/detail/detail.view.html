@@ -34,26 +34,23 @@
             <label class="bm"><?=$sale['value']?></label>
            <p class="may"><font>此商标可入驻：
                <?php
-					foreach($platformIn as $key => $val){
-                   $cur = "";
-                   if($platform || $data['date']){
-                       if($key && in_array($key,$platform)){
-                           unset($platformIn[$key]);
-                           echo "<a href='".$platformUrl[$key]."' target='_blank' class='cur' >".$val."</a>";
-                       }
-                       }else{
-                           foreach($platformItems[$key] as  $item){
-                               if(($item && $data['class'] == $item)){
-                                   unset($platformIn[$key]);
-                                   echo "<a href='".$platformUrl[$key]."' target='_blank' class='cur' >".$val."</a>";
-                                   break;
-                               }
+                    //定义一个函数
+                    function checkIn($arr1,$arr2){
+                        foreach($arr1 as $item){
+                            if(!in_array($item,$arr2)){
+                                return false;
                             }
                         }
-
-                     }
-                   foreach($platformIn as $key => $val){
-                        echo "<a href='".$platformUrl[$key]."' target='_blank' >".$val."</a>";
+                        return true;
+                    }
+                    foreach($platformIn as $k=>$v){
+                        if(checkIn($info['class'],$platformItems[$k])){
+                            unset($platformIn[$k]);
+                            echo "<a href='".$platformUrl[$k]."' target='_blank' class='cur' >".$v."</a>";
+                        }
+                    }
+                   foreach($platformIn as $k=>$v){
+                        echo "<a href='".$platformUrl[$k]."' target='_blank' >".$v."</a>";
                    }
                ?>
            </font></p>
@@ -100,7 +97,7 @@
                        </li>
                    </ul>
                <?}?>
-           </div> 
+           </div>
             <div class="mj-cTr_bottom f-clearfix">
                 <div class="mj-cTr_bLeft">
                 <? if ( isset($sale['id']) ){ ?>
@@ -145,7 +142,7 @@
                             <font>价格</font>
                             <strong><span>￥</span>议价</strong>
                         </p>
-                        <p class="mj-priceTxtt_ie7" style="margin-left: 45px;"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
+                        <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
                         <?if($topic):?>
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
@@ -243,7 +240,7 @@
             </p>
             <div class="main-db">
                 <ul class="recompic">
-                   <? foreach($recordList as $k=>$v){ 
+                   <? foreach($recordList as $k=>$v){
                    if($k<5){
                    ?>
                    <li>
@@ -255,7 +252,7 @@
                    <?if(empty($userMobile)){?>
                    <p class="p-logo"><a href="javascript:void(0);" id="loginShow">登录</a>保存收藏信息，永不丢失</p>
                    <?}else{?>
-                   
+
                    <?}?>
                 </ul>
             </div>
@@ -477,32 +474,30 @@
 <script type="text/javascript">
     //商品详情选项卡
     jQuery(".record-collect").slide({titCell:".hd a",mainCell:".main-db",effect:"fold",pnLoop:false});
+    //滚动事件
     $(window).scroll(function(){
-        if(($(".intr-flow").offset().top-$(document).scrollTop())<=0){
-            $(".intr-flow-tit").addClass("f-tp");
-			 $(".intr-flow-tit a").removeClass("on");
-			$(".intr-flow-tit a").eq(1).addClass("on");
-		
-        }
-        else{
-            $(".intr-flow-tit").removeClass("f-tp");
-			 $(".intr-flow-tit a").removeClass("on");
-			$(".intr-flow-tit a").eq(0).addClass("on");
-			
-		
-        }
+       if($('.transaction').offset().top-$(document).scrollTop()<=0){
+        $(".intr-flow-tit").addClass("f-tp");
+        $(".intr-flow-tit a").removeClass("on");
+        $(".intr-flow-tit a").eq(1).addClass("on");
+       }else if($(".intr-flow").offset().top-$(document).scrollTop()<=0){
+        $(".intr-flow-tit").addClass("f-tp");
+        $(".intr-flow-tit a").removeClass("on");
+        $(".intr-flow-tit a").eq(0).addClass("on");
+       }else{
+        $(".intr-flow-tit").removeClass("f-tp");
+        $(".intr-flow-tit a").removeClass("on");
+        $(".intr-flow-tit a").eq(0).addClass("on");
+       }
     })
+    //点击选项卡事件
     $(".intr-flow-tit a").eq(0).click(function(){
         var t=$(".trademark").offset().top;
         $("html, body").animate({"scrollTop":t});
-		 $(".intr-flow-tit a").removeClass("on");
-		$(this).addClass("on");
     })
     $(".intr-flow-tit a").eq(1).click(function(){
         var t=$(".transaction").offset().top;
         $("html, body").animate({"scrollTop":t});
-		 $(".intr-flow-tit a").removeClass("on");
-		$(this).addClass("on");
     })
     $(".classify-main li").each(function(){
         $(this).hover(
@@ -518,12 +513,12 @@
                 })
 
     })
-    
+
     //收藏登录
     $("#loginShow").click(function(){
         $("#chaofan-mj-login").click();
     })
-    
+
     var olis=$(".classify-main li");
     for(var i=0;i<=olis.length;i++){
         if(olis.length>10){
@@ -537,7 +532,7 @@
         $(this).click(function(){
             var dataindex= $(this).attr("data-index");
 			if(olis.length<10){
-				 $(this).attr("data-index","1");			
+				 $(this).attr("data-index","1");
 				}
 		    else{
 					if(dataindex==1){
@@ -564,7 +559,7 @@
 						$(this).attr("data-index","1");
 					}
 				}
-            
+
 
         })
     })
@@ -610,9 +605,9 @@
                              tidstr +=","+tids.number;
                         }
                     }
-                    
+
                 $.ajax({
-                traditional :true, 
+                traditional :true,
                  url:'/Detail/ajaxSclist',
                  type:'POST',
                  data:"tid="+tidstr,
@@ -632,7 +627,7 @@
                     }
                 });
             });
-              
+
         }
 
         //收藏功能

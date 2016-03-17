@@ -359,6 +359,12 @@ body{ background:#f5f5f5 !important;}
     display: inline-block;
     margin-left: 5px;
     padding: 5px;
+    color:#999;
+}
+.brand-details div.fr-details p.may a.cur{
+    display: inline-block;
+    margin-left: 5px;
+    padding: 5px;
     background: #ffe3cb;
     color:#ff6600;
 }
@@ -1455,6 +1461,10 @@ body{ background:#f5f5f5 !important;}
     height: 30px;
     right:15px;
     bottom:14px;
+}
+/*提示样式*/
+.mj-priceTxtt_ie7{
+    color: #666;
 }
 
 

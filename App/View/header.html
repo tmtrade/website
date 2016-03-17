@@ -470,8 +470,8 @@
                                         <?if($third['classId'] == $second['id']):?>
                                         <?$kkk++;?>
                                         <?if($kkk==1):?>
-                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'')?>"><?=$third['name']?> </a>
-                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['name']==1?'_blank':'')?>"><?=$third['name']?> </a>
+                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>"><?=$third['name']?> </a>
+                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>"><?=$third['name']?> </a>
                                         <?endif;?>
                                         <?endif;?>
                                         <?endforeach;?>

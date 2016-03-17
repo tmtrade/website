@@ -7,3 +7,16 @@
 .color-blue{
     color:#336699 !important;
 }
+.color-green{
+    color:green !important;//菜单链接颜色
+}
+/*首页分类相关样式*/
+.tj-recom-hover label{
+    cursor: pointer;
+}
+.tj-recom-hover a:hover{
+    text-decoration: none!important;
+}
+.brand-fl a:link{
+    color: #666;
+}

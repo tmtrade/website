@@ -10,8 +10,8 @@
         _buyTitle   = "<h6>亲，提交成功了</h6><p>系统已将登录密码发送到你手机，登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
         if(login_mobile && isIndex){
             //隐藏快捷登记的相关输入框,将用户电话号码放到该框中
-            $('.mj_form_wpo').html('');
-            $('.mj_form_wpo').css('height','40px');
+            $('.mj_form_wpo').after('<div style="height:40px"></div>');//站位
+            $('.mj_form_wpo').hide();
             $('#buyMoblie').val(login_mobile);
         }
         //求购信息发布事件
@@ -343,7 +343,7 @@
 <div class="sbzs" id="sbzs">
     <!--<div class="yzc-category w1180" id="cloth">-->
     <? foreach($modules as $tk=>$module): ?>
-    <div class="yzc-category w1180" <?=(($tk==0)?'':'id="cloth"')?>>
+    <div class="yzc-category w1180" <?=(($tk!=0)?'':'id="cloth"')?>>
         <div class="yzc-category-tit">
             <h3 class="fl"><img src="<?=StaticDir?>1.2/images/cate-ico1.png"><?=($tk+1)?>F <span> / </span><?=$module['name']?></h3>
             <div class="parHd" style="position:relative;z-index:9999;">
@@ -555,7 +555,7 @@
 <div class="yzc-take">
     <div class="w1180">
         <a class="take1" target="_blank" href="/search">快速筛选出好标</a>
-        <a class="take2" target="_blank" href="javascript:goChat();">联系我们-免费为你找</a>
+        <a class="take2" href="javascript:;" onclick="goChat()">联系我们-免费为你找</a>
     </div>
 
 </div>
@@ -642,7 +642,6 @@ jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fol
             oflr.hide();
         }
         for(var i=0;i<$("#float-floor li").length;i++){
-
             if( w_top>$(".sbzs>div").eq(i).offset().top && w_top< $(".sbzs>div").eq(i).offset().top+$(".sbzs>div").eq(i).outerHeight(true)){
                 $(oflis[i]).addClass("on");
             }else{
