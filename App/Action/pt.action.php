@@ -8,7 +8,14 @@
  */
 class PtAction extends AppAction
 {
+    //我要买
 	public function index()
+    {
+        $this->display();
+    }
+    
+    //我要卖
+    	public function sell()
     {
         $this->display();
     }
