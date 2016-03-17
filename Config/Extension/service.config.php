@@ -6,5 +6,6 @@ $config  = array(
 	'3' => array('url' => 'http://tradeapi.chofn.net/', 'token' => '*'), //交易站商品查询接口
     '4' => array('url' => 'http://uc.test.chofn.net/', 'token' => '*'), //用户中心接口
     '5' => array('url' => 'http://searchapi.chofn.net/', 'token' => '1d85cf889865f8048849b68bb07fbe23'),
+    '6' => array('url' => 'http://wm.chofn.net/api/', 'token' => '*'), //faq文章接口
 );
 ?>

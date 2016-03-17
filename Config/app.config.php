@@ -20,7 +20,9 @@ define('SITE_URL', 'http://t.chofn.net/');
 define('TRADE_URL', 'http://tr2.chofn.net/');
 //近似查询URL
 define('GUANJIA_URL', 'http://s.chofn.net/');
-//文章发布后台API地址
-define('WM_HOST', 'http://wm.chofn.net/api/');
+//文章发布后台地址主要针对图片
+define('WM_URL', 'http://wm.chofn.net/');
+
+//
 
 ?>

@@ -67,8 +67,6 @@ class FaqModule extends AppModule
 		$page		= isset($param['page']) ? $param['page'] : 0;
 
 		$list		= array();
-		$actionName = 'article';
-		$funName 	= 'getArticleList';
 		$param		= array(
 			'maxId' 		=> $maxId,
 			'minId' 		=> $minId,
@@ -82,9 +80,8 @@ class FaqModule extends AppModule
 		if(!empty($id)){
 			$param['id'] = $id;
 		}
-
-		$client 	= new Yar_client( WM_HOST .  $actionName);
-		$data 		= $client->$funName($param);
+		//调用接口
+		$data = $this->importBi('faq')->getNewsList($param);
 		if(!empty($data['rows'])){
 			$list = $this->getList($data['rows'],'cfdt');
 		}
