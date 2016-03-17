@@ -44,6 +44,12 @@ class GoodsAction extends AppAction
         $_title = array_merge($result['groupName'], $result['goodsName']);
         $_title = implode('，', $_title);
 
+        $classGroup = $this->load('search')->getClassGroup();
+        list($_class, $_group) = $classGroup;
+
+        $this->set('_CLASS', $_class);//分类
+        $this->set('_GROUP', $_group);//群组
+        
         $this->set('baoTitle', $_title);
         $this->set('has', empty($result['rows']) ? false : true);
         $this->set('whereStr', http_build_query(array('s'=>$_groupGoods)));
