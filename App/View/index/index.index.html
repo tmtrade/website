@@ -642,7 +642,8 @@ jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fol
             oflr.hide();
         }
         for(var i=0;i<$("#float-floor li").length;i++){
-            if( w_top>$(".sbzs>div").eq(i).offset().top && w_top< $(".sbzs>div").eq(i).offset().top+$(".sbzs>div").eq(i).outerHeight(true)){
+            //w_top>$(".sbzs>div").eq(i).offset().top && w_top< $(".sbzs>div").eq(i).offset().top+$(".sbzs>div").eq(i).outerHeight(true) -->原来的
+            if( w_top<$(".sbzs>div").eq(i).offset().top && w_top> $(".sbzs>div").eq(i).offset().top-$(".sbzs>div").eq(i).outerHeight(true)){
                 $(oflis[i]).addClass("on");
             }else{
                 $(oflis[i]).removeClass("on");
