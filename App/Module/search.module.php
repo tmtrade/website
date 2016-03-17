@@ -167,7 +167,7 @@ class SearchModule extends AppModule
      *
      * @return  array   $list       群组号对应群组中文名称的数组
      */
-    public function getSaleList($params, $page=1, $limit=30)
+    public function getSaleList($params, $page=1, $limit=30, $col=array())
     {
         //debug($params);
         $result = array(
@@ -251,7 +251,11 @@ class SearchModule extends AppModule
         $r['eq']['status']  = 1;
         $r['eq']['isSale']  = 1;
 
-        $r['col']       = array('id', 'tid', 'number', 'class', 'name', 'group');
+        if ( empty($col) ){
+            $r['col']   = array('id', 'tid', 'number', 'class', 'name', 'group');
+        }else{
+            $r['col']   = $col;
+        }
         $r['page']      = $page;
         $r['limit']     = $limit;
         $r['order']     = array('isTop' => 'desc');

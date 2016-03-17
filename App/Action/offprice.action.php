@@ -12,7 +12,7 @@ class OffpriceAction extends AppAction
 {
     public $pageTitle   = '特价商标 - 一只蝉';
     private $_number    = 30;
-    private $_col       = array('id', 'tid', 'number', 'class', 'name', 'price', 'salePrice');
+    private $_col       = array('id', 'tid', 'number', 'class', 'name', 'group', 'price', 'salePrice');
     private $_searchArr = array();
 
     /**
@@ -45,9 +45,9 @@ class OffpriceAction extends AppAction
                 $params['group'] = $group;
             }
         }
-// debug($params);
-        $res = $this->load('search')->getSaleList($params, $page, $this->_number);
-// debug($this->_searchArr);
+
+        $res = $this->load('search')->getSaleList($params, $page, $this->_number, $this->_col);
+        
         if ( !empty($this->_searchArr) ){
             foreach ($this->_searchArr as $k => $v) {
                 $this->set($k, $v);
