@@ -116,7 +116,7 @@
                         <?if($topic):?>
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
-                            <span><a href="<?=$item['topicUrl']?>" target="_blank"><?=$item['title']?></a></span>
+                            <span class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['title']?></span>
                             <?endforeach;?>
                         </p>
                         <?endif;?>
@@ -131,7 +131,7 @@
                         <?if($topic):?>
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
-                            <span><a href="<?=$item['topicUrl']?>" target="_blank"><?=$item['title']?></a></span>
+                            <span class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['title']?></span>
                             <?endforeach;?>
                         </p>
                         <?endif;?>
@@ -146,30 +146,31 @@
                         <?if($topic):?>
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
-                            <p><a href="<?=$item['topicUrl']?>" target="_blank"><?=$item['title']?></a></p>
+                            <span class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['title']?></span>
                             <?endforeach;?>
                         </p>
                         <?endif;?>
                     <?}else{?>
                         <div class="mj-priceTxtt">
+                            <div style="width: 50px;height: 60px"></div>
                     <?}?>
                     <!--操作部分-->
                         <!--特价价格促销-->
                         <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){
                         ?>
                         <?if($isLogin){ ?>
-                        <a href='javascript:createOrder();' class="mj-priceTxtt_link opt_btn" id='addorder' >立即抢购</a>
+                        <a href='javascript:;' onclick="createOrder();" class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <? }else{ ?>
-                        <a href='javascript:goBuy();' class="mj-priceTxtt_link opt_btn">立即抢购</a>
+                        <a href='javascript:;' onclick="goBuy()" class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <?} ?>
                         <!--定价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
-                        <a href='javascript:createOrder();' class="opt_btn">我想购买</a>
+                        <a href='javascript:;' onclick="createOrder()" class="opt_btn">我想购买</a>
                         <!--议价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
-                        <a href='javascript:createOrder();' class="opt_btn">我有兴趣</a>
+                        <a href='javascript:;' onclick="createOrder()" class="opt_btn">我有兴趣</a>
                         <?}else{?>
-                        <a href='javascript:goLook();' class="opt_btn">查看价格</a>
+                        <a href='javascript:;' onclick="goLook()" class="opt_btn">查看价格</a>
                         <?}?>
             <?}else{?>
                     <!-- 来自商标库 -->
@@ -184,12 +185,12 @@
                         <? if($baystate == 1){ ?>
                         <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
                         <? }else{ ?>
-                        <a href='javascript:createOrder();' class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
+                        <a href='javascript:;' onclick="createOrder()" class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
                         <? } ?>
                     <? }else{ ?>
                         <div class="mj-pricebtn">
                             <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
-                            <a href='javascript:goLook();' class="opt_btn">我有兴趣</a>
+                            <a href='javascript:;' onclick="goLook()" class="opt_btn">我有兴趣</a>
                         <? } ?>
                 <?}?>
             </div>
@@ -221,7 +222,9 @@
         </div>
     </div>
 </div>
-
+<div style="display: none">
+    <a id="wodediv" href="" target="_blank">1</a>
+</div>
 <!--商标详情主要内容-->
 <div class="w1180 details-main" style="padding-top: 25px;">
     <div class="detail-recom fl">
@@ -476,7 +479,7 @@
     jQuery(".record-collect").slide({titCell:".hd a",mainCell:".main-db",effect:"fold",pnLoop:false});
     //滚动事件
     $(window).scroll(function(){
-       if($('.transaction').offset().top-$(document).scrollTop()<=0){
+       if($('.transaction').offset().top-$(document).scrollTop()<=5){
         $(".intr-flow-tit").addClass("f-tp");
         $(".intr-flow-tit a").removeClass("on");
         $(".intr-flow-tit a").eq(1).addClass("on");
@@ -736,7 +739,11 @@
     {
         $('#chaofan-mj-login').trigger('click');
     }
-
+    //专题点击事件
+    $('.wddsb').click(function(){
+        $('#wodediv').attr('href',($(this).attr('url')));
+        $('#wodediv').get(0).click();
+    });
 </script>
 <!--分享相关js-->
 <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
