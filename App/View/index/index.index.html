@@ -210,6 +210,9 @@
             </ul>
 
         </div>
+          <!-- 下面是前/后按钮代码 -->
+        <a class="sprev" href="javascript:void(0)"></a>
+        <a class="snext" href="javascript:void(0)"></a>
     </div>
 
 </div>
@@ -594,7 +597,7 @@
 //交易无缝滚动
 jQuery(".mj-newjy").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});
 //banner焦点图
-jQuery(".mj-bannerIimg").slide({titCell:".hd ul li",mainCell:".bd ul",autoPlay:true});
+jQuery(".mj-bannerIimg").slide({titCell:".hd ul li",mainCell:".bd ul",prevCell:".sprev",nextCell:".snext",autoPlay:true});
 //活动推荐点击切换
 jQuery(".yzc-Activities").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:5,easing:"easeOutCirc"});
 //商标分类选项卡
