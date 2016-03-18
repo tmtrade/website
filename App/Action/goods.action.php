@@ -69,6 +69,12 @@ class GoodsAction extends AppAction
         }else{
             $result = array('rows'=>array(),'total'=>0);
         }
+        if ( !empty($result['rows']) ){            
+            $classGroup = $this->load('search')->getClassGroup();
+            list($_class, $_group) = $classGroup;
+            $this->set('_CLASS', $_class);//分类
+            $this->set('_GROUP', $_group);//群组
+        }
 
         $this->set('list', $result);
         $this->display();

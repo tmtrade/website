@@ -436,6 +436,12 @@ class SearchAction extends AppAction
         }else{
             $res = $this->load('search')->search($params, $page, $this->_number, $type);
         }
+        if ( !empty($res['rows']) ){            
+            $classGroup = $this->load('search')->getClassGroup();
+            list($_class, $_group) = $classGroup;
+            $this->set('_CLASS', $_class);//分类
+            $this->set('_GROUP', $_group);//群组
+        }
 
         $this->set('searchList', $res['rows']);
         $this->display();
