@@ -2,11 +2,14 @@
 <link rel="stylesheet" href="<?=StaticDir?>style/mg-about.css"/>
 <link rel="stylesheet" href="<?=StaticDir?>style/news-view.css"/>
 <link rel="stylesheet" href="<?=StaticDir?>style/list.css"/>
+<style type="text/css">
+  body{ background:#FFF !important;}
+</style>
    <div class="w1180 contactUs f-clearfix" style="background: #ffffff">
        <? require(ViewDir.'/faq/left.html'); ?>
        <div class="contUsrg fr f-clearfix">
            <div class="trad-certi comSty">
-               <h2 class="lb-tit"><? echo $category;?></h2>
+               <div class="lb-tit"><h2><? echo $list['title'];?></h2></div>
                <div class="yzzz">
                     <? $i = 1; foreach ($list as $k=>$item){ ?>
                         <div class="g-cib-a2-b2-d1 cur">
