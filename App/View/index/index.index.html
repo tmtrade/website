@@ -610,37 +610,41 @@ jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fol
     var owf=document.body.clientWidth;
     var owh=$(window).height();
     var oft=(owf-$("#cloth").width())/2-($("#float-floor").width()+20);
-    var ofh=owh/2-($("#float-floor").height());
-//    oflr.css({"left":oft,"top":ofh})
+    var ofh=owh/2-$("#float-floor").height()/2;
+    oflr.css({"left":oft,"top":ofh})
 
    $(window).resize(function(){
+	    var cet_w=$("#cloth").offset().left;
+		var oflr=$("#float-floor");
+		var sbzs=$(".sbzs>div");
+		var oflis= $("#float-floor li");
+		var owf=document.body.clientWidth;
+		var owh=$(window).height();
+		var oft=(owf-$("#cloth").width())/2-($("#float-floor").width()+20);
+		var ofh=owh/2-$("#float-floor").height()/2;
            if(cet_w<$("#float-floor").width()+20){
 
                oflr.hide();
            }
            else{
-
                oflr.show();
                oflr.css({"left":oft,"top":ofh})
            }
        })
 
-
-
-
-   $(window).scroll(function(){
-        var w_top = $( window ).scrollTop();
-        if( w_top+$( window).height()>$("#cloth").offset().top && w_top<$("#succal").offset().top){
-            oflr.show();
-            oflr.css({"left":oft,"top":ofh})
-            if(owf<1180){
-                oflr.hide();
-            }
-
-        }
-        else{
-            oflr.hide();
-        }
+	   $(window).scroll(function(){
+			var w_top = $( window ).scrollTop();
+			if( w_top+$( window).height()>$("#cloth").offset().top && w_top<$("#succal").offset().top){
+				oflr.show();
+				oflr.css({"left":oft,"top":ofh})
+				if(owf<1180){
+					oflr.hide();
+				}
+	
+			}
+			else{
+				oflr.hide();
+			}
         for(var i=0;i<$("#float-floor li").length;i++){
             //w_top>$(".sbzs>div").eq(i).offset().top && w_top< $(".sbzs>div").eq(i).offset().top+$(".sbzs>div").eq(i).outerHeight(true) -->原来的
             if( w_top<$(".sbzs>div").eq(i).offset().top && w_top> $(".sbzs>div").eq(i).offset().top-$(".sbzs>div").eq(i).outerHeight(true)){
@@ -651,11 +655,16 @@ jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fol
         }
 
     });
-    $("#float-floor li").each(function(i){
-        $(this).click(function(){
-            var t=$(".sbzs>div").eq(i).offset().top;
-            $("html, body").animate({"scrollTop":t});
-        })
-    })
+	$("#float-floor li").each(function(i){
+			
+			$(this).click(function(){
+				
+				
+				var t=$(".sbzs>div").eq(i).offset().top;
+				$("html, body").animate({"scrollTop":t});
+				$(this).addClass("on");
+			})
+		})
+    
 </script>
 <? require(ViewDir.'/footer.html'); ?>
