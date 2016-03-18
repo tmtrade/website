@@ -42,7 +42,7 @@
                 $(".reg-tip").attr('flag',1);
                 return false;
             }
-            $(".reg-tip").hide();
+            $(".mj-eed").hide();
             data	= new Array();
             data['name'] 	= name;
             data['tel'] 	= tel;
@@ -99,7 +99,6 @@
         $('.tj-recom-hover').click(function(){
             $(this).closest('li').find('.tjfl').get(0).click();
         });
-        //获取焦点隐藏提示框
     });
     //快捷登录回调
     function submitDataCallback(Obj){
@@ -131,7 +130,7 @@
     //隐藏提示信息
     function hideTip(num){
         if($(".reg-tip").attr('flag')==num){
-            $(".reg-tip").hide();
+            $(".mj-eed").hide();
         }
     }
     //判断中英文
