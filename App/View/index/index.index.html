@@ -689,20 +689,18 @@ jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fol
         for(var i=0;i<$("#float-floor li").length;i++){
             //w_top>$(".sbzs>div").eq(i).offset().top && w_top< $(".sbzs>div").eq(i).offset().top+$(".sbzs>div").eq(i).outerHeight(true) -->原来的
             if( w_top<$(".sbzs>div").eq(i).offset().top && w_top> $(".sbzs>div").eq(i).offset().top-$(".sbzs>div").eq(i).outerHeight(true)){
+				$("#float-floor li").removeClass("on");
                 $(oflis[i]).addClass("on");
             }else{
-                $(oflis[i]).removeClass("on");
+                
             }
         }
 
     });
-	$("#float-floor li").each(function(i){
-			
-			$(this).click(function(){
-				
-				
+	$("#float-floor li").each(function(i){	
+			$(this).click(function(){		
 				var t=$(".sbzs>div").eq(i).offset().top;
-				$("html, body").animate({"scrollTop":t});
+				$("html, body").animate({"scrollTop":t-$(".sbzs>div").eq(i).outerHeight(true)/2});
 				$(this).addClass("on");
 			})
 		})
