@@ -1266,8 +1266,7 @@
     line-height:16px;
     position: relative;
     z-index: 1;
-    top:45px;
-    padding-top: 5px;
+    padding-top: 8px;
 }
 .float-floor li:hover{
     background: #ff5656;
