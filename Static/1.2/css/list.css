@@ -287,12 +287,11 @@ body{ background:#f5f5f5 !important;}
     margin: auto;
     margin-top: 12px;
     font-size: 12px;
-    width: 90%;
+    /*width: 90%;*/
 
 }
 .brand-details div.fl-details .brde-pic p span{
     color: #888888;
-
 }
 .brand-details div.fl-details .brde-pic p span label{
      color: #48aff1;

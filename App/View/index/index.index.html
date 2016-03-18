@@ -25,20 +25,24 @@
                 $(".mj-eed").show();
                 $(".reg-tip em").text('请输入手机号码');
 				 $(".mj-newjy").css("margin-top","5px");
+                $(".reg-tip").attr('flag',2);
                 return false;
             }
-            if( !name && !login_mobile ){
+            if(!login_mobile && isChineseOrEng(name)){
                 $(".mj-eed").show();
-                $(".reg-tip em").show().text('请输入姓名');
+                $(".reg-tip em").show().text('请输入正确的姓名');
 				 $(".mj-newjy").css("margin-top","5px");
+                $(".reg-tip").attr('flag',3);
                 return false;
             }
             if( !subject ){
                 $(".mj-eed").show();
                 $(".reg-tip em").show().text('请输入内容');
 				 $(".mj-newjy").css("margin-top","5px");
+                $(".reg-tip").attr('flag',1);
                 return false;
             }
+            $(".reg-tip").hide();
             data	= new Array();
             data['name'] 	= name;
             data['tel'] 	= tel;
@@ -51,8 +55,10 @@
                 $(".mj-eed").show();
                 $(".reg-tip em").show().text('请输入内容');
 				$(".mj-newjy").css("margin-top","5px");
+                $(".reg-tip").attr('flag',1);
                 return false;
             }
+            hideTip(1);
         });
         //验证手机号码
         $('#buyMoblie').blur(function(){
@@ -62,19 +68,38 @@
                 $(".mj-eed").show();
                 $(".reg-tip em").text('请输入手机号码');
 				 $(".mj-newjy").css("margin-top","5px");
+                $(".reg-tip").attr('flag',2);
                 return false;
             }
             if(!mobilereg.test(tel) || tel.length!=11){
                 $(".mj-eed").show();
                 $(".reg-tip em").text('请输入正确的手机号码');
 				 $(".mj-newjy").css("margin-top","5px");
+                $(".reg-tip").attr('flag',2);
                 return false;
             }
+            hideTip(2);
         });
+        //未登录情况下验证姓名
+        if(!nick_name){
+            //验证姓名
+            $('#buyName').blur(function(){
+                var kj_name = $.trim($(this).val());
+                if ( isChineseOrEng(kj_name) ){
+                    $(".mj-eed").show();
+                    $(".reg-tip em").text('姓氏必须为中英文');
+                    $(".mj-newjy").css("margin-top","5px");
+                    $(".reg-tip").attr('flag',3);
+                    return false;
+                }
+                hideTip(3);
+            });
+        }
         //推荐分类点击事件
         $('.tj-recom-hover').click(function(){
             $(this).closest('li').find('.tjfl').get(0).click();
         });
+        //获取焦点隐藏提示框
     });
     //快捷登录回调
     function submitDataCallback(Obj){
@@ -103,7 +128,20 @@
             }
         });
     }
-
+    //隐藏提示信息
+    function hideTip(num){
+        if($(".reg-tip").attr('flag')==num){
+            $(".reg-tip").hide();
+        }
+    }
+    //判断中英文
+    function isChineseOrEng(temp)
+    {
+        var regExp = /^[(\u4e00-\u9fa5)A-Za-z]+$/;
+        if(regExp.test(temp))
+            return false;
+        return true;
+    }
 </script>
 <div class="mj-banner">
 
