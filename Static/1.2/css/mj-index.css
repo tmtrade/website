@@ -27,7 +27,9 @@
 
 .mj-bannerIimg .hd {
 
-    width:100%;
+   /* width:100%;*/
+   width: 680px;
+   left: 195px;
 
     position: absolute;
 
@@ -161,7 +163,7 @@
     /*padding-top: 12px;*/
     background: #fff;
 
-    box-shadow: 0 0 10px #cacaca;
+  /*  box-shadow: 0 0 10px #cacaca;*/
 
 }
 
@@ -1047,7 +1049,7 @@
     border-top: 1px solid #d8d8d8;
     margin-top: 25px;
     position: relative;
-    margin-bottom: 45px;
+    margin-bottom:10px;
 }
 .succeed-al h3{
     color: #333333;
@@ -1164,7 +1166,7 @@
 
 .brand-ques{
     overflow: hidden;
-    margin-top: 25px;
+   /* margin-top: 25px;*/
 }
 .brand-ques h3{
     color: #333333;
@@ -1178,7 +1180,7 @@
     border: 1px solid #f0f0f0;
     background: #ffffff;
     padding: 20px 25px;
-    margin-top: 28px;
+    margin-top:10px;
 }
 .brand-ques  dl{
    overflow: hidden;
