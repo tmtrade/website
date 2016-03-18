@@ -262,8 +262,9 @@ class InternalModule extends AppModule
         if ( empty($class) ) return array();
         $r['ft']    = array('class'=>$class);
         $r['eq']    = array('status'=>1);
+        $r['notIn'] = array('number' => array($notin));
         $total      = $this->import('sale')->count($r);
-        $total      = $total - count($notIn);//计算除notin数据外有多少数据
+        $total      = $total - count($notin);//计算除notin数据外有多少数据
         if ( $total <= 0 ) return array();
         if ( $total > $limit ){
             $rand       = rand(0, $total-$limit);
@@ -275,6 +276,20 @@ class InternalModule extends AppModule
         return $res;
     }
 
+    //获取最新商标
+    public function getNewSale($class,$notin="",$limit=5)
+    {
+        if ( empty($class) ) return array();
+        $where['ft']    = array('class'=>$class);
+        $where['eq']    = array('status'=>1);
+        if(!empty($notin)){
+            $where['notIn'] = array('number' => array($notin));
+        }
+        $where['order'] = array('id' => 'desc');
+        $where['limit'] = $limit;
+        $res = $this->import('sale')->find($where);
+        return $res;
+    }
     //判断商品是否上架
     public function isSaleUp($saleId)
     {

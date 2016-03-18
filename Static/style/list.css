@@ -1330,19 +1330,19 @@
     display: block;
     margin: auto;
 }
-.platform dl{
+.yzzz dl{
     width: 60%;
     margin:40px auto;
     color: #666666;
     line-height: 20px;
 
 }
-.platform ul{
+.yzzz ul{
     width:80%;
     margin: auto;
     /*margin-left: -8px;*/
 }
-.platform ul li{
+.yzzz ul li{
     width: 214px;
     float: left;
     margin-left:12px;
@@ -1350,7 +1350,7 @@
     text-align: center;
     color: #666666;
 }
-.platform ul li:first-child{
+.yzzz ul li:first-child{
     /*margin-left: 0px;*/
 }
 
