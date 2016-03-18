@@ -243,13 +243,13 @@
     width: 962px;
 }
 .ms-filtersList > ul{
-    width: 102%;
+    width: 100%;
     /*display: none;*/
 }
 .ms-filtersList > ul > li{
     position: relative;
     float: left;
-    width: 184px;
+    width: 182px;
     height: 227px;
     margin: 0 10px 10px 0;
 }
