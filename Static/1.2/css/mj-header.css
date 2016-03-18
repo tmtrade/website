@@ -307,7 +307,7 @@ table {
 
     height: 40px;
 
-    padding: 15px 0 28px 4px;
+    padding: 18px 0 28px 4px;
 
 }
 
@@ -999,8 +999,8 @@ table {
     height: 80px;
 	}
 .mj-navitems p{
-
     padding-top: 22px;
+	margin-left: -38px;
 
 }
 .mj-navitems p a{
