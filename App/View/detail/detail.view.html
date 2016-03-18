@@ -152,7 +152,7 @@
                         <?endif;?>
                     <?}else{?>
                         <div class="mj-priceTxtt">
-                            <div style="width: 50px;height: 60px"></div>
+                            <div style="width: 50px;height:20px"></div>
                     <?}?>
                     <!--操作部分-->
                         <!--特价价格促销-->
@@ -477,7 +477,7 @@
     jQuery(".record-collect").slide({titCell:".hd a",mainCell:".main-db",effect:"fold",pnLoop:false});
     //滚动事件
     $(window).scroll(function(){
-       if($('.transaction').offset().top-$(document).scrollTop()<=5){
+       if($('.transaction').offset().top-$(document).scrollTop()<=58){
         $(".intr-flow-tit").addClass("f-tp");
         $(".intr-flow-tit a").removeClass("on");
         $(".intr-flow-tit a").eq(1).addClass("on");
@@ -493,11 +493,11 @@
     })
     //点击选项卡事件
     $(".intr-flow-tit a").eq(0).click(function(){
-        var t=$(".trademark").offset().top;
+        var t=$(".intr-flow").offset().top-48;
         $("html, body").animate({"scrollTop":t});
     })
     $(".intr-flow-tit a").eq(1).click(function(){
-        var t=$(".transaction").offset().top;
+        var t=$(".transaction").offset().top-68;
         $("html, body").animate({"scrollTop":t});
     })
     $(".classify-main li").each(function(){
