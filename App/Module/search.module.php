@@ -662,9 +662,14 @@ class SearchModule extends AppModule
      * @param $class
      * @return mixed
      */
-    public function getClassLable($class){
-        $res = $this->import('class')->get($class);
-        return $res['label'];
+    public function getClassInfo($class){
+        $r['eq']['id'] = $class;
+        $r['col'] = array('label','title');
+        $res = $this->import('class')->find($r);
+        if($res){
+            return $res['title'].': '.preg_replace('/,/','/',$res['label']);
+        }
+        return '';
     }
 
     /**

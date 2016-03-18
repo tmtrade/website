@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="fr fr-details">
-           <h3><?=$info['name']?>&nbsp;&nbsp;<span> <?if(count($info['class'])==1):?>（<?=$info['class'][0]?>类 <?=$info['lable']?>）<?endif;?> </span>&nbsp;&nbsp;<a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
+           <h3><span title="<?=$info['name']?>"><?=$info['thum_name']?></span> <?if(count($info['class'])==1):?><span title="<?=$info['label']?>" class="light_title">(<?=$info['class'][0]?>类 <?=$info['thum_label']?>)</span><?endif;?> <a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
             <label class="bm"><?=$sale['value']?></label>
            <p class="may"><font>此商标可入驻：
                <?php
@@ -272,12 +272,8 @@
             <div class="trademark">
                 <dl>
                     <dt>
-                        <img src="<?=$sale['imgUrl']?>" onerror="this.src='/Static/images/img1.png'">
                     </dt>
                     <dd>
-                        <!--<span>
-                            <img src="<?=StaticDir?>1.2/images/xq-cy.png">
-                        </span>-->
                         <p>
                             <?=$sale['tminfo']['intro']?>
                         </p>

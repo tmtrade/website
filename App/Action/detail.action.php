@@ -64,7 +64,10 @@ class DetailAction extends AppAction
 		unset($item);
 		//得到商标的分类描述
 		if(count($info['class']==1)){
-			$info['lable'] = $this->load('search')->getClassLable($info['class'][0]);
+			$info['label'] = $this->load('search')->getClassInfo($info['class'][0]);
+			//处理商标名和分类描述的字符问题
+			$info['thum_name'] = mbSub($info['name'],0,10);//10字符
+			$info['thum_label'] = mbSub($info['label'],0,20);//20字符
 		}
 		//分配平台数据到页面
 		$this->set("platformIn", C('PLATFORM_IN'));

@@ -326,8 +326,9 @@ body{ background:#f5f5f5 !important;}
     color: #444444;
     font-size: 25px;
     font-weight: normal;
+    cursor: default;
 }
-.brand-details div.fr-details h3 span{
+.brand-details div.fr-details h3 .light_title{
     color: #666666;
     font-size: 18px;
 }
