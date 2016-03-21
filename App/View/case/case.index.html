@@ -7,13 +7,13 @@
             <?php foreach($list as $k=>$v){ ?>
                <li>
                <span>
-                   <img src="<?=$v['pic1']?>.png">
+                   <img src="<?php echo TRADE_URL.$v['pic1']?>" style="max-width:132px;height:87px ">
                </span>
                    <p class="tit"><font><?=$v['name']?> </font></p>
                    <div class="aL-over f-clearfix">
                        <p><font><?=$v['name']?></font></p>
-                       <label>
-                           <?=$v['desc']?>
+                       <label style="height:130px">  
+                           <?=mbSub($v['desc'],0,90);?>
                        </label>
                        <a href="/case/detail/?id=<?=$v['id']?>" target="blank">查看详情</a>
                    </div>

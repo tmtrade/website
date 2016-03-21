@@ -1,7 +1,7 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css"/>
 <div class="w1180 f-clearfix">
-    <p class="list-lj"><a href="">成功案例</a>  > 电商案例</p>
+    <p class="list-lj">成功案例  > 电商案例</p>
     <div class="case-name f-clearfix">
         <h2><?=$caseInfo['title']?></h2>
         <div class="case-name-xq">
@@ -24,7 +24,7 @@
             <div class="case-xq-main">
                 <dl class="case-xq-gy">
                     <dt>
-                        <img src="<?=StaticDir?>1.2/images/jspic.png">
+                        <img src="<?php echo TRADE_URL.$caseInfo['pic1']?>">
                     </dt>
                     <dd>
                         <span class="fl">
@@ -40,7 +40,7 @@
                 </dl>
                 <dl class="case-xq-js">
                     <dt>
-                        <img src="<?=StaticDir?>1.2/images/alxq-pic2.jpg">
+                        <img src="<?php echo TRADE_URL.$caseInfo['pic2']?>">
                     </dt>
                     <dd>
                         <span class="fr">
@@ -66,13 +66,13 @@
             <?php foreach($list as $k=>$v){ ?>
                <li>
                <span>
-                   <img src="<?=$v['pic1']?>.png">
+                   <img src="<?php echo TRADE_URL.$v['pic1']?>" style="max-width:132px;height:87px ">
                </span>
                    <p class="tit"><font><?=$v['name']?> </font></p>
                    <div class="aL-over f-clearfix">
                        <p><font><?=$v['name']?></font></p>
-                       <label>
-                           <?=$v['desc']?>
+                       <label style="height:130px">  
+                           <?=mbSub($v['desc'],0,90);?>
                        </label>
                        <a href="/case/detail/?id=<?=$v['id']?>" target="blank">查看详情</a>
                    </div>

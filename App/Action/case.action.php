@@ -19,7 +19,7 @@ class CaseAction extends AppAction
 	{
 		$page			= $this->input("page","int");
 		$page			= $page == 0 ? 1 : $page;
-		$limit			= 15;
+		$limit			= 16;
 		$list			= $this->load('case')->getCaseList('', $page, $limit);
 		$pager			= $this->pagerNew($list['total'], $limit);
 		$pageBar		= empty($list) ? '' : getPageBarNew($pager);
@@ -40,9 +40,8 @@ class CaseAction extends AppAction
 		$data	= $this->load('case')->getCaseInfo($id);
                 $list	= $this->load('case')->getCaseList($id, 1, 4, array("id"=>"desc"));
 		$title  = $data['title'].' - '.$this->seotime;
-
 		$this->set("caseInfo", $data);
-                $this->set("list", $list);
+                $this->set("list", $list['rows']);
 		$this->set("title", $title);
                 $this->set("id", $id);
                 $this->display();
