@@ -34,7 +34,6 @@ class CaseModule extends AppModule
     //模块基础内容
     public function getCaseInfo($id)
     {
-        echo $id;
         $r = array();
         $r['eq']['id']  = $id;
         $r['limit'] = 1;
