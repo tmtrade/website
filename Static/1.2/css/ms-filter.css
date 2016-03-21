@@ -206,7 +206,7 @@
 
 /* ms-filterSearch */
 .ms-filterSearchMain{
-    padding-top: 15px;
+    padding-top:5px;
 }
 .ms-filterSearchMain p{
     float: right;
@@ -234,7 +234,8 @@
 
 
 .ms-filtersList{
-    padding-top: 15px;
+   /* padding-top: 15px;*/
+    margin-bottom:-25px;
     padding-bottom: 45px;
 }
 /* ms-filterMain */
@@ -245,14 +246,23 @@
 .ms-filtersList > ul{
     width: 100%;
     /*display: none;*/
+	padding-right:-10px;
 }
 .ms-filtersList > ul > li{
     position: relative;
     float: left;
-    width: 182px;
-    height: 227px;
+   width: 182px;
+	height: 227px;
     margin: 0 10px 10px 0;
 }
+.ms-collect.cur .us-icon20,
+.ms-collect:hover .us-icon20{
+    background-image: url("../images/xin_cur.png");
+}
+.ms-filtersList > ul > li:hover  .us-icon20{
+	background-image: url("../images/xin.png");
+	}
+
 .ms-filtersList > ul > li > div{
     position: absolute;
     top: 0;
@@ -273,10 +283,7 @@
     top: 3px;
     right: 10px;
 }
-.ms-collect.cur .us-icon20,
-.ms-collect:hover .us-icon20{
-    background-image: url("../images/xin_cur.png");
-}
+
 .ms-filtersImg{
     display: table-cell;
     *display: inline-block;
@@ -293,7 +300,8 @@
 }
 .ms-filtersListTxt{
     text-align: center;
-    line-height: 22px;
+    line-height: 18px;
+	margin-top: 15px;
 }
 .ms-filtersListTxt p{
     color: #999999;
@@ -408,7 +416,11 @@
     margin-top: -1px;
     padding: 15px 0;
     position: relative;
+	
 }
+.ms-recommend  dd:first-child{
+	border-top:none;
+	}
 .ms-recommend > dd .ms-filtersListTxt{
     background: rgba(255,255,255,.9);
     background: url("../images/imgBg.png") repeat\9;
