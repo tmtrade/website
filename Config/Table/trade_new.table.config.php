@@ -9,6 +9,12 @@ $tbl['blacklist'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['case'] = array(
+	'name'		=> $prefix.'case',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
 $tbl['member'] = array(
 	'name'		=> $prefix.'member',
 	'dbId'		=> $dbId, 

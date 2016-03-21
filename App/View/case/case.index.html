@@ -1,0 +1,28 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css"/>
+<div class="w1180 yzc-succeeal comSty">
+       <h3 class="lb-tit">成功案例</h3>
+       <div class="yzc-succeeal-main f-clearfix">
+           <ul>
+            <?php foreach($list as $k=>$v){ ?>
+               <li>
+               <span>
+                   <img src="<?=$v['pic1']?>.png">
+               </span>
+                   <p class="tit"><font><?=$v['name']?> </font></p>
+                   <div class="aL-over f-clearfix">
+                       <p><font><?=$v['name']?></font></p>
+                       <label>
+                           <?=$v['desc']?>
+                       </label>
+                       <a href="/case/detail/?id=<?=$v['id']?>" target="blank">查看详情</a>
+                   </div>
+               </li>
+               <? }?>
+           </ul>
+       </div>
+       <div class="mj-pages">
+           <?=$pageBar?>
+       </div>
+   </div>
+<? require(ViewDir.'/footer.html'); ?>

@@ -1,0 +1,83 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css"/>
+<div class="w1180 f-clearfix">
+    <p class="list-lj">成功案例  > 电商案例</p>
+    <div class="case-name f-clearfix">
+        <h2><?=$caseInfo['title']?></h2>
+        <div class="case-name-xq">
+            <div class="case-name-share" style="left: 450px;">
+
+               <span>分享到：</span>
+               <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+            </div>
+            <div class="case-xq-main">
+                <dl class="case-xq-gy">
+                    <dt>
+                        <img src="<?=$caseInfo['pic1']?>">
+                    </dt>
+                    <dd>
+                        <span class="fl">
+                           <img src="<?=StaticDir?>1.2/images/alxq-gy.png">
+                        </span>
+                        <div class="fl">
+                            <p><label>名称类别：</label><font><?=$caseInfo['name']?></font></p>
+                            <p><label>适用范围：</label><font><?=$caseInfo['goods']?></font></p>
+                            <p><label>购  买 人：</label><font><?=$caseInfo['buyer']?></font></p>
+                            <p><label>服务顾问：</label><font><?=$caseInfo['adviser']?> <a href="/">联系我</a></font></p>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="case-xq-js">
+                    <dt>
+                        <img src="<?=$caseInfo['pic2']?>">
+                    </dt>
+                    <dd>
+                        <span class="fr">
+                           <img src="<?=StaticDir?>1.2/images/alxq-js.png">
+                        </span>
+                        <div class="fr">
+                           <p>
+                               <?=$caseInfo['desc']?>
+                           </p>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="case-contact">
+            <p>还有更多好听好记的商标，想了解吗？ 马上联系客服<a><img src="<?=StaticDir?>1.2/images/zx-ico.png">在线咨询</a></p>
+        </div>
+    </div>
+    <div class="yzc-succeeal comSty">
+        <h3 class="lb-tit" style="top:-15px;">成功案例</h3>
+        <div class="yzc-succeeal-main f-clearfix">
+            <ul>
+            <?php foreach($list as $k=>$v){ ?>
+               <li>
+               <span>
+                   <img src="<?=$v['pic1']?>.png">
+               </span>
+                   <p class="tit"><font><?=$v['name']?> </font></p>
+                   <div class="aL-over f-clearfix">
+                       <p><font><?=$v['name']?></font></p>
+                       <label>
+                           <?=$v['desc']?>
+                       </label>
+                       <a href="/case/detail/?id=<?=$v['id']?>" target="blank">查看详情</a>
+                   </div>
+               </li>
+               <? }?>
+            </ul>
+         </div>
+    </div>
+</div>
+<? require(ViewDir.'/footer.html'); ?>
