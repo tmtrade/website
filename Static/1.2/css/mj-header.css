@@ -1289,7 +1289,7 @@ table {
     top: 10px;
     width: 16px;
     height: 16px;
-    background: url(slice/mj-icon23.png) no-repeat;
+    /*background: url(slice/mj-icon23.png) no-repeat;*/
 }
 .mj-bcon {
     padding: 65px 0 0 60px;
