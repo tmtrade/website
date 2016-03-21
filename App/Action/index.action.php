@@ -40,8 +40,8 @@ class IndexAction extends AppAction
 		//得到新闻和问答
 		$_news = $this->com('redisHtml')->get('_news_tmp');
 		if(empty($_news)){
-			$news['news']	= $this->load('faq')->newsList(array('c'=>50,'limit'=>4));
-			$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>4));
+			$news['news']	= $this->load('faq')->newsList(array('c'=>50,'limit'=>5));
+			$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>5));
 			$news['baike']	= $this->load('faq')->newsList(array('c'=>53,'limit'=>2));
 			$news['law']	= $this->load('faq')->newsList(array('c'=>51,'limit'=>2));
 			$this->com('redisHtml')->set('_news_tmp', $news, 3600);
