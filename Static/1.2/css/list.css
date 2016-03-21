@@ -1362,6 +1362,7 @@ body{ background:#f5f5f5 !important;}
 .contUsrg h2{
     background: #ffffff;
     top:-15px;
+    font-size: 16px;
 }
 #con_contact_1,#con_contact_2,#con_contact_3,#con_contact_4,#con_contact_5{
     display: none;
