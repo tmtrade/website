@@ -127,7 +127,7 @@
                     <div class="mj-priceTxtt">
                         <p class="price">
                             <font>价格</font>
-                            <strong><span>￥</span><?=$sale['salePrice']?></strong>元
+                            <strong><span>￥</span><?=($sale['price']*1.1)?></strong>元
                         </p>
                         <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
                         <?if($topic):?>
@@ -329,7 +329,7 @@
                                </dd>
                            </dl>
                             <dt>
-                                <a>去蝉精灵检测</a>
+                                <a href="<?=$tips['safeUrl']?>" target="_blank">去蝉精灵检测</a>
                             </dt>
 
                         </div>
@@ -690,7 +690,7 @@
     //生成订单--2  (直接输入电话)
     //失去焦点,检测用户输入的手机号
     $('#telInput2').blur(function(){
-        var tel= $('#telInput2').val();
+        var tel= $.trim($('#telInput2').val());
         //验证手机号码
         var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
         if(!tel || !mobilereg.test(tel) || tel.length!=11){
@@ -701,7 +701,7 @@
     //生成订单--2
     function createOrderByPhone(){
         //检测是否电话号码
-        var tel= $('#telInput2').val();
+        var tel= $.trim($('#telInput2').val());
         if(tel){
             //获得数据
             var remarks 	= $('#remarks').val();
@@ -741,7 +741,7 @@
         $('#wodediv').attr('href',($(this).attr('url')));
         $('#wodediv').get(0).click();
     });
-    //如何做到鼠标效果
+    //如何做到 鼠标效果
     $('.rhzd_a').mouseover(function(){
         $('.rhzd').show();
     });

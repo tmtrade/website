@@ -66,6 +66,7 @@ img{
     position: fixed;
     left: 0px;
     bottom: 20px;
+    cursor:pointer;
 }
 
 .fdkf-zk{
@@ -87,6 +88,7 @@ img{
     top:5px;
     right:0px;
     background: url("../images/btm-cha.png") no-repeat center top;
+    cursor:pointer;
 }
 .fdkf-zk li{
     float: left;
