@@ -664,10 +664,10 @@ class SearchModule extends AppModule
      */
     public function getClassInfo($class){
         $r['eq']['id'] = $class;
-        $r['col'] = array('label','title');
+        $r['col'] = array('label','title','name');
         $res = $this->import('class')->find($r);
         if($res){
-            return $res['title'].': '.preg_replace('/,/','/',$res['label']);
+            return $res;
         }
         return '';
     }

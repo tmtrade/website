@@ -292,6 +292,7 @@ body{ background:#f5f5f5 !important;}
 }
 .brand-details div.fl-details .brde-pic p span{
     color: #888888;
+    margin-left: 20px;
 }
 .brand-details div.fl-details .brde-pic p span label{
      color: #48aff1;
@@ -649,7 +650,7 @@ body{ background:#f5f5f5 !important;}
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	
+	cursor:default;
 	}
 .mj-cTr_bRight dd a {
     display: inline-block;
@@ -817,6 +818,8 @@ body{ background:#f5f5f5 !important;}
 .intr-flow p.intr-flow-tit{
     height: 48px;
     border-bottom: 1px solid #eeeeee;
+    width: 926px;
+    background: #fbfbfb;
 }
 .f-tp{
     position: fixed;
@@ -828,7 +831,7 @@ body{ background:#f5f5f5 !important;}
     width: 160px;
     height: 48px;
     background: #fbfbfb;
-    border-right: 1px solid #eeeeee;
+    /*border-right: 1px solid #eeeeee;*/
     color: #666666;
     text-align: center;
     line-height: 45px;
@@ -986,13 +989,14 @@ body{ background:#f5f5f5 !important;}
 
 .jylc-xq li:last-child dl dd:first-child font{
     display: inline-block;
-    width: 150px;
+    /*width: 150px;*/
+    width: 485px;
     color: #666666;
     line-height: 20px;
     padding: 10px;
     background: #fff9df;
     border: 1px solid #eaeaea;
-    position: relative;
+    position: absolute;
     margin-left: 85px;
     margin-top: 10px;
     display: none;
@@ -1473,6 +1477,14 @@ body{ background:#f5f5f5 !important;}
 /*提示样式*/
 .mj-priceTxtt_ie7{
     color: #666;
+}
+.mj-cTr_center li label {
+    color: #999;
+}
+.mj-cTr_center li {
+    width: 590px;
+    font-size: 12px;
+    padding: 3px 0px;
 }
 
 

@@ -37,11 +37,11 @@
                     //定义一个函数
                     function checkIn($arr1,$arr2){
                         foreach($arr1 as $item){
-                            if(!in_array($item,$arr2)){
-                                return false;
+                            if(in_array($item,$arr2)){
+                                return true;
                             }
                         }
-                        return true;
+                        return false;
                     }
                     foreach($platformIn as $k=>$v){
                         if(checkIn($info['class'],$platformItems[$k])){
@@ -89,11 +89,13 @@
                <?}else{?>
                <ul class="mj-cTr_center">
                        <li>
-                           <span><label>分类：</label>第<?=$class?>类-<?=$CLASSES[$class]?>  </span>
-                           <span><label>当前群组：</label><?=implode(' ',$info['items'][0]['groupName'])?></span>
+                           <span><label>分类: </label>第<?=$class?>类 - <?=$info['className']?></span>
                        </li>
                        <li>
-                           <span><label>商品列表：</label><?=$info['goods']?></span>
+                           <span><label>当前群组: </label><?=implode(';',$info['items'][0]['groupName'])?></span>
+                       </li>
+                       <li>
+                           <span><label>商品列表: </label><?=$info['goods']?></span>
                        </li>
                    </ul>
                <?}?>
@@ -200,7 +202,7 @@
             <div class="mj-cTr_bRight">
                     <dl>
                         <dd>
-                            <i class="us-icon uj_icon2"></i><span class="sqr">商标申请人：<?=$info['proName']?></span>
+                            <i class="us-icon uj_icon2"></i><span class="sqr" title="<?=$info['proName']?>">申请人：<?=$info['proName']?></span>
                             <a href="javascript:;" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
                         </dd>
                         <dd>
@@ -371,13 +373,10 @@
                                     <b><span>Q：</span>买的商标，如何尽快使用上？</b>
                                     <p>
                                         <label>&bull;</label>签订《独占许可协议》<br/>
-                                        <label>&bull;</label>今天选中明天就用<a>如何做到？</a>
+                                        <label>&bull;</label>今天选中明天就用<a class="rhzd_a">如何做到？</a>
                                     </p>
                                     <font class="rhzd">
-                                        一只蝉督促双方签订《独占
-                                        许可协议》，签完立即对外
-                                        使用，无需等8-10个月转让
-                                        流程。
+                                        一只蝉督促双方签订《独占许可协议》，签完立即对外使用，无需等8-10个月转让流程。
                                     </font>
                                 </dd>
                                 <dd>
@@ -741,6 +740,13 @@
     $('.wddsb').click(function(){
         $('#wodediv').attr('href',($(this).attr('url')));
         $('#wodediv').get(0).click();
+    });
+    //如何做到鼠标效果
+    $('.rhzd_a').mouseover(function(){
+        $('.rhzd').show();
+    });
+    $('.rhzd_a').mouseout(function(){
+        $('.rhzd').hide();
     });
 </script>
 <!--分享相关js-->

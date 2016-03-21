@@ -64,7 +64,9 @@ class DetailAction extends AppAction
 		unset($item);
 		//得到商标的分类描述
 		if(count($info['class']==1)){
-			$info['label'] = $this->load('search')->getClassInfo($info['class'][0]);
+			$res = $this->load('search')->getClassInfo($info['class'][0]);
+			$info['label'] = $res['title'].': '.preg_replace('/,/','/',$res['label']);
+			$info['className'] = $res['name'];//分类名
 			//处理商标名和分类描述的字符问题
 			$info['thum_name'] = mbSub($info['name'],0,10);//10字符
 			$info['thum_label'] = mbSub($info['label'],0,20);//20字符
@@ -86,15 +88,12 @@ class DetailAction extends AppAction
 			$tips = $sale = array();
 
 			$tips['safeUrl'] 	= 'http://jingling.yizhchan.com/?nid='.$number.'&class='.$class;
-			$contact['name']	= '蝉妹妹';
 			$contact['phone']	= $this->getPhoneName($tid, $class, 0);
 		}else{
 			$sale 		= $this->load('internal')->getSaleInfo($saleId, 0, 1);
 			$platform 	= explode(',', $sale['platform']);
 			$isSale  	= $sale['status'] == 1 ? true : false;
 			$tips 		= $this->load('search')->getTips($sale);
-
-			$contact['name']	= $this->getPhoneName($tid, $class, 1);//获取联系人信息
 			$contact['phone']	= empty($sale['viewPhone']) ? '18602868321' : $sale['viewPhone'];
 		}
 		//合并商标的额外数据
@@ -158,46 +157,15 @@ class DetailAction extends AppAction
                 $this->set("tj", $tj);
 		$this->display();
 	}
-
-	/**
-	 * 电话号码姓氏挑选
-	 * @param $tid
-	 * @param $class
-	 * @param int $issale
-	 * @return string
-	 * @throws SpringException
-	 */
-	private function getPhoneName($tid,$class,$issale = 0)
-	{
-		if ( $issale ){
-			$name = "赵 钱 孙 李 周 吴 郑 王 冯 陈 褚 卫 蒋 沈 韩 杨 朱 秦 尤 许 何 吕 施 张 孔 曹 严 华 金 魏 陶 姜 戚 谢 邹 喻
-			柏 水 窦 章 云 苏 潘 葛 奚 范 彭 郎 鲁 韦 昌 马 苗 凤 花 方 俞 任 袁 柳 酆 鲍 史 唐 费 廉 岑 薛 雷 贺 倪 汤 刘 母 白
-			滕 殷 罗 毕 郝 邬 安 常 乐 于 时 傅 皮 卞 齐 康 伍 余 元 卜 顾 孟 平 黄 和 穆 萧 尹 姚 邵 湛 汪 祁 毛 禹 狄 欧阳 慕容
-			米 贝 明 臧 计 伏 成 戴 谈 宋 茅 庞 熊 纪 舒 屈 项 祝 董 梁 杜 阮 蓝 闵 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 蒲 崔 沙
-			梅 盛 林 刁 锺 徐 邱 骆 高 夏 蔡 田 樊 胡 凌 霍 虞 万 支 柯 昝 管 卢 莫 经 房 裘 缪 干 解 应 宗 丁 宣 贲 邓";
-
-			$lastTid 	= ceil(substr($tid,-1)/3)*$class;
-			$sex 		= ($class % 2 == 0) ? 1 : 2;
-			$gender 	= array(1 => '先生', 2 => '女士');
-			$nameArr 	= explode(" ", $name);
-			$name 		= $nameArr[$lastTid].$gender[$sex];
-			return $name;
-		}
-
-		$phoneArr 	= $this->load('phone')->getSexPhone();
-		$phoneid 	= ceil(substr($tid,-1)/3*2) > 5 ? 5 : ceil(substr($tid,-1)/3*2);
-		$phone 		= empty($phoneArr[$phoneid]) ? '18602868321' : $phoneArr[$phoneid];
-		return $phone;
-	}
         
-        //返回登录用户的收藏列表
-        public function ajaxSclist(){
-            $arr = $this->input('tid', 'string', '');
-            $number = explode(",", $arr);
-            foreach ($number as $v){
-                $sclist[] = $this->load('trademark')->getTmInfo($v);
-            }
-            $this->returnAjax($sclist);
-        }
+	//返回登录用户的收藏列表
+	public function ajaxSclist(){
+		$arr = $this->input('tid', 'string', '');
+		$number = explode(",", $arr);
+		foreach ($number as $v){
+			$sclist[] = $this->load('trademark')->getTmInfo($v);
+		}
+		$this->returnAjax($sclist);
+	}
 }
 ?>
