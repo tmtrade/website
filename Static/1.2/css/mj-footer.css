@@ -3,6 +3,7 @@
     overflow: hidden;
     width: 100%;
     min-width:1180px;
+	margin-top:-20px;
 }
 
 .mj-footer_top{
@@ -23,8 +24,8 @@
 .mj-footer_top li{
 
     /*width: 275px;*/
-   padding-left:10px;
-    padding-right:10px;
+  padding-left: 11px;
+    padding-right: 13px;
     float: left;
 
 }
@@ -58,6 +59,9 @@
     color: #5b5150;
 
 }
+.mj-footer_top ul{
+	margin-left:-10px;
+	}
 
 .mj-footer_top li.mj-fSwaper{
 
@@ -79,7 +83,7 @@
 .mj-footer_nav{
     text-align:center ;
 
-    padding: 22px;
+    padding:12px;
 border-bottom: solid 1px #eee;
     
 
@@ -106,15 +110,15 @@ border-bottom: solid 1px #eee;
    /* padding-right: 30px;*/
 
     font-size: 14px;
-	color:#bbbbbb;
+	color:#cdcdcd;
 
 }
 
 .mj-footer_nav li a{
 
     color: #666;
-	padding-left:25px;
-	padding-right:25px;
+	padding-left: 45px;
+    padding-right: 45px;
 
 }
 
