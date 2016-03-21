@@ -179,7 +179,7 @@ class InternalModule extends AppModule
 
         $r['eq'] = array('number'=>$number);
         if ( $userId > 0 ){
-            $r['eq']['userId'] = $userId;
+            $r['eq']['uid'] = $userId;
         }
         if ( !empty($phone) ){
             $r['eq']['phone'] = $phone;

@@ -10,7 +10,7 @@
  */
 class UserCenterModule extends AppModule
 {
-
+    //判断用户是否收藏商标
     public function existLook($numbers)
     {
         //判断是否登录
@@ -20,6 +20,15 @@ class UserCenterModule extends AppModule
         $res = $this->importBi('usercenter')->existLook($numbers, $this->loginId);
         return $res;
     }
-	
+
+    //获取用户信息
+	public function getUserInfo()
+    {
+        //判断是否登录
+        if ( empty($this->loginId) ) return array();
+
+        $res = $this->importBi('usercenter')->getUserInfo($this->loginId);
+        return intval($res);
+    }
 }
 ?>

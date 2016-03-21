@@ -43,6 +43,24 @@ class UserCenterBi extends Bi
 		return $this->request("systemapi/getCollectTrademark/", $params);
     }
 
+    /**
+     * 获取用户中心用户信息
+     * 
+	 * @access	public
+	 * @author	Xuni
+	 * @since	2016-03-21
+	 */
+	public function getUserInfo($ukey)
+    {
+		$params = array(
+			'uc_ukey'	=> $ukey,
+			'webname'	=> 'usercenter',//不变
+			'key'		=> "trademark1104martinewodd",//不变
+		);
+		
+		return $this->request("systemapi/getUserId/", $params);
+    }
+
 
 }
 ?>

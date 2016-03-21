@@ -39,7 +39,8 @@ class SellAction extends AppAction
 		
 		//如果是登录状态，要判断用户是否已出售过
 		if($this->isLogin){
-			$isSale = $this->load("internal")->existContact($number,$this->userId);
+            $this->userId   = $this->load('usercenter')->getUserInfo();
+            $isSale         = $this->load("internal")->existContact($number,$this->userId);
 			if($isSale) $this->returnAjax(array('status'=>'-1'));
 		}
 
@@ -90,11 +91,9 @@ class SellAction extends AppAction
 		$sale 	= array();
 		$userId = 0;
 		if ( $this->isLogin ){
-			$userId = $userId;
-		}else{
-			$userinfo = $this->load('passport')->get($phone);
-			if ( !empty($userinfo) ) $userId = $userinfo['id'];
+            $userId = $this->load('usercenter')->getUserInfo();
 		}
+
 		foreach($data['number'] as $key => $item){
 			$item 	= trim($item);
 			$isCon = $this->load("internal")->existContact($item, $userId, $phone);
@@ -235,7 +234,7 @@ class SellAction extends AppAction
         );
 		$contact = array(
             'source'        => 10,
-            'userId'        => intval($userId),
+            'uid'           => intval($userId),
             'tid'           => intval($info['tid']),
             'number'        => $number,
             'name'          => trim($data['contact']),
@@ -266,7 +265,7 @@ class SellAction extends AppAction
 
 		$contact = array(
             'source'        => 10,
-            'userId'        => intval($userId),
+            'uid'           => intval($userId),
             'tid'           => intval($info['tid']),
             'number'        => $number,
             'name'          => trim($data['contact']),
