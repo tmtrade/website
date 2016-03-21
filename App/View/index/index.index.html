@@ -1,5 +1,4 @@
 <? require(ViewDir.'/header.html'); ?>
-
 <!--mj-banner start-->
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css"/>
 <!--求购信息发布模块-->
@@ -143,27 +142,16 @@
     }
 </script>
 <div class="mj-banner">
-
     <div class="w1180 mj-formW">
-
         <div class="mj-from">
-
             <form id="buyForm" action="/buy/add/">
-
                 <div class="mj-from-title">
-
                     <label></label><span>商标购买快捷登记</span><label></label>
-
                     <p>线下专家10分钟为你快速匹配商标</p>
-
                 </div>
-
                 <div class="ms-errorTips mj-eed">
-
                     <p class="reg-tip"><i class="us-icon us-icon19"></i><em></em></p>
-
                 </div>
-
                 <div class="mj-form-wrapper">
 
                     <!--<span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>-->
@@ -173,33 +161,19 @@
                     <input type="text" id="buyNeed" placeholder="对商标的特殊要求  如：25类鞋子" name="content" maxlength="100">
 
                 </div>
-
                 <div class="mj_form_wpo f-clearfix">
-
                     <div class="mj-form-wrapper w178 fl">
-
                         <!--<span class="mj-inpuV">留下电话方便卖家联系你</span>-->
-
                         <i class="us-icon uj-icon5"></i>
-
                         <input id="buyMoblie" placeholder="留下电话方便卖家联系你" type="text" name="mobile" style="width: 155px;padding-left: 5px;">
-
                     </div>
-
                     <div class="mj_form_wrapper_input fr">
-
                         <!--<span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>-->
-
                         <input type="text" placeholder="姓氏"  name="buyName" id="buyName" maxlength="8">
-
                     </div>
-
                 </div>
-
                 <a href="javascript:;" class="mj-from-btn" id="mj-from-btn">立即登记</a>
                 <p class="mj-from-txt">我们将严格保密您的个人信息</p>
-
-
             </form>
             <!--添加最新交易-->
             <div class="mj-newjy">
@@ -216,11 +190,8 @@
                     </ul>
                 </div>
             </div>
-
         </div>
-
     </div>
-
     <div class="mj-bannerIimg">
         <div class="bd">
             <ul class="mj-banner-img">
@@ -233,7 +204,6 @@
                     echo $bannerStr;
                 ?>
             </ul>
-
         </div>
         <div class="hd">
             <ul class="f-clearfix">
@@ -245,13 +215,11 @@
                     echo $bannerBar;
                 ?>
             </ul>
-
         </div>
           <!-- 下面是前/后按钮代码 -->
         <a class="sprev" href="javascript:void(0)"></a>
         <a class="snext" href="javascript:void(0)"></a>
     </div>
-
 </div>
 <!--mj-banner end-->
 <!--活动推荐start-->
@@ -276,7 +244,6 @@
         </ul>
     </div>
 </div>
-
 <!--活动推荐end-->
 <!--商标分类start-->
 <div class="yzc-Brand w1180">
@@ -293,7 +260,7 @@
         </ul>
     </div>
     <div class="bd">
-         <ul class="brand-fl">
+        <ul class="brand-fl">
             <li>
                 <!--重点红色-->
                 <p><span><label>&bull;</label>01类</span><a target="_blank" href="search/index/?c=1">化工原料</a></p>
@@ -350,7 +317,6 @@
                 <p><span><label>&bull;</label>44类</span><a target="_blank" href="search/index/?c=44">医疗园艺</a></p>
                 <p><span><label>&bull;</label>45类</span><a id='mytest' target="_blank" href="search/index/?c=45">社会服务</a></p>
             </li>
-
         </ul>
         <ul class="tj-recom">
             <? foreach($recommendClasses as $rClass): ?>
@@ -374,10 +340,7 @@
             <? endforeach; ?>
         </ul>
     </div>
-
-
 </div>
-
 <!--商标分类end-->
 <!--类别展示start-->
 <div class="sbzs" id="sbzs">
@@ -440,11 +403,11 @@
                         <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
                         <div class="brand-show">
                             <span><img src="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"></span>
-                            <p><b><?=$item['name']?></b><?=$item['classStr']?></p>
+                            <p><b><?=$item['name']?></b> <?=$item['classStr']?></p>
                         </div>
                         <div class="brand-buy">
                             <span><a target="_blank" href="<?=$item['viewUrl']?>"><img src="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"></a></span>
-                            <p><b><?=$item['name']?></b><?=$item['classStr']?></p>
+                            <p><b><?=$item['name']?></b> <?=$item['classStr']?></p>
                             <font>
                                 <a href="javascript:;" class="first" onclick="xunjia(this);">
                                     <img src="<?=StaticDir?>1.2/images/catebuy1.png">
@@ -466,7 +429,6 @@
     </div>
     <? endforeach; ?>
 </div>
-
 <!--类别展示end-->
 <!--成功案列start-->
 <div class="w1180 succeed-al" id="succal">
@@ -608,25 +570,6 @@
     </li>
     <?endforeach;?>
 </ul>
-
-   <!--<ul class="float-floor" id="float-floor">
-      <li>
-          <a>服装<br/>鞋帽 </a>
-      </li>
-       <li>
-           <a>家用<br/>纺品 </a>
-       </li>
-       <li>
-           <a >电子<br/>电器</a>
-       </li>
-       <li>
-           <a>家电</a>
-       </li>
-       <li>
-           <a>数码</a>
-       </li>
-   </ul>-->
-
 <!--漂浮楼层end-->
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
 <script type="text/javascript">

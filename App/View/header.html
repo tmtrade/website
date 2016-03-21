@@ -137,8 +137,8 @@
         function getLogin(title,tel,isExist){
             $("#loginUser").val('');
             $("#loginPass").val('');
-            $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
-            $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
+            //$("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+            //$("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
             $("#dl_ts").hide();
             $('.reg-tip').hide();
             var title = (title=='')?_defLogin:title;
@@ -187,7 +187,7 @@
                 getLayer($('#goCenter'));
             }else{
                 //弹出登录框
-                getLogin(_xunjia,'',0);
+                getLogin(_xunjia,'',1);
             }
             return false;
         }
@@ -215,202 +215,90 @@
 <!--头部-->
 <div class="mj-header">
     <input type="hidden" name="sid" id="sid" value="" />
-
     <input type="hidden" name="area" id="area" value="" />
     <!--未登录状态start-->
-
     <div class="w1180 mj-nav f-clearfix">
-
         <ul class="mj-header_left fl">
-
             <li><span class="security"><i class="uj_icon1"></i>安全保障</span></li>
-
             <li>交易损失，全额100%赔付</li>
         </ul>
-
         <ul class="mj-header_right fr">
-            <!--<li id="_login_no">
-
-                <div class="mj-cols">
-
-                    &lt;!&ndash;未登录状态&ndash;&gt;
-
-                    <span class="Not_logged" style="display: block;">
-
-                        <i class="uj_icon2"></i>
-
-                        <a href="javascript:;" id="fastLogin">快捷登录</a>
-
-                    </span>
-
-                </div>
-
-            </li>-->
             <li id="_login_no">
-
-                <!--<div class="mj-cols">
-
-                    &lt;!&ndash;未登录状态&ndash;&gt;
-
-                    <span class="Not_logged" style="display: block;">
-
-                        <i class="uj_icon2"></i>
-
-                        <a href="javascript:;" id="fastLogin">快捷登录</a>
-
-                    </span>
-
-                </div>-->
                 <div class="chaofan-login"></div>
             </li>
             <li class="spacer xs_login_ zc"></li>
-            <!--<li class="zc">
-
-                <div class="mj-cols">
-
-                    &lt;!&ndash;未注册状态&ndash;&gt;
-
-                    <span class="Not_logged" style="display: block;">
-
-                        <i class="uj_icontj"></i>
-
-                        <a href="javascript:;" id="">注册</a>
-
-                    </span>
-
-                </div>
-
-            </li>-->
             <li class="spacer xs_login_"></li>
             <li>
-
                 <a href="/faq/views/?c=54&id=987" target="_blank">平台帮助 </a>
-
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-
                 <a href="/buy" target="_blank">关于一只蝉 </a>
-
             </li>
             <li>
-
                 <div class="mj-phone">
-
                     <i class="uj_icon4"></i>
-
                     4006-929-199
-
                 </div>
-
             </li>
-
         </ul>
-
     </div>
     <!--未登录状态end-->
     <!--登录状态start-->
     <div class="w1180 mj-nav f-clearfix" style="display: none;">
-
         <ul class="mj-header_left fl">
-
             <li><span class="security"><i class="uj_icon1"></i>安全保障</span></li>
             <!--登录后的文字-->
             <li>交易损失-3倍赔偿 要加帮助-简介什么的？</li>
-
         </ul>
-
         <ul class="mj-header_right fr">
-
             <li class="login-yes">
                 <img src="<?=StaticDir?>1.2/images/mess-ico.png">
                 <label>24</label>
             </li>
             <li class="spacer xs_login_"></li>
-
             <li>
-
                 <a href="" target="_blank">平台帮助 </a>
-
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-
                 <a href="" target="_blank">平台简介</a>
-
             </li>
             <li>
-
                 <div class="mj-phone">
-
                     <i class="uj_icon4"></i>
-
                     4006-929-199
-
                 </div>
             </li>
         </ul>
-
     </div>
     <!--登录状态end-->
 </div>
 <!-- mj-header end -->
 <!-- mj-search start -->
-
 <style type="text/css">
-
     #searchForm > div{
-
         float: left;
-
     }
-
     #searchForm .mj-search-submit{
-
         float: right;
-
     }
-
 </style>
 <div class="mj-search-all f-clearfix">
     <div class="w1180 mj-search f-clearfix">
-
         <div class="mj-logo">
-
             <a href="/"><img src="<?=StaticDir?>1.2/images/logo.png" alt="一只蝉商标转让网站:快速买到放心商标"/></a>
-
         </div>
-
         <div class="mj-search_con fl">
-
             <form id="searchForm" method="GET" action="/search/index/">
-
                 <input type="text" name="kw" class="inptext"  placeholder="输入你想买的商标名称/商标号" autocomplete="off"/>
-
-                <!--<ul class="mj-search-box" style="border: 1px solid red;">-->
-
-                <!--<li class="select_box">-->
-
-                <!--<span>行业分类</span>-->
-
-                <!--<i class="uj_icon7"></i>-->
-
-                <!--</li>-->
-
-                <!--</ul>-->
-
                 <input type="hidden" id="publicClassSet" name="c" />
-
                 <div class="mj-search-submit">
-
                     <i class="uj_icon8"></i>
-
                 </div>
-
             </form>
             <ul class="mj-pull-down">
             </ul>
-
             <p class="tj-fl">
                 <?
                     $hotwordStr = '';
@@ -420,38 +308,23 @@
                     echo $hotwordStr;
                 ?>
             </p>
-
         </div>
         <div class="mj-search_btn fr">
-
             <a href="/buy" target="_blank" class="mj-btnBuy"><i class="uj_icon5"></i>我要买</a>
-
             <a href="/sell" target="_blank" class="mj-btnSell"><i class="uj_icon6"></i>我要卖</a>
-
         </div>
-
     </div>
 </div>
-
-
 <!-- mj-search end -->
 <!--mj-mNav start-->
 <div class="mj-mNav f-clearfix">
-
     <div class="w1180 mj-inpsr">
-
         <div class="mj-dorpdown f-clearfix">
-
             <div class="mj-dt">
-
                 <div class="mj-dtCon">
-
                     <i class="uj_icon9"></i>
-
                     <a href="javascript:;" class="mj-mainL">全部商标分类</a>
-
                 </div>
-
                 <div class="mj-dd" style="display: none;min-height:454px;">
                     <? foreach($menuFirst as $first): ?>
                     <dd>
@@ -500,7 +373,6 @@
                 </div>
             </div>
         </div>
-
         <div class="mj-navitems fl">
             <p class="f-clearfix">
                 <a href="/">
@@ -529,20 +401,12 @@
 <script src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <!--mj-mNav end-->
 <script type="text/javascript">
-
   //左边菜单栏
-
     $(".mj-dd dd").hover(function(){
-
         $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
-
     },function(){
-
         $(this).removeClass("mj-ddahoverc");
-
     });
-
-
     $('input[name="kw"]').focus(function (){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
@@ -559,7 +423,6 @@
             _autoShow();
         }
     });
-
     $('input[name="kw"]').blur(function (){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
@@ -569,7 +432,6 @@
             },500);
         }
     });
-
     var _autoShowTime = 0;
     var _autoOpen = 0;
     function _autoShow(){        
@@ -600,5 +462,4 @@
             },500);
         }
     });
-    
 </script>
