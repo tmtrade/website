@@ -70,24 +70,16 @@
 }
 
 .mj-banner-img {
-
-    margin: 0;
-
+margin: 0;
     padding: 0;
-
     list-style: none;
-
     position: absolute;
-   	top: 10px;
+    top: 10px;
     height: 470px;
     left: 50%;
-    width: 680px!important;
-
-    margin-left: -394px;
-
-
+    width: 690px!important;
+    margin-left: -404px;
     z-index: 1;
-
 
 }
 .mj-banner-img .mj-banner-itme{
@@ -152,7 +144,7 @@
 .mj-from {
 
     position: absolute;
-    width: 245px;
+   width: 257px;
     height: 470px;
     z-index: 5;
     top: 10px;
@@ -741,6 +733,7 @@
 
 }
 .tj-recom li div.tj-recom-hover label a:hover{
+	color:#ff6666;
 	text-decoration:underline;
 	height:16px;
 	}
@@ -775,7 +768,7 @@
 	text-decoration:underline;
 	}
 .brand-fl li a.piont{
-    color: #ce0000;
+    color: #ff6666;
 }
 
 
@@ -787,6 +780,8 @@
 .sbzs{
 	position:relative;
 	z-index:1;	
+	margin-top: -20px;
+	padding-bottom:20px;
 	
 	}
 .yzc-category{
@@ -823,7 +818,7 @@
 }
 .yzc-category-tit ul.fr li{
     display: inline-block;
-    width: 69px;
+    min-width:70px;
     height: 29px;
     line-height: 29px;
     float: left;
@@ -833,21 +828,24 @@
     font-size: 14px;
     cursor: pointer;
     position: relative;
+	padding-left:15px;
 }
 .yzc-category-tit ul.fr li span{
     height: 15px;
     border: 1px solid #f0f0f0;
     float: right;
     margin-top:8px;
+	margin-left:10px;
 }
 .yzc-category-tit ul.fr li:last-child span{
 	border:none; 
 }
 .yzc-category-tit ul.fr li.on{
-
     border-top: 2px solid #ff6666;
     border-right: 1px solid #faa1a1;
     border-left: 1px solid #faa1a1;
+	line-height: 27px;
+	
 
 }
 .yzc-category-tit ul.fr li.on span{
@@ -861,8 +859,8 @@
 	}
 
 .brandlist-show{
-   overflow: hidden;
-   padding-bottom:80px;
+  /* overflow: hidden;*/
+  /* padding-bottom:80px;*/
     border-top: 1px solid #f18f8f;
     z-index: 1;
 }
@@ -973,6 +971,8 @@
 
 .yzc-categorbrand li div p b{
     color: #333333;
+	margin-right:6px;
+	font-family:"Arial";
 }
 .yzc-categorbrand li div.brand-buy {
     display: none;

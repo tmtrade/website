@@ -279,7 +279,14 @@ body{ background:#f5f5f5 !important;}
     height: 334px;
     border: 1px solid #eeeeee;
 }
+.brand-details div.fl-details .brde-pic span.brde-pic-box{
+	display:block;
+	height:265px;
+	
+	}
 .brand-details div.fl-details .brde-pic img{
+	display:block;
+	margin:auto;
     max-width: 378px;
     max-height: 260px;
 }
@@ -338,7 +345,7 @@ body{ background:#f5f5f5 !important;}
     background: #48aff1;
     font-size: 12px;
     color: #ffffff;
-    padding: 5px 7px;
+    padding:3px 7px;
 }
 .brand-details div.fr-details h3 a img{
     margin-bottom: -3px;
@@ -365,7 +372,7 @@ body{ background:#f5f5f5 !important;}
 .brand-details div.fr-details p.may a.cur{
     display: inline-block;
     margin-left: 5px;
-    padding: 5px;
+    padding:2px 5px;
     background: #ffe3cb;
     color:#ff6600;
 }
@@ -831,11 +838,12 @@ body{ background:#f5f5f5 !important;}
     width: 160px;
     height: 48px;
     background: #fbfbfb;
-    /*border-right: 1px solid #eeeeee;*/
+    border-right: 1px solid #eeeeee;
     color: #666666;
     text-align: center;
     line-height: 45px;
     float: left;
+	font-size: 16px;
 
 }
 .intr-flow p.intr-flow-tit a.on{
@@ -899,6 +907,7 @@ body{ background:#f5f5f5 !important;}
     top:5px;
     color: #006db2;
     font-size: 30px;
+	font-weight: normal;
 }
 
 .jylc-xq{
@@ -1031,6 +1040,7 @@ body{ background:#f5f5f5 !important;}
     margin-top: 35px;
     border-top: 1px solid #e7e7e7;
     position: relative;
+	padding-bottom: 35px;
 }
 .lb-tit{
     color: #333333;
@@ -1098,8 +1108,10 @@ body{ background:#f5f5f5 !important;}
     width: 205px;
     color: #666666;
     line-height: 22px;
-    margin:28px auto 0px;
+    margin:5px auto 0px;
     text-align: left;
+	min-height:160px;
+	line-height:20px;
 }
 .yzc-succeeal .yzc-succeeal-main ul li div.aL-over a{
     display: inline-block;
@@ -1107,7 +1119,7 @@ body{ background:#f5f5f5 !important;}
     padding:8px  20px;
     color: #ffffff;
     border-radius: 5px;
-    margin: 15px auto;
+    margin: 10px auto 0px;
     /*text-align: center;*/
 }
 .yzc-succeeal .yzc-succeeal-main ul li:hover .aL-over{
@@ -1117,6 +1129,9 @@ body{ background:#f5f5f5 !important;}
     color: #999999;
     padding-top: 15px;
 }
+.list-lj a{
+	color:#999999;
+	}
 
 .case-name{
     background: #ffffff;
@@ -1187,15 +1202,16 @@ body{ background:#f5f5f5 !important;}
 .sbhwjg{
     margin-top: 25px;
     width: 100%;
-    height:409px;
+    height:419px;
     background: #ffffff url("../images/sbhwjg-bg.png") no-repeat center center ;
     border: 1px solid #eaeaea;
     position: relative;
+	padding-bottom:20px;
 }
 .sbhwjg-main {
     position:absolute;
-    top: 125px;
-    left:115px;
+   	top: 145px;
+	left: 165px;
 }
 .sbhwjg-main  h3{
     color: #333333;
@@ -1225,10 +1241,9 @@ body{ background:#f5f5f5 !important;}
 }
 .wjg-cnxh{
     overflow: hidden;
-    margin-top: 20px;
-    margin-bottom: 20px;
     color: #666666;
     font-size: 14px;
+	margin-top: 16px;
 }
 .wjg-cnxh span.fl img{
     display: inline-block;
@@ -1479,17 +1494,25 @@ body{ background:#f5f5f5 !important;}
 }
 .mj-cTr_center li label {
     color: #999;
+	display: inline-block;
+    min-width:60px;
+    text-align:right;
+	margin-right:10px;
+	float:left;
 }
 .mj-cTr_center li {
-    width: 590px;
+    min-width: 590px;
     font-size: 12px;
     padding: 3px 0px;
+	overflow:hidden;
 }
+.mj-cTr_center li span{
+	display:inline-block;
+	max-width: 670px;
+	float:left;
+	}
 
-
-
-
-<!--商标详情页-->
+/*商标详情页*/
 .case-xq-main{
     width: 886px;
     margin: auto;
@@ -1510,7 +1533,7 @@ body{ background:#f5f5f5 !important;}
     min-height: 310px;
     margin: auto;
 }
-.case-xq-main dl dt.img{
+.case-xq-main dl dt img{
     display: block;
     margin: auto;
 }
@@ -1523,8 +1546,9 @@ body{ background:#f5f5f5 !important;}
 }
 .case-xq-main dd span{
    display: inline-block;
-   width: 80px;
+    width: 80px;
     height: 66px;
+	margin-top:15px;
 
 }
 
@@ -1569,7 +1593,7 @@ body{ background:#f5f5f5 !important;}
     color: #48aff1;
     text-decoration: underline;
 }
-<!--商标详情页结束-->
+/*商标详情页*/
 
 
 
