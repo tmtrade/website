@@ -42,7 +42,8 @@ class GoodsAction extends AppAction
         $this->set('offpriceList', $list['rows']);
 
         $_title = array_merge($result['groupName'], $result['goodsName']);
-        $_title = implode('，', $_title);
+        $_title = implode(',', $_title);
+        if ($result['className']) $_title = $result['className'].','.$_title;
 
         $classGroup = $this->load('search')->getClassGroup();
         list($_class, $_group) = $classGroup;

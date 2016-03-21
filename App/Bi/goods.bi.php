@@ -43,6 +43,7 @@ class GoodsBi extends Bi
 			'rows'      => isset($data['rows'])  ? $data['rows']  : array(),
 			'groupName' => isset($data['groupName'])  ? $data['groupName']  : array(),
 			'goodsName' => isset($data['goodsName'])  ? $data['goodsName']  : array(),
+			'className' => isset($data['className'])  ? $data['className']  : '',
 			);
 	}
 }
