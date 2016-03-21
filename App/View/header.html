@@ -30,7 +30,6 @@
         $signature	= sha1("jsapi_ticket={$jsapiToken}&noncestr={$nonceStr}&timestamp={$timestamp}&url={$url}");
     ?>
     <script src="<?=PERSONAL_CENTER?>Static/script/user/script/user.js"></script>
-    <script src='http://w.cnzz.com/q_stat.php?id=1257156861&l=3' language='JavaScript'></script>
     <script type="text/javascript">
         $(document).ready(function(e) {
             ucConfig.setConfig('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
