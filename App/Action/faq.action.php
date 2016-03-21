@@ -45,12 +45,14 @@ class FaqAction extends AppAction
     }
     
     //规则
-	public function rule()
+    public function ryzz()
     {
-		$pageTitle   = '入驻平台规则 - '.$this->seotime;
+		$pageTitle   = '平台资质 - '.$this->seotime;
 		$this->set("title",$pageTitle);
-        $this->display();
+                $this->set("cat", "ryzz");
+                $this->display();
     }
+    
 
 	//得到栏目对应的文章
 	public function news()
