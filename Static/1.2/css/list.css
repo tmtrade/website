@@ -1491,7 +1491,87 @@ body{ background:#f5f5f5 !important;}
 
 
 
+<!--商标详情页-->
+.case-xq-main{
+    width: 886px;
+    margin: auto;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+.case-xq-main dl{
+    overflow: hidden;
+    margin-top: 20px;
+}
+.case-xq-main dl.case-xq-gy dt{
+    min-width: 885px;
+    min-height: 394px;
+    margin: auto;
+}
+.case-xq-main dl.case-xq-js dt{
+    min-width: 885px;
+    min-height: 310px;
+    margin: auto;
+}
+.case-xq-main dl dt.img{
+    display: block;
+    margin: auto;
+}
+.case-xq-main dd{
+    margin-top:30px;
 
+}
+.case-xq-gy dd{
+    padding-left: 30px;
+}
+.case-xq-main dd span{
+   display: inline-block;
+   width: 80px;
+    height: 66px;
+
+}
+
+.case-xq-main dd div.fl{
+    max-width:710px;
+    margin-left:60px;
+
+}
+.case-xq-main dd div.fr{
+    max-width:700px;
+    margin-right:60px;
+
+}
+.case-xq-main dd span.fr{
+    padding-right: 30px;
+}
+.case-xq-main dd div p{
+
+    color: #666666;
+    font-size: 14px;
+
+}
+.case-xq-js dd div p{
+    display: inline-block;
+    text-indent:22px;
+}
+.case-xq-main dd div.fl p label{
+    display: inline-block;
+    width:90px;
+    text-align: right;
+    color: #999999;
+    float: left;
+}
+.case-xq-main dd div.fl p  font{
+    display: inline-block;
+    width:600px;
+    margin-right: 5px;
+    line-height: 20px;
+}
+.case-xq-main dd div.fl p  font a{
+    display: inline-block;
+    color: #48aff1;
+    text-decoration: underline;
+}
+<!--商标详情页结束-->
 
 
 
