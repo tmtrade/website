@@ -1,6 +1,7 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css"/>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/ms-filter.css"/>
+
 <div class="w1180 ms-filterWrapper f-clearfix">
     <!-- ms-filterMain start -->
     <div class="ms-filterMain">
@@ -358,9 +359,6 @@
     </ul>
 </div>
 <script type="text/javascript">
-
-   
-
     $(".fdkf-ss").click(function(){
         $(this).hide();
         $(".fdkf-zk").show();
@@ -623,6 +621,7 @@
                 clearTimeout(_objTime);
                 if ( !_hasSale ) {
                     $("#tm-all-list").append(data);
+					
                     if (_startTm == 1) $("#tm-uploading").show();
                     _startTm++;
                     _hasTm = true;
@@ -645,7 +644,7 @@
             }
         });
     }
-
+	
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
         var scrollHeight = $(document).height();
