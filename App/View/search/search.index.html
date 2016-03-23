@@ -1,7 +1,6 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css"/>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/ms-filter.css"/>
-<!--<script src="<?=StaticDir?>script/login_new.js"></script>-->
 <div class="w1180 ms-filterWrapper f-clearfix">
     <!-- ms-filterMain start -->
     <div class="ms-filterMain">
@@ -86,7 +85,7 @@
                     </div>
                 </div>
                 <? } ?>
-                <? if ( $kw != '' && $kt == 1 ) {?>
+                <? if ( !empty($kw) && $kt == 1 ) {?>
                 <div class="ms-conditionList">
                     <span>商标名称</span>
                     <div class="ms-conditionList-main">
