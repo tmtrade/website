@@ -30,7 +30,15 @@
             </div>
         </div>
         <div class="fr fr-details">
-           <h3><span title="<?=$info['name']?>"><?=$info['thum_name']?></span> <?if(count($info['class'])==1):?><span title="<?=$info['label']?>" class="light_title">(<?=$info['class'][0]?>类 <?=$info['thum_label']?>)</span><?endif;?> <a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
+            <?php
+                $str = "申请中";
+                $tm_status = 0;
+                if($info['status'] == '已注册'){
+                    $tm_status = 1;
+                    $str = "已注册";
+                }
+            ?>
+           <h3><span title="<?=$info['name']?>"><?=empty($info['thum_name'])?'【暂无商标名称】':$info['thum_name']?></span> <?if(count($info['class'])==1):?><span title="<?=$info['label']?>" class="light_title">(<?=$info['class'][0]?>类 <?=$info['thum_label']?>)</span><?endif;?> <a><img src="<?=StaticDir?>1.2/images/<?=(($tm_status)?'yzc-ico':'sqz')?>.png"><?=$str?></a></h3>
             <label class="bm"><?=$sale['value']?></label>
            <p class="may"><font>此商标可入驻：
                <?php
@@ -45,13 +53,13 @@
                     }
                     foreach($platformIn as $k=>$v){
                         if(checkIn($info['class'],$platformItems[$k])){
-                            unset($platformIn[$k]);
+                    //        unset($platformIn[$k]);
                             echo "<a href='".$platformUrl[$k]."' target='_blank' class='cur' >".$v."</a>";
                         }
                     }
-                   foreach($platformIn as $k=>$v){
-                        echo "<a href='".$platformUrl[$k]."' target='_blank' >".$v."</a>";
-                   }
+                   //foreach($platformIn as $k=>$v){
+                   //     echo "<a href='".$platformUrl[$k]."' target='_blank' >".$v."</a>";
+                   //}
                ?>
            </font></p>
             <!--是否上架-->
@@ -89,13 +97,13 @@
                <?}else{?>
                <ul class="mj-cTr_center">
                        <li>
-                           <span><label>分类: </label><font>第<?=$class?>类 - <?=$info['className']?></font></span>
+                           <span><label>分类: </label>第<?=$class?>类 - <?=$info['className']?></span>
                        </li>
                        <li>
-                           <span><label>当前群组: </label><font><?=implode(';',$info['items'][0]['groupName'])?></font></span>
+                           <span><label>当前群组: </label><?=implode(';',$info['items'][0]['groupName'])?></span>
                        </li>
                        <li>
-                           <span><label>商品列表: </label><font><?=$info['goods']?></font></span>
+                           <span><label>商品列表: </label><?=$info['goods']?></span>
                        </li>
                    </ul>
                <?}?>
@@ -114,7 +122,7 @@
                         </p>
                         <p class="period"><font>有效期</font> <span><?php if($sale['salePriceDate'] > 0){
                             echo date('Y-m-d H:i',$sale['salePriceDate']);
-                            }else{echo "永久";} ?></span>前有效</p>
+                            }else{echo "永久";} ?></span>有效</p>
                         <?if($topic):?>
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
@@ -407,7 +415,7 @@
 <!--成功案列start-->
 <div class="w1180 succeed-al" id="succal">
     <a href=""><h3>成功案例</h3></a>
-    <ul class="succeed-al-main">
+    <ul class="succeed-al-main f-clearfix">
         <li>
             <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                 <div class="flipper">
@@ -423,7 +431,7 @@
                         <img src="<?=StaticDir?>1.2/images/al1.png">
                     </div>
                     <div class="back">
-                        <a href="http://t.chofn.net/case/detail/?id=14"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
+                        <img src="<?=StaticDir?>1.2/images/overturn.png">
                     </div>
                 </div>
             </div>
@@ -443,7 +451,7 @@
                         <img src="<?=StaticDir?>1.2/images/al2.png">
                     </div>
                     <div class="back">
-                        <a href="http://t.chofn.net/case/detail/?id=12"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
+                        <img src="<?=StaticDir?>1.2/images/overturn.png">
                     </div>
                 </div>
             </div>
@@ -463,7 +471,7 @@
                         <img src="<?=StaticDir?>1.2/images/al3.png">
                     </div>
                     <div class="back">
-                        <a href="http://t.chofn.net/case/detail/?id=16"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>                        
+                        <img src="<?=StaticDir?>1.2/images/overturn.png">
                     </div>
                 </div>
             </div>
@@ -666,7 +674,7 @@
         if(tel){
             //获得数据
             var remarks 	= $('#remarks').val();
-            remarks = remarks.replace('TEL',tel);
+            remarks = remarks + ';电话号码：' + tel;
             var buyData 			= new Array();
             buyData['tel'] 			= tel;
             buyData['tid'] 			= $('#tid').val();
@@ -692,7 +700,6 @@
     $('#telInput2').blur(function(){
         var tel= $.trim($('#telInput2').val());
         //验证手机号码
-        var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
         if(!tel || !mobilereg.test(tel) || tel.length!=11){
             $('#telInput2').val('');
             return false;
@@ -724,6 +731,8 @@
             //弹窗提示
             if(n.code==2){
                 $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>您已经购买过该商标</a>");
+            }else{
+                console.debug(n);
             }
         });
     }

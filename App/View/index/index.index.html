@@ -105,6 +105,7 @@
                 //用户登录情况下
                 if(n.code!=-1){
                     //弹出成功框
+                    clearKJLogin();
                     getLayer($('#mj-submitteS'));
                 }else{
                     //弹出失败框
@@ -114,9 +115,11 @@
                 //用户未登录情况下
                 if(n.code==1){
                     //用户不存在
+                    clearKJLogin();
                     getLogin(_buyTitle,tel,0);
                 }else if(n.code==2){
                     //用户存在
+                    clearKJLogin();
                     getLogin(_login,tel,1);
                 }else{
                     //弹出失败框
@@ -138,6 +141,12 @@
         if(regExp.test(temp))
             return false;
         return true;
+    }
+    //清空快捷登录
+    function clearKJLogin(){
+        $('#buyName').val('');
+        $('#buyMoblie').val('');
+        $('#buyNeed').val('');
     }
 </script>
 <div class="mj-banner">
