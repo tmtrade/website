@@ -212,7 +212,7 @@
         </div>
         <!-- ms-filterSearch end -->
         <!-- ms-filtersList start -->
-        <div class="ms-filtersList">
+        <div class="ms-filtersList" style="padding-top:0px;">
             <ul class="f-clearfix" id="s-all-list">
     <?if ( !empty($searchList) ){?>
         <? foreach ($searchList as $k => $v) {?>
@@ -284,8 +284,9 @@
         </div>
     <? } ?>
             </ul>
+             <div id="tm-uploading" style="padding-top:15px;text-align:center;display:none;height:35px;"><img src="<?=StaticDir?>1.2/images/tm-list-wait.png"></div>
             <ul class="f-clearfix" id="tm-all-list">                
-                <div id="tm-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>1.2/images/tm-list-wait.png"></div>
+               
             </ul>
         </div>
         <!-- ms-filtersList end -->
@@ -357,6 +358,9 @@
     </ul>
 </div>
 <script type="text/javascript">
+
+   
+
     $(".fdkf-ss").click(function(){
         $(this).hide();
         $(".fdkf-zk").show();
@@ -367,6 +371,7 @@
         $(".fdkf-zk").animate({width:"0"});;
         $(".fdkf-ss").show();
     })
+	
 </script>
 <script src="<?=StaticDir?>script/objurl.js"></script>
 
@@ -649,6 +654,15 @@
             loadMore();
         }
     });
+	for(var i=0;i<=$("#tm-all-list>li").length;i++)
+    {     
+	    alert("111");
+        if(i%3==0){
+			
+		    $("#tm-all-list>li").css({ "margin-right": "17px"});
+            $("#tm-all-list>li").eq(i-1).css({ "margin-right": "0px"});
+        }
+    }
 
 </script>
 
