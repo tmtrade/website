@@ -47,6 +47,8 @@
             //悬浮窗提醒标题
             _defLogin   = "<h6>登录</h6> <p style=\"margin-left: 10px;\"></p>";
             _xunjia     = "<h6>登录查询此商标出售价格</h6><p>一次登录后可查看全站所有出售商标价格</p>";
+            //手机号码验证正则
+            mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
             //获取验证码
             $('#dl_wjmm,#dl_fsmm').click(function(){
                 mobile 	= $.trim($('#loginUser').val());
@@ -69,22 +71,22 @@
             $('#dl_sub').click(function(){
                 account 	= $.trim($('#loginUser').val());
                 password 	= $.trim($('#loginPass').val());
-                var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
                 if(!account){
-                    $(".mj-eed").show();
+                    $(".ms-errorTips2,#loginTips").show();
                     $("#loginTips em").text('请输入手机号码');
-					  $(".mj-newjy").css("margin-top","5px");
+                    $("#loginTips").attr('flag',1);
                     return false;
                 }
                 if(!mobilereg.test(account) || account.length!=11){
-                    $(".mj-eed").show();
+                    $(".ms-errorTips2,#loginTips").show();
                     $("#loginTips em").text('请输入正确的手机号码');
-					  $(".mj-newjy").css("margin-top","5px");
+                    $("#loginTips").attr('flag',1);
                     return false;
                 }
                 if(!password){
+                    $(".ms-errorTips2,#loginTips").show();
                     $("#loginTips em").text('请输入密码');
-					  $(".mj-newjy").css("margin-top","5px");
+                    $("#loginTips").attr('flag',2);
                     return false;
                 }
                 //判断是验证码登录还是密码登录
@@ -93,6 +95,33 @@
                 }else{
                     ucNetwork.userLog(account,password);//密码登录
                 }
+            });
+            //登录弹窗失去焦点验证
+            $('#loginUser').blur(function(){
+                var tel 	= $.trim($('#loginUser').val());
+                if(!tel){
+                    $(".ms-errorTips2,#loginTips").show();
+                    $("#loginTips em").text('请输入手机号码');
+                    $("#loginTips").attr('flag',1);
+                    return false;
+                }
+                if(!mobilereg.test(tel) || tel.length!=11){
+                    $(".ms-errorTips2,#loginTips").show();
+                    $("#loginTips em").text('请输入正确的手机号码');
+                    $("#loginTips").attr('flag',1);
+                    return false;
+                }
+                hideLoginTip(1);
+            });
+            $('#loginPass').blur(function(){
+                var pass = $.trim($('#loginPass').val());
+                if(!pass){
+                    $(".ms-errorTips2,#loginTips").show();
+                    $("#loginTips em").text('请输入密码');
+                    $("#loginTips").attr('flag',2);
+                    return false;
+                }
+                hideLoginTip(2);
             });
         });
         //成功失败弹窗
@@ -139,12 +168,10 @@
             $("#loginPass").val('');
             //$("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
             //$("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
-
             $("#dl_ts").hide();
             $('.reg-tip').hide();
             var title = (title=='')?_defLogin:title;
             if (!isExist){
-
                 //账户不存在
                 $("#dl_wjmm").hide();//忘记密码(已存在账号)
                 $("#dl_fsmm").show();//发送密码(不存在账号)
@@ -210,6 +237,12 @@
         //聊天函数
         function goChat(){
             window.open("http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165");
+        }
+        //隐藏登录提示信息
+        function hideLoginTip(num){
+            if($("#loginTips").attr('flag')==num){
+                $(".ms-errorTips2").hide();
+            }
         }
     </script>
 </head>

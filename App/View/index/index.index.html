@@ -19,7 +19,6 @@
             tel 	= $.trim($('#buyMoblie').val());
             subject = $.trim($('#buyNeed').val());
             //验证手机号码
-            var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
             if(!tel || !mobilereg.test(tel) || tel.length!=11){
                 $(".mj-eed").show();
                 $(".reg-tip em").text('请输入手机号码');
@@ -62,7 +61,6 @@
         //验证手机号码
         $('#buyMoblie').blur(function(){
             tel 	= $.trim($('#buyMoblie').val());
-            var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
             if(!tel){
                 $(".mj-eed").show();
                 $(".reg-tip em").text('请输入手机号码');

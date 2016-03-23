@@ -692,7 +692,6 @@
     $('#telInput2').blur(function(){
         var tel= $.trim($('#telInput2').val());
         //验证手机号码
-        var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
         if(!tel || !mobilereg.test(tel) || tel.length!=11){
             $('#telInput2').val('');
             return false;
