@@ -21,10 +21,10 @@
                         </span>
                         <p>
                            <font> <?=mbSub($v['name'],0,9);?> <?=mbSub($v['sale']['class'],0,10)?>类</font>
-                            <?=mbSub($v['sale']['group'],0,24)?>
+                            <?=mbSub($v['groupName'],0,12)?>
                         </p>
                     </div>
-                    <div class="reverse">
+                    <div class="reverse" >
                        <dt>
                             <a class="cl-red">特</a>
                             <a class="cl-org">精</a>
@@ -32,9 +32,9 @@
                         <span>
                             <a href="/d-<?=$v['sale']['tid']?>-<?=$v['sale']['class']?>.html" ><img src="<?=$v['tminfo']['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="145" height="89"></a>
                         </span>
-                        <p>
+                        <p title="<?=$v['groupName']?>">
                             <font> <?=mbSub($v['name'],0,9);?> <?=mbSub($v['sale']['class'],0,10)?>类</font>
-                            <?=mbSub($v['sale']['group'],0,24)?>
+                            <?=mbSub($v['groupName'],0,12)?>
                         </p>
                         <label>
                              <input class="xunjia_data" type="hidden" tid="<?=$v['sale']['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">

@@ -692,5 +692,24 @@ class SearchModule extends AppModule
         }
         return $data;
     }
+    
+    /**
+     * 根据群组号得到群组名,'我是群组名'
+     * @param $number
+     * @return array
+     */
+    public function getGroupName($number){
+        $number = explode(',',$number);
+        $data = "";
+        foreach($number as $item){
+            $r['eq']['number'] = $item;
+            $r['col'] = array('name');
+            $rst = $this->import('class')->find($r);
+            if($rst){
+                $data[] = $rst['name'];
+            }
+        }
+        return implode(";", $data);
+    }
 }
 ?>
