@@ -14,7 +14,7 @@ class CaseAction extends AppAction
 	public $keyword		= '商标转让,商标转让网,注册商标转让,转让商标,商标买卖,商标交易,商标交易网';
 	public $description	= '一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台-商标转让-专利转让';
 
-	//得到栏目对应的文章
+	//得到栏目对应的文章列表
 	public function index()
 	{
 		$page			= $this->input("page","int");
@@ -33,7 +33,7 @@ class CaseAction extends AppAction
                 $this->display();
 	}
 
-	//得到栏目对应的文章
+	//得到对应的文章详情
 	public function detail()
 	{
 		$id     = $this->input("id","int");

@@ -44,7 +44,7 @@ class FaqAction extends AppAction
                 $this->display();
     }
     
-    //规则
+    //平台资质
     public function ryzz()
     {
 		$pageTitle   = '平台资质 - '.$this->seotime;
@@ -53,6 +53,13 @@ class FaqAction extends AppAction
                 $this->display();
     }
     
+    //规则
+	public function rule()
+    {
+		$pageTitle   = '入驻平台规则 - '.$this->seotime;
+		$this->set("TITLE",$pageTitle);
+        $this->display();
+    }
 
 	//得到栏目对应的文章
 	public function news()
