@@ -137,8 +137,8 @@
         function getLogin(title,tel,isExist){
             $("#loginUser").val('');
             $("#loginPass").val('');
-            $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
-            $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
+            //$("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+            //$("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
 
             $("#dl_ts").hide();
             $('.reg-tip').hide();
@@ -154,8 +154,6 @@
                 $('#loginUser').val(tel);
                 $('#dl_wjmm').trigger('click');
             }else{
-                
-                                alert(5);
                 //账户存在
                 $("#dl_wjmm").addClass('aaaa');//添加类
                 $('.mj-inpuVs').html('');
