@@ -1,27 +1,26 @@
 //购买提交
 $('#subBuy').click(function(){
-	content = $('#buyNeed').val();
-	if(!content || content == '对商标的特殊要求  如：25类鞋子'){
+	var content = $('#buyNeed').val();
+        var pttype = $('#pttype').val();
+	if(!content || content == '请输入专利用途' ||  content == '专利号 / 专利描述'){
 		$('#buyNeed').focus();
-		$('#buyNeedTip').show();
+                if(pttype=="求购"){
+                    layer.msg('请输入专利用途');
+                }else{
+                    layer.msg('请输入专利号 / 专利描述');
+                }
+		
 		return false;
-	}else{
-		$('#buyNeedTip').hide();
 	}
-
-	mobile = $('#buyMoblie').val();
-	if(mobile == '' || mobile == "请填写你的联系电话，方便我们联系你"){
+	var mobile = $('#buyMoblie').val();
+	if(mobile == '' || mobile == "请输入联系电话"){
 		$('#buyMoblie').focus();
-		$('#buyMoblieTip').text('手机号不能为空');
-		$('#buyMoblieTip').show();
+		layer.msg('手机号不能为空');
 		return false;
 	}else if(!verifyPhoneNum(mobile)){
 		$('#buyMoblie').focus();
-		$('#buyMoblieTip').text('手机号码不正确');
-		$('#buyMoblieTip').show();
+                layer.msg('手机号码不正确');
 		return false;
-	}else{
-		$('#buyMoblieTip').hide();
 	}
 	addBuy();
 })
@@ -29,12 +28,20 @@ function addBuy()
 {
     var mobile  = $.trim( $("#buyMoblie").val() );
     var need    = $.trim( $("#buyNeed").val() );
+    var pttype  = $.trim( $("#pttype").val() );
+    var chk_value =[]; 
+    $('input[type=checkbox]:checked').each(function(){
+        chk_value.push($(this).val()); 
+    });
+    var ptype = chk_value.join(',');
     var data	= new Array();
     data['name'] 	= '';
     data['tel'] 	= mobile;
     data['subject'] = need;
     data['remarks'] = need;
-    data['pttype'] = "求购";
+    data['pttype'] = pttype;
+    data['type'] = "7";
+    data['ptype'] = ptype;
     ucNetwork.submitData(data);
     
 }
@@ -74,3 +81,7 @@ function clearBuy()
 function verifyPhoneNum(num){
 	return /^0?(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/.test(num);
 }
+
+$(".mj-boBtn1").bind("click",function(){
+                layer.closeAll();
+});

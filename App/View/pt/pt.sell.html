@@ -30,17 +30,15 @@
 
   <div class="sp-1">
         <div class="container-1050">
-            <form action="http://st.chofn.com/searchform.php?submit=3" method="post" name="form1" id="form1" class="ml-form" onSubmit="return formFun(this, 1);">
-            		<input type="hidden" name="tid" id="tid" value="3" />
-               		<input type="hidden" name="sid" id="sid" value="" />
-                	<input type="hidden" name="tipurl" id="tipurl" value="/divest/" />
+            <form  method="post" name="form1" id="form1" class="ml-form" >
+                <input type="hidden" name="pttype" id="pttype" value="出售">
                 <div class="ml-form_cont">
                     <h1>专利免费评估包装</h1>
                     <div class="ml-form_cont2">
-                        <input type="text" class="u-input-text u-input-text1" name="subject" autocomplete="off" placeholder="专利号 / 专利描述" />
-                        <input type="text" class="u-input-text u-input-text2" name="tel" autocomplete="off" placeholder="输入联系方式" />
+                        <input type="text" class="u-input-text u-input-text1" name="subject" id="buyNeed" autocomplete="off" placeholder="专利号 / 专利描述" />
+                        <input type="text" class="u-input-text u-input-text2" name="tel" autocomplete="off" id="buyMoblie" placeholder="请输入联系电话" />
                        
-                        <input type="submit" class="btn" value="立即评估" /><span class="btn btn1" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-10">在线咨询</span>
+                        <input type="button" class="btn" id="subBuy" value="立即评估" /><span class="btn btn1" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-10">在线咨询</span>
                         
                     </div>
                 </div>
@@ -162,8 +160,33 @@
             </div>
         </div>
     </div>
+<!--出售已提交弹出层-->
+<div class="mj-boughtM" id="mj-submitteS">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>恭喜，出售提交成功</h2>
+            <p>请保持电话畅通，10分钟内联系你。</p>
+            <a href="javascript:" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+        </div>
+    </div>
+</div>
+<!--求购已提交失败弹出层-->
+<div class="mj-boughtM" id="mj-submitteF">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2 style="color:#ff6600">求购提交失败，请稍后重试！</h2>
+            <p>可能因为网络问题或其他原因导致</p>
+            <a href="javascript:;" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" charset="utf-8" src="http://gate.looyu.com/46344/123997.js"></script>
 <div id="doyoo_share" style="display:none;"></div>
 <link rel="stylesheet" type="text/css" href="http://static.doyoo.net/110402/looyu.css?140702">
 <script type="text/javascript" src="http://static.doyoo.net/110402/looyu.js?141104"></script>
+<script type="text/javascript" src="<?=StaticDir?>1.2/js/pt.js"></script>
 <? require(ViewDir.'/footer.html'); ?>

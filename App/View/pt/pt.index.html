@@ -1,29 +1,28 @@
 <? require(ViewDir.'/header.html'); ?>
-<script language="javascript" src="http://st.chofn.com/code.php"></script>
 <link rel="stylesheet" href="<?=StaticDir?>style/home-2-bh150627165347.css" />
-    <style type="text/css">
-	.listtel{
-		width:105px;
-		float:left;
-	}
-	.listmai{
-		width:40px;
-		color:#FFF;
-		float:left;
-	}
-	.listname{
-		width:131px;/*容器的基本定义*/
-		text-align:left;
-		display:block;
-		white-space:nowrap;
-		overflow:hidden;
-		text-overflow:ellipsis;
-		float:left;
-	}
-	.listzl{
-		float:left;
-	}
-	</style>
+<style type="text/css">
+    .listtel{
+            width:105px;
+            float:left;
+    }
+    .listmai{
+            width:40px;
+            color:#FFF;
+            float:left;
+    }
+    .listname{
+            width:131px;/*容器的基本定义*/
+            text-align:left;
+            display:block;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            float:left;
+    }
+    .listzl{
+            float:left;
+    }
+    </style>
 
     <!--[if lte IE 8]>
     <script src="<?=StaticDir?>script/respond.min.js"></script>
@@ -33,30 +32,28 @@
 	<link rel="stylesheet" href="/sidebarandbackcall.css" />
     <div class="sp-1">
         <div class="w1180">
-            <form action="http://st.chofn.com/searchform.php?submit=3" method="post" name="form1" id="form1" class="ml-form" onSubmit="return formFun(this, 1);">
-                <input type="hidden" name="tid" id="tid" value="3">
-                <input type="hidden" name="sid" id="sid" value="">
-                <input type="hidden" name="tipurl" id="tipurl" value="<? echo SITE_URL;?>pt/" />
+            <form  method="post" name="form1" id="form1" class="ml-form" >
+                <input type="hidden" name="pttype" id="pttype" value="求购">
                 <div class="ml-form_cont">
                     <h1>我的购买需求</h1>
                     <div class="ml-form_cont2">
                         <div class="ml-form_cont2_checkbox">
                             <span class="ul-checkbox">
-                                <input type="checkbox" id="pt1" name="pttype[]" checked />
+                                <input type="checkbox" id="pt1" name="ptype[]" checked="checked"  value="发明专利"/>
                                 <label for="checkbox-1">发明专利</label>
                             </span>
                            <span class="ul-checkbox">
-                                <input type="checkbox" id="pt2" name="pttype[]" checked />
+                                <input type="checkbox" id="pt2" name="ptype[]" checked="checked"  value="实用新型"/>
                                 <label for="checkbox-2">实用新型</label>
                             </span>
                            <span class="ul-checkbox no-mar">
-                                <input type="checkbox" id="pt3" name="pttype[]" checked />
+                                <input type="checkbox" id="pt3" name="ptype[]" checked="checked"  value="外观设计"/>
                                 <label for="checkbox-3">外观设计</label>
                             </span>
                         </div>
-                        <input type="text" class="u-input-text u-input-text1" name="subject" placeholder="请输入专利用途" />
-                        <input type="text" class="u-input-text u-input-text2" name="tel" placeholder="请输入联系电话" />
-                        <input type="submit" class="btn" value="立即匹配" /><span class="btn btn1" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-10">在线咨询</span>
+                        <input type="text" class="u-input-text u-input-text1" name="subject" id="buyNeed" placeholder="请输入专利用途" />
+                        <input type="text" class="u-input-text u-input-text2" name="tel" id="buyMoblie" placeholder="请输入联系电话" />
+                        <input type="button" class="btn" id="subBuy" value="立即匹配" /><span class="btn btn1" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-10">在线咨询</span>
                     </div>
                 </div>
             </form>
@@ -268,11 +265,32 @@
             </div>
         </div>
     </div>
-
-
+<!--求购已提交弹出层-->
+<div class="mj-boughtM" id="mj-submitteS">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2>恭喜，专利购买需求提交成功</h2>
+            <p>请保持电话畅通，10分钟内联系你。</p>
+            <a href="javascript:" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+        </div>
+    </div>
+</div>
+<!--求购已提交失败弹出层-->
+<div class="mj-boughtM" id="mj-submitteF">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h2 style="color:#ff6600">求购提交失败，请稍后重试！</h2>
+            <p>可能因为网络问题或其他原因导致</p>
+            <a href="javascript:;" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+        </div>
+    </div>
+</div>
 <script src="<?=StaticDir?>script/clicks_home2.js"></script>
-
-
+<script type="text/javascript" src="<?=StaticDir?>1.2/js/pt.js"></script>
 <script>
    /* document.getElementById("callBtn").onclick = function () {
         lxb.call(document.getElementById("telInput"));
