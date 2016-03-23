@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="fr fr-details">
-           <h3><span title="<?=$info['name']?>"><?=$info['thum_name']?></span> <?if(count($info['class'])==1):?><span title="<?=$info['label']?>" class="light_title">(<?=$info['class'][0]?>类 <?=$info['thum_label']?>)</span><?endif;?> <a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
+           <h3><span title="<?=$info['name']?>"><?=empty($info['thum_name'])?'【暂无商标名称】':$info['thum_name']?></span> <?if(count($info['class'])==1):?><span title="<?=$info['label']?>" class="light_title">(<?=$info['class'][0]?>类 <?=$info['thum_label']?>)</span><?endif;?> <a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a></h3>
             <label class="bm"><?=$sale['value']?></label>
            <p class="may"><font>此商标可入驻：
                <?php
@@ -114,7 +114,7 @@
                         </p>
                         <p class="period"><font>有效期</font> <span><?php if($sale['salePriceDate'] > 0){
                             echo date('Y-m-d H:i',$sale['salePriceDate']);
-                            }else{echo "永久";} ?></span>前有效</p>
+                            }else{echo "永久";} ?></span>有效</p>
                         <?if($topic):?>
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>

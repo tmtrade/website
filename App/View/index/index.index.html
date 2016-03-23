@@ -8,9 +8,9 @@
         _login   = "<h6>亲，提交成功了</h6><p>登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
         _buyTitle   = "<h6>亲，提交成功了</h6><p>系统已将登录密码发送到你手机，登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
         if(login_mobile && isIndex){
-            //隐藏快捷登记的相关输入框,将用户电话号码放到该框中
-            $('.mj_form_wpo').after('<div style="height:40px"></div>');//站位
-            $('.mj_form_wpo').hide();
+            //将用户电话号码放到该框中
+            //$('.mj_form_wpo').after('<div style="height:40px"></div>');//站位
+            //$('.mj_form_wpo').hide();
             $('#buyMoblie').val(login_mobile);
         }
         //求购信息发布事件
@@ -45,6 +45,7 @@
             data['name'] 	= name;
             data['tel'] 	= tel;
             data['subject'] = subject;
+            data['remarks'] = subject;
             ucNetwork.submitData(data);
         });
         //验证内容
