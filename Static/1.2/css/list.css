@@ -292,7 +292,7 @@ body{ background:#f5f5f5 !important;}
 }
 .brand-details div.fl-details .brde-pic p{
     margin: auto;
-    margin-top: 12px;
+    margin-top:22px;
     font-size: 12px;
     /*width: 90%;*/
 
@@ -770,7 +770,7 @@ body{ background:#f5f5f5 !important;}
 }
 
 .record-collect{
-    height: 567px;
+    /*height: 567px;*/
     background: #ffffff;
     margin-top: 25px;
     /*border: 1px solid #eaeaea;*/
@@ -949,6 +949,8 @@ body{ background:#f5f5f5 !important;}
 }
 .jylc-xq li div.jylc-xq-fr dl dd b span{
     color: #ff7e00;
+	font-family:"Arial";
+	font-size:16px;
 }
 .jylc-xq li div.jylc-xq-fr dl dd p{
     color: #666666;
@@ -1200,18 +1202,20 @@ body{ background:#f5f5f5 !important;}
 }
 /*商标号无结果*/
 .sbhwjg{
-    margin-top: 25px;
+    margin-top:5px;
     width: 100%;
+  
     height:419px;
     background: #ffffff url("../images/sbhwjg-bg.png") no-repeat center center ;
+	background-size: 94% auto;
     border: 1px solid #eaeaea;
     position: relative;
 	padding-bottom:20px;
 }
 .sbhwjg-main {
     position:absolute;
-   	top: 145px;
-	left: 165px;
+    top: 135px;
+    left: 225px;
 }
 .sbhwjg-main  h3{
     color: #333333;
@@ -1224,6 +1228,10 @@ body{ background:#f5f5f5 !important;}
     margin-top: 12px;
     line-height: 24px;
 }
+.sbhwjg-main  font lable{
+	color:#ff6666;
+	}
+
 
 .sbhwjg-main  font label{
     color: #ff6666;
@@ -1231,7 +1239,11 @@ body{ background:#f5f5f5 !important;}
 .sbhwjg-main  font a{
     color: #48aff1;
     text-decoration: underline;
+	
 }
+.sbhwjg-main  font a:hover{
+	cursor:pointer;
+	}
 .sbhwjg-main  font span:last-child{
     margin-left: 10px;
 }
@@ -1243,7 +1255,11 @@ body{ background:#f5f5f5 !important;}
     overflow: hidden;
     color: #666666;
     font-size: 14px;
-	margin-top: 16px;
+	width:99%;
+	margin:auto;
+	margin-top: 12px;
+	margin-bottom:12px;
+	
 }
 .wjg-cnxh span.fl img{
     display: inline-block;
@@ -1253,6 +1269,9 @@ body{ background:#f5f5f5 !important;}
 .wjg-cnxh .exchange{
     cursor: pointer;
 }
+.wjg-cnxh .exchange img{
+	vertical-align:middle;
+	}
 .wjg-cnxh .exchange:hover{
     color: #ff6568;
 }
@@ -1326,6 +1345,7 @@ body{ background:#f5f5f5 !important;}
 /*联系我们*/
 .contactUs{
     margin-top: 45px;
+	padding-bottom: 30px;
 }
 
 .contUsList{
@@ -1387,7 +1407,7 @@ body{ background:#f5f5f5 !important;}
 }
 
 .trad-certi .yzzz{
-    margin: 45px auto;
+    margin: 45px auto 0px;
 	padding-left:20px;
 	padding-right:20px;
 }
@@ -1510,6 +1530,11 @@ body{ background:#f5f5f5 !important;}
 	display:inline-block;
 	max-width: 670px;
 	float:left;
+	}
+.mj-cTr_center li  font{
+	display: inline-block;
+	max-width: 595px;
+	
 	}
 
 /*商标详情页*/
