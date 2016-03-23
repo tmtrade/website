@@ -95,13 +95,13 @@
                <?}else{?>
                <ul class="mj-cTr_center">
                        <li>
-                           <span><label>分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类: </label>第<?=$class?>类 - <?=$info['className']?></span>
+                           <span><label>分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类 </label><font>第<?=$class?>类 - <?=$info['className']?></font></span>
                        </li>
                        <li>
-                           <span><label>当前群组: </label><?=$info['items'][0]['group']?></span>
+                             <span><label>当前群组 </label><font><?=implode(';',$info['items'][0]['groupName'])?></font></span>
                        </li>
                        <li>
-                           <span><label>商品列表: </label><?=$info['goods']?></span>
+                            <span><label>商品列表 </label><font><?=$info['goods']?></font></span>
                        </li>
                    </ul>
                <?}?>
