@@ -29,8 +29,6 @@ function addBuy()
 {
     var mobile  = $.trim( $("#buyMoblie").val() );
     var need    = $.trim( $("#buyNeed").val() );
-    var sid     = $.trim( $("#sid").val() );
-    var area    = $.trim( $("#area").val() );
     var data	= new Array();
     data['name'] 	= '';
     data['tel'] 	= mobile;
