@@ -38,7 +38,6 @@
             //用户是否登录
             nick_name = getCookie('uc_nickname');
             login_mobile = getCookie('uc_mobile');
-            //login_mobile  	= '<?=$userMobile?>';
             isIndex  	= '<?=$is_index?>';
             //登录情况下无手机号码, 弹窗提醒,跳转到用户中心绑定
             if(nick_name && !login_mobile){
@@ -52,23 +51,24 @@
             //获取验证码
             $('#dl_wjmm,#dl_fsmm').click(function(){
                 mobile 	= $.trim($('#loginUser').val());
-                var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+                //验证手机号
                 if(!mobile){
-                    $(".mj-eed").show();
-                    $(".loginTips em").text('请输入手机号码');
-					  $(".mj-newjy").css("margin-top","5px");
+                    $(".ms-errorTips2,#loginTips").show();
+                    $("#loginTips em").text('请输入手机号码');
+                    $("#loginTips").attr('flag',1);
                     return false;
                 }
                 if(!mobilereg.test(mobile) || mobile.length!=11){
-                    $(".mj-eed").show();
-                    $(".loginTips em").text('请输入正确的手机号码');
-					  $(".mj-newjy").css("margin-top","5px");
+                    $(".ms-errorTips2,#loginTips").show();
+                    $("#loginTips em").text('请输入正确的手机号码');
+                    $("#loginTips").attr('flag',1);
                     return false;
                 }
                 ucNetwork.sendCode(mobile,$(this),'点击获取验证码');
             });
             //用户登录
             $('#dl_sub').click(function(){
+                hideLoginTip(0);
                 account 	= $.trim($('#loginUser').val());
                 password 	= $.trim($('#loginPass').val());
                 if(!account){
@@ -146,7 +146,9 @@
                     $('#dl_sub').addClass('yzm');//添加额外的class yzm 判断为验证码登录
                     timer(60, $('.aaaa'), title);//倒计时
                 }else{
-                    console.debug(n.msg);
+                    $(".ms-errorTips2,#loginTips").show();
+                    $("#loginTips em").text('网络问题请刷新!');
+                    $("#loginTips").attr('flag',0);
                 }
             });
         }
@@ -158,7 +160,9 @@
                     $('.logged').show();
                     ucNetwork.logCode(account,code);
                 }else{
-                    console.debug(n.mess);
+                    $(".ms-errorTips2,#loginTips").show();
+                    $("#loginTips em").text('网络问题请刷新!');
+                    $("#loginTips").attr('flag',0);
                 }
             });
         }
