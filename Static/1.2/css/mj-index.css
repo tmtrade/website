@@ -440,7 +440,8 @@ margin: 0;
 }
 .mj-newjy ul li p font label{
 	font-family:"Arial";
-	font-size:18px;
+	font-size:38px;
+	color: #ccc;
 	}
 .w178 {
 
@@ -813,6 +814,7 @@ margin: 0;
 }
 .yzc-category-tit h3 span{
      color: #bbbbbb;
+	 font-weight:normal;
 }
 .yzc-category-tit ul.fr{
     border-right: 1px solid #f0f0f0;
@@ -849,6 +851,8 @@ margin: 0;
     border-right: 1px solid #faa1a1;
     border-left: 1px solid #faa1a1;
 	line-height: 27px;
+	position: relative;
+    left: -2px;
 	
 
 }
@@ -922,17 +926,18 @@ margin: 0;
     margin-right: 5px;
 }
 .cate-list p a.fl{
-    margin-left:15px;
+	text-indent: 55px;
 }
 .cate-list p a.fr{
-    margin-right:15px;
+    text-align: left;
+    text-indent: 35px;
 }
 .cate-list a{
     display: inline-block;
-	width: 140px;
-	text-align:left;
+    width: 49%;
+    text-align: left;
     color: #ffffff;
-    margin-left: 15px;
+    /* margin-left: 15px; */
 }
 .cate-list a:hover{
 	color: #ff6666;
