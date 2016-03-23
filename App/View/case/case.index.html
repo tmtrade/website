@@ -1,19 +1,21 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css"/>
 <div class="w1180 yzc-succeeal comSty">
-       <h3 class="lb-tit">成功案例</h3>
+       <div class="lb-tit"><h3>成功案例</h3></div>
        <div class="yzc-succeeal-main f-clearfix">
            <ul>
             <?php foreach($list as $k=>$v){ ?>
                <li>
                <span>
-                   <img src="<?php echo TRADE_URL.$v['pic1']?>" style="max-width:132px;height:87px ">
+                   <img src="<?php echo TRADE_URL.$v['pic1']?>">
                </span>
                    <p class="tit"><font><?=$v['name']?> </font></p>
                    <div class="aL-over f-clearfix">
                        <p><font><?=$v['name']?></font></p>
-                       <label style="height:130px">  
+                       <label>  
+                          <b>“</b>
                            <?=mbSub($v['desc'],0,90);?>
+                            <b>”</b>
                        </label>
                        <a href="/case/detail/?id=<?=$v['id']?>" target="blank">查看详情</a>
                    </div>
