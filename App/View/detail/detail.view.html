@@ -666,7 +666,7 @@
         if(tel){
             //获得数据
             var remarks 	= $('#remarks').val();
-            remarks = remarks.replace('TEL',tel);
+            remarks = remarks + ';电话号码：' + tel;
             var buyData 			= new Array();
             buyData['tel'] 			= tel;
             buyData['tid'] 			= $('#tid').val();
@@ -723,6 +723,8 @@
             //弹窗提示
             if(n.code==2){
                 $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>您已经购买过该商标</a>");
+            }else{
+                console.debug(n);
             }
         });
     }

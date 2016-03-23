@@ -28,7 +28,7 @@
             }
             if(!login_mobile && isChineseOrEng(name)){
                 $(".mj-eed").show();
-                $(".reg-tip em").show().text('请输入正确的姓名');
+                $(".reg-tip em").show().text('姓氏必须为中英文');
 				 $(".mj-newjy").css("margin-top","5px");
                 $(".reg-tip").attr('flag',3);
                 return false;
