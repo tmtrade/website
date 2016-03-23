@@ -35,6 +35,7 @@ function addBuy()
     data['name'] 	= '';
     data['tel'] 	= mobile;
     data['subject'] = need;
+    data['remarks'] = need;
     ucNetwork.submitData(data);
     
 }
