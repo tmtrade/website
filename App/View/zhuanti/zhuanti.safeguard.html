@@ -141,12 +141,12 @@
                 购买商标常用帮助 / 注意事项
             </h4>
             <ul>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=806&act=cfdt&c=45">购买商标需要准备的资料</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=807&act=cfdt&c=45">注册商标转让的详细流程</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=808&act=cfdt&c=45">商标交易需注意的5大风险</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=816&act=cfdt&c=45">签订商标购买协议需警惕4大陷阱</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=809&act=cfdt&c=45">商标转让的费用有哪些？</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=821&act=cfdt&c=45">商标转让一般要多长时间</a></li>
+                <li><a href="/faq/views/?id=806&act=cfdt&c=45">购买商标需要准备的资料</a></li>
+                <li><a href="/faq/views/?id=807&act=cfdt&c=45">注册商标转让的详细流程</a></li>
+                <li><a href="/faq/views/?id=808&act=cfdt&c=45">商标交易需注意的5大风险</a></li>
+                <li><a href="/faq/views/?id=816&act=cfdt&c=45">签订商标购买协议需警惕4大陷阱</a></li>
+                <li><a href="/faq/views/?id=809&act=cfdt&c=45">商标转让的费用有哪些？</a></li>
+                <li><a href="/faq/views/?id=821&act=cfdt&c=45">商标转让一般要多长时间</a></li>
 
             </ul>
         </div>
@@ -156,12 +156,12 @@
                 一只蝉平台帮助
             </h4>
             <ul>
-                <li type="disc"><a href="http://www.yizhchan.com/faq/views/?id=810&act=cfdt&c=45">购买后，怎么才能尽快使用上商标？</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=811&act=cfdt&c=45">付款后，卖家不转让或跑了怎么办？</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=812&act=cfdt&c=45">怎么判断卖家商标公证书的真伪？</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=813&act=cfdt&c=45">怎么识别卖家是否冒充商标持有人？</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=814&act=cfdt&c=45">购买的商标不能正常使用怎么办？</a></li>
-                <li><a href="http://www.yizhchan.com/faq/views/?id=851&act=cfdt&c=45">签订商标转让协议你需要注意哪些地方？</a></li>
+                <li type="disc"><a href="/faq/views/?id=810&act=cfdt&c=45">购买后，怎么才能尽快使用上商标？</a></li>
+                <li><a href="/faq/views/?id=811&act=cfdt&c=45">付款后，卖家不转让或跑了怎么办？</a></li>
+                <li><a href="/faq/views/?id=812&act=cfdt&c=45">怎么判断卖家商标公证书的真伪？</a></li>
+                <li><a href="/faq/views/?id=813&act=cfdt&c=45">怎么识别卖家是否冒充商标持有人？</a></li>
+                <li><a href="/faq/views/?id=814&act=cfdt&c=45">购买的商标不能正常使用怎么办？</a></li>
+                <li><a href="/faq/views/?id=851&act=cfdt&c=45">签订商标转让协议你需要注意哪些地方？</a></li>
 
             </ul>
         </div>
@@ -170,9 +170,9 @@
         <p>
             <!--<a  href="/about">超凡网  </a>  |<a> 知库</a>|<a> 关注微博</a> |<a>意见反馈</a>-->
             <a href="/">关于一只蝉</a>|
-            <a href="http://g.chaofan.wang/ ">商标检索</a>|
-            <a href="http://www.yizhchan.com/faq/process/ ">交易流程 </a>|
-            <a href="http://www.yizhchan.com/faq/question/ ">常见问题</a>
+            <a href="http://g.chaofan.wang/">商标检索</a>|
+            <a href="/faq/views/?c=54&id=990">交易流程 </a>|
+            <a href="/faq/views/?c=54&id=987">常见问题</a>
         </p>
         opyright © 2002 - 2015 北京超凡知识产权代理有限公司 蜀ICP备15035613号-1   联系我们：4006-929-199
     </div>
@@ -186,7 +186,7 @@
         <div class="mj-bconRight">
             <h2>恭喜，求购提交成功</h2>
             <p>请保持电话畅通，10分钟内联系你。</p>
-            <a href="<?=MANAGER_URL?>buyer/ready/" class="mj-boBtn1">点击此处查看！</a>
+            <a href="javascript:;" class="mj-close">点此处关闭！</a>
         </div>
     </div>
 </div>
@@ -221,6 +221,9 @@
         }
         this.className = 'cgkug';
     }
+    $(".mj-boBtn1").bind("click",function(){
+		layer.closeAll();
+    });
 </script>
 </body>
 </html>

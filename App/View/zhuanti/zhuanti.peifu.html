@@ -214,22 +214,22 @@
             <li class="link">
                <h3>购买商标帮助/注意事项</h3>
                 <p>
-                    <a href="http://www.yizhchan.com/faq/views/?id=806&act=cfdt&c=45" target="_blank">购买商标需要准备的资料</a><br/>
-                    <a href="http://www.yizhchan.com/faq/views/?id=807&act=cfdt&c=45" target="_blank">注册商标转让的详细流程</a><br/>
-                    <a href="http://www.yizhchan.com/faq/views/?id=808&act=cfdt&c=45" target="_blank">商标交易需注意的5大风险 </a><br/>
-                    <a href="http://www.yizhchan.com/faq/views/?id=816&act=cfdt&c=45" target="_blank">签订商标购买协议需警惕4大陷阱</a><br/>
-                    <a href="http://www.yizhchan.com/faq/views/?id=809&act=cfdt&c=45" target="_blank">商标转让的费用有哪些？</a><br/>
+                    <a href="/faq/views/?id=806&act=cfdt&c=45" target="_blank">购买商标需要准备的资料</a><br/>
+                    <a href="/faq/views/?id=807&act=cfdt&c=45" target="_blank">注册商标转让的详细流程</a><br/>
+                    <a href="/faq/views/?id=808&act=cfdt&c=45" target="_blank">商标交易需注意的5大风险 </a><br/>
+                    <a href="/faq/views/?id=816&act=cfdt&c=45" target="_blank">签订商标购买协议需警惕4大陷阱</a><br/>
+                    <a href="/faq/views/?id=809&act=cfdt&c=45" target="_blank">商标转让的费用有哪些？</a><br/>
 
                 </p>
             </li>
             <li class="link">
                 <h3>一只蝉平台帮助</h3>
                 <p>
-                    <a href="http://www.yizhchan.com/faq/views/?id=810&act=cfdt&c=45" target="_blank">购买后，怎么才能尽快使用上商标？</a><br/>
-                    <a href="http://www.yizhchan.com/faq/views/?id=811&act=cfdt&c=45" target="_blank">付款后，卖家不转让或跑了怎么办？</a><br/>
-                    <a href="http://www.yizhchan.com/faq/views/?id=812&act=cfdt&c=45" target="_blank">怎么判断卖家商标公证书的真伪？</a><br/>
-                    <a href="http://www.yizhchan.com/faq/views/?id=813&act=cfdt&c=45" target="_blank">怎么识别卖家是否冒充商标持有人？</a><br/>
-                    <a href="http://www.yizhchan.com/faq/views/?id=814&act=cfdt&c=45" target="_blank">购买的商标不能正常使用怎么办？</a><br/>
+                    <a href="/faq/views/?id=810&act=cfdt&c=45" target="_blank">购买后，怎么才能尽快使用上商标？</a><br/>
+                    <a href="/faq/views/?id=811&act=cfdt&c=45" target="_blank">付款后，卖家不转让或跑了怎么办？</a><br/>
+                    <a href="/faq/views/?id=812&act=cfdt&c=45" target="_blank">怎么判断卖家商标公证书的真伪？</a><br/>
+                    <a href="/faq/views/?id=813&act=cfdt&c=45" target="_blank">怎么识别卖家是否冒充商标持有人？</a><br/>
+                    <a href="/faq/views/?id=814&act=cfdt&c=45" target="_blank">购买的商标不能正常使用怎么办？</a><br/>
 
                 </p>
             </li>
@@ -256,12 +256,12 @@
         <div class="sb-bottom-mess">
             <p>
                 <a href="/" style="margin-left: 0px;">关于一只蝉</a>
-                <a href="http://g.chaofan.wang/ " target="_blank">商标检索</a>
-                <a href="http://www.yizhchan.com/faq/process/ " target="_blank">交易流程 </a>
-                <a href="http://www.yizhchan.com/faq/protocol/ " target="_blank">服务协议</a>
-                <a href="http://www.yizhchan.com/faq/rule/" target="_blank">电商入驻</a>
-                <a href="http://www.yizhchan.com/faq/news/?c=50" target="_blank">商标新闻</a>
-                <a href="http://www.yizhchan.com/faq/question/ " target="_blank">常见问题</a>
+                <a href="http://g.chaofan.wang/" target="_blank">商标检索</a>
+                <a href="/faq/views/?c=54&id=990" target="_blank">交易流程 </a>
+                <a href="/faq/views/?c=54&id=988" target="_blank">服务协议</a>
+                <a href="/faq/rule/" target="_blank">电商入驻</a>
+                <a href="/faq/news/?c=50" target="_blank">商标新闻</a>
+                <a href="/faq/views/?c=54&id=987" target="_blank">常见问题</a>
             </p>
             <label>ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2015 北京超凡知识产权代理有限公司</label>
         </div>
@@ -275,7 +275,7 @@
         <div class="mj-bconRight">
             <h2>恭喜，求购提交成功</h2>
             <p>请保持电话畅通，10分钟内联系你。</p>
-            <a href="<?=MANAGER_URL?>buyer/ready/" class="mj-boBtn1">点击此处查看！</a>
+            <a href="javascript:" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
         </div>
     </div>
 </div>
@@ -331,7 +331,9 @@
     {
         document.getElementById("con_two_2").style.display="none";
     }
-
+    $(".mj-boBtn1").bind("click",function(){
+                    layer.closeAll();
+    });
 </script>
 </body>
 </html>
