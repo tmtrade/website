@@ -785,8 +785,8 @@ table {
     width: 180px;
 
     text-align: left;
-	padding-top: 10px;
-    padding-bottom: 15px;
+	padding-top: 12px;
+    padding-bottom: 12px;
 	
 
 }
@@ -798,7 +798,7 @@ table {
    height: 37px;
    line-height: 37px;
 
-    font-size: 15px;
+    font-size: 14px;
 
 }
 
@@ -888,7 +888,7 @@ table {
 
 .mj-ddItems ul{
 
-    width:725px;
+    width:755px;
 
     float: left;
 	margin-top:15px;
@@ -1009,7 +1009,7 @@ table {
 	}
 .mj-navitems p{
     padding-top: 22px;
-	margin-left: -38px;
+	margin-left: -36px;
 
 }
 .mj-navitems p a{
