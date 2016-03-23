@@ -58,9 +58,9 @@ class DetailAction extends AppAction
 			$this->redirect('未找到页面6', '/index/error');
 		}
 		//解析商标群组名
-		foreach($info['items'] as &$item){
-			$item['groupName'] = $this->load('search')->handleGroup($item['group']);
-		}
+//		foreach($info['items'] as &$item){
+//			$item['groupName'] = $this->load('search')->handleGroup($item['group']);
+//		}
 		unset($item);
 		//得到商标的分类描述
 		if(count($info['class']==1)){

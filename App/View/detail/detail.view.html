@@ -78,9 +78,7 @@
                            <div class="multi-show">
                                <h6>群组</h6>
                                <p>
-                                   <? foreach ($vl['groupName'] as $grp) { ?>
-                                   <a><?=$grp?></a>
-                                   <? } ?>
+                                   <a><?=$vl['group']?></a>
                                </p>
 
                                <h6>商品列表</h6>
@@ -100,7 +98,7 @@
                            <span><label>分类: </label>第<?=$class?>类 - <?=$info['className']?></span>
                        </li>
                        <li>
-                           <span><label>当前群组: </label><?=implode(';',$info['items'][0]['groupName'])?></span>
+                           <span><label>当前群组: </label><?=$info['items'][0]['group']?></span>
                        </li>
                        <li>
                            <span><label>商品列表: </label><?=$info['goods']?></span>

@@ -734,10 +734,10 @@ margin: 0;
     margin-left:15px;
     color: #666666;
 	margin-top:10px;
-
 }
 .tj-recom li div.tj-recom-hover label a:hover{
-	color:#ff6666;
+	/*color:#ff6666;*/
+	color:#666666;
 	text-decoration:underline;
 	height:16px;
 	}
