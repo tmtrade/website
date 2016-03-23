@@ -32,9 +32,9 @@
                             <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
                             <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                             <div class="ms-filtersListTxt">
-                                <h6 title="<?=$v['name']?>"><?=mb_substr($v['name'], 0, 10, 'UTF-8')?></h6>
+                                <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p><span><?=$v['class']?>类</span>-<?=$_CLASS[$v['class']]?></p>
-                                <p title="<?=$v['group']?>"><?=mb_substr($v['group'], 0, 14, 'UTF-8')?mb_substr($v['group'], 0, 14, 'UTF-8'):'-'?></p>
+                                <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
                                 <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
@@ -51,9 +51,9 @@
                             <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
                             <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                             <div class="ms-filtersListTxt">
-                                <h6 title="<?=$v['name']?>"><?=mb_substr($v['name'], 0, 10, 'UTF-8')?></h6>
+                                <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p>共<em><?=count($_c_)?></em>个分类</p>
-                                <p title="<?=$v['group']?>"><?=mb_substr($v['group'], 0, 14, 'UTF-8')?mb_substr($v['group'], 0, 14, 'UTF-8'):'-'?></p>
+                                <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
                                 <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>

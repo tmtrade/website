@@ -503,9 +503,6 @@ class SearchModule extends AppModule
      */
     public function getTips($data)
     {
-        //$data['isOffprice'] = false;
-        //$data['isBest']     = false;
-        //$data['isLicense']  = false;
         if ( empty($data['tid']) ) return $data;
 
         if ( $data['id'] ){
@@ -516,7 +513,10 @@ class SearchModule extends AppModule
         $_class = current( explode(',', $data['class']) );
         $data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';
         $data['safeUrl'] = 'http://jingling.yizhchan.com/?nid='.$data['number'].'&class='.$data['class'];
-        //if ( empty($data['id']) ) return $data;
+
+        //显示商品数据
+        $_info = $this->load('trademark')->getInfo($data['tid'], array('goods'));
+        $data['goods']  = empty($_info['goods']) ? '' : $_info['goods'];
 
         if ( $data['isLook'] == '2' && !empty($_COOKIE['uc_ukey']) ){
             $lookList = $this->load('usercenter')->existLook(array($data['number']));
@@ -525,18 +525,6 @@ class SearchModule extends AppModule
             $data['isLook'] = '2';
         }
 
-        //$sale = $this->load('internal')->getSaleInfo($data['id'], 0, 0);
-        //if ( empty($sale) ) return $data;
-        
-        // if ( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] >= time()) ){
-        //     $data['isOffprice'] = true;
-        // }
-        // if ( strpos($sale['label'], '1') !== false ){
-        //     $data['isBest'] = true;
-        // }
-        // if ( $sale['isLicense'] == 1 ){
-        //     $data['isLicense'] = true;
-        // }
         return $data;
     }
 
