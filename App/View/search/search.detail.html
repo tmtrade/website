@@ -7,7 +7,7 @@
 
 <div class="w1180">
 
-    <div class="sbhwjg">
+    <div class="sbhwjg" style="margin-top: 15px;">
         <div class="sbhwjg-main">
             <h3><?=$title?></h3>
             <font>
@@ -117,6 +117,14 @@
 </div>
 
 <script type="text/javascript">
+ //  设置分类样式
+    for(var i=1;i<=$("div.ms-filtersList > ul > li").length;i++)
+    {     
+        if(i%6==0){
+		    $("div.ms-filtersList > ul > li").css({ "margin-right": "17px"});
+            $("div.ms-filtersList > ul > li").eq(i-1).css({ "margin-right": "0px"});
+        }
+    }
     
     $(".ms-collect").click(function(){
         var _this   = $(this);
@@ -142,6 +150,7 @@
             });
         }
     });
+	
     
 </script>
 
