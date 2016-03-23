@@ -113,15 +113,15 @@ margin: 0;
 	z-index: 999;
 	}
 .mj-bannerIimg a.sprev {
-    left:193px;
+    left: 203px;
     background-position: -110px 5px;
 }
 .mj-bannerIimg a.snext {
     /*left:693px;
     background-position: 8px 5px;*/
-	left: 843px;
+	left: 825px;
     background-position: 8px 5px;
-    margin-top: -17px;
+    margin-top: -16px;
 }
 .mj-banner-img .mj-banner-itme {
 
@@ -438,6 +438,10 @@ margin: 0;
 .mj-newjy ul li p font{
    margin-top:5px;
 }
+.mj-newjy ul li p font label{
+	font-family:"Arial";
+	font-size:18px;
+	}
 .w178 {
 
     width: 170px;
