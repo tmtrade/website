@@ -124,21 +124,6 @@ class SellAction extends AppAction
 	}
 	
 	/**
-     * 注册手机账号
-     *
-     * 通过手机号进行注册并发送随机的8位密码
-     * 
-     * @author  Xuni
-     * @since   2015-11-14
-     *
-     * @return  bool
-     */
-    private function register($mobile)
-    {
-       return $this->load('passport')->autoRegMoblie($mobile);
-    }
-	
-	/**
 	 * 检验出售数据的添加
 	 * 
 	 * @author	JEANY
@@ -202,6 +187,7 @@ class SellAction extends AppAction
 		$memo 		= count($info['class']) > 1 ? '(该商标为一标多类，必须捆绑出售)' : '';
         $platform   = implode(',', $other['platform']);
         $viewPhone  = $this->load('phone')->getRandPhone();
+        $regDate    = strtotime($info['reg_date']) > 0 ? strtotime($info['reg_date']) : 0;
         $sale = array(
             'tid'           => intval($info['tid']),
             'number'        => $number,
@@ -222,6 +208,7 @@ class SellAction extends AppAction
             'platform'      => $platform,
             'label'         => '',
             'length'        => $other['length'],
+            'regDate'       => $regDate,
             'date'          => time(),
             'hits'          => 0,
             'viewPhone' 	=> $viewPhone,

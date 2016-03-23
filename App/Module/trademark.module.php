@@ -21,7 +21,7 @@ class TrademarkModule extends AppModule
 
     protected $col = array(
         'auto as `tid`', 'id as `number`',
-        'trademark as `name`', '`class`', 'pid', 
+        'trademark as `name`', '`class`', 'pid', 'reg_date', 
         'valid_end', '`goods`', '`group`',
     );
 
