@@ -625,7 +625,7 @@ jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fol
 
 	   $(window).scroll(function(){
 			var w_top = $( window ).scrollTop();
-			if( w_top+$( window).height()>$("#cloth").offset().top && w_top<$("#succal").offset().top){
+			if( w_top+$( window).height()>$("#cloth").offset().top+300 && w_top<$("#succal").offset().top){
 				oflr.show();
 				oflr.css({"left":oft,"top":ofh})
 				if(owf<1180){
