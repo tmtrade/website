@@ -565,7 +565,7 @@ body{ background:#f5f5f5 !important;}
 }
 .mj-priceTxtt {
     /*padding: 15px 0 0;*/
-      margin-top: -20px;
+    margin-top: -30px;
     box-sizing: content-box;
     margin-left: 35px;
 }
@@ -641,7 +641,7 @@ body{ background:#f5f5f5 !important;}
     top: 15px;
     right: 50px;*/
 	padding:20px;
-    /*width:322px;*/
+    width:322px;
 	float:left;
 	
 }
@@ -664,6 +664,8 @@ body{ background:#f5f5f5 !important;}
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	cursor:default;
+	max-width: 170px;
+
 	}
 .mj-cTr_bRight dd a {
     display: inline-block;
