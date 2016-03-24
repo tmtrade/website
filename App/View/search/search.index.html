@@ -44,7 +44,7 @@
                             <li><a href="javacript:void(0);" onclick="createUrl('_class','<?=$_cls?>');return false;"><?=$_cls?>-<?=$_cn?></a></li>
                         <?}?>
                         </ul>
-                        <ul class="f-clearfix ms-conditionCheckbox">
+                        <ul class="f-clearfix ms-conditionCheckbox cc_all2">
                         <?foreach ($_CLASS as $_cls => $_cn) {?>
                             <li><input type="checkbox" value="<?=$_cls?>" id="class-checkbox<?=$_cls?>" name="class-checkbox<?=$_cls?>"/>
                             <label for="class-checkbox<?=$_cls?>" onclick=""><?=$_cls?>-<?=$_cn?></label></li>
@@ -544,7 +544,6 @@
     //免费推荐----start
     function freeIntro(){
         var freeTel = $('.freeTel').val();
-        var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
         if(!freeTel){
             $('.freeTel').val('请输入手机号');
             return false;
@@ -557,6 +556,7 @@
         var data = new Array();
         data['tel'] 	= freeTel;
         data['subject'] = freeContent;
+        data['remarks'] = freeContent;
         ucNetwork.submitData(data);
     }
     //发布回调
@@ -574,7 +574,6 @@
     }
     $('.freeTel').blur(function(){
         var freeTel = $('.freeTel').val();
-        var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
         if(!freeTel){
             $('.freeTel').val('请输入手机号');
             return false;

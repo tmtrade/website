@@ -71,6 +71,9 @@
     height: 20px;
     line-height: 20px;
 }
+.cc_all2 li{
+    width: 93px;
+}
 .ms-conditionList-main input[type="checkbox"]{
     vertical-align: middle;
     margin-right: 4px;

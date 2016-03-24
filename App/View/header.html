@@ -47,7 +47,6 @@
             var nav_name = "<?=$nav_name?>";
             if(nav_name=='index'){
                 $('.mj-navitems p a').eq(0).css('color','#ff6666');
-                console.debug($('.mj-navitems p a').eq(0));
             }else if(nav_name=='offprice'){
                 $('.mj-navitems p a').eq(1).css('color','#ff6666');
             }else if(nav_name=='search'){
@@ -57,6 +56,10 @@
             }else if(nav_name=='sell'){
                 $('.mj-navitems p a').eq(5).css('color','#ff6666');
             }
+            //点击用户名跳转到用户中心
+            $('.chaofan-login').on('click','#chaofan-mj-nickname',function(){
+                $(this).attr('href','<?=PERSONAL_CENTER?>').attr('target','_blank');
+            });
             //悬浮窗提醒标题
             _defLogin   = "<h6>登录</h6> <p style=\"margin-left: 10px;\"></p>";
             _xunjia     = "<h6>登录查询此商标出售价格</h6><p>一次登录后可查看全站所有出售商标价格</p>";
