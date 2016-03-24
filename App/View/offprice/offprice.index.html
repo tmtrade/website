@@ -18,7 +18,7 @@
                     <a href="<?=$v['link']?>" target="_blank">
                     <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['desc']?>" /></a>
                     <p class="mj-ad">
-                        <?=$v['desc']?>
+                        <?=mbSub($v['desc'],0,60)?>
                     </p>
                 </div>
             </li>
