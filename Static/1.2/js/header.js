@@ -52,6 +52,8 @@ $(document).ready(function(e) {
             ucNetwork.userLog(account,password);//密码登录
         }
     });
+
+
     //登录弹窗失去焦点验证
     $('#loginUser').blur(function(){
         var tel 	= $.trim($('#loginUser').val());
@@ -150,6 +152,24 @@ function getLayer(obj) {
         layer.closeAll();
     });
 }
+
+    //询价登录回调
+function userLogCallback(Obj,data){
+    $.each(Obj,function(i,n){
+         //用户登录情况下
+        if(n.code==1){
+            //弹出成功框
+            $(".ms-errorTips2,#loginTips").show();
+            $("#loginTips em").text('登录成功');
+            $("#loginTips").attr('flag',2);
+        }else{
+            $(".ms-errorTips2,#loginTips").show();
+            $("#loginTips em").text('用户名或密码错误');
+            $("#loginTips").attr('flag',2);
+        }
+    });
+}
+
 //发送验证码
 function sendCodeCallback(Obj,htmlobj,title){
     $.each(Obj,function(i,n){

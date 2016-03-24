@@ -41,6 +41,7 @@ class ZhuantiAction extends AppAction
      */
     public function view() 
 	{	
+        
 		$id 	= $this->input('id', 'int', '0');
                 $page 	= $this->input('page', 'int');
 		$topic = $topicItems = array();

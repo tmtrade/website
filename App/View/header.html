@@ -19,7 +19,6 @@
     <script src="<?=StaticDir?>1.2/js/scroll.js"></script>
     <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/style.css" />
     <!--<script src="<?=StaticDir?>1.2/js/placeholder.js"></script>-->
-    <script src="<?=StaticDir?>1.2/js/header.js"></script>
     <?if(!isset($is_index)):?>
     <script src="<?=StaticDir?>1.2/js/menu_hide.js"></script>
     <?endif;?>
@@ -32,6 +31,7 @@
         $signature	= sha1("jsapi_ticket={$jsapiToken}&noncestr={$nonceStr}&timestamp={$timestamp}&url={$url}");
     ?>
 <script src="<?=PERSONAL_CENTER?>Static/script/user/script/user.js"></script>
+<script src="<?=StaticDir?>1.2/js/header.js"></script>
 <script type="text/javascript">
     $(document).ready(function(e) {
     ucConfig.setConfig('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
