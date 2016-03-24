@@ -37,6 +37,9 @@ abstract class AppAction extends Action
 	 */
 	public function before()
 	{
+		//设置访问的action(导航样式)
+		$nav_name = $this->getNavType();
+		$this->set('nav_name',$nav_name);
 		//设置用户信息
 		$this->setLoginUser();
 
@@ -159,6 +162,34 @@ abstract class AppAction extends Action
 
 		//设置用户信息到页面
 		$this->setUserView();
+	}
+
+	/**
+	 * 获得用户访问的url,设置状态值(用于头部导航显示)
+	 *
+	 * @author	dower
+	 * @since	2016-3-24
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	protected function getNavType(){
+		$url = $_SERVER['REQUEST_URI'];
+		$tmp = '';
+		if($url=='/'){
+			$tmp = 'index';
+		}elseif(strpos($url,'search')){
+			$tmp = 'search';
+		}elseif(strpos($url,'offprice')){
+			$tmp = 'offprice';
+		}elseif(strpos($url,'offprice')){
+			$tmp = 'offprice';
+		}elseif(strpos($url,'pt/sell')){
+			$tmp = 'sell';
+		}elseif(strpos($url,'pt')){
+			$tmp = 'pt';
+		}
+		return $tmp;
 	}
 }
 ?>

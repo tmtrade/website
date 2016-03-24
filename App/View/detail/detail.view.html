@@ -705,29 +705,37 @@
         var tel= $.trim($('#telInput2').val());
         //验证手机号码
         if(!tel || !mobilereg.test(tel) || tel.length!=11){
-            $('#telInput2').val('');
+            $('#telInput2').addClass('ddw_input');
+            $('#telInput2').val('请输入正确的手机号');
             return false;
         }
     });
+    $('#telInput2').focus(function(){
+        $('#telInput2').removeClass('ddw_input');
+        $('#telInput2').val('');
+    })
     //生成订单--2
     function createOrderByPhone(){
         //检测是否电话号码
         var tel= $.trim($('#telInput2').val());
-        if(tel){
-            //获得数据
-            var remarks 	= $('#remarks').val();
-            remarks = remarks.replace('TEL',tel);
-            var buyData 			= new Array();
-            buyData['tel'] 			= tel;
-            buyData['tid'] 			= $('#tid').val();
-            buyData['trademark'] 	= $('#trademark').val();
-            buyData['class'] 		= $('#class').val();
-            buyData['subject'] 		= '求购信息';
-            buyData['remarks'] 		= remarks;
-            //提交数据
-            ucBuy.buyAdd(buyData);
+        //验证手机号码
+        if(!tel || !mobilereg.test(tel) || tel.length!=11){
+            $('#telInput2').addClass('ddw_input');
+            $('#telInput2').val('请输入正确的手机号');
+            return false;
         }
-        return false;
+        //获得数据
+        var remarks 	= $('#remarks').val();
+        remarks = remarks.replace('TEL',tel);
+        var buyData 			= new Array();
+        buyData['tel'] 			= tel;
+        buyData['tid'] 			= $('#tid').val();
+        buyData['trademark'] 	= $('#trademark').val();
+        buyData['class'] 		= $('#class').val();
+        buyData['subject'] 		= '求购信息';
+        buyData['remarks'] 		= remarks;
+        //提交数据
+        ucBuy.buyAdd(buyData);
     }
     //检测用户是否购买回调
     function isexistCallback(Obj){

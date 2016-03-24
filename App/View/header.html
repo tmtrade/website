@@ -43,6 +43,20 @@
             if(nick_name && !login_mobile){
                 getLayer($('#goCenter'));
             }
+            //设置导航栏样式
+            var nav_name = "<?=$nav_name?>";
+            if(nav_name=='index'){
+                $('.mj-navitems p a').eq(0).css('color','#ff6666');
+                console.debug($('.mj-navitems p a').eq(0));
+            }else if(nav_name=='offprice'){
+                $('.mj-navitems p a').eq(1).css('color','#ff6666');
+            }else if(nav_name=='search'){
+                $('.mj-navitems p a').eq(2).css('color','#ff6666');
+            }else if(nav_name=='pt'){
+                $('.mj-navitems p a').eq(4).css('color','#ff6666');
+            }else if(nav_name=='sell'){
+                $('.mj-navitems p a').eq(5).css('color','#ff6666');
+            }
             //悬浮窗提醒标题
             _defLogin   = "<h6>登录</h6> <p style=\"margin-left: 10px;\"></p>";
             _xunjia     = "<h6>登录查询此商标出售价格</h6><p>一次登录后可查看全站所有出售商标价格</p>";
@@ -417,19 +431,19 @@
                 <a href="/">
                     首页
                 </a>
-                <a href="/offprice" target="_blank">
+                <a href="/offprice">
                     特价商标
                 </a>
-                <a href="/search" target="_blank">
+                <a href="/search">
                     商标筛选
                 </a>
                 <a href="http://r.chaofan.wang/reg/" target="_blank">
                     商标注册
                 </a>
-                <a href="/pt" target="_blank">
+                <a href="/pt">
                     专利购买
                 </a>
-                 <a href="/pt/sell" target="_blank">
+                 <a href="/pt/sell">
                     专利出售
                 </a>
             </p>
