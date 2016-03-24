@@ -247,7 +247,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 }
 .buy-sure ul li.spec-req textarea{
-    background: url("../images/tj-icn.png") no-repeat 16px 13px;
+    background: url("../images/tj-icn.png") no-repeat 8px 13px;
     border: 1px solid #d7e4f3;
     width: 387px;
     height:43px;
@@ -285,7 +285,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     border: 1px solid #d7e4f3;
     color: #333333;
     border-radius: 3px;
-    background: url("../images/phone-ic.png") no-repeat 10px 11px;
+    background: url("../images/phone-ic.png") no-repeat 6px 11px;
     text-indent: 32px;
     font-size: 12px;
     font-family: "宋体" !important;

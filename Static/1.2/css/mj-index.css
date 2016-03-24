@@ -307,14 +307,14 @@ margin: 0;
 
     position: absolute;
 
-    left: 30px;
-
     height: 40px;
 
     line-height: 40px\9;
 
     padding: 0;
 
+    padding-left: 30px;
+    
     width: 200px;
 
     vertical-align: middle;
