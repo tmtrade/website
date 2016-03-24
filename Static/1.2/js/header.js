@@ -178,7 +178,7 @@ function sendCodeCallback(Obj,htmlobj,title){
             timer(60, $('.aaaa'), title);//倒计时
         }else{
             $(".ms-errorTips2,#loginTips").show();
-            $("#loginTips em").text('网络问题请刷新!');
+            $("#loginTips em").text(n.msg);
             $("#loginTips").attr('flag',0);
         }
     });
@@ -211,13 +211,14 @@ function getLogin(title,tel,isExist){
         $("#dl_fsmm").addClass('aaaa');//添加类
         //触发点击事件
         $('.mj-inpuVs').html('');
-        $('#loginUser').val(tel);
-        $('#dl_wjmm').trigger('click');
+        //$('#loginUser').val(tel);
+        //$('#dl_wjmm').trigger('click');
+        timer(60, $('.aaaa'), title);//倒计时
     }else{
         //账户存在
         $("#dl_wjmm").addClass('aaaa');//添加类
         $('.mj-inpuVs').html('');
-        $('#loginUser').val(tel);
+        //$('#loginUser').val(tel);
     }
     $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
     $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
