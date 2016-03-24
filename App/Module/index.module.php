@@ -164,7 +164,7 @@ class IndexModule extends AppModule
         foreach($data as $k=>&$item){
             //判断商品是否销售中
             $rst = $this->load('Sale')->isSale($item['number']);
-            if(!rst){
+            if(!$rst){
                 unset($data[$k]);
                 continue;
             }
