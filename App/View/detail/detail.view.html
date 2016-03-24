@@ -10,7 +10,7 @@
     <div class="w1180">
         <div class="fl fl-details">
             <div class="brde-pic">
-                <img src="<?=$sale['imgUrl']?>" onerror="this.src='/Static/images/img1.png'">
+                <span class="brde-pic-box"><img src="<?=$sale['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></span>
                 <p>
                     <span >独家商标风险检测工具<label>蝉精灵</label>准确率<label>95.93%</label></span>
                     <a href="<?=$tips['safeUrl']?>" target="_blank">检测此商标</a>
@@ -95,7 +95,7 @@
                <?}else{?>
                <ul class="mj-cTr_center">
                        <li>
-                           <span><label>分类 </label><font>第<?=$class?>类 - <?=$info['className']?></font></span>
+                           <span><label>分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类 </label><font>第<?=$class?>类 - <?=$info['className']?></font></span>
                        </li>
                        <li>
                              <span><label>当前群组 </label><font><?=$info['items'][0]['group']?></font></span>
