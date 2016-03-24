@@ -44,7 +44,6 @@
                 oWrapper.style.marginLeft = parseInt(getStyle(obj, 'marginLeft')) ? parseInt(getStyle(obj, 'marginLeft')) + 6 + 'px' : 6 + 'px';
                 oWrapper.style.marginTop = parseInt(getStyle(obj, 'marginTop'))!=0 ? getStyle(obj, 'marginTop'): 0 + 'px';
                 oWrapper.style.paddingLeft = getStyle(obj, 'paddingLeft');
-                oWrapper.style.width = (obj.offsetWidth - parseInt((getStyle(obj, 'marginLeft')=="auto"?0:(getStyle(obj, 'marginLeft')))))==0?100:(obj.offsetWidth - parseInt((getStyle(obj, 'marginLeft')=="auto"?0:(getStyle(obj, 'marginLeft'))))) + 'px';
                 oWrapper.style.height = obj.offsetHeight==0?34:obj.offsetHeight + 'px';
                 oWrapper.style.lineHeight = obj.nodeName.toLowerCase()=='textarea'? '':(obj.offsetHeight==0?34:obj.offsetHeight) + 'px';
                 oWrapper.appendChild(placeHolderCont);
