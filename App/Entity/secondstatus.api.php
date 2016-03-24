@@ -9,7 +9,7 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class SecondStatusApi extends Entity
+class SecondStatusApi extends BaseCacheApi
 {
 	/**
 	 * 数据表键[表的唯一标识]
@@ -19,6 +19,16 @@ class SecondStatusApi extends Entity
 	/**
 	 * 数据表主键
 	 */
-	public $pk       = 'id';
+	public $pk       = 'status_id';
+    
+    /**
+     * 缓存组件标识id
+     */
+    public $cacheId = 'redis';
+
+    /**
+     * 过期时间(60分钟)
+     */
+    public $expire  = 600;
 }
 ?>

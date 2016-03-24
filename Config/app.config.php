@@ -23,6 +23,7 @@ define('GUANJIA_URL', 'http://s.chofn.net/');
 //文章发布后台地址主要针对图片
 define('WM_URL', 'http://wm.chofn.net/');
 
-//
+//CRM地址URL
+define('CRM_URL', 'http://demo.chofn.com:88/');
 
 ?>

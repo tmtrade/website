@@ -93,7 +93,7 @@ class CrmPassportBi extends Bi
 	public function insertCrmMember($data)
 	{
 		$param = array(
-				'CRM_API_HOST' 	=> 'http://demo.chofn.com:88/',
+				'CRM_API_HOST' 	=> CRM_URL,
 				'CRM_API_USER' 	=> 'tmsystem',
 				'CRM_API_KEY' 	=> 'KU6IjH2tSzgg7FDa',
 				'api_type'		=> 'networkJoin',
