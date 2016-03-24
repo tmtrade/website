@@ -524,7 +524,7 @@ table {
     line-height: 44px;
 
     cursor: pointer;
-
+border: 1px solid red;
 }
 
 .mj-search-submit i{
