@@ -416,59 +416,6 @@ $(document).ready(function(){
 
     });*/
 
-    $(".mj-search-submit").click(function (){
-
-        var input_kw = $("input[name='kw']");
-
-        var kw_value = $.trim($("input[name='kw']").val());
-
-
-
-        var special = RegExp(/[(\ )(\～)(\！)(\＠)(\＃)(\￥)(\％)(\……)(\＆)(\×)(\（)(\）)(\？)(\｜)(\｝)(\｛)(\【)(\】)(\＋)(\——)(\－)(\＝)(\；)(\：)(\“)(\”)(\‘)(\’)(\，)(\。)(\《)(\》)(\`)(\~)(\!)(\@)(\#)(\$)(\%)(\^)(\&)(\*)(\()(\))(\-)(\_)(\+)(\=)(\[)(\])(\{)(\})(\|)(\\)(\;)(\:)(\')(\")(\,)(\.)(\/)(\<)(\>)(\?)(\)]+/);
-
-alert(1);
-
-        if ( kw_value != '输入你想买的商标名称/商标号' && special.test(kw_value) ){
-
-            layer.tips('不要输入特殊字符哦', input_kw, {
-
-                tips: [3, '#fc7d28'],
-
-                time: 2000
-
-            });
-
-            return false;
-
-        }
-
-        if (kw_value != '输入你想买的商标名称/商标号' && kw_value.length > 30){
-
-            layer.tips('只搜索前30个字符哦，请稍等...', input_kw, {
-
-                tips: [3, '#fc7d28'],
-
-                time: 1000
-
-            });
-
-            kw_value = kw_value.substr(0, 30);
-
-            input_kw.val(kw_value);
-
-        }
-
-        if ( kw_value == '输入你想买的商标名称/商标号' ){
-
-            input_kw.val('');
-
-        }
-
-        $("#searchForm").submit();
-
-    });
-
-
 
     $(".mj-search-box li").click(function(){
 
