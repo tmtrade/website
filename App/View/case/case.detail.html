@@ -7,9 +7,9 @@
         <div class="case-name-xq">
             <div class="case-name-share" style="left: 450px;">
                <span>分享到：</span>
-               <a class="jiathis_button_cqq"><img src="<?=StaticDir?>1.2/images/share-ico1.png"></a>
-               <a class="jiathis_button_tsina"><img src="<?=StaticDir?>1.2/images/share-wb.png"></a>
-               <a class="jiathis_button_weixin"><img src="<?=StaticDir?>1.2/images/share-wx.png"></a>
+               <a href="javascript:void(0);" class="jiathis_button_cqq"><img src="<?=StaticDir?>1.2/images/share-ico1.png"></a>
+               <a href="javascript:void(0);" class="jiathis_button_tsina"><img src="<?=StaticDir?>1.2/images/share-wb.png"></a>
+               <a href="javascript:void(0);" class="jiathis_button_weixin"><img src="<?=StaticDir?>1.2/images/share-wx.png"></a>
                 <!-- JiaThis Button BEGIN -->
                 <script type="text/javascript" >
                 var jiathis_config={
@@ -74,8 +74,11 @@
                    <div class="aL-over f-clearfix">
                        <p><font><?=$v['name']?></font></p>
                        <label style="height:130px">  
-                           <?=mbSub($v['desc'],0,90);?>
+                           <b>“</b>
+                            <?=mbSub($v['desc'],0,90);?>
+                            <b>”</b>
                        </label>
+                        
                        <a href="/case/detail/?id=<?=$v['id']?>" target="blank">查看详情</a>
                    </div>
                </li>

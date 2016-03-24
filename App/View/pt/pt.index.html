@@ -291,44 +291,6 @@
 </div>
 <script src="<?=StaticDir?>script/clicks_home2.js"></script>
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/pt.js"></script>
-<script>
-   /* document.getElementById("callBtn").onclick = function () {
-        lxb.call(document.getElementById("telInput"));
-    };*/
-
-    $(function(){
-        //左边菜单栏
-        $(".mj-dd dd").hover(function(){
-            $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
-        },function(){
-            $(this).removeClass("mj-ddahoverc");
-        });
-
-
-        //分类弹框
-        $(".mj-models").hide(); //初始ul隐藏
-        $(".mj-search-box li").click(function(){
-            $(".mj-models").show();
-        });
-        //关闭弹框
-        $(".mj-close").click(function(){
-            $(".mj-models").hide();
-        });
-        //点击弹框添加样式
-        $(".mj-models li").hover(function(){
-            $(".mj-models").css({"border":"solid 1px #fc7d28"});
-        },function(){
-            $(".mj-models").css({"border":"solid 1px #79797a"});
-        });
-        $(".mj-models li").click(function(){
-            $(this).addClass("cur").siblings().removeClass("cur");
-            $(".select_box span").text($(this).text());
-            $(".mj-models").hide();
-        });
-    });
-
-
-</script>
 <script type="text/javascript" charset="utf-8" src="http://gate.looyu.com/46344/123997.js"></script>
 <div id="doyoo_share" style="display:none;"></div>
 <link rel="stylesheet" type="text/css" href="http://static.doyoo.net/110402/looyu.css?140702">
