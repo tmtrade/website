@@ -38,7 +38,7 @@
                 <? foreach ($_CLASS as $key => $value) { ?>
                     <a tid=<?=$key?> href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?>><?echo $key.'类-'.$value?></a>
                 <? } ?>
-                    <a href="javascript:;" class="curs" id="mj_aclik">......</a>
+                    <a href="javascript:;" class="curs" id="mj_aclik" style="color: rgb(75, 165, 222);">展开</a>
                 </div>
             </dd>
         <? if( !empty($c) ){ ?>
@@ -295,8 +295,8 @@
 
             obj.css({'display':'none'});
             $(this).addClass('curs');
-            $(this).css("color","#666");
-            $(this).text("......")
+            $(this).css("color","#4ba5de");
+            $(this).text("展开")
         }
     });
 
