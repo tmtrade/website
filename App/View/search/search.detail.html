@@ -114,17 +114,14 @@
     </div>
     <!-- ms-filtersList end -->
 </div>
-
 <script type="text/javascript">
- //  设置分类样式
-    for(var i=1;i<=$("div.ms-filtersList > ul > li").length;i++)
-    {     
-        if(i%6==0){
-		    $("div.ms-filtersList > ul > li").css({ "margin": "0 17px 10px 0"});
-            $("div.ms-filtersList > ul > li").eq(i-1).css({ "margin-right": "0px"});
-        }
-    }
-    
+
+	$("div.ms-filtersList > ul > li").each(function(i) {
+        $(this).css({ "margin": "0 17px 10px 0"});
+			if(i%6==5){
+			  $(this).css({ "margin-right": "0px"});
+			}
+    });
     $(".ms-collect").click(function(){
         var _this   = $(this);
         var _number = _this.attr('tnumber');
