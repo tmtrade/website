@@ -162,22 +162,22 @@
                 </div>
                 <div class="mj-form-wrapper">
 
-                    <!--<span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>-->
+                    <span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>
 
                     <i class="us-icon uj-icon4"></i>
 
-                    <input type="text" id="buyNeed" placeholder="对商标的特殊要求  如：25类鞋子" name="content" maxlength="100">
+                    <input type="text" id="buyNeed" name="content" maxlength="100">
 
                 </div>
                 <div class="mj_form_wpo f-clearfix">
                     <div class="mj-form-wrapper w178 fl">
-                        <!--<span class="mj-inpuV">留下电话方便卖家联系你</span>-->
+                        <span class="mj-inpuV">留下电话方便卖家联系你</span>
                         <i class="us-icon uj-icon5"></i>
-                        <input id="buyMoblie" placeholder="留下电话方便卖家联系你" type="text" name="mobile" style="width: 155px;padding-left:30px;">
+                        <input id="buyMoblie" type="text" name="mobile" style="width: 155px;padding-left: 30px;">
                     </div>
                     <div class="mj_form_wrapper_input fr">
-                        <!--<span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>-->
-                        <input type="text" placeholder="姓氏"  name="buyName" id="buyName" maxlength="8">
+                        <span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>
+                        <input type="text" name="buyName" id="buyName" maxlength="8">
                     </div>
                 </div>
                 <a href="javascript:;" class="mj-from-btn" id="mj-from-btn">立即登记</a>
@@ -331,8 +331,6 @@
             <li>
                 <p>
                   <img src="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'"/>
-                   <!-- <label><img src="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'"></label>-->
-                      <!-- <span><b><?=$rClass['link']?></b></span>-->
                 </p>
                 <div style="display: none">
                     <a target="_blank" class="tjfl" href="search/index/?c=<?=$rClass['classStr']?>">12</a>
@@ -352,7 +350,6 @@
 <!--商标分类end-->
 <!--类别展示start-->
 <div class="sbzs" id="sbzs">
-    <!--<div class="yzc-category w1180" id="cloth">-->
     <? foreach($modules as $tk=>$module): ?>
     <div class="yzc-category w1180" <?=(($tk!=0)?'':'id="cloth"')?>>
         <div class="yzc-category-tit">
@@ -367,39 +364,6 @@
         </div>    
   	     <div class="f-clearfix">
       	 <div class="yzc-categorypic-show fl">
-                   <!-- <div  class="slideBox">
-                        <div class="shd">
-                            <p>
-                                <? for($i=1,$len=count($module['pic']);$i<=$len;++$i): ?>
-                                <? if($i==1): ?>
-                                <a class="on">1</a>
-                                <? else: ?>
-                                <a><?=$i?></a>
-                                <? endif; ?>
-                                <? endfor; ?>
-                            </p>
-                        </div>
-                        <div class="sbd">
-                            <ul>
-                                <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
-                                <? endforeach; ?>
-                            </ul>
-                        </div>
-                       
-                        <a class="sprev" href="javascript:void(0)"></a>
-                        <a class="snext" href="javascript:void(0)"></a>
-                    </div>
--->
-                     <!-- <div style="width:341px; height:368px;">
-                          <div id="focus" class="focus">
-                            <ul>
-                                <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
-                                <? endforeach; ?>
-                            </ul>
-                         </div>
-                      </div>-->
                        <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width:341px; height:368px;overflow: hidden;">
                             <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px;width:341px; height:368px; overflow: hidden;">
                                 <? foreach($module['pic'] as $pic): ?>
@@ -661,6 +625,41 @@
     });
 </script>
 <script type="text/javascript">
+    $(function(){
+        //placeholder效果
+        $("input").each(function(){
+            var spanT= $(this).parent().find($(".mj-inpuV")).text();
+            $(this).focus(function(){
+                $(this).parent().find($(".mj-inpuV")).text("");
+            });
+            $(this).blur(function(){
+                if($(this).val()===""){
+                    $(this).parent().find($(".mj-inpuV")).text(spanT);
+                }else{
+                    $(this).parent().find($(".mj-inpuV")).text("");
+                }
+            });
+        });
+        $("input").each(function(){
+            var spanT1= $(this).parent().parent().find($(".mj-inpuVs")).text();
+            $(this).focus(function(){
+                $(this).parent().parent().find($(".mj-inpuVs")).text("");
+            });
+            $(this).blur(function(){
+                if($(this).val()===""){
+                    $(this).parent().parent().find($(".mj-inpuVs")).text(spanT1);
+                }else{
+                    $(this).parent().parent().find($(".mj-inpuVs")).text("");
+                }
+            });
+        });
+        $('.mj-inpuV').click(function(){
+            $(this).parent().find($("input")).val('').focus();
+        });
+        $('.mj-inpuVs').click(function(){
+            $(this).parent().parent().find($("input")).val('').focus();
+        });
+    });
  $('.mj-dd').show();   
 //交易无缝滚动
 jQuery(".mj-newjy").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});
@@ -717,7 +716,6 @@ jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fol
 				oflr.hide();
 			}
         for(var i=0;i<$("#float-floor li").length;i++){
-            //w_top>$(".sbzs>div").eq(i).offset().top && w_top< $(".sbzs>div").eq(i).offset().top+$(".sbzs>div").eq(i).outerHeight(true) -->原来的
             if( w_top<$(".sbzs>div").eq(i).offset().top && w_top> $(".sbzs>div").eq(i).offset().top-$(".sbzs>div").eq(i).outerHeight(true)){
 				$("#float-floor li").removeClass("on");
                 $(oflis[i]).addClass("on");
@@ -734,62 +732,5 @@ jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fol
 				$(this).addClass("on");
 			})
 		})
-		
-  //placeholder兼容IE
-    $(function(){
-
-      //判断浏览器是否支持placeholder属性
-      supportPlaceholder='placeholder'in document.createElement('input'),
-
-      placeholder=function(input){
-
-          var text = input.attr('placeholder'),
-          defaultValue = input.defaultValue;
-
-         if(!defaultValue){
-
-             input.val(text).addClass("phcolor");
-         }
-
-         input.focus(function(){
-
-             if(input.val() == text){
-
-                 $(this).val("");
-             }
-         });
-
-
-         input.blur(function(){
-
-             if(input.val() == ""){
-
-                 $(this).val(text).addClass("phcolor");
-             }
-         });
-
-         //输入的字符不为灰色
-         input.keydown(function(){
-
-             $(this).removeClass("phcolor");
-         });
-     };
-
-     //当浏览器不支持placeholder属性时，调用placeholder函数
-     if(!supportPlaceholder){
-
-         $('input').each(function(){
-
-             text = $(this).attr("placeholder");
-
-             if($(this).attr("type") == "text"){
-
-                 placeholder($(this));
-             }
-         });
-     }
-
-});
-
 </script>
 <? require(ViewDir.'/footer.html'); ?>

@@ -44,7 +44,7 @@ class SaleModule extends AppModule{
         }
         //返回包装数据
         if($info['embellish']){
-            return $info['embellish'];
+            return TRADE_URL.$info['embellish'];
         }
 
         return $this->load('trademark')->getImg($number);

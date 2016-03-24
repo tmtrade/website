@@ -201,8 +201,6 @@ function verifyCodeCallback(Obj,account,code){
 function getLogin(title,tel,isExist){
     $("#loginUser").val('');
     $("#loginPass").val('');
-    //$("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
-    //$("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
     $("#dl_ts").hide();
     $('.reg-tip').hide();
     var title = (title=='')?_defLogin:title;
@@ -221,6 +219,8 @@ function getLogin(title,tel,isExist){
         $('.mj-inpuVs').html('');
         $('#loginUser').val(tel);
     }
+    $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+    $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
     $("#dl_title").html(title);
     //CHOFN.loginShow();
     //弹出登录框
