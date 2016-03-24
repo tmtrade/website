@@ -10,7 +10,7 @@
  */
 class GoodsAction extends AppAction
 {
-    public $pageTitle   = '3.5秒快速查找 - 一只蝉';
+    public $pageTitle   = ' - 一只蝉';
 
     private $_number    = 30;
     private $_searchArr = array();
@@ -55,6 +55,9 @@ class GoodsAction extends AppAction
         $this->set('has', empty($result['rows']) ? false : true);
         $this->set('whereStr', http_build_query(array('s'=>$_groupGoods)));
         $this->set('list', $result);
+        
+        $_browseTitle = $_title ? $_title.$this->pageTitle : '导航页'.$this->pageTitle;
+        $this->set('title', $_browseTitle);//页面title
 		$this->display();
 	}
 

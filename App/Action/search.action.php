@@ -10,7 +10,7 @@
  */
 class SearchAction extends AppAction
 {
-    public $pageTitle   = '3.5秒快速查找 - 一只蝉';
+    public $pageTitle   = '商标筛选 - 一只蝉';
 
     private $_number    = 30;
     private $_searchArr = array();
