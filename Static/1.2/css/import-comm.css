@@ -71,7 +71,12 @@ img{
 
 .fdkf-zk{
     height: 137px;
-    background:rgba(0,0,0,0.6);
+    background:#000;
+    opacity: 0.8;  
+    /* IE 4-9 */  
+    filter:alpha(opacity=80);  
+    /*This works in IE 8 & 9 too*/  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     position: fixed;
     bottom: 0px;
     left: 0px;

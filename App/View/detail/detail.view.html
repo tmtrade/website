@@ -19,7 +19,7 @@
             <div class="brde-scfx">
                 <p class="fl">
                     <?if($sale['isLook']):?>
-                    <a class="collect"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>取消收藏</span></a>
+                    <a class="collect"> <img src="<?=StaticDir?>1.2/images/xin_cur.png"><span>取消收藏</span></a>
                     <?else:?>
                     <a class="collect in_collect"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
                     <?endif;?>
@@ -651,6 +651,7 @@
                     if (data.type == 1){
                         $(nowObj).removeClass('in_collect');
                         $(nowObj).find('span').html('取消收藏');
+                        $(nowObj).find('img').attr("src","/Static/1.2/images/xin_cur.png");
                         layer.msg('收藏成功',{time:1500});
                     }else{
                         layer.msg('收藏失败',{time:1500});
@@ -662,6 +663,7 @@
                     if (data.type != 0){
                         $(nowObj).addClass('in_collect');
                         $(nowObj).find('span').html('收藏商标');
+                        $(nowObj).find('img').attr("src","/Static/1.2/images/sbxq-ico1.png");
                         layer.msg('取消成功',{time:1500});
                     }else{
                         layer.msg('取消失败',{time:1500});

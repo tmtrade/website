@@ -305,11 +305,13 @@
             <dd>
                 <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></span>
                 <div class="ms-filtersListTxt">
+                    <a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>">
                     <div>
-                        <h6><a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>"><?=$v['name']?></a></h6>
+                        <h6><?=$v['name']?></h6>
                         <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
                         <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 12, 'UTF-8'):'-'?></p>
                     </div>
+                    </a>
                 </div>
             </dd>
         <?}?>
