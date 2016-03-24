@@ -9,7 +9,7 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class TmclassApi extends Entity
+class TmclassApi extends BaseCacheApi
 {
 	/**
 	 * 数据表键[表的唯一标识]
@@ -20,5 +20,15 @@ class TmclassApi extends Entity
 	 * 数据表主键
 	 */
 	public $pk       = 'id';
+    
+    /**
+     * 缓存组件标识id
+     */
+    public $cacheId = 'redis';
+
+    /**
+     * 过期时间(360分钟)
+     */
+    public $expire  = 3600;
 }
 ?>
