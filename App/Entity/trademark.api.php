@@ -9,7 +9,7 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class TrademarkApi extends Entity//BaseCacheApi
+class TrademarkApi extends BaseCacheApi
 {
 	/**
 	 * 数据表键[表的唯一标识]
@@ -24,11 +24,11 @@ class TrademarkApi extends Entity//BaseCacheApi
     /**
      * 缓存组件标识id
      */
-    //public $cacheId = 'redis';
+    public $cacheId = 'redis';
 
     /**
      * 过期时间(360分钟)
      */
-    //public $expire  = 21600;
+    public $expire  = 28800;
 }
 ?>
