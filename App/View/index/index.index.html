@@ -192,7 +192,7 @@
                             <img src="<?=StaticDir?>1.2/images/<?=($item['pttype']=='出售')?'buy':'buy2'?>.png">
                             <p>
                                 <span><?=$item['name']?><a>（<?=$item['tel']?>）</a></span>
-                                <font><label>“</label> <?=$item['remarks']?> <label>”</label></font>
+                                <font><label>“</label><b><?=$item['remarks']?></b><label>”</label></font>
                             </p>
                         </li><? endforeach; ?>
                     </ul>
@@ -367,7 +367,7 @@
         </div>    
   	     <div class="f-clearfix">
       	 <div class="yzc-categorypic-show fl">
-                    <div  class="slideBox">
+                   <!-- <div  class="slideBox">
                         <div class="shd">
                             <p>
                                 <? for($i=1,$len=count($module['pic']);$i<=$len;++$i): ?>
@@ -386,10 +386,20 @@
                                 <? endforeach; ?>
                             </ul>
                         </div>
-                        <!-- 下面是前/后按钮代码 -->
+                       
                         <a class="sprev" href="javascript:void(0)"></a>
                         <a class="snext" href="javascript:void(0)"></a>
                     </div>
+-->
+                      <div style="width:341px; height:368px;">
+                          <div id="focus" class="focus">
+                            <ul>
+                                <? foreach($module['pic'] as $pic): ?>
+                                <li><a href="<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
+                                <? endforeach; ?>
+                            </ul>
+                         </div>
+                      </div>
 
                     <div class="cate-list">
                         <? foreach($module['link'] as $link): ?>
@@ -579,13 +589,17 @@
     <?endforeach;?>
 </ul>
 <!--漂浮楼层end-->
+
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
 <script type="text/javascript">
+ $(function(){
+    $('#focus').slideFocus();
+       });
  $('.mj-dd').show();   
 //交易无缝滚动
 jQuery(".mj-newjy").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});
 //banner焦点图
-jQuery(".mj-bannerIimg").slide({titCell:".hd ul li",mainCell:".bd ul",prevCell:".sprev",nextCell:".snext",autoPlay:true});
+/*jQuery(".mj-bannerIimg").slide({titCell:".hd ul li",mainCell:".bd ul",prevCell:".sprev",nextCell:".snext",autoPlay:true});*/
 //活动推荐点击切换
 jQuery(".yzc-Activities").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:5,easing:"easeOutCirc"});
 //商标分类选项卡
