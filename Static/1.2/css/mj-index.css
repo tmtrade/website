@@ -413,18 +413,19 @@ margin: 0;
     font-size: 12px;
     margin-top: 0px;
     margin-left:8px;
-    height:45px !important;
+    height:55px !important;
 }
 .mj-newjy ul li img{
     display: inline-block;
     margin-bottom:7px;
+	vertical-align:top;
 }
 .mj-newjy ul li p{
     display: inline-block;
-    margin-left:15px;
+    margin-left:5px;
     color: #666666;
     margin-top: 3px;
-	max-width: 190px;
+	max-width: 215px;
 	overflow:hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -436,12 +437,31 @@ margin: 0;
     color:#999999;
 }
 .mj-newjy ul li p font{
-   margin-top:5px;
+   
+   margin-top:-5px;
+   height:45px;
+   display:inline-block;
 }
 .mj-newjy ul li p font label{
 	font-family:"Arial";
 	font-size:38px;
 	color: #ccc;
+	vertical-align:middle;
+	margin-top:5px;
+	}
+.mj-newjy ul li p font b{
+	color: #666666;
+	font-weight: 400;
+	vertical-align: middle;
+	max-width: 170px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+	line-height: 21px;
+	height: 40px;
+	margin-left:5px;
+	margin-right:5px;
 	}
 .w178 {
 
@@ -889,18 +909,18 @@ margin: 0;
     position: relative;
 }
 
-
+/*
 .slideBox{ width:340px; height:368px; overflow:hidden; position:relative; border:1px solid #ddd;  }
 .slideBox .shd{ height:15px; overflow:hidden; position:absolute;  right:5px; bottom:5px; z-index:999; }
 .slideBox .shd p{ overflow:hidden; zoom:1; float:left;  }
 .slideBox .shd p a{ float:left; margin-right:2px;  width:15px; height:15px; border-radius:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
-.slideBox .shd p a.on{ background:#f00; color:#fff; }
+.slideBox .shd p a.on{ background:#f00; color:#fff; }*/
 /*.slideBox .bd1{ position:relative; height:100%; z-index:0;   }*/
 /*.slideBox .bd1 li{ zoom:1; vertical-align:middle;}*/
 /*.slideBox .bd1 img{width:340px; height:368px;display:block;  }*/
 
 /* 下面是前/后按钮代码，如果不需要删除即可 */
-.slideBox .sprev,
+/*.slideBox .sprev,
 .slideBox .snext{ position:absolute; left:3%; top:50%; margin-top:-25px; display:block; width:32px; height:40px; background:url(../images/slider-arrow.png) -110px 5px no-repeat; filter:alpha(opacity=50);opacity:0.5;   }
 .slideBox .snext{ left:auto; right:3%; background-position:8px 5px; }
 .slideBox .sprev:hover,
@@ -908,10 +928,21 @@ margin: 0;
 .slideBox .sprevStop{ display:none;  }
 .slideBox .snextStop{ display:none;  }
 .slideBox .sbd li img{ width:341px; height:368px;}
+*/
+.focus{ width:341px; height:368px;overflow:hidden;position:relative;}
+.focus ul{ height:368px;position:absolute;}
+.focus ul li{float:left; width:341px; height:368px;overflow:hidden;position:relative;background:#000;}
+.focus ul li div{position:absolute;overflow:hidden;}
+.focus .btn{position:absolute;width:780px;height:10px;padding:5px 10px;right:0;bottom:5px;text-align:center;}
+.focus .btn span{display:inline-block;_display:inline;_zoom:1;width:13px;height:13px;_font-size:0;margin-left:5px;cursor:pointer;background:#fff;border-radius:50%;}
+.focus .btn span.on{background:yellow;}
+.focus .pre,.focus .next{ display:block;width: 26px;height: 63px; cursor:pointer;top:45%;position:absolute;}
+.focus .pre{background: url("../images/og_prev.png") no-repeat top center;left: 2px;}
+.focus .next{background: url("../images/og_next.png") no-repeat top center;right: 0px;}
 
 .cate-list{
     width: 340px;
-    height: 130px;
+    height: 120px;
     position: absolute;
     bottom:0px;
     left: 0px;
@@ -1343,6 +1374,7 @@ margin: 0;
 }
 .float-floor li.on a{
     color: #ffffff;
+	 
 }
 
 .float-floor a:first-child{
