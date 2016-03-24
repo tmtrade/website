@@ -161,7 +161,7 @@
                     ucNetwork.logCode(account,code);
                 }else{
                     $(".ms-errorTips2,#loginTips").show();
-                    $("#loginTips em").text('网络问题请刷新!');
+                    $("#loginTips em").text(n.msg);
                     $("#loginTips").attr('flag',0);
                 }
             });
