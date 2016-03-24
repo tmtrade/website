@@ -29,6 +29,6 @@ class ImgurlApi extends BaseCacheApi
     /**
      * 过期时间(360分钟)
      */
-    public $expire  = 21600;
+    public $expire  = 28800;
 }
 ?>
