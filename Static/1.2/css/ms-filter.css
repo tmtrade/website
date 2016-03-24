@@ -309,6 +309,9 @@
 	margin-top: 15px;
 	height:55px;
 }
+.ms-filtersListTxt h6{
+	font-size:12px;
+	}
 .ms-filtersListTxt p{
     color: #999999;
 }
@@ -437,6 +440,9 @@
     right: 0;
     display: none;
 	height: 96px;
+}
+.ms-recommend > dd .ms-filtersListTxt div{
+    margin-top: 20px;
 }
 .ms-recommend > dd:hover .ms-filtersListTxt{
     display: block;
