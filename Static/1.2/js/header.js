@@ -136,6 +136,23 @@ $(document).ready(function(e) {
         $("#searchForm").submit();
 
     });
+    //登录提示
+    $("input").each(function(){
+        var spanT1= $(this).parent().parent().find($(".mj-inpuVs")).text();
+        $(this).focus(function(){
+            $(this).parent().parent().find($(".mj-inpuVs")).text("");
+        });
+        $(this).blur(function(){
+            if($(this).val()===""){
+                $(this).parent().parent().find($(".mj-inpuVs")).text(spanT1);
+            }else{
+                $(this).parent().parent().find($(".mj-inpuVs")).text("");
+            }
+        });
+    });
+    $('.mj-inpuVs').click(function(){
+        $(this).parent().parent().find($("input")).val('').focus();
+    });
 });
 //成功失败弹窗
 function getLayer(obj) {
@@ -202,7 +219,7 @@ function getLogin(title,tel,isExist){
     $("#loginUser").val('');
     $("#loginPass").val('');
     $("#dl_ts").hide();
-    $('.reg-tip').hide();
+    $('#loginTips').hide();
     var title = (title=='')?_defLogin:title;
     if (!isExist){
         //账户不存在
@@ -223,7 +240,6 @@ function getLogin(title,tel,isExist){
     $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
     $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
     $("#dl_title").html(title);
-    //CHOFN.loginShow();
     //弹出登录框
     $('#loginFormDiv').show();
     boxBg();

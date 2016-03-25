@@ -9,8 +9,6 @@
         _buyTitle   = "<h6>亲，提交成功了</h6><p>系统已将登录密码发送到你手机，登录即可查看求购进展。我们也会在10分钟向你确认需求</p>";
         if(login_mobile && isIndex){
             //将用户电话号码放到该框中
-            //$('.mj_form_wpo').after('<div style="height:40px"></div>');//站位
-            //$('.mj_form_wpo').hide();
             $('#buyMoblie').val(login_mobile);
         }
         //求购信息发布事件
@@ -21,23 +19,23 @@
             //验证手机号码
             if(!tel || !mobilereg.test(tel) || tel.length!=11){
                 $(".mj-eed").show();
-                $(".reg-tip em").text('请输入手机号码');
+                $(".reg-tip22 em").text('请输入手机号码');
 				 $(".mj-newjy").css("margin-top","5px");
-                $(".reg-tip").attr('flag',2);
+                $(".reg-tip22").attr('flag',2);
                 return false;
             }
             if(!login_mobile && isChineseOrEng(name)){
                 $(".mj-eed").show();
-                $(".reg-tip em").show().text('姓氏必须为中英文');
+                $(".reg-tip22 em").show().text('姓氏必须为中英文');
 				 $(".mj-newjy").css("margin-top","5px");
-                $(".reg-tip").attr('flag',3);
+                $(".reg-tip22").attr('flag',3);
                 return false;
             }
             if( !subject ){
                 $(".mj-eed").show();
-                $(".reg-tip em").show().text('请输入内容');
+                $(".reg-tip22 em").show().text('请输入内容');
 				 $(".mj-newjy").css("margin-top","5px");
-                $(".reg-tip").attr('flag',1);
+                $(".reg-tip22").attr('flag',1);
                 return false;
             }
             $(".mj-eed").hide();
@@ -52,9 +50,9 @@
         $('#buyNeed').blur(function(){
             if(!($.trim($('#buyNeed').val()))){
                 $(".mj-eed").show();
-                $(".reg-tip em").show().text('请输入内容');
+                $(".reg-tip22 em").show().text('请输入内容');
 				$(".mj-newjy").css("margin-top","5px");
-                $(".reg-tip").attr('flag',1);
+                $(".reg-tip22").attr('flag',1);
                 return false;
             }
             hideTip(1);
@@ -64,16 +62,16 @@
             tel 	= $.trim($('#buyMoblie').val());
             if(!tel){
                 $(".mj-eed").show();
-                $(".reg-tip em").text('请输入手机号码');
+                $(".reg-tip22 em").text('请输入手机号码');
 				 $(".mj-newjy").css("margin-top","5px");
-                $(".reg-tip").attr('flag',2);
+                $(".reg-tip22").attr('flag',2);
                 return false;
             }
             if(!mobilereg.test(tel) || tel.length!=11){
                 $(".mj-eed").show();
-                $(".reg-tip em").text('请输入正确的手机号码');
+                $(".reg-tip22 em").text('请输入正确的手机号码');
 				 $(".mj-newjy").css("margin-top","5px");
-                $(".reg-tip").attr('flag',2);
+                $(".reg-tip22").attr('flag',2);
                 return false;
             }
             hideTip(2);
@@ -85,9 +83,9 @@
                 var kj_name = $.trim($(this).val());
                 if ( isChineseOrEng(kj_name) ){
                     $(".mj-eed").show();
-                    $(".reg-tip em").text('姓氏必须为中英文');
+                    $(".reg-tip22 em").text('姓氏必须为中英文');
                     $(".mj-newjy").css("margin-top","5px");
-                    $(".reg-tip").attr('flag',3);
+                    $(".reg-tip22").attr('flag',3);
                     return false;
                 }
                 hideTip(3);
@@ -130,7 +128,7 @@
     }
     //隐藏提示信息
     function hideTip(num){
-        if($(".reg-tip").attr('flag')==num){
+        if($(".reg-tip22").attr('flag')==num){
             $(".mj-eed").hide();
         }
     }
@@ -158,26 +156,26 @@
                     <p>线下专家10分钟为你快速匹配商标</p>
                 </div>
                 <div class="ms-errorTips mj-eed">
-                    <p class="reg-tip"><i class="us-icon us-icon19"></i><em></em></p>
+                    <p class="reg-tip reg-tip22"><i class="us-icon us-icon19"></i><em></em></p>
                 </div>
                 <div class="mj-form-wrapper">
 
-                    <span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>
+                    <!--<span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>-->
 
                     <i class="us-icon uj-icon4"></i>
 
-                    <input type="text" id="buyNeed" name="content" maxlength="100">
+                    <input type="text" id="buyNeed" name="content" placeholder="对商标的特殊要求  如：25类鞋子" maxlength="100">
 
                 </div>
                 <div class="mj_form_wpo f-clearfix">
                     <div class="mj-form-wrapper w178 fl">
-                        <span class="mj-inpuV">留下电话方便卖家联系你</span>
+                        <!--<span class="mj-inpuV">留下电话方便卖家联系你</span>-->
                         <i class="us-icon uj-icon5"></i>
-                        <input id="buyMoblie" type="text" name="mobile" style="width: 155px;">
+                        <input id="buyMoblie" type="text" placeholder="留下电话方便卖家联系你" name="mobile" style="width: 155px;">
                     </div>
                     <div class="mj_form_wrapper_input fr">
-                        <span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>
-                        <input type="text" name="buyName" id="buyName" maxlength="8">
+                        <!--<span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>-->
+                        <input type="text" name="buyName" id="buyName" placeholder="姓氏" maxlength="8">
                     </div>
                 </div>
                 <a href="javascript:;" class="mj-from-btn" id="mj-from-btn">立即登记</a>
@@ -568,42 +566,7 @@
 
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
 <script type="text/javascript">
-    $(function(){
-        //placeholder效果
-        $("input").each(function(){
-            var spanT= $(this).parent().find($(".mj-inpuV")).text();
-            $(this).focus(function(){
-                $(this).parent().find($(".mj-inpuV")).text("");
-            });
-            $(this).blur(function(){
-                if($(this).val()===""){
-                    $(this).parent().find($(".mj-inpuV")).text(spanT);
-                }else{
-                    $(this).parent().find($(".mj-inpuV")).text("");
-                }
-            });
-        });
-        $("input").each(function(){
-            var spanT1= $(this).parent().parent().find($(".mj-inpuVs")).text();
-            $(this).focus(function(){
-                $(this).parent().parent().find($(".mj-inpuVs")).text("");
-            });
-            $(this).blur(function(){
-                if($(this).val()===""){
-                    $(this).parent().parent().find($(".mj-inpuVs")).text(spanT1);
-                }else{
-                    $(this).parent().parent().find($(".mj-inpuVs")).text("");
-                }
-            });
-        });
-        $('.mj-inpuV').click(function(){
-            $(this).parent().find($("input")).val('').focus();
-        });
-        $('.mj-inpuVs').click(function(){
-            $(this).parent().parent().find($("input")).val('').focus();
-        });
-    });
- $('.mj-dd').show();   
+ $('.mj-dd').show();
 //交易无缝滚动
 jQuery(".mj-newjy").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});
 //banner焦点图

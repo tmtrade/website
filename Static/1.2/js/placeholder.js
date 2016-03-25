@@ -8,7 +8,7 @@
     //执行
 	jQuery(function(){
 		jQuery(':input[placeholder]').each(function(index, element) {
-			placeHolder(element,true);
+			placeHolder(element,false);
 	    });	
 	});
 	  
@@ -27,7 +27,7 @@
                 }
                 obj.onblur = function () {
                     if (obj.value == defaultValue) {
-                        obj.style.color = '';
+                        obj.style.color = '#AAA';
                     } else if (obj.value == '') {
                         obj.value = defaultValue;
                         obj.style.color = '#ACA899';
