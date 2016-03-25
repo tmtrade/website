@@ -22,6 +22,9 @@ body{
 img{
     border: none !important;
 }
+a {outline: none;}
+a:active {outline: none;star:expression(this.onFocus=this.blur());}
+:focus{outline:0}
 /*清除浮动*/
 .f-clearfix:after {
     clear: both;
@@ -140,18 +143,20 @@ img{
 .fdkf-zk li.btm-tj div select{
    width: 197px;
     height: 33px;
-	line-height:33px;
-	
+	line-height:3px;
+	line-height/***/:3px\9;
     border: 1px solid #dadada;
     color: #777777;
     text-indent: 15px;
     float: left;
+	color/***/:red\9;
+	
 }
 .fdkf-zk li.btm-tj div input{
     width: 174px;
     height: 33px;
 	line-height:33px;
-
+	line-height/***/:33px\9;
     border: 1px solid #dadada;
     color: #777777;
     text-indent: 15px;
