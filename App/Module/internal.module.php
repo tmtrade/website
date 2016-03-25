@@ -158,7 +158,11 @@ class InternalModule extends AppModule
         $r['eq'] = array(
             'saleId' => $saleId,
             );
-        return $this->import('tminfo')->find($r);
+        $data = $this->import('tminfo')->find($r);
+        if($data){
+            $data['intro'] = preg_replace('/src="/','src="'.TRADE_URL,$data['intro']);//添加上域名
+        }
+        return $data;
     }
 
 
