@@ -208,8 +208,9 @@
                 <?
                     $bannerStr = '';
                     foreach($banners as $banner){
-                        $url = TRADE_URL.substr($banner['pic'],1);
-                        $bannerStr .= "<li class='mj-banner-itme' style='background:url({$url}) center 0 no-repeat;'><a href='{$banner['link']}' target='_blank'></a></li>";
+                        $url	 = TRADE_URL.substr($banner['pic'],1);
+						$_banner = $banner['link'] ? $banner['link'] : 'javascript:void(0);';
+                        $bannerStr .= "<li class='mj-banner-itme' style='background:url({$url}) center 0 no-repeat;'><a href='{$_banner}' target='_blank'></a></li>";
                     }
                     echo $bannerStr;
                 ?>
