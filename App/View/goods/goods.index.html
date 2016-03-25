@@ -107,13 +107,17 @@
             $_class = current($_c_);?>
             <dd>
                 <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></span>
+                  <a href="<?=$v['viewUrl']?>">
                 <div class="ms-filtersListTxt">
+              
                     <div>
-                        <h6><a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></a></h6>
+                        <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                         <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
                         <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 12, 'UTF-8'):'-'?></p>
                     </div>
+                
                 </div>
+                 </a>
             </dd>
         <?}?>
     </dl>
