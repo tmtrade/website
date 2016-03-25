@@ -35,9 +35,14 @@ class GoodsModule extends AppModule
 	{
 		$res = $this->importBi('Goods')->search($groupGoodsCode, $num, $page);
 
-		if ( empty($res['rows']) ) return array('total'=>0,'rows'=>array());
+		if ( empty($res['rows']) ) return $res;
 		$numbers 		= arrayColumn($res['rows'], 'code');
 		$list 			= $this->getListInfo($numbers);
+		if ( empty($list) ) {
+			$res['rows'] 	= array();
+			$res['total']	= 0;
+			return $res;
+		}
 		$res['rows'] 	= $this->load('search')->getListTips($list);
 		return $res;
 	}
@@ -47,14 +52,11 @@ class GoodsModule extends AppModule
 		if ( empty($data) ) return array();
 
 		$list = array();
-		if ( !empty($this->loginId) ){
-            $numbers    = arrayColumn($_tmp, 'number');
-            $lookList   = $this->load('usercenter')->existLook($numbers);
-        } 
 		foreach ($data as $k => $number) {
 			$sale = $this->load('sale')->getSaleInfo($number);
 			if ( empty($sale) ){
 				$info = $this->load('trademark')->getTmInfo($number);
+				if ( empty($info) ) continue;
 				$list[$k] = array(
 					'tid' 		=> $info['tid'],
 					'name' 		=> $info['name'],

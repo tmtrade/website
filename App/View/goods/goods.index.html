@@ -150,7 +150,7 @@
     var _objTime ;
 
     //收藏与取消
-    $(".ms-collect").click(function(){
+    $(".ms-collect").live('click', function(){
         var _this   = $(this);
         var _number = _this.attr('tnumber');
          if ( _this.hasClass('cur') ){
