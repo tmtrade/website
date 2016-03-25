@@ -1,6 +1,4 @@
 <? require(ViewDir.'/header.html'); ?>
-<script type="text/javascript" src="<?=StaticDir?>topic/lesson-two/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="<?=StaticDir?>topic/lesson-two/js/jquery.customSelect.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>topic/lesson-two/css/style.css">
 
 <div class="bgBan1 f-clearfix">
@@ -457,9 +455,11 @@
             }
             //准备数据
             var data = new Array();
+            data['name'] 	= '';
             data['tel'] 	= mobile;
             data['subject'] = '来自专题第二课';
             data['remarks'] = '来自专题第二课';
+            data['pttype'] = "求购";
             ucNetwork.submitData(data);
         });
     });
