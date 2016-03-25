@@ -136,6 +136,7 @@ $(document).ready(function(e) {
         $("#searchForm").submit();
 
     });
+
     //登录提示
     $("input").each(function(){
         var spanT1= $(this).parent().parent().find($(".mj-inpuVs")).text();
@@ -153,6 +154,7 @@ $(document).ready(function(e) {
     $('.mj-inpuVs').click(function(){
         $(this).parent().parent().find($("input")).val('').focus();
     });
+
 });
 //成功失败弹窗
 function getLayer(obj) {
