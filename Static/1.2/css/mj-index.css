@@ -987,13 +987,16 @@ margin: 0;
 }
 .yzc-categorbrand li div span{
     display: block;
-    margin-top: 40px;
+   /* margin-top: 40px;*/
+   height: 110px;
+   text-align:center;
+ 
 }
 .yzc-categorbrand li div span img{
-    display:block;
-    width: 155px;
-    height: 64px;
+   max-width: 154px;
+	max-height: 110px;
     margin:auto;
+	vertical-align:middle;
 }
 .yzc-categorbrand li div p{
     margin-top: 15px;
