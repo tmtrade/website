@@ -964,7 +964,7 @@ margin: 0;
     /* margin-left: 15px; */
 }
 .cate-list a:hover{
-	color: #ff6666;
+	text-decoration:underline;
 	}
 .yzc-categorbrand{
     width:838px;
