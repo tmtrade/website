@@ -28,6 +28,13 @@ class TopicAction extends AppAction
     //第二课
     public function lesson_two()
     {
+        $this->pageTitle 	= '商标转让价格_商标值多少钱_一个商标能卖多少钱_商标转让费用_商标转让知识-一 只蝉商标转让平台网';
+        $this->pageKey          = '商标转让价格,商标值多少钱,一个商标能卖多少钱,商标价值评估,商标转让费用
+,r商标值多少钱';
+        $this->pageDescription  = '如何判断一个商标值不值钱?一个商标能卖多少钱？一只蝉商标转让平台网手 把手教你如何判断一个商标值不值钱，一个商标值多少钱？为你解决：商标转让价格,商标 转让费用,r商标值多少钱等等问题。为你解决在商标转让价格的问题。';
+        $this->set('title', $this->pageTitle);//页面title
+        $this->set('keywords', $this->pageKey);//页面keywords
+        $this->set('description', $this->pageDescription);//页面description
         $this->display();
     }
     //天猫与京东
