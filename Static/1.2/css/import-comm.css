@@ -141,22 +141,19 @@ a:active {outline: none;star:expression(this.onFocus=this.blur());}
 
 }
 .fdkf-zk li.btm-tj div select{
-   width: 197px;
-    height: 33px;
-	line-height:3px;
-	line-height/***/:3px\9;
+    width: 197px;
+	padding-top:7px;
+	padding-bottom:7px;
     border: 1px solid #dadada;
     color: #777777;
     text-indent: 15px;
     float: left;
-	color/***/:red\9;
 	
 }
 .fdkf-zk li.btm-tj div input{
     width: 174px;
-    height: 33px;
-	line-height:33px;
-	line-height/***/:33px\9;
+    padding-top:7px;
+	padding-bottom:7px;
     border: 1px solid #dadada;
     color: #777777;
     text-indent: 15px;
