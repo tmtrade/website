@@ -1,5 +1,5 @@
 <? require(ViewDir.'/header.html'); ?>
-<script type="text/javascript" src="<?=StaticDir?>topic/lesson-one/js/jquery-1.8.3.min.js"></script>
+<!--<script type="text/javascript" src="<?=StaticDir?>topic/lesson-one/js/jquery-1.8.3.min.js"></script>-->
 <script type="text/javascript" src="<?=StaticDir?>topic/lesson-one/js/jquery.customSelect.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>topic/lesson-one/css/style.css">
 
@@ -333,11 +333,11 @@
                     <font class="error"></font>
                     <p>
                         <span></span>
-                        <input type="text" placeholder="请输入正确电话号码免费通话" id="buyMoblie"/>
+                        <input type="text" placeholder="请输入正确电话号码免费通话" id="lesson_tel"/>
                     </p>
 
 
-                <a>我要买标</a>
+                <a id="lesson_submit">我要买标</a>
             </dl>
         </div>
     </div>
@@ -427,30 +427,59 @@
             $(".mlPic li").eq(i).css({"borderRight":"none"})
         }
     }
-//手机验证
-
-$("#buyMoblie").blur(function(){
-
-    var _this = $(this);
-
-    _buyMobile = false;
-
-    if( _this.val()=="" ){
-        $(".error").html("手机号不能为空");
-    }else if(!/^0?(13[0-9]|15[012356789]|18[0123456789]|14[57])[0-9]{8}$/.test(_this.val())){
-        $(".error").html("手机号码不正确");
-
-    }else{
-
-        _buyMobile = true;
-        $(".error").hide();
-    }
-
-});
-
-
-
-
 </script>
-
+<script type="text/javascript">
+    $(function(){
+        //失去焦点事件
+        $('#lesson_tel').blur(function(){
+            var mobile 	= $.trim($('#lesson_tel').val());
+            //验证手机号
+            if(!mobile){
+                $(this).val('请输入正确电话号码免费通话');
+                return false;
+            }
+            if(!mobilereg.test(mobile) || mobile.length!=11){
+                $(this).val('请输入正确电话号码免费通话');
+                return false;
+            }
+        });
+        //获取焦点事件
+        $('#lesson_tel').focus(function(){
+            $('#lesson_tel').val('');
+        });
+        //提交时间
+        $('#lesson_submit').click(function(){
+            var mobile 	= $.trim($('#lesson_tel').val());
+            //验证手机号
+            if(!mobile){
+                $(this).val('请输入正确电话号码免费通话');
+                return false;
+            }
+            if(!mobilereg.test(mobile) || mobile.length!=11){
+                $(this).val('请输入正确电话号码免费通话');
+                return false;
+            }
+            //准备数据
+            var data = new Array();
+            data['name'] 	= '';
+            data['tel'] 	= mobile;
+            data['subject'] = '来自专题第一课';
+            data['remarks'] = '来自专题第一课';
+            data['pttype'] = "求购";
+            ucNetwork.submitData(data);
+        });
+    });
+    //发布回调
+    function submitDataCallback(Obj){
+        $.each(Obj,function(i,n){
+            if(n.code!=-1){
+                //弹出成功框
+                getLayer($('#mj-submitteS'));
+            }else{
+                //弹出失败框
+                getLayer($('#mj-submitteF'));
+            }
+        });
+    }
+</script>
 <? require(ViewDir.'/footer.html'); ?>
