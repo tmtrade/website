@@ -216,6 +216,16 @@ function verifyCodeCallback(Obj,account,code){
         }
     });
 }
+//登录回调
+function userLogCallback(Obj,data){
+    $.each(Obj,function(i,n){
+        if(n.code==3){
+            $(".ms-errorTips2,#loginTips").show();
+            $("#loginTips em").text(n.msg);
+            $("#loginTips").attr('flag',0);
+        }
+    });
+}
 //调用登录弹窗
 function getLogin(title,tel,isExist){
     $("#loginUser").val('');
