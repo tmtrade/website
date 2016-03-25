@@ -1,0 +1,240 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0;}
+body,html{font-family: "微软雅黑";-webkit-font-smoothing:antialiased;font-smoothing:antialiased;-moz-font-smoothing:antialiased;}
+fieldset,img {border:0}
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal}
+ol,ul {list-style:none}
+a{text-decoration: none;}
+caption,th {text-align:left}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal}
+q:before,q:after {content:''}
+abbr,acronym { border:0}
+.fl{float: left}
+.fr{float: right}
+body,html{min-width: 1400px;}
+
+/*清除浮动*/
+.f-clearfix:after {
+    clear: both;
+    display: block;
+    height: 0;
+    font-size: 0;
+    content: ".";
+    visibility: hidden;
+}
+.f-clearfix{
+    zoom: 1;
+}
+.w1160{
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.F-comBg{
+    width: 100%;
+    height: 800px;
+    background: url("../images/bg1.png") no-repeat top center;
+
+}
+.F-comBg-main{
+    width: 100%;
+    height: 800px;
+    background: url("../images/lo1.png") no-repeat top center;
+}
+.fth-ban2{
+    width: 100%;
+    height: 685px;
+    background: #fef3cb;
+    /* overflow: hidden; */
+    z-index: 999;
+    position: relative;
+}
+.fth-ban2-main{
+    margin-top: 45px;
+}
+.brand-jj{
+    width:555px;
+    height:456px;
+    background: url("../images/lo2-2.png") no-repeat left top;
+}
+.brand-jj ul{
+    margin-left:40px;
+    margin-top:-5px;
+
+}
+.brand-jj ul li{
+    margin-top:45px;
+    color: #666666;
+    font-size: 14px;
+    position: relative;
+}
+.brand-jj ul li b{
+    color: #444444;
+    font-size: 20px;
+    font-weight: normal;
+}
+.brand-jj  a{
+    display: inline-block;
+    padding: 6px 30px;
+    background: #fe665c;
+    color: #ffffff;
+    font-size: 18px;
+    margin-left:42px;
+    margin-top:45px;
+    border-radius: 3px;
+}
+
+.brand-jj ul li div{
+    position: absolute;
+    display: none;
+}
+.brand-jj ul li:hover  div{
+    display: block;
+}
+
+
+.mj-banner {
+
+    position: relative;
+
+    height: 480px;
+
+    overflow: hidden;
+
+}
+
+.mj-bannerIimg .hd {
+
+    width:100%;
+
+    position: absolute;
+
+    bottom: 20px;
+
+    text-align: center;
+
+    font-size:0;
+
+    z-index:1;
+}
+
+.mj-bannerIimg .hd li{
+
+    display: inline-block;
+
+    margin-left: 5px;
+
+    width:6px;
+
+    height:6px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    border: solid 2px #d0d0d0;
+
+    cursor: pointer;
+
+}
+
+.mj-bannerIimg .hd .on{
+
+    border: solid 2px #fe5752;
+    background: #fe5752;
+
+}
+
+.mj-banner-img {
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 349px !important;
+
+    z-index: 1;
+}
+
+.mj-banner-img .mj-banner-itme, .mj-banner-img .mj-banner-itme a {
+
+    display: block;
+
+    width: 100%!important;
+
+    height: 464px;
+}
+
+.mj-banner-img .mj-banner-itme {
+
+    float: left;
+
+}
+
+.mj-banner-itme img{
+
+    width: 100%;
+
+}
+.fth-ban3{
+    width: 100%;
+    height:983px;
+    background: url("../images/bg2.png") no-repeat top center;
+    overflow: hidden;
+    position: relative;
+    top: -44px;
+}
+
+.fth-ban4{
+    width: 100%;
+    height:726px;
+    background:#fef3cb url("../images/bg3.png") no-repeat center  center;
+    margin-top: -44px;
+}
+
+.fth-ban3-main{
+    width: 965px;
+    margin: auto;
+    position: relative;
+}
+.fth-ban3-blk {
+    width: 400px;
+    height: 50px;
+    position: absolute;
+    top: 900px;
+    left: 445px;
+}
+.fth-ban3-blk  a{
+    padding: 6px 23px;
+    color: #ffffff;
+    font-size: 18px;
+    float: left;
+    margin-left: 35px;
+    border-radius: 3px;
+}
+
+.mj-bannerIimg{
+    width: 350px;
+    height: 555px;
+    position: absolute;
+    top: 424px;
+    left: -16px;
+}
+
+
+
+
+
+
+
+
+

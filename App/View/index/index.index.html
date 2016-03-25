@@ -209,7 +209,7 @@
                     $bannerStr = '';
                     foreach($banners as $banner){
                         $url = TRADE_URL.substr($banner['pic'],1);
-                        $bannerStr .= "<li class='mj-banner-itme' style='background:url({$url}) #CCE1F3 center 0 no-repeat;'><a href='{$banner['link']}' target='_blank'></a></li>";
+                        $bannerStr .= "<li class='mj-banner-itme' style='background:url({$url}) center 0 no-repeat;'><a href='{$banner['link']}' target='_blank'></a></li>";
                     }
                     echo $bannerStr;
                 ?>

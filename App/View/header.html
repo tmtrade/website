@@ -214,8 +214,8 @@
                                     <? foreach($menuPic as $menuImg): ?>
                                     <? if($menuImg['industryId'] == $first['id']): ?>
                                     <span>
-                                        <a href="<?=$menuImg['link']?>" target="_blank"><img src="<?=(TRADE_URL
-.substr($menuImg['pic'],1))?>"></a>
+                                        <a href="<?=$menuImg['link']?>" target="_blank">
+                                            <img src="<?=(TRADE_URL.substr($menuImg['pic'],1))?>"></a>
                                     </span>
                                     <? endif; ?>
                                     <? endforeach; ?>
