@@ -15,8 +15,7 @@ class SearchAction extends AppAction
     public $pageKey 	= '商标筛选,商标选择,挑选商标,商标分类筛选';
 	
     public $pageDescription = '一只蝉商标转让网，为用户提供更专业的商标筛选,商标选择。为用户在商标选择和挑选商标，商标分类筛选中提供更多信息,商标筛选尽在一只蝉商标买卖网。';
-
-
+    
     private $_number    = 30;
     private $_searchArr = array();
 

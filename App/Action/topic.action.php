@@ -17,6 +17,12 @@ class TopicAction extends AppAction
     //第一课
     public function lesson_one()
     {
+        $this->pageTitle 	= '如何选择商标名称_商标类别选择-商标转让知识学习-一只蝉商标转让平台网';
+        $this->pageKey          = '如何选择商标名称,如何挑选商标，商标类别选择,商标注册类别选择,商标注册商 品选择技巧';
+        $this->pageDescription  = '如何选择商标名称？如何挑选商标？一只蝉商标转让平台手把手教你如何挑 选价值百万的商标。为你在挑选商标过程中遇到的如：商标注册类别选择,商标注册商标选 择技巧,商标名称选择提供最实用的知识';
+        $this->set('title', $this->pageTitle);//页面title
+        $this->set('keywords', $this->pageKey);//页面keywords
+        $this->set('description', $this->pageDescription);//页面description
         $this->display();
     }
     //第二课
@@ -30,18 +36,6 @@ class TopicAction extends AppAction
         $this->pageTitle 	= '买商标入驻天猫京东,哪些商标可以入驻天猫京东- 一只蝉商标转让网';
         $this->pageKey          = '买商标入驻天猫京东,哪些商标可以入驻天猫京东,入驻天猫京东资质资料';
         $this->pageDescription  = '在一只蝉买商标入驻天猫京东,哪些商标可以入驻天猫京东?入驻天猫京东资质资料需要哪些？一只蝉给你想要的答案,这些商标都是可以入驻天猫京东的。一只蝉商标转让网';
-        $this->set('title', $this->pageTitle);//页面title
-        $this->set('keywords', $this->pageKey);//页面keywords
-        $this->set('description', $this->pageDescription);//页面description
-        $this->display();
-    }
-    
-    //第一课
-    public function first_lesson()
-    {
-        $this->pageTitle 	= '如何选择商标名称_商标类别选择-商标转让知识学习-一只蝉商标转让平台网';
-        $this->pageKey          = '如何选择商标名称,如何挑选商标，商标类别选择,商标注册类别选择,商标注册商 品选择技巧';
-        $this->pageDescription  = '如何选择商标名称？如何挑选商标？一只蝉商标转让平台手把手教你如何挑 选价值百万的商标。为你在挑选商标过程中遇到的如：商标注册类别选择,商标注册商标选 择技巧,商标名称选择提供最实用的知识';
         $this->set('title', $this->pageTitle);//页面title
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
