@@ -189,7 +189,7 @@ class InternalModule extends AppModule
         if ( !empty($phone) ){
             $r['eq']['phone'] = $phone;
         }
-        $count = $this->import('contact')->count($r);
+        $count = $this->import('contact')->setCache(false)->count($r);
         return ($count > 0) ? true : false;
     }
 
@@ -300,7 +300,7 @@ class InternalModule extends AppModule
     {
         if ( empty($saleId) ) return false;
         $r['eq'] = array('id'=>$saleId,'status'=>1);
-        $isUp = $this->import('sale')->count($r);
+        $isUp = $this->import('sale')->setCache(false)->count($r);
         if ( $isUp ) return true;
         return false;
     }

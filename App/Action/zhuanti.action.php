@@ -10,7 +10,12 @@
  */
 class ZhuantiAction extends AppAction
 {
+    public $caches      = array('index','view');
+    public $cacheId     = 'redisHtml';
+    public $expire      = 3600;//1小时
+    
     public $seotime		= '一只蝉商标交易网';
+
     /**
      * 专题中心
      * @author  far
@@ -18,16 +23,16 @@ class ZhuantiAction extends AppAction
      */
     public function index()
     {
-                $page 	= $this->input('page', 'int');
-                $res 	= $this->load('zhuanti')->getList(0, $page, $this->rowNum);
-                $total 	= empty($res['total']) ? 0 : $res['total'];
+        $page 	= $this->input('page', 'int');
+        $res 	= $this->load('zhuanti')->getList(0, $page, $this->rowNum);
+        $total 	= empty($res['total']) ? 0 : $res['total'];
 		$list 	= empty($res['rows']) ? array() : $res['rows'];
 
 		$pager 		= $this->pagerNew($total, $this->rowNum);
-                $pageBar 	= empty($list) ? '' : getPageBarNew($pager);
-                $this->set('list', $list);
-                $this->set("pageBar",$pageBar);
-                $this->display();
+        $pageBar 	= empty($list) ? '' : getPageBarNew($pager);
+        $this->set('list', $list);
+        $this->set("pageBar",$pageBar);
+        $this->display();
     }
 	
     /**
@@ -39,8 +44,8 @@ class ZhuantiAction extends AppAction
 	{	
         
 		$id 	= $this->input('id', 'int', '0');
-                $page 	= $this->input('page', 'int');
-		$topic = $topicItems = array();
+        $page 	= $this->input('page', 'int');
+		$topic  = $topicItems = array();
 		if($id){
 			$topic 	= $this->load('zhuanti')->getTopicInfo($id);
 			$topicItems = $this->load('zhuanti')->getTopicClassList($id);
@@ -48,12 +53,12 @@ class ZhuantiAction extends AppAction
 		$this->set('topic', $topic);
 		$this->set('topicItems', $topicItems);
                 
-                $res 	= $this->load('zhuanti')->getList($id, $page, 4,array('isMore'=>'asc','sort'=>'asc'));
+        $res 	= $this->load('zhuanti')->getList($id, $page, 4,array('isMore'=>'asc','sort'=>'asc'));
 		$list 	= empty($res['rows']) ? array() : $res['rows'];
-                $title   = $topic['title'] . ' - '.$this->seotime;
-                $this->set('list', $list);
-                $this->set('title', $title);
-                $this->display();
+        $title  = $topic['title'] . ' - '.$this->seotime;
+        $this->set('list', $list);
+        $this->set('title', $title);
+        $this->display();
 	}
 
 }

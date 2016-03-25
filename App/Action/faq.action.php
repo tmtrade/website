@@ -10,6 +10,10 @@
  */
 class FaqAction extends AppAction
 {
+    public $caches      = array('index','yyzz','kxwz','ryzz','rule','news','views');
+    public $cacheId     = 'redisHtml';
+    public $expire      = 3600;//1小时
+
 	public $categoryId	= array(45, 50, 51, 52, 53,54);
 	public $category	= array(
 						50	=> '商标新闻',
@@ -79,10 +83,10 @@ class FaqAction extends AppAction
 		$this->set("title", $title);
 		$this->set("keywords", $this->keyword);
 		$this->set("nav", $c);
-                $this->set("category", $this->category[$c]);
+        $this->set("category", $this->category[$c]);
 		$this->set("description", $this->description);
 		$this->set("pageBar", $pageBar);
-                $this->display();
+        $this->display();
 	}
 
 	//得到栏目对应的文章

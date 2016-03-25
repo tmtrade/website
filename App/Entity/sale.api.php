@@ -9,7 +9,7 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class SaleApi extends Entity//BaseCacheApi
+class SaleApi extends BaseCacheApi
 {
 	/**
 	 * 数据表键[表的唯一标识]
