@@ -47,13 +47,14 @@ class GoodsModule extends AppModule
 		return $res;
 	}
 
+	//获取商标信息
 	public function getListInfo($data)
 	{
 		if ( empty($data) ) return array();
 
 		$list = array();
 		foreach ($data as $k => $number) {
-			$sale = $this->load('sale')->getSaleInfo($number);
+			$sale = $this->load('sale')->getSaleInfo($number, 0, 0);
 			if ( empty($sale) ){
 				$info = $this->load('trademark')->getTmInfo($number);
 				if ( empty($info) ) continue;
