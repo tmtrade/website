@@ -239,7 +239,8 @@ class IndexModule extends AppModule
         //转换为值对应名的数组
         $values = arrayColumn($res,'name');
         $keys = arrayColumn($res,'number');
-        $res = arrayColumn($keys,$values);
+        $res = array_combine($keys,$values);
+
         return $res;
     }
 
