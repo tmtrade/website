@@ -364,17 +364,18 @@
         </div>    
   	     <div class="f-clearfix">
       	 <div class="yzc-categorypic-show fl">
-                       <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width:341px; height:368px;overflow: hidden;">
-                            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px;width:341px; height:368px; overflow: hidden;">
+                    <div  class="slideBox">
+                        <div class="sbd">
+                            <ul>
                                 <? foreach($module['pic'] as $pic): ?>
-                                <div><a href="<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></div>
+                                <li><a href="<?=$pic['link']?>" target="_blank"><img src="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
                                 <? endforeach; ?>
-                            </div>
-                            <span u="arrowleft" class="jssora03l" style="width: 55px; height: 55px; top: 123px; left: 8px;">
-                            </span>
-                            <span u="arrowright" class="jssora03r" style="width: 55px; height: 55px; top: 123px; right: 8px">
-                            </span>            
-                      </div>
+                            </ul>
+                        </div>
+                       
+                        <a class="sprev" href="javascript:void(0)"></a>
+                        <a class="snext" href="javascript:void(0)"></a>
+                    </div>
 
                     <div class="cate-list">
                         <? foreach($module['link'] as $link): ?>
@@ -566,64 +567,6 @@
 <!--漂浮楼层end-->
 
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
-<script type="text/javascript" src="<?=StaticDir?>1.2/js/jssor.core.js"></script>
-<script type="text/javascript" src="<?=StaticDir?>1.2/js/jssor.utils.js"></script>
-<script type="text/javascript" src="<?=StaticDir?>1.2/js/jssor.slider.js"></script>
-<script>
-    jQuery(document).ready(function ($) {
-        var options = {
-            $AutoPlay: true,
-            $AutoPlaySteps:1,
-            $AutoPlayInterval: 4000,
-            $PauseOnHover: 1,
-
-            $ArrowKeyNavigation: true,
-            $SlideDuration: 260,
-            $MinDragOffsetToSlide: 20,
-            $SlideWidth: 340,
-            $SlideHeight: 368,
-            $SlideSpacing: 3,
-            $DisplayPieces: 1,
-            $ParkingPosition: 0,
-            $UISearchMode: 1,
-            $PlayOrientation: 1,
-            $DragOrientation: 1,
-
-            $BulletNavigatorOptions: {
-                $Class: $JssorBulletNavigator$,
-                $ChanceToShow: 1,
-                $AutoCenter: 0,
-                $Steps: 1,
-                $Lanes: 1,
-                $SpacingX: 0,
-                $SpacingY: 0,
-                $Orientation: 1
-            },
-
-            $ArrowNavigatorOptions: {
-                $Class: $JssorArrowNavigator$,
-                $ChanceToShow: 1,
-                $AutoCenter: 2,
-                $Steps: 1                                       
-            }
-        };
-
-        var jssor_slider1 = new $JssorSlider$("slider1_container", options);
-        function ScaleSlider() {
-            var bodyWidth = document.body.clientWidth;
-            if (bodyWidth)
-                jssor_slider1.$SetScaleWidth(Math.min(bodyWidth,340));
-            else
-                window.setTimeout(ScaleSlider, 30);
-        }
-
-        ScaleSlider();
-
-        if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
-            $(window).bind('resize', ScaleSlider);
-        }
-    });
-</script>
 <script type="text/javascript">
     $(function(){
         //placeholder效果
@@ -664,14 +607,21 @@
 //交易无缝滚动
 jQuery(".mj-newjy").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50,trigger:"click"});
 //banner焦点图
-/*jQuery(".mj-bannerIimg").slide({titCell:".hd ul li",mainCell:".bd ul",prevCell:".sprev",nextCell:".snext",autoPlay:true});*/
+jQuery(".mj-bannerIimg").slide({titCell:".hd ul li",mainCell:".bd ul",prevCell:".sprev",nextCell:".snext",autoPlay:true});
 //活动推荐点击切换
 jQuery(".yzc-Activities").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:5,easing:"easeOutCirc"});
 //商标分类选项卡
 jQuery(".yzc-Brand").slide({effect:"fold"});
 //类别展示选项卡和焦点图
-jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"leftLoop",autoPlay:true});
+/*jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"leftLoop",autoPlay:true});*/
+jQuery(".slideBox").slide({mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"fold",delayTime:"500",autoPlay:true});
 jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fold",pnLoop:false});
+$(".slideBox").each(function(){
+  if($(this).children(".sbd").children("ul").children("li").length<=1){
+      $(this).children("a.sprev").hide();
+      $(this).children("a.snext").hide();
+  }
+})
     //漂浮楼层
     var cet_w=$("#cloth").offset().left;
     var oflr=$("#float-floor");
