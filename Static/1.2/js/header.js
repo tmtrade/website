@@ -20,6 +20,10 @@ $(document).ready(function(e) {
             $("#loginTips").attr('flag',1);
             return false;
         }
+        //倒计时期间点击无效
+        if($('#dl_sub').hasClass('yzm') && (($(this).val()).indexOf('密码'))==-1){
+            return false;
+        }
         ucNetwork.sendCode(mobile,$(this),'点击获取验证码');
     });
     //用户登录
@@ -233,23 +237,23 @@ function getLogin(title,tel,isExist){
     $("#dl_ts").hide();
     $('#loginTips').hide();
     var title = (title=='')?_defLogin:title;
-    if (!isExist){
+    if (isExist){
         //账户不存在
         $("#dl_wjmm").hide();//忘记密码(已存在账号)
         $("#dl_fsmm").show();//发送密码(不存在账号)
         $("#dl_fsmm").addClass('aaaa');//添加类
         //触发点击事件
         $('.mj-inpuVs').html('');
-        //$('#loginUser').val(tel);
-        //$('#dl_wjmm').trigger('click');
-        timer(60, $('.aaaa'), title);//倒计时
+        $('#loginUser').val(tel);
+        $('#dl_fsmm').click();
+        //timer(60, $('.aaaa'), title);//倒计时
     }else{
         //账户存在
         $("#dl_wjmm").addClass('aaaa');//添加类
         $('.mj-inpuVs').html('');
-        //$('#loginUser').val(tel);
+        $('#loginUser').val(tel);
     }
-    $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+    //$("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
     $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
     $("#dl_title").html(title);
     //弹出登录框
