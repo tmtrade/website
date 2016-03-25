@@ -63,14 +63,14 @@
                 <? if ( empty($g) && !empty($c) && count(explode(',', $c)) == 1 ) {?>
                 <div class="ms-conditionList">
                     <span>分类群组</span>
-                    <div class="ms-conditionList-main">
+                    <div class="ms-conditionList-main groupSty">
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="javacript:void(0);" onclick="createUrl('_group','0');return false;">全部</a></li>
                         <?foreach ($_GROUP[$c] as $_grp => $_gn) {?>
-                            <li title="<?=$_gn?>"><a href="" onclick="createUrl('_group','<?=$_grp?>');return false;"><?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?></a></li>
+                            <li  title="<?=$_gn?>"><a href="" onclick="createUrl('_group','<?=$_grp?>');return false;"><?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?></a></li>
                         <?}?>
                         </ul>
-                        <ul class="f-clearfix ms-conditionCheckbox">
+                        <ul class="f-clearfix ms-conditionCheckbox groupSty">
                         <?foreach ($_GROUP[$c] as $_grp => $_gn) {?>
                             <li title="<?=$_gn?>"><input type="checkbox" id="group-checkbox<?=$_grp?>" value="<?=$_grp?>" />
                             <label for="group-checkbox<?=$_grp?>"><?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?></label></li>
