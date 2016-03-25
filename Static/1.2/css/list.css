@@ -288,19 +288,38 @@ body{ background:#f5f5f5 !important;}
 .brand-details div.fl-details .brde-pic span.brde-pic-box{
 	display:block;
 	height:265px;
+	position:relative;
+	z-index:1;
+	text-align:center;
 	
 	}
 .brand-details div.fl-details .brde-pic img{
 	display:block;
 	margin:auto;
-    max-width: 378px;
+    max-width: 376px;
     max-height: 260px;
 }
+.brand-details div.fl-details .brde-pic span.brde-pic-box a{
+	display:inline-block;
+	background:rgba(0,0,0,0.2);
+	padding:2px 6px;
+	color:#ffffff;
+	border-radius:10px;
+	font-size:12px;
+	position:absolute;
+	bottom:15px;
+	left: 31%;
+	
+	}
 .brand-details div.fl-details .brde-pic p{
-    margin: auto;
-    margin-top:22px;
+   margin: auto;
+    /* margin-top: 22px; */
     font-size: 12px;
-    /*width: 90%;*/
+    /* width: 90%; */
+    background:#fafafa;
+    /* height: 47px; */
+    padding-top: 17px;
+    padding-bottom: 16px;
 
 }
 .brand-details div.fl-details .brde-pic p span{
