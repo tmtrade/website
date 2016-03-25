@@ -730,7 +730,7 @@ margin: 0;
 	background:#030;
     min-height:56px;
   /*  overflow: hidden;*/
-    background: #ffffff;
+    background: #f8f8f8;
     position: absolute;
     top:0px;
     left: 0px;
@@ -738,6 +738,7 @@ margin: 0;
    /* text-align: center;*/
     display: none;
 	padding-bottom: 15px;
+    border: 1px solid #bfbbbb !important;
 }
 .tj-recom li div.dw{
 	position: relative;
