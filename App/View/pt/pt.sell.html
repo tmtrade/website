@@ -1,8 +1,6 @@
 <? require(ViewDir.'/header.html'); ?>
 <script src="<?=StaticDir?>1.2/js/clicks.js"></script>
 <link rel="stylesheet" href="<?=StaticDir?>style/home-1-bh150627165347.css" />
-<script type="text/javascript" src="http://s.union.360.cn/1131.js"></script>
-<script src="<?=StaticDir?>1.2/js/backcallandtongji.js"></script>
 <style type="text/css">
      .listtel{
              width:105px;
@@ -37,7 +35,7 @@
                         <input type="text" class="u-input-text u-input-text1" name="subject" id="buyNeed" autocomplete="off" placeholder="专利号 / 专利描述" />
                         <input type="text" class="u-input-text u-input-text2" name="tel" autocomplete="off" id="buyMoblie" placeholder="请输入联系电话" />
                        
-                        <input type="button" class="btn" id="subBuy" value="立即评估" /><span class="btn btn1" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-10">在线咨询</span>
+                        <input type="button" class="btn" id="subBuy" value="立即评估" /><span class="btn btn1" onClick="goChat()" id="rediana-10">在线咨询</span>
                         
                     </div>
                 </div>
@@ -51,51 +49,51 @@
             <div class="sp-2_box">
                 <div class="icon icon-9 absolute1" data-class="icon-9-hover">
                     <b>强制许可</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-1">啥叫<br/>强制许可</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-1">啥叫<br/>强制许可</a>
                 </div>
                 <div class="icon icon-11 absolute2" data-class="icon-11-hover">
                     <b>交叉许可</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-2">啥叫<br/>交叉许可</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-2">啥叫<br/>交叉许可</a>
                 </div>
                 <div class="icon icon-13 absolute3" data-class="icon-13-hover">
                     <b>计划许可</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-3">啥叫<br/>计划许可</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-3">啥叫<br/>计划许可</a>
                 </div>
                 <div class="icon icon-11 absolute4" data-class="icon-11-hover">
                     <b>分许可</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-4">啥叫<br/>分许可</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-4">啥叫<br/>分许可</a>
                 </div>
                 <div class="icon icon-11 absolute5" data-class="icon-11-hover">
                     <b>独家许可</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-5">啥叫<br/>独家许可</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-5">啥叫<br/>独家许可</a>
                 </div>
                 <div class="icon icon-13 absolute6" data-class="icon-13-hover">
                     <b>普通许可</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-6">啥叫<br/>普通许可</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-6">啥叫<br/>普通许可</a>
                 </div>
                 <div class="icon icon-9 absolute7" data-class="icon-9-hover">
                     <b>独占许可</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-7">啥叫<br/>独占许可</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-7">啥叫<br/>独占许可</a>
                 </div>
                 <div class="icon icon-15 absolute8" data-class="">
                     <b>什么许可方式<br/>最合适？</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-8">专利权<br/>许可方式</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-8">专利权<br/>许可方式</a>
                 </div>
                 <div class="icon icon-16 absolute9" data-class="">
                     <b>怎么转让方式<br/>最赚钱? </b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-9">转让方式</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-9">转让方式</a>
                 </div>
                 <div class="icon icon-17 absolute10" data-class="icon-17-hover">
                     <b>普通转让</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-10">啥叫普通转让</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-10">啥叫普通转让</a>
                 </div>
                 <div class="icon icon-19 absolute11" data-class="icon-19-hover">
                     <b>排他转让</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-11">啥叫排他转让</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-11">啥叫排他转让</a>
                 </div>
                 <div class="icon icon-21 absolute12" data-class="icon-21-hover">
                     <b>独家转让</b>
-                    <a href="javascript:void(0)" onClick="doyoo.util.openChat('g=51817');return false;" id="rediana-11">啥叫独家转让</a>
+                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-11">啥叫独家转让</a>
                 </div>
             </div>
         </div>
@@ -183,9 +181,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" charset="utf-8" src="http://gate.looyu.com/46344/123997.js"></script>
-<div id="doyoo_share" style="display:none;"></div>
-<link rel="stylesheet" type="text/css" href="http://static.doyoo.net/110402/looyu.css?140702">
-<script type="text/javascript" src="http://static.doyoo.net/110402/looyu.js?141104"></script>
+
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/pt.js"></script>
 <? require(ViewDir.'/footer.html'); ?>

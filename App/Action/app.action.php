@@ -53,7 +53,7 @@ abstract class AppAction extends Action
 		$this->set('menuThird',$menuThird);
 		$this->set('menuPic',$menuPic);
 		//获得友情链接数据
-      	$frendlyLink = $this->com('redisHtml')->get('footer_link');
+                $frendlyLink = $this->com('redisHtml')->get('footer_link');
 		if(empty($frendlyLink)){
 			$frendlyLink = $this->load('faq')->newsList(array('c'=>47,'limit'=>20));
 			$this->com('redisHtml')->set('footer_link', $frendlyLink, 3600);
