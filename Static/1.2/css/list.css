@@ -1626,6 +1626,7 @@ body{ background:#f5f5f5 !important;}
 .case-xq-main dl dt img{
     display: block;
     margin: auto;
+	max-width: 885px;
 }
 .case-xq-main dd{
     margin-top:20px;
