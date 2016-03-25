@@ -912,18 +912,18 @@ margin: 0;
     position: relative;
 }
 
-/*
+
 .slideBox{ width:340px; height:368px; overflow:hidden; position:relative; border:1px solid #ddd;  }
 .slideBox .shd{ height:15px; overflow:hidden; position:absolute;  right:5px; bottom:5px; z-index:999; }
 .slideBox .shd p{ overflow:hidden; zoom:1; float:left;  }
 .slideBox .shd p a{ float:left; margin-right:2px;  width:15px; height:15px; border-radius:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
-.slideBox .shd p a.on{ background:#f00; color:#fff; }*/
-/*.slideBox .bd1{ position:relative; height:100%; z-index:0;   }*/
-/*.slideBox .bd1 li{ zoom:1; vertical-align:middle;}*/
-/*.slideBox .bd1 img{width:340px; height:368px;display:block;  }*/
+.slideBox .shd p a.on{ background:#f00; color:#fff; }
+.slideBox .bd1{ position:relative; height:100%; z-index:0;   }
+.slideBox .bd1 li{ zoom:1; vertical-align:middle;}
+.slideBox .bd1 img{width:340px; height:368px;display:block;  }
 
-/* 下面是前/后按钮代码，如果不需要删除即可 */
-/*.slideBox .sprev,
+ /*下面是前/后按钮代码，如果不需要删除即可 */
+.slideBox .sprev,
 .slideBox .snext{ position:absolute; left:3%; top:50%; margin-top:-25px; display:block; width:32px; height:40px; background:url(../images/slider-arrow.png) -110px 5px no-repeat; filter:alpha(opacity=50);opacity:0.5;   }
 .slideBox .snext{ left:auto; right:3%; background-position:8px 5px; }
 .slideBox .sprev:hover,
@@ -931,32 +931,6 @@ margin: 0;
 .slideBox .sprevStop{ display:none;  }
 .slideBox .snextStop{ display:none;  }
 .slideBox .sbd li img{ width:341px; height:368px;}
-*/
-.jssorb03 div, .jssorb03 div:hover, .jssorb03 .av
-{
-    background:url(../images/slider-arrow.png) no-repeat;
-    overflow:hidden;
-    cursor: pointer;
-}
-.jssorb03 div { background-position: 8px 5px;}
-.jssorb03 div:hover, .jssorb03 .av:hover { background-position: -35px -4px; }
-.jssorb03 .av { background-position: -110px 5px; }
-.jssorb03 .dn, .jssorb03 .dn:hover { background-position: -95px -4px; }
-.jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn
-{
-    position: absolute;
-    cursor: pointer;
-    display: block;
-    background: url(../images/slider-arrow.png) no-repeat;
-    overflow:hidden;
-}
-.jssora03l { background-position: -110px 5px;left: 3px !important;}
-.jssora03r {background-position:8px 5px;right: -21px !important;}
-/*.jssora03l:hover { background-position: -123px -33px; }*/
-/*.jssora03r:hover { background-position: -183px -33px; }*/
-.jssora03ldn { background-position: -243px -33px; }
-.jssora03rdn { background-position: -303px -33px; }
-
 
 .cate-list{
     width: 340px;
