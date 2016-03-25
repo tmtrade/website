@@ -27,7 +27,7 @@ class DetailAction extends AppAction
 	 * @throws SpringException
 	 */
 	public function view(){
-                if(isset($_COOKIE['uc_nickname'])){
+		if(isset($_COOKIE['uc_nickname'])){
 			$this->set('user_tel',$_COOKIE['uc_nickname']);
 		}else{
 			$this->set('user_tel','');
@@ -61,7 +61,7 @@ class DetailAction extends AppAction
 //		foreach($info['items'] as &$item){
 //			$item['groupName'] = $this->load('search')->handleGroup($item['group']);
 //		}
-		unset($item);
+		//unset($item);
 		//得到商标的分类描述
 		if(count($info['class']==1)){
 			$res = $this->load('search')->getClassInfo($info['class'][0]);

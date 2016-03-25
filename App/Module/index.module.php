@@ -25,6 +25,7 @@ class IndexModule extends AppModule
      */
     public function getIndexBasic(){
         //查询所有数据
+        $class_all = $this->getAllClass();
         $r['order'] = array('sort'=>'asc');
         $r['limit'] = 1000;
         $r['neq'] = array('type'=>2);
@@ -52,14 +53,9 @@ class IndexModule extends AppModule
                 case '4':
                     //得到分类的名字
                     $class = explode(',',$item['desc']);
-                    //取前6个
-                    //$class = array_slice($class,0,6);
                     $className = array();
                     foreach($class as $v){
-                        $r['eq'] = array('id'=>$v);
-                        $r['col'] = array('number','name');
-                        $rst = $this->import('class')->find($r);
-                        $className[] = $rst['number'].'类'.$rst['name'];
+                        $className[] = $v.'类'.$class_all[$v];
                     }
                     $recommendClasses[] = array(
                         'pic'=>$item['pic'],
@@ -237,18 +233,14 @@ class IndexModule extends AppModule
     public function getAllClass(){
         $r['eq']    = array('parent' => "0");
         $r['limit'] = 45;
-        $r['col'] = array('id','number','name');
+        $r['col'] = array('number','name');
         $r['order'] = array('sort' => 'asc');
         $res = $this->import('tmclass')->find($r);
-        $data = array();
-        foreach($res as $k=>$item){
-            $key = floor($k/9);
-            if($key==0){
-                $item['number'] = '0'.$item['number'];
-            }
-            $data[$key][] = $item;
-        }
-        return $data;
+        //转换为值对应名的数组
+        $values = array_column($res,'name');
+        $keys = array_column($res,'number');
+        $res = array_combine($keys,$values);
+        return $res;
     }
 
     /**
