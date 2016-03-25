@@ -139,10 +139,13 @@ abbr,acronym { border:0}
 
 .goods-category ul li span{
     display:block;
-    margin-top:55px;
+    margin-top:25px;
+    height: 122px;
 }
 .goods-category ul li span img{
     margin: auto;
+    max-width:170px;
+    max-height: 122px;
 }
 
 .goods-category ul li h6{
