@@ -15,7 +15,11 @@ class TopicAction extends AppAction
     {
         $this->display();
     }
-
+    //第二课
+    public function lesson_two()
+    {
+        $this->display();
+    }
     //天猫与京东
     public function tmall_jd()
     {
