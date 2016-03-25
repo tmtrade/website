@@ -10,9 +10,6 @@
  */
 class FaqAction extends AppAction
 {
-	public $seotime		= '一只蝉';
-	public $keyword		= '商标转让,商标转让网,注册商标转让,转让商标,商标买卖,商标交易,商标交易网';
-	public $description	= '一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台-商标转让-专利转让';
 	public $categoryId	= array(45, 50, 51, 52, 53,54);
 	public $category	= array(
 						50	=> '商标新闻',
@@ -77,7 +74,7 @@ class FaqAction extends AppAction
 		$pager			= $this->pager(count($total), $limit);
 		$pageBar		= empty($list) ? '' : getPageBar($pager);
 
-		$title   = $this->category[$c] . ' - '.$this->seotime;
+		$title   = $this->category[$c] . ' - 一只蝉商标转让平台网';
 		$this->set("list", $list);
 		$this->set("title", $title);
 		$this->set("keywords", $this->keyword);
@@ -95,18 +92,29 @@ class FaqAction extends AppAction
 		$c			= $this->input("c","int");
 		
 		$data		= $this->load('faq')->newsList(array('id'=>$id));
-		$maxId		= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1,'maxId'=>$id));
-		$minId		= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1,'minId'=>$id));
-		$title   = $data[0]['title'].' - '.$this->seotime;
-
 		$this->set("list", $data[0]);
-		$this->set("title", $title);
-		$this->set("keywords", $data[0]['thumtitle']);
-		$this->set("nav", $c);
+                switch ($id){
+                case 987: 
+                    $this->pageTitle        = '商标交易常见问题-商标转让时间-商标转让流程-- 一只蝉商标转让网';
+                    $this->pageKey          = '商标交易常见问题,商标转让时间,商标转让流程,商标转让需要多长时间,买商标有哪些流程,商标转让需要哪些手续';
+                    $this->pageDescription  = '一只蝉商标转让网为你整理了,商标转让常见问题,如商标转让时间,商标转让流程,商标转让需要多长时间,买商标有哪些流程,商标转让需要哪些手续等。一只蝉商标转让网,你身边的知产专家。';
+                    break;
+                case 988: 
+                    $this->pageTitle        = '用户服务协议 - 一只蝉商标转让平台网';
+                    $this->pageKey          = '一只蝉用户服务协议,商标转让协议,商标转让资料';
+                    $this->pageDescription  = '一只蝉用户服务协议,商标转让协议,商标转让资料。一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台';
+                    break;
+                case 990: 
+                    $this->pageTitle        = '商标交易流程-商标转让流程-最安全的购买商标流程 - 一只蝉商标转让平台网';
+                    $this->pageKey          = '商标交易流程,商标转让流程,购买商标流程,购买商标有哪些流程';
+                    $this->pageDescription  = '商标交易流程有哪些？一只蝉为你提供最详细的商标转让流程,购买商标流程介绍。为你解决你购买商标过程中的各种问题。一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台。';
+                    break;
+                }
+                $this->set('title', $this->pageTitle);//页面title
+                $this->set('keywords', $this->pageKey);//页面keywords
+                $this->set('description', $this->pageDescription);//页面description
                 $this->set("id", $id);
-		$this->set("maxId", $maxId[0]);
-		$this->set("minId", $minId[0]);
-        $this->display();
+                $this->display();
 	}
 
 }

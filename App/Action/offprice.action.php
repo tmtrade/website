@@ -10,7 +10,12 @@
  */
 class OffpriceAction extends AppAction
 {
-    public $pageTitle   = '特价商标 - 一只蝉';
+    public $pageTitle 	= '特价商标,买卖特价商标- 一只蝉商标交易网';
+	
+    public $pageKey 	= '特价商标交易,特价商标转让,买特价商标,特价商标买卖,买便宜商标，便宜商标转让';
+	
+    public $pageDescription = '特价商标买卖,特价商标转让交易上一只蝉商标转让交易平台,一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息。也是中国独家签订交易损失赔付协议保障风险平台。买特价商标，买便宜商标上一只蝉。一只蝉商标交易网,为用户精心挑选的众多特价商标,方便不同需求用户。提供特价商标交易,特价商标交易。';
+
     private $_number    = 30;
     private $_col       = array('id', 'tid', 'number', 'class', 'name', 'group', 'price', 'salePrice');
     private $_searchArr = array();

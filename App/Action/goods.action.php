@@ -10,8 +10,6 @@
  */
 class GoodsAction extends AppAction
 {
-    public $pageTitle   = ' - 一只蝉';
-
     private $_number    = 30;
     private $_searchArr = array();
 

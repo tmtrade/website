@@ -10,9 +10,11 @@
  */
 class CaseAction extends AppAction
 {
-	public $seotime		= '一只蝉';
-	public $keyword		= '商标转让,商标转让网,注册商标转让,转让商标,商标买卖,商标交易,商标交易网';
-	public $description	= '一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台-商标转让-专利转让';
+        public $pageTitle 	= '商标转让成功案例-- 一只蝉商标转让平台网';
+
+        public $pageKey 	= '商标转让,商标转让网,注册商标转让,转让商标,商标买卖,商标交易,商标交易网';
+
+        public $pageDescription = '一只蝉商标转让成功案例。一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台-商标转让-专利转让';
 
 	//得到栏目对应的文章列表
 	public function index()
@@ -23,10 +25,8 @@ class CaseAction extends AppAction
 		$list			= $this->load('case')->getCaseList('', $page, $limit);
 		$pager			= $this->pagerNew($list['total'], $limit);
 		$pageBar		= empty($list) ? '' : getPageBarNew($pager);
-		$title   = '成功案列 - '.$this->seotime;
                 
 		$this->set("list", $list['rows']);
-		$this->set("title", $title);
 		$this->set("keywords", $this->keyword);
 		$this->set("description", $this->description);
 		$this->set("pageBar", $pageBar);

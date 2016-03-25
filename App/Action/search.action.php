@@ -10,7 +10,12 @@
  */
 class SearchAction extends AppAction
 {
-    public $pageTitle   = '商标筛选 - 一只蝉';
+    public $pageTitle 	= '商标筛选_商标选择_商标分类筛选-- 一只蝉商标买卖网';
+	
+    public $pageKey 	= '商标筛选,商标选择,挑选商标,商标分类筛选';
+	
+    public $pageDescription = '一只蝉商标转让网，为用户提供更专业的商标筛选,商标选择。为用户在商标选择和挑选商标，商标分类筛选中提供更多信息,商标筛选尽在一只蝉商标买卖网。';
+
 
     private $_number    = 30;
     private $_searchArr = array();

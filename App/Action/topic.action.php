@@ -10,8 +10,6 @@
  */
 class TopicAction extends AppAction
 {
-    public $seotime		= '一只蝉';
-    
     //第一课
     public function lesson_one()
     {

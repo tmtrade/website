@@ -18,7 +18,7 @@ class DetailAction extends AppAction
 	 */
 	private function getTitle($data,$goods)
 	{
-		$title = $data['name']."_".$data['class']."类_".$goods."商标转让|买卖|交易 – 一只蝉";
+		$title = $data['name']."_".$data['class']."类_".$goods."商标转让|买卖|交易 – 一只蝉商标转让平台网";
 		return $title;
 	}
 

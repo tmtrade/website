@@ -619,6 +619,7 @@
                 var tidstr = "";
                 var tids = "";
                 var datas = eval("("+data+")");
+                if(datas.length==0) return;
                 for(var j=0,n=datas.length;j<n;j++){
                         tids = datas[j];    //当前层数据
                         if(j==0){
