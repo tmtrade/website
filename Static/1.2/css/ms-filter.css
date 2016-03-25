@@ -73,6 +73,12 @@
     line-height: 20px;
 	width: 85px;
 }
+.groupSty li{
+	width: 170px !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
 .cc_all2 li{
     width: 120px;
 }
