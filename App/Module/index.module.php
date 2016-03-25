@@ -237,9 +237,9 @@ class IndexModule extends AppModule
         $r['order'] = array('sort' => 'asc');
         $res = $this->import('tmclass')->find($r);
         //转换为值对应名的数组
-        $values = array_column($res,'name');
-        $keys = array_column($res,'number');
-        $res = array_combine($keys,$values);
+        $values = arrayColumn($res,'name');
+        $keys = arrayColumn($res,'number');
+        $res = arrayColumn($keys,$values);
         return $res;
     }
 

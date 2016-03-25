@@ -51,7 +51,7 @@
                     <?=mb_substr($val, 0, 6, 'utf8')?></a>
                 <? } ?>
                 <? if ( count($_GROUP[$c]) > 10 ){?>
-                    <a href="javascript:;" class="curs" id="mg_aclik">......</a>
+                    <a href="javascript:;" class="curs" id="mg_aclik" style="color: rgb(75, 165, 222);">展开</a>
                 <?}?>
                 </div>
             </dd>
@@ -290,13 +290,13 @@
             obj.removeAttr('style');
             $(this).removeClass('curs');
             $(this).css("color","#4ba5de");
-            $(this).text("收起")
+            $(this).text("收起");
         }else{
 
             obj.css({'display':'none'});
             $(this).addClass('curs');
             $(this).css("color","#4ba5de");
-            $(this).text("展开")
+            $(this).text("展开");
         }
     });
 
@@ -310,12 +310,12 @@
             gobj.removeAttr('style');
             $(this).removeClass('curs');
             $(this).css("color","#4ba5de");
-            $(this).text("收起")
+            $(this).text("收起");
         }else{
             gobj.css({'display':'none'});
             $(this).addClass('curs');
-            $(this).css("color","#666");
-            $(this).text("......")
+            $(this).css("color","#4ba5de");
+            $(this).text("展开");
         }
     });
 //});
