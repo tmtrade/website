@@ -31,7 +31,7 @@
                 $(".reg-tip22").attr('flag',3);
                 return false;
             }
-            if( !subject ){
+            if( !(subject) || subject=='对商标的特殊要求  如：25类鞋子' ){
                 $(".mj-eed").show();
                 $(".reg-tip22 em").show().text('请输入内容');
 				 $(".mj-newjy").css("margin-top","5px");
@@ -48,7 +48,8 @@
         });
         //验证内容
         $('#buyNeed').blur(function(){
-            if(!($.trim($('#buyNeed').val()))){
+            var buy_need = $.trim($('#buyNeed').val());
+            if( !(buy_need) || buy_need=='对商标的特殊要求  如：25类鞋子'){
                 $(".mj-eed").show();
                 $(".reg-tip22 em").show().text('请输入内容');
 				$(".mj-newjy").css("margin-top","5px");
@@ -136,6 +137,9 @@
     function isChineseOrEng(temp)
     {
         var regExp = /^[(\u4e00-\u9fa5)A-Za-z]+$/;
+        if(temp=='姓氏'){
+            return true;
+        }
         if(regExp.test(temp))
             return false;
         return true;

@@ -120,12 +120,13 @@ class InternalModule extends AppModule
 	}
 
     //获取商品信息（可选包含的所有联系人与包装信息）
-    public function getSaleInfo($saleId, $contact=1, $tminfo=1)
+    public function getSaleInfo($saleId, $contact=1, $tminfo=1 ,$flag = true)
     {
         $r['eq'] = array(
             'id' => $saleId,
             );
-        $info = $this->import('sale')->setCache(false)->find($r);
+
+        $info = $this->import('sale')->setCache($flag)->find($r);
         if ( empty($info) ) return array();
         if ( $contact ) $info['contact']    = $this->getSaleContact($saleId);
         if ( $tminfo ) $info['tminfo']      = $this->getSaleTminfo($saleId);

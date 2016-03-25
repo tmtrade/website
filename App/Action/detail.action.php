@@ -91,7 +91,7 @@ class DetailAction extends AppAction
 			$contact['name']	= '蝉妹妹';
 			$contact['phone']	= $this->getPhoneName($tid, $class, 0);
 		}else{
-			$sale 		= $this->load('internal')->getSaleInfo($saleId, 0, 1);
+			$sale 		= $this->load('internal')->getSaleInfo($saleId, 0, 1,false);
 			$platform 	= explode(',', $sale['platform']);
 			$isSale  	= $sale['status'] == 1 ? true : false;
 			$tips 		= $this->load('search')->getTips($sale);
