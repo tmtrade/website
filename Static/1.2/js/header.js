@@ -237,7 +237,7 @@ function getLogin(title,tel,isExist){
     $("#dl_ts").hide();
     $('#loginTips').hide();
     var title = (title=='')?_defLogin:title;
-    if (isExist){
+    if (!isExist){
         //账户不存在
         $("#dl_wjmm").hide();//忘记密码(已存在账号)
         $("#dl_fsmm").show();//发送密码(不存在账号)
@@ -253,7 +253,9 @@ function getLogin(title,tel,isExist){
         $('.mj-inpuVs').html('');
         $('#loginUser').val(tel);
     }
-    //$("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+    if(!tel){
+        $("#loginUser").parent().parent().find($(".mj-inpuVs")).text("请输入手机号");
+    }
     $("#loginPass").parent().parent().find($(".mj-inpuVs")).text("请输入密码");
     $("#dl_title").html(title);
     //弹出登录框
