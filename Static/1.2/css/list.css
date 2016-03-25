@@ -814,7 +814,7 @@ body{ background:#f5f5f5 !important;}
     color:#999999;
     text-align: center;
     height: 50px;
-    line-height: 30px;
+    line-height:50px;
 }
 .record-collect p.p-logo a{
     color: #48aff1;
@@ -843,7 +843,11 @@ body{ background:#f5f5f5 !important;}
 }
 .main-db .recompic{
     border-top: none;
+	
 }
+.main-db{
+	height:auto !important;
+	}
 .intr-flow{
     width: 924px;
     background: #ffffff;
