@@ -67,9 +67,11 @@
 }
 .ms-conditionList-main li{
     float: left;
-    padding: 0 15px 10px;
+   /* padding: 0 15px 10px;*/
+   padding: 0px 8px 10px;
     height: 20px;
     line-height: 20px;
+	width: 85px;
 }
 .cc_all2 li{
     width: 120px;
@@ -81,7 +83,7 @@
 .ms-advancedFilter > ul > li > a,
 .ms-conditionList-main label,
 .ms-conditionList-main li a{
-	padding: 2px 5px;
+	/*padding: 2px 5px;*/
     color: #666666;
 }
 
@@ -225,6 +227,8 @@
     width: 184px;
     border: 1px solid #e3e3e3;
     background: #ffffff;
+	margin-top:10px;
+	margin-bottom:10px;
 }
 .ms-filterSearch input[type="text"]{
     height: 26px;
