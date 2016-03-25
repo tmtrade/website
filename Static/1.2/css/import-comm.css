@@ -140,6 +140,8 @@ img{
 .fdkf-zk li.btm-tj div select{
    width: 197px;
     height: 33px;
+	line-height:33px;
+	
     border: 1px solid #dadada;
     color: #777777;
     text-indent: 15px;
@@ -148,11 +150,14 @@ img{
 .fdkf-zk li.btm-tj div input{
     width: 174px;
     height: 33px;
+	line-height:33px;
+
     border: 1px solid #dadada;
     color: #777777;
     text-indent: 15px;
     float: left;
     margin-left: 15px;
+	
 }
 .fdkf-zk li.btm-tj div  a{
     display: inline-block;
