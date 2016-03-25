@@ -310,7 +310,8 @@
 	height:55px;
 }
 .ms-filtersListTxt h6{
-	font-size:12px;
+	font-size:13px;
+	-ms-font-size:13px;
 	}
 .ms-filtersListTxt p{
     color: #999999;
@@ -427,6 +428,10 @@
     position: relative;
 	
 }
+/*.ms-recommend a:hover .ms-filtersListTxt h6{
+	color:#ff6666;
+	}
+*/
 .ms-recommend  dd:first-child{
 	border-top:none;
 	}
@@ -450,6 +455,7 @@
 .ms-recommend > dd .ms-filtersListTxt h6{
     color: #333333;
     font-size: 12px;
+	font-weight:normal;
 }
 .ms-recommend > dd .ms-filtersListTxt h6 a{
     color: #333333;
