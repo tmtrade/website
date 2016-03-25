@@ -49,10 +49,6 @@ class ZhuantiAction extends AppAction
 			$topic 	= $this->load('zhuanti')->getTopicInfo($id);
 			$topicItems = $this->load('zhuanti')->getTopicClassList($id);
 		}
-                //解析商标群组名
-		foreach($topicItems as &$item){
-			$item['groupName'] = $this->load('search')->getGroupName($item['sale']['group']);
-		}
 		$this->set('topic', $topic);
 		$this->set('topicItems', $topicItems);
                 

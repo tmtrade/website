@@ -17,11 +17,11 @@
                 <li>
                     <div class="front" style="width: 188px;">
                         <span>
-                            <a href="/d-<?=$v['sale']['tid']?>-<?=$v['sale']['class']?>.html" target="_blank"><img src="<?=$v['tminfo']['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="145" height="89"></a>
+                            <a href="<?=$v['viewUrl']?>" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="145" height="89"></a>
                         </span>
                         <p>
-                           <font> <?=mbSub($v['name'],0,9);?> <?=mbSub($v['sale']['class'],0,10)?>类</font>
-                            <?=mbSub($v['groupName'],0,12)?>
+                           <font> <?=mbSub($v['name'],0,9);?> <?=mbSub($v['class'],0,10)?>类</font>
+                            <?=mbSub($v['goods'],0,12)?>
                         </p>
                     </div>
                     <div class="reverse">
@@ -30,14 +30,14 @@
                             <a class="cl-org">精</a>
                         </dt>
                         <span>
-                            <a href="/d-<?=$v['sale']['tid']?>-<?=$v['sale']['class']?>.html" target="_blank"><img src="<?=$v['tminfo']['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="145" height="89"></a>
+                            <a href="<?=$v['viewUrl']?>" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="145" height="89"></a>
                         </span>
-                        <p title="<?=$v['groupName']?>">
+                        <p title="<?=$v['goods']?>">
                             <font> <?=mbSub($v['name'],0,9);?> <?=mbSub($v['sale']['class'],0,10)?>类</font>
-                            <?=mbSub($v['groupName'],0,12)?>
+                            <?=mbSub($v['goods'],0,12)?>
                         </p>
                         <label>
-                             <input class="xunjia_data" type="hidden" tid="<?=$v['sale']['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
+                             <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                             <a href="javascript:void(0);" onclick="xunjia(this);" class="first cl-red">
                                 <img src="<?=StaticDir?>zhuanti/images/catebuy1.png"/>
                                 询 价

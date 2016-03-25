@@ -49,12 +49,10 @@ class ZhuantiModule extends AppModule
         $r['limit'] = 100;
         $r['order'] = array('sort'=>'asc');
         $data = $this->import('topicitems')->findAll($r);
-        foreach ($data['rows'] as $k=>$v){
-            $v['sale']      = $this->load('sale')->getSaleInfo($v['number']);
-            $v['tminfo']    = $this->load('trademark')->getTminfo($v['number']);
-            $arr[$k] = $v;
-        }
-        return $arr;
+        $_numbers = arrayColumn($data['rows'], 'number');
+        $list = $this->load('goods')->getListInfo($_numbers);
+        $list = $this->load('search')->getListTips($list);
+        return $list;
     }
 
     /**
