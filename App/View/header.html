@@ -36,6 +36,7 @@
     $(document).ready(function(e) {
     ucConfig.setConfig('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
     var copyArr = new Array();
+    var isLoghtml = '';
     ucLoginTemp.setLoginTemp();
     //用户是否登录
     nick_name = getCookie('uc_nickname');
