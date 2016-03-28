@@ -118,8 +118,8 @@ abbr,acronym { border:0}
 .brand-fl {
     overflow: hidden;
     background: #ffffff;
-    padding-top: 10px;
-    padding-bottom: 20px;
+   padding-top: 10px;
+    padding-bottom: 10px;
     position: absolute;
     z-index: 99;
     border-radius: 5px;
@@ -138,6 +138,7 @@ abbr,acronym { border:0}
     width: 116px;
     text-align: left !important;
     margin-top: 8px;
+	font-size: 12px;
 }
 .brand-fl li span {
     color: #999999;
