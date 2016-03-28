@@ -1,10 +1,5 @@
-
 //分类弹框
-
 //$(".mj-models").hide(); //初始ul隐藏
-
-
-
 var CHOFN = (function($,chofn){
 
     var __loginBox = $('#loginFormDiv');
