@@ -10,7 +10,11 @@
  */
 class BuyAction extends AppAction
 {
-        public $fkcookie    = 'fkcookie';
+        public $fkcookie        = 'fkcookie';
+        public $pageTitle 	= '买商标,商标交易,购买商标,哪里可以购买商标,买卖商标哪里好_一只蝉商标交易转让网';
+        public $pageKey 	= '买商标,购买商标,商标交易,商标买卖,哪里可以购买商标，买卖商标公司,买卖商标哪里好';
+        public $pageDescription = '一只蝉商标交易网是国内领先的商标交易平台，最权威的商标转让机构。买商标为你快速入驻天猫,京东等电商平台。买卖商标哪里好？一只蝉13年专业经验,为买卖商标创造一个快速安全专业的商标交易平台。';
+
 	 
     public function index()
     {

@@ -10,9 +10,9 @@
  */
 class FaqAction extends AppAction
 {
-    public $caches      = array('index','yyzz','kxwz','ryzz','rule','news','views');
-    public $cacheId     = 'redisHtml';
-    public $expire      = 3600;//1小时
+        public $caches      = array('index','yyzz','kxwz','ryzz','rule','news','views');
+        public $cacheId     = 'redisHtml';
+        public $expire      = 3600;//1小时
 
 	public $categoryId	= array(45, 50, 51, 52, 53,54);
 	public $category	= array(
@@ -83,10 +83,10 @@ class FaqAction extends AppAction
 		$this->set("title", $title);
 		$this->set("keywords", $this->keyword);
 		$this->set("nav", $c);
-        $this->set("category", $this->category[$c]);
+                $this->set("category", $this->category[$c]);
 		$this->set("description", $this->description);
 		$this->set("pageBar", $pageBar);
-        $this->display();
+                $this->display();
 	}
 
 	//得到栏目对应的文章
@@ -112,6 +112,19 @@ class FaqAction extends AppAction
                     $this->pageTitle        = '商标交易流程-商标转让流程-最安全的购买商标流程 - 一只蝉商标转让平台网';
                     $this->pageKey          = '商标交易流程,商标转让流程,购买商标流程,购买商标有哪些流程';
                     $this->pageDescription  = '商标交易流程有哪些？一只蝉为你提供最详细的商标转让流程,购买商标流程介绍。为你解决你购买商标过程中的各种问题。一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台。';
+                    break;
+                default :
+                    if(!empty($this->category[$c])){
+                        $this->pageTitle        =  $data[0]['title'].' - '.$this->category[$c] . ' - 一只蝉商标转让平台网';
+                    }else{
+                        $this->pageTitle        =  $data[0]['title'] . ' - 一只蝉商标转让平台网';
+                    }
+                    if(!empty($data[0]['keyword'])){
+                      $this->pageKey          = $data[0]['keyword'];  
+                    }
+                    if(!empty($data[0]['introduction'])){
+                        $this->pageDescription  = $data[0]['introduction'];
+                    }
                     break;
                 }
                 $this->set('title', $this->pageTitle);//页面title
