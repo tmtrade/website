@@ -595,8 +595,8 @@ margin: 0;
 
 }
 .yzc-Activities ul li img{
-	width:235px;
-	height:140px;
+	max-width:235px;
+	max-height:140px;
     position: absolute;
     top:0px;
     left: 0px;
@@ -935,8 +935,8 @@ margin: 0;
 	display:table-cell;
 	text-align:center;
 	vertical-align:middle;
-	}
-	{ max-width:341px; max-height:368px;min-width:141px; min-height:141px; text-align:center;}
+}
+.slideBox .sbd li img{max-width:341px; max-height:368px;min-width:141px; min-height:141px; text-align:center;}
 
 .cate-list{
     width: 340px;
