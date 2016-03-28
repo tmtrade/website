@@ -243,7 +243,7 @@ class BuyModule extends AppModule
 		$query['pttype']	= '';
 		$query['startdate'] = '';
 		$query['enddate'] 	= '';
-		$query['state'] 	= 4;//状态[1：洽谈中 2：已匹配 3：已成交 4：已立案 5：交易关
+		//$query['state'] 	= 4;//状态[1：洽谈中 2：已匹配 3：已成交 4：已立案 5：交易关
 		$rst = tradeInfo::getNetwork($query,1,$number);
 		$rst = json_decode($rst)->data;
 		if(!$rst){
