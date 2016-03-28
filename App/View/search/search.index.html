@@ -545,13 +545,16 @@
     function freeIntro(){
         var freeTel = $('.freeTel').val();
         if(!freeTel){
+            $('.freeTel').css('color','#ff6600');
             $('.freeTel').val('请输入手机号');
             return false;
         }
         if(!mobilereg.test(freeTel) || freeTel.length!=11){
+            $('.freeTel').css('color','#ff6600');
             $('.freeTel').val('手机号不正确');
             return false;
         }
+        $('.freeTel').css('color','#CCC');
         var freeContent = $('#my_select').val();
         var data = new Array();
         data['tel'] 	= freeTel;
@@ -575,15 +578,18 @@
     $('.freeTel').blur(function(){
         var freeTel = $('.freeTel').val();
         if(!freeTel){
+            $('.freeTel').css('color','#ff6600');
             $('.freeTel').val('请输入手机号');
             return false;
         }
         if(!mobilereg.test(freeTel) || freeTel.length!=11){
+            $('.freeTel').css('color','#ff6600');
             $('.freeTel').val('手机号不正确');
             return false;
         }
     });
     $('.freeTel').focus(function(){
+        $('.freeTel').css('color','#666');
         $('.freeTel').val('');
     });
     //免费推荐-----end
