@@ -353,7 +353,7 @@ function setPage(obj){
 	$('.gunimg').attr('src','http://www.yizhchan.com/Static/style/newcheck/images/'+myArray[3]);
 	$('.result').show();
 	$('.mybuy').attr('href','http://www.yizhchan.com/sell/?id='+obj.info.id);//我要买
-	$('.mysell').attr('href','/d-'+obj.info.auto+'-'+obj.info.class_id+'.html');//我要卖
+	$('.mysell,.interlinkage').attr('href','http://www.yizhchan.com/d-'+obj.info.auto+'-'+obj.info.class_id+'.html');//我要卖
 	if(obj.info.issj==1){
 		$('.mysell').show();	
 	}

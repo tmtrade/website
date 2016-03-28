@@ -135,7 +135,7 @@
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
                             <span class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['title']?></span>
-                            <?endforeach;?>
+                            <?endforeach;?>买一送一
                         </p>
                         <?endif;?>
                     <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
@@ -150,7 +150,7 @@
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
                             <span class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['title']?></span>
-                            <?endforeach;?>
+                            <?endforeach;?>买一送一
                         </p>
                         <?endif;?>
                     <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
@@ -165,7 +165,7 @@
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
                             <span class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['title']?></span>
-                            <?endforeach;?>
+                            <?endforeach;?>买一送一
                         </p>
                         <?endif;?>
                     <?}else{?>
@@ -756,8 +756,6 @@
             //弹窗提示
             if(n.code==2){
                 $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>您已经购买过该商标</a>");
-            }else{
-                console.debug(n);
             }
         });
     }
