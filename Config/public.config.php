@@ -141,13 +141,13 @@ $define = array(
     ),
     'PLATFORM_URL' => array(
         //'99'  => '/faq/rule/',
-        '1'  => '/faq/rule/#r6',
-        '2'  => '/faq/rule/#r7',
-        '7'  => '/faq/rule/#r1',
-        '3'  => '/faq/rule/#r2',
-        '4'  => '/faq/rule/#r5',  
-        '5'  => '/faq/rule/#r3',
-        '6'  => '/faq/rule/#r4',
+        '1'  => '/faq/views/?c=54&id=989#r6',
+        '2'  => '/faq/views/?c=54&id=989#r7',
+        '7'  => '/faq/views/?c=54&id=989#r1',
+        '3'  => '/faq/views/?c=54&id=989#r2',
+        '4'  => '/faq/views/?c=54&id=989#r5',  
+        '5'  => '/faq/views/?c=54&id=989#r3',
+        '6'  => '/faq/views/?c=54&id=989#r4',
     ),
 
     /*平台入驻*/
