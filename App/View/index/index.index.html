@@ -195,7 +195,7 @@
                             <img src="<?=StaticDir?>1.2/images/<?=($item['pttype']=='出售')?'buy':'buy2'?>.png">
                             <p>
                                 <span><?=$item['name']?><a>（<?=$item['tel']?>）</a></span>
-                                <font><label>“</label><b><?=$item['remarks']?></b><label>”</label></font>
+                                <font><label>“</label><b><? echo (($item['subject'])?$item['subject']:$item['remarks'])?></b><label>”</label></font>
                             </p>
                         </li><? endforeach; ?>
                     </ul>

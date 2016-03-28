@@ -22,14 +22,6 @@
     <?if(!isset($is_index)):?>
     <script src="<?=StaticDir?>1.2/js/menu_hide.js"></script>
     <?endif;?>
-    <!--登录模块-->
-    <?php
-        $jsapiToken	= 'chaofnwang';
-        $timestamp	= time();
-        $nonceStr 	= md5('nonceStr'.$time.rand(100000000,999999999));
-        $url 		= "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-        $signature	= sha1("jsapi_ticket={$jsapiToken}&noncestr={$nonceStr}&timestamp={$timestamp}&url={$url}");
-    ?>
 <script src="<?=PERSONAL_CENTER?>Static/script/user/script/user.js"></script>
 <script src="<?=StaticDir?>1.2/js/header.js"></script>
 <script type="text/javascript">
