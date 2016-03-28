@@ -187,37 +187,7 @@ $("input").each(function(){
 
 });
 
-/*
 
- $(function(){
-
- $.ajax({
-
- type: "GET",
-
- url: "/index/links/",
-
- dataType: "json",
-
- success: function(data){
-
- var page = '';
-
- for(i=0; i<data.length;i++){
-
- page += '<li><a href="' + data[i]['content'] + '" target="_blank">' + data[i]['title'] + '</a></li>';
-
- }
-
- $("#links").html(page);
-
- }
-
- });
-
- });
-
- */
 
 $("#mj-stclose").click(function(){
 
@@ -362,55 +332,7 @@ $(document).ready(function(){
             if(input.type==='text'&&text){placeholder(input)}}}});
 
 
-
-var _manger_url = "http://i.yizhchan.com/";
-
-var _isLogin = false;
-
-var _mobile  = "";
-
-
-
-$("#_login_yes").hide();
-
 $(document).ready(function(){
-
-    //js加载user
-
-    /*$.getJSON('/index/loginInfo/', function(data){
-
-        if ( data == '' || data == undefined ) return false;
-
-        if ( data.isLogin ) {
-
-            $(".xs_login_").hide();
-
-            $("#_login_no").hide();
-
-            _isLogin = true;
-
-            _mobile  = data.userMobile;
-
-            $("#_nickname").text(data.nickname);
-
-            $("#_login_yes").show();
-
-        }else{
-
-            $("#_login_yes").hide();
-
-            _isLogin = false;
-
-            _mobile  = '';
-
-            $("#_login_no").show();
-
-            $(".xs_login_").show();
-
-        }
-
-    });*/
-
 
     $(".mj-search-box li").click(function(){
 
@@ -469,32 +391,6 @@ $(document).ready(function(){
     });
 
 });
-
-
-//输入框下拉
-
-//$("#searchForm").find("input[name='kw']").focus(function(){
-//    $(".mj-pull-down").each(function(){
-//        $(this).slideDown();
-//    })
-//    $(this).blur(function(){
-//        $(".mj-pull-down").each(function(){
-//            $(this).slideUp();
-//        })
-//    })
-
-//})
-//$("#searchForm").find("input[name='kw']").keyup(function(){
-//    if(($(this).val()).length>0){
-//        $(".mj-pull-down li").text(($(this).val()));
-//        $(".mj-pull-down").show();
-//    }else{
-//        $(".mj-pull-down").hide();
-//    }
-//})
-
-
-
 
 //简单选项卡
 function jc(name,curr,n)
