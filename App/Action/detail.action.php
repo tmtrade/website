@@ -100,7 +100,7 @@ class DetailAction extends AppAction
 			$contact['phone']	= empty($sale['viewPhone']) ? '18602868321' : $sale['viewPhone'];
 		}
 		//合并商标的额外数据
-		$saleExt = $this->load('search')->getExtSaleInfo($saleId);
+		$saleExt = $this->load('search')->getExtSaleInfo($saleId,$number);
 		$sale = array_merge($sale,$saleExt);
 		//设置标题
 		$title['name'] 	= $info['name'];

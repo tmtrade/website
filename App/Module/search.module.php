@@ -629,13 +629,18 @@ class SearchModule extends AppModule
      * @param $id
      * @return string
      */
-    public function getExtSaleInfo($id){
-        //得到商标价值
+    public function getExtSaleInfo($id,$number){
+
         $r['eq'] = array('saleId'=>$id);
         $r['col'] = array('value','number');
         $data = $this->import('tminfo')->find($r);
         //得到图片
-        $data['imgUrl'] = $this->load('internal')->getViewImg($id);
+        //得到商标价值
+        if($id<=0){
+            $data['imgUrl'] = $this->load('trademark')->getImg($number);
+        }else{
+            $data['imgUrl'] = $this->load('internal')->getViewImg($id);
+        }
         //查看商标是否被收藏
         $data['isLook'] = 0;
         $lookList   = $this->load('usercenter')->existLook(array($data['number']));
