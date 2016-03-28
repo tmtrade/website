@@ -34,7 +34,25 @@
 <script src="<?=StaticDir?>1.2/js/header.js"></script>
 <script type="text/javascript">
     $(document).ready(function(e) {
-    ucConfig.setConfig('<?=$timestamp?>','<?=$nonceStr?>','<?=$signature?>');
+    //获得登录相关的参数
+        $.ajax({
+            async: false,
+            type : 'post',
+            url  : '/login/getLogin',
+            data : '',
+            dataType : 'json',
+            success : function (data){
+                timestamp = data.timestamp;
+                nonceStr = data.nonceStr;
+                signature = data.signature;
+            },
+            error : function (data){
+                layer.msg('初始化登录失败', {
+                    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                });
+            }
+        });
+    ucConfig.setConfig(timestamp,nonceStr,signature);
     var copyArr = new Array();
     var isLoghtml = '';
     ucLoginTemp.setLoginTemp();
