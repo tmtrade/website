@@ -536,9 +536,8 @@
                    <b>独创性和关联性</b>
                </div>
                <p>
-                   即一提到这个名字大家就能想到你，这类名
-                   字属于原创，并通过大量有效高...
-                   <a href="">更多</a>
+                  <font  class="morecoent">即一提到这个名字大家就能想到你，这类名字属于原创，并通过大量有效高频的宣传，让目标用户记忆深刻。如：京东、天猫、海尔等。</font>
+                   <a href="" class="more">更多</a>
                </p>
            </li>
             <li>
@@ -549,9 +548,8 @@
                     <b>非独创，有关联性</b>
                 </div>
                 <p>
-                    这类名字有最初的原始意义，但进行跨行业
-                    使用恰到好处，如功能功效、标..
-                    <a href="">更多</a>
+                   <font class="morecoent"> 这类名字有最初的原始意义，但进行跨行业使用恰到好处，如功能功效、标新立异的强调。并通过适当宣传将第二种联想意义灌输给目标用户。如：苹果手机、飘柔洗发水。</font>
+                    <a href="" class="more">更多</a>
                 </p>
             </li>
             <li>
@@ -562,9 +560,8 @@
                     <b>非独创性，非关联性</b>
                 </div>
                 <p>
-                    这类名字记忆平平，即这个名字可以用在多
-                    种品类上 ，无法直接联想到某个...
-                    <a href="">更多</a>
+                   <font class="morecoent">这类名字记忆平平，即这个名字可以用在多种品类上 ，无法直接联想到某个具象的品牌上。如：长城、椰树。</font>
+                    <a href="" class="more">更多</a>
                 </p>
             </li>
         </ul>
@@ -618,6 +615,14 @@
 </div>
 <script type="text/javascript" src="<?=StaticDir?>zhuanti/js/common.js"></script>
 <script type="text/javascript">
+       $(".more").toggle(function(){       
+            $(this).prev().addClass("adCL");
+			
+
+        },function(){
+           $(this).prev().removeClass("adCL");
+			
+        })
     $(".moreFl").toggle(
             function(){
                 $(".brand-fl").show();
