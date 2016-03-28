@@ -659,10 +659,15 @@ $(".slideBox").each(function(){
 
     $(function() {
         $("img.lazy").lazyload({
-            skip_invisible : false,
+            //skip_invisible : false,
             effect : "fadeIn",
-            threshold : 10
+            //threshold : 10
         });
     });
+
+    $(".parHd li").hover(function(){
+        $(window).scroll();
+    });
+
 </script>
 <? require(ViewDir.'/footer.html'); ?>
