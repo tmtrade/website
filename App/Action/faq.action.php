@@ -22,7 +22,7 @@ class FaqAction extends AppAction
 						53	=> '商标交易百科',
 						52	=> '商标求购信息',
 						);
-
+        public $seotime      = "一只蝉商标转让平台网";
     //公司介绍
     public function index()
     {
@@ -78,7 +78,7 @@ class FaqAction extends AppAction
 		$pager			= $this->pager(count($total), $limit);
 		$pageBar		= empty($list) ? '' : getPageBar($pager);
 
-		$title   = $this->category[$c] . ' - 一只蝉商标转让平台网';
+		$title   = $this->category[$c] . ' - '.$this->seotime;
 		$this->set("list", $list);
 		$this->set("title", $title);
 		$this->set("keywords", $this->keyword);
@@ -115,9 +115,9 @@ class FaqAction extends AppAction
                     break;
                 default :
                     if(!empty($this->category[$c])){
-                        $this->pageTitle        =  $data[0]['title'].' - '.$this->category[$c] . ' - 一只蝉商标转让平台网';
+                        $this->pageTitle        =  $data[0]['title'].' - '.$this->category[$c] . ' - '.$this->seotime;
                     }else{
-                        $this->pageTitle        =  $data[0]['title'] . ' - 一只蝉商标转让平台网';
+                        $this->pageTitle        =  $data[0]['title'] . ' - '.$this->seotime;
                     }
                     if(!empty($data[0]['keyword'])){
                       $this->pageKey          = $data[0]['keyword'];  

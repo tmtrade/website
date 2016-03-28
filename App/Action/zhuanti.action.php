@@ -14,7 +14,7 @@ class ZhuantiAction extends AppAction
     public $cacheId     = 'redisHtml';
     public $expire      = 3600;//1小时
     
-    public $seotime		= '一只蝉商标交易网';
+    public $seotime		= '一只蝉商标转让平台网';
 
     /**
      * 专题中心
