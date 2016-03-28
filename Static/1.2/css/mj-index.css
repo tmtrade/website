@@ -987,10 +987,13 @@ margin: 0;
     background: #ffffff;
 }
 .yzc-categorbrand li div span{
-    display: block;
+	display:table-cell;
    /* margin-top: 40px;*/
-   height: 110px;
-   text-align:center;
+  height: 110px;
+text-align: center;
+vertical-align: middle;
+width: 208px;
+
  
 }
 .yzc-categorbrand li div span img{
@@ -1300,7 +1303,7 @@ margin: 0;
     width: 100%;
     min-width: 1180px;
     height: 204px;
-    background: url("../images/take.png") no-repeat top center;
+    background: url("../images/take.jpg") no-repeat top center;
 
 }
 .yzc-take div{
@@ -1314,12 +1317,12 @@ margin: 0;
 
 .take1{
     right: 420px;
-    top: 128px;
+    top: 130px;
 
 }
 .take2{
     right:165px;
-    top:128px;
+    top:130px;
 
 }
 /*悬浮楼层*/
