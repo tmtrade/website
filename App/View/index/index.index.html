@@ -596,6 +596,13 @@ $(".slideBox").each(function(){
       $(this).children("a.snext").hide();
   }
 })
+if($(".picbox").children("div").children("ul").children("li").length<=5){
+    $(".og_prev").css("opacity","0");
+    $(".og_next").css("opacity","0");
+	
+	
+}
+
     //漂浮楼层
     var cet_w=$("#cloth").offset().left;
     var oflr=$("#float-floor");
