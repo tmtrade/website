@@ -613,6 +613,11 @@
 
         _objTime    = setTimeout(function(){_times = 0;},30000);
 
+        //当滚动3页时, 显示推荐商标的广告图
+        if(_start==3){
+            $('.fdkf-ss').click();
+        }
+
         obj.set('_p', _start);
         var params = obj.getparams();
         $("#_tmpDiv").load(_moreUrl, params, function(data,status,xml){
