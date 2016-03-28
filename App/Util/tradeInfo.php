@@ -5,13 +5,7 @@
  * Date: 2016/3/8 0008
  * Time: 上午 11:16
  */
-/**
- * 定义接口地址
- * 本地测试环境：http://demo.chofn.com:88/
- * 线上生产环境：http://system.chofn.net/
- * @var string
- */
-define('CRM_API_HOST', "http://demo.chofn.com:88/");
+//define('CRM_API_HOST', "http://crm.chofn.com:88/");
 /**
  * 定义接口用户名
  * @var string
@@ -29,7 +23,8 @@ class tradeInfo{
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_URL, CRM_API_HOST.'Api/yizhchan.php');
+        //curl_setopt($ch, CURLOPT_URL, CRM_API_HOST.'Api/yizhchan.php');
+        curl_setopt($ch, CURLOPT_URL, CRM_URL.'Api/yizhchan.php');
         curl_setopt(
             $ch, CURLOPT_POSTFIELDS,
             array_merge(
