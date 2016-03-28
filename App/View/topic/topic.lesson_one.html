@@ -147,7 +147,7 @@
               <div class="ml-main fr">
                   <div class="ml-main-tit">
                       <p class="fl"><img src="<?=StaticDir?>topic/lesson_one/images/mc-ico3.png">14类-珠宝钟表</p>
-                      <a class="fr" href="">更多 ></a>
+                      <a class="fr" href="/search/index/?kw=&c=14">更多 ></a>
                   </div>
                   <ul class="mlPic">
                       <a href="/d-13094845-14.html">
@@ -458,7 +458,7 @@
                             <img src="<?=StaticDir?>topic/lesson_one/images/fscienti2.jpg">
                         </li>
                     </a>
-                    <a href="/d-12545362-14.html">
+                    <a href="/d-10566512-9.html">
                         <li>
                             <img src="<?=StaticDir?>topic/lesson_one/images/fscienti3.jpg">
                         </li>
@@ -584,7 +584,7 @@
                     </p>
 
 
-                <a href="javascript:void(0)" id="lesson_submit">我要买标</a>
+                <a id="lesson_submit">我要买标</a>
             </dl>
         </div>
     </div>
@@ -707,11 +707,11 @@ $("a").attr("target","_blank");
             var mobile 	= $.trim($('#lesson_tel').val());
             //验证手机号
             if(!mobile){
-                $(this).val('请输入正确电话号码免费通话');
+               $(".error").val('请输入正确电话号码免费通话');
                 return false;
             }
             if(!mobilereg.test(mobile) || mobile.length!=11){
-                $(this).val('请输入正确电话号码免费通话');
+                $(".error").val('请输入正确电话号码免费通话');
                 return false;
             }
             //准备数据
@@ -727,10 +727,10 @@ $("a").attr("target","_blank");
     //发布回调
     function submitDataCallback(Obj){
         $.each(Obj,function(i,n){
-            console.debug(n);
             if(n.code!=-1){
                 //弹出成功框
                 getLayer($('#mj-submitteS'));
+                $('#lesson_tel').val("");
             }else{
                 //弹出失败框
                 getLayer($('#mj-submitteF'));
