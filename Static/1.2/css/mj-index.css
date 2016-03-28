@@ -1034,6 +1034,7 @@ width: 208px;
     left: 0px;
     z-index: 9999;
     border: 1px solid #f18f8f;
+	width: 207px;
 }
 .yzc-categorbrand li:hover .brand-buy{
    display: block;
