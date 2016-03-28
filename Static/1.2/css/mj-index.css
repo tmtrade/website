@@ -601,10 +601,11 @@ margin: 0;
 .yzc-Activities ul li img{
 	max-width:235px;
 	max-height:140px;
-    position: absolute;
+   /* position: absolute;
     top:0px;
-    left: 0px;
+    left: 0px;*/
     z-index: 1;
+	vertical-align: middle;
 }
 .yzc-Activities ul li h3{
     position: absolute;
@@ -710,8 +711,8 @@ margin: 0;
 .tj-recom li p img{
     display:block;
     vertical-align: middle;
-	width:235px;
-	height:70px;
+	max-width:235px;
+	max-height:70px;
  /*   margin-right: 27px;
     margin-top:20px ;
     margin-left:45px;*/
