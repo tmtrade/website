@@ -10,7 +10,7 @@
  */
 class FaqAction extends AppAction
 {
-        public $caches      = array('index','yyzz','kxwz','ryzz','rule','news','views');
+        public $caches      = array('index','yyzz','kxwz','ryzz','rule');
         public $cacheId     = 'redisHtml';
         public $expire      = 3600;//1小时
 
