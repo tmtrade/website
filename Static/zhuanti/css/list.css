@@ -715,6 +715,8 @@
 .recompic li{
     width: 90%;
     height: 110px;
+	line-height: 105px;
+	text-align: center;
     overflow: hidden;
     margin: auto;
     border-bottom: 1px dashed #dedede;
@@ -726,8 +728,8 @@
     display:block;
     width: 146px;
     height: 82px;
-    margin:15px auto 0px;
-    border: 1px solid #ff0000;
+	vertical-align:middle;
+	
 }
 
 .record-collect{
