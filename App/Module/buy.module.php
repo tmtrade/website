@@ -241,6 +241,7 @@ class BuyModule extends AppModule
 		//调用接口,获得数据
 		$query['id'] 		= array();
 		$query['pttype']	= '';
+		$query['notnull']	=  1;//去掉为空的条件
 		$query['startdate'] = '';
 		$query['enddate'] 	= '';
 		//$query['state'] 	= 4;//状态[1：洽谈中 2：已匹配 3：已成交 4：已立案 5：交易关
