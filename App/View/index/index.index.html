@@ -249,7 +249,7 @@
                         活动标题<br/>
                         <span>活动标题</span>
                     </h3>-->
-                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>"  onerror="this.src='/Static/images/img1.png'">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'">
                 </a>
             </li>
             <? endforeach; ?>
@@ -334,7 +334,7 @@
             <? foreach($recommendClasses as $rClass): ?>
             <li>
                 <p>
-                  <img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=(TRADE_URL.$rClass['pic'])?>"  onerror="this.src='/Static/images/img1.png'"/>
+                  <img src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'"/>
                 </p>
                 <div style="display: none">
                     <a target="_blank" class="tjfl" href="search/index/?c=<?=$rClass['classStr']?>">12</a>
@@ -372,7 +372,7 @@
                         <div class="sbd">
                             <ul>
                                 <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="<?=$pic['link']?>" target="_blank"><img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
+                                <li><a href="<?=$pic['link']?>" target="_blank"><img src="/Static/images/idx01.gif"  _original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
                                 <? endforeach; ?>
                             </ul>
                         </div>
@@ -393,7 +393,7 @@
                     </div>
                 </div>
      	  <div class="parBd" style="position:relative;z-index:9;">
-            <? foreach($module['class'] as $class): ?>
+            <? foreach($module['class'] as $_k => $class): ?>
             <div class="brandlist-show">      
                 <ul class="yzc-categorbrand fr">
                     <? foreach($class['items'] as $item): ?>
@@ -402,8 +402,12 @@
                         <div class="brand-show">
                             <span>
                              <a target="_blank" href="<?=$item['viewUrl']?>">
-                            
-                                         <img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=$item['embellish']?>"  onerror="this.src='/Static/images/img1.png'">
+                                
+                                <?if ($_k == 0){?>
+                                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>"onerror="this.src='/Static/images/img1.png'">
+                                <?}else{?>
+                                    <img src="/Static/images/idx01.gif" _original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'">
+                                <?}?>
                            
                            		  </a>
                             </span>
@@ -585,11 +589,12 @@ jQuery(".mj-bannerIimg").slide({titCell:".hd ul li",mainCell:".bd ul",prevCell:"
 //活动推荐点击切换
 jQuery(".yzc-Activities").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:5,easing:"easeOutCirc"});
 //商标分类选项卡
-jQuery(".yzc-Brand").slide({effect:"fold"});
+jQuery(".yzc-Brand").slide({effect:"fold",switchLoad:"_original"});
 //类别展示选项卡和焦点图
 /*jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"leftLoop",autoPlay:true});*/
-jQuery(".slideBox").slide({mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"fold",delayTime:"500",autoPlay:true});
-jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fold",pnLoop:false});
+jQuery(".slideBox").slide({mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"fold",delayTime:"500",autoPlay:true,switchLoad:"_original"});
+//楼层
+jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fold",pnLoop:false,switchLoad:"_original"});
 $(".slideBox").each(function(){
   if($(this).children(".sbd").children("ul").children("li").length<=1){
       $(this).children("a.sprev").hide();
@@ -670,10 +675,6 @@ if($(".picbox").children("div").children("ul").children("li").length<=5){
             effect : "fadeIn",
             //threshold : 10
         });
-    });
-
-    $(".parHd li").hover(function(){
-        $(window).scroll();
     });
 
 </script>
