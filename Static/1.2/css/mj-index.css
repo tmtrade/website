@@ -588,6 +588,7 @@ margin: 0;
 .yzc-Activities ul li{
     width: 234px;
     height: 140px;
+	line-height:140px;
 	overflow:hidden;
     float: left;
     margin-left:2px;
@@ -690,8 +691,11 @@ margin: 0;
 	}
 
 .tj-recom li p{
+	width: 235px;
     height:71px;
-    margin-bottom: 1px;
+	line-height:71px;
+	text-align: center;
+	margin-bottom: 1px;
     background: #ffffff;
    /* overflow: hidden;*/
     box-sizing:content-box;
@@ -711,10 +715,12 @@ margin: 0;
 }
 
 .tj-recom li p img{
-    display:block;
+   
+   
     vertical-align: middle;
 	max-width:235px;
 	max-height:70px;
+	text-align:center;
  /*   margin-right: 27px;
     margin-top:20px ;
     margin-left:45px;*/
@@ -922,8 +928,8 @@ margin: 0;
 }
 
 
-.slideBox{ width:340px; height:368px; overflow:hidden; position:relative; border:1px solid #ddd; background:#fff;}
-.slideBox .shd{ height:15px; overflow:hidden; position:absolute;  right:5px; bottom:5px; z-index:999; }
+.slideBox{ width:340px; height:368px; text-align:center; line-height:368px; overflow:hidden; position:relative; border:1px solid #ddd; background:#fff;}
+.slideBox .shd{ width:340px; text-align:center;height:15px; overflow:hidden; position:absolute;  right:5px; bottom:5px; z-index:999; }
 .slideBox .shd p{ overflow:hidden; zoom:1; float:left;  }
 .slideBox .shd p a{ float:left; margin-right:2px;  width:15px; height:15px; border-radius:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
 .slideBox .shd p a.on{ background:#f00; color:#fff; }
@@ -940,10 +946,12 @@ margin: 0;
 .slideBox .sprevStop{ display:none;  }
 .slideBox .snextStop{ display:none;  }
 .slideBox .sbd li{
+	 width:340px !important;
 	background:#FFF;
 	display:table-cell;
 	text-align:center;
 	vertical-align:middle;
+	
 }
 .slideBox .sbd li img{max-width:341px; max-height:368px;min-width:81px; min-height:81px; text-align:center;vertical-align:middle;}
 
