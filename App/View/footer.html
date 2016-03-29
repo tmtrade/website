@@ -4,7 +4,7 @@
         <div class="w1180">
             <ul class="f-clearfix">
                 <li>
-                    <img src="<?=StaticDir?>1.2/images/mj-icon18.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/mj-icon18.png">
                     <div class="mj-fLitext">
                         <p>精准匹配</p>
                         <span>强大筛选系统 - 3.5秒匹配</span>
@@ -12,7 +12,7 @@
                 </li>
                 <li class="mj-fSwaper"></li>
                 <li>
-                    <img src="<?=StaticDir?>1.2/images/mj-icon19.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/mj-icon19.png">
                     <div class="mj-fLitext">
                         <p>快速流程</p>
                         <span>最快4小时 - 商标抱回家</span>
@@ -20,7 +20,7 @@
                 </li>
                 <li class="mj-fSwaper"></li>
                 <li>
-                    <img src="<?=StaticDir?>1.2/images/mj-icon20.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/mj-icon20.png">
                     <div class="mj-fLitext">
                         <p>拒绝损失</p>
                         <span>担保交易 - 签订100%赔付协议</span>
@@ -28,7 +28,7 @@
                 </li>
                 <li class="mj-fSwaper"></li>
                 <li>
-                    <img src="<?=StaticDir?>1.2/images/mj-icon21.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/mj-icon21.png">
                     <div class="mj-fLitext">
                         <p>透明交易</p>
                         <span>3方协议 - 全程公证 </span>
@@ -36,7 +36,7 @@
                 </li>
                 <li class="mj-fSwaper"></li>
                 <li>
-                    <img src="<?=StaticDir?>1.2/images/mj-icontj.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/mj-icontj.png">
                     <div class="mj-fLitext">
                         <p>终身免费售后</p>
                         <span>转让后 -永久免费安全监测</span>
@@ -68,19 +68,19 @@
             </p>
                 <div class="mj-footer_bottom">
                 <a href="http://www.cyberpolice.cn/wfjb/" style="margin-left:0px;" target="_blank">
-                    <img src="<?=StaticDir?>1.2/images/btm-brand1.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/btm-brand1.png">
                 </a>
                 <a href="http://net.china.com.cn/" target="_blank">
-                    <img src="<?=StaticDir?>1.2/images/btm-brand2.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/btm-brand2.png">
                 </a>
                 <a href="/faq/kxwz" target="_blank">
-                    <img src="<?=StaticDir?>1.2/images/btm-brand3.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/btm-brand3.png">
                 </a>
                 <a href="/faq/ryzz" target="_blank">
-                    <img src="<?=StaticDir?>1.2/images/btm-brand4.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/btm-brand4.png">
                 </a>
                 <a href="/faq/yyzz" target="_blank">
-                    <img src="<?=StaticDir?>1.2/images/btm-brand5.png">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/btm-brand5.png">
                 </a>
         </div>
         </div>
@@ -166,7 +166,17 @@
         </div>
     </div>
 </div>
+<script src="<?=StaticDir?>1.2/js/jquery.lazy.min.js"></script>
 <script type="text/javascript">
+    //图片延时加载
+    $(function() {
+        $("img.lazy").lazyload({
+            //skip_invisible : false,
+            effect : "fadeIn",
+            threshold : 50
+        });
+    });
+
     //分类弹框
     //$(".mj-models").hide(); //初始ul隐藏
     var CHOFN = (function($,chofn){

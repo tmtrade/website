@@ -236,7 +236,7 @@
                                     <? if($menuImg['industryId'] == $first['id']): ?>
                                     <span>
                                         <a href="<?=$menuImg['link']?>" target="_blank">
-                                            <img src="<?=(TRADE_URL.substr($menuImg['pic'],1))?>"></a>
+                                            <img class="headerlazy" src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$menuImg['pic'])?>" onerror="this.src='/Static/images/img1.png'"></a>
                                     </span>
                                     <? endif; ?>
                                     <? endforeach; ?>
@@ -280,9 +280,21 @@
   //左边菜单栏
     $(".mj-dd dd").hover(function(){
         $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
+        _lazyImg($(this));
     },function(){
         $(this).removeClass("mj-ddahoverc");
     });
+    //延时加载图片
+    function _lazyImg(obj){
+        obj.find('.headerlazy').each(function(e){
+            var _this = $(this);
+            var _orig = _this.attr('_original');
+            if (_orig == '' || _orig == undefined ) return true;
+            //暂时不做效果 
+            _this.attr('src', _orig);
+            _this.attr('_original', '');
+        });
+    }
     $('input[name="kw"]').focus(function (){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
