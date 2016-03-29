@@ -372,7 +372,7 @@
                         <div class="sbd">
                             <ul>
                                 <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="<?=$pic['link']?>" target="_blank"><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
+                                <li><a href="<?=$pic['link']?>" target="_blank"><img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
                                 <? endforeach; ?>
                             </ul>
                         </div>
@@ -592,7 +592,7 @@ jQuery(".yzc-Activities").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:tru
 jQuery(".yzc-Brand").slide({effect:"fold",switchLoad:"_original"});
 //类别展示选项卡和焦点图
 /*jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"leftLoop",autoPlay:true});*/
-jQuery(".slideBox").slide({mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"fold",delayTime:"500",autoPlay:true,switchLoad:"_original"});
+jQuery(".slideBox").slide({mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"fold",delayTime:"500",autoPlay:true});
 //楼层
 jQuery(".yzc-category").slide({titCell:".parHd li",mainCell:".parBd",effect:"fold",pnLoop:false,switchLoad:"_original"});
 $(".slideBox").each(function(){
