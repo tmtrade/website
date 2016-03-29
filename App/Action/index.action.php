@@ -67,15 +67,15 @@ class IndexAction extends AppAction
 			$_title = $title;
 			$list 	= array(
 				array(
-					'title'	=> "按商标名称“ $_title ”搜索结果",
+					'title'	=> "按 <font style='font-weight: bold;color:#ff6666'>商标名称</font>“ {$_title} ”搜索结果",
 					'url' 	=> "/search/?kw=$_title&kt=1&n=2",
 					),
 				array(
-					'title'	=> "按商标号“ $_title ”搜索结果",
+					'title'	=> "按 <font style='font-weight: bold;color:#ff6666'>商标号</font>“ {$_title} ”搜索结果",
 					'url' 	=> "/search/?kw=$_title&kt=2",
 					),
 				array(
-					'title'	=> "按适用服务“ $_title ”搜索结果",
+					'title'	=> "按 <font style='font-weight: bold;color:#ff6666'>适用服务</font>“ {$_title} ”搜索结果",
 					'url' 	=> "/search/?kw=$_title&kt=3",
 					),
 				);
