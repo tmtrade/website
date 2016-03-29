@@ -11,7 +11,7 @@
             </span>
         </div>
         <div class="yzc-ztlishow">
-            <ul>
+            <ul class="f-clearfix">
                 <? $counts = count($topicItems); 
                 foreach($topicItems as $k=>$v){?>
                 <li>
@@ -23,15 +23,7 @@
                            <font> <?=mbSub($v['name'],0,9);?> <?=mbSub($v['class'],0,10)?>类</font>
                             <?=mbSub($v['goods'],0,12)?>
                         </p>
-                    </div>
-                    <div class="reverse">
-                        <span>
-                            <a href="<?=$v['viewUrl']?>" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="145" height="89"></a>
-                        </span>
-                        <p title="<?=$v['goods']?>">
-                            <font> <?=mbSub($v['name'],0,9);?> <?=mbSub($v['class'],0,10)?>类</font>
-                            <?=mbSub($v['goods'],0,12)?>
-                        </p>
+                          <div class="reverse">
                         <label>
                              <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                             <a href="javascript:void(0);" onclick="xunjia(this);" class="first cl-red">
@@ -44,6 +36,8 @@
                             </a>
                         </label>
                     </div>
+                    </div>
+                  
                 </li>
                 <? if(($k+1)%6==0 && $counts>($k+1)){?>
                 </ul>
