@@ -14,7 +14,7 @@
                     <table width="100%" height="100%">
                         <tr>
                             <td align="center">
-                               <img src="<?=$sale['imgUrl']?>" >
+                               <img src="<?=$sale['imgUrl']?>" onerror="this.src='/Static/images/img1.png'">
                             </td>
                         </tr>
                     </table>
@@ -128,7 +128,7 @@
                             <strong><span>￥</span><?=$sale['salePrice']?></strong>元
                             原价<s>￥<?=$sale['price']?></s>
                         </p>
-                        <p class="period"><font>有效期</font> <span><?php if($sale['salePriceDate'] > 0){
+                        <p class="period"><font>价格时效</font> <span><?php if($sale['salePriceDate'] > 0){
                             echo date('Y-m-d H:i',$sale['salePriceDate']);
                             }else{echo "永久";} ?></span>有效</p>
                         <?if($topic):?>
@@ -431,10 +431,10 @@
                                 <label>服务顾问：</label>陈艾<br/>
                             </p>
                         </dl>
-                        <a href="http://t.chofn.net/case/detail/?id=14" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
+                        <a href="/case/detail/?id=14" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
                     </div>
                     <div class="back">
-                        <a href="http://t.chofn.net/case/detail/?id=14" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
+                        <a href="/case/detail/?id=14" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -453,10 +453,10 @@
                                 <label>服务顾问：</label>王桂华<br/>
                             </p>
                         </dl>
-                        <a href="http://t.chofn.net/case/detail/?id=12" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
+                        <a href="/case/detail/?id=12" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
                     </div>
                     <div class="back">
-                        <a href="http://t.chofn.net/case/detail/?id=12" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
+                        <a href="/case/detail/?id=12" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -475,10 +475,10 @@
                                 <label>服务顾问：</label>寇飞<br/>
                             </p>
                         </dl>
-                        <a href="http://t.chofn.net/case/detail/?id=16" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
+                        <a href="/case/detail/?id=16" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
                     </div>
                     <div class="back">
-                        <a href="http://t.chofn.net/case/detail/?id=16" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
+                        <a href="/case/detail/?id=16" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
                     </div>
                 </div>
             </div>
