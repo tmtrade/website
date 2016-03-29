@@ -765,10 +765,13 @@ body{ background:#f5f5f5 !important;}
     overflow: hidden;
 	
 }
-.trademark{
-    overflow: hidden;
-  
-}
+.detail-recom-trademark{
+	border: 1px solid #f0f0f0;
+    background: #ffffff;
+    padding: 10px;
+    margin-top: 10px;
+	}
+
 .recompic{
     width:100%;
     background: #ffffff;
