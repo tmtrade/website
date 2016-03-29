@@ -86,17 +86,19 @@
 }
 .yzc-ztlishow{
     overflow: hidden;
-    padding-bottom: 45px;
+    padding-bottom:0px;
+	padding-top: 25px;
 }
 .yzc-ztlishow ul{
-    margin-top: 25px;
+   
     margin-left: -7px;
     overflow: hidden;
-    padding-bottom:40px;
+	
+  
 }
 .yzc-ztlishow ul li{
      width:188px;
-    height: 225px;
+  /*  height: 225px;*/
      float: left;
     margin-left:7px;
     background: #ffffff;
@@ -104,7 +106,10 @@
     font-size: 12px;
     position: relative;
     z-index: 9;
+	margin-bottom:15px;
+	 
 }
+
 .yzc-ztlishow ul li div span{
 
 }
@@ -132,16 +137,21 @@
 .yzc-ztlishow ul li div.reverse{
     width:188px;
     position: absolute;
-    top:0px;
+    bottom: -10px;
     left: 0px;
     z-index: 9999;
-    border: 1px solid #ff3e3f;
+    margin-top: 20px;
     background: #ffffff;
     display: none;
 }
 .yzc-ztlishow ul li:hover .reverse{
     display: block;
 }
+.yzc-ztlishow ul li:hover{
+	 border: 1px solid #ff3e3f;
+	height: 265px;
+	margin-bottom:-15px;
+	}
 .yzc-ztlishow ul li div.reverse dt{
     display: inline-block;
      position:absolute ;
@@ -163,7 +173,7 @@
 }
 .yzc-ztlishow ul li div.reverse label a{
     display: inline-block;
-    width: 69px;
+    width:79px;
     height: 30px;
     line-height:28px;
     text-align: center;
