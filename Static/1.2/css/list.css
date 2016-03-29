@@ -803,11 +803,12 @@ body{ background:#f5f5f5 !important;}
     border-bottom:none;
 }
 .recompic li img{
-    display:block;
+   /* display:block;*/
     max-width: 146px;
     max-height: 82px;
-    margin:15px auto 0px;
+    /*margin:15px auto 0px;*/
     border: 1px solid #ff0000;
+	vertical-align: middle;
 }
 
 .record-collect{
