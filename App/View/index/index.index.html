@@ -372,7 +372,7 @@
                         <div class="sbd">
                             <ul>
                                 <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="<?=$pic['link']?>" target="_blank"><img src="/Static/images/idx01.gif"  _original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
+                                <li><a href="<?=$pic['link']?>" target="_blank"><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
                                 <? endforeach; ?>
                             </ul>
                         </div>
