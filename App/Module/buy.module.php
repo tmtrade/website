@@ -253,8 +253,22 @@ class BuyModule extends AppModule
 		//处理数据
 		$data = array();
 		foreach($rst as $item){
+			$remarks = empty($item->remarks)?($item->subject):($item->remarks);
+			//截取掉敏感数据
+			$result = strstr($remarks,'联系人',true);
+			$remarks = $result?$result:$remarks;
+
+			$result = strstr($remarks,'我的联系电话',true);
+			$remarks = $result?$result:$remarks;
+
+			$result = strstr($remarks,'联系电话',true);
+			$remarks = $result?$result:$remarks;
+
+			$result = strstr($remarks,'电话号码',true);
+			$remarks = $result?$result:$remarks;
+
 			$data[] = array(
-				'remarks'=>$item->remarks,
+				'remarks'=>$remarks,
 				'pttype'=>$item->pttype,
 				'name'=>trim($item->name) ? substr(trim($item->name),0,3)."**" : "佚名",
 				'tel'=>substr(trim($item->tel),0,3)."****".substr(trim($item->tel),7),
