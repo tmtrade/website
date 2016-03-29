@@ -586,17 +586,18 @@ body{ background:#f5f5f5 !important;}
 }
 .mj-priceTxtt {
     /*padding: 15px 0 0;*/
-    margin-top: -30px;
+    margin-top: -10px;
     box-sizing: content-box;
     margin-left: 35px;
 }
 .mj-priceTxtt p{
     overflow: hidden;
-    margin-top:8px;
+   /* margin-top:8px;*/
+   margin-top:0px;
 }
 .mj-priceTxtt p font{
     display: inline-block;
-    width: 45px;
+    width:60px;
     text-align:left;
     margin-right: 12px;
     color: #999999;
@@ -605,10 +606,13 @@ body{ background:#f5f5f5 !important;}
    color: #999999;
 }
 .mj-priceTxtt p.price  strong{
-    color: #ff3e3f;
+   color: #ff3e3f;
     font-size: 32px;
     display: inline-block;
-    margin-left:-2px;
+    margin-left: -5px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    margin-right: 3px;
 
 }
 .mj-priceTxtt p.price s{
@@ -651,10 +655,10 @@ body{ background:#f5f5f5 !important;}
 	/*position:absolute;*/
     margin-top: 8px;
 	bottom:-5px;
-	left:22px;
+	left:50px;
 }
 .mj-priceTxtt a {
-    margin-left:62px;
+    margin-left:75px;
 }
 .mj-cTr_bRight {
 
