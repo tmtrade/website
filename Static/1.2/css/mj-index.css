@@ -666,9 +666,13 @@ margin: 0;
 .yzc-Brand .bd ul{
    /* overflow: hidden;*/
     padding-bottom:15px;
-	margin-top: -1px;
+	
 
 }
+.tj-recom{
+	margin-top:-1px;
+	}
+
 #con_brand_1,#con_brand_2{
     display: none;
     border-top: 1px solid #f18f8f;
@@ -775,8 +779,8 @@ margin: 0;
 	margin-top:10px;
 }
 .tj-recom li div.tj-recom-hover label a:hover{
-	/*color:#ff6666;*/
-	color:#666666;
+	color:#ff6666;
+	/*color:#666666;*/
 	text-decoration:underline;
 	height:16px;
 	}
@@ -903,11 +907,14 @@ margin: 0;
 	float:right;
 	width: 838px;
 	}
+.yzc-category  div.f-clearfix{
+	border-top: 1px solid #f18f8f;
+	}
 
 .brandlist-show{
   /* overflow: hidden;*/
   /* padding-bottom:80px;*/
-    border-top: 1px solid #f18f8f;
+    
     z-index: 1;
 }
 .yzc-category-main dl dt{
@@ -928,7 +935,7 @@ margin: 0;
 }
 
 
-.slideBox{ width:340px; height:368px; text-align:center; line-height:368px; overflow:hidden; position:relative; border:1px solid #ddd; background:#fff;}
+.slideBox{ width:340px; height:368px; text-align:center; line-height:368px; overflow:hidden; position:relative; background:#fff;}
 .slideBox .shd{ width:340px; text-align:center;height:15px; overflow:hidden; position:absolute;  right:5px; bottom:5px; z-index:999; }
 .slideBox .shd p{ overflow:hidden; zoom:1; float:left;  }
 .slideBox .shd p a{ float:left; margin-right:2px;  width:15px; height:15px; border-radius:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
@@ -953,7 +960,7 @@ margin: 0;
 	vertical-align:middle;
 	
 }
-.slideBox .sbd li img{max-width:341px; max-height:368px;min-width:81px; min-height:81px; text-align:center;vertical-align:middle;}
+.slideBox .sbd li img{max-width:341px; max-height:368px;min-width:81px; min-height:81px; text-align:center;}
 
 .cate-list{
     width: 340px;
