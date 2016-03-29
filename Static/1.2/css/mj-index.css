@@ -1253,10 +1253,10 @@ width: 208px;
 
     border: 1px solid #f0f0f0;
     background: #ffffff;
-    padding: 20px 25px;
+    padding:10px;
     margin-top:10px;
 }
-.trademark img{max-width: 830px;}
+.trademark img{max-width:100%;}
 .brand-ques  dl{
    overflow: hidden;
    border-bottom: 1px solid #eaeaea;
