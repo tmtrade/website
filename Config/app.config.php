@@ -1,18 +1,13 @@
 <?
 //定义应用所需常量
 
-//定义密约
-define('AuthKey', md5('8782aa97c31e56363ced4e2e85ed81ee'));
-define('FileSystemDir', DataDir.'/attachment');	                        //定义文件系统存放路径
-define('FileSystemUrl', 'http://e2.chofn.net/'.DataDir.'/attachment/');	//定义文件系统地址
-
 //近似查询接口相关配置
 //define('SEARCH_URL', 'http://searchapi.chofn.net/');
 define('SEARCH_URL', 'http://tmsearch.chofn.api/');
 define('SEARCH_KEY', '89eb637c610f94b9d281c458bca42421');
 
 //个人中心URL
-define('MANAGER_URL', 'http://i.chofn.net/');
+define('UC_URL', 'http://uc.test.chofn.net/');
 define('PERSONAL_CENTER', 'http://uc.test.chofn.net/');
 //一只蝉URL
 define('SITE_URL', 'http://t.chofn.net/');
@@ -25,5 +20,10 @@ define('WM_URL', 'http://wm.chofn.net/');
 
 //CRM地址URL
 define('CRM_URL', 'http://demo.chofn.com:88/');
+
+//一只蝉前台静态CDN地址
+define('YZC_STATIC', ''.StaticDir);
+//一只蝉后台静态CDN地址
+define('TR2_STATIC', TRADE_URL);
 
 ?>
