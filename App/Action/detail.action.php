@@ -200,9 +200,8 @@ class DetailAction extends AppAction
 	public function ajaxSclist(){
 		$arr = $this->input('tid', 'string', '');
 		$number = explode(",", $arr);
-		foreach ($number as $v){
-			$sclist[] = $this->load('trademark')->getTmInfo($v);
-		}
+                $list = $this->load('goods')->getListInfo($number);
+                $sclist = $this->load('search')->getListTips($list);
 		$this->returnAjax($sclist);
 	}
 }
