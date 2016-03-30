@@ -734,7 +734,7 @@
         }
         //获得数据
         var remarks 	= $('#remarks').val();
-        remarks = remarks.replace('TEL',tel);
+        remarks = remarks + ';电话号码：' + tel;
         var buyData 			= new Array();
         buyData['tel'] 			= tel;
         buyData['tid'] 			= $('#tid').val();
