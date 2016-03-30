@@ -779,7 +779,7 @@
 	$(".classify-main li").hover(function(){
        var  omult=$(this).children(".dw").children(".multi-show");
         var owr=$(window).width()-omult.offset().left-omult.width();
-        if(owr<0){
+        if(owr<50){
             omult.css({"left":"-293px"});
         }
     })
