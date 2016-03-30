@@ -75,7 +75,7 @@ class ZhuantiModule extends AppModule
                 $res = $this->import('topic')->find($r);
                 if($res){
                     $res['topicUrl'] = '/zhuanti/view/?id='.$res['id'];
-                    $res['title'] = mb_substr($res['title'],0,4,'utf-8');
+                    $res['thumb_title'] = mb_substr($res['title'],0,4,'utf-8');
                     $data[] = $res;
                 }
             }
