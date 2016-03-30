@@ -135,7 +135,8 @@
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
                             <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
-                            <?endforeach;?>买一送一
+                            <?endforeach;?>
+                            <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
                         </p>
                         <?endif;?>
                     <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
@@ -150,7 +151,8 @@
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
                             <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
-                            <?endforeach;?>买一送一
+                            <?endforeach;?>
+                            <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
                         </p>
                         <?endif;?>
                     <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
@@ -165,7 +167,8 @@
                         <p class="sales"><font>促销</font>
                             <?foreach($topic as $item):?>
                             <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
-                            <?endforeach;?>买一送一
+                            <?endforeach;?>
+                            <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
                         </p>
                         <?endif;?>
                     <?}else{?>
@@ -765,6 +768,9 @@
     }
     //专题点击事件
     $('.wddsb').click(function(){
+        if($(this).text() == '买一送一'){
+            return false;
+        }
         $('#wodediv').attr('href',($(this).attr('url')));
         $('#wodediv').get(0).click();
     });
