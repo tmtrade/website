@@ -169,7 +169,6 @@ class SearchModule extends AppModule
      */
     public function getSaleList($params, $page=1, $limit=30, $col=array())
     {
-        //debug($params);
         $result = array(
             'rows'  => array(),
             'total' => 0,
@@ -258,7 +257,16 @@ class SearchModule extends AppModule
         }
         $r['page']      = $page;
         $r['limit']     = $limit;
-        $r['order']     = array('isTop' => 'desc');
+
+        $_arrClass = empty($params['class']) ? array() : array_filter(explode(',', $params['class']));
+        //判断是否列表筛选只有class
+        if ( count($params) <= 2 && count($_arrClass) == 1 ){
+            //走另一种排序
+            $r['order']     = array('listSort' => 'desc','isTop' => 'desc');
+        }else{
+            //默认排序
+            $r['order']     = array('isTop' => 'desc');
+        }
 
         $res            = $this->import('sale')->findAll($r);
         $res['rows']    = $this->getListTips($res['rows']);
