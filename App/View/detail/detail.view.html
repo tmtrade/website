@@ -270,7 +270,7 @@
                    if($k<5){
                    ?>
                    <li>
-                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" ><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" ></a>
+                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" ><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" ></a>
                     </li>
                    <?}}?>
                 </ul>
@@ -662,6 +662,7 @@
                         $(nowObj).find('span').html('取消收藏');
                         $(nowObj).find('img').attr("src","/Static/1.2/images/xin_cur.png");
                         layer.msg('收藏成功',{time:1500});
+                        getSclist();
                     }else{
                         layer.msg('收藏失败',{time:1500});
                     }
@@ -674,6 +675,7 @@
                         $(nowObj).find('span').html('收藏商标');
                         $(nowObj).find('img').attr("src","/Static/1.2/images/sbxq-ico1.png");
                         layer.msg('取消成功',{time:1500});
+                        getSclist();
                     }else{
                         layer.msg('取消失败',{time:1500});
                     }
