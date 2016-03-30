@@ -582,6 +582,7 @@
 </script>
 <!--购买相关js-->
 <script type="text/javascript">
+  
     $(function(){
         //有手机登录情况下 检测该用户是否购买
         var trademark = "<?=$info['number']?>";
@@ -774,6 +775,14 @@
     $('.rhzd_a').mouseout(function(){
         $('.rhzd').hide();
     });
+	//全部分类鼠标移动浮动层位置效果
+	$(".classify-main li").hover(function(){
+       var  omult=$(this).children(".dw").children(".multi-show");
+        var owr=$(window).width()-omult.offset().left-omult.width();
+        if(owr<0){
+            omult.css({"left":"-293px"});
+        }
+    })
 </script>
 <!--分享相关js-->
 <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
