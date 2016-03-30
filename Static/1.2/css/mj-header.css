@@ -208,7 +208,7 @@ table {
 
 .mj-header_right li a:hover{
 
-    color: #fc7d28;
+    color: #ff6666;
 
     text-decoration: underline;
 
@@ -1329,3 +1329,11 @@ table {
     border: solid 1px #c3e1f9;
     color: #48aff1;
 }
+
+.chaofan-mj-logUl li .chaofan-mj-logBtn{
+	background: #ff6666 !important;
+	}
+
+.chaofan-mj-logR_top span.cur{
+	border-bottom: solid 2px #ff6666 !important;
+	}
