@@ -640,7 +640,7 @@
                             for(var i=0,l=json.length;i<l;i++){
                                 neirou = json[i];    //当前层数据
                                 item += '<li>';
-                                item += '<a href="'+neirou.viewUrl+'" ><img src="'+neirou.imgUrl+'" onerror="this.src=/Static/images/img1.png" ></a>';
+                                item += '<a href="'+neirou.viewUrl+'" ><img src="'+neirou.imgUrl+'" onerror="this.src=\'/Static/images/img1.png\'" ></a>';
                                 item += '</li>';
                             }
                              $("#sclist").html(item);
