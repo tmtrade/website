@@ -255,6 +255,9 @@ class BuyModule extends AppModule
 		foreach($rst as $item){
 			$remarks = empty($item->remarks)?($item->subject):($item->remarks);
 			//截取掉敏感数据
+			$result = strstr($remarks,'价格',true);
+			$remarks = $result?$result:$remarks;
+
 			$result = strstr($remarks,'联系人',true);
 			$remarks = $result?$result:$remarks;
 
