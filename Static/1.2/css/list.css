@@ -921,6 +921,57 @@ body{ background:#f5f5f5 !important;}
     margin-top: 20px;
     position: relative;
 }
+.transaction .jylc1-bg{
+    width: 490px;
+    height: 573px;
+    background: url("../images/jylc1.png");
+    position: relative;
+}
+.transaction .jylc2-bg{
+    width:186px;
+    height: 500px;
+    background: url("../images/jylc2.png");
+    position: relative;
+}
+.transaction ul li{
+    position: absolute;
+    width: 204px;
+    /*! height: 97px; */
+    text-align: center;
+    /*! border: 1px solid red; */
+}
+.transaction ul.jylc2-bg  li{
+    position: absolute;
+    width:183px;
+    /*! height: 97px; */
+    text-align: center;
+    /*! border: 1px solid red; */
+}
+.transaction ul.jylc1-bg li h6{
+    color: #ff6666;
+    font-size: 18px;
+}
+.transaction ul.jylc2-bg li h6{
+    color: #666666;
+    font-size: 18px;
+}
+.transaction ul.jylc1-bg li label{
+    color: #666666;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 5px;
+    display: inline-block;
+}
+.transaction ul.jylc2-bg li label{
+    color: #666666;
+    font-size: 12px;
+    line-height: 22px;
+    margin-top: 5px;
+}
+.transaction ul.jylc1-bg li label span{
+    color: #ff6666;
+    display: block;
+}
 .transaction .jylc .vs{
     position: absolute;
     right: 260px;
