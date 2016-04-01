@@ -630,6 +630,10 @@ margin: 0;
     z-index: 9999999;
     margin-bottom: -1px;
 }
+.Brand-tit li h3{
+    font-size: 12px;
+    font-weight: normal;
+}
 .Brand-tit a:hover{
 	cursor:pointer;
 	}
@@ -1249,7 +1253,7 @@ width: 208px;
     overflow: hidden;
    /* margin-top: 25px;*/
 }
-.brand-ques h3{
+.brand-ques h2{
     color: #333333;
     font-size: 20px;
     font-weight: normal;

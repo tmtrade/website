@@ -41,6 +41,7 @@ table {
 .mj-nav{
 
     border-bottom: solid 1px #eaeaea;
+	text-align: center;
 
 }
 
@@ -75,7 +76,14 @@ table {
     color: #fff;
 
 }
-
+.mj-header_ceter {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 20px;
+    color: #666666;
+    font-weight: normal;
+   
+}
 .security i{
 
     margin-right: 2px;
@@ -551,7 +559,8 @@ table {
 
     margin-left: 10px;
 
-    width: 114px;
+     padding-left: 8px;
+    padding-right: 8px;
 
     height: 46px;
 
@@ -568,7 +577,10 @@ table {
     border: 1px solid #ffbfbf;
 
 }
-
+.mj-search_btn a h2{
+    font-weight: normal;
+    font-size: 14px;
+}
 .mj-search_btn a i{
 
     margin-right: 5px;
@@ -1304,7 +1316,7 @@ table {
     float: left;
     height: 160px;
 }
-.mj-bconRight h2 {
+.mj-bconRight h6 {
     font-size: 22px;
     color: #444;
     font-weight: normal;
