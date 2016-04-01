@@ -15,6 +15,7 @@ class BuyModule extends AppModule
 		'sale'			=> 'tsale',
 		'saletrademark' => 'tsaletrademark',
 		'tmclass'            => 'tmclass',
+		'tm'		=> 'trademark',
 	);
 
     /**
@@ -253,23 +254,45 @@ class BuyModule extends AppModule
 		//处理数据
 		$data = array();
 		foreach($rst as $item){
+			//得到内容
 			$remarks = empty($item->remarks)?($item->subject):($item->remarks);
-			//截取掉敏感数据
-			$result = strstr($remarks,'价格',true);
-			$remarks = $result?$result:$remarks;
+			if(($item->pttype)=='出售'){
+				//处理出售数据
 
-			$result = strstr($remarks,'联系人',true);
-			$remarks = $result?$result:$remarks;
+				//截取出商标号
+				$reg = '/商标号:(\w+)/';
+				$aaa = preg_match($reg,$remarks,$result);
+				if($aaa){
+					//得到商标名和分类
+					$tm = $result[1];
+					$r['eq'] = array('id'=>$tm);
+					$r['col'] = array('trademark','class');
+					$res = $this->import('tm')->find($r);
+					if($res){
+						$remarks = $res['trademark'].' '.$res['class'].'类';
+					}
+				}
+			}else{
+				//处理求购数据
 
-			$result = strstr($remarks,'我的联系电话',true);
-			$remarks = $result?$result:$remarks;
+				//截取掉敏感数据
+				$result = strstr($remarks,'价格',true);
+				$remarks = $result?$result:$remarks;
 
-			$result = strstr($remarks,'联系电话',true);
-			$remarks = $result?$result:$remarks;
+				$result = strstr($remarks,'联系人',true);
+				$remarks = $result?$result:$remarks;
 
-			$result = strstr($remarks,'电话号码',true);
-			$remarks = $result?$result:$remarks;
+				$result = strstr($remarks,'我的联系电话',true);
+				$remarks = $result?$result:$remarks;
 
+				$result = strstr($remarks,'联系电话',true);
+				$remarks = $result?$result:$remarks;
+
+				$result = strstr($remarks,'电话号码',true);
+				$remarks = $result?$result:$remarks;
+			}
+			$remarks = mbSub($remarks,0,30);
+			//组装结果数据
 			$data[] = array(
 				'remarks'=>$remarks,
 				'pttype'=>$item->pttype,
