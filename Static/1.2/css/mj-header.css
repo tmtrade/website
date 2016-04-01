@@ -77,11 +77,12 @@ table {
 
 }
 .mj-header_ceter {
-    display: inline-block;
+   display: inline-block;
     font-size: 12px;
-    line-height: 20px;
-    color: #666666;
+    line-height: 28px;
+    color: #ff6666;
     font-weight: normal;
+    margin-left: 405px;
    
 }
 .security i{
