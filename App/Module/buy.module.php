@@ -255,10 +255,10 @@ class BuyModule extends AppModule
 		$data = array();
 		foreach($rst as $item){
 			//得到内容
+			$flag = true;//出售数据是否处理标识
 			$remarks = empty($item->remarks)?($item->subject):($item->remarks);
 			if(($item->pttype)=='出售'){
 				//处理出售数据
-
 				//截取出商标号
 				$reg = '/商标号:(\w+)/';
 				$aaa = preg_match($reg,$remarks,$result);
@@ -269,12 +269,13 @@ class BuyModule extends AppModule
 					$r['col'] = array('trademark','class');
 					$res = $this->import('tm')->find($r);
 					if($res){
+						$flag = false;//成功处理
 						$remarks = $res['trademark'].' '.$res['class'].'类';
 					}
 				}
-			}else{
-				//处理求购数据
-
+			}
+			if($flag){
+				//未处理数据
 				//截取掉敏感数据
 				$result = strstr($remarks,'价格',true);
 				$remarks = $result?$result:$remarks;
