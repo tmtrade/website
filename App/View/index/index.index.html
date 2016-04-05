@@ -152,6 +152,7 @@
         $('#buyNeed').val('');
     }
 </script>
+   <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
 <div class="mj-banner">
     <div class="w1180 mj-formW">
         <div class="mj-from">
@@ -394,6 +395,7 @@
             <? foreach($module['class'] as $_k => $class): ?>
             <div class="brandlist-show">      
                 <ul class="yzc-categorbrand fr">
+              
                     <? foreach($class['items'] as $item): ?>
                     <li>
                         <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
@@ -666,6 +668,29 @@ if($(".picbox").children("div").children("ul").children("li").length<=5){
 				$(this).addClass("on");
 			})
 		})
-
+ $(document).ready(function(){
+		$('.yzc-categorbrand li').hover(
+		     
+				function(){
+					$('#tip').show();
+				},function(){
+					$('#tip').hide();
+					}
+		);
+	
+		$('.yzc-categorbrand li').mousemove(function(e){
+			var top = e.pageY+5;
+			var left = e.pageX+5;
+			$('#tip').css({
+				'top' : top + 'px',
+				'left': left+ 'px'
+			});
+		});
+	
+		$('.yzc-categorbrand li').mouseout(function(){
+			
+		});
+	
+	});
 </script>
 <? require(ViewDir.'/footer.html'); ?>
