@@ -45,6 +45,17 @@ table {
 
 }
 
+.detail-nav{
+	padding: 3px 8px;
+	background:rgba(0,0,0,0.4);
+	color:#fff;
+	font-size:12px;
+	border-radius:3px;
+	position: absolute;
+	z-index: 999999;
+	display:inline-block;
+	}
+
 .mj-header_left{}
 
 .mj-header_left li{
