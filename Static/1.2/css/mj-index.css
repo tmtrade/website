@@ -1354,20 +1354,27 @@ width: 208px;
     position: relative;
 }
 .yzc-take a{
-    position: absolute;
-    color: #ffffff;
-    font-size: 16px;
+   	position: absolute;
+	color: #ffffff;
+	font-size: 16px;
+	display: inline-block;	
+	height: 42px;
+	line-height: 40px;
+	text-align: center;
+	text-indent: 25px;
+	
 }
 
 .take1{
-    right: 420px;
-    top: 130px;
+	width: 200px;
+    right: 388px;
+	top: 120px;
 
 }
 .take2{
-    right:165px;
-    top:130px;
-
+    right: 145px;
+    top: 120px;
+    width: 220px;
 }
 /*悬浮楼层*/
 
