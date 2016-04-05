@@ -1,5 +1,6 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>zhuanti/css/list.css" />
+  <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
 <div class="w1180">
     <div class="zj-ban">
         <?php if(!empty($topic['banner'])) {?><img src="<?php echo TRADE_URL.$topic['banner']?>"/><? }?>
@@ -14,6 +15,7 @@
             <ul class="f-clearfix">
                 <? $counts = count($topicItems); 
                 foreach($topicItems as $k=>$v){?>
+                
                 <li>
                     <div class="front" style="width: 188px;">
                         <span>
@@ -91,5 +93,30 @@
         </ul>
     </div>
 </div>
-
+<script type="text/javascript">
+  $(document).ready(function(){
+		$('.yzc-ztlishow ul li').hover(
+		     
+				function(){
+					$('#tip').show();
+				},function(){
+					$('#tip').hide();
+					}
+		);
+	
+		$('.yzc-ztlishow ul li').mousemove(function(e){
+			var top = e.pageY+5;
+			var left = e.pageX+5;
+			$('#tip').css({
+				'top' : top + 'px',
+				'left': left+ 'px'
+			});
+		});
+	
+		$('.yzc-ztlishow ul li').mouseout(function(){
+			
+		});
+	
+	});
+</script>
 <? require(ViewDir.'/footer.html'); ?>
