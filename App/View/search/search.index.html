@@ -1,7 +1,7 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css"/>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/ms-filter.css"/>
-
+ <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
 <div class="w1180 ms-filterWrapper f-clearfix">
     <!-- ms-filterMain start -->
     <div class="ms-filterMain">
@@ -237,7 +237,9 @@
                             </div>
                         </div>
                     </div>
+                   
                 </li>
+                
             <? }else{ ?>
                 <li>
                 <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
@@ -667,6 +669,33 @@
         }
     });
 	
+	
+	 $(document).ready(function(){
+		  
+			
+		$('.ms-filtersList > ul > li > div').live('mouseover',
+		     
+				function(){
+					$('#tip').show();
+				}
+		);
+	$('.ms-filtersList > ul > li > div').live('mouseleave',
+		     
+				function(){
+					$('#tip').hide();
+				}
+		);
+		$('.ms-filtersList > ul > li').mousemove(function(e){
+			var top = e.pageY+5;
+			var left = e.pageX+5;
+			$('#tip').css({
+				'top' : top + 'px',
+				'left': left+ 'px'
+			});
+		});
+	
+	
+	});
 
 </script>
 <? require(ViewDir.'/footer.html'); ?>
