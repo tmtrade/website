@@ -1095,15 +1095,14 @@ body{ background:#f5f5f5 !important;}
 
 .jylc-xq li:last-child dl dd:first-child font{
     display: inline-block;
-    /*width: 150px;*/
-    width: 485px;
+   	width: 472px;
     color: #666666;
     line-height: 20px;
     padding: 10px;
     background: #fff9df;
     border: 1px solid #eaeaea;
     position: absolute;
-    margin-left: 85px;
+    margin-left: 100px;
     margin-top: 10px;
     display: none;
 }
@@ -1111,6 +1110,8 @@ body{ background:#f5f5f5 !important;}
     color: #48aff1;
     text-decoration: underline;
     cursor: pointer;
+	font-size: 12px;
+	margin-left: 12px;
 }
 
 .jylc-xq li:last-child dl dd:first-child font:before{
