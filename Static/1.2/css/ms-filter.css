@@ -265,7 +265,7 @@
 .ms-filtersList > ul > li{
     position: relative;
     float: left;
-   width: 182px;
+    width: 182px;
 	height: 227px;
     margin: 0 10px 10px 0;
     
@@ -293,6 +293,7 @@
     background: #ffffff;
     position: relative;
 }
+
 .ms-collect{
     position: absolute;
     top: 0px;
