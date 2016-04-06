@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css"/>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/ms-filter.css"/>
-
+ <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
 <div class="w1180 ms-filterWrapper f-clearfix">
     <!-- ms-filterMain start -->
     <div class="ms-filterMain">
@@ -215,7 +215,32 @@
             loadMore();
         }
     });
+    //添加查看详情页标签
+    $(document).ready(function(){       
+        $('.ms-filtersList').on('mouseover','li span',       
+                function(){
+                   
+                    $('#tip').show();
+                }
+        );
+        $('.ms-filtersList').on('mouseleave','li span',
+             
+            function(){
+                    $('#tip').hide();
+                }
+        );
+        $('.ms-filtersList').on('mousemove','li span',function(e){
 
+            var top = e.pageY+5;
+            var left = e.pageX+5;
+            $('#tip').css({
+                'top' : top + 'px',
+                'left': left+ 'px'
+            });
+        });
+    
+    
+    });
 </script>
 
 <? require(ViewDir.'/footer.html'); ?>
