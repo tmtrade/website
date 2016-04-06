@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/list.css" />
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/mj-index.css"/>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/ms-filter.css"/>
-
+ <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
 <div class="w1180">
 
     <div class="sbhwjg" style="margin-top: 15px;">
@@ -147,7 +147,31 @@
             });
         }
     });
-	
+	 $(document).ready(function(){     
+        $('.ms-filtersList').on('mouseover','li span',       
+                function(){
+                   
+                    $('#tip').show();
+                }
+        );
+        $('.ms-filtersList').on('mouseleave','li span',
+             
+            function(){
+                    $('#tip').hide();
+                }
+        );
+        $('.ms-filtersList').on('mousemove','li span',function(e){
+
+            var top = e.pageY+5;
+            var left = e.pageX+5;
+            $('#tip').css({
+                'top' : top + 'px',
+                'left': left+ 'px'
+            });
+        });
+    
+    
+    });
     
 </script>
 

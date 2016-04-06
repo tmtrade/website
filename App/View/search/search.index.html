@@ -670,22 +670,22 @@
     });
 	
 	
-	 $(document).ready(function(){
-		  
-			
-		$('.ms-filtersList > ul > li > div').live('mouseover',
-		     
+	
+     $(document).ready(function(){		
+		$('.ms-filtersList').on('mouseover','li span',	     
 				function(){
+                   
 					$('#tip').show();
 				}
 		);
-	$('.ms-filtersList > ul > li > div').live('mouseleave',
+	    $('.ms-filtersList').on('mouseleave','li span',
 		     
-				function(){
+			function(){
 					$('#tip').hide();
 				}
 		);
-		$('.ms-filtersList > ul > li').mousemove(function(e){
+		$('.ms-filtersList').on('mousemove','li span',function(e){
+
 			var top = e.pageY+5;
 			var left = e.pageX+5;
 			$('#tip').css({
