@@ -94,29 +94,31 @@
     </div>
 </div>
 <script type="text/javascript">
-  $(document).ready(function(){
-		$('.yzc-ztlishow ul li').hover(
-		     
-				function(){
-					$('#tip').show();
-				},function(){
-					$('#tip').hide();
-					}
-		);
-	
-		$('.yzc-ztlishow ul li').mousemove(function(e){
-			var top = e.pageY+5;
-			var left = e.pageX+5;
-			$('#tip').css({
-				'top' : top + 'px',
-				'left': left+ 'px'
-			});
-		});
-	
-		$('.yzc-ztlishow ul li').mouseout(function(){
-			
-		});
-	
-	});
+   $(document).ready(function(){     
+        $('.yzc-ztlishow').on('mouseover','li span',       
+                function(){
+                   
+                    $('#tip').show();
+                }
+        );
+        $('.yzc-ztlishow').on('mouseleave','li span',
+             
+            function(){
+                    $('#tip').hide();
+                }
+        );
+        $('.yzc-ztlishow').on('mousemove','li span',function(e){
+
+            var top = e.pageY+5;
+            var left = e.pageX+5;
+            $('#tip').css({
+                'top' : top + 'px',
+                'left': left+ 'px'
+            });
+        });
+    
+    
+    });
+    
 </script>
 <? require(ViewDir.'/footer.html'); ?>
