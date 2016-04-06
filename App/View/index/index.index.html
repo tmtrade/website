@@ -668,29 +668,31 @@ if($(".picbox").children("div").children("ul").children("li").length<=5){
 				$(this).addClass("on");
 			})
 		})
- $(document).ready(function(){
-		$('.yzc-categorbrand li').hover(
-		     
-				function(){
-					$('#tip').show();
-				},function(){
-					$('#tip').hide();
-					}
-		);
-	
-		$('.yzc-categorbrand li').mousemove(function(e){
-			var top = e.pageY+5;
-			var left = e.pageX+5;
-			$('#tip').css({
-				'top' : top + 'px',
-				'left': left+ 'px'
-			});
-		});
-	
-		$('.yzc-categorbrand li').mouseout(function(){
-			
-		});
-	
-	});
+// 添加查看详情标签；
+  $(document).ready(function(){     
+        $('.yzc-categorbrand li div ').on('mouseover','span',        
+                function(){
+                  
+                    $('#tip').show();
+                }
+        );
+        $('.yzc-categorbrand li div ').on('mouseleave','span',
+             
+            function(){
+                    $('#tip').hide();
+                }
+        );
+        $('.yzc-categorbrand li div ').on('mousemove','span',function(e){
+
+            var top = e.pageY+5;
+            var left = e.pageX+5;
+            $('#tip').css({
+                'top' : top + 'px',
+                'left': left+ 'px'
+            });
+        });
+    
+    
+    });
 </script>
 <? require(ViewDir.'/footer.html'); ?>
