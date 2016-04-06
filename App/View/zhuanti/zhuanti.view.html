@@ -3,7 +3,7 @@
   <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
 <div class="w1180">
     <div class="zj-ban">
-        <?php if(!empty($topic['banner'])) {?><img src="<?php echo TRADE_URL.$topic['banner']?>"/><? }?>
+        <?php if(!empty($topic['banner'])) {?><img src="<?php echo TRADE_URL.$topic['banner']?>" alt="<?=$topic['alt2']?>"/><? }?>
     </div>
     <div class="yzc-ztname">
         <div class="yzc-zttit">
@@ -58,7 +58,7 @@
             ?>
                 <div class="fl">
                 <span>
-                    <a href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221"></a>
+                    <a href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221" alt="<?=$v['alt1']?>"></a>
                 </span>
                     <dl>
                         <dt>
@@ -73,7 +73,7 @@
             <? }else{?>
                 <div class="fr">
                 <span>
-                     <a href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221"></a>
+                     <a href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221" alt="<?=$v['alt1']?>"></a>
                 </span>
                     <dl>
                         <dt>

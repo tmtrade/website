@@ -247,11 +247,7 @@
             <? foreach($ads as $ad): ?>
             <li>
                 <a href="<?=$ad['link']?>" target="_blank">
-                    <!--<h3>
-                        活动标题<br/>
-                        <span>活动标题</span>
-                    </h3>-->
-                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
                 </a>
             </li>
             <? endforeach; ?>
@@ -334,7 +330,7 @@
             <? foreach($recommendClasses as $rClass): ?>
             <li>
                 <p>
-                  <img src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'"/>
+                  <img src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$rClass['alt']?>"/>
                 </p>
                 <div style="display: none">
                     <a target="_blank" class="tjfl" href="search/index/?c=<?=$rClass['classStr']?>">12</a>
@@ -372,7 +368,7 @@
                         <div class="sbd">
                             <ul>
                                 <? foreach($module['pic'] as $pic): ?>
-                                <li><a href="<?=$pic['link']?>" target="_blank"><img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'"/></a></li>
+                                <li><a href="<?=$pic['link']?>" target="_blank"><img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$pic['alt']?>"/></a></li>
                                 <? endforeach; ?>
                             </ul>
                         </div>

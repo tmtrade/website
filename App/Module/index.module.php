@@ -42,12 +42,14 @@ class IndexModule extends AppModule
                         'pic'=>$item['pic'],
                         'other'=>$item['other'],
 				        'link'=>$item['link'],
+				        'alt'=>$item['alt'],
                     );
                     break;
                 case '3':
                     $ads[] = array(
                         'pic'=>$item['pic'],
                         'link'=>$item['link'],
+                        'alt'=>$item['alt'],
                     );
                     break;
                 case '4':
@@ -59,6 +61,7 @@ class IndexModule extends AppModule
                     }
                     $recommendClasses[] = array(
                         'pic'=>$item['pic'],
+                        'alt'=>$item['alt'],
                         'link'=>$item['link'],
                         'class'=>$className,
                         'classStr'=>$item['desc'],
@@ -95,7 +98,7 @@ class IndexModule extends AppModule
         //得到推荐图片信息
         $r['order'] = array('sort'=>'desc');
         $r['limit'] = 1000;
-        $r['col'] = array('industryId','pic','link');
+        $r['col'] = array('industryId','pic','link','alt');
         $menuPic = $this->import('industryPic')->find($r);
         $r = array();
         //返回结果
@@ -189,7 +192,7 @@ class IndexModule extends AppModule
         $r = array();
         $r['eq']['moduleId'] = $moduleId;
         $r['limit'] = 100;
-        $r['col'] = array('pic','link');
+        $r['col'] = array('pic','link','alt');
         $r['order'] = array('sort'=>'asc');
         $data = $this->import('modulePic')->find($r);
         return $data;

@@ -24,7 +24,7 @@
             <div class="case-xq-main">
                 <dl class="case-xq-gy">
                     <dt>
-                        <img src="<?php echo TRADE_URL.$caseInfo['pic1']?>" style="max-width: 850px">
+                        <img src="<?php echo TRADE_URL.$caseInfo['pic1']?>" style="max-width: 850px" alt="<?=$caseInfo['alt1']?>">
                     </dt>
                     <dd>
                         <span class="fl">
@@ -41,7 +41,7 @@
                 <dl class="case-xq-js">
                     <? if(!empty($caseInfo['pic2'])) {?>
                     <dt>
-                        <img src="<?php echo TRADE_URL.$caseInfo['pic2']?>" style="max-width: 850px">
+                        <img src="<?php echo TRADE_URL.$caseInfo['pic2']?>" style="max-width: 850px" alt="<?=$caseInfo['alt2']?>">
                     </dt>
                     <?}?>
                     <dd>
@@ -68,7 +68,7 @@
             <?php foreach($list as $k=>$v){ ?>
                <li>
                <span>
-                   <img src="<?php echo TRADE_URL.$v['pic1']?>" style="max-width:132px;height:87px ">
+                   <img src="<?php echo TRADE_URL.$v['pic1']?>" style="max-width:132px;height:87px " alt="<?=$v['alt1']?>">
                </span>
                    <p class="tit"><font><?=$v['name']?> </font></p>
                    <div class="aL-over f-clearfix">

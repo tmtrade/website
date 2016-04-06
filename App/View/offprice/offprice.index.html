@@ -16,7 +16,7 @@
             <li>
                 <div class="gla_inbox">
                     <a href="<?=$v['link']?>" target="_blank">
-                    <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['desc']?>" /></a>
+                    <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=($v['alt']?$v['alt']:$v['desc'])?>" /></a>
                     <p class="mj-ad">
                         <?=mbSub($v['desc'],0,60)?>
                     </p>
