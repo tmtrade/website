@@ -212,8 +212,7 @@
                     foreach($banners as $banner){
                         $url	 = TRADE_URL.'/'.substr($banner['pic'],1);
 						$_banner = $banner['link'] ? $banner['link'] : 'javascript:void(0);';
-                        $bannerStr .= "<li class='mj-banner-itme'><a href='{$_banner}' target='_blank'>
-                        <img src='{$url}'></a></li>";
+                        $bannerStr .= "<li class='mj-banner-itme'><a href='{$_banner}' target='_blank'><img src='{$url}' alt='".$banner["alt"]."'></a></li>";
                     }
                     echo $bannerStr;
                 ?>
