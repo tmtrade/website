@@ -1561,6 +1561,14 @@ body{ background:#f5f5f5 !important;}
 .platform ul li:first-child{
     /*margin-left: 0px;*/
 }
+.botton_tip {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #ff6666;
+    width: 95%;
+    margin: 20px auto;
+}
 
 /*可信网站*/
 .kjwz{
