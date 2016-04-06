@@ -38,11 +38,19 @@ class SearchAction extends AppAction
         if ( !empty($params['number']) ){
             $this->detail($params['number']);
         }
+        $listTopic = array();
         if ( empty($params) ){
             $res = array('rows'=>array(),'total'=>0);
         }else{
+            $_arrClass = empty($params['class']) ? array() : array_filter(explode(',', $params['class']));
+            //判断是否列表筛选只有class
+            if ( count($params) <= 2 && count($_arrClass) == 1 ){
+                $listTopic = $this->load('zhuanti')->getSearchTopicByClass(current($_arrClass));
+            }
             $res = $this->load('search')->search($params, $page, $this->_number, 1);
         }
+        
+        $this->set('listTopic', $listTopic);
         
         //频道设置
         $channel = $this->load('search')->getChannel($this->mod);

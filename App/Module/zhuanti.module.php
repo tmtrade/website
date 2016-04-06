@@ -84,5 +84,30 @@ class ZhuantiModule extends AppModule
             return false;
         }
     }
+
+    /**
+     * 获取搜索列表单类搜索时的专题数据
+     * 
+     * @author  Xuni
+     * @since   2016-04-06
+     *
+     * @return  void
+     */
+    public function getSearchTopicByClass($class, $limit=4)
+    {
+        if ( !in_array($class, range(1,45)) ) return array();
+
+        $r['eq']    = array('isUse'=>1);
+        $r['limit'] = $limit;
+        $r['order'] = array('sort'=>'asc');
+        $r['col']   = array('id','listPic');
+        $r['ft']    = array('listClass'=>$class);
+        $res = $this->import('topic')->find($r);
+        if ( empty($res) ) return array();
+        foreach ($res as $k => $v) {
+            $res[$k]['topicUrl'] = "/zhuanti/view/?id=".$v['id'];
+        }
+        return $res;
+    }
 }
 ?>
