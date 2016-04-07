@@ -1,5 +1,6 @@
-<div class="contUsList fl">
-           <h3 class="contUstit">关于一只蝉<img src="<?=StaticDir?>images/cont-rg.png"></h3>
+<div class="contUsList-fl fl">
+        <div class="contUsList">
+            <h3 class="contUstit">关于一只蝉<img src="<?=StaticDir?>images/cont-rg.png"></h3>
                 <ul class="contUsMain">
                     <a href="/topic/fourth" target="_blank"><li id="contact1" >一只蝉简介</li></a>
                     <a href="/case/" target="_blank"><li id="contact2" >成功案例</li></a>
@@ -21,4 +22,51 @@
                     <a href="/faq/news/?c=53"><li id="contact13" <? if($nav==53 && !$id) echo 'class="up"';?> onclick="jc('contact',13,14)">商标交易百科</li></a>
                     <a href="/faq/news/?c=52"><li id="contact14" <? if($nav==52 && !$id) echo 'class="up"';?> onclick="jc('contact',14,14)">商标求购信息</li></a>
                 </ul>
+        </div>
+           
+               <div class="contUs-trademark">
+                   <i></i>
+                   <h3>商标转让知识推荐</h3>
+                   <ul class="contUs-trademarkul">
+                       <a href=""><li><span>&bull;</span>转让知识推荐</li></a>
+                       <a href=""><li><span>&bull;</span>商标转让知识推荐</li></a>
+                       <a href=""><li><span>&bull;</span>商标转让知识推荐推荐</li></a>
+                       <a href=""><li><span>&bull;</span>商标转让知识</li></a>
+                       <a href=""><li><span>&bull;</span>商标转让知识推荐推荐</li></a>
+                   </ul>
+               </div>
+                <div class="contUs-trademark">
+                   <i></i>
+                   <h3>商标新闻推荐</h3>
+                   <ul class="contUs-trademarkul">
+                       <a href=""><li><span>&bull;</span>转让知识推荐</li></a>
+                       <a href=""><li><span>&bull;</span>商标转让知识推荐</li></a>
+                       <a href=""><li><span>&bull;</span>商标转让知识推荐推荐</li></a>
+                       <a href=""><li><span>&bull;</span>商标转让知识</li></a>
+                       <a href=""><li><span>&bull;</span>商标转让知识推荐推荐</li></a>
+                   </ul>
+               </div>
+                <div class="contUs-trademark">
+                   <i></i>
+                   <h3>商标推荐</h3>
+                   <div id="traslideBox" class="traslideBox">
+                    <div class="bd">
+                      <ul>
+                        <li><a href="" target="_blank"><img src="<?=StaticDir?>1.2/images/al-img1.png"></a></li>
+                        <li><a href="" target="_blank"><img src="<?=StaticDir?>1.2/images/al-img3.png"></a></li>
+                        <li><a href="" target="_blank"><img src="<?=StaticDir?>1.2/images/brand-lg1.png"></a></li>
+                      </ul>
+                    </div>
+
+                  
+                    <a class="prev" href="javascript:void(0)"></a>
+                    <a class="next" href="javascript:void(0)"></a>
+
+                  </div>
+               </div>
     </div>
+
+    <script type="text/javascript" src="/Static/1.2/js/jquery.SuperSlide.2.1.js"></script>
+    <script type="text/javascript">
+      jQuery(".traslideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true});
+    </script>
