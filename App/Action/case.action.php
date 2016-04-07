@@ -2,8 +2,6 @@
 /**
  * 成功案列
  *
- * 网站首页
- *
  * @package Action
  * @author  Far
  * @since   2016-03-21
@@ -23,32 +21,34 @@ class CaseAction extends AppAction
 	//得到栏目对应的文章列表
 	public function index()
 	{
-		$page			= $this->input("page","int");
-		$page			= $page == 0 ? 1 : $page;
-		$limit			= 16;
-		$list			= $this->load('case')->getCaseList('', $page, $limit);
-		$pager			= $this->pagerNew($list['total'], $limit);
-		$pageBar		= empty($list) ? '' : getPageBarNew($pager);
-                
-		$this->set("list", $list['rows']);
-		$this->set("keywords", $this->keyword);
-		$this->set("description", $this->description);
-		$this->set("pageBar", $pageBar);
-        $this->display();
+            $page			= $this->input("page","int");
+            $page			= $page == 0 ? 1 : $page;
+            $limit			= 16;
+            $list			= $this->load('case')->getCaseList('', $page, $limit);
+            $pager			= $this->pagerNew($list['total'], $limit);
+            $pageBar		= empty($list) ? '' : getPageBarNew($pager);
+
+            $this->set("list", $list['rows']);
+            $this->set("keywords", $this->keyword);
+            $this->set("description", $this->description);
+            $this->set("pageBar", $pageBar);
+            $this->setSeo();
+            $this->display();
 	}
 
 	//得到对应的文章详情
 	public function detail()
 	{
-		$id     = $this->input("id","int");
-		$data	= $this->load('case')->getCaseInfo($id);
-        $list	= $this->load('case')->getCaseList($id, 1, 4, array("id"=>"desc"));
-		$title  = $data['title'].' - '.$this->seotime;
-		$this->set("caseInfo", $data);
-        $this->set("list", $list['rows']);
-		$this->set("title", $title);
-        $this->set("id", $id);
-        $this->display();
+            $id     = $this->input("id","int");
+            $data	= $this->load('case')->getCaseInfo($id);
+            $list	= $this->load('case')->getCaseList($id, 1, 4, array("id"=>"desc"));
+            $title  = $data['title'].' - '.$this->seotime;
+            $this->set("caseInfo", $data);
+            $this->set("list", $list['rows']);
+            $this->set("title", $title);
+            $this->set("id", $id);
+            $this->setSeo();
+            $this->display();
 	}
 
 }

@@ -92,7 +92,8 @@ class SearchAction extends AppAction
         $this->set('has', empty($res['rows']) ? false : true);
         $this->set('_number', $this->_number);
         $this->set('whereStr', $whereStr);
-		$this->display();
+        $this->setSeo();
+        $this->display();
 	}
 
     /**

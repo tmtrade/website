@@ -77,6 +77,7 @@ class OffpriceAction extends AppAction
         $this->set('total', intval($res['total']));
         $this->set('has', empty($res['rows']) ? false : true);
         $this->set('whereStr', $whereStr);
+        $this->setSeo();
         $this->display();
     }
 

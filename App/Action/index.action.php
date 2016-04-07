@@ -52,6 +52,7 @@ class IndexAction extends AppAction
 			$news = $_news;
 		}
 		$this->set('news',$news);
+                $this->setSeo();
 		$this->display();
 	}
 
@@ -81,6 +82,7 @@ class IndexAction extends AppAction
 				);
 		}
 		$this->set('list',$list);
+                $this->setSeo();
 		$this->display();
 	}
 

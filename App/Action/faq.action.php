@@ -34,6 +34,7 @@ class FaqAction extends AppAction
     {
 		$pageTitle   = '营业执照 - '.$this->seotime;
 		$this->set("title",$pageTitle);
+                $this->setSeo();
                 $this->display();
     }
     
@@ -42,6 +43,7 @@ class FaqAction extends AppAction
     {
 		$pageTitle   = '可信网站 - '.$this->seotime;
 		$this->set("title",$pageTitle);
+                $this->setSeo();
                 $this->display();
     }
     
@@ -51,14 +53,16 @@ class FaqAction extends AppAction
 		$pageTitle   = '平台资质 - '.$this->seotime;
 		$this->set("title",$pageTitle);
                 $this->set("cat", "ryzz");
+                $this->setSeo();
                 $this->display();
     }
     
     //规则
-	public function rule()
+    public function rule()
     {
-		$pageTitle   = '入驻平台规则 - '.$this->seotime;
-		$this->set("TITLE",$pageTitle);
+        $pageTitle   = '入驻平台规则 - '.$this->seotime;
+        $this->set("title",$pageTitle);
+        $this->setSeo();
         $this->display();
     }
 

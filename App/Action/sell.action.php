@@ -15,6 +15,7 @@ class SellAction extends AppAction
 	{
 		$number	= $this->input("m","string");
 		$this->set("number",$number);
+                $this->setSeo();
 		$this->display();
 	}
 

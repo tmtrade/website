@@ -26,8 +26,9 @@ abstract class AppAction extends Action
 	public $pageKey 	= '商标转让,一只蝉,商标转让网,注册商标转让,转让商标,商标买卖,商标交易,商标交易网';
 	
 	public $pageDescription = '商标转让上一只蝉商标转让平台网,一只蝉是超凡集团商标交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台。提供专业的商标交易,商标买卖等服务';
-
-	/**
+        
+        public $seotime = "一只蝉商标转让平台网";
+        /**
 	 * 前置操作(框架自动调用)
 	 * @author	void
 	 * @since	2015-01-28
@@ -63,10 +64,11 @@ abstract class AppAction extends Action
 
 		$this->set('_mod_', $this->mod);
 		$this->set('_action_', $this->action);
-
-		$this->set('title', $this->pageTitle);//页面title
-		$this->set('keywords', $this->pageKey);//页面keywords
-		$this->set('description', $this->pageDescription);//页面description
+                
+                $this->set('title', $this->pageTitle);//页面title
+                $this->set('keywords', $this->pageKey);//页面keywords
+                $this->set('description', $this->pageDescription);//页面description
+		
 		$this->set('static_version', 9160);//静态文件版本号>>控制js,css缓存
 
 		// $this->set('CLASSES', C('CLASSES'));//国际分类
@@ -147,6 +149,31 @@ abstract class AppAction extends Action
 		$this->set('isLogin', $this->isLogin);
 	}
 	
+        /**
+	 * 设置页面SEO
+	 *
+	 * @author	Far
+	 * @since	2016-4-07
+	 */
+	protected final function setSeo()
+	{
+            //获取后台SEO信息
+            $seoList = $this->com('redisHtml')->get("seo_".$this->mod.$this->action);
+            if(empty($seoList)){
+                    $seoList = $this->load('seo')->getInfo($this->mod."/".$this->action);
+                    $this->com('redisHtml')->set("seo_".$this->mod.$this->action, $seoList, 300);
+            }
+            if(!empty($seoList['title'])){
+                $this->set('title', $seoList['title']);//后台调用页面title
+            }
+            if(!empty($seoList['keyword'])){
+                $this->set('keywords', $seoList['keyword']);//后台调用页面keywords
+            }
+            if(!empty($seoList['description'])){
+                $this->set('description', $seoList['description']);//后台调用页面description
+            }
+	}
+        
 	/**
 	 * 删除用户信息数据
 	 *

@@ -56,7 +56,8 @@ class GoodsAction extends AppAction
         
         $_browseTitle = $_title ? $_title.$this->pageTitle : '导航页'.$this->pageTitle;
         $this->set('title', $_browseTitle);//页面title
-		$this->display();
+        $this->setSeo();
+        $this->display();
 	}
 
     public function getMore()
