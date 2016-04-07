@@ -1135,21 +1135,18 @@ body{ background:#f5f5f5 !important;}
 }
 /*成功案列*/
 .comSty{
-    margin-top: 35px;
+    margin: 35px auto 0px;
     border-top: 1px solid #e7e7e7;
     position: relative;
 	padding-bottom:25px;
+    width: 95%;
+
 }
-.lb-tit{
+.lb-tit h2{
     color: #333333;
-    font-size: 20px;
-    padding-left:15px;
-    padding-right:15px;
-	background:#f5f5f5;
+    font-size: 24px;  
 	text-align: center;
-	margin: auto;
-    margin-top: -12px;
-    width:45%;
+    margin-top: 50px;
 }
 .yzc-succeeal .yzc-succeeal-main ul{
    margin-top: 15px;
@@ -1270,8 +1267,10 @@ body{ background:#f5f5f5 !important;}
     color: #999999;
     /*margin-left: 10px;*/
 }
+
 .case-name-share span img{
 	vertical-align:middle;
+      margin-bottom: 1px;
 	}
 .case-name-share{
     display: inline-block;
@@ -1464,10 +1463,13 @@ body{ background:#f5f5f5 !important;}
     margin-top: 45px;
 	padding-bottom: 30px;
 }
-
-.contUsList{
+.contUsList-fl{
     width:200px;
+}
+.contUsList{
+    
     border: 1px solid #eaeaea;
+    border-bottom:none; 
 }
 .contUsList .up{
     color: #ff6568;
@@ -1495,7 +1497,7 @@ body{ background:#f5f5f5 !important;}
     width: 100%;
     margin-top:12px;
     color: #666666;
-    font-size: 14px;
+    font-size: 12px;
     text-indent:42px;
     cursor: pointer;
 }
@@ -1505,14 +1507,62 @@ body{ background:#f5f5f5 !important;}
 .contUsrg{
     width: 970px;
     border: 1px solid  #eaeaea;
+   
 }
 .trad-certi{
 
 }
-.contUsrg h2{
-    background: #ffffff;
-    top:-15px;
+.trad-certi-tally{
+    text-align: center;
+    margin-top: 20px;
+}
+.trad-certi-tally span{
+    display: inline-block;
+    padding:5px 12px;
+    background: #eeeeee;
+    border-radius: 3px;
+    color: #666666;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.contUs-trademark{
+    border: 1px solid #eaeaea;
+    text-indent:28px;
+    position: relative;
+    margin-top:10px; 
+    padding-bottom: 15px;
+}
+.contUs-trademark i{
+    display: inline-block;
+    width: 2px;
+    height: 16px;
+    background: #ff6666;
+    position: absolute;
+    left: -1px;
+    top:18px;
+}
+.contUs-trademark h3{
+    color: #333333;
     font-size: 16px;
+    margin-top: 12px;
+    font-weight: normal;
+    width: 98%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.contUs-trademarkul li{
+    color: #666666;
+    font-size: 12px;
+    margin-top: 10px;
+    width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.contUs-trademarkul li span{
+    margin-right: 8px;
+    vertical-align: middle;
 }
 #con_contact_1,#con_contact_2,#con_contact_3,#con_contact_4,#con_contact_5{
     display: none;
@@ -1525,15 +1575,16 @@ body{ background:#f5f5f5 !important;}
 
 .trad-certi .yzzz{
     margin: 45px auto 0px;
-	padding-left: 40px;
-    padding-right: 40px;
+	padding-left:10px;
+    padding-right: 0px;
 }
 .trad-certi .yzzz img{
     display: block;
     margin: auto;
 }
+
 .platform dl{
-       width: 74%;
+    width: 74%;
     margin: 40px auto;
     color: #666666;
     line-height: 24px;
@@ -1557,14 +1608,68 @@ body{ background:#f5f5f5 !important;}
 .platform ul li:first-child{
     /*margin-left: 0px;*/
 }
-.botton_tip {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    color: #ff6666;
-    width: 95%;
-    margin: 20px auto;
+.botton_tip{
+     text-align: center;
+      margin: 50px auto;
 }
+.botton_tip  span{
+    font-size: 12px; 
+    color: #666666;
+   
+    background: #eeeeee;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+}
+.contUg-page{
+    border-top: 1px solid #eeeeee;
+    height: 85px;
+}
+.contUg-page li{
+    width: 45%;
+    float: left;
+    color: #999999;
+    font-size: 14px;
+    margin-top:30px;
+}
+.contUg-page li.fl{
+    text-align: left;
+    padding-left:10px; 
+}
+.contUg-page li.fr{
+    text-align:right;
+    padding-right:10px; 
+}
+.contUg-page li.fl span{
+     margin-right:10px; 
+   
+}
+.contUg-page li.fr{
+     margin-left:10px; 
+}
+.contUg-page li span img{
+   vertical-align: middle;
+   margin-bottom:2px; 
+}
+/* 下面是商标切换的样式 */
+.traslideBox{ width:184px; height:81px; overflow:hidden; position:relative; border:1px solid #fff; margin: 30px auto; }
+.traslideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
+// .traslideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
+// .traslideBox .hd ul li{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
+// .traslideBox .hd ul li.on{ background:#f00; color:#fff; }
+.traslideBox .bd{ position:relative; height:100%; z-index:0;  width: 135px;height: 81px;margin: auto; }
+.traslideBox .bd li{ zoom:1;  width: 135px;height: 81px;text-align: center;margin: auto;}
+.traslideBox .bd img{width:135px;height:81px; display:block; vertical-align: middle;}
+
+
+.traslideBox .prev,
+.traslideBox .next{ position:absolute;  top:70%; margin-top:-25px; display:block; width:11px; height:21px; filter:alpha(opacity=50);opacity:0.5;   }
+.traslideBox .next{ right:3%;background:url(../images/pg-next.png) no-repeat;  }
+.traslideBox .prev{ left:3%;background:url(../images/pg-pre.png)  no-repeat;  }
+.traslideBox .prev:hover,
+.traslideBox .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+.traslideBox .prevStop{ display:none;  }
+.traslideBox .nextStop{ display:none;  }
 
 /*可信网站*/
 .kjwz{
