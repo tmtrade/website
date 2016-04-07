@@ -6,14 +6,44 @@
    <div class="w1180 contactUs f-clearfix" style="background: #ffffff">
        <? require(ViewDir.'/faq/left.html'); ?>
        <div class="contUsrg fr f-clearfix">
-           <div class="trad-certi comSty">
-               <div class="lb-tit"><h2><? echo $list['title'];?></h2></div>
+           <div class="lb-tit"><h2><? echo $list['title'];?></h2></div>
+               <div class="trad-certi comSty">
+                    <div class="contUg-share">
+                     <div class="case-name-share" style="left: 345px;">
+                       <span><i><img src="http://f2.chofn.net/yzc/Static/1.2/images/xq-ico.png"> </i><font>2016-02-14</font></span>   
+
+                       <span style="margin-left: 8px;">分享到：</span>
+                       <a title="分享到QQ好友" href="javascript:void(0);" class="jiathis_button_cqq"><span class="jiathis_txt jiathis_separator jtico jtico_cqq"><img src="http://f2.chofn.net/yzc/Static/1.2/images/share-ico1.png"></span></a>
+                       <a title="分享到新浪微博" href="javascript:void(0);" class="jiathis_button_tsina"><span class="jiathis_txt jiathis_separator jtico jtico_tsina"><img src="http://f2.chofn.net/yzc/Static/1.2/images/share-wb.png"></span></a>
+                       <a title="分享到微信" href="javascript:void(0);" class="jiathis_button_weixin"><span class="jiathis_txt jiathis_separator jtico jtico_weixin"><img src="http://f2.chofn.net/yzc/Static/1.2/images/share-wx.png"></span></a>
+                        <!-- JiaThis Button BEGIN -->
+                        <script type="text/javascript">
+                        var jiathis_config={
+                                summary:"",
+                                shortUrl:false,
+                                hideMore:false
+                        }
+                        </script>
+                        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script><script type="text/javascript" src="http://v3.jiathis.com/code/plugin.client.js" charset="utf-8"></script>
+                        <!-- JiaThis Button END -->
+                    </div>
+               <div class="trad-certi-tally">
+                 <span>我是标签</span><span>我是标签</span><span>我是标签</span>
+               </div>
+            </div>
+
                <div class="yzzz">
                    <? echo $list['content']; ?> 
                </div>
                <div class="botton_tip">
-                   一只蝉商标转让平台网： <? echo $list['title'];?> 转载请注明出处：<? echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
+                   <span>
+                       一只蝉商标转让平台网： <? echo $list['title'];?> 转载请注明出处：<? echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; ?>
+                   </span>      
                </div>
+               <ul class="contUg-page">
+                 <a href=""><li class="fl"><span><img src="<?=StaticDir?>1.2/images/pg-pre.png">&nbsp;&nbsp;&nbsp;&nbsp;上一页</span>   隔壁天猫店又入驻了新的商标 </li></a>
+                 <a href=""><li class="fr">隔壁天猫店又入驻了新的商标   <span>下一页&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?=StaticDir?>1.2/images/pg-next.png"></span></li></a>
+               </ul>
            </div>
        </div>
 
