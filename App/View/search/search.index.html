@@ -225,7 +225,7 @@
                     <div>
                         <div class="ms-filterCenter">
                             <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>"  target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                            <span class="ms-filtersImg pulse"><a href="<?=$v['viewUrl']?>"  target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p><span><?=$v['class']?>类</span>-<?=$_CLASS[$v['class']]?></p>
@@ -239,6 +239,10 @@
                     </div>
                    
                 </li>
+
+                <!-- 添加广告图片 -->
+               <li class="pulse"><a href=""><div class="add-adver"><img src="<?=StaticDir?>1.2/images/sx-adver.jpg"/></div></a></li> 
+                <!-- 添加广告图片结束 -->
                 
             <? }else{ ?>
                 <li>
@@ -682,12 +686,14 @@
 				function(){
                    
 					$('#tip').show();
+                    $(this).addClass("pulse");
 				}
 		);
 	    $('.ms-filtersList').on('mouseleave','li span',
 		     
 			function(){
 					$('#tip').hide();
+                    $(this).removeClass("pulse");
 				}
 		);
 		$('.ms-filtersList').on('mousemove','li span',function(e){
