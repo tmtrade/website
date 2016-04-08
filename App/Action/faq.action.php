@@ -69,6 +69,7 @@ class FaqAction extends AppAction
 	//得到栏目对应的文章
 	public function news()
 	{
+        $this->getLeftData();//得到左菜单数据
 		$c			= $this->input("c","int");
 		$page			= $this->input("page","int");
 		$page			= $page == 0 ? 1 : $page;
@@ -92,14 +93,22 @@ class FaqAction extends AppAction
 		$this->set("pageBar", $pageBar);
                 $this->display();
 	}
+    public function test(){
+        $id			= $this->input("id","int");
+        $c			= $this->input("c","int");
 
+        $data		= $this->load('faq')->getNextThree(array('c'=>50,'id'=>961));
+        var_dump($data);
+    }
 	//得到栏目对应的文章
 	public function views()
 	{
+        $this->getLeftData();//得到左菜单数据
 		$id			= $this->input("id","int");
 		$c			= $this->input("c","int");
-		
-		$data		= $this->load('faq')->newsList(array('id'=>$id));
+        $data		= $this->load('faq')->getNextThree(array('c'=>$c,'id'=>$id));
+		//$data		= $this->load('faq')->newsList(array('id'=>$id));
+        //var_dump($data);
 		$this->set("list", $data[0]);
                 switch ($id){
                 case 987: 
@@ -138,5 +147,19 @@ class FaqAction extends AppAction
                 $this->display();
 	}
 
+    /**
+     * 得到左菜单的数据
+     * @throws SpringException
+     */
+    public function getLeftData(){
+        //得到新闻及faq
+        $news = $this->load('faq')->newsList(array('c'=>50,'limit'=>5));
+        $faq = $this->load('faq')->newsList(array('c'=>45,'limit'=>5));
+        //得到推荐商标
+        $tj = $this->load('faq')->getTm(3);
+        $this->set('news',$news);
+        $this->set('faq',$faq);
+        $this->set('tj',$tj);
+    }
 }
 ?>

@@ -26,6 +26,7 @@ class FaqModule extends AppModule
      */
     public $models = array(
         'sale'			=> 'sale',
+		'tminfo'        => 'saleTminfo',
 		'member'		=> 'member',
 		'proposer'		=> 'proposer',
         'saletrademark' => 'saletrademark',
@@ -82,11 +83,49 @@ class FaqModule extends AppModule
 		}
 		//调用接口
 		$data = $this->importBi('faq')->getNewsList($param);
+
 		if(!empty($data['rows'])){
 			$list = $this->getList($data['rows'],'cfdt');
 		}
 		return $list;
 	}
-	
+
+	/**
+	 * 得到销售中的商标
+	 * @param $limit
+	 * @return array
+	 */
+	public function getTm($limit){
+		$r['eq']    = array('status'=>1);
+		$rand       = rand(0, 6666);
+		$r['index'] = array($rand, $limit);
+		$res = $this->import('sale')->find($r);
+		$res = $this->load('search')->getListTips($res);//处理数据
+		return $res;
+	}
+
+	/**
+	 * 得到3条文章
+	 * @param $param
+	 * @return mixed
+	 */
+	public function getNextThree($param){
+		$me['order'] = array('showOrder' => 'DESC');
+		$me['minId'] = isset($param['id']) ? $param['id'] : 0;
+		$me['c'] = isset($param['c']) ? $param['c'] : 0;
+		$me['limit'] = 2;
+		$data1 = $this->importBi('faq')->getNewsList($me);
+//		if(count($data1['rows'])==2){
+//			unset($data1['rows'][1]);
+//		}
+		$me['maxId'] = isset($param['id']) ? $param['id'] : 0;
+		$data2 = $this->importBi('faq')->getNewsList($me);
+		$data = array_merge($data1['rows'],$data2['rows']);
+
+		if(!empty($data)){
+			$list = $this->getList($data,'cfdt');
+		}
+		return $list;
+	}
 }
 ?>

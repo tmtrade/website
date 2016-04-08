@@ -28,22 +28,18 @@
                    <i></i>
                    <h3>商标转让知识推荐</h3>
                    <ul class="contUs-trademarkul">
-                       <a href=""><li><span>&bull;</span>转让知识推荐</li></a>
-                       <a href=""><li><span>&bull;</span>商标转让知识推荐</li></a>
-                       <a href=""><li><span>&bull;</span>商标转让知识推荐推荐</li></a>
-                       <a href=""><li><span>&bull;</span>商标转让知识</li></a>
-                       <a href=""><li><span>&bull;</span>商标转让知识推荐推荐</li></a>
+                       <?foreach($faq as $f):?>
+                       <a href="<?=$f['url']?>"><li><span>&bull;</span><?=$f['thumtitle']?></li></a>
+                       <?endforeach;?>
                    </ul>
                </div>
                 <div class="contUs-trademark">
                    <i></i>
                    <h3>商标新闻推荐</h3>
                    <ul class="contUs-trademarkul">
-                       <a href=""><li><span>&bull;</span>转让知识推荐</li></a>
-                       <a href=""><li><span>&bull;</span>商标转让知识推荐</li></a>
-                       <a href=""><li><span>&bull;</span>商标转让知识推荐推荐</li></a>
-                       <a href=""><li><span>&bull;</span>商标转让知识</li></a>
-                       <a href=""><li><span>&bull;</span>商标转让知识推荐推荐</li></a>
+                       <?foreach($news as $n):?>
+                       <a href="<?=$n['url']?>"><li><span>&bull;</span><?=$n['thumtitle']?></li></a>
+                       <?endforeach;?>
                    </ul>
                </div>
                 <div class="contUs-trademark">
@@ -52,9 +48,9 @@
                    <div id="traslideBox" class="traslideBox">
                     <div class="bd">
                       <ul>
-                        <li><a href="" target="_blank"><img src="<?=StaticDir?>1.2/images/al-img1.png"></a></li>
-                        <li><a href="" target="_blank"><img src="<?=StaticDir?>1.2/images/al-img3.png"></a></li>
-                        <li><a href="" target="_blank"><img src="<?=StaticDir?>1.2/images/brand-lg1.png"></a></li>
+                          <?foreach($tj as $t):?>
+                        <li><a href="<?=$t['viewUrl']?>" target="_blank"><img src="<?=$t['imgUrl']?>"></a></li>
+                          <?endforeach;?>
                       </ul>
                     </div>
 
