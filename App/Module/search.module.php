@@ -514,15 +514,17 @@ class SearchModule extends AppModule
         if ( empty($data['tid']) ) return $data;
 
         if ( $data['id'] ){
-            $data['imgUrl'] = $this->load('internal')->getViewImg($data['id']);
+            //$data['imgUrl'] = $this->load('internal')->getViewImg($data['id']);
+            $rst = $this->load('internal')->getViewImgAndAlt($data['id']);//得到图片和描述
+            $data = array_merge($data,$rst);
         }else{
             $data['imgUrl'] = $this->load('trademark')->getImg($data['number']);
+            $data['alt'] = '';
         }
         $_class = current( explode(',', $data['class']) );
         $data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';
         $data['safeUrl'] = 'http://jingling.yizhchan.com/?nid='.$data['number'].'&class='.$data['class'];
-        //得到商标的美化图描述
-        $data['alt'] = $this->load('sale')->getAlt($data['number']);
+
         //显示商品数据
         $_info = $this->load('trademark')->getInfo($data['tid'], array('goods'));
         $data['goods']  = empty($_info['goods']) ? '' : $_info['goods'];

@@ -119,6 +119,24 @@ class InternalModule extends AppModule
         return $url;
 	}
 
+    //得到图片和描述
+    public function getViewImgAndAlt($id)
+    {
+        if ( $id <= 0 ) return '';
+
+        $r['eq']    = array('saleId'=>$id);
+        $r['col']   = array('embellish','number','alt1');
+        $data       = $this->import("tminfo")->find($r);
+        if( empty($data['embellish']) ){
+            if ( empty($data['number']) ) return '';
+            $url = $this->load('trademark')->getImg($data['number']);
+        }else{
+            $url = TRADE_URL.$data['embellish'];
+        }
+        $data1['imgUrl'] = $url;
+        $data1['alt'] = $data['alt1'];
+        return $data1;
+    }
     //获取商品信息（可选包含的所有联系人与包装信息）
     public function getSaleInfo($saleId, $contact=1, $tminfo=1 ,$flag = true)
     {
