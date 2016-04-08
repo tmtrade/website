@@ -521,7 +521,8 @@ class SearchModule extends AppModule
         $_class = current( explode(',', $data['class']) );
         $data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';
         $data['safeUrl'] = 'http://jingling.yizhchan.com/?nid='.$data['number'].'&class='.$data['class'];
-
+        //得到商标的美化图描述
+        $data['alt'] = $this->load('sale')->getAlt($data['number']);
         //显示商品数据
         $_info = $this->load('trademark')->getInfo($data['tid'], array('goods'));
         $data['goods']  = empty($_info['goods']) ? '' : $_info['goods'];
@@ -640,7 +641,7 @@ class SearchModule extends AppModule
     public function getExtSaleInfo($id,$number){
 
         $r['eq'] = array('saleId'=>$id);
-        $r['col'] = array('value','number');
+        $r['col'] = array('value','number','alt1');
         $data = $this->import('tminfo')->find($r);
         //得到图片
         //得到商标价值

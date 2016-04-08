@@ -51,6 +51,46 @@ class SaleModule extends AppModule{
     }
 
     /**
+     * 根据商标号得到商标的包装信息(无美化图,获得商标图)
+     * @param $number
+     * @return array|bool
+     * @throws SpringException
+     */
+    public function getSaltTminfoByNumber($number){
+        $r['eq'] = array('number'=>$number);
+        $info = $this->import('saleTminfo')->find($r);
+        //无销售数据
+        if($info==false){
+            $info = array();
+            $info['alt1'] = '';
+            $info['embellish'] = $this->load('trademark')->getImg($number);
+            return $info;
+        }
+        //返回包装数据
+        if($info['embellish']){
+            $info['embellish'] = TRADE_URL.$info['embellish'];
+        }else{
+            $info['embellish'] = $this->load('trademark')->getImg($number);
+        }
+
+        return $info;
+    }
+
+    /**
+     * 获得商标的图片alt描述
+     * @param $number
+     * @return string
+     */
+    public function getAlt($number){
+        $r['eq']['number'] = $number;
+        $r['col'] = array('alt1');
+        $rst = $this->import('saleTminfo')->find($r);
+        if($rst){
+            return $rst['alt1'];
+        }
+        return '';
+    }
+    /**
      * 判断商标是否销售中
      * @author dower
      * @param $number

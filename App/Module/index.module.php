@@ -175,7 +175,9 @@ class IndexModule extends AppModule
             $item['class'] = $result['class'];
             $item['remarks'] = "商标号:".$item['number'].",类别:".$result['class'];
             //得到商标包装图
-            $item['embellish'] = $this->load('Sale')->getSaleTmByNumber($item['number']);
+            $aaa = $this->load('Sale')->getSaltTminfoByNumber($item['number']);
+            $item['embellish'] = $aaa['embellish'];
+            $item['alt'] = $aaa['alt1'];
             //处理商标名
             $item['thum_name'] = mbSub($item['name'],0,12);
         }
