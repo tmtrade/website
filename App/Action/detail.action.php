@@ -127,7 +127,7 @@ class DetailAction extends AppAction
                     }
                 }
                 if(!$is_record){
-                    $recordList = array(0=>array("tid"=>$tid,"class"=>$class,"imgUrl"=>$info['imgUrl']));
+                    $recordList = array(0=>array("tid"=>$tid,"class"=>$class,"imgUrl"=>$sale['imgUrl']));
                     for($i=0;$i<7;$i++){
                         if(!empty($record[$i])){
                             $recordList[] = $record[$i];

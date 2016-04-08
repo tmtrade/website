@@ -1,10 +1,10 @@
 ﻿<? require(ViewDir.'/header.html'); ?>
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 
-<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/mj-index.css" />
-<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/list.css" />
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/mj-index.css?v=<?=$static_version?>" />
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>" />
 <!--弹窗css-->
-<link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css?v=<?=$static_version?>"/>
 <!--商标详情介绍-->
 <div class="brand-details f-clearfix">
     <div class="w1180">
@@ -799,7 +799,7 @@
         $.each(Obj,function(i,n){
             //弹窗提示
             if(n.code==2){
-                $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>您已经购买过该商标</a>");
+                $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>求购信息已提交</a>");
             }
         });
     }

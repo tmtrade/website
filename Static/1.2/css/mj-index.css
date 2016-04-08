@@ -1152,10 +1152,11 @@ width: 208px;
     margin-left:-10px;
 }
 .succeed-al-main li{
-   float: left;
+    float: left;
     width: 385px;
     margin-left:10px;
     position: relative;
+    background: #fff;
 }
 .succeed-al-main li div.front dl{
     width: 168px;

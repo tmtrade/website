@@ -1,6 +1,6 @@
 <? require(ViewDir.'/header.html'); ?>
-<link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css"/>
-<link rel="stylesheet" href="<?=StaticDir?>1.2/css/ms-filter.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>"/>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/ms-filter.css?v=<?=$static_version?>"/>
  <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
 <div class="w1180 ms-filterWrapper f-clearfix">
     <!-- ms-filterMain start -->
@@ -41,7 +41,7 @@
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="" onclick="createUrl('_class','0');return false;">全部</a></li>
                         <?foreach ($_CLASS as $_cls => $_cn) {?>
-                            <li><a href="javacript:void(0);" onclick="createUrl('_class','<?=$_cls?>');return false;"><?=$_cls?>-<?=$_cn?></a></li>
+                            <li><a href="javascript:void(0);" onclick="createUrl('_class','<?=$_cls?>');return false;"><?=$_cls?>-<?=$_cn?></a></li>
                         <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox cc_all2">
@@ -65,7 +65,7 @@
                     <span>分类群组</span>
                     <div class="ms-conditionList-main groupSty">
                         <ul class="f-clearfix ms-conditionRadio">
-                            <li><a href="javacript:void(0);" onclick="createUrl('_group','0');return false;">全部群组</a></li>
+                            <li><a href="javascript:void(0);" onclick="createUrl('_group','0');return false;">全部群组</a></li>
                         <?foreach ($_GROUP[$c] as $_grp => $_gn) {?>
                             <li  title="<?=$_gn?>"><a href="" onclick="createUrl('_group','<?=$_grp?>');return false;"><?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?></a></li>
                         <?}?>
@@ -92,7 +92,7 @@
                     <div class="ms-conditionList-main">
                         <ul class="f-clearfix ms-conditionRadio">
                         <?foreach ($_NAME as $_k => $_v) {?>
-                            <li><a href="javacript:void(0);" <?if($_k == $n){echo 'class="cilk"';}?> onclick="createUrl('_name','<?=$_k?>');return false;"><?=$_v?></a></li>
+                            <li><a href="javascript:void(0);" <?if($_k == $n){echo 'class="cilk"';}?> onclick="createUrl('_name','<?=$_k?>');return false;"><?=$_v?></a></li>
                         <?}?>
                         </ul>
                     </div>
@@ -103,9 +103,9 @@
                     <span>组合类型</span>
                     <div class="ms-conditionList-main">
                         <ul class="f-clearfix ms-conditionRadio">
-                            <li><a href="javacript:void(0);" onclick="createUrl('_sT','0');return false;">全部</a></li>
+                            <li><a href="javascript:void(0);" onclick="createUrl('_sT','0');return false;">全部</a></li>
                         <?foreach ($_TYPE as $_k => $_v) {?>
-                            <li><a href="javacript:void(0);" onclick="createUrl('_sT','<?=$_k?>');return false;"><?=$_v?></a></li>
+                            <li><a href="javascript:void(0);" onclick="createUrl('_sT','<?=$_k?>');return false;"><?=$_v?></a></li>
                         <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox">
@@ -225,7 +225,7 @@
                     <div>
                         <div class="ms-filterCenter">
                             <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg pulse"><a href="<?=$v['viewUrl']?>"  target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt=""/></a></span>
+                            <span class="ms-filtersImg pulse"><a href="<?=$v['viewUrl']?>"  target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p><span><?=$v['class']?>类</span>-<?=$_CLASS[$v['class']]?></p>
