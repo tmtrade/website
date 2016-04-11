@@ -109,21 +109,57 @@ class FaqModule extends AppModule
 	 * @param $param
 	 * @return mixed
 	 */
-	public function getNextThree($param){
-		$me['order'] = array('showOrder' => 'DESC');
-		$me['minId'] = isset($param['id']) ? $param['id'] : 0;
-		$me['c'] = isset($param['c']) ? $param['c'] : 0;
-		$me['limit'] = 2;
-		$data1 = $this->importBi('faq')->getNewsList($me);
-//		if(count($data1['rows'])==2){
-//			unset($data1['rows'][1]);
-//		}
-		$me['maxId'] = isset($param['id']) ? $param['id'] : 0;
-		$data2 = $this->importBi('faq')->getNewsList($me);
-		$data = array_merge($data1['rows'],$data2['rows']);
+	public function getNextThree($param)
+	{
+		$c = isset($param['c']) ? $param['c'] : 0;
+		$id = isset($param['id']) ? $param['id'] : 0;
+		$limit = 1000000;
+		$minId = isset($param['minId']) ? $param['minId'] : 0;
+		$maxId = isset($param['maxId']) ? $param['maxId'] : 0;
+		$page = isset($param['page']) ? $param['page'] : 0;
 
-		if(!empty($data)){
-			$list = $this->getList($data,'cfdt');
+		$list = array();
+		$param = array(
+			'maxId' => $maxId,
+			'minId' => $minId,
+			'limit' => $limit,
+			'order' => array('showOrder' => 'DESC'),
+			'page' => $page,
+		);
+		if (!empty($c)) {
+			$param['categoryId'] = $c;
+		}
+		//调用接口
+		$data = $this->importBi('faq')->getNewsList($param);
+		//查找该id对应的键. 得到前后两个信息
+		$data = $data['rows'];
+		$res = arrayColumn($data, 'id');
+		$res = array_search($id, $res);
+		$count = count($data);
+		if($res===false){
+			$result = array();
+		}elseif($res==0){
+			$result = array(
+				array(),
+				$data[$res],
+				$data[$res+1],
+			);
+		}elseif($res+1>$count){
+			$result = array(
+				$data[$res-1],
+				$data[$res],
+				array(),
+			);
+		}else{
+			$result = array(
+				$data[$res-1],
+				$data[$res],
+				$data[$res+1],
+			);
+		}
+		//处理结果
+		if(!empty($result)){
+			$list = $this->getList($result,'cfdt');
 		}
 		return $list;
 	}

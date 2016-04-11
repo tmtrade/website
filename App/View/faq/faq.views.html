@@ -40,8 +40,16 @@
                    </span>      
                </div>
                <ul class="contUg-page">
-                 <a href=""><li class="fl"><span><img src="<?=StaticDir?>1.2/images/pg-pre.png">&nbsp;&nbsp;&nbsp;&nbsp;上一页</span>   隔壁天猫店又入驻了新的商标 </li></a>
-                 <a href=""><li class="fr">隔壁天猫店又入驻了新的商标   <span>下一页&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?=StaticDir?>1.2/images/pg-next.png"></span></li></a>
+                   <? if($data[0]['id']): ?>
+                 <a href="<?=$data[0]['url']?>"><li class="fl"><span><img src="<?=StaticDir?>1.2/images/pg-pre.png">&nbsp;&nbsp;&nbsp;&nbsp;上一页</span>   <?=$data[0]['thumtitle']?> </li></a>
+                   <? else: ?>
+                   <a href="javascript:;"><li class="fl"><span><img src="<?=StaticDir?>1.2/images/pg-pre.png">&nbsp;&nbsp;&nbsp;&nbsp;上一页</span>   无 </li></a>
+                   <? endif; ?>
+                   <? if($data[2]['id']): ?>
+                   <a href="<?=$data[2]['url']?>"><li class="fr"><?=$data[2]['thumtitle']?>   <span>下一页&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?=StaticDir?>1.2/images/pg-next.png"></span></li></a>
+                   <? else: ?>
+                   <a href="javascript:;"><li class="fr">无   <span>下一页&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?=StaticDir?>1.2/images/pg-next.png"></span></li></a>
+                   <? endif; ?>
                </ul>
            </div>
        </div>

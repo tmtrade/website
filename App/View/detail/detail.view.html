@@ -131,14 +131,14 @@
                         <p class="period"><font>价格时效</font> <span><?php if($sale['salePriceDate'] > 0){
                             echo date('Y-m-d H:i',$sale['salePriceDate']);
                             }else{echo "永久";} ?></span>有效</p>
-                        <?if($topic):?>
                         <p class="sales"><font>促销</font>
+                            <?if($topic):?>
                             <?foreach($topic as $item):?>
                             <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
                             <?endforeach;?>
+                            <?endif;?>
                             <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
                         </p>
-                        <?endif;?>
                     <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
                     <!--定价商品-->
                     <div class="mj-priceTxtt">
@@ -146,15 +146,15 @@
                             <font>价格</font>
                             <strong><span>￥</span><?=($sale['price']*1.1)?></strong>元
                         </p>
-                        <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
-                        <?if($topic):?>
                         <p class="sales"><font>促销</font>
+                            <?if($topic):?>
                             <?foreach($topic as $item):?>
                             <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
                             <?endforeach;?>
+                            <?endif;?>
                             <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
                         </p>
-                        <?endif;?>
+                        <p class="mj-priceTxtt_ie7" style="margin-top: 2px"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
                     <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
                     <!--议价商品-->
                     <div class="mj-priceTxtt">
@@ -162,15 +162,15 @@
                             <font>价格</font>
                             <strong><span>￥</span>议价</strong>
                         </p>
-                        <p class="mj-priceTxtt_ie7"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
-                        <?if($topic):?>
                         <p class="sales"><font>促销</font>
+                            <?if($topic):?>
                             <?foreach($topic as $item):?>
                             <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
                             <?endforeach;?>
+                            <?endif;?>
                             <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
                         </p>
-                        <?endif;?>
+                        <p class="mj-priceTxtt_ie7" style="margin-top: 2px">><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
                     <?}else{?>
                         <div class="mj-priceTxtt">
                             <div style="width: 50px;height:60px"></div>
@@ -202,7 +202,7 @@
                             <font>价格</font>
                             <strong><span>￥</span>议价</strong>
                         </p>
-                        <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
+                        <p class="mj-priceTxtt_ie7" style="margin-top: 2px">><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
                         <? if($baystate == 1){ ?>
                         <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
                         <? }else{ ?>
@@ -211,7 +211,7 @@
                     <? }else{ ?>
                         <div class="mj-priceTxtt">
                             <div style="width: 50px;height:60px"></div>
-                            <p class="mj-priceTxtt_ie7"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
+                            <p class="mj-priceTxtt_ie7" style="margin-top: 2px">><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
                             <div style="width: 50px;height: 10px"></div>
                             <a href='javascript:;' onclick="goLook()" class="opt_btn">我有兴趣</a>
                         <? } ?>

@@ -93,13 +93,7 @@ class FaqAction extends AppAction
 		$this->set("pageBar", $pageBar);
                 $this->display();
 	}
-    public function test(){
-        $id			= $this->input("id","int");
-        $c			= $this->input("c","int");
 
-        $data		= $this->load('faq')->getNextThree(array('c'=>50,'id'=>961));
-        var_dump($data);
-    }
 	//得到栏目对应的文章
 	public function views()
 	{
@@ -108,8 +102,7 @@ class FaqAction extends AppAction
 		$c			= $this->input("c","int");
         $data		= $this->load('faq')->getNextThree(array('c'=>$c,'id'=>$id));
 		//$data		= $this->load('faq')->newsList(array('id'=>$id));
-        //var_dump($data);
-		$this->set("list", $data[0]);
+		$this->set("list", $data[1]);
                 switch ($id){
                 case 987: 
                     $this->pageTitle        = '商标交易常见问题-商标转让时间-商标转让流程-- 一只蝉商标转让网';
@@ -128,19 +121,20 @@ class FaqAction extends AppAction
                     break;
                 default :
                     if(!empty($this->category[$c])){
-                        $this->pageTitle        =  $data[0]['title'].' - '.$this->category[$c] . ' - '.$this->seotime;
+                        $this->pageTitle        =  $data[1]['title'].' - '.$this->category[$c] . ' - '.$this->seotime;
                     }else{
-                        $this->pageTitle        =  $data[0]['title'] . ' - '.$this->seotime;
+                        $this->pageTitle        =  $data[1]['title'] . ' - '.$this->seotime;
                     }
-                    if(!empty($data[0]['keyword'])){
-                      $this->pageKey          = $data[0]['keyword'];  
+                    if(!empty($data[1]['keyword'])){
+                      $this->pageKey          = $data[1]['keyword'];  
                     }
-                    if(!empty($data[0]['introduction'])){
-                        $this->pageDescription  = $data[0]['introduction'];
+                    if(!empty($data[1]['introduction'])){
+                        $this->pageDescription  = $data[1]['introduction'];
                     }
                     break;
                 }
                 $this->set('title', $this->pageTitle);//页面title
+                $this->set('data', $data);//文章信息
                 $this->set('keywords', $this->pageKey);//页面keywords
                 $this->set('description', $this->pageDescription);//页面description
                 $this->set("id", $id);
