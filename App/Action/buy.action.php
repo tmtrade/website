@@ -38,7 +38,7 @@ class BuyAction extends AppAction
 				$urlHtml = "zhuanti/zhuanti.safeguard.html";
 			}
 		}
-                $this->setSeo();
+                $this->setSeo(6);
 		$this->display($urlHtml);
     }
 	

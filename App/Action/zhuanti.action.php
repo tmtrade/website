@@ -32,7 +32,7 @@ class ZhuantiAction extends AppAction
         $pageBar 	= empty($list) ? '' : getPageBarNew($pager);
         $this->set('list', $list);
         $this->set("pageBar",$pageBar);
-        $this->setSeo();
+        $this->setSeo(9);
         $this->display();
     }
 	
@@ -59,7 +59,7 @@ class ZhuantiAction extends AppAction
         $title  = $topic['title'] . ' - '.$this->seotime;
         $this->set('list', $list);
         $this->set('title', $title);
-        $this->setSeo();
+        $this->setSeo(10,$id);
         $this->display();
 	}
 

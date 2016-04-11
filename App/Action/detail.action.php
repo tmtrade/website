@@ -162,6 +162,7 @@ class DetailAction extends AppAction
 		$this->set("userMobile", $this->userMobile);
 		$this->set("platform", $platform);
 		$this->set("tj", $tj);
+                $this->setSeo(8,$tid);
 		$this->display();
 	}
 

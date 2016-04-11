@@ -18,12 +18,15 @@ class SeoModule extends AppModule
     
    
     //info 单条
-    public function getInfo($index)
+    public function getInfo($type,$vid="")
     {
             $r['eq']    = array(
-                    'index' => $index,
+                    'type' => $type,
                     'isUse' => 1
             );
+            if(!empty($vid)){
+                 $r['eq']['vid'] = $vid;
+            }
             $r['limit'] = 1;
             $r['col'] = array("title","keyword","description");
             $res = $this->import('seo')->find($r);

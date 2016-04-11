@@ -184,7 +184,7 @@ $define = array(
 		'7'  => array(1000000,10000000000000,'100万以上'),
 		'8'  => array(0,0,'面议'),
     ),
-
+    
     'COOKIE_PREFIX' => 'tw_',//网站cookie前缀
     'PUBLIC_USER' => 'ChOfNuSeR',//公用用户登录信息标识
     'PUBLIC_USER_TIME' => 1800,//用户登录信息有效时间

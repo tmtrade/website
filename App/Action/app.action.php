@@ -155,13 +155,14 @@ abstract class AppAction extends Action
 	 * @author	Far
 	 * @since	2016-4-07
 	 */
-	protected final function setSeo()
+	protected final function setSeo($type,$vid="")
 	{
-            //获取后台SEO信息
-            $seoList = $this->com('redisHtml')->get("seo_".$this->mod.$this->action);
+            $seoList = $this->com('redisHtml')->get("seo_".$type.$vid);
             if(empty($seoList)){
-                    $seoList = $this->load('seo')->getInfo($this->mod."/".$this->action);
-                    $this->com('redisHtml')->set("seo_".$this->mod.$this->action, $seoList, 300);
+                    $seoList = $this->load('seo')->getInfo($type,$vid);
+                    if(!empty($seoList)){
+                        $this->com('redisHtml')->set("seo_".$type.$vid, $seoList, 300);
+                    }
             }
             if(!empty($seoList['title'])){
                 $this->set('title', $seoList['title']);//后台调用页面title
