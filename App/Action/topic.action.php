@@ -23,6 +23,7 @@ class TopicAction extends AppAction
         $this->set('title', $this->pageTitle);//页面title
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
+        $this->setSeoByTopic("/topic/lesson_one");
         $this->display();
     }
     //第二课
@@ -35,6 +36,7 @@ class TopicAction extends AppAction
         $this->set('title', $this->pageTitle);//页面title
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
+        $this->setSeoByTopic("/topic/lesson_two");
         $this->display();
     }
     //天猫与京东
@@ -46,6 +48,7 @@ class TopicAction extends AppAction
         $this->set('title', $this->pageTitle);//页面title
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
+        $this->setSeoByTopic("/topic/tmall_jd");
         $this->display();
     }
     
@@ -58,6 +61,7 @@ class TopicAction extends AppAction
         $this->set('title', $this->pageTitle);//页面title
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
+        $this->setSeoByTopic("/topic/fourth");
         $this->display();
     }
 }

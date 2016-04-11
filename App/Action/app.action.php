@@ -38,7 +38,7 @@ abstract class AppAction extends Action
 	 */
 	public function before()
 	{
-                $this->caches = ""; //打开后关闭所有 页面缓存
+                //$this->caches = ""; //打开后关闭所有 页面缓存
 		//设置访问的action(导航样式)
 		$nav_name = $this->getNavType();
 		$this->set('nav_name',$nav_name);
@@ -173,6 +173,19 @@ abstract class AppAction extends Action
             if(!empty($seoList['description'])){
                 $this->set('description', $seoList['description']);//后台调用页面description
             }
+	}
+        
+        
+        /**
+	 * 专题静态页设置页面SEO
+	 *
+	 * @author	Far
+	 * @since	2016-4-07
+	 */
+	protected final function setSeoByTopic($link)
+	{
+            $topicId = $this->load('zhuanti')->getTopicInfoByLink($link);
+            $this->setSeo(10,$topicId);
 	}
         
 	/**

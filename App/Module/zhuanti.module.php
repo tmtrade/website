@@ -39,6 +39,17 @@ class ZhuantiModule extends AppModule
         $res = $this->import('topic')->find($r);
         return $res;
     }
+    
+     //根据静态链接获取单条信息ID
+    public function getTopicInfoByLink($link)
+    {
+        $r = array();
+        $r['eq']['link']  = $link;
+        $r['limit'] = 1;
+        $r['col'] = array('id');
+        $res = $this->import('topic')->find($r);
+        return $res['id'];
+    }
 	
     //首页模块子分类列表信息
     public function getTopicClassList($topicId)
