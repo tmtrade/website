@@ -50,6 +50,7 @@ class FaqModule extends AppModule
 			$list[$k]['introduction']	= $v['introduction'];
 			$list[$k]['id']				= $v['id'];
 			$list[$k]['time']		= $v['updated'];//发布时间->更新时间
+			$list[$k]['label']		= explode($v['label'],',');//处理标签
 		}
 		return $list;
 	}

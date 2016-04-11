@@ -27,7 +27,9 @@
                         <!-- JiaThis Button END -->
                     </div>
                <div class="trad-certi-tally">
-                 <span>我是标签</span><span>我是标签</span><span>我是标签</span>
+                   <? foreach($list['label'] as $label):?>
+                 <span><?=$label?></span>
+                   <? endforeach; ?>
                </div>
             </div>
 
