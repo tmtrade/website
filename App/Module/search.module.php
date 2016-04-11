@@ -576,9 +576,7 @@ class SearchModule extends AppModule
         ksort($_class);
         return array($_class, $_group);
     }
-    
-
-    
+        
     /**
      * 生成年份条件
      * 
@@ -601,6 +599,7 @@ class SearchModule extends AppModule
         return $_arr;
     }
 
+    //获取频道页设置
     public function getChannel($index)
     {
         if ( empty($index) ) return array();
@@ -622,6 +621,7 @@ class SearchModule extends AppModule
         return $channel;
     }
 
+    //获取频道页设置Items
     public function getChannelItems($cid, $type=1)
     {   
         if ( empty($cid) || empty($cid) ) return array();

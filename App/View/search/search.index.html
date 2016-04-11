@@ -240,10 +240,6 @@
                    
                 </li>
 
-                <!-- 添加广告图片 -->
-               <li class="pulse"><a href=""><div class="add-adver"><img src="<?=StaticDir?>1.2/images/sx-adver.jpg"/></div></a></li> 
-                <!-- 添加广告图片结束 -->
-                
             <? }else{ ?>
                 <li>
                 <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
@@ -275,9 +271,18 @@
                         </div>
                     </div>
                 </li>
-            <? } ?>
-        <? } ?>
-    <? }elseif ( empty($searchList) ) { ?>
+            <? } 
+            //处理列表显示推荐专题
+            if ( !empty($listTopic) && $k > 0 && ($k % 6) == 0 ){ 
+                $_key_ = intval($k/6) - 1;
+                if ( empty($listTopic[$_key_]) ) continue;
+            ?>                
+                <!-- 添加广告图片 -->
+                <li class="pulse"><a target="_blank" href="<?=$listTopic[$_key_]['topicUrl']?>"><div class="add-adver"><img src="<?=$listTopic[$_key_]['listPic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'"/></div></a></li> 
+                <!-- 添加广告图片结束 -->                
+        <?  } 
+        } ?>
+    <? }else{ ?>
         <div class="sbhwjg">
             <div class="sbhwjg-main">
                 <h3>抱歉！没找到相关信息</h3>
