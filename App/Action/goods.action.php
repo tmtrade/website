@@ -12,7 +12,23 @@ class GoodsAction extends AppAction
 {
     private $_number    = 30;
     private $_searchArr = array();
+    private $_rwfix     = '/g-';
 
+    /**
+     * 重定向查询URL
+     * 
+     * @author  Xuni
+     * @since   2016-04-13
+     *
+     * @return  void
+     */
+    public function rewriteSearch()
+    {
+        $short  = $this->input('short', 'string', '');
+        $params = $this->strToArr($short, '-');
+        $this->index($params);
+    }
+    
     /**
      * 筛选页功能
      *
@@ -23,10 +39,15 @@ class GoodsAction extends AppAction
      *
      * @return  void
      */
-	public function index()
+	public function index($params)
 	{
-        $_groupGoods    = $this->input('s', 'string', '');
-        $groupGoods     = $this->strToArr($_groupGoods);
+        if ( isset($params) ){
+            $groupGoods = $groupGoods;
+        }else{
+            $_groupGoods    = $this->input('s', 'string', '');
+            $groupGoods     = $this->strToArr($_groupGoods);
+            $this->rewriteUrl($groupGoods);
+        }
 
         if ( !empty($groupGoods) ){
             $_params    = implode(',', $groupGoods);
@@ -57,7 +78,7 @@ class GoodsAction extends AppAction
         $_browseTitle = $_title ? $_title.$this->pageTitle : '导航页'.$this->pageTitle;
         $this->set('title', $_browseTitle);//页面title
         $this->setSeo(13);
-        $this->display();
+        $this->display('goods/goods.index.html');
 	}
 
     public function getMore()
@@ -100,6 +121,31 @@ class GoodsAction extends AppAction
         $arr = explode($prefix, $str);
         $arr = array_unique( array_filter($arr) );
         return $arr;
+    }
+
+
+    /**
+     * 处理搜索项重定向
+     *
+     * 返回或跳转到相应的重定向地址
+     * 
+     * @author  Xuni
+     * @since   2016-04-13
+     *
+     * @return  void
+     */
+    protected function rewriteUrl($params, $type=1)
+    {
+        $url    = '';
+        if ( empty($params) ) {
+            $url = substr($this->_rwfix,0,-1).'/';
+        }else{ 
+            $url = $this->_rwfix.implode('-', $params).'/';
+        }
+        if ( $type == 2 ) return $url;
+
+        $this->redirect('', $url);
+        exit;
     }
 
 }

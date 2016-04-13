@@ -18,11 +18,20 @@ class SearchAction extends AppAction
     
     private $_number    = 30;
     private $_searchArr = array();
-
-    public function test()
+    private $_rwfix     = '/s-';
+    
+    /**
+     * 重定向查询URL
+     * 
+     * @author  Xuni
+     * @since   2016-04-13
+     *
+     * @return  void
+     */
+    public function rewriteSearch()
     {
         $short = $this->input('short', 'string', '');
-
+        
         $grp = array_filter( explode('--', $short) );
 
         $select = array('kw','kt','n','c','g','t','sn','d','p');
@@ -56,7 +65,7 @@ class SearchAction extends AppAction
             $params = $this->getSearchParams($params);
         }else{
             $params = $this->getSearchParams();
-            $this->rewriteSearch();
+            $this->rewriteUrl();
         }
         //保存每一个搜索链接
         $uri = $_SERVER['REQUEST_URI'];
@@ -361,18 +370,18 @@ class SearchAction extends AppAction
      *
      * @return  void
      */
-    protected function rewriteSearch($type=1)
+    protected function rewriteUrl($type=1)
     {
         $url    = '';
         $params = array_filter($this->_searchArr);
         if ( empty($params) ) {
-            $url = '/s/';
+            $url = substr($this->_rwfix,0,-1).'/';
         }else{            
             $_arr = array();
             foreach ($params as $k => $v) {
                 $_arr[] = $k.'-'.str_replace(',', '-', $v);
             }
-            $url = '/s/'.implode('--', $_arr).'/';
+            $url = $this->_rwfix.implode('--', $_arr).'/';
         }
         if ( $type == 2 ) return $url;
 
@@ -624,7 +633,7 @@ class SearchAction extends AppAction
     public function getSearchKeyWord()
     {
         $params = $this->getSearchParams();
-        $url    = $this->rewriteSearch(2);
+        $url    = $this->rewriteUrl(2);
         $this->returnAjax(array('url'=>$url));
     }
 

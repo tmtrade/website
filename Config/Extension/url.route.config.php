@@ -8,7 +8,7 @@ $rules[] = array(
     '#/d-#',
     array('mod' => 'detail', 'action' => 'view'),
     array(
-        'short' => '#((\d+-)([\w_-])*)#',
+        'short' => '#((\d+-)([\w-])*)#',
         ),
 );
 //定义文章相关规则
@@ -41,11 +41,22 @@ $rules[] = array(
     '#/lxwm/$#',
     array('mod' => 'faq', 'action' => 'lxwm'),
 );
+
+//定义筛选页规则
 $rules[] = array(
-    '#/s/#',
-    array('mod' => 'search', 'action' => 'test'),
+    '#/s(-|/)#',
+    array('mod' => 'search', 'action' => 'rewriteSearch'),
     array(
-        'short' => '#^/s/(([\w-])*)#',
+        'short' => '#^/s-(([\w-])*)#',
+        ),
+);
+
+//定义着落页规则
+$rules[] = array(
+    '#/g(-|/)#',
+    array('mod' => 'goods', 'action' => 'rewriteSearch'),
+    array(
+        'short' => '#^/g-(([\w-])*)#',
         ),
 );
 
