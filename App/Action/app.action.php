@@ -218,19 +218,16 @@ abstract class AppAction extends Action
 	 * @return	void
 	 */
 	protected function getNavType(){
-		$url = $_SERVER['REQUEST_URI'];
 		$tmp = '';
 		if($url=='/'){
 			$tmp = 'index';
-		}elseif(strpos($url,'search')){
+		}elseif(strpos($this->mod,'search') !== false){
 			$tmp = 'search';
-		}elseif(strpos($url,'offprice')){
+		}elseif(strpos($this->mod,'offprice') !== false){
 			$tmp = 'offprice';
-		}elseif(strpos($url,'offprice')){
-			$tmp = 'offprice';
-		}elseif(strpos($url,'pt/sell')){
+		}elseif(strpos($this->mod.'/'.$this->action,'pt/sell') !== false){
 			$tmp = 'sell';
-		}elseif(strpos($url,'pt')){
+		}elseif(strpos($this->mod,'pt') !== false){
 			$tmp = 'pt';
 		}
 		return $tmp;
