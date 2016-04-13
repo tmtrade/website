@@ -242,6 +242,7 @@
         </div>
     </div>
 </div>
+
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/mj-index.css?v=<?=$static_version?>"/>
 <script src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <!--mj-mNav end-->
@@ -317,6 +318,7 @@
             _this.attr('_original', '');
         });
     }
+
     $('input[name="kw"]').focus(function (){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
@@ -327,49 +329,34 @@
                     $(".mj-pull-down").show();
                 }else{
                     $(".mj-pull-down").hide();
+                    $(".mj-pull-down").html('');
                 }
             });            
         }else{
-            _autoShow();
+            _this.keyup();
         }
     });
+    
     $('input[name="kw"]').blur(function (){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
-        if ( _value == '' ){
+        //if ( _value == '' ){
             setTimeout(function(){
                 $(".mj-pull-down").hide();
-            },500);
-        }
-    });
-    var _autoShowTime = 0;
-    var _autoOpen = 0;
-    function _autoShow(){        
-        if ( _autoShowTime > 0 ){
-            _autoShowTime--;
-            setTimeout(function(){
-                _autoShow();
-            },100);            
-        }else{
-            _autoOpen = 0;
-            var _url = '/index/searchLog/';            
-            setTimeout(function(){
-                $(".mj-pull-down").show();
+                $(".mj-pull-down").html('');
             },200);
-            $(".mj-pull-down").load(_url,{title:$('input[name="kw"]').val()});            
-        }
-    }
+        //}
+    });
+
     $('input[name="kw"]').keyup(function (){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
         if ( _value != '' ){
-            _autoShowTime = 5;
-            if (_autoOpen < 1) _autoShow();
-            _autoOpen = 1;            
+            html = '<li><a href="/search/?kw='+_value+'&kt=1" onclick="layer.load(1,{shade: [0.2,\'#000\']});"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=2" onclick="layer.load(1,{shade: [0.2,\'#000\']});"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标号</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=3" onclick="layer.load(1,{shade: [0.2,\'#000\']});"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">适用服务</font>“'+_value+' ”搜索结果</span></a></li>';
+            $(".mj-pull-down").html(html);
+            $(".mj-pull-down").show();
         }else{
-            setTimeout(function(){
-                $(".mj-pull-down").hide();
-            },500);
+            _this.focus();
         }
     });
 </script>

@@ -143,7 +143,7 @@ class SearchAction extends AppAction
      *
      * @return  void
      */
-    protected function getSearchParams($parms)
+    protected function getSearchParams($parms=array(),$isMore=0)
     {
         if ( !empty($parms) ){
             $this->input = $parms;
@@ -163,7 +163,8 @@ class SearchAction extends AppAction
             $platform   = $this->getParam('p', 'string');//平台
         }else{            
             $keyword    = $this->input('kw', 'string', '');//搜索项
-            if ( !empty($keyword) ){
+            if ( !empty($keyword) && $isMore == 0 ){
+                $keyword = urldecode($keyword);
                 $keyword = $this->load('keyword')->getKeywordId($keyword);
             }
             $keytype    = $this->input('kt', 'int', '');//搜索项类型 1：商标名称，2：商标号，3：适用服务
@@ -530,7 +531,7 @@ class SearchAction extends AppAction
         $page   = $this->input('_p', 'int', 1);
         $type   = $this->input('_from', 'int', 1);
 
-        $params = $this->getSearchParams();
+        $params = $this->getSearchParams(0, 1);
         if ( empty($params) ){
             $res = array('rows'=>array(),'total'=>0);
         }else{
