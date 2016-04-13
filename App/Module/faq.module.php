@@ -40,8 +40,9 @@ class FaqModule extends AppModule
 		foreach($array as $k => $v){
 			$len 		= mb_strlen($v['title'],'utf-8');
 			$thumtitle	= $len > 20 ? mb_substr($v['title'],0,20,'utf-8').'...' : $v['title'];
-			$list[$k]['url'] 				= '/faq/views/?id='.$v['id'].'&act='.$act.'&c='.$v['categoryId'];
-			$list[$k]['thumtitle']		= $thumtitle;	
+//			$list[$k]['url'] 				= '/faq/views/?id='.$v['id'].'&act='.$act.'&c='.$v['categoryId'];
+			$list[$k]['url'] 				= '/v-'.$v['categoryId'].'-'.$v['id'].'/';
+			$list[$k]['thumtitle']		= $thumtitle;
 			$list[$k]['title']			= $v['title'];
 			$list[$k]['img']			= $v['attachmentId'];
 			$list[$k]['content']		= $v['content'];

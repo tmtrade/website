@@ -11,7 +11,36 @@ $rules[] = array(
         'short' => '#((\d+-)([\w_-])*)#',
         ),
 );
-
+//定义文章相关规则
+//详情页
+$rules[] = array(
+    '#/v-#',
+    array('mod' => 'faq', 'action' => 'views'),
+    array(
+        'short' => '#(\d+-\d+)#',
+    ),
+);
+//列表页
+$rules[] = array(
+    '#/n-#',
+    array('mod' => 'faq', 'action' => 'news'),
+    array(
+        'short' => '#(\d+(-\d+)?)#',
+    ),
+);
+//特殊需求
+$rules[] = array(
+    '#/about/$#',
+    array('mod' => 'topic', 'action' => 'fourth'),
+);
+$rules[] = array(
+    '#/ryzz/$#',
+    array('mod' => 'faq', 'action' => 'ryzz'),
+);
+$rules[] = array(
+    '#/lxwm/$#',
+    array('mod' => 'faq', 'action' => 'lxwm'),
+);
 //定义商标详情规则(新规则)
 // $rules[] = array(
 //     '#/goods-#',

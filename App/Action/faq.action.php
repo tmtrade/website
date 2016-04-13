@@ -69,14 +69,26 @@ class FaqAction extends AppAction
 	//得到栏目对应的文章
 	public function news()
 	{
+        //解析参数
+        $tag = $this->input('short', 'string', '');
+        $c = $this->input('c', 'int', 0);
+        $page = $this->input('page', 'int', 0);
+        if ( $tag ){
+            if ( strpos($tag, '-') === false ){
+                $c = $tag;
+            }else{
+                list($c, $page) = explode('-', $tag);
+            }
+        }
+        if($c==0){
+            $this->redirect('未找到页面', '/index/error');
+        }
         $this->getLeftData();//得到左菜单数据
-		$c			= $this->input("c","int");
-		$page			= $this->input("page","int");
-		$page			= $page == 0 ? 1 : $page;
 		$limit			= 15;
 		if(!in_array($c,$this->categoryId)){
 			$c	= 45;
 		}
+        $page = $page?$page:1;
 		$list			= $this->load('faq')->newsList(array('c'=>$c,'page'=>$page,'limit'=>$limit));
                 
 		$total			= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1000000));
@@ -95,13 +107,24 @@ class FaqAction extends AppAction
 	}
 
 	//得到栏目对应的文章
-	public function views()
+	public function views($c=0,$id=0)
 	{
+        //主动调用时不获取参数
+        if($c==0){
+            //处理参数---短url或常规url
+            $tag = $this->input('short', 'string', '');
+            $c = $this->input('c', 'int', 0);
+            $id = $this->input('id', 'int', 0);
+            if ( $tag ){
+                if ( strpos($tag, '-') === false ) $this->redirect('未找到页面', '/index/error');
+                list($c, $id) = explode('-', $tag);
+            }
+            if($c==0 || $id==0){
+                $this->redirect('未找到页面', '/index/error');
+            }
+        }
         $this->getLeftData();//得到左菜单数据
-		$id			= $this->input("id","int");
-		$c			= $this->input("c","int");
         $data		= $this->load('faq')->getNextThree(array('c'=>$c,'id'=>$id));
-		//$data		= $this->load('faq')->newsList(array('id'=>$id));
 		$this->set("list", $data[1]);
                 switch ($id){
                 case 987: 
@@ -138,7 +161,7 @@ class FaqAction extends AppAction
                 $this->set('keywords', $this->pageKey);//页面keywords
                 $this->set('description', $this->pageDescription);//页面description
                 $this->set("id", $id);
-                $this->display();
+                $this->display('faq/faq.views.html');
 	}
 
     /**
@@ -154,6 +177,13 @@ class FaqAction extends AppAction
         $this->set('news',$news);
         $this->set('faq',$faq);
         $this->set('tj',$tj);
+    }
+
+    /**
+     * 联系我们
+     */
+    public function lxwm(){
+        $this->views(54,985);
     }
 }
 ?>
