@@ -187,5 +187,17 @@ $tbl['userSaleHistory'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['keyword'] = array(
+	'name'		=> $prefix.'keyword',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['searchUrl'] = array(
+	'name'		=> $prefix.'search_url',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 
 ?>

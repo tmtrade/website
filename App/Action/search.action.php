@@ -19,6 +19,25 @@ class SearchAction extends AppAction
     private $_number    = 30;
     private $_searchArr = array();
 
+    public function test()
+    {
+        $short = $this->input('short', 'string', '');
+
+        $grp = array_filter( explode('--', $short) );
+
+        $select = array('kw','kt','n','c','g','t','sn','d','p');
+        $params = array();
+        foreach ($grp as $k => $v) {
+            $_prefix = strstr($v, '-', true); // 从 PHP 5.3.0 起
+            if ( empty($_prefix) ) continue;
+            if ( in_array($_prefix, $select) ){
+                $_content = strstr($v, '-');
+                $_c = array_filter( explode('-', $_content) );
+                $params[$_prefix] = implode(',', $_c);
+            }
+        }
+        $this->index($params);
+    }
 	
     /**
      * 筛选页功能
@@ -30,10 +49,19 @@ class SearchAction extends AppAction
      *
      * @return  void
      */
-	public function index()
+	public function index($params)
 	{
         $page   = $this->input('_p', 'int', 1);//分类
-        $params = $this->getSearchParams();
+        if ( isset($params) ){
+            $params = $this->getSearchParams($params);
+        }else{
+            $params = $this->getSearchParams();
+            $this->rewriteSearch();
+        }
+        //保存每一个搜索链接
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->load('keyword')->getUrlId($uri);
+
         //处理商标号搜索
         if ( !empty($params['number']) ){
             $this->detail($params['number']);
@@ -93,7 +121,7 @@ class SearchAction extends AppAction
         $this->set('_number', $this->_number);
         $this->set('whereStr', $whereStr);
         $this->setSeo(3);
-        $this->display();
+        $this->display('search/search.index.html');
 	}
 
     /**
@@ -106,18 +134,39 @@ class SearchAction extends AppAction
      *
      * @return  void
      */
-    protected function getSearchParams()
+    protected function getSearchParams($parms)
     {
-        $keyword    = $this->input('kw', 'string', '');//搜索项
-        $keytype    = $this->input('kt', 'int', '');//搜索项类型 1：商标名称，2：商标号，3：适用服务
+        if ( !empty($parms) ){
+            $this->input = $parms;
 
-        $class      = $this->input('c', 'string', '');//分类
-        $group      = $this->input('g', 'string', '');//群组
-        $name       = $this->input('n', 'string', '');//商标名称
-        $type       = $this->input('t', 'string', '');//组合类型
-        $length     = $this->input('sn', 'string', '');//商标字数
-        $date       = $this->input('d', 'string', '');//注册日期
-        $platform   = $this->input('p', 'string', '');//平台
+            $keyword    = $this->getParam('kw', 'string');//搜索项
+            if ( !empty($keyword) ){
+                $keyword = $this->load('keyword')->getKeywordById($keyword);
+            }
+            $keytype    = $this->getParam('kt', 'int');//搜索项类型 1：商标名称，2：商标号，3：适用服务
+            $name       = $this->getParam('n', 'string');//商标名称
+
+            $class      = $this->getParam('c', 'string');//分类
+            $group      = $this->getParam('g', 'string');//群组
+            $type       = $this->getParam('t', 'string');//组合类型
+            $length     = $this->getParam('sn', 'string');//商标字数
+            $date       = $this->getParam('d', 'string');//注册日期
+            $platform   = $this->getParam('p', 'string');//平台
+        }else{            
+            $keyword    = $this->input('kw', 'string', '');//搜索项
+            if ( !empty($keyword) ){
+                $keyword = $this->load('keyword')->getKeywordId($keyword);
+            }
+            $keytype    = $this->input('kt', 'int', '');//搜索项类型 1：商标名称，2：商标号，3：适用服务
+            $name       = $this->input('n', 'string', '');//商标名称
+
+            $class      = $this->input('c', 'string', '');//分类
+            $group      = $this->input('g', 'string', '');//群组
+            $type       = $this->input('t', 'string', '');//组合类型
+            $length     = $this->input('sn', 'string', '');//商标字数
+            $date       = $this->input('d', 'string', '');//注册日期
+            $platform   = $this->input('p', 'string', '');//平台
+        }
 
         $_class     = $this->strToArr($class);
         $_group     = $this->strToArr($group);
@@ -300,6 +349,35 @@ class SearchAction extends AppAction
             return $params;
         }
         return $params;
+    }
+
+    /**
+     * 处理搜索项重定向
+     *
+     * 返回或跳转到相应的重定向地址
+     * 
+     * @author  Xuni
+     * @since   2016-04-13
+     *
+     * @return  void
+     */
+    protected function rewriteSearch($type=1)
+    {
+        $url    = '';
+        $params = array_filter($this->_searchArr);
+        if ( empty($params) ) {
+            $url = '/s/';
+        }else{            
+            $_arr = array();
+            foreach ($params as $k => $v) {
+                $_arr[] = $k.'-'.str_replace(',', '-', $v);
+            }
+            $url = '/s/'.implode('--', $_arr).'/';
+        }
+        if ( $type == 2 ) return $url;
+
+        $this->redirect('', $url);
+        exit;
     }
 
     /**
@@ -533,6 +611,21 @@ class SearchAction extends AppAction
         $arr = explode($prefix, $str);
         $arr = array_unique( array_filter($arr) );
         return $arr;
+    }
+
+    /**
+     * 获取关键字ID
+     *
+     * @author  Xuni
+     * @since   2016-04-13
+     *
+     * @access  public
+     */
+    public function getSearchKeyWord()
+    {
+        $params = $this->getSearchParams();
+        $url    = $this->rewriteSearch(2);
+        $this->returnAjax(array('url'=>$url));
     }
 
 }

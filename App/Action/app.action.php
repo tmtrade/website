@@ -235,5 +235,58 @@ abstract class AppAction extends Action
 		}
 		return $tmp;
 	}
+
+	/**
+	 * 获取输入参数
+	 *
+	 * @access	protected
+	 * @param	string	$name	参数名
+	 * @param	string	$type	参数类型
+	 * @param	int		$length	参数长度(0不切取)
+	 * @return	mixed(int|float|string|array)
+	 */
+	protected function getParam($name, $type = 'string', $length = 0)
+	{
+		$types = array('int', 'float', 'array', 'string');
+		if ( !in_array($type, $types) )
+		{
+			return '';
+		}
+
+		$value = isset($this->input[$name]) ? $this->input[$name] : '';
+		
+		if ( empty($value) )
+		{
+			if ( $type == 'string' )
+			{
+				return '';
+			}
+
+			if ( $type == 'array' )
+			{
+				return array();
+			}
+		}
+
+		if ( $type == 'int' )
+		{
+			return intval($value);
+		}
+
+		if ( $type == 'float' )
+		{
+			return $length == 0 
+				? sprintf("%.2f", floatval($value)) 
+				: sprintf("%.{$length}f", floatval($value));
+		}
+
+		if ( $type == 'array' )
+		{
+			return $value;
+		}
+
+		$length = $length ? intval($length) : 0;
+		return $length ? substr($value, 0, $length) : $value; 			
+	}
 }
 ?>

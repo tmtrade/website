@@ -41,6 +41,14 @@ $rules[] = array(
     '#/lxwm/$#',
     array('mod' => 'faq', 'action' => 'lxwm'),
 );
+$rules[] = array(
+    '#/s/#',
+    array('mod' => 'search', 'action' => 'test'),
+    array(
+        'short' => '#^/s/(([\w-])*)#',
+        ),
+);
+
 //定义商标详情规则(新规则)
 // $rules[] = array(
 //     '#/goods-#',

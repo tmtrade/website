@@ -511,8 +511,26 @@
                 break;
         }        
         var params = obj.strparams();
-        var allurl = _url+params;
-        window.location.href = allurl;
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            type : 'post',
+            url  : '/search/getSearchKeyWord/',
+            data : params,
+            dataType : 'json',
+            success : function (data){
+                var allurl = data.url;
+                window.location.href = allurl;
+                setTimeout(function(){
+                    layer.close(index);
+                },300);
+            },
+            error : function (data){
+                layer.close(index);
+                layer.msg('操作失败，请稍后重试。', {time: 1000});
+            }
+        });
     }
 
     $(".ms-condition-btn a").click(function(){
