@@ -888,6 +888,10 @@ table {
 .mj-ddahoverc .mj-ddItems{
 
     display: block;
+     -moz-transition: all 2s ease-in;
+    -webkit-transition: all 2s ease-in;
+    -o-transition: all 2s ease-in;
+    transition: all 2s ease-in;
 
 }
 
@@ -913,11 +917,23 @@ table {
 
     background: #fff;
 
-}
+   -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
 
-.mj-dd dd a:hover{
+}
+.mj-dd dd.mj-ddahoverc >a{
 
     color: #ff6666;
+     -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+// .mj-dd dd a:hover{
+
+//     color: #ff6666;
 
 }
 

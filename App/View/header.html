@@ -247,12 +247,65 @@
 <!--mj-mNav end-->
 <script type="text/javascript">
   //左边菜单栏
-    $(".mj-dd dd").hover(function(){
-        $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
-        _lazyImg($(this));
-    },function(){
-        $(this).removeClass("mj-ddahoverc");
-    });
+   (function($){
+        $.fn.hoverDelay = function(options){
+            var defaults = {
+                hoverDuring:60,
+                outDuring:60,
+                hoverEvent: function(){
+                    $.noop();
+                },
+                outEvent: function(){
+                    $.noop();
+                }
+            };
+            var sets = $.extend(defaults,options || {});
+            var hoverTimer, outTimer;
+            return $(this).each(function(){
+                $(this).hover(function(){
+                    clearTimeout(outTimer);
+                    hoverTimer = setTimeout(sets.hoverEvent, sets.hoverDuring);
+                },function(){
+                    clearTimeout(hoverTimer);
+                    outTimer = setTimeout(sets.outEvent, sets.outDuring);
+                });
+            });
+        }
+    })(jQuery);
+
+    $(".mj-dd dd").each(function(i){
+        $(this).hoverDelay({
+        hoverEvent: function(){          
+             $(".mj-dd dd").eq(i).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
+              _lazyImg($(this));
+            },
+        outEvent:function() {
+             $(".mj-dd dd").removeClass("mj-ddahoverc");
+        }
+        });
+    })
+
+    //   var oTime="";
+    // $(".mj-dd dd").each(function(i){
+    //     $(this).mouseover(function(){
+    //         oTime=setTimeout(function(){
+    //             $(".mj-dd dd").eq(i).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
+    //         },500)
+    //     })
+    //     $(this).mouseleave(function(){
+    //          clearTimeout(oTime);
+    //         $(".mj-dd dd").removeClass("mj-ddahoverc");
+    //     })
+    // })
+
+
+    // $(".mj-dd dd").hover(function(){
+
+    //     $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
+    //     _lazyImg($(this));
+    // },function(){
+    //     $(this).removeClass("mj-ddahoverc");
+    // });
     //延时加载图片
     function _lazyImg(obj){
         obj.find('.headerlazy').each(function(e){

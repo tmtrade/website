@@ -352,15 +352,15 @@ $(document).ready(function(){
 
     //左边菜单栏
 
-    $(".mj-dd dd").hover(function(){
+    // $(".mj-dd dd").hover(function(){
 
-        $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
+    //     $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
 
-    },function(){
+    // },function(){
 
-        $(this).removeClass("mj-ddahoverc");
+    //     $(this).removeClass("mj-ddahoverc");
 
-    });
+    // });
 
 
 
