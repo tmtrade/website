@@ -74,7 +74,7 @@ class FaqAction extends AppAction
         $c = $this->input('c', 'int', 0);
         $page = $this->input('page', 'int', 1);
         if($c){
-            $this->redirect('',"/n-$c-$page/");
+            $this->redirect('',"/n-$c-$page");
         }
         $tag = $this->input('short', 'string', '');
         if ( $tag ){
@@ -116,12 +116,9 @@ class FaqAction extends AppAction
         //主动调用时不获取参数
         if($c==0){
             //处理参数---短url或常规url
-            $c = $this->input('c', 'int', 0);
-            $id = $this->input('id', 'int', 0);
-            if($c){
-                $this->redirect('',"/v-$c-$id/");
-            }
+
             $tag = $this->input('short', 'string', '');
+
             if ( $tag ){
                 if ( strpos($tag, '-') === false ) $this->redirect('未找到页面', '/index/error');
                 list($c, $id) = explode('-', $tag);
