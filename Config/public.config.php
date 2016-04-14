@@ -200,6 +200,7 @@ $define = array(
 	'HTMLTOPDF' 	=> '/usr/bin/wkhtmltopdf',
 	'VIEW_HISTORY'  =>'view_history',
     'SEARCH_HISTORY'  =>'_search_history_',
+	'FEEDBACKER'	=> 'services@chofn.com',//一只蝉反馈收件邮箱
 );
 
 

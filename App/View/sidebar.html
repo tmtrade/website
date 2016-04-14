@@ -38,26 +38,21 @@
 
     <div class="opi_fk">
         <h6><font class="fl">意见反馈</font><i id="close_fk" class="fr"></i></h6>
-        <form action="form_action.asp" method="get">
-            <div class="opi_fkMain">
-                <p>
-                    亲爱的用户，我是一只蝉运营人员，你有任何建议或在使用中遇到问题，都请告诉我，我每天关注你
-                    的反馈，不断优化产品，为你提供更好的服务！如果有一分钟时间，请立刻告诉我你的想法吧！
-                </p>
-                <textarea autofocus="autofocus" placeholder="意见反馈（500个字内）" rows="5" cols="20" wrap="hard">
-                  
-                    
-                </textarea>
-                <input placeholder="填写您的联系方式，例如手机号或邮箱，以便我们及时反馈给你。"></input>
-                <label>注：如您的建议得到了采纳,还有神秘奖励噢 ;) </label>
-                <div class="opi_fkbtm">
-                    <button>提交反馈</button>
-                    <span><i></i>提交成功，感谢您的吐槽！</span>
-                    <!-- 背景图片 sb-ico.png -->
-                    <span><i></i>提交失败</span>
-                </div>
+        <div class="opi_fkMain">
+            <p>
+                亲爱的用户，我是一只蝉运营人员，你有任何建议或在使用中遇到问题，都请告诉我，我每天关注你
+                的反馈，不断优化产品，为你提供更好的服务！如果有一分钟时间，请立刻告诉我你的想法吧！
+            </p>
+            <textarea class="feedback_content" autofocus="autofocus" placeholder="意见反馈（500个字内）" rows="5" cols="20" wrap="hard"></textarea>
+            <input class="feedback_contact" placeholder="填写您的联系方式，例如手机号或邮箱，以便我们及时反馈给你。"/>
+            <label>注：如您的建议得到了采纳,还有神秘奖励噢 ;) </label>
+            <div class="opi_fkbtm">
+                <button id="feedback_btn">提交反馈</button>
+                <span class="feedback_s" style="display: none"><i></i><span>提交成功，感谢您的吐槽!</span></span>
+                <!-- 背景图片 sb-ico.png -->
+                <span class="feedback_f" style="display: none"><i></i><span>提交失败</span></span>
             </div>
-        </form>
+        </div>
     </div>
 <script type="text/javascript">
 document.write('<script type="text/javascript"  data-lxb-uid="1268165" data-lxb-gid="139337" src="http://lxbjs.baidu.com/api/asset/api.js?t=' + new Date().getTime() + '" charset="utf-8"></scr' + 'ipt>' );

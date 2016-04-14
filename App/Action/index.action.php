@@ -69,5 +69,21 @@ class IndexAction extends AppAction
 		$this->display();
 	}
 
+	/**
+	 * 发送邮件
+	 */
+	public function sendEmail(){
+		//准备数据
+		$contact = $this->input('contact','string','');
+		$content = $this->input('content','string','');
+		$content .= '<br/>'.'<font color="red">联系方式:</font> '.$contact;
+		$email = C('FEEDBACKER');
+		$title = '一只蝉反馈意见';
+		$name = '';
+		$from = '一只蝉';
+		//发送邮件
+		$res = $this->load('index')->sendEmail($email, $title, $content, $name , $from);
+		return $this->returnAjax($res);
+	}
 }
 ?>

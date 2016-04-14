@@ -4,6 +4,8 @@ $(document).ready(function(e) {
     _xunjia     = "<h6>登录查看此商标出售价格</h6><p>一次登录后可查看全站所有出售商标价格</p>";
     //手机号码验证正则
     mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+    //邮箱验证正则
+    emailreg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     //获取验证码
     $('#dl_wjmm,#dl_fsmm').click(function(){
         mobile 	= $.trim($('#loginUser').val());
@@ -157,6 +159,113 @@ $(document).ready(function(e) {
     });
     $('.mj-inpuVs').click(function(){
         $(this).parent().parent().find($("input")).val('').focus();
+    });
+
+    //邮件反馈的js
+    $('.feedback_content,.feedback_contact').focus(function(){
+        $('.feedback_s').hide();
+    });
+    $('.feedback_content').blur(function(){
+        var feedback_content = $.trim($('.feedback_content').val());
+        if(feedback_content==''){
+            $('.feedback_f').find('span').html('请填写意见反馈!');
+            $('.feedback_f').show();
+            return false;
+        }else if(feedback_content.length>=500){
+            $('.feedback_f').find('span').html('意见反馈字数过多!');
+            $('.feedback_f').show();
+            return false;
+        }
+        $('.feedback_f').find('span').html('');
+        $('.feedback_f').hide();
+    });
+
+    $('.feedback_contact').blur(function(){
+        var feedback_contact = $.trim($('.feedback_contact').val());
+        if(feedback_contact==''){
+            $('.feedback_f').find('span').html('请填写您的联系方式!');
+            $('.feedback_f').show();
+            return false;
+        }else {
+            if(/^\d+$/.test(feedback_contact)){
+                if(mobilereg.test(feedback_contact)==false){
+                    $('.feedback_f').find('span').html('手机号码不正确!');
+                    $('.feedback_f').show();
+                    return false;
+                }
+            }else{
+                if(emailreg.test(feedback_contact)==false){
+                    $('.feedback_f').find('span').html('邮箱不正确!');
+                    $('.feedback_f').show();
+                    return false;
+                }
+            }
+        }
+        $('.feedback_f').find('span').html('');
+        $('.feedback_f').hide();
+    });
+    //提交事件
+    $('#feedback_btn').click(function(){
+        //未返回结果点击无效
+        if($(this).attr('flag')==1){
+            return false;
+        }
+        $(this).attr('flag',1);
+        $('.feedback_s').hide();
+        //验证文本域
+        var feedback_content = $.trim($('.feedback_content').val());
+        if(feedback_content==''){
+            $('.feedback_f').find('span').html('请填写意见反馈!');
+            $('.feedback_f').show();
+            $(this).attr('flag',0);
+            return false;
+        }else if(feedback_content.length>=500){
+            $('.feedback_f').find('span').html('意见反馈字数过多!');
+            $('.feedback_f').show();
+            $(this).attr('flag',0);
+            return false;
+        }
+        //验证输入框
+        var feedback_contact = $.trim($('.feedback_contact').val());
+        if(feedback_contact==''){
+            $('.feedback_f').find('span').html('请填写您的联系方式!');
+            $('.feedback_f').show();
+            $(this).attr('flag',0);
+            return false;
+        }else {
+            if(/^\d+$/.test(feedback_contact)){
+                if(mobilereg.test(feedback_contact)==false){
+                    $('.feedback_f').find('span').html('手机号码不正确!');
+                    $('.feedback_f').show();
+                    $(this).attr('flag',0);
+                    return false;
+                }
+            }else{
+                if(emailreg.test(feedback_contact)==false){
+                    $('.feedback_f').find('span').html('邮箱不正确!');
+                    $('.feedback_f').show();
+                    $(this).attr('flag',0);
+                    return false;
+                }
+            }
+        }
+        $('.feedback_f').find('span').html('');
+        $('.feedback_f').hide();
+        //提交数据
+        var feedback_data = "content="+feedback_content+'&contact='+feedback_contact;
+        $.post('/index/sendEmail',feedback_data,function(data){
+            if(data.code==1){
+                $('.feedback_s').find('span').html('提交成功，感谢您的吐槽!');
+                $('.feedback_s').show();
+                //重置为空
+                $('.feedback_content').val('');
+                $('.feedback_contact').val('');
+            }else{
+                $('.feedback_f').find('span').html('提交失败');
+                $('.feedback_f').show();
+            }
+            $('#feedback_btn').attr('flag',0);
+        },'json');
     });
 
 });

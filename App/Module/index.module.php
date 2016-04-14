@@ -279,5 +279,20 @@ class IndexModule extends AppModule
         }
         return $hotwords;
     }
+
+    /**
+     * 发送邮件
+     * @param $email
+     * @param $title
+     * @param $content
+     * @param string $name
+     * @param string $from
+     * @return array
+     */
+    public function sendEmail($email, $title, $content, $name='' , $from='一只蝉'){
+        $res = $this->importBi('Message')->sendMail($email, $title, $content, $name , $from);
+        $a = ($res['code'] == 1) ? 1 : 0;
+        return array('code'=>$a);
+    }
 }
 ?>
