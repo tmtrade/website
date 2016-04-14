@@ -377,7 +377,7 @@ class SearchAction extends AppAction
         $params = array_filter($this->_searchArr);
         if ( empty($params) ) {
             $url = substr($this->_rwfix,0,-1).'/';
-        }else{            
+        }else{
             $_arr = array();
             foreach ($params as $k => $v) {
                 $_arr[] = $k.'-'.str_replace(',', '-', $v);
