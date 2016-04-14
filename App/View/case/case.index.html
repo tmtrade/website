@@ -7,7 +7,7 @@
             <?php foreach($list as $k=>$v){ ?>
                <li>
                <span>
-                   <img src="<?php echo TRADE_URL.$v['pic1']?>" alt="<?=$v['alt1']?>">
+                   <img src="<?php echo TRADE_URL.$v['pic1']?>" alt="<?=$v['alt1']?>" onerror="this.src='<?=StaticDir?>images/img1.png'">
                </span>
                    <p class="tit"><font><?=$v['name']?> </font></p>
                    <div class="aL-over f-clearfix">

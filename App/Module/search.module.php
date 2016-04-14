@@ -26,33 +26,89 @@ class SearchModule extends AppModule
     );
     
     //获取查询的TITLE
-    public function getTitle($data)
-    {   
-        $titleArr  = array();
-        if(!empty($data['class'])){
-            $titleArr[] = $data['class']."类";
-        }
-        if(!empty($data['group'])){
-            $titleArr[] = $this->load('group')->getGroupName($data['group']);
-        }
-        if(!empty($data['types'])){
-            $typeconfig = C('TYPES');
-            $titleArr[] = $typeconfig[$data['types']];
-        }
-        if(!empty($data['sblength'])){
-            $sbconfig   = C('SBNUMBER');
-            $titleArr[] = $sbconfig[$data['sblength']];
-        }
-        if(!empty($data['platform'])){
-            $sbplatform = C('PLATFORM_IN');
-            $titleArr[] = $sbplatform[$data['platform']];
-        }
-        if(!empty($data['keyword'])){
-            $keyword = "";
-            $titleArr[] = $data['keyword'];
-        }
-        $titleArr[] = "商标转让|买卖|交易 – 一只蝉";
-        return implode("_", $titleArr);
+    public function getSeo($all)
+    {
+        foreach ($all as $k => $value) {
+                if (empty($value) && count($all)==1) return;
+                $_arr = array_filter( explode(',', $value) );
+                switch ($k) {
+                    case 'kw':
+                        $S      = C('SBSEARCH');
+                        $kt     = intval($all['kt']) <= 0 ? 1 : intval($all['kt']);
+                        if(!empty($value)) $kname   = $S[$kt].':'.$value.' ';
+                        break;
+                    case 'c':
+                        list($cArr,) = $this->load('search')->getClassGroup(0, 0);
+                        foreach ($_arr as $v) {
+                            if(count($all)>=2){
+                                $c_str .= $cArr[$v].' '.$v.' ';
+                                $c_name_str .= $cArr[$v].' ';
+                                $c_id_str = '第'.$v.'类'.$cArr[$v].' ';
+                                $c_name = $cArr[$v];
+                                $c_id = $v;
+                            }else{
+                                $c_name = $cArr[$v];
+                                $c_id = $v;
+                            }
+                        }
+                        break;
+                    case 'g':
+                        if ( empty($all['c']) ) return $value;
+                        list(,$gArr) = $this->load('search')->getClassGroup(0, 1);
+                        foreach ($_arr as $v) {
+                            if(count($all)>=3){
+                                $g_str .= mb_substr($gArr[$all['c']][$v],0,7,'utf-8').' '.$v.' ';
+                                $g_name_str .= $gArr[$all['c']][$v].' ';
+                                $g_name = $gArr[$all['c']][$v];
+                                $g_id = $v;
+                            }else{
+                                $g_name = $gArr[$all['c']][$v];
+                                $g_id = $v;
+                            }
+                        }
+                        if(count($_arr)==1){
+                            $g_count =1;
+                        }
+                        break;
+                    case 't':
+                        $T = C('TYPES');/*组合类型*/
+                        foreach ($_arr as $v) {
+                            $t_str .= $T[$v].' ';
+                        }
+                        break;
+                    case 'p':
+                        $P = C('PLATFORM_IN'); /*平台入驻*/
+                        foreach ($_arr as $v) {
+                            $p_str .= $P[$v].' ';
+                        }
+                        break;
+                    case 'sn':
+                        $N      = C('SBNUMBER');/*商标字数*/
+                        $_hasN  = false;
+                        foreach ($_arr as $v) {
+                            if ( $v == '1' || $v == '2' ){
+                                $_hasN = true;
+                            }else{
+                                $sn_str .= $N[$v].' ';
+                            }
+                        }
+                        if ( $_hasN ) $sn_str = $N['1,2'].' '.$sn_str;
+                        break;
+                }
+            }
+            if(count($all)<=3 && !empty($c_name) && empty($g_name) && count($_arr)==1){
+                $title = '第'.$c_id.'类'.$c_name.' 商标转让交易买卖价格|一只蝉商标转让平台网';
+                $description = '第'.$c_id.'类商标转让价格要多少钱？了解'.$c_name.'商标转让价格到一只蝉'.$c_name.'商标交易平台第一时间获取'.$c_id.'类商标交易价格动态变化；一只蝉商标转让平台-独家签订交易损失赔付保障协议商标交易平台';
+            }
+            else if(count($all)<=3 && !empty($c_name) && !empty($g_name) && $g_count==1){
+                $title = $g_id.' '.$g_name.'_第'.$c_id.'类-商标转让交易买卖价格|一只蝉商标转让平台网';
+                $description = $g_name.'商标转让价格要多少钱？了解'.$g_name.'商标转让价格到一只蝉'.$c_name.'商标交易平台第一时间获取'.$g_id.'类商标交易价格动态变化；一只蝉商标转让平台-独家签订交易损失赔付保障协议商标交易平台';
+            }else{
+                $title = $kname.$p_str.$g_str.$c_str.$sn_str.$t_str.'商标转让交易买卖价格|一只蝉商标转让平台网';
+                $description =$kname.$p_str.$g_name_str.'商标转让价格要多少钱？了解'.$c_name_str.$sn_str.$t_str.'商标转让价格到一只蝉'.$c_id_str.'商标交易平台第一时间获取'.$g_name_str.'商标交易价格动态变化；一只蝉商标转让平台-独家签订交易损失赔付保障协议商标买卖平台';
+            }
+            echo var_dump($all);
+            return array("title"=>$title,"description"=>$description);
     }
 
     /**

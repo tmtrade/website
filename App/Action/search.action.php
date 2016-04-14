@@ -108,8 +108,13 @@ class SearchAction extends AppAction
         $classGroup = $this->load('search')->getClassGroup();
         list($_class, $_group) = $classGroup;
 
-		//设置页面TITLE
-		//$this->set('TITLE', $this->load('search')->getTitle($params));
+        //设置页面TITLE
+        $seoList = $this->load('search')->getSeo($this->_searchArr);
+        if(!empty($seoList['title'])){
+            $this->set('title', $seoList['title']);
+            $this->set('description', $seoList['description']);
+        }
+        
 
         //特价推荐
         $_arr   = array('isOffprice'=>'1');

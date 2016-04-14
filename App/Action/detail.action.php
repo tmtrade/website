@@ -18,8 +18,11 @@ class DetailAction extends AppAction
 	 */
 	private function getTitle($data,$goods)
 	{
-		$title = $data['name']."_".$data['class']."类_".$goods."商标转让|买卖|交易 – 一只蝉商标转让平台网";
-		return $title;
+                list($cArr,) = $this->load('search')->getClassGroup(0, 0);
+                $title = $data['name']."_".$data['class']."类_".$goods."商标转让|买卖|交易|价格 – 一只蝉商标转让平台网";
+                $keywords = $data['name'].'商标转让,第'.$data['class'].'类'.$goods.' 商标转让,'.$cArr[$data['class']].'商标转让,商标转让,注册商标交易买卖';
+                $description = $data['name'].'第'.$data['class'].'类'.$goods.'类'.$cArr[$data['class']].'商标转让交易买卖价格信息。购买商品名商标到一只蝉第'.$data['class'].'类'.$cArr[$data['class']].'商标交易平台第一时间获取'.$goods.'商标价格信息,一只蝉商标转让平台网-独家签订交易损失赔付保障协议商标交易买卖平台';
+                return array("title"=>$title,"keywords"=>$keywords,"description"=>$description);
 	}
 
 	/**
@@ -110,7 +113,11 @@ class DetailAction extends AppAction
 		$title['name'] 	= $info['name'];
 		$title['class']	= $class;
 		$goods 			= current( explode(',', $info['goods']) );
-		$this->set('title', $this->getTitle($title,$goods));
+                //设置SEO
+                $seoList = $this->getTitle($title,$goods);
+		$this->set('title', $seoList['title']);
+                $this->set('keywords', $seoList['keywords']);
+                $this->set('description', $seoList['description']);
 		//读取推荐商标
 		$refer 	= $this->load("internal")->getReferrer($_class, 8, $number);
 		$tj 	= $this->load('search')->getListTips($refer);

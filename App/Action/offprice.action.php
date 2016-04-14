@@ -67,8 +67,13 @@ class OffpriceAction extends AppAction
         $channel = $this->load('search')->getChannel($this->mod);        
         $this->set('channel', $channel);
         
-        //设置页面TITLE
-        //$this->set('TITLE', $this->load('search')->getTitle($params));
+         //设置页面TITLE
+        $seoList = $this->load('search')->getSeo($this->_searchArr);
+        if(!empty($seoList['title'])){
+            $this->set('title', $seoList['title']);
+            $this->set('description', $seoList['description']);
+        }
+        
 
         $this->set('_CLASS', $_class);//分类
         $this->set('_GROUP', $_group);//群组
