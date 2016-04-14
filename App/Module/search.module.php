@@ -107,7 +107,6 @@ class SearchModule extends AppModule
                 $title = $kname.$p_str.$g_str.$c_str.$sn_str.$t_str.'商标转让交易买卖价格|一只蝉商标转让平台网';
                 $description =$kname.$p_str.$g_name_str.'商标转让价格要多少钱？了解'.$c_name_str.$sn_str.$t_str.'商标转让价格到一只蝉'.$c_id_str.'商标交易平台第一时间获取'.$g_name_str.'商标交易价格动态变化；一只蝉商标转让平台-独家签订交易损失赔付保障协议商标买卖平台';
             }
-            echo var_dump($all);
             return array("title"=>$title,"description"=>$description);
     }
 
