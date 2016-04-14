@@ -295,7 +295,7 @@ border-bottom: solid 1px #eee;
 
     position: fixed;
 
-    top:40%;
+    top:50%;
 
     margin-top: -211px;
 
@@ -408,6 +408,11 @@ div.mj-stclose label{
 
 }
 
+.mj-sidebarConfk{
+    width: 60px;
+    margin-right: 10px;
+}
+
 .ms-call{
 
     position: relative;
@@ -439,6 +444,7 @@ div.mj-stclose label{
     display: none;
 
 }
+
 .mj-ifk{
    margin-top:10px !important;
 }
@@ -529,6 +535,7 @@ div.mj-stclose label{
     text-align: center;
 
     cursor: pointer;
+    margin-left: 12px;
 
 }
 
@@ -712,7 +719,7 @@ div.mj-stclose label{
 
 .bounceIn {
     -webkit-animation-name: bounceIn;
-    animation-name: bounceIn
+    animation-name: bounceIn；
 }
 /*footer mj-footerTip*/
 

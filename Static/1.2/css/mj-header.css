@@ -415,17 +415,25 @@ table {
     font-size: 12px;
 }
 .mj-search_con  span.Bran_note:hover{
-    color: #ff6666;
+    color: #666666;
     padding-bottom:5px;  
     text-decoration: underline;
 
 }
-.mj-search_con  span.Bran_note i img{
+
+.mj-search_con  span.Bran_note i{
+  display: inline-block;
   vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  background: url(../images/Bran_ico.png) no-repeat;
   margin-right: 5px;
   margin-bottom:2px; 
 }
+.mj-search_con  span.Bran_note:hover i{
+     background: url(../images/Bran_ico1.png) no-repeat;
 
+}
 
 .mj-search_con form{
     position: relative;
