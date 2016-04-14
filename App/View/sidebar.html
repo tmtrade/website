@@ -20,6 +20,7 @@
                 <a href="javascript:;" id="callBtn">立即免费通话</a><br>
             </div>
         </div>
+        <a href="javascript:" class="mj-ifk" id="mj-ifk"><i class="mj-iconfk"></i><br>反馈</a>
         <a href="javascript:" class="mj-topIcon"><i class="uj_icon25"></i><br>顶部</a>
     </div>
     <div class="mj-siright">
@@ -27,6 +28,30 @@
         <em>免费咨询</em>
     </div>
 </div>
+<!-- 意见反馈 -->
+<div class="opi_fk_all"></div>
+
+    <div class="opi_fk">
+        <h6><font class="fl">意见反馈</font><i id="close_fk" class="fr"></i></h6>
+        <form action="form_action.asp" method="get">
+            <div class="opi_fkMain">
+                <p>
+                    亲爱的用户，我是一只蝉运营人员，你有任何建议或在使用中遇到问题，都请告诉我，我每天关注你
+                    的反馈，不断优化产品，为你提供更好的服务！如果有一分钟时间，请立刻告诉我你的想法吧！
+                </p>
+                <textarea autofocus="autofocus" placeholder="意见反馈（500个字内）" rows="5" cols="20" wrap="hard">
+                  
+                    
+                </textarea>
+                <input placeholder="填写您的联系方式，例如手机号或邮箱，以便我们及时反馈给你。"></input>
+                <label>注：如您的建议得到了采纳,还有神秘奖励噢 ;) </label>
+                <div class="opi_fkbtm">
+                    <button>提交反馈</button>
+                    <span><i></i>提交成功，感谢您的吐槽！</span>
+                </div>
+            </div>
+        </form>
+    </div>
 <script type="text/javascript">
 document.write('<script type="text/javascript"  data-lxb-uid="1268165" data-lxb-gid="139337" src="http://lxbjs.baidu.com/api/asset/api.js?t=' + new Date().getTime() + '" charset="utf-8"></scr' + 'ipt>' );
 $(function(){
@@ -36,6 +61,17 @@ $(function(){
     })
 });
 
+    $("#mj-ifk").click(function() {
+           $(".opi_fk_all").fadeIn();    
+            $(".opi_fk").addClass("bounceIn");
+           $(".opi_fk").show();
+
+
+    })
+    $("#close_fk").click(function() {
+          $(".opi_fk_all").fadeOut();
+          $(".opi_fk").hide();
+    })
     $("#mj-stclose").click(function(){
     $(".mj-stclose").hide(300);
     $(".mj-sidebarCon").hide(300);

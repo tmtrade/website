@@ -295,7 +295,7 @@ border-bottom: solid 1px #eee;
 
     position: fixed;
 
-    top: 50%;
+    top:40%;
 
     margin-top: -211px;
 
@@ -333,7 +333,7 @@ div.mj-stclose label{
 
     margin-right: 10px;
 
-    background: #ffffff;
+   
 
 }
 
@@ -398,6 +398,7 @@ div.mj-stclose label{
     border: 1px solid #f2f2f2;
 
     margin-top: -1px;
+    background: #ffffff;
 
 }
 
@@ -438,7 +439,19 @@ div.mj-stclose label{
     display: none;
 
 }
-
+.mj-ifk{
+   margin-top:10px !important;
+}
+.mj-iconfk {
+    text-align: center;
+    display: inline-block;
+    width: 23px;
+    height: 20px;
+    background-image: url("../images/mj-iconfk.png");
+}
+.mj-ifk:hover .mj-iconfk{
+    background-image: url("../images/mj-iconfk1.png");
+}
 .ms-sidebarTel p{
 
     margin: 0;
@@ -529,8 +542,178 @@ div.mj-stclose label{
 
 }
 
+.opi_fk_all{
+    position: fixed;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    z-index: 19891024;
+    display: none;
+}
+.opi_fk{
+    position: fixed;
+    left: 50%;
+    top:50%;
+    margin-left:-356px;
+    margin-top:-269px; 
+    width: 712px;
+    height: 538px;
+    background: #ffffff;
+    z-index: 19891025;
+    display: none;
 
+}
+.opi_fk h6{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #f1f1f1;
+}
+.opi_fk h6 font{
+    font-size: 14px;
+    color: #333333;
+    text-indent: 15px;
+}
+.opi_fk h6 i{
+    display: inline-block;
+    margin:7px 7px 0px 0px;
+    text-align: center;
+    width: 23px;
+    height: 23px;
+    background: url(../images/btm-cha.png) no-repeat;
+    cursor: pointer;
+}
+.opi_fk h6 i:hover{
+    background: url(../images/btm-cha-cur.png) no-repeat;
+}
+.opi_fkMain{
+    width:90%;
+    margin:22px auto;
 
+}
+.opi_fkMain p{
+    color: #666666;
+    font-size: 14px;
+    line-height: 20px;
+}
+.opi_fkMain textarea{
+    width: 581px;
+    height: 225px;
+    background: #fcfcfc;
+    border: 1px solid #dddddd;
+    color: #aaaaaa;
+    font-size: 12px;
+    text-indent: 15px;
+    padding:15px; 
+    margin-top: 15px;
+
+}
+.opi_fkMain input{
+    width: 612px;
+    height:37px;
+    line-height: 37px;
+    background: #fcfcfc;
+    border: 1px solid #dddddd;
+    color: #aaaaaa;
+    font-size: 12px;
+    text-indent: 15px;
+    margin-top: 10px;
+}
+.opi_fkMain label{
+    display: inline-block;
+    color: #ff9c66;
+     font-size: 12px;
+     margin-top: 10px;
+}
+.opi_fkbtm{
+     margin-top: 12px;
+}
+.opi_fkbtm button{
+    display: inline-block;
+    background: #ff5656;
+    padding:10px 35px;
+    border-radius:3px;
+    color: #fff;
+    font-size: 14px; 
+    border: none;
+}
+.opi_fkbtm  span{
+    color: #005d39;
+    font-size: 14px;
+    margin-left: 15px;
+}
+.opi_fkbtm  span i{
+    display: inline-block;
+    text-align: center;
+    width: 19px;
+    height: 18px;
+    background: url(../images/cg-ico.png) no-repeat;
+    vertical-align: middle;
+    margin-right:5px;
+    margin-bottom:1px;  
+}
+@-webkit-keyframes bounceIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.3);
+        transform: scale(.3)
+    }
+
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+
+    70% {
+        -webkit-transform: scale(.9);
+        transform: scale(.9)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.3);
+        -ms-transform: scale(.3);
+        transform: scale(.3)
+    }
+
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+
+    70% {
+        -webkit-transform: scale(.9);
+        -ms-transform: scale(.9);
+        transform: scale(.9)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+.bounceIn {
+    -webkit-animation-name: bounceIn;
+    animation-name: bounceIn
+}
 /*footer mj-footerTip*/
 
 .mj-footerTip{
