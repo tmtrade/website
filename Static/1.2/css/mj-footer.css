@@ -648,12 +648,12 @@ div.mj-stclose label{
     font-size: 14px; 
     border: none;
 }
-.opi_fkbtm  span{
+.feedback_s{
     color: #005d39;
     font-size: 14px;
     margin-left: 15px;
 }
-.opi_fkbtm  span i{
+.feedback_s i{
     display: inline-block;
     text-align: center;
     width: 19px;
@@ -663,6 +663,22 @@ div.mj-stclose label{
     margin-right:5px;
     margin-bottom:1px;  
 }
+.feedback_f{
+    color: #ff6666;
+    font-size: 14px;
+    margin-left: 15px;
+}
+.feedback_f i{
+    display: inline-block;
+    text-align: center;
+    width: 19px;
+    height: 18px;
+    background: url(../images/sb-ico.png) no-repeat;
+    vertical-align: middle;
+    margin-right:5px;
+    margin-bottom:1px;  
+}
+
 .animated.infinite {
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite
