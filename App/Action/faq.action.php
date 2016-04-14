@@ -96,7 +96,8 @@ class FaqAction extends AppAction
 		$list			= $this->load('faq')->newsList(array('c'=>$c,'page'=>$page,'limit'=>$limit));
                 
 		$total			= $this->load('faq')->newsList(array('c'=>$c,'limit'=>1000000));
-		$pager			= $this->pager(count($total), $limit);
+        $pageTool = new myPage(array('suffix'=>'/'));
+        $pager          = $pageTool->get(count($total), $limit);
 		$pageBar		= empty($list) ? '' : getPageBar($pager);
 
 		$title   = $this->category[$c] . ' - '.$this->seotime;

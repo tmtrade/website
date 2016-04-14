@@ -5,7 +5,7 @@
  * 应对新闻页特殊url的分页工具类
  * dower
  */
-class Page
+class myPage
 {
     /**
      * 地址栏参数
@@ -28,7 +28,17 @@ class Page
      */
     public $prefix = '';
 
-
+    /**
+     * 构造方法
+     * @param array $config
+     */
+    public function __construct(array $config=array()){
+        foreach($config as $k=>$item){
+            if(property_exists($this,$k)){
+                $this->$k = $item;
+            }
+        }
+    }
     /**
      * 分页方法
      */
@@ -38,6 +48,7 @@ class Page
         $back    = ceil($point/2);
         $num     = ceil($total/$pageRows);
         $url   =  $_SERVER['REQUEST_URI'];
+        $url   = trim($url,'/');
         $temp = explode('-',$url);
         if(count($temp)==3){
             $page = array_pop($temp);
@@ -46,9 +57,7 @@ class Page
         }
         if( $page <= 0)   $page = 1;
         if( $page > $num) $page = $num;
-
         $this->prefix = '/'.implode('-',$temp).'-';
-
         $result['current']	  = $page;
         $result['first']	  = ($page>1 ? $this->prefix.'1'.$this->suffix : 'javascript:;');
         $result['pre']		  = ($page-1>0 ? $this->prefix.($page-1).$this->suffix : 'javascript:;');

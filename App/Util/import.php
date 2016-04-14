@@ -19,4 +19,7 @@ require('excel.php');
 
 //交易信息接口配置
 require('tradeInfo.php');
+
+//分页组件
+require('myPage.php');
 ?>
