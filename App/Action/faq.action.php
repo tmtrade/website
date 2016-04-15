@@ -56,15 +56,15 @@ class FaqAction extends AppAction
                 $this->setSeo();
                 $this->display();
     }
-    
-    //规则
-    public function rule()
-    {
-        $pageTitle   = '入驻平台规则 - '.$this->seotime;
-        $this->set("title",$pageTitle);
-        $this->setSeo();
-        $this->display();
-    }
+
+//    //规则
+//    public function rule()
+//    {
+//        $pageTitle   = '入驻平台规则 - '.$this->seotime;
+//        $this->set("title",$pageTitle);
+//        $this->setSeo();
+//        $this->display();
+//    }
 
 	//得到栏目对应的文章
 	public function news()
@@ -130,6 +130,8 @@ class FaqAction extends AppAction
             if($c==0 || $id==0){
                 $this->redirect('未找到页面', '/index/error');
             }
+        }else{
+            $this->redirect('',"/v-$c-$id/");
         }
         $this->getLeftData();//得到左菜单数据
         $data		= $this->load('faq')->getNextThree(array('c'=>$c,'id'=>$id));
@@ -192,6 +194,24 @@ class FaqAction extends AppAction
      */
     public function lxwm(){
         $this->views(54,985);
+    }
+    /**
+     * 问题
+     */
+    public function question(){
+        $this->views(54,987);
+    }
+    /**
+     * 协议
+     */
+    public function protocol(){
+        $this->views(54,988);
+    }
+    /**
+     * 规则
+     */
+    public function rule(){
+        $this->views(54,989);
     }
 }
 ?>

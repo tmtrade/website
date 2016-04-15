@@ -278,7 +278,7 @@
                 if ( empty($listTopic[$_key_]) ) continue;
             ?>                
                 <!-- 添加广告图片 -->
-                <li class="pulse"><a target="_blank" href="<?=$listTopic[$_key_]['topicUrl']?>"><div class="add-adver"><img src="<?=$listTopic[$_key_]['listPic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'"/></div></a></li> 
+                <li class="pulse"><a target="_blank" href="<?=$listTopic[$_key_]['topicUrl']?>"><div class="add-adver"><img src="<?=$listTopic[$_key_]['listPic']?>" alt="<?=$listTopic[$_key_]['alt']?>" onerror="this.src='<?=StaticDir?>images/img1.png'"/></div></a></li> 
                 <!-- 添加广告图片结束 -->                
         <?  } 
         } ?>

@@ -27,7 +27,7 @@ abstract class AppAction extends Action
     
     public $pageDescription = '商标转让上一只蝉商标转让平台网,一只蝉是超凡集团商标交易平台：13年积累约200余万商标转让信息-也是中国独家签订交易损失赔付协议保障风险平台。提供专业的商标交易,商标买卖等服务';
         
-        public $seotime = "一只蝉商标转让平台网";
+    public $seotime = "一只蝉商标转让平台网";
         /**
      * 前置操作(框架自动调用)
      * @author    void
@@ -38,7 +38,7 @@ abstract class AppAction extends Action
      */
     public function before()
     {
-        $this->caches = ""; //打开后关闭所有 页面缓存
+        //$this->caches = ""; //打开后关闭所有 页面缓存
         //设置访问的action(导航样式)
         $nav_name = $this->getNavType();
         $this->set('nav_name',$nav_name);
@@ -69,7 +69,7 @@ abstract class AppAction extends Action
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
         
-        $this->set('static_version', 9160);//静态文件版本号>>控制js,css缓存
+        $this->set('static_version', 9282);//静态文件版本号>>控制js,css缓存
 
         // $this->set('CLASSES', C('CLASSES'));//国际分类
         // $this->set('CATEGORY', C('CATEGORY'));//分类

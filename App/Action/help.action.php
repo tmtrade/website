@@ -8,9 +8,9 @@
  */
 class HelpAction extends AppAction
 {
-    
-    public function index()
+  public function index()
     {
+        $this->set("s_url",SHANSOO_URL);
         $this->setSeo(14);
         $this->display();
     }

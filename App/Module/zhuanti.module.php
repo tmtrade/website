@@ -11,8 +11,8 @@
 class ZhuantiModule extends AppModule
 {
     public $models = array(
-        'topic'		=> 'topic',
-        'topicitems'	=> 'topicitems',
+        'topic'		    => 'topic',
+        'topicitems'    => 'topicitems',
     );
     
     //专题列表
@@ -112,11 +112,12 @@ class ZhuantiModule extends AppModule
         $r['raw']   = " `listPic` != '' ";
         $r['limit'] = intval($limit);
         $r['order'] = array('sort'=>'asc');
-        $r['col']   = array('id','listPic');
+        $r['col']   = array('id','listPic', 'alt4');
         $r['ft']    = array('listClass'=>$class);
         $res = $this->import('topic')->find($r);
         if ( empty($res) ) return array();
         foreach ($res as $k => $v) {
+            $res[$k]['alt']         = $v['alt4'];
             $res[$k]['listPic']     = TRADE_URL.$v['listPic'];
             $res[$k]['topicUrl']    = "/zhuanti/view/?id=".$v['id'];
         }

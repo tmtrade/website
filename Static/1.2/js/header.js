@@ -164,6 +164,7 @@ $(document).ready(function(e) {
     //邮件反馈的js
     $('.feedback_content,.feedback_contact').focus(function(){
         $('.feedback_s').hide();
+        $('.feedback_f').hide();
     });
     $('.feedback_content').blur(function(){
         var feedback_content = $.trim($('.feedback_content').val());
@@ -183,8 +184,8 @@ $(document).ready(function(e) {
     $('.feedback_contact').blur(function(){
         var feedback_contact = $.trim($('.feedback_contact').val());
         if(feedback_contact==''){
-            $('.feedback_f').find('span').html('请填写您的联系方式!');
-            $('.feedback_f').show();
+            //$('.feedback_f').find('span').html('请填写您的联系方式!');
+            //$('.feedback_f').show();
             return false;
         }else {
             if(/^\d+$/.test(feedback_contact)){
@@ -227,12 +228,7 @@ $(document).ready(function(e) {
         }
         //验证输入框
         var feedback_contact = $.trim($('.feedback_contact').val());
-        if(feedback_contact==''){
-            $('.feedback_f').find('span').html('请填写您的联系方式!');
-            $('.feedback_f').show();
-            $(this).attr('flag',0);
-            return false;
-        }else {
+        if(feedback_contact!=''){
             if(/^\d+$/.test(feedback_contact)){
                 if(mobilereg.test(feedback_contact)==false){
                     $('.feedback_f').find('span').html('手机号码不正确!');

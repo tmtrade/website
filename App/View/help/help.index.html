@@ -1,15 +1,16 @@
 <? require(ViewDir.'/header.html'); ?>
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/cross.js"></script>
 <div class="ztlist w1180">
-<iframe id="mainFrame" name="mainFrame" scrolling="no" src="http://shansoo.net/helps" frameborder="0" style="padding: 0px; width: 100%;height:900px;"></iframe>
+    <iframe id="mainFrame" name="mainFrame" scrolling="no" src="<?=$s_url?>helps" frameborder="0" style="padding: 0px; width: 100%;height:900px;"></iframe>
 </div>
 <script type="text/javascript">
 window.onload = function() {
 	setInterval(set_height,1500);
     }
+    var s_url = "<?=$s_url?>";
     function set_height(){
         var ifw = $("#mainFrame")[0].contentWindow;
-        Cross.call(ifw,"http://shansoo.net/","getbodyheight",{},function(data){
+        Cross.call(ifw,s_url,"getbodyheight",{},function(data){
             $("#mainFrame").height(data.result+"px");
         })
       }

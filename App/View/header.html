@@ -280,7 +280,7 @@
         $(this).hoverDelay({
         hoverEvent: function(){          
              $(".mj-dd dd").eq(i).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
-              _lazyImg($(this));
+             _lazyImg($(".mj-dd dd").eq(i));
             },
         outEvent:function() {
              $(".mj-dd dd").removeClass("mj-ddahoverc");

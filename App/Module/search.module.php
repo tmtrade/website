@@ -41,7 +41,7 @@ class SearchModule extends AppModule
                         list($cArr,) = $this->load('search')->getClassGroup(0, 0);
                         foreach ($_arr as $v) {
                             if(count($all)>=2){
-                                $c_str .= $cArr[$v].' '.$v.' ';
+                                $c_str .= $cArr[$v].' '.$v.'类 ';
                                 $c_name_str .= $cArr[$v].' ';
                                 $c_id_str = '第'.$v.'类'.$cArr[$v].' ';
                                 $c_name = $cArr[$v];
