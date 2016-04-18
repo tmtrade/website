@@ -133,7 +133,7 @@
                             <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
                             <?endforeach;?>
                             <?endif;?>
-                            <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
+                            <span title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</span>
                         </p>
                     <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
                     <!--定价商品-->
@@ -148,7 +148,7 @@
                             <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
                             <?endforeach;?>
                             <?endif;?>
-                            <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
+                            <span title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</span>
                         </p>
                         <p class="mj-priceTxtt_ie7" style="margin-top: 2px"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
                     <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
@@ -164,7 +164,7 @@
                             <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
                             <?endforeach;?>
                             <?endif;?>
-                            <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
+                            <span title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</span>
                         </p>
                         <p class="mj-priceTxtt_ie7" style="margin-top: 2px"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
                     <?}else{?>
@@ -176,7 +176,7 @@
                                 <span title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></span>
                                 <?endforeach;?>
                                 <?endif;?>
-                                <span title="买一送一" class="wddsb" url="javascript:;">买一送一</span>
+                                <span title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</span>
                             </p>
                             <div style="width: 50px;height:7px"></div>
                     <?}?>
@@ -820,9 +820,9 @@
     //专题点击事件
     $('.wddsb').click(function(){
         //alert($(this).text());return
-        if($(this).text() == '买一送一'){
-            return false;
-        }
+//        if($(this).text() == '买一送一'){
+//            return false;
+//        }
         $('#wodediv').attr('href',($(this).attr('url')));
         $('#wodediv').get(0).click();
     });
