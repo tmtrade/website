@@ -64,5 +64,16 @@ class TopicAction extends AppAction
         $this->setSeoByTopic("/topic/fourth");
         $this->display();
     }
+    
+     //买一送一
+    public function buyone_getone()
+    {
+        $this->pageTitle 	= '购买商标送注册商标,注册商标怎么转让,注册商标转让好处|一只蝉商标转让平台网';
+        $this->pageDescription  = '活动期间在一只蝉商标转让网购买商标者,就送价值2100元的商标注册。注册商标怎么转让？注册商标有哪些好处？上一只蝉商标转让平台,一只蝉是超凡集团商标交易平台-中国独家签订交易损失赔付协议保障风险平台。提供专业的商标交易,商标买卖等服务';
+        $this->set('title', $this->pageTitle);//页面title
+        $this->set('description', $this->pageDescription);//页面description
+        $this->setSeoByTopic("/topic/buyone_getone");
+        $this->display();
+    }
 }
 ?>

@@ -1,0 +1,317 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0;}
+body{min-width: 1400px;}
+body,html{font-family: "微软雅黑";-webkit-font-smoothing:antialiased;font-smoothing:antialiased;-moz-font-smoothing:antialiased;}
+fieldset,img {border:0}
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal}
+ol,ul {list-style:none}
+a{text-decoration: none;}
+caption,th {text-align:left}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal}
+q:before,q:after {content:''}
+abbr,acronym { border:0}
+.fl{float: left}
+.fr{float: right}
+/*清除浮动*/
+.f-clearfix:after {
+    clear: both;
+    display: block;
+    height: 0;
+    font-size: 0;
+    content: ".";
+    visibility: hidden;
+}
+.f-clearfix{
+    zoom: 1;
+}
+.w1100{
+    width: 1100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.sp-banner{
+    width: 100%;
+    height: 776px;
+    background: url("../images/spc-banner.jpg") no-repeat top center;
+
+}
+.sp-banner a{
+    display: block;
+    width: 230px;
+    height: 70px;
+    position: absolute;
+    top: 245px;
+    right: 300px;
+}
+.sp-rules{
+    width: 100%;
+    height: 700px;
+    background: #ff9126;
+    overflow: hidden;
+}
+
+.sp-rules-main{
+    width: 1015px;
+    margin:70px auto 104px;
+
+}
+.sp-rules-main h3{
+    color: #fff000;
+    font-size: 36px;
+}
+.sp-rules-main h3 b{
+    color: #ffffff;
+}
+.sp-rules-xq{
+    width: 1014px;
+    height: 400px;
+    background: url("../images/spc-ban1.png") no-repeat center top;
+    margin-top: 25px;
+    position: relative;
+}
+.sp-rules-xq ul.fl{
+    width: 680px;
+
+    margin-left: 50px;
+}
+.sp-rules-xq ul.fl li{
+    margin-top:60px;
+}
+.sp-rules-xq ul.fl li span{
+    display: inline-block;
+    background: #ffbf26;
+    padding: 7px 12px;
+    color: #ffffff;
+    font-size: 18px;
+    -moz-border-radius:  50px;
+    -webkit-border-radius:  50px;
+    border-radius: 50px;
+    behavior: url(ie-css3.htc);
+}
+.sp-rules-xq ul.fl li span img{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+    margin-bottom: 1px;
+}
+.sp-rules-xq ul.fl li label{
+    color: #333333;
+    font-size: 18px;
+    margin-left:10px;
+    font-family: "Hiragino Sans GB";
+}
+.sp-rules-xq ul.fl li label a{
+    color: #ff5533;
+    cursor: pointer;
+}
+.rules-sm1{
+    padding: 7px 18px;
+    background: #fff6bf;
+    border: 1px solid #e3e3e3;
+    color: #333333;
+    font-size: 14px;
+    position: absolute;
+    right: 305px;
+    top: 293px;
+    display: none;
+}
+.sp-rules-xq ul.fl li label a:hover .rules-sm1{
+    display: inline-block;
+}
+.rules-sm1 img{
+    position: absolute;
+    top:-7px;
+    right: 125px;
+}
+.rules-sm2{
+    display: inline-block;
+    padding:3px 12px;
+    background: #e3e3e3;
+    color: #666666;
+    font-size: 14px;
+    -moz-border-radius:  50px;
+    -webkit-border-radius:  50px;
+    border-radius: 50px;
+    behavior: url(ie-css3.htc);
+    margin-left: 130px;
+    margin-top: 12px;
+}
+.sp-rules-xq div.fr{
+    width: 273px;
+    margin-top: 30px;
+    position: relative;
+}
+.sp-rules-xq div.fr a img{
+    margin-top: 27px;
+}
+
+.sp-rules-xq div.fr label{
+    color: #666666;
+    font-size: 14px;
+    position: absolute;
+    right:10px;
+    top:344px;
+}
+.sp-rules-main h2{
+    color: #ffffff;
+    font-size: 40px;
+    text-align: center;
+    margin-top:85px;
+}
+.sp-rules-main h2 label{
+    color: #fff000;
+    font-weight: normal;
+}
+.sp-imitate{
+    width:100%;
+    height: 700px;
+    background: #ffffff url("../images/spc-pl.jpg") no-repeat bottom center;
+}
+.sp-jt img{
+    display: block;
+    margin: auto;
+}
+
+.sp-title{
+    text-align: center;
+    margin-top: 25px;
+    color: #666666;
+    font-size: 36px;
+}
+.sp-title span{
+    padding:3px 12px;
+    background: #ffc051;
+    color: #ffffff;
+    font-size: 36px;
+    font-family: "Impact";
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.sp-title b{
+    color: #333333;
+}
+.sp-imitate-sm{
+    text-align: center;
+    color: #333333;
+    font-size: 14px;
+    text-align: center;
+    margin-top:20px;
+}
+.sp-imitate .w1100{
+    height: 315px;
+    background: url("../images/spc-vs1.jpg") no-repeat 315px top;
+}
+.sp-imitate .w1100 label{
+    display: inline-block;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 22px;
+    position: absolute;
+    top: 80px;
+    right: 156px;
+}
+.sp-business{
+    width:100%;
+    height: 700px;
+    background: #41aaec;
+}
+.sp-business h2 {
+    color: #ffffff;
+}
+.sp-business h2 span{
+    background: #ffffff;
+    color: #41aaec;
+}
+.sp-business h2 b{
+    color: #ffffff;
+}
+.sp-business .w1100{
+    height: 310px;
+    background: url("../images/spc-pic3.png") no-repeat 0px 0px;
+    margin-top:200px;
+
+}
+.sp-business .w1100 h3{
+    font-size: 36px;
+    position: absolute;
+}
+.sp-business .w1100 h3.tit1{
+    color:#ff8f00;
+    left: 15px;
+    top: -15px;
+}
+
+.sp-business .w1100 h3.tit2{
+    color:#4aff38;
+    left: 355px;
+    top: -15px;
+}
+
+.sp-business .w1100 h3.tit3{
+    font-size: 24px;
+    color:#f7fe3f;
+    right: 190px;
+    top: -55px;
+    line-height: 30px;
+}
+.sp-business .w1100 label{
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 18px;
+    right: 85px;
+    top: 30px;
+    position: absolute;
+    text-align: center;
+}
+
+.sp-register{
+    width:100%;
+    height: 700px;
+    background: #ffffff;
+}
+.sp-register .w1100{
+    height: 370px;
+    background: url("../images/sp-rge.jpg") no-repeat top center;
+    margin-top: 45px;
+}
+.sp-register p{
+    color: #666666;
+    font-size: 18px;
+    margin-top: 90px;
+    text-align: center;
+}
+.sp-register p img{
+    vertical-align: middle;
+    margin-bottom:3px;
+    margin-right: 10px;
+}
+.sp-btmzx{
+    width: 100%;
+    height:212px;
+    background: #e7e7e7;
+    overflow: hidden;
+
+}
+.sp-btmzx .w1100 a{
+    display: inline-block;
+    width: 541px;
+    height: 134px;
+    line-height: 134px;
+    background: url("../images/zx-btn.png") no-repeat top center;
+    color: #ffffff;
+    font-size: 30px;
+    margin-top:35px;
+
+
+}
+.sp-btmzx .w1100 a:hover{
+    cursor: pointer;
+}
+.sp-btmzx .w1100 a img{
+    vertical-align: middle;
+    margin-bottom: 10px;
+    margin-left:40px;
+    margin-right: 20px;
+}

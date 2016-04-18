@@ -185,7 +185,9 @@ abstract class AppAction extends Action
     protected final function setSeoByTopic($link)
     {
         $topicId = $this->load('zhuanti')->getTopicInfoByLink($link);
-        $this->setSeo(10,$topicId);
+        if(!empty($topicId)){
+            $this->setSeo(10,$topicId);
+        }
     }
         
     /**
