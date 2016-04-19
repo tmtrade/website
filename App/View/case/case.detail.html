@@ -7,20 +7,9 @@
         <div class="case-name-xq">
             <div class="case-name-share" style="left: 450px;">
                <span>分享到：</span>
-               <a href="javascript:void(0);" class="jiathis_button_cqq"><img src="<?=StaticDir?>1.2/images/share-ico1.png"></a>
-               <a href="javascript:void(0);" class="jiathis_button_tsina"><img src="<?=StaticDir?>1.2/images/share-wb.png"></a>
-               <a href="javascript:void(0);" class="jiathis_button_weixin"><img src="<?=StaticDir?>1.2/images/share-wx.png"></a>
-                <!-- JiaThis Button BEGIN -->
-                <script type="text/javascript" >
-                var jiathis_config={
-                        title:"<?=$caseInfo['desc']?>",
-                        summary:" ",
-                        shortUrl:false,
-                        hideMore:false
-                }
-                </script>
-                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-                <!-- JiaThis Button END -->
+               <a href="javascript:void(0);" class="f_bd1"><img src="<?=StaticDir?>1.2/images/share-ico1.png"></a>
+               <a href="javascript:void(0);" class="f_bd2"><img src="<?=StaticDir?>1.2/images/share-wb.png"></a>
+               <a href="javascript:void(0);" class="f_bd3"><img src="<?=StaticDir?>1.2/images/share-wx.png"></a>
             </div>
             <div class="case-xq-main">
                 <dl class="case-xq-gy">
@@ -88,4 +77,45 @@
          </div>
     </div>
 </div>
+<!--百度分享-->
+<div style="display: none;">
+<div class="bdsharebuttonbox" data-tag="share_1">
+    <a class="bds_tsina bd2" data-cmd="tsina"></a>
+    <a class="bds_weixin bd3" data-cmd="weixin"></a>
+</div>
+<div class="bdsharebuttonbox" data-tag="share_2">
+    <a class="bds_sqq bd1" data-cmd="sqq"></a>
+</div>
+</div>
+<script>
+    $(function(){
+        $('.f_bd1').click(function(){
+            $('.bd1')[0].click();
+        });
+        $('.f_bd2').click(function(){
+            $('.bd2')[0].click();
+        });
+        $('.f_bd3').click(function(){
+            $('.bd3')[0].click();
+        });
+    });
+    //百度分享配置
+    window._bd_share_config = {
+        common : {
+            bdSign : 'off',//不统计
+        },
+        share : [{
+            'tag':'share_1',
+            bdText : document.title+"。<?=$caseInfo['desc']?>",
+            bdUrl : location.href,
+            bdPic : "<?php echo TRADE_URL.$caseInfo['pic1']?>"
+        },{
+            'tag':'share_2',
+            bdText : document.title,
+            bdUrl : location.href,
+            bdPic : "<?php echo TRADE_URL.$caseInfo['pic1']?>"
+        }],
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
 <? require(ViewDir.'/footer.html'); ?>
