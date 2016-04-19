@@ -42,7 +42,7 @@ class GoodsAction extends AppAction
 	public function index($params)
 	{
         if ( isset($params) ){
-            $groupGoods = $groupGoods;
+            $groupGoods = $params;
         }else{
             $_groupGoods    = $this->input('s', 'string', '');
             $groupGoods     = $this->strToArr($_groupGoods);
