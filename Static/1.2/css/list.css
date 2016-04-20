@@ -1530,6 +1530,7 @@ body{ background:#f5f5f5 !important;}
 }
 .trad-certi{
     width: 95%;
+    border-top:none; 
 }
 .trad-certi-tally{
     text-align: center;
