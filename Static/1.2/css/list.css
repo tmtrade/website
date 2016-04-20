@@ -15,7 +15,7 @@ body{ background:#f5f5f5 !important;}
     padding-left: 15px;
     padding-right: 15px;
     position: absolute;
-    left:545px;
+    left:530px;
     top:-20px;
 }
 .ztlist  ul{
@@ -66,8 +66,8 @@ body{ background:#f5f5f5 !important;}
     padding-left: 15px;
     padding-right: 15px;
     position: absolute;
-    left: 485px;
-    top: -32px;
+    left: 525px;
+    top: -10px;
     text-align: center;
 
 }
@@ -83,7 +83,9 @@ body{ background:#f5f5f5 !important;}
     margin-right: 15px;
 }
 .yzc-zttit label img{
-    margin-bottom: -2px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+    margin-right:5px; 
 }
 .yzc-ztlishow{
     overflow: hidden;
@@ -1530,7 +1532,6 @@ body{ background:#f5f5f5 !important;}
 }
 .trad-certi{
     width: 95%;
-    border-top:none; 
 }
 .trad-certi-tally{
     text-align: center;
