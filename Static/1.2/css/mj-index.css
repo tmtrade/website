@@ -747,14 +747,14 @@ margin: 0;
 }
 
 .tj-recom li div.tj-recom-hover{
-    width:235px;
+    width: 234px;
 	background:#030;
     min-height:56px;
   /*  overflow: hidden;*/
     background: #f8f8f8;
     position: absolute;
     top:0px;
-    left: 0px;
+    left: 1px;
     z-index: 999;
    /* text-align: center;*/
     display: none;
