@@ -57,7 +57,7 @@ class IndexModule extends AppModule
                     $class = explode(',',$item['desc']);
                     $className = array();
                     foreach($class as $v){
-                        $className[] = $v.'类'.$class_all[$v];
+                        $className[] = array($v,$v.'类'.$class_all[$v]);
                     }
                     $recommendClasses[] = array(
                         'pic'=>$item['pic'],

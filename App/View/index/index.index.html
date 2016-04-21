@@ -92,10 +92,6 @@
                 hideTip(3);
             });
         }
-        //推荐分类点击事件
-        $('.tj-recom-hover').click(function(){
-            $(this).closest('li').find('.tjfl').get(0).click();
-        });
     });
     //快捷登录回调
     function submitDataCallback(Obj){
@@ -330,13 +326,10 @@
                 <p>
                   <img src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$rClass['alt']?>"/>
                 </p>
-                <div style="display: none">
-                    <a target="_blank" class="tjfl" href="search/index/?c=<?=$rClass['classStr']?>">12</a>
-                </div>
                 <div class="tj-recom-hover">
                    <label>
                     <? foreach($rClass['class'] as $class): ?>
-                 	<a> <?=$class?>  </a>
+                 	<a target="_blank" href="/s-c-<?=$class[0]?>/"> <?=$class[1]?>  </a>
                     <? endforeach; ?>
                    </label>
                 </div>
