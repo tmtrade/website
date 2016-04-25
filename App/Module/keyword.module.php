@@ -80,10 +80,11 @@ class KeywordModule extends AppModule
      *
      * @access  public
      * @param   string      $url        搜索地址
+     * @param   int         $isData     是否有数据
      *
      * @return  int         搜索地址ID
      */
-    public function getUrlId($url)
+    public function getUrlId($url, $isData)
     {
         if ( empty($url) ) return '0';
 
@@ -95,6 +96,7 @@ class KeywordModule extends AppModule
 
         $data = array(
             'url'       => $url,
+            'isData'    => $isData,
             'date'      => time(),
             );
         return $this->import('su')->create($data);

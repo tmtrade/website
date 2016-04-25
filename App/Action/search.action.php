@@ -67,9 +67,6 @@ class SearchAction extends AppAction
             $params = $this->getSearchParams();
             $this->rewriteUrl();
         }
-        //保存每一个搜索链接
-        $uri = $_SERVER['REQUEST_URI'];
-        $this->load('keyword')->getUrlId($uri);
 
         //处理商标号搜索
         if ( !empty($params['number']) ){
@@ -93,10 +90,21 @@ class SearchAction extends AppAction
         $channel = $this->load('search')->getChannel($this->mod);
         $this->set('channel', $channel);
 
+        $isData = 2;//默认没数据
         //保存搜索历史，方便搜索框处理
         if ( !empty($res['rows']) ){
             $this->setSearchLog();
+            $isData = 1;
         }
+
+        //保存每一个搜索链接
+        //$uri = $_SERVER['REQUEST_URI'];
+        $uri = $this->input('short', 'string', '');
+        if ( !empty($uri) ) {
+            $uri = "/s-$uri/";
+            $this->load('keyword')->getUrlId($uri, $isData);
+        }
+
         //处理搜索条件
         if ( !empty($this->_searchArr) ){
             foreach ($this->_searchArr as $k => $v) {
