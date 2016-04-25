@@ -314,6 +314,12 @@
     max-width: 162px;
     vertical-align: middle;
 }
+.ms-filtersImg a{
+    display:block;
+    width:162px;
+    height:130px;
+   
+}
 .ms-filtersListTxt{
     text-align: center;
     line-height: 18px;
