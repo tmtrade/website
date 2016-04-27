@@ -205,6 +205,7 @@ $define = array(
 	'ALLOW_IPS'	=> array(
 		'127.0.0.1'
 	),
+	'IS_CONTROLLER'=>false,//是否开启ip地址验证
 	//一只蝉网站地图存放xml文件的根目录
 	'SITEMAP_ROOT'=>'./sitemap',
 );

@@ -9,8 +9,14 @@
 class SitemapAction extends Action{
     public $xmlHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n";
     public function index(){
-        $ip = getClientIp();
-        if(in_array($ip,C('ALLOW_IPS'))){
+        $flag = C('IS_CONTROLLER');
+        if($flag){
+            $ip = getClientIp();
+            if(in_array($ip,C('ALLOW_IPS'))){
+                $flag = false;
+            }
+        }
+        if(!$flag){
             //清空目录
             $root = C('SITEMAP_ROOT');
             $files_all = glob($root.'/*');
