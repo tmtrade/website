@@ -209,7 +209,7 @@ class SitemapAction extends Action{
         $this->set('time',$time);
         $str = $this->fetch('sitemap/index.html');
         $str = $this->xmlHead.$str;
-        $rst = file_put_contents($dir.'/index.xml',$str);
+        $rst = file_put_contents('./sitemap.xml',$str);
         //返回结果
         if($rst===false){
             return array('code'=>0,'msg'=>'index--error');
