@@ -11,6 +11,16 @@ class SitemapAction extends Action{
     public function index(){
         $ip = getClientIp();
         if(in_array($ip,C('ALLOW_IPS'))){
+            //清空目录
+            $root = C('SITEMAP_ROOT');
+            $files_all = glob($root.'/*');
+            foreach($files_all as $file) {
+                if (is_file($file)) {
+                    unlink($file);
+                }
+            }
+            unset($file);
+            //初始化变量
             $flag = true;
             $str = '';
             //生成商标详情数据
@@ -36,6 +46,12 @@ class SitemapAction extends Action{
             if($rst4['code']==0){
                 $flag = false;
                 $str .= $rst4['msg'];
+            }
+            //生成新闻详情数据
+            $rst6 = $this->createGroup();
+            if($rst6['code']==0){
+                $flag = false;
+                $str .= $rst6['msg'];
             }
             //生成主文件
             $rst5 = $this->createMain();
@@ -68,7 +84,8 @@ class SitemapAction extends Action{
             }
             //获取输出内容,并写文件
             $this->set('data',$v);
-            $str = $this->fetch('sitemap/conten2.html');
+            $this->set('level',0.6);
+            $str = $this->fetch('sitemap/conten.html');
             $str = $this->xmlHead.$str;
             $rst = file_put_contents($root.'/goods'.$k.'.xml',$str);
             if($rst===false){
@@ -88,7 +105,8 @@ class SitemapAction extends Action{
         $data = $this->load('sitemap')->getFenlei();
         //获取输出内容,并写文件
         $this->set('data',$data);
-        $str = $this->fetch('sitemap/conten2.html');
+        $this->set('level',0.8);
+        $str = $this->fetch('sitemap/conten.html');
         $str = $this->xmlHead.$str;
         $rst = file_put_contents(C('SITEMAP_ROOT').'/fenlei.xml',$str);
         //返回结果
@@ -109,7 +127,8 @@ class SitemapAction extends Action{
         $data = array_merge($data1,$data2);
         //获取输出内容,并写文件
         $this->set('data',$data);
-        $str = $this->fetch('sitemap/conten2.html');
+        $this->set('level',0.8);
+        $str = $this->fetch('sitemap/conten.html');
         $str = $this->xmlHead.$str;
         $rst = file_put_contents(C('SITEMAP_ROOT').'/lanmu.xml',$str);
         //返回结果
@@ -140,7 +159,8 @@ class SitemapAction extends Action{
         }
         //获取输出内容,并写文件
         $this->set('data',$data);
-        $str = $this->fetch('sitemap/conten1.html');
+        $this->set('level',0.6);
+        $str = $this->fetch('sitemap/conten.html');
         $str = $this->xmlHead.$str;
         $rst = file_put_contents(C('SITEMAP_ROOT').'/news.xml',$str);
         //返回结果
@@ -150,6 +170,24 @@ class SitemapAction extends Action{
         return array('code'=>1);
     }
 
+    /**
+     * 生成群组xml
+     * @return array
+     * @throws SpringException
+     */
+    public function createGroup(){
+        $data = $this->load('sitemap')->getGroup();
+        $this->set('data',$data);
+        $this->set('level',0.7);
+        $str = $this->fetch('sitemap/conten.html');
+        $str = $this->xmlHead.$str;
+        $rst = file_put_contents(C('SITEMAP_ROOT').'/group.xml',$str);
+        //返回结果
+        if($rst===false){
+            return array('code'=>0,'msg'=>'news--error ');
+        }
+        return array('code'=>1);
+    }
     /**
      * 生成index.xml文件
      * @return array

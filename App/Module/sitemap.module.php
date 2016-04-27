@@ -13,12 +13,8 @@ class SitemapModule extends AppModule{
     public $models = array(
         'topic'		    => 'topic',
         'sale'          => 'sale',
+        'group'         => 'group',
     );
-    /**
-     * 定义分类数据的修改时间(写死)
-     * @var string
-     */
-    public $fenlei_time = '2016-01-01 00:00:01';
 
     public $maxSize = 40000;//xml文件中最大的网址数
 
@@ -99,7 +95,22 @@ class SitemapModule extends AppModule{
     public function getFenlei(){
         $data = array();
         for($i=1;$i<=45;++$i){
-            $data[] = array('url'=>'/s-c-'.$i.'/','time'=>$this->fenlei_time);
+            $data[] = array('url'=>'/s-c-'.$i.'/');
+        }
+        return $data;
+    }
+
+    /**
+     * 得到群组数据
+     */
+    public function getGroup(){
+        $r['col'] = array('class','group');
+        $r['limit'] = 10000;
+        $rst = $this->import('group')->find($r);
+        //处理数据
+        $data = array();
+        foreach($rst as $item){
+            $data[] = array('url'=>'/s-c-'.$item['class'].'--g-'.$item['group'].'/');
         }
         return $data;
     }
