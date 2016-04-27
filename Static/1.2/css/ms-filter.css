@@ -298,6 +298,7 @@
     position: absolute;
     top: 0px;
     right: 8px;
+    z-index: 99;
 }
 
 .ms-filtersImg{
@@ -315,9 +316,12 @@
     vertical-align: middle;
 }
 .ms-filtersImg a{
-    display:block;
-    width:162px;
-    height:130px;
+   display: table-cell;
+    *display: inline-block;
+    width: 162px;
+    height: 130px;
+    text-align: center;
+    vertical-align: middle;
    
 }
 .ms-filtersListTxt{
