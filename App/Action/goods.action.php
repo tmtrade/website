@@ -53,7 +53,8 @@ class GoodsAction extends AppAction
             $_params    = implode(',', $groupGoods);
             $result     = $this->load('Goods')->search($_params, $this->_number, 1);
         }else{
-            $result = array('rows'=>array(),'total'=>0);
+            $_params    = '';
+            $result     = array('rows'=>array(),'total'=>0);
         }
         //特价列表
         $_arr   = array('isOffprice'=>'1');
@@ -72,7 +73,7 @@ class GoodsAction extends AppAction
         
         $this->set('baoTitle', $_title);
         $this->set('has', empty($result['rows']) ? false : true);
-        $this->set('whereStr', http_build_query(array('s'=>$_groupGoods)));
+        $this->set('whereStr', http_build_query(array('s'=>$_params)));
         $this->set('list', $result);
         
         $_browseTitle = $_title ? $_title.$this->pageTitle : '导航页'.$this->pageTitle;
