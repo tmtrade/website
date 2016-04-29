@@ -201,11 +201,6 @@ $define = array(
 	'VIEW_HISTORY'  =>'view_history',
     'SEARCH_HISTORY'  =>'_search_history_',
 	'FEEDBACKER'	=> 'services@chofn.com',//一只蝉反馈收件邮箱
-	//一只蝉网站地图允许访问的ip地址
-	'ALLOW_IPS'	=> array(
-		'127.0.0.1'
-	),
-	'IS_CONTROLLER'=>false,//是否开启ip地址验证
 	//一只蝉网站地图存放xml文件的根目录
 	'SITEMAP_ROOT'=>'./sitemap',
 );

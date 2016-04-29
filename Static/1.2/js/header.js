@@ -410,7 +410,8 @@ function buyAddCallback(Obj){
         }else if(n.code==0){
             layer.msg('您已经购买过该商标');
         }else{
-            getLayer($('#mj-submitteF'));
+            getLayer($('#mj-submitteFF'));
+            countDown();//倒计时
         }
         layer.closeAll('loading');
     });
@@ -424,4 +425,16 @@ function hideLoginTip(num){
     if($("#loginTips").attr('flag')==num){
         $(".ms-errorTips2").hide();
     }
+}
+//失败弹窗倒计时刷新
+function countDown(){
+    var timer = setInterval(function(){
+        $('.ddw_time').html(function(n,now){
+            if(now==1){
+                window.location.reload();
+            }else{
+                return now-1;
+            }
+        });
+    },1000)
 }
