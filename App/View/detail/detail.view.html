@@ -61,11 +61,20 @@
                         }
                         return false;
                     }
-                    foreach($platformIn as $k=>$v){
-                        if(checkIn($info['class'],$platformItems[$k])){
-                            echo "<a href='".$platformUrl[$k]."' target='_blank' class='cur' >".$v."</a>";
+                    if(empty($sale['platform'])){//根据类别规则显示
+                        foreach($platformIn as $k=>$v){
+                            if(checkIn($info['class'],$platformItems[$k])){
+                                echo "<a href='".$platformUrl[$k]."' target='_blank' class='cur' >".$v."</a>";
+                            }
+                        }
+                    }else{//根据包装信息显示
+                     foreach($platformIn as $k=>$v){
+                            if(in_array($k, array_filter(explode(',',$sale['platform'])))){
+                                echo "<a href='".$platformUrl[$k]."' target='_blank' class='cur' >".$v."</a>";
+                            }
                         }
                     }
+                   
                ?>
            </font></p>
             <!--是否上架-->
