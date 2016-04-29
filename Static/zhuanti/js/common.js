@@ -1,9 +1,13 @@
 //购买提交
 $('#subBuy').click(function(){
+    layer.load(1, {
+        shade: [0.1,'#fff'] //0.1透明度的白色背景
+    });
 	content = $('#buyNeed').val();
 	if(!content || content == '对商标的特殊要求  如：25类鞋子'){
 		$('#buyNeed').focus();
 		$('#buyNeedTip').show();
+        layer.closeAll('loading');
 		return false;
 	}else{
 		$('#buyNeedTip').hide();
@@ -14,15 +18,18 @@ $('#subBuy').click(function(){
 		$('#buyMoblie').focus();
 		$('#buyMoblieTip').text('手机号不能为空');
 		$('#buyMoblieTip').show();
+        layer.closeAll('loading');
 		return false;
 	}else if(!verifyPhoneNum(mobile)){
 		$('#buyMoblie').focus();
 		$('#buyMoblieTip').text('手机号码不正确');
 		$('#buyMoblieTip').show();
+        layer.closeAll('loading');
 		return false;
 	}else{
 		$('#buyMoblieTip').hide();
 	}
+
 	addBuy();
 })
 function addBuy()
@@ -62,6 +69,7 @@ function submitDataCallback(Obj){
         $(".mj-close").bind("click",function(){
             layer.closeAll();
         });
+        layer.closeAll('loading'); //关闭加载层
     });
 }
 function clearBuy()

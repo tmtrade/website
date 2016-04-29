@@ -370,6 +370,9 @@ function getLogin(title,tel,isExist){
 }
 //用户询价
 function xunjia(obj){
+    layer.load(1, {
+        shade: [0.1,'#fff'] //0.1透明度的白色背景
+    });
     //用户是否登录
     if(login_mobile){
         //提交到分配系统中
@@ -389,9 +392,11 @@ function xunjia(obj){
     }else if(nick_name){
         //弹出绑定手机框
         getLayer($('#goCenter'));
+        layer.closeAll('loading');
     }else{
         //弹出登录框
         getLogin(_xunjia,'',1);
+        layer.closeAll('loading');
     }
     return false;
 }
@@ -407,6 +412,7 @@ function buyAddCallback(Obj){
         }else{
             getLayer($('#mj-submitteF'));
         }
+        layer.closeAll('loading');
     });
 }
 //聊天函数
