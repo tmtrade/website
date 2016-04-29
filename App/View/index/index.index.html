@@ -13,6 +13,9 @@
         }
         //求购信息发布事件
         $('#mj-from-btn').click(function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
             name 	= $.trim($('#buyName').val());
             tel 	= $.trim($('#buyMoblie').val());
             subject = $.trim($('#buyNeed').val());
@@ -22,13 +25,15 @@
                 $(".reg-tip22 em").text('请输入手机号码');
 				 $(".mj-newjy").css("margin-top","5px");
                 $(".reg-tip22").attr('flag',2);
+                layer.closeAll('loading');
                 return false;
             }
             if(!login_mobile && isChineseOrEng(name)){
                 $(".mj-eed").show();
                 $(".reg-tip22 em").show().text('姓氏必须为中英文');
-				 $(".mj-newjy").css("margin-top","5px");
+                $(".mj-newjy").css("margin-top","5px");
                 $(".reg-tip22").attr('flag',3);
+                layer.closeAll('loading');
                 return false;
             }
             if( !(subject) || subject=='对商标的特殊要求  如：25类鞋子' ){
@@ -36,6 +41,7 @@
                 $(".reg-tip22 em").show().text('请输入内容');
 				 $(".mj-newjy").css("margin-top","5px");
                 $(".reg-tip22").attr('flag',1);
+                layer.closeAll('loading');
                 return false;
             }
             $(".mj-eed").hide();
@@ -121,6 +127,7 @@
                     getLayer($('#mj-submitteF'));
                 }
             }
+            layer.closeAll('loading');
         });
     }
     //隐藏提示信息
