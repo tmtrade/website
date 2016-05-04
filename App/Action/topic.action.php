@@ -75,5 +75,19 @@ class TopicAction extends AppAction
         $this->setSeoByTopic("/topic/buyone_getone");
         $this->display();
     }
+
+    //母亲节
+    public function motherday()
+    {
+        $this->pageTitle = '母亲节特价商标优惠活动--一只蝉商标转让平台';
+        $this->pageKey  = '母亲节商标优惠活动,商标优惠活动,服装箱包商标,化妆清洁商标，母婴用品商标交易，儿童玩具商标，珠宝饰品商标，礼品保健商标转让';
+        $this->pageDescription = '一只蝉重磅打造母亲节商标优惠活动,商标转让,服装箱包,化妆清洁，母婴用品，儿童玩具，珠宝饰品，礼品保健等商标交易特价优惠活动进行中。业界狂欢，实力打造给力母情节巨惠，有实力，惠到底！更多神秘大礼，火爆进行中！
+';
+        $this->set('title', $this->pageTitle);//页面title
+        $this->set('keywords', $this->pageKey);//页面keywords
+        $this->set('description', $this->pageDescription);//页面description
+        $this->setSeoByTopic("/topic/motherday");
+        $this->display();
+    }
 }
 ?>
