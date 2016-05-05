@@ -63,7 +63,7 @@ $(window).scroll(function(){
         $(".flNav li a").removeClass("on");
         $(".flNav li a").eq(4).addClass("on");
     }
-    else  if($(this).scrollTop()+lvtop>arrbltp[5]&&$(this).scrollTop()<arrbltp[5]+$("#makeUp").height()-lvtop){
+    else  if($(this).scrollTop()+lvtop>arrbltp[5]&&$(this).scrollTop()<arrbltp[5]+$("#makeUp").height()){
         $(".flNav li a").removeClass("on");
         $(".flNav li a").eq(5).addClass("on");
     }

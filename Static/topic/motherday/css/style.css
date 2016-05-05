@@ -9,7 +9,7 @@ caption,th {text-align:left}
 h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal}
 q:before,q:after {content:''}
 abbr,acronym { border:0}
-body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
+body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;background-color: #ffffff;}
 .fl{float:left;display:inline}
 .fr{float:right;display:inline}
 .w1180{width: 1180px; margin: auto;}
@@ -117,14 +117,14 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
 }
 .mo-title{
     position: absolute;
-    right: 500px;
-    top: 49px;
+    right: 495px;
+    top: 55px;
     text-align: right;
 }
 .mo-title h2{
     color: #111111;
     font-size: 30px;
-    margin-top:7px;
+    margin-top:3px;
 }
 .mo-title h3{
     color: #f48f8e;
@@ -258,8 +258,8 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
 }
 .moretg .mt-title>div{
     position: absolute;
-    right:335px;
-    top:28px;
+    right: 340px;
+    top: 30px;
     text-align: right;
 }
 .moretg .mt-title h3{
