@@ -1464,21 +1464,18 @@
     </ul>
 </div>
 <script type="text/javascript" src="<?=StaticDir?>topic/motherday/js/common.js"></script>
-<!--<script type="text/javascript" src="<?=StaticDir?>topic/motherday/js/djs.js"></script>-->
 <script type="text/javascript">
     $(function(){
+        //倒计时效果
         var oDiv=document.getElementById('div1');
         var aTime=[];
-
         var last=[];
         last[0]="00";
         last[1]="00";
         last[2]="00";
         last[3]="00";
-
         for(var i=0;i<4;i++)
         {
-
             var oBox=document.createElement('div');
             oBox.className='box';
             aTime.push(oBox);
@@ -1489,15 +1486,12 @@
                     '<div class="front"><span>00</span></div>'+
                     '<div class="back"><span>00</span></div>'+
                     '</div>';
-
             oDiv.appendChild(oBox);
         }
-
         function inner()
         {
             function toDou(n){return n<10?'0'+n:''+n;}
-            var oDate=new Date();
-            var ts = (new Date(2016,4,8)) - (new Date());//计算剩余的毫秒数
+            var ts = (new Date(2016,4,31)) - (new Date());//计算剩余的毫秒数
             var dd = parseInt(ts / 1000 / 60 / 60 / 24, 10);//计算剩余的天数
             var hh = parseInt(ts / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数
             var mm = parseInt(ts / 1000 / 60 % 60, 10);//计算剩余的分钟数
@@ -1513,10 +1507,10 @@
                 {
                     aTime[i].className='box';
                     aTime[i].innerHTML=
-                            '<span>'+last[i]+'</span>'+
+                            '<span>'+now[i]+'</span>'+
                             '<div class="top"><span>'+now[i]+'</span></div>'+
                             '<div class="tran move">'+
-                            '<div class="front"><span>'+last[i]+'</span></div>'+
+                            '<div class="front"><span>'+now[i]+'</span></div>'+
                             '<div class="back"><span>'+now[i]+'</span></div>'+
                             '</div>';
                     (function (box){
@@ -1526,10 +1520,8 @@
                     })(aTime[i]);
                 }
             }
-
             last=now;
         }
-
         setInterval(inner, 1000);
         //限时抢功能
         $('.limittime').click(function(){

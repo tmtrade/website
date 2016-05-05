@@ -387,6 +387,7 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
 .flr-nav{
     background: url("../images/flower.png") 0px 20px no-repeat;
     position: fixed;
+    top: 30%!important;
     padding-top: 35px;
     padding-left: 30px;
 }
