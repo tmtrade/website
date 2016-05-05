@@ -202,7 +202,7 @@ $define = array(
     'SEARCH_HISTORY'  =>'_search_history_',
 	'FEEDBACKER'	=> 'services@chofn.com',//一只蝉反馈收件邮箱
 	//一只蝉网站地图存放xml文件的根目录
-	'SITEMAP_ROOT'=>'./sitemap',
+	'SITEMAP_ROOT' => WebDir.'/sitemap',
 );
 
 
