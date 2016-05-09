@@ -404,16 +404,14 @@ function xunjia(obj){
 function buyAddCallback(Obj){
     $.each(Obj,function(i,n){
         //弹窗提示
-        if(n.code==1){
-            getLayer($('#mj-submitteS'));
-            $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>您已经购买过该商标</a>");
-        }else if(n.code==0){
+        if(n.code==0){
             layer.msg('您已经购买过该商标');
         }else if(n.code==-1){
             getLayer($('#mj-submitteFF'));
             countDown();//倒计时
         }else{
-            getLayer($('#mj-submitteF'));
+            getLayer($('#mj-submitteS'));
+            $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>您已经购买过该商标</a>");
         }
         layer.closeAll('loading');
     });
