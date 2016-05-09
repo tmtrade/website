@@ -409,9 +409,11 @@ function buyAddCallback(Obj){
             $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>您已经购买过该商标</a>");
         }else if(n.code==0){
             layer.msg('您已经购买过该商标');
-        }else{
+        }else if(n.code==-1){
             getLayer($('#mj-submitteFF'));
             countDown();//倒计时
+        }else{
+            getLayer($('#mj-submitteF'));
         }
         layer.closeAll('loading');
     });
