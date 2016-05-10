@@ -1,288 +1,544 @@
 <? require(ViewDir.'/header.html'); ?>
-<script src="<?=StaticDir?>1.2/js/clicks.js?v=<?=$static_version?>"></script>
-<link rel="stylesheet" href="<?=StaticDir?>style/home-2-bh150627165347.css?v=<?=$static_version?>" />
-<style type="text/css">
-    .listtel{
-            width:105px;
-            float:left;
-    }
-    .listmai{
-            width:40px;
-            color:#FFF;
-            float:left;
-    }
-    .listname{
-            width:131px;/*容器的基本定义*/
-            text-align:left;
-            display:block;
-            white-space:nowrap;
-            overflow:hidden;
-            text-overflow:ellipsis;
-            float:left;
-    }
-    .listzl{
-            float:left;
-    }
-    </style>
-
-    <div class="sp-1">
-        <div class="w1180">
-            <form  method="post" name="form1" id="form1" class="ml-form" >
-                <input type="hidden" name="pttype" id="pttype" value="求购">
-                <div class="ml-form_cont">
-                    <h1>我的购买需求</h1>
-                    <div class="ml-form_cont2">
-                        <div class="ml-form_cont2_checkbox">
-                            <span class="ul-checkbox">
-                                <input type="checkbox" id="pt1" name="ptype[]" checked="checked"  value="发明专利"/>
-                                <label for="checkbox-1">发明专利</label>
-                            </span>
-                           <span class="ul-checkbox">
-                                <input type="checkbox" id="pt2" name="ptype[]" checked="checked"  value="实用新型"/>
-                                <label for="checkbox-2">实用新型</label>
-                            </span>
-                           <span class="ul-checkbox no-mar">
-                                <input type="checkbox" id="pt3" name="ptype[]" checked="checked"  value="外观设计"/>
-                                <label for="checkbox-3">外观设计</label>
-                            </span>
-                        </div>
-                        <input type="text" class="u-input-text u-input-text1" name="subject" id="buyNeed" placeholder="请输入专利用途" />
-                        <input type="text" class="u-input-text u-input-text2" name="tel" id="buyMoblie" placeholder="请输入联系电话" />
-                        <input type="button" class="btn" id="subBuy" value="立即匹配" /><span class="btn btn1" onClick="goChat()" id="rediana-10">在线咨询</span>
-                    </div>
-                </div>
-            </form>
+<link type="text/css" href="<?=StaticDir?>1.2/css/patent.css?v=<?=$static_version?>" rel="stylesheet"/>
+<link type="text/css" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>" rel="stylesheet"/>
+<link type="text/css" href="<?=StaticDir?>1.2/css/ms-filter.css?v=<?=$static_version?>" rel="stylesheet"/>
+<div class="w1180 ms-filterWrapper f-clearfix">
+<!-- ms-filterMain start -->
+<div class="ms-filterMain" style="width: 903px;">
+<!-- ms-filters start -->
+<div class="ms-filters">
+<div class="ms-filterResults">
+    <span>全部结果&nbsp;&gt;</span>
+    <ul class="ms-filterResultsList f-clearfix">
+    </ul>
+</div>
+<div class="ms-condition">
+<div class="ms-conditionList">
+    <span>商标分类</span>
+    <div class="ms-conditionList-main ms-setHeight">
+        <ul class="f-clearfix ms-conditionRadio">
+            <li><a href="" onclick="createUrl('_class','0');return false;">全部</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','1');return false;">1-化工原料</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','2');return false;">2-油漆涂料</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','3');return false;">3-化妆日化</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','4');return false;">4-燃料油脂</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','5');return false;">5-医药</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','6');return false;">6-五金金属</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','7');return false;">7-机械电动</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','8');return false;">8-手工器械</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','9');return false;">9-科学仪器</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','10');return false;">10-医疗器械</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','11');return false;">11-家用电器</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','12');return false;">12-运输工具</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','13');return false;">13-军火烟火</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','14');return false;">14-珠宝钟表</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','15');return false;">15-乐器</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','16');return false;">16-办公用品</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','17');return false;">17-橡胶制品</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','18');return false;">18-皮革皮具</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','19');return false;">19-建筑材料</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','20');return false;">20-家具</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','21');return false;">21-洁具厨房</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','22');return false;">22-绳网袋蓬</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','23');return false;">23-纺织纱线</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','24');return false;">24-布料床单</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','25');return false;">25-服装鞋帽</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','26');return false;">26-纽扣拉链</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','27');return false;">27-地毯席垫</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','28');return false;">28-健身器材</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','29');return false;">29-食品</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','30');return false;">30-方便食品</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','31');return false;">31-饲料种籽</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','32');return false;">32-啤酒饮料</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','33');return false;">33-酒</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','34');return false;">34-烟草烟具</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','35');return false;">35-广告销售</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','36');return false;">36-金融物管</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','37');return false;">37-建筑修理</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','38');return false;">38-通讯传媒</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','39');return false;">39-运输旅行</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','40');return false;">40-材料加工</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','41');return false;">41-教育娱乐</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','42');return false;">42-科学服务</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','43');return false;">43-餐饮住宿</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','44');return false;">44-医疗园艺</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_class','45');return false;">45-社会服务</a></li>
+        </ul>
+        <ul class="f-clearfix ms-conditionCheckbox cc_all2">
+            <li><input type="checkbox" value="1" id="class-checkbox1" name="class-checkbox1">
+                <label for="class-checkbox1" onclick="">1-化工原料</label></li>
+            <li><input type="checkbox" value="2" id="class-checkbox2" name="class-checkbox2">
+                <label for="class-checkbox2" onclick="">2-油漆涂料</label></li>
+            <li><input type="checkbox" value="3" id="class-checkbox3" name="class-checkbox3">
+                <label for="class-checkbox3" onclick="">3-化妆日化</label></li>
+            <li><input type="checkbox" value="4" id="class-checkbox4" name="class-checkbox4">
+                <label for="class-checkbox4" onclick="">4-燃料油脂</label></li>
+            <li><input type="checkbox" value="5" id="class-checkbox5" name="class-checkbox5">
+                <label for="class-checkbox5" onclick="">5-医药</label></li>
+            <li><input type="checkbox" value="6" id="class-checkbox6" name="class-checkbox6">
+                <label for="class-checkbox6" onclick="">6-五金金属</label></li>
+            <li><input type="checkbox" value="7" id="class-checkbox7" name="class-checkbox7">
+                <label for="class-checkbox7" onclick="">7-机械电动</label></li>
+            <li><input type="checkbox" value="8" id="class-checkbox8" name="class-checkbox8">
+                <label for="class-checkbox8" onclick="">8-手工器械</label></li>
+            <li><input type="checkbox" value="9" id="class-checkbox9" name="class-checkbox9">
+                <label for="class-checkbox9" onclick="">9-科学仪器</label></li>
+            <li><input type="checkbox" value="10" id="class-checkbox10" name="class-checkbox10">
+                <label for="class-checkbox10" onclick="">10-医疗器械</label></li>
+            <li><input type="checkbox" value="11" id="class-checkbox11" name="class-checkbox11">
+                <label for="class-checkbox11" onclick="">11-家用电器</label></li>
+            <li><input type="checkbox" value="12" id="class-checkbox12" name="class-checkbox12">
+                <label for="class-checkbox12" onclick="">12-运输工具</label></li>
+            <li><input type="checkbox" value="13" id="class-checkbox13" name="class-checkbox13">
+                <label for="class-checkbox13" onclick="">13-军火烟火</label></li>
+            <li><input type="checkbox" value="14" id="class-checkbox14" name="class-checkbox14">
+                <label for="class-checkbox14" onclick="">14-珠宝钟表</label></li>
+            <li><input type="checkbox" value="15" id="class-checkbox15" name="class-checkbox15">
+                <label for="class-checkbox15" onclick="">15-乐器</label></li>
+            <li><input type="checkbox" value="16" id="class-checkbox16" name="class-checkbox16">
+                <label for="class-checkbox16" onclick="">16-办公用品</label></li>
+            <li><input type="checkbox" value="17" id="class-checkbox17" name="class-checkbox17">
+                <label for="class-checkbox17" onclick="">17-橡胶制品</label></li>
+            <li><input type="checkbox" value="18" id="class-checkbox18" name="class-checkbox18">
+                <label for="class-checkbox18" onclick="">18-皮革皮具</label></li>
+            <li><input type="checkbox" value="19" id="class-checkbox19" name="class-checkbox19">
+                <label for="class-checkbox19" onclick="">19-建筑材料</label></li>
+            <li><input type="checkbox" value="20" id="class-checkbox20" name="class-checkbox20">
+                <label for="class-checkbox20" onclick="">20-家具</label></li>
+            <li><input type="checkbox" value="21" id="class-checkbox21" name="class-checkbox21">
+                <label for="class-checkbox21" onclick="">21-洁具厨房</label></li>
+            <li><input type="checkbox" value="22" id="class-checkbox22" name="class-checkbox22">
+                <label for="class-checkbox22" onclick="">22-绳网袋蓬</label></li>
+            <li><input type="checkbox" value="23" id="class-checkbox23" name="class-checkbox23">
+                <label for="class-checkbox23" onclick="">23-纺织纱线</label></li>
+            <li><input type="checkbox" value="24" id="class-checkbox24" name="class-checkbox24">
+                <label for="class-checkbox24" onclick="">24-布料床单</label></li>
+            <li><input type="checkbox" value="25" id="class-checkbox25" name="class-checkbox25">
+                <label for="class-checkbox25" onclick="">25-服装鞋帽</label></li>
+            <li><input type="checkbox" value="26" id="class-checkbox26" name="class-checkbox26">
+                <label for="class-checkbox26" onclick="">26-纽扣拉链</label></li>
+            <li><input type="checkbox" value="27" id="class-checkbox27" name="class-checkbox27">
+                <label for="class-checkbox27" onclick="">27-地毯席垫</label></li>
+            <li><input type="checkbox" value="28" id="class-checkbox28" name="class-checkbox28">
+                <label for="class-checkbox28" onclick="">28-健身器材</label></li>
+            <li><input type="checkbox" value="29" id="class-checkbox29" name="class-checkbox29">
+                <label for="class-checkbox29" onclick="">29-食品</label></li>
+            <li><input type="checkbox" value="30" id="class-checkbox30" name="class-checkbox30">
+                <label for="class-checkbox30" onclick="">30-方便食品</label></li>
+            <li><input type="checkbox" value="31" id="class-checkbox31" name="class-checkbox31">
+                <label for="class-checkbox31" onclick="">31-饲料种籽</label></li>
+            <li><input type="checkbox" value="32" id="class-checkbox32" name="class-checkbox32">
+                <label for="class-checkbox32" onclick="">32-啤酒饮料</label></li>
+            <li><input type="checkbox" value="33" id="class-checkbox33" name="class-checkbox33">
+                <label for="class-checkbox33" onclick="">33-酒</label></li>
+            <li><input type="checkbox" value="34" id="class-checkbox34" name="class-checkbox34">
+                <label for="class-checkbox34" onclick="">34-烟草烟具</label></li>
+            <li><input type="checkbox" value="35" id="class-checkbox35" name="class-checkbox35">
+                <label for="class-checkbox35" onclick="">35-广告销售</label></li>
+            <li><input type="checkbox" value="36" id="class-checkbox36" name="class-checkbox36">
+                <label for="class-checkbox36" onclick="">36-金融物管</label></li>
+            <li><input type="checkbox" value="37" id="class-checkbox37" name="class-checkbox37">
+                <label for="class-checkbox37" onclick="">37-建筑修理</label></li>
+            <li><input type="checkbox" value="38" id="class-checkbox38" name="class-checkbox38">
+                <label for="class-checkbox38" onclick="">38-通讯传媒</label></li>
+            <li><input type="checkbox" value="39" id="class-checkbox39" name="class-checkbox39">
+                <label for="class-checkbox39" onclick="">39-运输旅行</label></li>
+            <li><input type="checkbox" value="40" id="class-checkbox40" name="class-checkbox40">
+                <label for="class-checkbox40" onclick="">40-材料加工</label></li>
+            <li><input type="checkbox" value="41" id="class-checkbox41" name="class-checkbox41">
+                <label for="class-checkbox41" onclick="">41-教育娱乐</label></li>
+            <li><input type="checkbox" value="42" id="class-checkbox42" name="class-checkbox42">
+                <label for="class-checkbox42" onclick="">42-科学服务</label></li>
+            <li><input type="checkbox" value="43" id="class-checkbox43" name="class-checkbox43">
+                <label for="class-checkbox43" onclick="">43-餐饮住宿</label></li>
+            <li><input type="checkbox" value="44" id="class-checkbox44" name="class-checkbox44">
+                <label for="class-checkbox44" onclick="">44-医疗园艺</label></li>
+            <li><input type="checkbox" value="45" id="class-checkbox45" name="class-checkbox45">
+                <label for="class-checkbox45" onclick="">45-社会服务</label></li>
+        </ul>
+        <div class="ms-condition-btn">
+            <a href="javascript:void(0);" tname="_class">确定</a>
+            <span onclick="cancelFun(this);">取消</span>
         </div>
+        <div class="ms-conditionBtn">
+            <span class="ms-multi" onclick="multi(this);">多选</span>
+            <span class="ms-conditionMore" onclick="moreFun(this);">更多</span></div>
     </div>
-
-    <div class="sp-6">
-        <div class="container-1050">
-            <div class="sp-6_top f-clearfix">
-                <div class="sp-6_top_list">
-                    <h3>申报高新企业</h3>
-                    <div class="span_box f-clearfix">
-                        <span><em>*</em>企业减税</span>
-                        <span><em>*</em>政府专项资金</span>
-                        <span><em>*</em>政府优惠政策</span>
-                        <span><em>*</em>大额现金资助</span>
-                    </div>
-                    <div class="span_xuqiu">
-                        <p>申请要求：</p>
-                        <span>需要至少1件发明专利</span>
-                        <span>6件实用新型</span>
-                    </div>
-                </div>
-                <div class="sp-6_top_list sp-6_top_list1">
-                    <h3>教职工评职称</h3>
-                    <div class="span_box f-clearfix f-text-center">
-                        <span><em>*</em>拿高工资</span>
-                        <span><em>*</em>分股份</span>
-                    </div>
-                    <div class="span_xuqiu">
-                        <p>申请要求：</p>
-                        <span>1件实用新型</span>
-                        <span>或1件发明专利</span>
-                    </div>
-                </div>
-                <div class="sp-6_top_list sp-6_top_list2">
-                    <h3>申请一级建筑资质</h3>
-                    <div class="span_box f-clearfix f-text-center">
-                        <span><em>*</em>接千万级项目工程 </span>
-                    </div>
-                    <div class="span_xuqiu">
-                        <p>申请要求：</p>
-                        <span>至少需要1件发明专利</span>
-                        <span>7件实用新型</span>
-                    </div>
-                </div>
-            </div>
-            <div class="sp-6_bottom">
-                <p>相关专利产品：</p>
-                <form>
-                    <span>蒸汽烘干系统发明专利</span>
-                    <span class="one">发明手摇式坐浴装置</span>
-                    <span>手摇式坐浴装置</span>
-                    <span class="one">变速手摇钻</span>
-                    <span class="one">提脸美容礼帽</span>
-                    <span>一种尿桶发明</span>
-                    <span class="one">一种辅助刹车装置</span>
-                    <span class="one">一种葡萄糖耐量他试验专用杯</span>
-                    <span>防疲劳眼镜</span>
-                    <span class="one">治疗心肾不交的中药组合物</span>
-                    <span>一治疗肝郁的中药组合物</span>
-                    <span class="one">防疲劳眼镜</span>
-                    <div class="f-text-center">
-                        <input type="button" value="提交购买需求" onClick="goChat()" id="rediana-11" />
-                    </div>
-                </form>
-            </div>
+</div>
+<div class="ms-conditionList">
+    <span>组合类型</span>
+    <div class="ms-conditionList-main">
+        <ul class="f-clearfix ms-conditionRadio">
+            <li><a href="javascript:void(0);" onclick="createUrl('_sT','0');return false;">全部</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sT','1');return false;">纯中文</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sT','2');return false;">纯英文</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sT','3');return false;">纯图形</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sT','4');return false;">中+英</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sT','5');return false;">中+图</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sT','6');return false;">英+图</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sT','7');return false;">中+英+图</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sT','8');return false;">纯数字</a></li>
+        </ul>
+        <ul class="f-clearfix ms-conditionCheckbox">
+            <li><input type="checkbox" value="1" id="type-checkbox1" name="type-checkbox1"><label for="type-checkbox1">纯中文</label></li>
+            <li><input type="checkbox" value="2" id="type-checkbox2" name="type-checkbox2"><label for="type-checkbox2">纯英文</label></li>
+            <li><input type="checkbox" value="3" id="type-checkbox3" name="type-checkbox3"><label for="type-checkbox3">纯图形</label></li>
+            <li><input type="checkbox" value="4" id="type-checkbox4" name="type-checkbox4"><label for="type-checkbox4">中+英</label></li>
+            <li><input type="checkbox" value="5" id="type-checkbox5" name="type-checkbox5"><label for="type-checkbox5">中+图</label></li>
+            <li><input type="checkbox" value="6" id="type-checkbox6" name="type-checkbox6"><label for="type-checkbox6">英+图</label></li>
+            <li><input type="checkbox" value="7" id="type-checkbox7" name="type-checkbox7"><label for="type-checkbox7">中+英+图</label></li>
+            <li><input type="checkbox" value="8" id="type-checkbox8" name="type-checkbox8"><label for="type-checkbox8">纯数字</label></li>
+        </ul>
+        <div class="ms-condition-btn">
+            <a href="javascript:void(0);" tname="_sT">确定</a>
+            <span onclick="cancelFun(this);">取消</span>
         </div>
-    </div>
-
-    <div class="sp-7">
-        <h2 class="sp-7_title">申请专利 vs <span>购买专利</span></h2>
-        <p class="sp-7_title1"><span class="one">1523</span>家同行托管超凡进行交易-<span class="two">2014</span>年专利交易<span class="three">25584</span>件</p>
-        <div class="w1180">
-            <div class="sp-7_box f-clearfix">
-                <span class="sp-7_box_absolute"></span>
-                <i class="home2-11"></i>
-                <div class="sp-7_box_list">
-                    <h2>专利申请-时间长,成功率低,风险高</h2>
-                    <p>发明专利申请时间最快为<span>1~3年</span></p>
-                    <p>实用新型专利申请最快<span>6~8个月</span></p>
-                    <p>外观设计专利申请最快<span>4~6个月</span></p>
-                    <p>2014专利申请<span>92.8万件</span>，成功仅有<span>3.21%</span></p>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-1" class="bbtn">任性! 自己申请专利</a>
-                </div>
-                <div class="sp-7_box_list sp-7_box_list1">
-                    <h2>专利购买，简单快捷</h2>
-                    <p>购买发明专利最快<span>15</span>天完成</p>
-                    <p>购买新型专利最快<span>15</span>天完成</p>
-                    <p>购买外观专利最快<span>15</span>天完成</p>
-                    <p>专利购买成功率高达<span>99%</span></p>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-2" class="bbtn">快速购买</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sp-2">
-        <div class="w1180">
-            <h1 class="sp-2_title">专利转让<span>方式复杂</span>，傻傻分不清楚</h1>
-            <div class="sp-2_box">
-                <div class="icon icon-9 absolute1" data-class="icon-9-hover">
-                    <b>强制许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-3">啥叫<br/>强制许可</a>
-                </div>
-                <div class="icon icon-11 absolute2" data-class="icon-11-hover">
-                    <b>交叉许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-4">啥叫<br/>交叉许可</a>
-                </div>
-                <div class="icon icon-13 absolute3" data-class="icon-13-hover">
-                    <b>计划许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-5">啥叫<br/>计划许可</a>
-                </div>
-                <div class="icon icon-11 absolute4" data-class="icon-11-hover">
-                    <b>分许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-6">啥叫<br/>分许可</a>
-                </div>
-                <div class="icon icon-11 absolute5" data-class="icon-11-hover">
-                    <b>独家许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-7">啥叫<br/>独家许可</a>
-                </div>
-                <div class="icon icon-13 absolute6" data-class="icon-13-hover">
-                    <b>普通许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-8">啥叫<br/>普通许可</a>
-                </div>
-                <div class="icon icon-9 absolute7" data-class="icon-9-hover">
-                    <b>独占许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-9">啥叫<br/>独占许可</a>
-                </div>
-                <div class="icon icon-15 absolute8" data-class="">
-                    <b>什么许可方式<br/>最合适？</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-10">专利权<br/>许可方式</a>
-                </div>
-                <div class="icon icon-16 absolute9" data-class="">
-                    <b>怎么转让方式<br/>最赚钱? </b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-11">转让方式</a>
-                </div>
-                <div class="icon icon-17 absolute10" data-class="icon-17-hover">
-                    <b>普通转让</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-12">啥叫普通转让</a>
-                </div>
-                <div class="icon icon-19 absolute11" data-class="icon-19-hover">
-                    <b>排他转让</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-13">啥叫排他转让</a>
-                </div>
-                <div class="icon icon-21 absolute12" data-class="icon-21-hover">
-                    <b>独家转让</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-14">啥叫独家转让</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sp-3">
-        <div class="w1180">
-            <div class="sp-3_title">
-                <span>Professional risk assessment</span>
-                <h1>专业风险评估让交易双方最大化<span>免受损失</span></h1>
-            </div>
-            <div class="sp-3_border">
-                <div>
-                    <b>国家相关单位建议：</b>
-                    <p>专利技术的转移，不同于一般有形商品的买卖，为了减少和避免技术交易双方利益损失和事后诉争<span>专利技术的转移应在专利工程</span></p>
-                    <span>师的协助和指导下规范进行</span>
-                </div>
-            </div>
-            <div class="sp-3_content">
-                <div class="icon icon-23">
-                    <span class="brs"></span><br/>
-                    <span class="one">304<em>个</em></span><br/>
-                    <span class="two">专利工程师</span><br/>
-                    <span class="one">三重</span><br/>
-                    <span class="three">质量把关,保障<br/>转让资料准确性</span>
-                </div>
-                <div class="icon icon-24">
-                    <span class="brs"></span><br/>
-                    <span class="one">100<em>个</em></span><br/>
-                    <span class="two">律师事务所团队</span><br/>
-                    <span class="one">保障</span><br/>
-                    <span class="three">专利的法律稳定性</span>
-                </div>
-                <div class="icon icon-25">
-                    <span class="brs"></span><br/>
-                    <span class="one"><em>最快</em>15<em>天</em></span><br/>
-                    <span class="two">即可完成交易</span><br/>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sp-4"></div>
-
-    <div class="sp-5">
-        <div class="sp-5_title">
-            两条方向（<span>交易平台/人工匹配</span>）匹配<em>最合适</em>的买家
-        </div>
-        <div class="ie7">
-            <div class="sp-5_list">
-                <h3>最新买家信息</h3>
-                <div class="jScrollBox">
-                    <div></div>
-                </div>
-            </div>
-            <div class="sp-5_list sp-5_list1">
-                <h3>最新卖家信息</h3>
-                <div class="jScrollBox1">
-                    <div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--求购已提交弹出层-->
-<div class="mj-boughtM" id="mj-submitteS">
-    <span class="ms-close mj-close"></span>
-    <div class="mj-bcon f-clearfix">
-        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
-        <div class="mj-bconRight">
-            <h2>恭喜，专利购买需求提交成功</h2>
-            <p>请保持电话畅通，10分钟内联系你。</p>
-            <a href="javascript:" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+        <div class="ms-conditionBtn">
+            <span class="ms-multi" onclick="multi(this);">多选</span>
         </div>
     </div>
 </div>
-<!--求购已提交失败弹出层-->
-<div class="mj-boughtM" id="mj-submitteF">
-    <span class="ms-close mj-close"></span>
-    <div class="mj-bcon f-clearfix">
-        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
-        <div class="mj-bconRight">
-            <h2 style="color:#ff6600">求购提交失败，请稍后重试！</h2>
-            <p>可能因为网络问题或其他原因导致</p>
-            <a href="javascript:;" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+<div class="ms-conditionList">
+    <span>商标字数</span>
+    <div class="ms-conditionList-main">
+        <ul class="f-clearfix ms-conditionRadio">
+            <li><a href="javascript:void(0);" onclick="createUrl('_sN','0');return false;">全部</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sN','1,2');return false;">1-2个字</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sN','3');return false;">3个字</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sN','4');return false;">4个字</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sN','5');return false;">5个字</a></li>
+            <li><a href="javascript:void(0);" onclick="createUrl('_sN','6');return false;">5个字及以上</a></li>
+        </ul>
+        <ul class="f-clearfix ms-conditionCheckbox">
+            <li><input type="checkbox" value="1,2" id="num-checkbox1,2" name="num-checkbox1,2"><label for="num-checkbox1,2">1-2个字</label></li>
+            <li><input type="checkbox" value="3" id="num-checkbox3" name="num-checkbox3"><label for="num-checkbox3">3个字</label></li>
+            <li><input type="checkbox" value="4" id="num-checkbox4" name="num-checkbox4"><label for="num-checkbox4">4个字</label></li>
+            <li><input type="checkbox" value="5" id="num-checkbox5" name="num-checkbox5"><label for="num-checkbox5">5个字</label></li>
+            <li><input type="checkbox" value="6" id="num-checkbox6" name="num-checkbox6"><label for="num-checkbox6">5个字及以上</label></li>
+        </ul>
+        <div class="ms-condition-btn">
+            <a href="javascript:;" tname="_sN">确定</a>
+            <span onclick="cancelFun(this);">取消</span>
+        </div>
+        <div class="ms-conditionBtn">
+            <span class="ms-multi" onclick="multi(this);">多选</span>
         </div>
     </div>
 </div>
-<script type="text/javascript" src="<?=StaticDir?>1.2/js/pt.js"></script>
+<div class="ms-conditionList ms-noBorder">
+    <span>高级筛选</span>
+    <div class="ms-advancedFilter">
+        <ul class="f-clearfix">
+            <li>
+                <a href="">注册时间<i class="us-icon us-icon24"></i></a>
+                <div class="ms-conditionList-main">
+                    <ul class="f-clearfix ms-conditionRadio">
+                        <li><a href="javascript:void(0);" onclick="createUrl('_date','0');return false;">全部</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_date','2015');return false;">2015年</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_date','2014');return false;">2014年</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_date','2013');return false;">2013年</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_date','2012');return false;">2012年</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_date','2011');return false;">2011年</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_date','2010');return false;">2010年</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_date','5');return false;">5年以前</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_date','9');return false;">申请中</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="">入驻平台<i class="us-icon us-icon24"></i></a>
+                <div class="ms-conditionList-main">
+                    <ul class="f-clearfix ms-conditionRadio">
+                        <li><a href="javascript:void(0);" onclick="createUrl('_plat','0);return false;">全部</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_plat','1');return false;">京东</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_plat','2');return false;">天猫</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_plat','7');return false;">大型超市</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_plat','3');return false;">亚马逊</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_plat','4');return false;">1号店</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_plat','5');return false;">美丽说</a></li>
+                        <li><a href="javascript:void(0);" onclick="createUrl('_plat','6');return false;">聚美优品</a></li>
+                    </ul>
+                    <ul class="f-clearfix ms-conditionCheckbox">
+                        <li><input type="checkbox" value="1" id="platform-checkbox1" name="platform-checkbox1"><label for="platform-checkbox1">京东</label></li>
+                        <li><input type="checkbox" value="2" id="platform-checkbox2" name="platform-checkbox2"><label for="platform-checkbox2">天猫</label></li>
+                        <li><input type="checkbox" value="7" id="platform-checkbox7" name="platform-checkbox7"><label for="platform-checkbox7">大型超市</label></li>
+                        <li><input type="checkbox" value="3" id="platform-checkbox3" name="platform-checkbox3"><label for="platform-checkbox3">亚马逊</label></li>
+                        <li><input type="checkbox" value="4" id="platform-checkbox4" name="platform-checkbox4"><label for="platform-checkbox4">1号店</label></li>
+                        <li><input type="checkbox" value="5" id="platform-checkbox5" name="platform-checkbox5"><label for="platform-checkbox5">美丽说</label></li>
+                        <li><input type="checkbox" value="6" id="platform-checkbox6" name="platform-checkbox6"><label for="platform-checkbox6">聚美优品</label></li>
+                    </ul>
+                    <div class="ms-condition-btn">
+                        <a href="javascript:void(0);" tname="_plat">确定</a>
+                        <span onclick="cancelFun(this);">取消</span>
+                    </div>
+                    <div class="ms-conditionBtn">
+                        <span class="ms-multi" onclick="multi(this);">多选</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+<!-- ms-filters end -->
+<!-- ms-filterSearch start -->
+<div class="ms-filterSearchMain f-clearfix">
+    <p>共有<span>203508</span>个商标</p>
+    <div class="ms-filterSearch">
+        <!--[if !IE]><!-->
+        <input type="text" id="research" placeholder="在结果中搜索">
+        <!--<![endif]-->
+        <!--[if IE]>
+        <input type="text" value="在结果中搜索" onblur="if(value == ''){value = '在结果中搜索'}" onfocus="if(value == '在结果中搜索'){value = ''}" />
+        <![endif]-->
+        <a href="javascript:void(0);" onclick="reSearch();return false;"><i class="us-icon us-icon21"></i></a>
+    </div>
+</div>
+<!-- ms-filterSearch end -->
+<!-- ms-filtersList start -->
+<div class="pt-filtrate">
+    <ul>
+        <li>
+           <span class="pt-fil-pic">
+               <img src="images/exp-list.jpg">
+           </span>
+            <div class="pt-fil-des">
+                <h6>一种感知钓鱼竿姿态自动开关的夜钓灯具及钓鱼竿</h6>
+                <p>专利申请号：<label>ZL201520884620.6</label></p>
+                <p>专利类型：<label>实用新型专利</label></p>
+                <p>行业分类：<label>农林渔牧/食品 - 渔业</label></p>
+            </div>
+            <div class="pt-fil-price">
+                <p class="pri-pt"><label>¥</label><b>5000</b></p>
+
+            </div>
+            <div class="pt-fil-zx">
+                <a class="enq" href="">询 价</a>
+                <a class="cont" href="">联系卖家</a>
+            </div>
+        </li>
+        <li>
+           <span class="pt-fil-pic">
+               <img src="images/exp-list.jpg">
+           </span>
+            <div class="pt-fil-des">
+                <h6>一种感知钓鱼竿姿态自动开关的夜钓灯具及钓鱼竿</h6>
+                <p>专利申请号：<label>ZL201520884620.6</label></p>
+                <p>专利类型：<label>实用新型专利</label></p>
+                <p>行业分类：<label>农林渔牧/食品 - 渔业</label></p>
+            </div>
+            <div class="pt-fil-price">
+
+                <p class="lg"><a>价格请登录查看</a></p>
+
+            </div>
+            <div class="pt-fil-zx">
+                <a class="enq" href="">询 价</a>
+                <a class="cont" href="">联系卖家</a>
+            </div>
+        </li>
+        <li>
+           <span class="pt-fil-pic">
+               <img src="images/exp-list.jpg">
+           </span>
+            <div class="pt-fil-des">
+                <h6>一种感知钓鱼竿姿态自动开关的夜钓灯具及钓鱼竿</h6>
+                <p>专利申请号：<label>ZL201520884620.6</label></p>
+                <p>专利类型：<label>实用新型专利</label></p>
+                <p>行业分类：<label>农林渔牧/食品 - 渔业</label></p>
+            </div>
+            <div class="pt-fil-price">
+                <p class="bga">价格<b>议价</b></p>
+            </div>
+            <div class="pt-fil-zx">
+                <a class="enq" href="">询 价</a>
+                <a class="cont" href="">联系卖家</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- ms-filtersList end -->
+
+<!--<div id="s-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="http://f2.chofn.net/yzc/Static/images/loading.gif"></div>-->
+<!--<button type="button" onclick="changeDD();"></button>-->
+</div>
+<!-- ms-filterMain end -->
+<!-- ms-recommend start -->
+<div class="pt-choice">
+    <!--找到合适的专利-->
+    <div class="pt-seek same">
+        <h3 class="pt-choice-tit">还没找到合适的专利？</h3>
+        <ul>
+            <li>
+                <span>
+                    多
+                </span>
+                <p>
+                    线下<label>5万</label>专利<br/>
+                    人工<label>10分钟</label>急速匹配
+                </p>
+            </li>
+            <li>
+                <span>
+                    精准
+                </span>
+                <p>
+                    <label>304位</label>专业工程师<br/>
+                    一对一为你选标
+                </p>
+            </li>
+            <li>
+                <span>
+                  保质量
+                </span>
+                <p>
+                    权利稳定/保护范围合理/<br/>
+                    未许可第三方
+                </p>
+            </li><li>
+                <span>
+                   安全
+                </span>
+            <p>
+                首款50%<br/>
+                尾款50%分开付
+            </p>
+        </li>
+            <li>
+                <span>
+                  快
+                </span>
+                <p style="border-bottom: none;">
+                    加急：最快<label>5天</label>完成交易<br/>
+                    正常：最快<label>15天</label>完成交易
+                </p>
+            </li>
+
+        </ul>
+        <div class="pt-seek-btn">
+            <a href="" id="choose">帮我选</a><br/>
+            <font>一次多件有优惠</font>
+        </div>
+    </div>
+    <!--出售专利-->
+    <div class="cho-patent-sell same">
+        <h3 class="pt-choice-tit" style="text-indent:12px;">我要<b>出售专利</b></h3>
+        <p>
+            <img src="images/pt-sell-pic.jpg">
+            <label><font>免费</font>评估包装</label>
+            <label>让专利<font>卖出好价格</font></label>
+        </p>
+        <a href="" class="pt-sell-btn">我要出售</a>
+    </div>
+    <!--更多专利产品-->
+    <div class="u-patent-ad4 comAd" style="width: 100%;">
+        <h4>更多专利产品<br/><label>patented product</label></h4>
+              <span style="background-color:#e2efcc;left: 70px;top: 55px;">
+                  离心泵式玩具水枪
+              </span>
+               <span style="background-color:#a6e0eb;left: 20px;top: 90px;">
+                 绿豆气力输送分选装置
+              </span>
+               <span style="background-color:#dfe2ef;left: 90px;top: 125px; ">
+                板带式百合球茎输送机
+              </span>
+               <span style="background-color:#ffdcd5;left: 40px;top: 160px;">
+                  新型氨制冷集油器
+              </span>
+               <span style="background-color:#f9e7d8;left: 60px;top: 195px;">
+                  绿豆气力输送分选装置
+              </span>
+               <span style="background-color:#dfe2ef;left: 110px;top: 230px;">
+                  新型氨制冷集油器
+              </span>
+               <span style="background-color:#e2efcc;left: 35px;top: 265px;">
+                离心泵式玩具水枪
+              </span>
+               <span style="background-color:#f9e7d8;left: 80px;top: 300px;">
+                 绿豆气力输送分选装置
+              </span>
+               <span style="background-color:#ffdcd5;left: 45px;top: 335px;">
+                  新型氨制冷集油器
+              </span>
+                <span style="background-color:#a6e0eb;left: 100px;top: 370px;">
+                 离心泵式玩具水枪
+               </span>
+    </div>
+</div>
+<!-- ms-recommend end -->
+</div>
+
+</div><span class="layui-layer-setwin"></span></div>
+<script type="text/javascript">
+    //初始化更多
+    var minHeight = 40; //最小高度
+    var conditionDom = $('.ms-condition');
+    var conditionList = conditionDom.find('.ms-conditionList-main');
+    var setHeight = 'ms-setHeight';
+    var curCls = 'cur';
+    function initMore(isTure){
+        conditionList.each(function(){
+            var $this = $(this);
+            var conditionMore = '';
+            var conditionBtn = $this.find('.ms-conditionBtn');
+            var conditionListHeight = $this.innerHeight();
+            if(conditionListHeight > minHeight){
+                $this.addClass(setHeight);
+                isTure ? conditionMore = '<span class="ms-conditionMore" onclick="moreFun(this);">更多</span>' : true;
+            }
+            conditionBtn.append(conditionMore);
+        });
+    }
+    initMore(true);
+
+    //多选
+    function multi(dom){
+        var $this = $(dom);
+        var moreDom = $this.next();
+        var parent = $this.parent().parent();
+        parent.removeClass(setHeight).addClass(curCls);
+        resetFun(parent);
+        if(moreDom.hasClass('ms-conditionMore')){
+            moreDom.addClass(curCls).text('收起');
+        }
+    }
+
+    //取消多选
+    function cancelFun(dom){
+        var $this = $(dom);
+        var parent = $this.parent().parent();
+        var moreDom = parent.find('.ms-conditionMore');
+        parent.removeClass(curCls);
+        moreDom.removeClass(curCls).text('更多');
+        initMore(false);
+    }
+
+    //更多
+    function moreFun(dom){
+        var $this = $(dom);
+        var parent = $this.parent().parent();
+        resetFun(parent);
+        initMore(false);
+        if(!$this.hasClass(curCls)){
+            parent.removeClass(setHeight);
+            $this.addClass(curCls).text('收起');
+        }else{
+            parent.addClass(setHeight);
+            $this.removeClass(curCls).text('更多');
+        }
+    }
+    //重置
+    function resetFun(dom){
+        dom.parent().siblings().find('.ms-conditionList-main').removeClass(curCls)
+                .find('.ms-conditionMore').removeClass(curCls).text('更多');
+    }
+    $("#chaofan-mj-close").click(function(){
+        $("#layui-layer1").hide();
+    })
+    $("#choose").click(function(){
+        $("#layui-layer1").show();
+    })
+</script>
+
 <? require(ViewDir.'/footer.html'); ?>
