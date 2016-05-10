@@ -893,7 +893,7 @@ body{ background:#f5f5f5 !important;}
     line-height: 45px;
     float: left;
 	font-size: 16px;
-
+    text-decoration: none;
 }
 .intr-flow p.intr-flow-tit a.on{
     border-top: 2px solid #ff6666;
@@ -1675,9 +1675,9 @@ body{ background:#f5f5f5 !important;}
 /* 下面是商标切换的样式 */
 .traslideBox{ width:184px; height:81px; overflow:hidden; position:relative; border:1px solid #fff; margin: 30px auto; }
 .traslideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
-// .traslideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
-// .traslideBox .hd ul li{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
-// .traslideBox .hd ul li.on{ background:#f00; color:#fff; }
+.traslideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
+.traslideBox .hd ul li{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
+.traslideBox .hd ul li.on{ background:#f00; color:#fff; }
 .traslideBox .bd{ position:relative; height:100%; z-index:0;  width: 135px;height: 81px;margin: auto; }
 .traslideBox .bd li{ zoom:1;  width: 135px;height: 81px;text-align: center;margin: auto;}
 .traslideBox .bd img{width:135px;height:81px; display:block; vertical-align: middle;}
@@ -1892,36 +1892,3 @@ body{ background:#f5f5f5 !important;}
 .ddw_input{
     color: #AAA;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

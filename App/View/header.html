@@ -80,10 +80,20 @@
     }else if(nav_name=='sell'){
         $('.mj-navitems p a').eq(5).css('color','#ff6666');
     }
-    //点击用户名跳转到用户中心
-    /*$('.chaofan-login').on('click','#chaofan-mj-nickname',function(){
-        $(this).attr('href','<?//=PERSONAL_CENTER?>').attr('target','_blank');
-    });*/
+    //执行任务
+    var task_aim = getCookie('task_aim');
+    delCookie('task_aim');
+    if(task_aim && login_mobile){
+        //执行任务
+        layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        task_aim = JSON.parse(task_aim);
+        task_aim['remarks'] += ';电话号码：' + login_mobile;
+        task_aim['tel'] 			= login_mobile;
+        //提交数据
+        ucBuy.buyAdd(task_aim);
+    }
    }); 
 </script>
 </head>

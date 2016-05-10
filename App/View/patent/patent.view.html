@@ -1,0 +1,642 @@
+﻿<? require(ViewDir.'/header.html'); ?>
+<script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/mj-index.css?v=<?=$static_version?>" />
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>" />
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/patent.css?v=<?=$static_version?>" />
+<!--弹窗css-->
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css?v=<?=$static_version?>"/>
+<!--商标详情介绍-->
+<div class="brand-details f-clearfix">
+    <div class="w1180">
+        <div class="fl fl-details">
+            <div class="brde-pic">
+                <span class="brde-pic-box">
+                    <table width="100%" height="100%">
+                        <tr>
+                            <td align="center">
+                               <img src="<?=empty($tminfo['embellish'])?$info['imgUrl']:(TRADE_URL.$tminfo['embellish']);?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$tminfo['alt1']?>">
+                            </td>
+                        </tr>
+                    </table>
+                </span>
+            </div>
+            <div class="brde-scfx">
+                <p class="fl">
+                    <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png">
+                </p>
+                <p class="fr">
+                    <a href="javascript:;" class="jiathis jiathis_txt"> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
+                </p>
+            </div>
+        </div>
+        <?php
+            $classList = explode(",", $info['class']);
+            if($info['type']==1 || $info['type']==2){
+                $classArr = $patentClassOne;
+            }else{
+                $classArr = $patentClassTwo;
+            }
+            $temp = '';
+            foreach($classList as $v){
+                $temp .= $classArr[$v]."/";
+            }
+            $temp = trim($temp,'/');
+         ?>
+        <div class="fr fr-details">
+           <h3><span title="<?=$info['title']?>"><?=empty($info['thum_title'])?'【暂无专利名称】':$info['thum_title']?></span> <span title="<?=$info['label']?>" class="light_title">( <?=$temp?> )</span></h3>
+            <label class="bm"><?=$tminfo['value']?></label>
+            <!--是否上架-->
+            <?if($isSale):?>
+           <div class="classify">
+               <ul class="mj-cTr_center">
+                   <li>
+                       <span><label>专利申请号</label><font><?=$number?></font></span>
+                       <span><label>专利类型</label><font><?=$patentType[$info['type']]?></font></span>
+                   </li>
+                   <li>
+                       <span><label>更新时间</label><font><?=empty($info['updated'])?date('Y-m-d',$info['applyDate']):date('Y-m-d',strtotime($info['updated']))?></font></span>
+                       <?
+                            if($info['type']==1){
+                                $expire = date('Y-m-d',strtotime('+20 years',$info['applyDate']));
+                            }else{
+                                $expire = date('Y-m-d',strtotime('+10 years',$info['applyDate']));
+                            }
+                       ?>
+                       <span><label>过期时间</label><font><?=$expire?></font></span>
+                   </li>
+                   <li>
+                       <span><label>行业分类</label><font><?=$temp?></font></span>
+                   </li>
+               </ul>
+           </div>
+            <div class="mj-cTr_bottom f-clearfix">
+                <div class="mj-cTr_bLeft">
+                <? if ( isset($info['id']) ){ ?>
+                    <!--定价部分-->
+                    <? if( $info['priceType'] == 1 && $info['isOffprice'] == 1 && ($info['salePriceDate'] == 0 || $info['salePriceDate'] > time())){ ?>
+                    <!--特价价格促销-->
+                    <div class="mj-priceTxtt">
+                        <p class="price">
+                            <font>价格</font>
+                            <strong><span>￥</span><?=$info['salePrice']?></strong>元
+                            原价<s>￥<?=$info['price']?></s>
+                        </p>
+                        <p class="period"><font>价格时效</font> <span><?php if($info['salePriceDate'] > 0){
+                            echo date('Y-m-d H:i',$info['salePriceDate']);
+                            }else{echo "永久";} ?></span>有效</p>
+                    <?}elseif( $isLogin && $info['priceType'] == 1 ){?>
+                    <!--定价商品-->
+                    <div class="mj-priceTxtt">
+                        <p class="price">
+                            <font>价格</font>
+                            <strong><span>￥</span><?=($info['price']*1.1)?></strong>元
+                        </p>
+                        <p class="mj-priceTxtt_ie7" style="margin-top: 2px"><b>温馨提示：</b>80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
+                    <?}elseif( $isLogin && $info['priceType'] == 2 ){?>
+                    <!--议价商品-->
+                    <div class="mj-priceTxtt">
+                        <p class="price">
+                            <font>价格</font>
+                            <strong><span>￥</span>议价</strong>
+                        </p>
+                        <p class="mj-priceTxtt_ie7" style="margin-top: 2px"><b>温馨提示：</b>卖家选择了议价方式，请联系卖家确定价格</p>
+                    <?}else{?>
+                        <div class="mj-priceTxtt">
+                            <div style="width: 50px;height:40px"></div>
+                            <div style="width: 50px;height:7px"></div>
+                    <?}?>
+                    <!--操作部分-->
+                        <!--特价价格促销-->
+                        <? if( $info['priceType'] == 1 && $info['isOffprice'] == 1 && ($info['salePriceDate'] == 0 || $info['salePriceDate'] > time())){
+                        ?>
+                        <?if($isLogin){ ?>
+                        <a href='javascript:;' onclick="createOrder();" class="mj-priceTxtt_link opt_btn">立即抢购</a>
+                        <? }else{ ?>
+                        <a href='javascript:;' onclick="goBuy()" class="mj-priceTxtt_link opt_btn">立即抢购</a>
+                        <?} ?>
+                        <!--定价商品-->
+                        <?}elseif( $isLogin && $info['priceType'] == 1 ){?>
+                        <a href='javascript:;' onclick="createOrder()" class="opt_btn">我想购买</a>
+                        <!--议价商品-->
+                        <?}elseif( $isLogin && $info['priceType'] == 2 ){?>
+                        <a href='javascript:;' onclick="createOrder()" class="opt_btn">我有兴趣</a>
+                        <?}else{?>
+                        <a href='javascript:;' onclick="goLook()" class="opt_btn">查看价格</a>
+                        <?}?>
+            <?}else{?>
+                    <!-- 来自万象云 -->
+                    <? if($isLogin){ ?>
+                    <!--价格-->
+                    <div class="mj-priceTxtt">
+                        <p class="price">
+                            <font>价格</font>
+                            <strong><span>￥</span>议价</strong>
+                        </p>
+                        <p class="mj-priceTxtt_ie7" style="margin-top: 2px"><b>备注：</b>此专利未在行业出售 - 我们有渠道短时间联系到他</p>
+                        <a href='javascript:;' onclick="createOrder()" class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
+                    <? }else{ ?>
+                        <div class="mj-priceTxtt">
+                            <div style="width: 50px;height:60px"></div>
+                            <p class="mj-priceTxtt_ie7" style="margin-top: 2px"><b>备注：</b>此专利未在行业出售 - 我们有渠道短时间联系到他</p>
+                            <div style="width: 50px;height: 10px"></div>
+                            <a href='javascript:;' onclick="goLook()" class="opt_btn">我有兴趣</a>
+                        <? } ?>
+                <?}?>
+            </div>
+            </div>
+            <div class="mj-cTr_bRight">
+                    <dl>
+                        <dd>
+                            <i class="us-icon uj_icon2"></i><span class="sqr" title="<?=$info['proName']?>">专利申请人：<?=$info['proName']?></span>
+                            <a href="javascript:;" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
+                        </dd>
+                        <dd>
+                            <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
+                            <label><?=$info['viewPhone']?></label>
+                        </dd>
+                        <dd class="mj-cTr_bRight_dd">
+                            <input id="telInput2" value="" placeholder="输入手机号" type="text">
+                            <label for="l-button">
+                                <button type="submit" id="l-button" onclick="createOrderByPhone()">打给我</button>
+                            </label>
+                        </dd>
+                    </dl>
+            </div>
+          </div>
+            <?else:?>
+            <div style="padding-top:50px ">
+                <img src="<?=StaticDir?>1.2/images/nogoods.png">
+            </div>
+            <?endif;?>
+        </div>
+    </div>
+</div>
+<div style="display: none">
+    <a id="wodediv" href="" target="_blank">1</a>
+</div>
+<!--商标详情主要内容-->
+<div class="w1180 details-main" style="padding-top: 25px;">
+    <!--左边-->
+    <!--重点提示  左边这部分全换哈！-->
+    <div class="m-patent-lf fl">
+        <div class="u-patent-ad1 comAd">
+            <span style="left:45px;top:194px;">企业减税   </span>
+            <span style="left:148px;top:194px;">政府专项资金</span>
+            <span style="left:45px;top:230px;">政府优惠政策</span>
+            <span style="left:148px;top:230px;">大额现金资助</span>
+            <p>
+                至少<label>1件</label>发明专利<br/>
+                <label>6件</label>实用新型专利
+            </p>
+            <a class="Hp-pick" href="">帮我选</a>
+        </div>
+        <div class="u-patent-ad2 comAd">
+            <span style="left:65px;top:190px;">拿高薪</span>
+            <span style="left:165px;top:190px;"> 拿股份</span>
+            <p>
+                <label>1件</label>实用新型专利<br/>
+                或<label>1件</label>发明专利
+            </p>
+            <a class="Hp-pick" href="">帮我选</a>
+        </div>
+        <div class="u-patent-ad3 comAd">
+            <a class="Hp-pick" href="">帮我选</a>
+        </div>
+        <? if($tj): ?>
+        <div class="u-patent-ad4 comAd">
+            <h4>更多专利产品<br/><label>patented product</label></h4>
+              <span style="background-color:#e2efcc;left: 60px;top: 55px;">
+                  <a title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
+              </span>
+               <span style="background-color:#a6e0eb;left: 10px;top: 90px;">
+                 <a title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
+              </span>
+               <span style="background-color:#dfe2ef;left: 80px;top: 125px; ">
+                <a title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
+              </span>
+               <span style="background-color:#ffdcd5;left: 30px;top: 160px;">
+                  <a title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
+              </span>
+               <span style="background-color:#f9e7d8;left: 50px;top: 195px;">
+                  <a title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
+              </span>
+               <span style="background-color:#dfe2ef;left: 100px;top: 230px;">
+                  <a title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
+              </span>
+               <span style="background-color:#e2efcc;left: 25px;top: 265px;">
+                <a title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
+              </span>
+               <span style="background-color:#f9e7d8;left: 70px;top: 300px;">
+                 <a title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
+              </span>
+               <span style="background-color:#ffdcd5;left: 35px;top: 335px;">
+                  <a title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
+              </span>
+                <span style="background-color:#a6e0eb;left: 90px;top: 370px;">
+                    <a title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
+               </span>
+        </div>
+        <? endif; ?>
+    </div>
+    <!--右边-->
+    <div class="intr-flow fr">
+        <p class="intr-flow-tit">
+            <a href="#sbjj" class="on">商标介绍</a>
+            <a class="" href="#jylc">交易流程</a>
+        </p>
+        <div class="detail-recom-main">
+            <div class="detail-recom-trademark">
+                <!--专利介绍 替换detail-recom-trademark 这部分-->
+                <!--重点提示  patent-descri替换detail-recom-trademark下面的部分！-->
+                <div class="patent-descri">
+                    <?=empty($tminfo['intro'])?$info['intro']:$tminfo['intro']?>
+                </div>
+                <!--专利介绍 完-->
+            </div>
+            <!--专利的交易流程 替换transaction下面的jylc这部分  h3不变-->
+            <div class="transaction">
+                <h3><span></span>交易流程</h3>
+                <div class="jylc">
+                    <span class="vs"><img src="<?=StaticDir?>1.2/images/pt-vs.jpg"></span>
+                    <div class="fl">
+                        <h2><b>一只蝉</b>独家交易体系</h2>
+                        <ul class="patent-deal">
+                            <li>
+                                   <span class="fl">
+                                       <img src="<?=StaticDir?>1.2/images/pt-jy-ico1.jpg">
+                                   </span>
+                                <div class="fl">
+                                    <i><img src="<?=StaticDir?>1.2/images/pt-jy-num1.jpg"></i>
+                                    <p>
+                                        <b>了解你的购买用途</b>
+                                        <label>
+                                            评职称<br/>
+                                            申报高新企业<br/>
+                                            ... ... 等用途<br/>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="fl">
+                                    <i><img src="<?=StaticDir?>1.2/images/pt-jy-num2.jpg"></i>
+                                    <p>
+                                        <b>精准匹配靠谱专利</b>
+                                        <label>
+                                            线下<font>5万</font>专利数据<br/>
+                                            保证专利价值、权利稳定
+                                        </label>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                   <span class="fl">
+                                       <img src="<?=StaticDir?>1.2/images/pt-jy-ico2.jpg">
+                                   </span>
+                                <div class="fl">
+                                    <i><img src="<?=StaticDir?>1.2/images/pt-jy-num1.jpg"></i>
+                                    <p>
+                                        <b>签订协议付首款</b>
+                                        <label>
+                                            首款50%<br/> 交易损失,<font>24小时全额赔付 </font><br/>
+                                            协议专业规范
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="fl">
+                                    <i><img src="<?=StaticDir?>1.2/images/pt-jy-num2.jpg"></i>
+                                    <p>
+                                        <b>递交资料</b>
+                                        <label>
+                                            当天上报<br/>
+                                            加急最快<font>5天</font>拿证
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="fl" style="margin-top:45px;margin-left: -198px">
+                                    <i><img src="<?=StaticDir?>1.2/images/pt-jy-num3.jpg"></i>
+                                    <p>
+                                        <b>转让成功支付尾款</b>
+                                        <label>
+                                            支付尾款50%<br/>
+                                            提供<font>专利证书</font> 所有款项开发票
+                                        </label>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                   <span class="fl">
+                                       <img src="<?=StaticDir?>1.2/images/pt-jy-ico1.jpg">
+                                   </span>
+                                <div class="fl">
+                                    <i><img src="<?=StaticDir?>1.2/images/pt-jy-num1.jpg"></i>
+                                    <p>
+                                        <b>售后服务</b>
+                                        <label>
+                                            免费提醒缴纳年费<br/>
+                                            <font>终身免费</font>代缴年费
+                                        </label>
+                                    </p>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <!--传统专利交易模式替换原来的传统模式-->
+                    <div class="fr">
+                        <h2><b style="color: #666666 !important;">传统专利</b>交易模式</h2>
+                        <ul class="jylc2-bg pt-jylc2-bg">
+                            <li style="right: 0px;top: 30px;">
+                                <h6>买家上网选专利</h6>
+                            </li>
+                            <li style="right: 0px;top: 170px;">
+                                <h6>选好付款</h6>
+                            </li>
+                            <li style="right: 0px;top: 290px;">
+                                <h6>办理转让手续</h6>
+                                <label>2周左右</label>
+                            </li>
+                            <li style="right: 0px;top: 428px;">
+                                <h6>完成</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--担心的问题  文字和些许样式改变-->
+            <div class="worry-tit pt-worry-tit">
+                <h5>买专利，你还在担心什么？</h5>
+            </div>
+            <ul class="jylc-xq">
+                <li>
+                    <div class="jylc-xq-fl">
+                        <img src="http://f2.chofn.net/yzc/Static/1.2/images/jyq.png">
+                    </div>
+                    <div class="jylc-xq-fr" style="margin-top:-10px;margin-right: 35px;">
+                        <dl>
+                            <dd>
+                                <b><span>Q：</span>应该买什么专利？</b>
+                                <p>
+                                    <label>•</label>你是要申报高新企业？<br/>
+                                    <label>•</label>教职工评职称？<br/>
+                                    <label>•</label>积分落户？<br/>
+                                    <label>•</label>还是完成指标？<br/>
+                                </p>
+                                <div class="more-qk"><a href=""><font>更多情况 </font></a><a href="javascript:;" onclick="goChat()"><span>我要咨询</span></a>
+                                </div>
+                            </dd>
+                            <dd>
+                                <b><span>Q：</span>如何保障专利“质量”？ </b>
+                                <p>
+                                    <label>•</label>权利稳定性<br/>
+                                    <label>•</label>保护范围合理性<br/>
+                                    <label>•</label>剩余年限<br/>
+                                    <label>•</label>未许可给第三方<br/>
+                                    <label>•</label><a class="color">304位</a>专利工程师<a class="color">3重把关</a><br/>
+
+                                </p>
+                            </dd>
+                            <dd>
+                                <b><span>Q：</span>交易平台如何保障专业性？</b>
+                                <p>
+                                    <label>•</label><a class="color">100家律师事务所</a><br/>
+                                    <label>•</label><a class="color">304位专利工程师</a>，保障转让资料准确<br/>
+                                    <label>•</label>13年从业经验，5万余合作客户<br/>
+                                    <label>•</label>转让成功率高达<a class="color">100%</a><br/>
+                                </p>
+                            </dd>
+                        </dl>
+                    </div>
+                </li>
+                <li>
+                    <div class="jylc-xq-fl">
+                        <img src="http://f2.chofn.net/yzc/Static/1.2/images/jyz.png">
+                    </div>
+                    <div class="jylc-xq-fr">
+                        <dl>
+                            <dd>
+                                <b><span>Q：</span>要准备什么资料？</b>
+                                <p>
+                                    <label>•</label>企业购买：营业执照、组<br/>
+                                    &nbsp; &nbsp;织机构代码证 <br>
+                                    <label>•</label>个人购买：身份证<br/>
+                                    &nbsp; &nbsp;剩下的资料我们帮你准备
+                                </p>
+                            </dd>
+                            <dd>
+                                <b><span>Q：</span>如何保障资金安全？</b>
+                                <p>
+                                    <label>•</label><a class="color">首付50%</a>，收到发票和官文支付<br/>
+                                    &nbsp; &nbsp;剩余部分<br>
+                                    <label>•</label>交易损失，24小时全额赔付
+                                </p>
+                            </dd>
+                            <dd>
+                                <b><span>Q：</span>如何保障交易安全？</b>
+                                <p>
+                                    <label>•</label>转让进度随时可查<br>
+                                    <label>•</label>委托专业代理机构<br>
+                                </p>
+                            </dd>
+                        </dl>
+                    </div>
+                </li>
+                <li>
+                    <div class="jylc-xq-fl">
+                        <img src="http://f2.chofn.net/yzc/Static/1.2/images/jyh.png">
+                    </div>
+                    <div class="jylc-xq-fr" style="margin-right:85px;">
+                        <dl>
+                            <dd>
+                                <b><span>Q：</span>最快多久拿证书？</b>
+                                <p>
+                                    <label>•</label>一般流程：15个工作日<br>
+                                    <label>•</label>加急：最快<em class="color">5</em>个工作日
+                                </p>
+                            </dd>
+                            <dd>
+                                <b><span>Q：</span>增值服务有哪些？</b>
+                                <p>
+                                    <label>•</label>免费提醒续展<br>
+                                    <label>•</label>续展代理费全免（至少节约4000元）
+                                </p>
+                            </dd>
+
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--数据提交的隐藏域-->
+<div style="display: none">
+    <input type="hidden" id="tels">
+    <input type="hidden" id="trademark">
+    <input type="hidden" id="class">
+    <input type="hidden" id="remarks">
+</div>
+<!--成功案列start-->
+<div class="pt-suceAl">
+    <p><b>成功合作</b><span>51549例</span></p>
+</div>
+<!--成功案列end-->
+<? require(ViewDir.'/sidebar.html'); ?>
+<!--购买相关js-->
+<script type="text/javascript">
+    //滚动事件
+    $(window).scroll(function(){
+        if($('.transaction').offset().top-$(document).scrollTop()<=58){
+            $(".intr-flow-tit").addClass("f-tp");
+            $(".intr-flow-tit a").removeClass("on");
+            $(".intr-flow-tit a").eq(1).addClass("on");
+        }else if($(".intr-flow").offset().top-$(document).scrollTop()<=0){
+            $(".intr-flow-tit").addClass("f-tp");
+            $(".intr-flow-tit a").removeClass("on");
+            $(".intr-flow-tit a").eq(0).addClass("on");
+        }else{
+            $(".intr-flow-tit").removeClass("f-tp");
+            $(".intr-flow-tit a").removeClass("on");
+            $(".intr-flow-tit a").eq(0).addClass("on");
+        }
+    })
+    //点击选项卡事件
+    $(".intr-flow-tit a").eq(0).click(function(){
+        var t=$(".intr-flow").offset().top-48;
+        $("html, body").animate({"scrollTop":t});
+    });
+    $(".intr-flow-tit a").eq(1).click(function(){
+        var t=$(".transaction").offset().top-68;
+        $("html, body").animate({"scrollTop":t});
+    });
+    $(".classify-main li").each(function(){
+        $(this).hover(
+            function(){
+                if($(".splb").height()>85){
+                    $(".splb").css({"overflow-y":"scroll","height":"85px"});
+                }
+                $(this).find("a.lb").css({"z-index":"99999"});
+                $(this).find("div.multi-show").css({"z-index":"9999"});
+            },function(){
+                $(this).find("a.lb").css({"z-index":"0"});
+                $(this).find("div.multi-show").css({"z-index":"99999"});
+            });
+    });
+    $(function(){
+        //有手机登录情况下 检测该用户是否购买
+        var trademark = "<?=$number?>";
+        var tm_class = "<?=implode(',',$info['class'])?>";
+        if(login_mobile){
+            ucBuy.isexist(trademark,tm_class);
+        }
+        //给隐藏域赋值
+        var user_tel = login_mobile;
+        $('#tels').val(user_tel);
+        $('#trademark').val(trademark);
+        $('#class').val(tm_class);
+        $('#remarks').val("<?=$need?>");
+        if(user_tel){
+            $('#telInput2').val(user_tel);
+        }
+    });
+    //生成订单
+    function createOrder(){
+        //检测是否有电话号码
+        layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        var tel= $('#tels').val();
+        if(tel){
+            //获得数据
+            var remarks 	= $('#remarks').val();
+            remarks = remarks + ';电话号码：' + tel;
+            var buyData 			= new Array();
+            buyData['tel'] 			= tel;
+            buyData['tid'] 			= '';
+            buyData['trademark'] 	= $('#trademark').val();
+            buyData['class'] 		= $('#class').val();
+            buyData['subject'] 		= '求购信息';
+            buyData['type'] 		= 7;
+            buyData['remarks'] 		= remarks;
+            //提交数据
+            ucBuy.buyAdd(buyData);
+        }else{
+            //分为登录无手机和未登录两种情况
+            if(nick_name){
+                getLayer($('#goCenter'));
+            }else{
+                //登录
+                $('#chaofan-mj-login').trigger('click');
+            }
+            layer.closeAll('loading');
+        }
+        return false;
+    }
+    //生成订单--2  (直接输入电话)
+    //失去焦点,检测用户输入的手机号
+    $('#telInput2').blur(function(){
+        var tel= $.trim($('#telInput2').val());
+        //验证手机号码
+        if(!tel || !mobilereg.test(tel) || tel.length!=11){
+            $('#telInput2').addClass('ddw_input');
+            $('#telInput2').val('请输入正确的手机号');
+            return false;
+        }
+    });
+    $('#telInput2').focus(function(){
+        $('#telInput2').removeClass('ddw_input');
+        $('#telInput2').val('');
+    })
+    //生成订单--2
+    function createOrderByPhone(){
+        //检测是否电话号码
+        layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        var tel= $.trim($('#telInput2').val());
+        //验证手机号码
+        if(!tel || !mobilereg.test(tel) || tel.length!=11){
+            $('#telInput2').addClass('ddw_input');
+            $('#telInput2').val('请输入正确的手机号');
+            return false;
+        }
+        //获得数据
+        var remarks 	= $('#remarks').val();
+        remarks = remarks + ';电话号码：' + tel;
+        var buyData 			= new Array();
+        buyData['tel'] 			= tel;
+        buyData['tid'] 			= '';
+        buyData['trademark'] 	= $('#trademark').val();
+        buyData['class'] 		= $('#class').val();
+        buyData['subject'] 		= '求购信息';
+        buyData['type'] 		= 7;
+        buyData['remarks'] 		= remarks;
+        //提交数据
+        ucBuy.buyAdd(buyData);
+    }
+    //检测用户是否购买回调
+    function isexistCallback(Obj){
+        $.each(Obj,function(i,n){
+            //弹窗提示
+            if(n.code==2){
+                $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>求购信息已提交</a>");
+            }
+        });
+    }
+    //打开登录窗口
+    function goLook()
+    {
+        $('#chaofan-mj-login').trigger('click');
+    }
+    function goBuy()
+    {
+        $('#chaofan-mj-login').trigger('click');
+    }
+    //专题点击事件
+    $('.wddsb').click(function(){
+        $('#wodediv').attr('href',($(this).attr('url')));
+        $('#wodediv').get(0).click();
+    });
+</script>
+<!--分享相关js-->
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+<? require(ViewDir.'/footer.html'); ?>

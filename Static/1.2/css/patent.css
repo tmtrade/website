@@ -3,7 +3,7 @@ table {border-collapse:collapse;border-spacing:0;}
 fieldset,img {border:0}
 address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal}
 ol,ul {list-style:none}
-a{text-decoration:none}
+a{text-decoration:none;color: black}
 a[href]:hover{text-decoration: underline}
 caption,th {text-align:left}
 h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal}
@@ -889,4 +889,8 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     margin-top:15px;
     color: #999999;
     font-family: "宋体";
+}
+
+.brand-details div.fl-details .brde-pic{
+    max-height: 334px !important;
 }

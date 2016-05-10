@@ -281,15 +281,21 @@ function getLayer(obj) {
     });
 }
 
-    //询价登录回调
+//询价登录回调
 function userLogCallback(Obj,data){
     $.each(Obj,function(i,n){
          //用户登录情况下
-        if(n.code==1){
+        if(n.code==1) {
             //弹出成功框
             $(".ms-errorTips2,#loginTips").show();
             $("#loginTips em").text('登录成功');
-            $("#loginTips").attr('flag',2);
+            $("#loginTips").attr('flag', 2);
+            //设置cookie
+            addCookie('task_aim',window.nowData);
+        }else if(n.code==3){
+            $(".ms-errorTips2,#loginTips").show();
+            $("#loginTips em").text(n.msg);
+            $("#loginTips").attr('flag',0);
         }else{
             $(".ms-errorTips2,#loginTips").show();
             $("#loginTips em").text('用户名或密码错误');
@@ -317,6 +323,9 @@ function verifyCodeCallback(Obj,account,code){
         if(n.code==1){
             $('.Not_logged').hide();
             $('.logged').show();
+            //设置cookie
+            addCookie('task_aim',window.nowData);
+            //登录
             ucNetwork.logCode(account,code);
         }else{
             $(".ms-errorTips2,#loginTips").show();
@@ -325,16 +334,7 @@ function verifyCodeCallback(Obj,account,code){
         }
     });
 }
-//登录回调
-function userLogCallback(Obj,data){
-    $.each(Obj,function(i,n){
-        if(n.code==3){
-            $(".ms-errorTips2,#loginTips").show();
-            $("#loginTips em").text(n.msg);
-            $("#loginTips").attr('flag',0);
-        }
-    });
-}
+
 //调用登录弹窗
 function getLogin(title,tel,isExist){
     $("#loginUser").val('');
@@ -373,19 +373,20 @@ function xunjia(obj){
     layer.load(1, {
         shade: [0.1,'#fff'] //0.1透明度的白色背景
     });
+    //组装提交数据
+    var mydata = $(obj).closest('li').find('.xunjia_data');
+    var remarks = mydata.attr('remarks');
+    var buyData 			= new Object();
+    buyData['tid'] 			= mydata.attr('tid');
+    buyData['trademark'] 	= mydata.attr('number');
+    buyData['class'] 		= mydata.attr('data_class');
+    buyData['subject'] 		= '求购信息';
+    buyData['remarks'] 		= remarks;
     //用户是否登录
     if(login_mobile){
         //提交到分配系统中
-        //组装提交数据
-        var mydata = $(obj).closest('li').find('.xunjia_data');
-        var remarks = mydata.attr('remarks');
         remarks = remarks + ';电话号码：' + login_mobile;
-        var buyData 			= new Array();
         buyData['tel'] 			= login_mobile;
-        buyData['tid'] 			= mydata.attr('tid');
-        buyData['trademark'] 	= mydata.attr('number');
-        buyData['class'] 		= mydata.attr('data_class');
-        buyData['subject'] 		= '求购信息';
         buyData['remarks'] 		= remarks;
         //提交数据
         ucBuy.buyAdd(buyData);
@@ -394,6 +395,8 @@ function xunjia(obj){
         getLayer($('#goCenter'));
         layer.closeAll('loading');
     }else{
+        //保存数据到全局变量中
+        window.nowData = JSON.stringify(buyData);
         //弹出登录框
         getLogin(_xunjia,'',1);
         layer.closeAll('loading');

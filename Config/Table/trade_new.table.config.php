@@ -9,12 +9,6 @@ $tbl['blacklist'] = array(
 	'configFile'=> $configFile,
 );
 
-$tbl['case'] = array(
-	'name'		=> $prefix.'case',
-	'dbId'		=> $dbId, 
-	'configFile'=> $configFile,
-);
-
 $tbl['member'] = array(
 	'name'		=> $prefix.'member',
 	'dbId'		=> $dbId, 
@@ -84,12 +78,6 @@ $tbl['tempUser'] = array(
 
 $tbl['phone'] = array(
 	'name'		=> $prefix.'phone',
-	'dbId'		=> $dbId, 
-	'configFile'=> $configFile,
-);
-
-$tbl['checkcount'] = array(
-	'name'		=> $prefix.'check_count',
 	'dbId'		=> $dbId, 
 	'configFile'=> $configFile,
 );
@@ -169,6 +157,7 @@ $tbl['classGroup'] = array(
 	'configFile'=> $configFile,
 );
 
+
 $tbl['topic'] = array(
 	'name'		=> $prefix.'topic',
 	'dbId'		=> $dbId,
@@ -181,23 +170,70 @@ $tbl['topicItems'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['apiLog'] = array(
+	'name'		=> $prefix.'api_log',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 $tbl['userSaleHistory'] = array(
 	'name'		=> $prefix.'user_sale_history',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
 
-$tbl['keyword'] = array(
-	'name'		=> $prefix.'keyword',
+$tbl['case'] = array(
+	'name'		=> $prefix.'case',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
 
-$tbl['searchUrl'] = array(
-	'name'		=> $prefix.'search_url',
+$tbl['patent'] = array(
+	'name'		=> $prefix.'patent',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
 
+$tbl['patentContact'] = array(
+	'name'		=> $prefix.'patent_contact',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['patentHistory'] = array(
+	'name'		=> $prefix.'patent_history',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['patentInfo'] = array(
+	'name'		=> $prefix.'patent_info',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['patentLog'] = array(
+	'name'		=> $prefix.'patent_log',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['userPatentHistory'] = array(
+	'name'		=> $prefix.'user_patent_history',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['patentList'] = array(
+	'name'		=> $prefix.'patent_list',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['test'] = array(
+	'name'		=> $prefix.'test',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
 
 ?>
