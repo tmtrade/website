@@ -334,14 +334,14 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
 
 .pt-filtrate ul li div{
     float: left;
-    margin-left: 25px;
 }
 .pt-filtrate ul li div.pt-fil-des{
-    max-width: 330px;
+    width: 320px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-top: 5px;
+    margin-left: 23px;
 }
 .pt-filtrate ul li div.pt-fil-des h6{
     color: #333333;
@@ -358,9 +358,9 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     color: #666666;
 }
 .pt-filtrate ul li div.pt-fil-price{
-    margin-left: 120px;
-    margin-top:35px;
-    width: 90px;
+    margin-left: 80px;
+    margin-top: 35px;
+    width: 130px;
     text-align: center;
 }
 .pt-filtrate ul li div.pt-fil-price p.pri-pt label{
@@ -386,8 +386,9 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     color: #db0000;
 }
 .pt-filtrate ul li div.pt-fil-zx{
-    margin-left: 70px;
     margin-top: 8px;
+    float: right;
+    margin-right: 23px;
 }
 .pt-filtrate ul li div.pt-fil-zx a{
     display:block;
