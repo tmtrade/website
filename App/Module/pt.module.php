@@ -121,7 +121,7 @@ class PtModule extends AppModule
                 if ( isset($ptOne[chr($v)]) ) array_push($_className, $ptOne[chr($v)]);
             }else{
                 array_push($_classArr, $v);
-                if ( isset($ptTwo[chr($v)]) ) array_push($_className, $ptTwo[chr($v)]);
+                if ( isset($ptTwo[$v]) ) array_push($_className, $ptTwo[$v]);
             }
         }
 

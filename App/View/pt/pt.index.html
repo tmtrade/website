@@ -60,14 +60,14 @@
 <!-- ms-filtersList start -->
 <div class="pt-filtrate">
     <ul>
-    <?foreach ($variable as $k => $v) {?>
+    <?foreach ($list as $k => $v) {?>
 
         <li>
            <span class="pt-fil-pic">
                <img src="<?StaticDir?>1.2/images/exp-list.jpg">
            </span>
             <div class="pt-fil-des">
-                <h6><?=mb_substr($v['title'], 0, 12, 'utf-8')?></h6>
+                <h6><?=mb_substr($v['title'], 0, 16, 'utf-8')?></h6>
                 <p>专利申请号：<label><?=$v['number']?></label></p>
                 <p>专利类型：<label><?=$v['typeName']?></label></p>
                 <p>行业分类：<label><?=$v['className']?></label></p>
