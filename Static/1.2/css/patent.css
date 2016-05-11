@@ -670,13 +670,13 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     float: left;
     margin-left: 10px;
 }
-.pt-sell-contact p.error{
+.pt-sell-content p.error{
     color: #ff6666;
     font-size: 14px;
     margin-top:5px;
     margin-left:0px;
 }
-.pt-sell-contact p.error img{
+.pt-sell-content p.error img{
     vertical-align: middle;
     margin-right: 5px;
 }

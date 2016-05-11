@@ -1,12 +1,13 @@
 $(function(){
-	var jBgnav = $('#j-bgnav');
+	var jBgnav = $('#con_nav_1');
 	var tiemOut = null;
 	jBgnav.on('click', '.add', function(){
 		var _parent = $(this).parent().parent().parent();
 		var _copy = _parent.clone();
 		_copy.find(".remove").removeAttr('style');
-		_copy.find('.mj-bgTips').css('display','none');
-		_copy.find('.sbtable').css("display","none")
+		_copy.find('.add').css('display','none');
+		_copy.find('.error').css("display","none")
+                _copy.find('.sbtable').css("display","none")
 		_parent.after(_copy);
 		_copy.find('input').val('');
 		_copy.find('.g-td2').html('');
@@ -17,14 +18,15 @@ $(function(){
 	jBgnav.on('blur', '.input-number', function(){
 		var _val = '';
 		var _this = $(this);
-		var tip = _this.parent().parent().next();
+		var tip = _this.parent().next();
+               
 		if($.trim(_this.val()) == ''){
-			tip.html('<i class="us-icon uj_icon44"></i>请输入商标号');
+			tip.html('<img src="/Static/1.2/images/pt-sell-err.png">请输入商标号');
                         tip.show();
 			return false;
 		}
 		var key = 0;
-		var table =  _this.parent().parent().next().next();
+		var table =  _this.parent().next().next();
 		/**检查是否重复**/
 		$('.input-number').each(function(index){
 			if($.trim($(this).val()) != '' && $.trim($(this).val()) == $.trim(_this.val())){
@@ -32,7 +34,7 @@ $(function(){
 			}
 		})
 		if(key > 1){
-			tip.html('<i class="us-icon uj_icon44"></i>您已提交了该商标，请验证后重新输入。');
+			tip.html('<img src="/Static/1.2/images/pt-sell-err.png">您已提交了该商标，请验证后重新输入。');
 			tip.show();
 			table.hide();
 			_this.val('');
@@ -50,7 +52,7 @@ $(function(){
 			}).done(function(data){
 				var obj = data;
 				if(obj['status'] == '2'){
-					tip.html('<i class="us-icon uj_icon44"></i>商标信息不存在,请重新填写');
+					tip.html('<img src="/Static/1.2/images/pt-sell-err.png">商标信息不存在,请重新填写');
 					tip.show();
 					table.hide();
 					_this.val('');
@@ -159,7 +161,7 @@ $(function(){
 			var tip = $(this).parent().parent().next();
 			if(!preg.test(thisval)){
 				$(this).val('');
-				tip.html('<i class="us-icon uj_icon44"></i>商标出售底价不正确');
+				tip.html('<img src="/Static/1.2/images/pt-sell-err.png">商标出售底价不正确');
 				tip.show();
 			}else{
 				tip.hide();
@@ -170,10 +172,10 @@ $(function(){
 	$('.input-phone').bind("blur",function(){
 		var thisval = $(this).val();
 		var preg = /^1[3|4|5|7|8][0-9]\d{8}$/;
-		var tip = $(this).parent().parent().next();
+		var tip = $(this).parent().next();
 		if(!preg.test(thisval)){
 			$(this).val('');
-			tip.html("<i class='us-icon uj_icon44'></i>请您输入正确的联系电话");
+			tip.html("<img src='/Static/1.2/images/pt-sell-err.png'>请您输入正确的联系电话");
 			tip.show();
 		}else{
 			tip.hide();
@@ -182,7 +184,6 @@ $(function(){
 
 	//验证姓名，只能输入数字和英文
 	$('#contact').bind("blur",function(){
-
 		contact($(this));
 	});
 });
@@ -190,16 +191,16 @@ $(function(){
 //验证姓名
 function contact(obj){
 	var pregName = /^[\u0391-\uFFE5A-Za-z]+$/;
-	var tip = obj.parent().parent().next();
+	var tip = obj.parent().next();
 	var result = true;
 	if(obj.val()){
 		if(!pregName.test(obj.val())){
-			tip.html("<i class='us-icon uj_icon44'></i>您的姓氏只能输入中文或者英文");
+			tip.html("<img src='/Static/1.2/images/pt-sell-err.png'>您的姓氏只能输入中文或者英文");
 			tip.show();
 			result = false;
 			return false;
 		}else if(obj.val().length > 8){
-			tip.html("<i class='us-icon uj_icon44'></i>您的姓氏不能大于8个字符");
+			tip.html("<img src='/Static/1.2/images/pt-sell-err.png'>您的姓氏不能大于8个字符");
 			tip.show();
 			result = false;
 			return false;

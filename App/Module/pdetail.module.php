@@ -96,6 +96,7 @@ class PdetailModule extends AppModule{
         $rst = array();
         //仅仅获得申请人和描述
         if($type==1){
+            $rst['title']  = $data['title']['original'] ? $data['title']['original'] : $data['title']['zh-cn'];
             //申请人
             $rst['proName'] = $data['applicants'][0]['name']['original'];
             //专利介绍

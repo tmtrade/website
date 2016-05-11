@@ -1,186 +1,177 @@
 <? require(ViewDir.'/header.html'); ?>
-<script src="<?=StaticDir?>1.2/js/clicks.js?v=<?=$static_version?>"></script>
-<link rel="stylesheet" href="<?=StaticDir?>style/home-1-bh150627165347.css?v=<?=$static_version?>" />
-<style type="text/css">
-     .listtel{
-             width:105px;
-             float:left;
-     }
-     .listmai{
-             width:40px;
-             color:#FFF;
-             float:left;
-     }
-     .listname{
-             width:131px;/*容器的基本定义*/
-             text-align:left;
-             display:block;
-             white-space:nowrap;
-             overflow:hidden;
-             text-overflow:ellipsis;
-             float:left;
-     }
-     .listzl{
-             float:left;
-     }
-</style>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/patent.css?v=<?=$static_version?>"/>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/mg-buySell.css?v=<?=$static_version?>"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/normalize.css?v=<?=$static_version?>"/>
+	
+   <div class="pt-sell-banner"></div>
+   <div class="pt-sell-main">
+       <ul class="pt-sell-nav">
+           <li class="on" id="nav1" onclick="jc('nav',1,2)">
+               <h4>商标出售登记表</h4>
+               <label>免费获得10大价值包装绝招</label>
+           </li>
+           <li  id="nav2" onclick="jc('nav',2,2)">
+               <h4>专利出售登记表</h4>
+               <label>帮你提升专利价值</label>
+           </li>
+       </ul>
+       <!--商标出售登记表-->
+       <form action="/sell/addsell/" id="addsell">
+       <div class="pt-sell-content" id="con_nav_1">
+           <ul class="pt-sell-list">
+               <li class="firstLi">
+                   <input placeholder="商标号" class="ptNum input-number" name="number[]"  value="<?=$numid?>"/>
+                   <div class="pt-lwp">
+                       <input placeholder="出售低价" class="pt-inp input-price" name="price[]" value="" />
+                       <span>元</span>
+                   </div>
+                   <div class="funBtn">
+                       <a class="delet remove" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
+                       <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加商标</a>
+                   </div>
+               </li>
+                    <p class="error" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
+                    <table style="display:none;" class="sbtable" >
+                            <tbody>
+                            <tr>
+                                    <td class="g-td1">商标名称：</td>
+                                    <td class="g-td2 sbname"></td>
+                                    <td class="g-td1">申请人：</td>
+                                    <td class="g-td2 proposer"></td>
+                            </tr>
+                            <tr>
+                                    <td class="g-td1" style="height: 130px;line-height: 130px;">商标图样：</td>
+                                    <td class="g-td2 imgurl" colspan="3" style="height: 130px;line-height: 130px;width: 571px;">无</td>
+                            </tr>
+                            </tbody>
+                    </table>
+           </ul>
+            
+          <div class="pt-sell-contact">
+              <div class="pt-cont-inp">
+                  <input placeholder="输入手机号方便买家联系" class="tel input-phone" name="phone" value="<?=$userMobile?>"  id="usrMp_popup" />
+                  <input placeholder="你的姓氏" class="name" name="contact" id="contact" />
+              </div>
+              <p class="error" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
+          </div>
+          <div class="pt-sellBtn">
+              <a href="javascript:void(0)" onclick="submitSell()">马上出售</a>
+          </div>
+       </div>
+        <input type="hidden" name="sid" id="sid"  />
+        <input type="hidden" name="area" id="area" />
+    </form>
+       
+       <!--专利出售登记表-->
+       <div class="pt-sell-content"  id="con_nav_2" style="display: none;">
+           <ul class="pt-sell-list">
+               <li class="firstLi">
+                   <input placeholder="专利号" class="ptNum"/>
+                   <div class="pt-lwp">
+                       <input placeholder="出售低价" class="pt-inp"/>
+                       <span>元</span>
+                   </div>
+                   <div class="funBtn">
+                       <a class="delet" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
+                       <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加商标</a>
+                   </div>
+               </li>
+           </ul>
+           <div class="pt-sell-contact">
+               <div class="pt-cont-inp">
+                   <input placeholder="输入手机号方便买家联系" class="tel"/>
+                   <input placeholder="你的姓氏" class="name"/>
+               </div>
+               <p class="error"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
+           </div>
+           <div class="pt-sellBtn">
+               <a>马上出售</a>
+           </div>
+       </div>
+   </div>
+   
+   <!--获取用户信息 start-->
+<script language="javascript" src="http://st.chofn.com/?action=sid&area=3&tid=2"></script>
+<!--获取用户信息 end-->
+<!--content end-->
 
-  <div class="sp-1">
-        <div class="container-1050">
-            <form  method="post" name="form1" id="form1" class="ml-form" >
-                <input type="hidden" name="pttype" id="pttype" value="出售">
-                <div class="ml-form_cont">
-                    <h1>专利免费评估包装</h1>
-                    <div class="ml-form_cont2">
-                        <input type="text" class="u-input-text u-input-text1" name="subject" id="buyNeed" autocomplete="off" placeholder="专利号 / 专利描述" />
-                        <input type="text" class="u-input-text u-input-text2" name="tel" autocomplete="off" id="buyMoblie" placeholder="请输入联系电话" />
-                       
-                        <input type="button" class="btn" id="subBuy" value="立即评估" /><span class="btn btn1" onClick="goChat()" id="rediana-10">在线咨询</span>
-                        
-                    </div>
-                </div>
-            </form>
+<!--部分商标提交过弹出层-->
+<div class="mj-boughtM" id="mj-submitte" style="border:0">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLeft"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h1>您的商标已经进入出售流程</h1>
+            <p>
+				您共提交了<em class="allsell"> 5 </em>条商标信息，其中<em class="oldsell"> 2 </em>条曾有报价。<br/>
+                其中<em class="errorsell"> 1 </em>条未成功。<br/>
+                其余<em class="newsell"> 0 </em>条报价已经成功提交。运营人员与您确认后<br/>马上就能出售您的商标
+				
+            </p>
+            <a href="javascript:void(0)" class="mj-boBtn1" style="width: 160px;">确认</a>
         </div>
     </div>
+</div>
 
-    <div class="sp-2">
-        <div class="container-1050">
-            <h1 class="sp-2_title">专利转让<span>方式复杂</span>，傻傻分不清楚</h1>
-            <div class="sp-2_box">
-                <div class="icon icon-9 absolute1" data-class="icon-9-hover">
-                    <b>强制许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-1">啥叫<br/>强制许可</a>
-                </div>
-                <div class="icon icon-11 absolute2" data-class="icon-11-hover">
-                    <b>交叉许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-2">啥叫<br/>交叉许可</a>
-                </div>
-                <div class="icon icon-13 absolute3" data-class="icon-13-hover">
-                    <b>计划许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-3">啥叫<br/>计划许可</a>
-                </div>
-                <div class="icon icon-11 absolute4" data-class="icon-11-hover">
-                    <b>分许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-4">啥叫<br/>分许可</a>
-                </div>
-                <div class="icon icon-11 absolute5" data-class="icon-11-hover">
-                    <b>独家许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-5">啥叫<br/>独家许可</a>
-                </div>
-                <div class="icon icon-13 absolute6" data-class="icon-13-hover">
-                    <b>普通许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-6">啥叫<br/>普通许可</a>
-                </div>
-                <div class="icon icon-9 absolute7" data-class="icon-9-hover">
-                    <b>独占许可</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-7">啥叫<br/>独占许可</a>
-                </div>
-                <div class="icon icon-15 absolute8" data-class="">
-                    <b>什么许可方式<br/>最合适？</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-8">专利权<br/>许可方式</a>
-                </div>
-                <div class="icon icon-16 absolute9" data-class="">
-                    <b>怎么转让方式<br/>最赚钱? </b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-9">转让方式</a>
-                </div>
-                <div class="icon icon-17 absolute10" data-class="icon-17-hover">
-                    <b>普通转让</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-10">啥叫普通转让</a>
-                </div>
-                <div class="icon icon-19 absolute11" data-class="icon-19-hover">
-                    <b>排他转让</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-11">啥叫排他转让</a>
-                </div>
-                <div class="icon icon-21 absolute12" data-class="icon-21-hover">
-                    <b>独家转让</b>
-                    <a href="javascript:void(0)" onClick="goChat()" id="rediana-11">啥叫独家转让</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sp-3">
-        <div class="container-1050">
-            <div class="sp-3_title">
-                <span>Professional risk assessment</span>
-                <h1>专业风险评估-让交易双方<span>免受损失</span></h1>
-            </div>
-            <div class="sp-3_border">
-                <div>
-                    <b>国家相关单位建议：</b>
-                    <p>专利技术的转移，不同于一般有形商品的买卖，为了减少和避免技术交易双方利益损失和事后诉争<span>专利技术的转移应在专利工程</span></p>
-                    <span>师的协助和指导下规范进行</span>
-                </div>
-            </div>
-            <div class="sp-3_content">
-                <div class="icon icon-23">
-                    <span class="brs"></span><br/>
-                    <span class="one">304<em>个</em></span><br/>
-                    <span class="two">专利工程师</span><br/>
-                    <span class="one">3重质量把关</span><br/>
-                    <span class="three">保障<br/>转让成功率高达99.9%</span>
-                </div>
-                <div class="icon icon-24">
-                    <span class="brs"></span><br/>
-                    <span class="one">100<em>人</em></span><br/>
-                    <span class="two">律师事务所团队</span><br/>
-                    <span class="one">保障</span><br/>
-                    <span class="three">专利的法律稳定性</span>
-                </div>
-                <div class="icon icon-25">
-                    <span class="brs"></span><br/>
-                    <span class="one"><em>最快</em>15<em>天</em></span><br/>
-                    <span class="two">即可完成交易</span><br/>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sp-4"></div>
-
-    <div class="sp-5">
-        <div class="sp-5_title">
-            两条方向（<span>交易平台/人工匹配</span>）匹配<em>最合适</em>的买家
-        </div>
-        <div class="ie7">
-            <div class="sp-5_list">
-                <h3>最新买家信息</h3>
-                <div class="jScrollBox">
-                    <div></div>
-                </div>
-            </div>
-            <div class="sp-5_list sp-5_list1">
-                <h3>最新卖家信息</h3>
-                <div class="jScrollBox1">
-                    <div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--出售已提交弹出层-->
-<div class="mj-boughtM" id="mj-submitteS">
+<!--未提交过 / 全部未提交过弹出层-->
+<div class="mj-boughtM" id="mj-submitok" style="border:0">
     <span class="ms-close mj-close"></span>
     <div class="mj-bcon f-clearfix">
         <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
         <div class="mj-bconRight">
-            <h2>恭喜，出售提交成功</h2>
-            <p>请保持电话畅通，10分钟内联系你。</p>
-            <a href="javascript:" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
-        </div>
-    </div>
-</div>
-<!--求购已提交失败弹出层-->
-<div class="mj-boughtM" id="mj-submitteF">
-    <span class="ms-close mj-close"></span>
-    <div class="mj-bcon f-clearfix">
-        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
-        <div class="mj-bconRight">
-            <h2 style="color:#ff6600">求购提交失败，请稍后重试！</h2>
-            <p>可能因为网络问题或其他原因导致</p>
-            <a href="javascript:;" class="mj-boBtn1" id="closeFailed">点此处关闭！</a>
+            <h2>您的商标已经进入出售流程</h2>
+            <p>运营人员与你联系确认后马上就能出售你的商标</p>
+            <!--<a href="" class="mj-boBtn1" style="width: 160px;">点击此处查看我的商标</a>-->
+			<a href="javascript:void(0)" class="mj-boBtn1" style="width: 160px;">确认</a>
         </div>
     </div>
 </div>
 
-<script type="text/javascript" src="<?=StaticDir?>1.2/js/pt.js"></script>
+<!--已提交过 / 全部提交过弹出层-->
+<div class="mj-boughtM" id="mj-error" style="border:0">
+    <span class="ms-close mj-close"></span>
+    <div class="mj-bcon f-clearfix">
+        <span class="mj-bconLeft"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <div class="mj-bconRight">
+            <h1>您的商标提交失败了</h1>
+            <p class="errorReason">您曾经提交过该商标的报价信息。</p>
+            <a href="javascript:void(0)" class="mj-boBtn1" style="width: 160px;">确认</a>
+        </div>
+    </div>
+</div>
+
+<script src="<?=StaticDir?>script/sell.js"></script>
+<script type="text/javascript">
+    var _isLogin = "<?=$isLogin?>";
+    var _mobile  = "<?=$userMobile?>";
+    var _number   = "<?=$number?>";
+    $(function(){
+            _number = getQueryString('id');
+            if(_number){
+                    $('.input-number').val(_number);
+                    $('.input-number').focus();
+            }
+    })
+
+    function jc(name,curr,n)
+    {
+        for(i=1;i<=n;i++)
+        {
+            var menu=document.getElementById(name+i);
+            var cont=document.getElementById("con_"+name+"_"+i);
+            menu.className=i==curr ? "on" : "";
+            if(i==curr){
+                cont.style.display="block";
+            }else{
+                cont.style.display="none";
+            }
+        }
+    }
+function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) return decodeURI(r[2]); return null;
+}
+</script>
 <? require(ViewDir.'/footer.html'); ?>

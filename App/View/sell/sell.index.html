@@ -1,107 +1,97 @@
 <? require(ViewDir.'/header.html'); ?>
-<link rel="stylesheet" href="<?=StaticDir?>style/normalize.css?v=<?=$static_version?>"/>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/patent.css?v=<?=$static_version?>"/>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>"/>
 <link rel="stylesheet" href="<?=StaticDir?>style/mg-buySell.css?v=<?=$static_version?>"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/normalize.css?v=<?=$static_version?>"/>
 	
-<!--content start-->
-<div class="g-mail">
-	<div class="w1000">
-		<div class="g-dar f-clearfix">
-			<div class="g-title f-clearfix">
-				<p class="g-title-p">
-					<em>10 大 绝 招</em>
-					<span>将你出售<b>商标价值提高</b></span>
-				</p>
-				<p class="g-title-p2">55<b>%</b></p>
-			</div>
-			<div class="g-title2 f-clearfix">
-				<p>就算未匹配到合适买家?<b>你还能获得我们 -</b></p>
-				<span>独 家 商 标 包 装 绝 招</span>
-			</div>
-			<div class="g-title3 f-clearfix">
-				<p>而且-这些都是<b>免费的</b></p>
-			</div>
-		</div>
-
-		<div class="g-bgnav f-clearfix">
-			<div class="g-bgnav-title f-clearfix">
-				<ul class="f-clearfix">
-					<li class="g-long"></li>
-					<li>商标出售登记表</li>
-					<li class="g-long"></li>
-				</ul>
-				<p class="g-bgnav-p">免费获得10大价值包装绝招</p>
-			</div>
-			<form action="/sell/addsell/" id="addsell">
-			
-			<div class="g-bgnav-nav1 f-clearfix">
-				<!--<div class="ul-alert-warning">你的商标已经进入出售流程-运营人员与你联系确认后马上就能出售你的商标</div>-->
-				<div class="g-bgnav-input1" id="j-bgnav">
-
-					<div style="margin-bottom: 10px;">
-						<ul>
-							<li class="g-int1">
-								<em class="mj-inpuV">商标号</em>
-								<input type="text" name="number[]" class="input-number" value="<?=$numid?>" />
-							</li>
-							<li class="g-int2">
-								<em class="mj-inpuV">出售底价</em>
-								<input type="text" name="price[]" class="input-price" value="" />
-								<i>元</i>
-							</li>
-							<li>
-								<a href="javascript:void(0);" class="remove" style="display: none;">x&nbsp;删除商标</a>
-							</li>
-							<li class="">
-								<a href="javascript:void(0);" class="add">+&nbsp;添加商标</a>
-							</li>
-						</ul>
-						<span style="display:none;padding: 10px 0;" class="mj-bgTips"><i class="us-icon uj_icon44"></i>请输入商标号</span>
-						<table style="display:none;" class="sbtable" >
-							<tbody>
-							<tr>
-								<td class="g-td1">商标名称：</td>
-								<td class="g-td2 sbname"></td>
-								<td class="g-td1">申请人：</td>
-								<td class="g-td2 proposer"></td>
-							</tr>
-							<tr>
-								<td class="g-td1" style="height: 130px;line-height: 130px;">商标图样：</td>
-                                <td class="g-td2 imgurl" style="height: 130px;line-height: 130px;width: 571px;">无</td>
-							</tr>
-							</tbody>
-						</table>
-					</div>
-
-
-				</div>
-			</div>
-			<div class="g-bgnav-nav1 f-clearfix">
-				<div class="g-bgnav-input1">
-					<ul>
-						<li class="g-int1 g-intp j-int1">
-                                                    <em class="mj-inpuV"><?=($userMobile?'':'你的联系电话')?></em>
-							<input type="text" name="phone" value="<?=$userMobile?>" class="input-phone" id="usrMp_popup" />
-						</li>
-						<li class="g-int2">
-							<em class="mj-inpuV">你的姓氏</em>
-							<input type="text" name="contact" id="contact" />
-						</li>
-					</ul>
-					<span style="display:none;" class="mj-bgTips" ><i class="us-icon uj_icon44"></i>请您输入正确的联系电话</span>
-					<span style="display:none;" class="mj-bgTips contact" ><i class="us-icon uj_icon44"></i>您的姓氏只能输入中文或者英文</span>
-				</div>
-				
-			</div>
-			<div class="g-bgnav-nav1 g-none f-clearfix">
-				<a href="javascript:void(0)" onclick="submitSell()" class="ms-bsSub g-bsb">马上出售</a>
-			</div>
-			</form>
-			<input type="hidden" name="sid" id="sid"  />
-			<input type="hidden" name="area" id="area" />
-		</div>
-	</div>
-</div>
-<!--获取用户信息 start-->
+   <div class="pt-sell-banner"></div>
+   <div class="pt-sell-main">
+       <ul class="pt-sell-nav">
+           <li class="on" id="nav1" onclick="jc('nav',1,2)">
+               <h4>商标出售登记表</h4>
+               <label>免费获得10大价值包装绝招</label>
+           </li>
+           <li  id="nav2" onclick="jc('nav',2,2)">
+               <h4>专利出售登记表</h4>
+               <label>帮你提升专利价值</label>
+           </li>
+       </ul>
+       <!--商标出售登记表-->
+       <form action="/sell/addsell/" id="addsell">
+       <div class="pt-sell-content" id="con_nav_1">
+           <ul class="pt-sell-list">
+               <li class="firstLi">
+                   <input placeholder="商标号" class="ptNum input-number" name="number[]"  value="<?=$numid?>"/>
+                   <div class="pt-lwp">
+                       <input placeholder="出售低价" class="pt-inp input-price" name="price[]" value="" />
+                       <span>元</span>
+                   </div>
+                   <div class="funBtn">
+                       <a class="delet remove" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
+                       <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加商标</a>
+                   </div>
+               </li>
+                    <p class="error" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
+                    <table style="display:none;" class="sbtable" >
+                            <tbody>
+                            <tr>
+                                    <td class="g-td1">商标名称：</td>
+                                    <td class="g-td2 sbname"></td>
+                                    <td class="g-td1">申请人：</td>
+                                    <td class="g-td2 proposer"></td>
+                            </tr>
+                            <tr>
+                                    <td class="g-td1" style="height: 130px;line-height: 130px;">商标图样：</td>
+                                    <td class="g-td2 imgurl" colspan="3" style="height: 130px;line-height: 130px;width: 571px;">无</td>
+                            </tr>
+                            </tbody>
+                    </table>
+           </ul>
+            
+          <div class="pt-sell-contact">
+              <div class="pt-cont-inp">
+                  <input placeholder="输入手机号方便买家联系" class="tel input-phone" name="phone" value="<?=$userMobile?>"  id="usrMp_popup" />
+                  <input placeholder="你的姓氏" class="name" name="contact" id="contact" />
+              </div>
+              <p class="error" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
+          </div>
+          <div class="pt-sellBtn">
+              <a href="javascript:void(0)" onclick="submitSell()">马上出售</a>
+          </div>
+       </div>
+        <input type="hidden" name="sid" id="sid"  />
+        <input type="hidden" name="area" id="area" />
+    </form>
+       
+       <!--专利出售登记表-->
+       <div class="pt-sell-content"  id="con_nav_2" style="display: none;">
+           <ul class="pt-sell-list">
+               <li class="firstLi">
+                   <input placeholder="专利号" class="ptNum"/>
+                   <div class="pt-lwp">
+                       <input placeholder="出售低价" class="pt-inp"/>
+                       <span>元</span>
+                   </div>
+                   <div class="funBtn">
+                       <a class="delet" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
+                       <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加商标</a>
+                   </div>
+               </li>
+           </ul>
+           <div class="pt-sell-contact">
+               <div class="pt-cont-inp">
+                   <input placeholder="输入手机号方便买家联系" class="tel"/>
+                   <input placeholder="你的姓氏" class="name"/>
+               </div>
+               <p class="error"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
+           </div>
+           <div class="pt-sellBtn">
+               <a>马上出售</a>
+           </div>
+       </div>
+   </div>
+   
+   <!--获取用户信息 start-->
 <script language="javascript" src="http://st.chofn.com/?action=sid&area=3&tid=2"></script>
 <!--获取用户信息 end-->
 <!--content end-->
@@ -151,78 +141,37 @@
     </div>
 </div>
 
-
-
-<!--未检测到对应的电话号弹出层-->
-<div class="mj-boughtM" id="mj-submittel" style="border:0">
-    <span class="ms-close mj-close"></span>
-    <div class="mj-bcon f-clearfix">
-        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
-        <div class="mj-bconRight">
-            <h2>最后一步，请输入验证码</h2>
-            <input type="text" id="buyMsgCode"/>
-            <!--不能点击状态-->
-            <!--<label class="mj-bconT mj-bclik">重新发送 60s</label>-->
-            <!--可点击状态-->
-            <label class="mj-bconT mj-clickable">发送验证码</label>
-            <span class="mj-bcTips" style="display:none;">验证码错误，请验证后输入</span>
-            <label class="mj-determineBtn">确定</label>
-        </div>
-    </div>
-</div>
-
 <script src="<?=StaticDir?>script/sell.js"></script>
-<? require(ViewDir.'/footer.html'); ?>
-<script>
-	var _isLogin = "<?=$isLogin?>";
+<script type="text/javascript">
+    var _isLogin = "<?=$isLogin?>";
     var _mobile  = "<?=$userMobile?>";
-	var _number   = "<?=$number?>";
-	/*$(function(){
-		$("input").each(function(){
-			var spanT= $(this).parent().find($(".mj-inpuV")).text();
-			$(this).focus(function(){
-				$(this).parent().find($(".mj-inpuV")).text("");
-			});
-			$(this).blur(function(){
-				if($(this).val()===""){
-					$(this).parent().find($(".mj-inpuV")).text(spanT);
-				}else{
-					$(this).parent().find($(".mj-inpuV")).text("");
-				}
-			});
-		});*/
-		
-		$(function(){
-			_number = getQueryString('id');
-			if(_number){
-				$('.input-number').val(_number);
-				$('.input-number').focus();
-			}
-		})
-		
-		
+    var _number   = "<?=$number?>";
+    $(function(){
+            _number = getQueryString('id');
+            if(_number){
+                    $('.input-number').val(_number);
+                    $('.input-number').focus();
+            }
+    })
 
-		$("#addsell").on('focus','.g-bgnav-input1 input',function(){
-			var _css = {'visibility': 'hidden'};
-			$(this).parent().find($(".mj-inpuV")).css(_css);
-		});
-		$("#addsell").on('blur','.g-bgnav-input1 input',function() {
-			var _value = $.trim(this.value);
-			var spanT = $(this).parent().find($(".mj-inpuV")).text();
-			var _inputTip = $(this).parent().find($(".mj-inpuV"));
-			var _css = {'visibility': 'hidden'};
-			var _css1 = {'visibility': 'visible'};
-
-			(_value == "") ? _inputTip.css(_css1) : _inputTip.css(_css);
-//			if ( _value == "") {
-//				$(this).parent().find($(".mj-inpuV")).text(spanT);
-//			} else {
-//				$(this).parent().find($(".mj-inpuV")).text("");
-//			}
-		});
+    function jc(name,curr,n)
+    {
+        for(i=1;i<=n;i++)
+        {
+            var menu=document.getElementById(name+i);
+            var cont=document.getElementById("con_"+name+"_"+i);
+            menu.className=i==curr ? "on" : "";
+            if(i==curr){
+                cont.style.display="block";
+            }else{
+                cont.style.display="none";
+            }
+        }
+    }
 function getQueryString(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
 		var r = window.location.search.substr(1).match(reg);
 		if (r != null) return decodeURI(r[2]); return null;
 }
 </script>
+<? require(ViewDir.'/footer.html'); ?>
