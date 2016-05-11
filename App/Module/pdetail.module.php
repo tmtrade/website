@@ -168,6 +168,30 @@ class PdetailModule extends AppModule{
     }
 
     /**
+     * 得到图片地址
+     * @param $number
+     * @return string
+     */
+    public function getPTImg($number){
+        //查看是否有美化图
+        $r['eq'] = array(
+            'number' => $number,
+        );
+        $r['col'] = array('embellish');
+        $rst = $this->import('tminfo')->find($r);
+        if($rst){
+            return TRADE_URL.$rst['embellish'];
+        }
+        //获取原始数据
+        $rst = $this->getOrginalInfo($number);
+        if(empty($rst['imgUrl'])){
+            //默认图片
+            return '/Static/images/img1.png';
+        }else{
+            return $rst['imgUrl'];
+        }
+    }
+    /**
      * 得到随机的推荐专利
      * @param int $number
      * @return mixed
@@ -183,7 +207,7 @@ class PdetailModule extends AppModule{
         //处理结果
         if($data){
             foreach($data as $k=>$item){
-                $data[$k]['url'] = '/p-'.$item['number'].'.html';
+                $data[$k]['url'] = '/pt-'.$item['number'].'.html';
                 $data[$k]['thumb_title'] = mbSub($item['title'],0,8);
             }
             return $data;
