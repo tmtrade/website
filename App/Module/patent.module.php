@@ -36,7 +36,6 @@ class PatentModule extends AppModule
         if ( $this->existSale($number) ) return false;
         $number = strtolower($number);//专利编号 带.
         $code   = $info['id'];
-
         $_class = array();
         $_group = array();
         foreach ($info['ipcs'] as $ky => $val) {
@@ -69,6 +68,7 @@ class PatentModule extends AppModule
                $class  = empty($_class) ? '' : implode(',', array_map('ord', $_class));
            }
             
+        
         $applyDate  = (int)strtotime($info['application_date']);//申请日
         $publicDate = (int)strtotime($info['earliest_publication_date']);//最早公开日
         $viewPhone  = $this->load('phone')->getRandPhone();
@@ -101,6 +101,7 @@ class PatentModule extends AppModule
             if(!empty($contact)){
                 $contactId  = $this->addContact($contact, $patentId);//添加联系人
             }
+
             if($flag1 && $contactId){
                 $this->commit('patent');
                 return $patentId;
@@ -126,47 +127,6 @@ class PatentModule extends AppModule
         return $this->import('contact')->create($data);
     }
 
-        /**
-	 * 检验出售数据的添加
-	 * 
-	 * @author	JEANY
-	 * @since	2015-11-12
-	 *
-	 * @access	public
-	 * @return	void
-	 */
-	public function checkselldata($data)
-	{
-		$result = array(
-			'status' => '-2',
-		);		
-		if ( empty($data['phone']) ){
-			$result['msg'] = '您还未输入电话，请填写';
-			$this->returnAjax($result);
-		}elseif(!preg_match("/^1[3,4,5,7,8]{1}[0-9]{9}$/",$data['phone'])){
-			$result['msg'] = '请输入正确手机号！';
-			$this->returnAjax($result);
-		}
-		foreach($data['number'] as $key => $item){
-			$item 	= trim($item);
-	        if ( $data['price'][$key] <= 0 ) {
-	        	$num['msg'] = '请输入正确价格！';
-				$this->returnAjax($num);
-	        }
-			if ( empty($item) ){
-				$result['msg'] = '您还未输入专利号，请填写';
-				$this->returnAjax($result);
-			}elseif(!preg_match('/^[0-9a-zA-Z]*$/',$item)){
-				$result['msg'] = '请输入正确专利号！';
-				$this->returnAjax($result);
-			}
-			$info   =  $this->getPatentInfoByWanxiang($item);
-                    if ( empty($info) ) {
-                            $result['msg'] = '无此专利号信息';
-                                    $this->returnAjax($result);
-                    }
-		}
-	}
 
     //判断是否出售基础信息是否存在
     public function existSale($number)

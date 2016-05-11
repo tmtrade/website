@@ -135,7 +135,7 @@ class SellAction extends AppAction
 	public function checkselldata($data)
 	{
 		$result = array(
-			'status' => '-2',
+			'state' => '-2',
 		);		
 		if ( empty($data['phone']) ){
 			$result['msg'] = '您还未输入电话，请填写';

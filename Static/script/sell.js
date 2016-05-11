@@ -66,7 +66,7 @@ $(function(){
 					return false;
 				}
 				if(obj['status'] == '-1'){
-					tip.html("<i class=\"us-icon uj_icon44\"></i>"+'您已经提交了此商标，不能重复提交');
+					tip.html('<img src="/Static/1.2/images/pt-sell-err.png">您已经提交了此商标，不能重复提交');
 					tip.show();
 					table.hide();
 					_this.val('');
@@ -85,8 +85,96 @@ $(function(){
 			}).error(function(){
 			});
 		}, 100);
-	})
+	});
 
+        var jBgnav_p = $('#con_nav_2');
+	var tiemOut_p = null;
+	jBgnav_p.on('click', '.add', function(){
+		var _parent = $(this).parent().parent().parent();
+		var _copy = _parent.clone();
+		_copy.find(".remove").removeAttr('style');
+		_copy.find('.add').css('display','none');
+		_copy.find('.error').css("display","none")
+                _copy.find('.sbtable').css("display","none")
+		_parent.after(_copy);
+		_copy.find('input').val('');
+		_copy.find('.g-td2').html('');
+		priceCheck_p();
+	}).on('click', '.remove', function(){
+		$(this).parent().parent().parent().remove();
+	});
+	jBgnav_p.on('blur', '.patent-number', function(){
+		var _val = '';
+		var _this = $(this);
+		var tip = _this.parent().next();
+               
+		if($.trim(_this.val()) == ''){
+			tip.html('<img src="/Static/1.2/images/pt-sell-err.png">请输入专利号');
+                        tip.show();
+			return false;
+		}
+		var key = 0;
+		var table =  _this.parent().next().next();
+		/**检查是否重复**/
+		$('.patent-number').each(function(index){
+			if($.trim($(this).val()) != '' && $.trim($(this).val()) == $.trim(_this.val())){
+				key ++ ;
+			}
+		})
+		if(key > 1){
+			tip.html('<img src="/Static/1.2/images/pt-sell-err.png">您已提交了该商标，请验证后重新输入。');
+			tip.show();
+			table.hide();
+			_this.val('');
+			return false;
+		}
+		/**检查是否重复**/
+		clearTimeout(tiemOut_p);
+		tiemOut_p = setTimeout(function(){
+			_val = $.trim(_this.val());
+			$.ajax({
+				url : '/patent/getselldata/',
+				data : {number:_val},
+				method: 'post',
+				dataType:"json",
+			}).done(function(data){
+				var obj = data;
+				if(obj['status'] == '2'){
+					tip.html('<img src="/Static/1.2/images/pt-sell-err.png">专利信息不存在,请重新填写');
+					tip.show();
+					table.hide();
+					_this.val('');
+					return false;
+				}
+				if(obj['status'] == '0'){
+					tip.html('<img src="/Static/1.2/images/pt-sell-err.png">该专利已在出售中');
+					tip.show();
+					table.hide();
+					_this.val('');
+					return false;
+				}
+				if(obj['status'] == '-1'){
+					tip.html('<img src="/Static/1.2/images/pt-sell-err.png">您已经提交了此专利，不能重复提交');
+					tip.show();
+					table.hide();
+					_this.val('');
+					return false;
+				}
+				
+				table.removeAttr('style');
+				tip.hide();
+				$.each(obj,function(item,value){
+					if(item == 'imgurl'){
+						table.find('.imgurl').html('<img src="'+value+'" style="width:120px;height:100px;border:0;" onerror="this.src=\'http://g.chaofan.wang/guanjia/Public/Images/default_big.jpg\'" />');
+					}else{
+						table.find('.'+item).html(value);
+					}
+				})
+			}).error(function(){
+			});
+		}, 100);
+	});
+        
 	//手机验证码输入确认
 	$(".mj-determineBtn").click(function (){
 		var code    = $.trim($("#buyMsgCode").val());
@@ -181,9 +269,39 @@ $(function(){
 			tip.hide();
 		}
 	})
+        
+        priceCheck_p();
+	//价格循环检查
+	function priceCheck_p(){
+		$('.patent-price').bind("blur",function(){
+			var thisval = $(this).val();
+			var preg = /^[1-9][\d]{0,7}$/;
+			var tip = $(this).parent().parent().next();
+			if(!preg.test(thisval)){
+				$(this).val('');
+				tip.html('<img src="/Static/1.2/images/pt-sell-err.png">专利出售底价不正确');
+				tip.show();
+			}else{
+				tip.hide();
+			}
+		})
+	}
 
+	$('.patent-phone').bind("blur",function(){
+		var thisval = $(this).val();
+		var preg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+		var tip = $(this).parent().next();
+		if(!preg.test(thisval)){
+			$(this).val('');
+			tip.html("<img src='/Static/1.2/images/pt-sell-err.png'>请您输入正确的联系电话");
+			tip.show();
+		}else{
+			tip.hide();
+		}
+	})
+        
 	//验证姓名，只能输入数字和英文
-	$('#contact').bind("blur",function(){
+	$('.name').bind("blur",function(){
 		contact($(this));
 	});
 });
@@ -214,22 +332,19 @@ function contact(obj){
 }
 
 
-//检查提交数据
+//商标检查提交数据
 function submitSell(){
-
-	var flag = checks($('.input-number'));
+	var flag = checks($('.input-number'),1);
 	if(flag){
-		flag = checks($('.input-price'));
+		flag = checks($('.input-price'),1);
 	}
 	if($('.input-phone').val() == '' && flag){
 		$('.input-phone').focus();
 		flag = false;
 	}
-
 	if(flag){
-		flag = contact($('#contact'));
+		flag = contact($('.name'));
 	}
-
 	if(flag === true){
 		//if ( !_isLogin ){
 		//	getLayer($('#mj-submittel'));
@@ -268,11 +383,69 @@ function addSell(){
 	});
 }
 
-function checks(obj){
+//专利检查提交数据
+function submitPatentSell(){
+	var flag = checks($('.patent-number'),2);
+	if(flag){
+		flag = checks($('.patent-price'),2);
+	}
+	if($('.patent-phone').val() == '' && flag){
+		$('.patent-phone').focus();
+		flag = false;
+	}
+	if(flag){
+		flag = contact($('.name'));
+	}
+	if(flag === true){
+			patentSell();
+	}else{
+		return flag;
+	}
+}
+
+function patentSell(){
+	var content = $('#patentsell').serialize();
+	var index = layer.load(1, {
+	    shade: [0.1,'#fff'] //0.1透明度的白色背景
+	});
+	$.ajax({
+		type: "post",
+		url: "/patent/addsell",
+		data: content,
+		dataType: "json",
+		success: function(data){
+			layer.close(index);
+			if (data.state == 1){
+				sellok(data);
+			}else if (data.state == -2){
+				var msg = data.msg == undefined ? '提交的数据不正确' : data.msg;
+				sellNo(msg);
+			}else{
+				str = "操作失败，请稍后重试";
+				sellNo(str);
+			}
+		}
+	});
+}
+function checks(obj,type){
 	var result = true;
 	obj.each(function(){
 		if($(this).val() == '' || $(this).val() == obj.attr('placeholder')){
 			$(this).focus();
+                        var tip = $(this).parent().next();
+                        if($(this).attr("name")=="price[]"){
+                             var tip = $(this).parent().parent().next();
+                             tip.html('<img src="/Static/1.2/images/pt-sell-err.png">出售底价不正确');
+                        }else{
+                             var tip = $(this).parent().next();
+                             if(type==1){
+                                    tip.html('<img src="/Static/1.2/images/pt-sell-err.png">请输入商标号');
+                                }else{
+                                    tip.html('<img src="/Static/1.2/images/pt-sell-err.png">请输入专利号');
+                            }
+                        }
+                        
+                        tip.show();
 			result = false;
 		}
 	})

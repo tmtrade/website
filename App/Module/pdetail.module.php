@@ -92,7 +92,7 @@ class PdetailModule extends AppModule{
      * @param $type 1为获得申请人和描述 2为获取原始数据
      * @return array
      */
-    private function handleOrginal($data,$type){
+    function handleOrginal($data,$type){
         $rst = array();
         //仅仅获得申请人和描述
         if($type==1){

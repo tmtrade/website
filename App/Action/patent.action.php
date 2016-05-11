@@ -107,9 +107,9 @@ class PatentAction extends AppAction{
 			if($isSale) $this->returnAjax(array('status'=>'-1'));
 		}
                 
-                $patentId = $this->load('patent')->existSale($number);
-		if ( $patentId ) $this->returnAjax(array('status'=>'0'));//在出售中
-                $pinfo = $this->load('patent')->handleOrginal($info,1);
+                // $patentId = $this->load('patent')->existSale($number);
+                //if ( $patentId ) $this->returnAjax(array('status'=>'0'));//在出售中
+                $pinfo = $this->load('pdetail')->handleOrginal($info,1);
                 $result['status'] 	= "1";
                 $result['sbname']	= $pinfo['title'];
                 $result['proposer']	= $pinfo['proName'];
@@ -135,10 +135,11 @@ class PatentAction extends AppAction{
 		$num['error'] 	= 0;
 		if ( empty($data['number']) || empty($data['phone']) ){
 			$num['state'] = -2;
+                        $num['msg'] = $data['number'];
 			$this->returnAjax($num);
 		}
 		//检查传过来的数据
-		$this->load('patent')->checkselldata($data);
+		$this->checkselldata($data);
 
 		//判断成功后进行处理
 		$phone 	= $data['phone'];
@@ -162,16 +163,16 @@ class PatentAction extends AppAction{
                         $dataContat['name']         = $data['contact'];
                         $dataContat['saleType']     = 1;
                         $dataContat['number']       = $item;
-                        $dataContat['price']        = $data['price'];
+                        $dataContat['price']        = $data['price'][$key];
                         $dataContat['userId']       = 0;
-                        $dataContat['isVerify']     = 1;
+                        $dataContat['isVerify']     = 2;
                         $dataContat['date']         = time();
 			if ( $isSale ){//已存在商品，则添加联系人信息
 				$saleBContact = $this->load('patent')->getSaleContactByPhone($item,$phone);
                                 //如果没有这个联系人，就写入这个联系人信息
                                 if(!$saleBContact){
                                         $dataContat['patentId']     = $isSale;
-                                        $result = $this->load('patent')->addContact($dataContat,$isSale);
+                                        $isOk = $this->load('patent')->addContact($dataContat,$isSale);
                                 }
 			}else{//创建商品
                                 $info = $this->load('patent')->getPatentInfoByWanxiang($item);
@@ -186,6 +187,45 @@ class PatentAction extends AppAction{
 		}
 		$num['all'] = $num['num'] + $num['old'] + $num['error'];
 		echo json_encode($num);
+	}
+        
+        /**
+	 * 检验出售数据的添加
+	 * 
+	 * @author	JEANY
+	 * @since	2015-11-12
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	public function checkselldata($data)
+	{
+		$result = array(
+			'state' => '-2',
+		);		
+		if ( empty($data['phone']) ){
+			$result['msg'] = '您还未输入电话，请填写';
+			$this->returnAjax($result);
+		}elseif(!preg_match("/^1[3,4,5,7,8]{1}[0-9]{9}$/",$data['phone'])){
+			$result['msg'] = '请输入正确手机号！';
+			$this->returnAjax($result);
+		}
+		foreach($data['number'] as $key => $item){
+			$item 	= trim($item);
+	        if ( $data['price'][$key] <= 0 ) {
+	        	$num['msg'] = '请输入正确价格！';
+				$this->returnAjax($num);
+	        }
+                if ( empty($item) ){
+                        $result['msg'] = '您还未输入专利号，请填写';
+                        $this->returnAjax($result);
+                }
+                $info   =  $this->load('patent')->getPatentInfoByWanxiang($item,2);
+                if ( empty($info['id']) ) {
+                        $result['msg'] = '无此专利号信息';
+                        $this->returnAjax($result);
+                }
+            }
 	}
 
 }

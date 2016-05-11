@@ -50,8 +50,8 @@
             
           <div class="pt-sell-contact">
               <div class="pt-cont-inp">
-                  <input placeholder="输入手机号方便买家联系" class="tel input-phone" name="phone" value="<?=$userMobile?>"  id="usrMp_popup" />
-                  <input placeholder="你的姓氏" class="name" name="contact" id="contact" />
+                  <input placeholder="输入手机号方便买家联系" class="tel input-phone" name="phone" value="<?=$userMobile?>" />
+                  <input placeholder="你的姓氏" class="name" name="contact"  />
               </div>
               <p class="error" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
           </div>
@@ -64,31 +64,49 @@
     </form>
        
        <!--专利出售登记表-->
-       <div class="pt-sell-content"  id="con_nav_2" style="display: none;">
+       <form action="/patent/addsell/" id="patentsell">
+       <div class="pt-sell-content" id="con_nav_2" style="display: none;">
            <ul class="pt-sell-list">
                <li class="firstLi">
-                   <input placeholder="专利号" class="ptNum"/>
+                   <input placeholder="专利号" class="ptNum patent-number" name="number[]"  value="<?=$numid?>"/>
                    <div class="pt-lwp">
-                       <input placeholder="出售低价" class="pt-inp"/>
+                       <input placeholder="出售低价" class="pt-inp patent-price" name="price[]" value="" />
                        <span>元</span>
                    </div>
                    <div class="funBtn">
-                       <a class="delet" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
-                       <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加商标</a>
+                       <a class="delet remove" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
+                       <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加专利</a>
                    </div>
                </li>
+                    <p class="error" style="display: none;"></p>
+                    <table style="display:none;" class="sbtable" >
+                            <tbody>
+                            <tr>
+                                    <td class="g-td1">专利名称：</td>
+                                    <td class="g-td2 sbname"></td>
+                                    <td class="g-td1">申请人：</td>
+                                    <td class="g-td2 proposer"></td>
+                            </tr>
+                            <tr>
+                                    <td class="g-td1" style="height: 130px;line-height: 130px;">专利图样：</td>
+                                    <td class="g-td2 imgurl" colspan="3" style="height: 130px;line-height: 130px;width: 571px;">无</td>
+                            </tr>
+                            </tbody>
+                    </table>
            </ul>
-           <div class="pt-sell-contact">
-               <div class="pt-cont-inp">
-                   <input placeholder="输入手机号方便买家联系" class="tel"/>
-                   <input placeholder="你的姓氏" class="name"/>
-               </div>
-               <p class="error"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
-           </div>
-           <div class="pt-sellBtn">
-               <a>马上出售</a>
-           </div>
+            
+          <div class="pt-sell-contact">
+              <div class="pt-cont-inp">
+                  <input placeholder="输入手机号方便买家联系" class="tel patent-phone" name="phone" value="<?=$userMobile?>"  id="usrMp_popup" />
+                  <input placeholder="你的姓氏" class="name" name="contact" id="contact" />
+              </div>
+              <p class="error" style="display: none;"></p>
+          </div>
+          <div class="pt-sellBtn">
+              <a href="javascript:void(0)" onclick="submitPatentSell()">马上出售</a>
+          </div>
        </div>
+    </form>
    </div>
    
    <!--获取用户信息 start-->
@@ -102,11 +120,11 @@
     <div class="mj-bcon f-clearfix">
         <span class="mj-bconLeft"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
         <div class="mj-bconRight">
-            <h1>您的商标已经进入出售流程</h1>
+            <h1>您的商品已经进入出售流程</h1>
             <p>
 				您共提交了<em class="allsell"> 5 </em>条商标信息，其中<em class="oldsell"> 2 </em>条曾有报价。<br/>
                 其中<em class="errorsell"> 1 </em>条未成功。<br/>
-                其余<em class="newsell"> 0 </em>条报价已经成功提交。运营人员与您确认后<br/>马上就能出售您的商标
+                其余<em class="newsell"> 0 </em>条报价已经成功提交。运营人员与您确认后<br/>马上就能出售您的商品
 				
             </p>
             <a href="javascript:void(0)" class="mj-boBtn1" style="width: 160px;">确认</a>
@@ -120,8 +138,8 @@
     <div class="mj-bcon f-clearfix">
         <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
         <div class="mj-bconRight">
-            <h2>您的商标已经进入出售流程</h2>
-            <p>运营人员与你联系确认后马上就能出售你的商标</p>
+            <h2>您的商品已经进入出售流程</h2>
+            <p>运营人员与你联系确认后马上就能出售你的商品</p>
             <!--<a href="" class="mj-boBtn1" style="width: 160px;">点击此处查看我的商标</a>-->
 			<a href="javascript:void(0)" class="mj-boBtn1" style="width: 160px;">确认</a>
         </div>
@@ -134,8 +152,8 @@
     <div class="mj-bcon f-clearfix">
         <span class="mj-bconLeft"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
         <div class="mj-bconRight">
-            <h1>您的商标提交失败了</h1>
-            <p class="errorReason">您曾经提交过该商标的报价信息。</p>
+            <h1>您的商品提交失败了</h1>
+            <p class="errorReason">您曾经提交过该商品的报价信息。</p>
             <a href="javascript:void(0)" class="mj-boBtn1" style="width: 160px;">确认</a>
         </div>
     </div>
