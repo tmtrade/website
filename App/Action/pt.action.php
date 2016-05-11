@@ -22,6 +22,18 @@ class PtAction extends AppAction
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
         $this->setSeo(4);
+
+        $list = $this->load('pt')->getPtList(array(), 1, $this->rowNum);
+
+        $ptClass    = C('PATENT_TYPE');
+        $ptOne      = C('PATENT_ClASS_ONE');
+        $ptTwo      = C('PATENT_ClASS_TWO');
+
+
+        $this->set('list', $list['rows']);//专利类型
+        $this->set('total', $list['total']);//专利类型
+        $this->set('_CLASS', $ptClass);//专利类型
+        $this->set('_CLASS_ALL', $ptOne+$ptTwo);//专利类型
         $this->display();
     }
     
