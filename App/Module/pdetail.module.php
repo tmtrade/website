@@ -18,13 +18,14 @@ class PdetailModule extends AppModule{
     /**
      * 得到销售中的专利信息
      * @param $number
+     * @param bool $flag 是否字段缓存 默认缓存
      * @return array
      */
-    public function getPatentInfo($number){
+    public function getPatentInfo($number,$flag=true){
         $r['eq'] = array(
             'number' => $number,
         );
-        $info = $this->import('patent')->find($r);
+        $info = $this->import('patent')->setCache($flag)->find($r);
         if ( empty($info) ) return array();
         //获得申请人和描述
         $info += $this->getOrginalInfo($number);
@@ -75,7 +76,8 @@ class PdetailModule extends AppModule{
                 $this->import('ptlist')->create($_data);
             }
         }
-        if($data){
+        //结果为有效数据
+        if(!empty($data) && !empty($data['id'])){
             $data = $this->handleOrginal($data,$type);
         }else{
             return false;
@@ -99,8 +101,12 @@ class PdetailModule extends AppModule{
             //专利介绍
             $rst['intro'] = empty($data['abstract']['original'])?$data['abstract']['en']:$data['abstract']['original'];
             //图片
-            $token = $this->requests('http://wanxiang.chaofan.wang/?t=accessToken','GET',array(),false);
-            $rst['imgUrl'] = 'https://user.wanxiangyun.net/client/figure/'.$data['figures'][0].'?access_token='.$token;
+            if(empty($data['figures'][0])){
+                $rst['imgUrl'] = '';
+            }else{
+                $token = $this->requests('http://wanxiang.chaofan.wang/?t=accessToken','GET',array(),false);
+                $rst['imgUrl'] = 'https://user.wanxiangyun.net/client/figure/'.$data['figures'][0].'?access_token='.$token;
+            }
             return $rst;
         }
         //专利标题
@@ -152,8 +158,12 @@ class PdetailModule extends AppModule{
         //专利介绍
         $rst['intro'] = empty($data['abstract']['original'])?$data['abstract']['en']:$data['abstract']['original'];
         //图片
-        $token = $this->requests('http://wanxiang.chaofan.wang/?t=accessToken','GET',array(),false);
-        $rst['imgUrl'] = 'https://user.wanxiangyun.net/client/figure/'.$data['figures'][0].'?access_token='.$token;
+        if(empty($data['figures'][0])){
+            $rst['imgUrl'] = '';
+        }else{
+            $token = $this->requests('http://wanxiang.chaofan.wang/?t=accessToken','GET',array(),false);
+            $rst['imgUrl'] = 'https://user.wanxiangyun.net/client/figure/'.$data['figures'][0].'?access_token='.$token;
+        }
         return $rst;
     }
 
@@ -173,7 +183,7 @@ class PdetailModule extends AppModule{
         //处理结果
         if($data){
             foreach($data as $k=>$item){
-                $data[$k]['url'] = ''.$item['number'];
+                $data[$k]['url'] = '/p-'.$item['number'].'.html';
                 $data[$k]['thumb_title'] = mbSub($item['title'],0,8);
             }
             return $data;

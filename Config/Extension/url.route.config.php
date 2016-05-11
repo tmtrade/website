@@ -11,6 +11,14 @@ $rules[] = array(
         'short' => '#((\d+-)([\w-])*)#',
         ),
 );
+//定义专利详情规则
+$rules[] = array(
+    '#/p-#',
+    array('mod' => 'patent', 'action' => 'view'),
+    array(
+        'short' => '#(-\w+(\.[\dxX])?)#',
+    ),
+);
 //定义文章相关规则
 //详情页
 $rules[] = array(

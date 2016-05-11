@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/patent.css?v=<?=$static_version?>" />
 <!--弹窗css-->
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css?v=<?=$static_version?>"/>
-<!--商标详情介绍-->
+<!--专利详情介绍-->
 <div class="brand-details f-clearfix">
     <div class="w1180">
         <div class="fl fl-details">
@@ -175,7 +175,7 @@
 <div style="display: none">
     <a id="wodediv" href="" target="_blank">1</a>
 </div>
-<!--商标详情主要内容-->
+<!--专利详情主要内容-->
 <div class="w1180 details-main" style="padding-top: 25px;">
     <!--左边-->
     <!--重点提示  左边这部分全换哈！-->
@@ -242,7 +242,7 @@
     <!--右边-->
     <div class="intr-flow fr">
         <p class="intr-flow-tit">
-            <a href="#sbjj" class="on">商标介绍</a>
+            <a href="#sbjj" class="on">专利介绍</a>
             <a class="" href="#jylc">交易流程</a>
         </p>
         <div class="detail-recom-main">
@@ -597,6 +597,7 @@
         if(!tel || !mobilereg.test(tel) || tel.length!=11){
             $('#telInput2').addClass('ddw_input');
             $('#telInput2').val('请输入正确的手机号');
+            layer.closeAll('loading');
             return false;
         }
         //获得数据

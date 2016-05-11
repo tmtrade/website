@@ -25,10 +25,11 @@ class PatentAction extends AppAction{
      */
     public function view(){
         //获取参数
-        $number = $this->input('t', 'string', '');
+        $number = $this->input('short', 'string', '');
+        $number = ltrim($number,'-');
         $number = strtolower($number);
         //获得专利基本信息
-        $info = $this->load('pdetail')->getPatentInfo($number);
+        $info = $this->load('pdetail')->getPatentInfo($number,false);
         //得到专利包装信息
         $isSale = true;
         if($info){
@@ -81,9 +82,5 @@ class PatentAction extends AppAction{
         $this->set("number", $number);
         $this->display();
     }
-    public function test(){
-        $number = $this->input('t', 'string', '');
-        $data = $this->load('pdetail')->getOrginalInfo($number,2);
-        var_dump($data);
-    }
+
 }
