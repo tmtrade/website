@@ -1,0 +1,26 @@
+<?foreach ($list as $k => $v) {?>
+
+    <li>
+       <span class="pt-fil-pic">
+           <img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" >
+       </span>
+        <div class="pt-fil-des">
+            <h6 title="<?=$v['title']?>"><?=mb_substr($v['title'], 0, 24, 'utf-8')?></h6>
+            <p>专利申请号：<label><?=strtoupper($v['number'])?></label></p>
+            <p>专利类型：<label><?=$v['typeName']?></label></p>
+            <p>行业分类：<label title="<?=$v['className']?>"><?=mb_substr($v['className'], 0, 24, 'utf-8')?></label></p>
+        </div>
+        <div class="pt-fil-price">
+            <?if ($v['price'] <= 0){?>
+            <p class="pri-pt"><b>议价</b></p>
+            <?}else{?>
+            <p class="pri-pt"><label>¥</label><b><?=$v['price']?></b></p>
+            <?}?>
+        </div>
+        <div class="pt-fil-zx">
+            <a class="enq" href="">询 价</a>
+            <a class="cont" href="">联系卖家</a>
+        </div>
+    </li>
+
+<?}?>

@@ -10,25 +10,56 @@
     <div class="ms-filterResults">
         <span>全部结果&nbsp;&gt;</span>
         <ul class="ms-filterResultsList f-clearfix">
-            <? if ( $kw ) { ?>
-                <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+            <? if ( $t ) { ?>
+                <li title="<?=$t_title?>"><a href="javascript:void(0);" onclick="createUrl('_type', '');"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+            <? } ?>
+            <? if ( $c ) { ?>
+                <li title="<?=$c_title?>"><a href="javascript:void(0);" onclick="createUrl('_class', '');"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
             <? } ?>
         </ul>
     </div>
     <div class="ms-condition">
+        <?if ( empty($t) ){?>
         <div class="ms-conditionList">
-            <span>专利分类</span>
+            <span>专利类型</span>
+            <div class="ms-conditionList-main ms-setHeight">
+                <ul class="f-clearfix ms-conditionRadio">
+                    <li><a href="javascript:void(0);" onclick="createUrl('_type','0');return false;">全部</a></li>
+                    <?foreach ($_TYPE as $k => $v) {?>
+                    <li><a href="javascript:void(0);" onclick="createUrl('_type','<?=$k?>');return false;"><?=$v?></a></li>
+                    <?}?>            
+                </ul>
+                <ul class="f-clearfix ms-conditionCheckbox cc_all2">
+                    <?foreach ($_TYPE as $k => $v) {?>
+                    <li><input type="checkbox" value="<?=$k?>" id="class-checkbox<?=$k?>" name="class-checkbox<?=$k?>">
+                        <label for="class-checkbox<?=$k?>"><?=$v?></label></li>
+                    <?}?>
+                </ul>
+                <div class="ms-condition-btn">
+                    <a href="javascript:void(0);" tname="_type">确定</a>
+                    <span onclick="cancelFun(this);">取消</span>
+                </div>
+                <div class="ms-conditionBtn">
+                    <span class="ms-multi" onclick="multi(this);">多选</span>
+                </div>
+            </div>
+        </div>
+        <?}?>
+        <?$_tp = array_filter(array_unique(explode(',', $t)));
+        if ( count($_tp) == 1 && empty($c) ){?>
+        <div class="ms-conditionList">
+            <span>类型分类</span>
             <div class="ms-conditionList-main ms-setHeight">
                 <ul class="f-clearfix ms-conditionRadio">
                     <li><a href="javascript:void(0);" onclick="createUrl('_class','0');return false;">全部</a></li>
                     <?foreach ($_CLASS as $k => $v) {?>
-                    <li><a href="javascript:void(0);" onclick="createUrl('_class','<?=$k?>');return false;"><?=$v?></a></li>
+                    <li title="<?=$v?>"><a href="javascript:void(0);" onclick="createUrl('_class','<?=$k?>');return false;"><?=mb_substr($v,0,8,'utf-8')?></a></li>
                     <?}?>            
                 </ul>
                 <ul class="f-clearfix ms-conditionCheckbox cc_all2">
                     <?foreach ($_CLASS as $k => $v) {?>
-                    <li><input type="checkbox" value="<?=$k?>" id="class-checkbox<?=$k?>" name="class-checkbox<?=$k?>">
-                        <label for="class-checkbox<?=$k?>"><?=$v?></label></li>
+                    <li title="<?=$v?>"><input type="checkbox" value="<?=$k?>" id="class-checkbox<?=$k?>" name="class-checkbox<?=$k?>">
+                        <label for="class-checkbox<?=$k?>"><?=mb_substr($v,0,8,'utf-8')?></label></li>
                     <?}?>
                 </ul>
                 <div class="ms-condition-btn">
@@ -40,37 +71,38 @@
                 </div>
             </div>
         </div>
+        <?}?>
     </div>
 </div>
 <!-- ms-filters end -->
 <!-- ms-filterSearch start -->
 <div class="ms-filterSearchMain f-clearfix">
     <p>共有<span><?=$total?></span>个商标</p>
-    <div class="ms-filterSearch">
+    <!--<div class="ms-filterSearch">-->
         <!--[if !IE]><!-->
-        <input type="text" id="research" placeholder="在结果中搜索">
+        <!--<input type="text" id="research" placeholder="在结果中搜索">-->
         <!--<![endif]-->
         <!--[if IE]>
         <input type="text" value="在结果中搜索" onblur="if(value == ''){value = '在结果中搜索'}" onfocus="if(value == '在结果中搜索'){value = ''}" />
         <![endif]-->
-        <a href="javascript:void(0);" onclick="reSearch();return false;"><i class="us-icon us-icon21"></i></a>
-    </div>
+        <!--<a href="javascript:void(0);" onclick="reSearch();return false;"><i class="us-icon us-icon21"></i></a>-->
+    <!--</div>-->
 </div>
 <!-- ms-filterSearch end -->
 <!-- ms-filtersList start -->
 <div class="pt-filtrate">
-    <ul>
+    <ul id="s-all-list">
     <?foreach ($list as $k => $v) {?>
 
         <li>
            <span class="pt-fil-pic">
-               <img src="<?StaticDir?>1.2/images/exp-list.jpg">
+               <img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" >
            </span>
             <div class="pt-fil-des">
-                <h6><?=mb_substr($v['title'], 0, 16, 'utf-8')?></h6>
-                <p>专利申请号：<label><?=$v['number']?></label></p>
+                <h6 title="<?=$v['title']?>"><?=mb_substr($v['title'], 0, 24, 'utf-8')?></h6>
+                <p>专利申请号：<label><?=strtoupper($v['number'])?></label></p>
                 <p>专利类型：<label><?=$v['typeName']?></label></p>
-                <p>行业分类：<label><?=$v['className']?></label></p>
+                <p>行业分类：<label title="<?=$v['className']?>"><?=mb_substr($v['className'], 0, 24, 'utf-8')?></label></p>
             </div>
             <div class="pt-fil-price">
                 <?if ($v['price'] <= 0){?>
@@ -87,12 +119,17 @@
 
     <?}?>
     </ul>
+
 </div>
+<div id="s-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
 <!-- ms-filtersList end -->
 
 <!--<div id="s-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="http://f2.chofn.net/yzc/Static/images/loading.gif"></div>-->
 <!--<button type="button" onclick="changeDD();"></button>-->
 </div>
+
+<div id="_tmpDiv" style="display:none"></div>
+
 <!-- ms-filterMain end -->
 <!-- ms-recommend start -->
 <div class="pt-choice">
@@ -200,6 +237,7 @@
 </div>
 
 </div><span class="layui-layer-setwin"></span></div>
+<script src="<?=StaticDir?>script/objurl.js"></script>
 <script type="text/javascript">
     //初始化更多
     var minHeight = 40; //最小高度
@@ -207,6 +245,7 @@
     var conditionList = conditionDom.find('.ms-conditionList-main');
     var setHeight = 'ms-setHeight';
     var curCls = 'cur';
+
     function initMore(isTure){
         conditionList.each(function(){
             var $this = $(this);
@@ -220,6 +259,7 @@
             conditionBtn.append(conditionMore);
         });
     }
+
     initMore(true);
 
     //多选
@@ -284,6 +324,88 @@
         }
     });
 
+
+    var _start      = 1;
+    var _whereStr   = "<?=$whereStr?>";
+    var _moreUrl    = '/<?=$_mod_?>/getMore/';
+    var _url        = '/<?=$_mod_?>/?';
+    var _urlSearch  = '/<?=$_mod_?>/?';
+    var _hasSale    = "<?=$has?>";
+    var _times      = 0;
+    var _objTime ;
+
+    //处理URL
+    function createUrl(parameter,value){
+        $(this).addClass("cilk");
+
+        var obj = new objURL('/?'+_whereStr);
+
+        switch(parameter){
+            case "_type" :
+                obj.set('t', value);
+                if ( value == '' || value == 0 ) obj.set('c', '');
+                break;
+            case "_class" :
+                obj.set('c', value);
+                break;
+        }        
+        var params = obj.strparams();
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        var allurl = _url + params;
+        setTimeout(function(){
+            window.location.href = allurl;
+            layer.close(index);
+        },400);
+    }
+
+    //加载剩余数据
+    function loadMore(){
+        //出售与商标库都没有了
+        if ( !_hasSale ) return false;
+
+        $('#s-uploading').show();
+        //是否已经在请求中
+        if ( _times != 0 ) return false; 
+
+        var obj = new objURL('/?'+_whereStr);
+
+        _start++;
+        _times = 1;
+
+        _objTime    = setTimeout(function(){_times = 0;},30000);
+
+        //当滚动3页时, 显示推荐商标的广告图
+        if(_start==3){
+            //$('.fdkf-ss').click();
+        }
+        obj.set('_p', _start);
+        var params = obj.getparams();
+        console.log(params);
+        $("#_tmpDiv").load(_moreUrl, params, function(data,status,xml){
+            if (data) {
+                $("#_tmpDiv").html('');
+                $('#s-uploading').hide();
+                clearTimeout(_objTime);
+                $("#s-all-list").append(data);
+                _times = 0;
+            }else{
+                _hasSale = false;
+                _times = 0;
+                $('#s-uploading').hide();
+            }
+        });
+    }
+
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        if (scrollHeight - scrollTop - windowHeight < 650)  {
+            loadMore();
+        }
+    });
 
 </script>
 

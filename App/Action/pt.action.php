@@ -21,19 +21,111 @@ class PtAction extends AppAction
         $this->set('title', $this->pageTitle);//页面title
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
-        $this->setSeo(4);
+        //$this->setSeo(4);
 
-        $list = $this->load('pt')->getPtList(array(), 1, $this->rowNum);
+        $page   = $this->input('page', 'int', 1);
+        $type   = $this->input('t', 'string', '');
+        $class  = $this->input('c', 'string', '');
 
-        $ptClass    = C('PATENT_TYPE');
+        $_type  = array_filter( array_unique( explode(',', $type) ) );
+        $_class = array_filter( array_unique( explode(',', $class) ) );
+
+        if ( empty($type) && empty($class) ){
+            $params = array();
+        }else{
+            $params = array(
+                'type'      => count($_type) > 1 ? $_type : current($_type),
+                'class'     => implode(',', $_class),
+                );
+        }
+        //debug($params);
+        $_whereArr = array(
+            't'     => $type,
+            'c'     => $class
+            );
+        $whereStr = http_build_query($_whereArr);
+
+        $list = $this->load('pt')->getPtList($params, $page, $this->rowNum);
+
+        $ptType     = C('PATENT_TYPE');
         $ptOne      = C('PATENT_ClASS_ONE');
         $ptTwo      = C('PATENT_ClASS_TWO');
 
+        if ( count($_type) == 1 ){
+            (current($_type) == 3) ? $this->set('_CLASS', $ptTwo) : $this->set('_CLASS', $ptOne);
+        }
+        
+        list($t_title, $c_title) = $this->getWhereTitle($type, $class);
+        $this->set('t_title', $t_title);
+        $this->set('c_title', $c_title);
 
+        if ( !empty($list['rows']) ){
+            $this->set('has', true);
+        }
+
+        $this->set('t', $type);
+        $this->set('c', $class);
+        $this->set('whereStr', $whereStr);//专利类型
         $this->set('list', $list['rows']);//专利类型
         $this->set('total', $list['total']);//专利类型
-        $this->set('_CLASS', $ptClass);//专利类型
-        $this->set('_CLASS_ALL', $ptOne+$ptTwo);//专利类型
+        $this->set('_TYPE', $ptType);//专利类型
+        $this->display();
+    }
+
+    protected function getWhereTitle($type, $class)
+    {
+        $ptType     = C('PATENT_TYPE');
+        $ptOne      = C('PATENT_ClASS_ONE');
+        $ptTwo      = C('PATENT_ClASS_TWO');
+
+        $_type      = array_filter( array_unique( explode(',', $type) ) );
+        $_class     = array_filter( array_unique( explode(',', $class) ) );
+        $_className = $_typeName = array();
+        if ( count($_type) == 1 ){
+            $_ty = current($_type);
+            array_push($_typeName, $ptType[$_ty]);
+            foreach ($_class as $k => $v) {
+                $_ty == 3 ? array_push($_className, $ptTwo[$v]) : array_push($_className, $ptOne[$v]);
+            }
+        }else{
+            foreach ($_type as $k => $v) {
+                array_push($_typeName, $ptType[$v]);
+            }
+        }
+
+        return array(implode(',', $_typeName), implode(',', $_className));
+    }
+
+
+    /**
+     * 获取加载数据
+     *
+     * 处理数据加载时，返回相应数据
+     * 
+     * @author  Xuni
+     * @since   2016-03-08
+     *
+     * @return  void
+     */
+    public function getMore()
+    {
+        $page   = $this->input('_p', 'int', 2);
+        $type   = $this->input('t', 'string', '');
+        $class  = $this->input('c', 'string', '');
+
+        $_type  = array_filter( array_unique( explode(',', $type) ) );
+        $_class = array_filter( array_unique( explode(',', $class) ) );
+
+        if ( empty($type) && empty($class) ){
+            $params = array();
+        }else{
+            $params = array(
+                'type'      => implode(',', $_type),
+                'class'     => implode(',', $_class),
+                );
+        }
+        $res = $this->load('pt')->getPtList($params, $page, $this->rowNum);
+        $this->set('list', $res['rows']);
         $this->display();
     }
     

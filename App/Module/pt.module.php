@@ -37,13 +37,17 @@ class PtModule extends AppModule
         $r['raw'] = ' 1 ';
 
         //分类
-        if ( !empty($params['type']) && empty($params['type']) ){
-            $r['eq']['type'] = $params['type'];
-        }
+        if ( !empty($params['type']) ){
+            if ( is_array($params['type']) ){
+                $r['in']['type'] = $params['type'];
+            }else{
+                $r['eq']['type'] = $params['type'];
 
-        //群组
-        if ( !empty($params['class']) && !empty($params['class']) ){
-            $r['ft']['class'] = $params['class'];
+                if ( !empty($params['class']) && $params['type'] != 3 ){
+                    $_class = explode(',', $params['class']);
+                    $r['ft']['class'] = implode(',', array_map('ord', $_class));
+                }
+            }
         }
 
         $r['eq']['status']  = 1;
@@ -104,7 +108,7 @@ class PtModule extends AppModule
      *
      * @return  array
      */
-    public function getTips($data)
+    public function getTips($data, $img=true)
     {
         //$data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';
         
@@ -127,6 +131,7 @@ class PtModule extends AppModule
 
         $data['typeName']   = $ptType[$data['type']];
         $data['className']  = implode(',', $_className);
+        //if ($img) $data['imgUrl']     = $this->load('ptdetail')->getPTImg($data['number']);
 
         return $data;
     }
