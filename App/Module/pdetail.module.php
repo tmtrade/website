@@ -179,7 +179,7 @@ class PdetailModule extends AppModule{
         );
         $r['col'] = array('embellish');
         $rst = $this->import('tminfo')->find($r);
-        if($rst){
+        if(!empty($rst['embellish'])){
             return TRADE_URL.$rst['embellish'];
         }
         //获取原始数据
