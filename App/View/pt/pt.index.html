@@ -241,24 +241,17 @@
 <div class="choice-popup" id="choice-popup" style="display: none;">
     <div class="layui-layer-content">
         <div class="layui-layer-wrap" style="display: block;">
-            <span class="chaofan-mj-close" id="chaofan-mj-close"></span>
-
+            <span class="chaofan-mj-close" id="chaofan-mj-close"></span> 
             <div style="padding: 40px 75px;">
-               
                 <h4 style="color: #333333;font-size: 20px;">我的购买需求</h4>
                 <input type="hidden" value="" id="favorite_tid">
                 <input type="hidden" value="" id="proposer_id">
                 <input type="hidden" value="" id="chaofan_js_code">
-
                 <div class="">
                     <ul class="chaofan-mj-logUl">
-                       
                         <li>
                             <span></span>
-
                             <div class="chaofan-mj-form-wrapper">
-                               
-
                                 <div class="chaofan-mj-inputPi">
                                     <input type="text" id="upatent" placeholder="专利描述/购买用途" value="" class="span-input">
                                 </div>
@@ -268,25 +261,25 @@
                             <span></span>
 
                             <div class="chaofan-mj-form-wrapper">
-                               
-
                                 <div class="chaofan-mj-inputPi">
                                     <input type="text" id="umobile" placeholder="请输入手机号" value="" class="span-input">
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li id="umcodeShow">
                             <div class="chaofan-mj-form-wrapper">
                                 <span class="chaofan-mj-inpuV" id="chaofn_dl_mcode">请输入手机验证码</span>
 
                                 <div class="chaofan-mj-inputPi">
                                     <input type="text" id="ucode" onkeydown="if(event.keyCode==13) checkMoblieForm();" class="span-input" maxlength="4">
                                 </div>
-                                <strong class="ms-sent" id="chaofan-ms-sent">获取验证码</strong>
+                                <strong class="ms-sent" id="pt-ms-sent">获取验证码</strong>
                                 <!--<strong class="ms-sent" style="background: #e9e9e9;color:#666;cursor: default;">还剩60s 重发</strong>-->
                             </div>
                         </li>
-                    
+                        <li class="umerror">
+                            <span id="umerror"></span>
+                        </li>
                         <li>
                             <a href="javascript:;" ctype="m" class="chaofan-mj-logBtn">立即匹配</a>
                             <p class="chaofan-mj-ensure">我们将对你的个人信息严格保密</p>
@@ -298,6 +291,175 @@
 </div>
 <script src="<?=StaticDir?>script/objurl.js"></script>
 <script type="text/javascript">
+    var usubmit = 0;
+    $(function(){
+        if( login_mobile ){
+            //将用户电话号码放到该框中
+            $('#umobile').val(login_mobile);
+            $('#umcodeShow').hide();
+        }
+        $("#pt-ms-sent").click(function(){
+            tel     = $.trim($('#umobile').val());
+            //验证手机号码
+            if(!tel || !mobilereg.test(tel) || tel.length!=11){
+                $(".umerror").show();
+                $("#umerror").text('输入的手机号码格式不正确');
+                return false;
+            }
+            ucNetwork.sendCode(tel, $(this), '点击获取验证码', callbackSend);
+        });
+        
+        //求购信息发布事件
+        $('.chaofan-mj-logBtn').click(function(){
+            if (usubmit > 0 ) return false;
+            usubmit = 1;
+            if( login_mobile ){
+                //将用户电话号码放到该框中
+                $('#umobile').val(login_mobile);
+                $('#umcodeShow').hide();
+            }
+            tel     = $.trim($('#umobile').val());
+            subject = $.trim($('#upatent').val());
+            ucode   = $.trim($('#ucode').val());
+            //验证手机号码
+            if(!tel || !mobilereg.test(tel) || tel.length!=11){
+                $("#umerror").text('请输入手机号码');
+                $(".umerror").show();
+                usubmit = 0;
+                return false;
+            }
+            if( !(subject) || subject=='专利描述/购买用途' ){
+                $("#umerror").text('请输入内容');
+                $(".umerror").show();
+                usubmit = 0;
+                return false;
+            }
+            if ( !(login_mobile) ){                
+                if ( ucode.length != 4 ){
+                    $("#umerror").text('验证码格式不正确');
+                    $(".umerror").show();
+                    usubmit = 0;
+                    return false;
+                }
+                $("#umerror").text('验证中');
+                $(".umerror").show();
+                var buyData             = new Object();
+                buyData['trademark']    = subject;
+                buyData['class']        = '';
+                buyData['type']         = '7';
+                buyData['subject']      = subject;
+                buyData['remarks']      = subject;
+
+                window.nowData = JSON.stringify(buyData);
+                ucNetwork.verifyCode(tel,ucode,function(Obj,account,code){
+                    $.each(Obj,function(i,n){
+                        if(n.code==1){
+                            //设置cookie
+                            addCookie('task_aim',window.nowData);
+                            $("#umerror").text('验证成功');
+                            //登录
+                            ucNetwork.logCode(account,code);
+                        }else{
+                            $("#umerror").text('验证失败');
+                            usubmit = 0;
+                        }
+                        $(".umerror").show();
+                    });
+                });//验证码登录
+                return false;
+            }
+
+            $(".umerror").show();
+            $("#umerror").text('提交中');
+            data    = new Array();
+            data['name']    = '';
+            data['type']    = '7';
+            data['tel']     = tel;
+            data['subject'] = subject;
+            data['remarks'] = subject;
+
+            ucNetwork.submitData(data);
+        });
+        //验证内容
+        $('#upatent').blur(function(){
+            var buy_need = $.trim($('#upatent').val());
+            if( !(buy_need) || buy_need=='专利描述/购买用途'){
+                $(".umerror").show();
+                $("#umerror").text('请输入内容');
+                return false;
+            }
+            $(".umerror").hide();
+        });
+        //验证手机号码
+        $('#umobile').blur(function(){            
+            tel     = $.trim($(this).val());
+            if(!tel){
+                $(".umerror").show();
+                $("#umerror").text('请输入手机号码');
+                return false;
+            }
+            if(!mobilereg.test(tel) || tel.length!=11){
+                $(".umerror").show();
+                $("#umerror").text('请输入正确的手机号码');
+                return false;
+            }
+            $(".umerror").hide();
+        });
+        $('#umobile').focus(function(){
+            tel = $.trim($(this).val());
+            if(!tel && login_mobile) $(this).val(login_mobile);
+        });
+    });
+    function callbackSend(Obj,htmlobj,title){
+        $.each(Obj,function(i,n){
+            if(n.code > 0 ){//发送成功
+                $("#umerror").text('发送成功');
+                timer(60, htmlobj, title);//倒计时
+            }else{
+                $("#umerror").text('发送失败');
+            }
+            $(".umerror").show();
+        });
+        return ;
+    }
+    //快捷登录回调
+    function submitDataCallback(Obj){
+        $.each(Obj,function(i,n){
+            $("#chaofan-mj-close").click();
+            if(login_mobile){
+                //用户登录情况下
+                if(n.code!=-1){
+                    //弹出成功框
+                    clearKJLogin();
+                    getLayer($('#mj-submitteS'));
+                }else{
+                    //弹出失败框
+                    getLayer($('#mj-submitteF'));
+                }
+            }else{
+                //用户未登录情况下
+                if(n.code==1){
+                    //用户不存在
+                    clearKJLogin();
+                    getLogin(_buyTitle,tel,0);
+                }else if(n.code==2){
+                    //用户存在
+                    clearKJLogin();
+                    getLogin(_login,tel,1);
+                }else{
+                    //弹出失败框
+                    getLayer($('#mj-submitteF'));
+                }
+            }
+        });
+    }
+    //清空快捷登录
+    function clearKJLogin(){
+        $('#umobile').val('');
+        $('#upatent').val('');
+        $('#ucode').val('');
+    }        
+
     //初始化更多
     var minHeight = 40; //最小高度
     var conditionDom = $('.ms-condition');
