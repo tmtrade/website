@@ -7,6 +7,8 @@
  */
 class PdetailModule extends AppModule{
 
+    static $token = '';
+
     public $models = array(
         'patent'                => 'patent',
         'contact'               => 'patentContact',
@@ -27,7 +29,7 @@ class PdetailModule extends AppModule{
         );
         $info = $this->import('patent')->setCache($flag)->find($r);
         if ( empty($info) ) return array();
-        //获得申请人和描述
+        //获得申请人.描述.默认图片
         $info += $this->getOrginalInfo($number);
         return $info;
     }
@@ -48,7 +50,7 @@ class PdetailModule extends AppModule{
     /**
      * 通过专利号获得原始数据
      * @param $number
-     * @param $type 1为获得申请人和描述 2为获取原始数据
+     * @param $type 1为获得申请人.描述.原始图片 2为获取原始数据
      * @return array|mixed
      */
     public function getOrginalInfo($number,$type=1){
@@ -87,16 +89,31 @@ class PdetailModule extends AppModule{
     }
 
     /**
+     * 得到类变量--图片token(所有图片可以共用token)
+     * @return mixed|string
+     */
+    private function getToken(){
+        //初始化类变量
+        if(self::$token==''){
+            self::$token = $this->requests('http://wanxiang.chaofan.wang/?t=accessToken','GET',array(),false);
+        }
+        return self::$token;
+    }
+    /**
      * 处理原始的专利数据
      * @param $data
-     * @param $type 1为获得申请人和描述 2为获取原始数据
+     * @param $type 1为获得申请人.描述.原始图片 2为获取原始数据
      * @return array
      */
     function handleOrginal($data,$type){
         $rst = array();
+        //专利标题
+        $rst['title']  = $data['title']['original'] ? $data['title']['original'] : $data['title']['zh-cn'];
+        if(!$rst['title']){
+            $rst['title'] = $data['title']['en'];
+        }
         //仅仅获得申请人和描述
         if($type==1){
-            $rst['title']  = $data['title']['original'] ? $data['title']['original'] : $data['title']['zh-cn'];
             //申请人
             $rst['proName'] = $data['applicants'][0]['name']['original'];
             //专利介绍
@@ -105,15 +122,10 @@ class PdetailModule extends AppModule{
             if(empty($data['figures'][0])){
                 $rst['imgUrl'] = '';
             }else{
-                $token = $this->requests('http://wanxiang.chaofan.wang/?t=accessToken','GET',array(),false);
+                $token = $this->getToken();
                 $rst['imgUrl'] = 'https://user.wanxiangyun.net/client/figure/'.$data['figures'][0].'?access_token='.$token;
             }
             return $rst;
-        }
-        //专利标题
-        $rst['title']  = $data['title']['original'] ? $data['title']['original'] : $data['title']['zh-cn'];
-        if(!$rst['title']){
-            $rst['title'] = $data['title']['en'];
         }
         //专利类型
         $rst['type']   = 0;
@@ -162,7 +174,7 @@ class PdetailModule extends AppModule{
         if(empty($data['figures'][0])){
             $rst['imgUrl'] = '';
         }else{
-            $token = $this->requests('http://wanxiang.chaofan.wang/?t=accessToken','GET',array(),false);
+            $token = $this->getToken();
             $rst['imgUrl'] = 'https://user.wanxiangyun.net/client/figure/'.$data['figures'][0].'?access_token='.$token;
         }
         return $rst;
