@@ -129,9 +129,10 @@ class PtModule extends AppModule
             }
         }
 
+        $data['class']      = implode(',', $_classArr);
         $data['typeName']   = $ptType[$data['type']];
         $data['className']  = implode(',', $_className);
-        //if ($img) $data['imgUrl']     = $this->load('ptdetail')->getPTImg($data['number']);
+        if ($img) $data['imgUrl']     = $this->load('pdetail')->getPTImg($data['number']);
 
         return $data;
     }
