@@ -111,14 +111,19 @@ class TempModule extends AppModule
         return false;
     }
 
-    public function pushTrack($need, $contact, $mobile, $sid, $area,$pttype = 1)
+    public function pushTrack($need, $contact, $mobile, $sid, $area,$pttype = 1,$patent="")
     {
         //出售只分配到新慧
         $post['source']     = 0;
         if ($pttype == 2) $post['username'] = 'Yally';//顾问id
         $post['company']    = '';//公司名称
         $post['pttype']     = $pttype; //类型（1：求购 2：出售）
-        $post['subject']    = $pttype == 1 ? "求购商标" : "出售商标";//注册名称
+        if($patent==1){
+            $post['subject']    = $pttype == 1 ? "求购专利" : "出售专利";//注册名称
+        }else{
+            $post['subject']    = $pttype == 1 ? "求购商标" : "出售商标";//注册名称
+        }
+        
         $post['remarks']    = $need;//备注
         $post['name']       = $contact;//联系人
         $post['address']    = '';//客户联系地址

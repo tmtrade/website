@@ -77,7 +77,7 @@ $(function(){
 				tip.hide();
 				$.each(obj,function(item,value){
 					if(item == 'imgurl'){
-						table.find('.imgurl').html('<img src="'+value+'" style="width:120px;height:100px;border:0;" onerror="this.src=\'http://g.chaofan.wang/guanjia/Public/Images/default_big.jpg\'" />');
+						table.find('.imgurl').html('<img src="'+value+'" style="width:120px;height:100px;border:0;" onerror="this.src=\'/Static/images/img1.png\'" />');
 					}else{
 						table.find('.'+item).html(value);
 					}
@@ -165,7 +165,7 @@ $(function(){
 				tip.hide();
 				$.each(obj,function(item,value){
 					if(item == 'imgurl'){
-						table.find('.imgurl').html('<img src="'+value+'" style="width:120px;height:100px;border:0;" onerror="this.src=\'http://g.chaofan.wang/guanjia/Public/Images/default_big.jpg\'" />');
+						table.find('.imgurl').html('<img src="'+value+'" style="width:120px;height:100px;border:0;" onerror="this.src=\'/Static/images/img1.png\'" />');
 					}else{
 						table.find('.'+item).html(value);
 					}
