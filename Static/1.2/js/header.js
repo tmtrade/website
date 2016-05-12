@@ -380,6 +380,7 @@ function xunjia(obj){
     buyData['tid'] 			= mydata.attr('tid');
     buyData['trademark'] 	= mydata.attr('number');
     buyData['class'] 		= mydata.attr('data_class');
+    buyData['type'] 		= mydata.attr('p_type');
     buyData['subject'] 		= '求购信息';
     buyData['remarks'] 		= remarks;
     //用户是否登录
