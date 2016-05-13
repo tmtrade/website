@@ -9,6 +9,12 @@ $tbl['blacklist'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['case'] = array(
+	'name'		=> $prefix.'case',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
 $tbl['member'] = array(
 	'name'		=> $prefix.'member',
 	'dbId'		=> $dbId, 
@@ -78,6 +84,12 @@ $tbl['tempUser'] = array(
 
 $tbl['phone'] = array(
 	'name'		=> $prefix.'phone',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
+$tbl['checkcount'] = array(
+	'name'		=> $prefix.'check_count',
 	'dbId'		=> $dbId, 
 	'configFile'=> $configFile,
 );
@@ -157,7 +169,6 @@ $tbl['classGroup'] = array(
 	'configFile'=> $configFile,
 );
 
-
 $tbl['topic'] = array(
 	'name'		=> $prefix.'topic',
 	'dbId'		=> $dbId,
@@ -170,26 +181,20 @@ $tbl['topicItems'] = array(
 	'configFile'=> $configFile,
 );
 
-$tbl['apiLog'] = array(
-	'name'		=> $prefix.'api_log',
-	'dbId'		=> $dbId,
-	'configFile'=> $configFile,
-);
-
 $tbl['userSaleHistory'] = array(
 	'name'		=> $prefix.'user_sale_history',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
 
-$tbl['case'] = array(
-	'name'		=> $prefix.'case',
+$tbl['keyword'] = array(
+	'name'		=> $prefix.'keyword',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
 
-$tbl['keyword'] = array(
-	'name'		=> $prefix.'keyword',
+$tbl['searchUrl'] = array(
+	'name'		=> $prefix.'search_url',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
