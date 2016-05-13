@@ -188,6 +188,12 @@ $tbl['case'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['keyword'] = array(
+	'name'		=> $prefix.'keyword',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 $tbl['patent'] = array(
 	'name'		=> $prefix.'patent',
 	'dbId'		=> $dbId,
