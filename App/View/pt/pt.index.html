@@ -77,7 +77,7 @@
 <!-- ms-filters end -->
 <!-- ms-filterSearch start -->
 <div class="ms-filterSearchMain f-clearfix">
-    <p>共有<span><?=$total?></span>个商标</p>
+    <p>共有<span><?=$total?></span>个专利</p>
     <!--<div class="ms-filterSearch">-->
         <!--[if !IE]><!-->
         <!--<input type="text" id="research" placeholder="在结果中搜索">-->
@@ -95,7 +95,7 @@
     <?foreach ($list as $k => $v) {?>
 
         <li>
-        <input class="xunjia_data" type="hidden" p_type="7" tid="<?=$v['code']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="专利号：<?=$v['number']?>;商标名称：<?=$v['title']?>">
+        <input class="xunjia_data" type="hidden" p_type="7" tid="<?=$v['code']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="专利号：<?=$v['number']?>;专利名称：<?=$v['title']?>">
            <span class="pt-fil-pic">
                <img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" >
            </span>
@@ -593,7 +593,7 @@
 
     //加载剩余数据
     function loadMore(){
-        //出售与商标库都没有了
+        //出售与专利库都没有了
         if ( !_hasSale ) return false;
 
         $('#s-uploading').show();
@@ -607,7 +607,7 @@
 
         _objTime    = setTimeout(function(){_times = 0;},30000);
 
-        //当滚动3页时, 显示推荐商标的广告图
+        //当滚动3页时, 显示推荐专利的广告图
         if(_start==3){
             //$('.fdkf-ss').click();
         }

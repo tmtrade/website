@@ -48,7 +48,7 @@
                     $str = "已注册";
                 }
             ?>
-           <h3><span title="<?=$info['name']?>"><?=empty($info['thum_name'])?'【暂无商标名称】':$info['thum_name']?></span> <?if(count($info['class'])==1):?><span title="<?=$info['label']?>" class="light_title">(<?=$info['class'][0]?>类 <?=$info['thum_label']?>)</span><?endif;?> <a><img src="<?=StaticDir?>1.2/images/<?=(($tm_status)?'yzc-ico':'sqz')?>.png"><?=$str?></a></h3>
+           <h3><span title="<?=$info['name']?>"><?=empty($info['thum_name'])?'【暂无商标名称】':$info['thum_name']?></span> <?if(count($info['class'])==1):?><span title="<?=$info['label']?>" class="light_title">(<?=$info['class'][0]?>类 <?=$info['thum_label']?>)</span><?endif;?> <?if($tm_status):?><a><img src="<?=StaticDir?>1.2/images/yzc-ico.png">已注册</a><?endif;?></h3>
             <label class="bm"><?=$sale['value']?></label>
            <p class="may"><font>此商标可入驻：
                <?php
