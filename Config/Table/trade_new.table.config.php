@@ -181,6 +181,12 @@ $tbl['topicItems'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['apiLog'] = array(
+	'name'		=> $prefix.'api_log',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 $tbl['userSaleHistory'] = array(
 	'name'		=> $prefix.'user_sale_history',
 	'dbId'		=> $dbId,
