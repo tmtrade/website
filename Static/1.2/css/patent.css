@@ -487,6 +487,7 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     -webkit-filter:opacity(.9);
 }
 .pt-filtrate ul li:hover{
+    cursor:pointer;
     border:1px solid #ff6666 ;
 }
 .pt-filtrate ul li a.enq{

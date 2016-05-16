@@ -94,7 +94,7 @@
     <ul id="s-all-list">
     <?foreach ($list as $k => $v) {?>
 
-        <li>
+        <li url="/pt-<?=$v['number']?>.html">
         <input class="xunjia_data" type="hidden" p_type="7" tid="<?=$v['code']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="专利号：<?=$v['number']?>;专利名称：<?=$v['title']?>">
            <span class="pt-fil-pic">
                <img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" >
@@ -408,6 +408,20 @@
         $('#umobile').focus(function(){
             tel = $.trim($(this).val());
             if(!tel && login_mobile) $(this).val(login_mobile);
+        });
+        //跳转到专利详情页事件
+        $('#s-all-list').on('click','li',function(){
+            var url = $(this).closest('li').attr('url');
+            location.href = url;
+        });
+        $('#s-all-list').on('mouseenter','.enq,.cont',function(){
+            $('#s-all-list').off('click');
+        });
+        $('#s-all-list').on('mouseout','.enq,.cont',function(){
+            $('#s-all-list').on('click','li',function(){
+                var url = $(this).closest('li').attr('url');
+                location.href = url;
+            });
         });
     });
     function callbackSend(Obj,htmlobj,title){
