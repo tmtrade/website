@@ -218,7 +218,9 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     color: #444444;
     font-size: 12px;
 }
-
+.u-patent-ad4 a{
+    color: black;
+}
 .patent-descri{
     overflow: hidden;
 

@@ -62,7 +62,9 @@ class PtAction extends AppAction
         if ( !empty($list['rows']) ){
             $this->set('has', true);
         }
-
+        //得到推荐专利
+        $tj = $this->load('pdetail')->getRandPT();
+        $this->set("tj", $tj);
         $this->set('t', $type);
         $this->set('c', $class);
         $this->set('whereStr', $whereStr);//专利类型

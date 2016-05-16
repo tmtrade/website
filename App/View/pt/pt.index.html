@@ -199,39 +199,41 @@
         <a href="/pt/sell" class="pt-sell-btn">我要出售</a>
     </div>
     <!--更多专利产品-->
+    <? if($tj): ?>
     <div class="u-patent-ad4 comAd" style="width: 100%;">
         <h4>更多专利产品<br/><label>patented product</label></h4>
               <span style="background-color:#e2efcc;left: 70px;top: 55px;">
-                  离心泵式玩具水枪
+                  <a title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
               </span>
                <span style="background-color:#a6e0eb;left: 20px;top: 90px;">
-                 绿豆气力输送分选装置
+                 <a title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 90px;top: 125px; ">
-                板带式百合球茎输送机
+                <a title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 40px;top: 160px;">
-                  新型氨制冷集油器
+                  <a title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 60px;top: 195px;">
-                  绿豆气力输送分选装置
+                  <a title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 110px;top: 230px;">
-                  新型氨制冷集油器
+                  <a title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
               </span>
                <span style="background-color:#e2efcc;left: 35px;top: 265px;">
-                离心泵式玩具水枪
+                <a title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 80px;top: 300px;">
-                 绿豆气力输送分选装置
+                 <a title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 45px;top: 335px;">
-                  新型氨制冷集油器
+                  <a title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
               </span>
                 <span style="background-color:#a6e0eb;left: 100px;top: 370px;">
-                 离心泵式玩具水枪
+                 <a title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
                </span>
     </div>
+    <? endif; ?>
 </div>
 <!-- ms-recommend end -->
 </div>
