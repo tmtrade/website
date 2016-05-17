@@ -43,9 +43,13 @@ class PtModule extends AppModule
             }else{
                 $r['eq']['type'] = $params['type'];
 
-                if ( !empty($params['class']) && $params['type'] != 3 ){
+                if ( !empty($params['class'])){
                     $_class = explode(',', $params['class']);
-                    $r['ft']['class'] = implode(',', array_map('ord', $_class));
+                    if($params['type'] != 3){
+                        $r['ft']['class'] = implode(',', array_map('ord', $_class));
+                    }else{
+                        $r['ft']['class'] = implode(',', $_class);
+                    }
                 }
             }
         }
@@ -62,7 +66,6 @@ class PtModule extends AppModule
         $r['limit']     = $limit;
 
         $r['order']     = array('isTop' => 'desc');
-
         $res            = $this->import('pt')->findAll($r);
         $res['rows']    = $this->getListTips($res['rows']);
 
