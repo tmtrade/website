@@ -426,12 +426,18 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     font-weight: bold;
     padding-bottom: 5px;
 }
+.pt-filtrate ul li div.pt-fil-des h6 a{
+    color: #333333;
+}
 .pt-filtrate ul li div.pt-fil-des p{
     line-height: 20px;
     color: #999999;
     font-size: 12px;
 }
 .pt-filtrate ul li div.pt-fil-des p label{
+    color: #666666;
+}
+.pt-filtrate ul li div.pt-fil-des p label a{
     color: #666666;
 }
 .pt-filtrate ul li div.pt-fil-price{
