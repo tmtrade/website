@@ -83,7 +83,7 @@
         <!--<input type="text" id="research" placeholder="在结果中搜索">-->
         <!--<![endif]-->
         <!--[if IE]>
-        <input type="text" value="在结果中搜索" onblur="if(value == ''){value = '在结果中搜索'}" onfocus="if(value == '在结果中搜索'){value = ''}" />
+        <!--<input type="text" value="在结果中搜索" onblur="if(value == ''){value = '在结果中搜索'}" onfocus="if(value == '在结果中搜索'){value = ''}" />-->
         <![endif]-->
         <!--<a href="javascript:void(0);" onclick="reSearch();return false;"><i class="us-icon us-icon21"></i></a>-->
     <!--</div>-->
@@ -453,6 +453,8 @@
                     getLayer($('#mj-submitteF'));
                 }
             }
+            usubmit = 0;
+            $(".umerror").hide();
         });
     }
     //清空快捷登录

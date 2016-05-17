@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css?v=<?=$static_version?>"/>
 <!--专利详情介绍-->
 <div class="brand-details f-clearfix">
-    <p class="cur-pos w1180"><a>当前是在第三页</a></p>
+    <p class="cur-pos w1180">全部结果 > <a href="/pt/?t=<?=$info['type']?>"><?=$patentType[$info['type']]?></a> > <?=empty($info['title'])?'【暂无专利名称】':$info['title']?></p>
     <div class="w1180">
 
         <div class="fl fl-details">

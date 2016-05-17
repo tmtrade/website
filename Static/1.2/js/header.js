@@ -409,7 +409,7 @@ function buyAddCallback(Obj){
     $.each(Obj,function(i,n){
         //弹窗提示
         if(n.code==0){
-            layer.msg('您已经购买过该商标');
+            layer.msg('您已经购买过该商品');
         }else if(n.code==-1){
             getLayer($('#mj-submitteFF'));
             countDown();//倒计时
