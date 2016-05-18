@@ -2,14 +2,19 @@
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/patent.css?v=<?=$static_version?>"/>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>"/>
 	
-   <div class="pt-sell-banner"></div>
+   <div class="pt-sell-banner">
+     <ul>
+        <li style="display: none;"><a><img src="<?=StaticDir?>1.2/images/pt-sell-banner2.jpg"></a></li>
+        <li><a><img src="<?=StaticDir?>1.2/images/pt-sell-banner.jpg"></a></li>  
+     </ul>
+   </div>
    <div class="pt-sell-main">
        <ul class="pt-sell-nav">
-           <li  id="nav1" onclick="jc('nav',1,2)">
+           <li>
                <h4>商标出售登记表</h4>
                <label>免费获得10大价值包装绝招</label>
            </li>
-           <li  id="nav2" class="on" onclick="jc('nav',2,2)">
+           <li class="on">
                <h4>专利出售登记表</h4>
                <label>帮你提升专利价值</label>
            </li>
@@ -168,21 +173,17 @@
                     $('.input-number').focus();
             }
     })
-
-    function jc(name,curr,n)
-    {
-        for(i=1;i<=n;i++)
-        {
-            var menu=document.getElementById(name+i);
-            var cont=document.getElementById("con_"+name+"_"+i);
-            menu.className=i==curr ? "on" : "";
-            if(i==curr){
-                cont.style.display="block";
-            }else{
-                cont.style.display="none";
-            }
-        }
-    }
+    $(".pt-sell-nav li").each(function (i){
+        $(this).click(function () {        
+            $(this).addClass('on');
+            $(this).siblings("li").removeClass('on');
+            $(".pt-sell-banner li").eq(i).siblings("li").hide();
+            $(".pt-sell-banner li").eq(i).show();
+            $(".pt-sell-content").eq(i).parent().siblings().find(".pt-sell-content").hide();
+            $(".pt-sell-content").eq(i).show();
+        })
+    })
+   
 function getQueryString(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
 		var r = window.location.search.substr(1).match(reg);

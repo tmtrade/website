@@ -201,7 +201,7 @@
     <!--更多专利产品-->
     <? if($tj): ?>
     <div class="u-patent-ad4 comAd" style="width: 100%;">
-        <h4>更多专利产品<br/><label>patented product</label></h4>
+        <h4><img src="<?=StaticDir?>1.2/images/u-tit.jpg"></h4>
               <span style="background-color:#e2efcc;left: 70px;top: 55px;">
                   <a target="_blank" title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
               </span>
@@ -293,6 +293,12 @@
 </div>
 <script src="<?=StaticDir?>script/objurl.js"></script>
 <script type="text/javascript">
+    $(document).ready(function() {
+        if($(".ms-conditionList-main").length<=1){
+           $(".ms-conditionList-main").css({"border-bottom":"none"});
+         }
+    });
+    
     var usubmit = 0;
     $(function(){
         if( login_mobile ){

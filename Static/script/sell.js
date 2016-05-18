@@ -19,10 +19,11 @@ $(function(){
 		var _val = '';
 		var _this = $(this);
 		var tip = _this.parent().next();
-               
+         
 		if($.trim(_this.val()) == ''){
 			tip.html('<img src="/Static/1.2/images/pt-sell-err.png">请输入商标号');
                         tip.show();
+        	$(this).addClass('errorIp');
 			return false;
 		}
 		var key = 0;
@@ -38,6 +39,7 @@ $(function(){
 			tip.show();
 			table.hide();
 			_this.val('');
+			$(this).addClass('errorIp');
 			return false;
 		}
 		/**检查是否重复**/
@@ -56,11 +58,13 @@ $(function(){
 					tip.show();
 					table.hide();
 					_this.val('');
+					$(this).addClass('errorIp');
 					return false;
 				}
 				if(obj['status'] == '0'){
 					tip.html("<i class=\"us-icon uj_icon44\"></i>"+obj['statusValue']+'的商标不可出售');
 					tip.show();
+					$(this).addClass('errorIp');
 					table.hide();
 					_this.val('');
 					return false;
@@ -68,6 +72,7 @@ $(function(){
 				if(obj['status'] == '-1'){
 					tip.html('<img src="/Static/1.2/images/pt-sell-err.png">您已经提交了此商标，不能重复提交');
 					tip.show();
+					$(this).addClass('errorIp');
 					table.hide();
 					_this.val('');
 					return false;
@@ -75,6 +80,7 @@ $(function(){
 				
 				table.removeAttr('style');
 				tip.hide();
+				$(this).removeClass('errorIp');
 				$.each(obj,function(item,value){
 					if(item == 'imgurl'){
 						table.find('.imgurl').html('<img src="'+value+'" style="width:120px;height:100px;border:0;" onerror="this.src=\'/Static/images/img1.png\'" />');
@@ -111,6 +117,7 @@ $(function(){
 		if($.trim(_this.val()) == ''){
 			tip.html('<img src="/Static/1.2/images/pt-sell-err.png">请输入专利号');
                         tip.show();
+                      	$(this).addClass('errorIp');
 			return false;
 		}
 		var key = 0;
@@ -124,6 +131,7 @@ $(function(){
 		if(key > 1){
 			tip.html('<img src="/Static/1.2/images/pt-sell-err.png">您已提交了该商标，请验证后重新输入。');
 			tip.show();
+			$(this).addClass('errorIp');
 			table.hide();
 			_this.val('');
 			return false;
@@ -142,6 +150,7 @@ $(function(){
 				if(obj['status'] == '2'){
 					tip.html('<img src="/Static/1.2/images/pt-sell-err.png">专利信息不存在,请重新填写');
 					tip.show();
+					$(this).addClass('errorIp');
 					table.hide();
 					_this.val('');
 					return false;
@@ -149,6 +158,7 @@ $(function(){
 				if(obj['status'] == '0'){
 					tip.html('<img src="/Static/1.2/images/pt-sell-err.png">该专利已在出售中');
 					tip.show();
+					$(this).addClass('errorIp');
 					table.hide();
 					_this.val('');
 					return false;
@@ -156,6 +166,7 @@ $(function(){
 				if(obj['status'] == '-1'){
 					tip.html('<img src="/Static/1.2/images/pt-sell-err.png">您已经提交了此专利，不能重复提交');
 					tip.show();
+				    $(this).addClass('errorIp');
 					table.hide();
 					_this.val('');
 					return false;
@@ -163,6 +174,7 @@ $(function(){
 				
 				table.removeAttr('style');
 				tip.hide();
+				$(this).removeClass('errorIp');
 				$.each(obj,function(item,value){
 					if(item == 'imgurl'){
 						table.find('.imgurl').html('<img src="'+value+'" style="width:120px;height:100px;border:0;" onerror="this.src=\'/Static/images/img1.png\'" />');
@@ -251,8 +263,10 @@ $(function(){
 				$(this).val('');
 				tip.html('<img src="/Static/1.2/images/pt-sell-err.png">商标出售底价不正确');
 				tip.show();
+				$(this).parent().addClass('errorIp');
 			}else{
 				tip.hide();
+				$(this).parent().removeClass('errorIp');
 			}
 		})
 	}
@@ -265,8 +279,10 @@ $(function(){
 			$(this).val('');
 			tip.html("<img src='/Static/1.2/images/pt-sell-err.png'>请您输入正确的联系电话");
 			tip.show();
+			$(this).addClass('errorIp');
 		}else{
 			tip.hide();
+			$(this).removeClass('errorIp');
 		}
 	})
         
@@ -280,9 +296,12 @@ $(function(){
 			if(!preg.test(thisval)){
 				$(this).val('');
 				tip.html('<img src="/Static/1.2/images/pt-sell-err.png">专利出售底价不正确');
-				tip.show();
+				tip.show();		
+				$(this).parent().addClass('errorIp');
+
 			}else{
 				tip.hide();
+				$(this).parent().removeClass('errorIp');
 			}
 		})
 	}
@@ -295,8 +314,11 @@ $(function(){
 			$(this).val('');
 			tip.html("<img src='/Static/1.2/images/pt-sell-err.png'>请您输入正确的联系电话");
 			tip.show();
+			$(this).addClass('errorIp');
+
 		}else{
 			tip.hide();
+			$(this).removeClass('errorIp');
 		}
 	})
         
@@ -315,18 +337,22 @@ function contact(obj){
 		if(!pregName.test(obj.val())){
 			tip.html("<img src='/Static/1.2/images/pt-sell-err.png'>您的姓氏只能输入中文或者英文");
 			tip.show();
+		   $('#contact').addClass('errorIp');
 			result = false;
 			return false;
 		}else if(obj.val().length > 8){
 			tip.html("<img src='/Static/1.2/images/pt-sell-err.png'>您的姓氏不能大于8个字符");
 			tip.show();
+			$('#contact').addClass('errorIp');
 			result = false;
 			return false;
 		}else{
 			tip.hide();
+			$('#contact').addClass('errorIp');
 		}
 	}else{
 		tip.hide();
+		$('#contact').removeClass('errorIp');
 	}
 	return result;
 }
@@ -436,12 +462,15 @@ function checks(obj,type){
                         if($(this).attr("name")=="price[]"){
                              var tip = $(this).parent().parent().next();
                              tip.html('<img src="/Static/1.2/images/pt-sell-err.png">出售底价不正确');
+                             	$(this).parent().removeClass('errorIp');
                         }else{
                              var tip = $(this).parent().next();
                              if(type==1){
                                     tip.html('<img src="/Static/1.2/images/pt-sell-err.png">请输入商标号');
+                                    $(this).addClass('errorIp');
                                 }else{
                                     tip.html('<img src="/Static/1.2/images/pt-sell-err.png">请输入专利号');
+                                    $(this).addClass('errorIp');
                             }
                         }
                         
