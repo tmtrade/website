@@ -21,11 +21,12 @@ class PatentModule extends AppModule
    //获取商品number和联系电话查询改商标下的联系人信息
     public function getSaleContactByPhone($number, $phone)
     {
-		$r['eq'] = array(
-			'number' => $number,
-			'phone' => $phone,
-			);
-		$r['limit'] = 1;
+        $code   = (strpos($number, '.') !== false) ? strstr($number, '.', true) : $number;
+        $r['eq'] = array(
+                'code' => $code,
+                'phone' => $phone,
+                );
+        $r['limit'] = 1;
         return $this->import('contact')->find($r);
     }
 
@@ -145,8 +146,8 @@ class PatentModule extends AppModule
     public function existContact($number, $userId, $phone)
     {
         if ( empty($number) ) return false;
-
-        $r['eq'] = array('number'=>$number);
+        $code   = (strpos($number, '.') !== false) ? strstr($number, '.', true) : $number;
+        $r['eq'] = array('code'=>$code);
         if ( $userId > 0 ){
             $r['eq']['uid'] = $userId;
         }

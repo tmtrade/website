@@ -158,11 +158,13 @@ class PatentAction extends AppAction{
 				continue;
 			}
 			$isSale = $this->load("patent")->existSale($item);
+                        $code   = (strpos($item, '.') !== false) ? strstr($item, '.', true) : $item;
                         $dataContat['source']       = 10;
                         $dataContat['phone']        = $phone;
                         $dataContat['name']         = $data['contact'];
                         $dataContat['saleType']     = 1;
                         $dataContat['number']       = $item;
+                        $dataContat['code']         = $code;
                         $dataContat['price']        = $data['price'][$key];
                         $dataContat['userId']       = 0;
                         $dataContat['isVerify']     = 2;
