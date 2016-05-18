@@ -278,6 +278,7 @@ function getLayer(obj) {
     });
     $(".mj-close").bind("click", function () {
         layer.closeAll();
+        $('.ddw_error21').text('可能因为网络问题或其他原因导致');
     });
 }
 
@@ -411,8 +412,13 @@ function buyAddCallback(Obj){
         if(n.code==0){
             layer.msg('您已经购买过该商品');
         }else if(n.code==-1){
-            getLayer($('#mj-submitteFF'));
-            countDown();//倒计时
+            if(n.msg=='key验证失败'){
+                getLayer($('#mj-submitteFF'));
+                countDown();//倒计时
+            }else{
+                $('.ddw_error21').text(n.msg);
+                getLayer($('#mj-submitteF'));
+            }
         }else{
             getLayer($('#mj-submitteS'));
             $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>求购信息已提交</a>");

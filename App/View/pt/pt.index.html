@@ -203,34 +203,34 @@
     <div class="u-patent-ad4 comAd" style="width: 100%;">
         <h4>更多专利产品<br/><label>patented product</label></h4>
               <span style="background-color:#e2efcc;left: 70px;top: 55px;">
-                  <a title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
+                  <a target="_blank" title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
               </span>
                <span style="background-color:#a6e0eb;left: 20px;top: 90px;">
-                 <a title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
+                 <a target="_blank" title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 90px;top: 125px; ">
-                <a title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
+                <a target="_blank" title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 40px;top: 160px;">
-                  <a title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
+                  <a target="_blank" title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 60px;top: 195px;">
-                  <a title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
+                  <a target="_blank" title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 110px;top: 230px;">
-                  <a title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
+                  <a target="_blank" title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
               </span>
                <span style="background-color:#e2efcc;left: 35px;top: 265px;">
-                <a title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
+                <a target="_blank" title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 80px;top: 300px;">
-                 <a title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
+                 <a target="_blank" title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 45px;top: 335px;">
-                  <a title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
+                  <a target="_blank" title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
               </span>
                 <span style="background-color:#a6e0eb;left: 100px;top: 370px;">
-                 <a title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
+                 <a target="_blank" title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
                </span>
     </div>
     <? endif; ?>
@@ -535,6 +535,9 @@
         $("#choice-shade").hide();
     })
     $("#choose").on("click","",function() {
+        if(login_mobile){
+            $('#umobile').val(login_mobile);
+        }
         $("#choice-popup").show();
         $("#choice-popup").addClass('bounceIn animated');
         setTimeout(removeClass, 1000);
@@ -599,25 +602,20 @@
     function loadMore(){
         //出售与专利库都没有了
         if ( !_hasSale ) return false;
-
-        $('#s-uploading').show();
         //是否已经在请求中
-        if ( _times != 0 ) return false; 
-
+        if ( _times != 0 ) return false;
+        $('#s-uploading').show();
         var obj = new objURL('/?'+_whereStr);
-
         _start++;
         _times = 1;
-
         _objTime    = setTimeout(function(){_times = 0;},30000);
-
         //当滚动3页时, 显示推荐专利的广告图
         if(_start==3){
             //$('.fdkf-ss').click();
         }
         obj.set('_p', _start);
         var params = obj.getparams();
-        console.log(params);
+//        console.log(params);
         $("#_tmpDiv").load(_moreUrl, params, function(data,status,xml){
             if (data) {
                 $("#_tmpDiv").html('');
