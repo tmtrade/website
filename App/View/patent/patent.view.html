@@ -75,9 +75,9 @@
                             <strong><span>￥</span><?=$info['salePrice']?></strong>元
                             原价<s>￥<?=$info['price']?></s>
                         </p>
-                        <p class="period"><font>价格时效</font> <span><?php if($info['salePriceDate'] > 0){
-                            echo date('Y-m-d H:i',$info['salePriceDate']);
-                            }else{echo "永久";} ?></span>有效</p>
+                        <?if($sale['salePriceDate'] > 0):?>
+                        <p class="period"><font>价格时效</font> <span><?=date('Y-m-d H:i',$sale['salePriceDate'])?></span>有效</p>
+                        <?endif;?>
                     <?}elseif( $isLogin && $info['priceType'] == 1 ){?>
                     <!--定价商品-->
                     <div class="mj-priceTxtt">

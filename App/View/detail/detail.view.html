@@ -133,9 +133,9 @@
                             <strong><span>￥</span><?=$sale['salePrice']?></strong>元
                             原价<s>￥<?=$sale['price']?></s>
                         </p>
-                        <p class="period"><font>价格时效</font> <span><?php if($sale['salePriceDate'] > 0){
-                            echo date('Y-m-d H:i',$sale['salePriceDate']);
-                            }else{echo "永久";} ?></span>有效</p>
+                        <?if($sale['salePriceDate'] > 0):?>
+                        <p class="period"><font>价格时效</font> <span><?=date('Y-m-d H:i',$sale['salePriceDate'])?></span>有效</p>
+                        <?endif;?>
                         <p class="sales"><font>促销</font>
                             <?if($topic):?>
                             <?foreach($topic as $item):?>
