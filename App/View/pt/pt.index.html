@@ -328,7 +328,6 @@
             }
             tel     = $.trim($('#umobile1').val());
             subject = $.trim($('#upatent').val());
-            ucode1   = $.trim($('#ucode1').val());
             //验证手机号码
             if(!tel || !mobilereg.test(tel) || tel.length!=11){
                 $("#umerror").text('请输入手机号码');
@@ -342,7 +341,8 @@
                 usubmit = 0;
                 return false;
             }
-            if ( !(login_mobile) ){                
+            if ( !(login_mobile) ){
+                var ucode1 = $.trim($('#ucode1').val());
                 if ( ucode1.length != 4 ){
                     $("#umerror").text('验证码格式不正确');
                     $(".umerror").show();
