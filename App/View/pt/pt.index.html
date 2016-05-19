@@ -264,7 +264,7 @@
 
                             <div class="chaofan-mj-form-wrapper">
                                 <div class="chaofan-mj-inputPi">
-                                    <input type="text" id="umobile" placeholder="请输入手机号" value="" class="span-input">
+                                    <input type="text" id="umobile1" placeholder="请输入手机号" value="" class="span-input">
                                 </div>
                             </div>
                         </li>
@@ -303,11 +303,11 @@
     $(function(){
         if( login_mobile ){
             //将用户电话号码放到该框中
-            $('#umobile').val(login_mobile);
+            $('#umobile1').val(login_mobile);
             $('#umcodeShow').hide();
         }
         $("#pt-ms-sent").click(function(){
-            tel     = $.trim($('#umobile').val());
+            tel     = $.trim($('#umobile1').val());
             //验证手机号码
             if(!tel || !mobilereg.test(tel) || tel.length!=11){
                 $(".umerror").show();
@@ -323,10 +323,10 @@
             usubmit = 1;
             if( login_mobile ){
                 //将用户电话号码放到该框中
-                $('#umobile').val(login_mobile);
+                $('#umobile1').val(login_mobile);
                 $('#umcodeShow').hide();
             }
-            tel     = $.trim($('#umobile').val());
+            tel     = $.trim($('#umobile1').val());
             subject = $.trim($('#upatent').val());
             ucode   = $.trim($('#ucode').val());
             //验证手机号码
@@ -399,7 +399,7 @@
             $(".umerror").hide();
         });
         //验证手机号码
-        $('#umobile').blur(function(){            
+        $('#umobile1').blur(function(){
             tel     = $.trim($(this).val());
             if(!tel){
                 $(".umerror").show();
@@ -413,7 +413,7 @@
             }
             $(".umerror").hide();
         });
-        $('#umobile').focus(function(){
+        $('#umobile1').focus(function(){
             tel = $.trim($(this).val());
             if(!tel && login_mobile) $(this).val(login_mobile);
         });
@@ -465,7 +465,7 @@
     }
     //清空快捷登录
     function clearKJLogin(){
-        $('#umobile').val('');
+        $('#umobile1').val('');
         $('#upatent').val('');
         $('#ucode').val('');
     }        
@@ -542,7 +542,7 @@
     })
     $("#choose").on("click","",function() {
         if(login_mobile){
-            $('#umobile').val(login_mobile);
+            $('#umobile1').val(login_mobile);
         }
         $("#choice-popup").show();
         $("#choice-popup").addClass('bounceIn animated');
