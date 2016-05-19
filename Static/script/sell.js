@@ -357,16 +357,14 @@ function contact(obj){
 	return result;
 }
 
-
 //商标检查提交数据
 function submitSell(){
 	var flag = checks($('.input-number'),1);
 	if(flag){
 		flag = checks($('.input-price'),1);
 	}
-	if($('.input-phone').val() == '' && flag){
-		$('.input-phone').focus();
-		flag = false;
+        if(flag){
+		flag = checksPhone($('.input-phone'));
 	}
 	if(flag){
 		flag = contact($('.name'));
@@ -415,9 +413,8 @@ function submitPatentSell(){
 	if(flag){
 		flag = checks($('.patent-price'),2);
 	}
-	if($('.patent-phone').val() == '' && flag){
-		$('.patent-phone').focus();
-		flag = false;
+	if(flag){
+		flag = checksPhone($('.patent-phone'));
 	}
 	if(flag){
 		flag = contact($('.name'));
@@ -481,6 +478,24 @@ function checks(obj,type){
 	return result;
 }
 
+//循环验证电话号码
+function checksPhone(obj){
+	var result = true;
+	obj.each(function(){
+                $(this).focus();
+                var tip = $(this).parent().next();
+                var preg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+                if(!preg.test($(this).val())){
+                        $(this).val('');
+                        tip.html("<img src='/Static/1.2/images/pt-sell-err.png'>请您输入正确的联系电话");
+                        tip.show();
+                        result = false;
+                }else{
+                        tip.hide();
+                }
+	})
+	return result;
+}
 //提交成功
 function sellok(data){
 	$('.allsell').html(data['all']);
