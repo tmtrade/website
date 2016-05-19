@@ -14,7 +14,7 @@
         <div class="fl fl-details">
             <div class="brde-pic">
                 <span class="brde-pic-box">
-                    <table width="100%" height="100%">
+                    <table width="100%" height="100%" style="display: block\9;">
                         <tr>
                             <td align="center">
                                <img src="<?=empty($tminfo['embellish'])?$info['imgUrl']:(TRADE_URL.$tminfo['embellish']);?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$tminfo['alt1']?>">
@@ -59,7 +59,7 @@
                        <span><label>更新时间</label><font><?=empty($info['updated'])?date('Y-m-d',$info['applyDate']):date('Y-m-d',strtotime($info['updated']))?></font></span>
                    </li>
                    <li>
-                       <span><label>行业分类</label><font><?=$temp?></font></span>
+                       <span style="width: 100%;"><label>行业分类</label><font style="max-width: 640px !important;"><?=$temp?></font></span>
                    </li>
                </ul>
            </div>
@@ -318,7 +318,7 @@
                             </li>
                             <li>
                                    <span class="fl">
-                                       <img src="<?=StaticDir?>1.2/images/pt-jy-ico1.jpg">
+                                       <img src="<?=StaticDir?>1.2/images/pt-jy-ico3.jpg">
                                    </span>
                                 <div class="fl">
                                     <i><img src="<?=StaticDir?>1.2/images/pt-jy-num1.jpg"></i>
@@ -401,10 +401,10 @@
                     </div>
                 </li>
                 <li>
-                    <div class="jylc-xq-fl">
-                        <img src="http://f2.chofn.net/yzc/Static/1.2/images/jyz.png">
+                    <div class="jylc-xq-fl" style=" right: 0px;">
+                        <img src="http://f2.chofn.net/yzc/Static/1.2/images/jyz.png" >
                     </div>
-                    <div class="jylc-xq-fr">
+                    <div class="jylc-xq-fr" style="float:left;">
                         <dl>
                             <dd>
                                 <b><span>Q：</span>要准备什么资料？</b>
@@ -426,6 +426,7 @@
                             <dd>
                                 <b><span>Q：</span>如何保障交易安全？</b>
                                 <p>
+                                    <label>•</label>交易合同权利范围规范、专业<br>
                                     <label>•</label>转让进度随时可查<br>
                                     <label>•</label>委托专业代理机构<br>
                                 </p>

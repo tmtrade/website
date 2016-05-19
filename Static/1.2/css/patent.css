@@ -619,6 +619,17 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     position: relative;
     z-index: 9;
 }
+.pt-sell-banner ul li{
+    display: block;
+    width: 100%;
+    height: 449px;
+}
+.pt-sell-banner2{
+    background: url(../images/pt-sell-banner2.jpg) no-repeat center top;
+}
+.pt-sell-banner{
+    background: url(../images/pt-sell-banner.jpg) no-repeat center top;
+}
 .pt-sell-main{
     width: 1000px;
     padding-bottom:60px;
@@ -664,7 +675,8 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     color: #999999;
     font-size: 14px;
     font-family: "微软雅黑";
-    height: 38px;
+    height: 36px;
+    line-height: 36px;
     border: 1px solid #c5c5c5;
 }
 
@@ -684,6 +696,7 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
 .pt-sell-list .pt-lwp{
     width: 180px;
     height: 38px;
+   line-height: 38px;
     border: 1px solid #c5c5c5;
     float:left;
     margin-left: 10px;
@@ -692,8 +705,10 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     width: 150px;
     border: none;
     text-indent:18px;
+    *text-indent:0px;
 }
 .pt-sell-list .pt-lwp span{
+    display: inline-block;
     color: #4f4f4f;
     font-size: 14px;
 }
@@ -744,6 +759,7 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     text-indent:18px;
     float: left;
     margin-left: 10px;
+   
 }
 .pt-sell-contact p.error{
     color: #ff6666;
