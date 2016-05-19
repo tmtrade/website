@@ -313,7 +313,11 @@ function sendCodeCallback(Obj,htmlobj,title){
             timer(60, $('.aaaa'), title);//倒计时
         }else{
             $(".ms-errorTips2,#loginTips").show();
-            $("#loginTips em").text(n.msg);
+            var msg = '发送失败';
+            if(n.msg){
+                msg = n.msg;
+            }
+            $("#loginTips em").text(msg);
             $("#loginTips").attr('flag',0);
         }
     });
@@ -326,11 +330,12 @@ function verifyCodeCallback(Obj,account,code){
             $('.logged').show();
             //设置cookie
             addCookie('task_aim',window.nowData);
+            $("#loginTips em").text('登录成功');
             //登录
             ucNetwork.logCode(account,code);
         }else{
             $(".ms-errorTips2,#loginTips").show();
-            $("#loginTips em").text(n.msg);
+            $("#loginTips em").text(n.mess);
             $("#loginTips").attr('flag',0);
         }
     });
