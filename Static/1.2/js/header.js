@@ -23,7 +23,7 @@ $(document).ready(function(e) {
             return false;
         }
         //倒计时期间点击无效
-        if($('#dl_sub').hasClass('yzm') && (($(this).val()).indexOf('密码'))==-1){
+        if($('#dl_sub').hasClass('yzm') && (($(this).val()).indexOf('秒'))!=-1){
             return false;
         }
         ucNetwork.sendCode(mobile,$(this),'点击获取验证码');
