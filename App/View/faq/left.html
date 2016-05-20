@@ -49,7 +49,7 @@
                     <div class="bd">
                       <ul>
                           <?foreach($tj as $t):?>
-                        <li><a href="<?=$t['viewUrl']?>" target="_blank"><img src="<?=$t['imgUrl']?>"></a></li>
+                        <li><a href="<?=$t['viewUrl']?>" target="_blank"><img src="<?=$t['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a></li>
                           <?endforeach;?>
                       </ul>
                     </div>
