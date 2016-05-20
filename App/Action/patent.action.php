@@ -14,9 +14,9 @@ class PatentAction extends AppAction{
      */
     private function getTitle($data)
     {
-        $title = $data['name']."_".$data['class']."类_"."商标转让|买卖|交易|价格 – 一只蝉商标转让平台网";
-        $keywords = $data['name'].'商标转让,第'.$data['class'].'类'.' 商标转让,商标转让,商标转让,注册商标交易买卖';
-        $description = $data['name'].'第'.$data['class'].'类商标转让交易买卖价格信息。购买商品名商标到一只蝉第'.$data['class'].'类商标交易平台第一时间获取商标价格信息,一只蝉商标转让平台网-独家签订交易损失赔付保障协议商标交易买卖平台';
+        $title = $data['name']."_".$data['class']."类_"."专利转让|买卖|交易|价格 – 一只蝉商标转让平台网";
+        $keywords = $data['name'].'专利转让,'.$data['class'].'类专利转让'.',商标转让,注册商标交易买卖';
+        $description = $data['name'].','.$data['class'].'类专利转让交易买卖价格信息。购买专利商标到一只蝉商标交易平台第一时间获取商标价格信息,一只蝉商标转让平台网-独家签订交易损失赔付保障协议商标交易买卖平台';
         return array("title"=>$title,"keywords"=>$keywords,"description"=>$description);
     }
 
