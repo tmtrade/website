@@ -8,22 +8,29 @@ $(document).ready(function(e) {
     emailreg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     //获取验证码
     $('#dl_wjmm,#dl_fsmm').click(function(){
+        if($('#dl_sub').attr('ncc')){
+            return false;
+        }
+        $('#dl_sub').attr('ncc',1);
         mobile 	= $.trim($('#loginUser').val());
         //验证手机号
         if(!mobile){
             $(".ms-errorTips2,#loginTips").show();
             $("#loginTips em").text('请输入手机号码');
             $("#loginTips").attr('flag',1);
+            $('#dl_sub').attr('ncc',0);
             return false;
         }
         if(!mobilereg.test(mobile) || mobile.length!=11){
             $(".ms-errorTips2,#loginTips").show();
             $("#loginTips em").text('请输入正确的手机号码');
             $("#loginTips").attr('flag',1);
+            $('#dl_sub').attr('ncc',0);
             return false;
         }
         //倒计时期间点击无效
         if((($(this).text()).indexOf('秒'))!=-1){
+            $('#dl_sub').attr('ncc',0);
             return false;
         }
         ucNetwork.sendCode(mobile,$(this),'点击获取验证码');
@@ -320,6 +327,7 @@ function sendCodeCallback(Obj,htmlobj,title){
             $("#loginTips em").text(msg);
             $("#loginTips").attr('flag',0);
         }
+        $('#dl_sub').attr('ncc',0);
     });
 }
 //验证验证码是否合法
