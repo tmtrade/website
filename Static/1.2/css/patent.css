@@ -610,6 +610,13 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     color: #ffffff;
     font-size: 15px;
     margin-top:20px;
+
+}
+.brand-details div.fl-details .brde-pic span.brde-pic-box{
+    display: table-cell;
+    vertical-align: middle;
+    width: 380px;
+    text-align: left;
 }
 
 /*出售页面*/
@@ -711,6 +718,9 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
     display: inline-block;
     color: #4f4f4f;
     font-size: 14px;
+}
+.pt-sell-list .funBtn{
+    display: inline;
 }
 .pt-sell-list .funBtn a{
     margin-left: 10px;

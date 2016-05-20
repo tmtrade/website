@@ -108,7 +108,7 @@ border-bottom: solid 1px #eee;
 .mj-footer_nav li{
 
     /*float: left;*/
-    display:inline-block;
+    display:inline;
    /* padding-right: 30px;*/
 
     font-size: 14px;
