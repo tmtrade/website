@@ -151,6 +151,7 @@ class PatentAction extends AppAction{
 
 		foreach($data['number'] as $key => $item){
 			$item 	= trim($item);
+                        $isOk   = FALSE;
 			$isCon = $this->load("patent")->existContact($item, $userId, $phone);
 			
 			if( $isCon ){
