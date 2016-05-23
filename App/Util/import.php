@@ -3,23 +3,23 @@
 
 
 //登陆认证组件
-require('LoginAuth.php');
+require_once('LoginAuth.php');
 
 //导入自定义变量
-require('LoadConfig.php');
+require_once('LoadConfig.php');
 
 //应用函数
-require('app.function.php');
+require_once('app.function.php');
 
 //登录接口配置
-require('ucClient.php');
+require_once('ucClient.php');
 
 //登录接口配置
-require('excel.php');
+require_once('excel.php');
 
 //交易信息接口配置
-require('tradeInfo.php');
+require_once('tradeInfo.php');
 
 //分页组件
-require('myPage.php');
+require_once('myPage.php');
 ?>
