@@ -38,11 +38,11 @@ class SellAction extends AppAction
 		if ( empty($info) ) $this->returnAjax($result);	
 		
 		//如果是登录状态，要判断用户是否已出售过
-		if($this->isLogin){
-            $this->userId   = $this->load('usercenter')->getUserInfo();
-            $isSale         = $this->load("internal")->existContact($number,$this->userId);
-			if($isSale) $this->returnAjax(array('status'=>'-1'));
-		}
+//		if($this->isLogin){
+//            $this->userId   = $this->load('usercenter')->getUserInfo();
+//            $isSale         = $this->load("internal")->existContact($number,$this->userId);
+//			if($isSale) $this->returnAjax(array('status'=>'-1'));
+//		}
 
 		//不能出售的商标
 		$status = array('已无效','冻结中');

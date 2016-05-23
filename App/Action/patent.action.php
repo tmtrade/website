@@ -101,11 +101,11 @@ class PatentAction extends AppAction{
                 if ( empty($info['id']) ) $this->returnAjax($result);	
 
                //如果是登录状态，要判断用户是否已出售过
-                if($this->isLogin){
-                        $this->userId   = $this->load('usercenter')->getUserInfo();
-                        $isSale         = $this->load("patent")->existContact($number,$this->userId);
-			if($isSale) $this->returnAjax(array('status'=>'-1'));
-		}
+//                if($this->isLogin){
+//                        $this->userId   = $this->load('usercenter')->getUserInfo();
+//                        $isSale         = $this->load("patent")->existContact($number,$this->userId);
+//			if($isSale) $this->returnAjax(array('status'=>'-1'));
+//		}
                 
                 // $patentId = $this->load('patent')->existSale($number);
                 //if ( $patentId ) $this->returnAjax(array('status'=>'0'));//在出售中
