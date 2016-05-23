@@ -91,17 +91,17 @@ class SellAction extends AppAction
 		$sale 	= array();
 		$userId = 0;
 		if ( $this->isLogin ){
-            $userId = $this->load('usercenter')->getUserInfo();
+                    $userId = $this->load('usercenter')->getUserInfo();
 		}
 
 		foreach($data['number'] as $key => $item){
 			$item 	= trim($item);
-			$isCon = $this->load("internal")->existContact($item, $userId, $phone);
-			
-			if( $isCon ){
-				$num['old'] ++;
-				continue;
-			}
+//			$isCon = $this->load("internal")->existContact($item, $userId, $phone);
+//			
+//			if( $isCon ){
+//				$num['old'] ++;
+//				continue;
+//			}
 			$isSale = $this->load("internal")->existSale($item);
 			if ( $isSale ){//已存在商品，则添加联系人信息
 				$isOk = $this->_addContact($isSale, $item, $data, $key, $userId);
