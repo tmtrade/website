@@ -1,0 +1,140 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0;}
+body,html{font-family: "微软雅黑";-webkit-font-smoothing:antialiased;font-smoothing:antialiased;-moz-font-smoothing:antialiased;}
+fieldset,img {border:0}
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal}
+ol,ul {list-style:none}
+a{text-decoration: none;}
+caption,th {text-align:left}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal}
+q:before,q:after {content:''}
+abbr,acronym { border:0}
+body{background: url("../images/back-bg.gif") repeat-y right 555px;min-width: 1400px;}
+.fl{float: left}
+.fr{float: right}
+.color{color: #8d5741;}
+.clas-ban1{
+    height: 564px;
+    background: url("../images/clas-ban1.jpg") no-repeat center top;
+}
+.clas-ban2{
+    height: 517px;
+    background: url("../images/clas-ban6.jpg") no-repeat center top;
+}
+.clas-ban3{
+    height: 571px;
+    background: url("../images/clas-ban7.jpg") no-repeat center top;
+}
+.clas-ban4{
+    height: 515px;
+    background: url("../images/clas-ban2.jpg") no-repeat center top;
+}
+.clas-ban5{
+    height: 517px;
+    background: url("../images/clas-ban3.jpg") no-repeat center top;
+}
+.clas-ban6{
+    height:814px;
+    background: url("../images/clas-ban4.jpg") no-repeat center top;
+}
+.clas-ban7{
+    height: 526px;
+    background: url("../images/clas-ban5.jpg") no-repeat center top;
+}
+.com-cls{
+    width:1220px;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 40px;
+    color: #333333;
+}
+
+.com-cls ul{
+   display:block;
+    width: 1120px;
+    margin: auto;
+    margin-top:144px;
+}
+.com-cls li{
+    display: block;
+    float: left;
+    text-align: center;
+}
+.com-cls li p{
+    display: table-cell;
+}
+.com-cls li  label{
+     display: table-cell;
+     text-align: center;
+     width: 220px;
+     font-size: 14px;
+     vertical-align: middle;
+ }
+.com-cls li  font{
+    display: table-cell;
+    text-align: center;
+    width:275px;
+    font-size: 14px;
+    line-height: 26px;
+    vertical-align: middle;
+}
+.com-cls li div label{
+    height: 230px;
+    text-align: left;
+    line-height: 26px;
+}
+.com-cls li h4{
+    text-align: center;
+    font-size: 18px;
+}
+
+.rul-banner{
+    width: 100%;
+    height:590px;
+    background: url("../images/rul-banner.jpg") no-repeat top center;
+}
+.adj-det{
+    text-align: center;
+    margin-top: 66px;
+}
+.adj-det p{
+    color: #333333;
+    font-size: 18px;
+    margin-top: 15px;
+
+}
+.adj-det p label{
+    color: #e30800;
+}
+.details-end{
+    color: #272727;
+    font-size:14px;
+    float:right;
+    margin-right:40px;
+    margin-top: 0px;
+}
+.details-end a{
+    color: #e30800;
+    text-decoration: underline;
+    margin-left:10px;
+}
+.btm-int{
+    width: 100%;
+    height: 627px;
+    background: url("../images/btm-ban.jpg") no-repeat center top;
+}
+.btm-int .com-cls{
+    height: 627px;
+    position: relative;
+    z-index: 9;
+}
+.btm-int a{
+    display: block;
+    width: 255px;
+    height: 78px;
+    position: absolute;
+    z-index: 99;
+    cursor: pointer;
+}
+

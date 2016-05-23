@@ -89,5 +89,18 @@ class TopicAction extends AppAction
         $this->setSeoByTopic("/topic/motherday");
         $this->display();
     }
+
+    //天猫新规则
+    public function tm()
+    {
+        $this->pageTitle = '天猫2016年招商资质调整细则-- 一只蝉转让平台';
+        $this->pageKey  = '天猫2016年招商资质调整细则,天猫降低招商门槛,买商标入驻天猫,2016天猫招商资质细则';
+        $this->pageDescription = '天猫2016年招商资质调整细则,天猫降低招商门槛,新品牌入驻取消商标两年限制，对服饰鞋类箱包,运动户外,珠宝配饰,家装家具家纺，汽车配件等均做出相应调整。挑选好商标就上一只蝉商标转让平台。';
+        $this->set('title', $this->pageTitle);//页面title
+        $this->set('keywords', $this->pageKey);//页面keywords
+        $this->set('description', $this->pageDescription);//页面description
+        $this->setSeoByTopic("/topic/tm");
+        $this->display();
+    }
 }
 ?>
