@@ -152,12 +152,12 @@ class PatentAction extends AppAction{
 		foreach($data['number'] as $key => $item){
 			$item 	= trim($item);
                         $isOk   = FALSE;
-//			$isCon = $this->load("patent")->existContact($item, $userId, $phone);
-//			
-//			if( $isCon ){
-//				$num['old'] ++;
-//				continue;
-//			}
+			$isCon = $this->load("patent")->existContact($item, $userId, $phone);
+			
+			if( $isCon ){
+				$num['old'] ++;
+				continue;
+			}
 			$isSale = $this->load("patent")->existSale($item);
                         $code   = (strpos($item, '.') !== false) ? strstr($item, '.', true) : $item;
                         $dataContat['source']       = 10;
