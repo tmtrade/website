@@ -642,7 +642,7 @@ class SearchModule extends AppModule
      */
     public function getDateList($type='')
     {
-        $year = date('Y') - 1;//去年
+        $year = date('Y');//去年
         $_arr = array();
         for ($i=0; $i < 6; $i++) {
             $_year = $year - $i;

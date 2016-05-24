@@ -426,11 +426,13 @@ class SearchAction extends AppAction
                 $S      = C('SBSEARCH');
                 $kt     = intval($all['kt']) <= 0 ? 1 : intval($all['kt']);
                 $_str   = $S[$kt].':'.$value;
+                $this->load('keyword')->createKeywordCount($value,$kt);
                 break;
             case 'c':
                 list($cArr,) = $this->load('search')->getClassGroup(0, 0);
                 foreach ($_arr as $v) {
                     $_str .= "$v-".$cArr[$v].'|';
+                    $this->load('keyword')->createKeywordCount("$v-".$cArr[$v],4);
                 }
                 break;
             case 'g':
@@ -438,18 +440,14 @@ class SearchAction extends AppAction
                 list(,$gArr) = $this->load('search')->getClassGroup(0, 1);
                 foreach ($_arr as $v) {
                     $_str .= "$v-".$gArr[$all['c']][$v].'|';
+                    $this->load('keyword')->createKeywordCount("$v-".$gArr[$all['c']][$v],5);
                 }
                 break;
             case 't':
                 $T = C('TYPES');
                 foreach ($_arr as $v) {
                     $_str .= "$v-".$T[$v].'|';
-                }
-                break;
-            case 'p':
-                $P = C('PLATFORM_IN');
-                foreach ($_arr as $v) {
-                    $_str .= $P[$v].'|';
+                    $this->load('keyword')->createKeywordCount("$v-".$T[$v],6);
                 }
                 break;
             case 'sn':
@@ -460,13 +458,25 @@ class SearchAction extends AppAction
                         $_hasN = true;
                     }else{
                         $_str .= $N[$v].'|';
+                        $this->load('keyword')->createKeywordCount($N[$v],7);
                     }
                 }
-                if ( $_hasN ) $_str = $N['1,2'].' '.$_str;
+                if ( $_hasN ){
+                        $_str = $N['1,2'].' '.$_str;
+                        $this->load('keyword')->createKeywordCount($N['1,2'],7);
+                } 
                 break;
             case 'd':
                 $D      = $this->load('search')->getDateList();
                 $_str   = $D[$value];
+                $this->load('keyword')->createKeywordCount($_str,8);
+                break;
+            case 'p':
+                $P = C('PLATFORM_IN');
+                foreach ($_arr as $v) {
+                    $_str .= $P[$v].'|';
+                    $this->load('keyword')->createKeywordCount($P[$v],9);
+                }
                 break;
         }
         return $_str;

@@ -199,6 +199,12 @@ $tbl['keyword'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['keywordCount'] = array(
+	'name'		=> $prefix.'keyword_count',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 $tbl['searchUrl'] = array(
 	'name'		=> $prefix.'search_url',
 	'dbId'		=> $dbId,

@@ -15,8 +15,9 @@ class KeywordModule extends AppModule
      * 引用业务模型
      */
     public $models = array(
-        'kw'    => 'keyword',
-        'su'    => 'searchUrl',
+        'kw'        => 'keyword',
+        'su'        => 'searchUrl',
+        'kwcount'   => 'keywordCount',
     );
 	
     /**
@@ -126,6 +127,27 @@ class KeywordModule extends AppModule
         if ( empty($res['url']) ) return '';
         return $res['url'];
     }
-
+    
+    /**
+     * 写入搜索数据
+     * 
+     * @author  Far
+     * @since   2016-05-20
+     * @access  public
+     * @param   string      $kw        搜索关键词
+     * @param   int         $type      搜索类型
+     */
+    public function createKeywordCount($kw, $type)
+    {
+        if ( empty($kw) || empty($type)) return '0';
+         $data = array(
+            'keyword'   => $kw,
+            'type'      => $type,
+            'sid'       => $_COOKIE['sat5_sid'],
+            'ip'        =>  getClientIp(),
+            'date'      => time(),
+            );
+            return $this->import('kwcount')->create($data);
+    }
 }
 ?>
