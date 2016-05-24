@@ -76,6 +76,38 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
 }
 
 /*ä¸“åˆ©è¯¦æƒ…é¡µ*/
+.sbtable {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.sbtable tr td{
+   vertical-align: middle;
+   border: 2px  solid #ffffff;
+}
+.sbtable tr td.g-td2 img{
+    vertical-align: middle;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.sbtable tr {
+    height: 36px;
+    line-height: 36px;
+    padding:1px; 
+}
+
+.sbtable tr td.g-td1{
+    width: 109px;
+    background:#e3e3e3;
+    color: #787878; 
+    text-align: center;
+}
+.sbtable tr td.g-td2{
+    width:240px;
+    background:#f5f5f5;
+    color: #999999; 
+    text-indent:25px;
+
+}
 .error{
     color: #ff6666;
     margin-top:4px;
