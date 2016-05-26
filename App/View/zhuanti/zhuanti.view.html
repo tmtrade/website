@@ -28,11 +28,11 @@
                           <div class="reverse">
                         <label>
                              <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
-                            <a href="javascript:void(0);" onclick="xunjia(this);" class="first cl-red">
+                            <a addmsg="<?=$v['name']?>" webid="1" href="javascript:void(0);" onclick="xunjia(this);" class="first cl-red">
                                 <img src="<?=StaticDir?>zhuanti/images/catebuy1.png"/>
                                 询 价
                             </a>
-                            <a href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165" target="_blank" class="sec cl-org">
+                            <a addmsg="<?=$v['name']?>" webid="2" href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165" target="_blank" class="sec cl-org">
                                 <img src="<?=StaticDir?>zhuanti/images/cate-ck.png"/>
                                 联系卖家
                             </a>

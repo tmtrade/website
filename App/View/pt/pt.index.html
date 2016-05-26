@@ -11,10 +11,10 @@
         <span>全部结果&nbsp;&gt;</span>
         <ul class="ms-filterResultsList f-clearfix">
             <? if ( $t ) { ?>
-                <li title="<?=$t_title?>"><a href="javascript:void(0);" onclick="createUrl('_type', '');"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                <li title="<?=$t_title?>"><a href="javascript:void(0);" webid="3" onclick="createUrl('_type', '');"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
             <? } ?>
             <? if ( $c ) { ?>
-                <li title="<?=$c_title?>"><a href="javascript:void(0);" onclick="createUrl('_class', '');"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                <li title="<?=$c_title?>"><a href="javascript:void(0);" webid="3" onclick="createUrl('_class', '');"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
             <? } ?>
         </ul>
     </div>
@@ -24,9 +24,9 @@
             <span>专利类型</span>
             <div class="ms-conditionList-main ms-setHeight">
                 <ul class="f-clearfix ms-conditionRadio">
-                    <li><a href="javascript:void(0);" onclick="createUrl('_type','0');return false;">全部</a></li>
+                    <li><a href="javascript:void(0);" webid="1" onclick="createUrl('_type','0');return false;">全部</a></li>
                     <?foreach ($_TYPE as $k => $v) {?>
-                    <li><a href="javascript:void(0);" onclick="createUrl('_type','<?=$k?>');return false;"><?=$v?></a></li>
+                    <li><a href="javascript:void(0);" webid="1" onclick="createUrl('_type','<?=$k?>');return false;"><?=$v?></a></li>
                     <?}?>            
                 </ul>
                 <ul class="f-clearfix ms-conditionCheckbox cc_all2">
@@ -36,7 +36,7 @@
                     <?}?>
                 </ul>
                 <div class="ms-condition-btn">
-                    <a href="javascript:void(0);" tname="_type">确定</a>
+                    <a href="javascript:void(0);" webid="1" tname="_type">确定</a>
                     <span onclick="cancelFun(this);">取消</span>
                 </div>
                 <div class="ms-conditionBtn">
@@ -51,9 +51,9 @@
             <span>类型分类</span>
             <div class="ms-conditionList-main">
                 <ul class="f-clearfix ms-conditionRadio">
-                    <li><a href="javascript:void(0);" onclick="createUrl('_class','0');return false;">全部</a></li>
+                    <li><a href="javascript:void(0);" webid="2" onclick="createUrl('_class','0');return false;">全部</a></li>
                     <?foreach ($_CLASS as $k => $v) {?>
-                    <li title="<?=$v?>"><a href="javascript:void(0);" onclick="createUrl('_class','<?=$k?>');return false;"><?=mb_substr($v,0,8,'utf-8')?></a></li>
+                    <li title="<?=$v?>"><a href="javascript:void(0);"  webid="2" onclick="createUrl('_class','<?=$k?>');return false;"><?=mb_substr($v,0,8,'utf-8')?></a></li>
                     <?}?>            
                 </ul>
                 <ul class="f-clearfix ms-conditionCheckbox cc_all2">
@@ -63,7 +63,7 @@
                     <?}?>
                 </ul>
                 <div class="ms-condition-btn">
-                    <a href="javascript:void(0);" tname="_class">确定</a>
+                    <a href="javascript:void(0);"  webid="2" tname="_class">确定</a>
                     <span onclick="cancelFun(this);">取消</span>
                 </div>
                 <div class="ms-conditionBtn">
@@ -113,8 +113,8 @@
                 <?}?>
             </div>
             <div class="pt-fil-zx">
-                <a class="enq" href="javascript:void(0);" onclick="xunjia(this);">询 价</a>
-                <a class="cont" href="javascript:void(0);" onclick="goChat()">联系卖家</a>
+                <a class="enq" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="4" onclick="xunjia(this);">询 价</a>
+                <a class="cont" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="5" onclick="goChat()">联系卖家</a>
             </div>
         </li>
 
@@ -203,34 +203,34 @@
     <div class="u-patent-ad4 comAd" style="width: 100%;">
         <h4><img src="<?=StaticDir?>1.2/images/u-tit.jpg"></h4>
               <span style="background-color:#e2efcc;left: 70px;top: 55px;">
-                  <a target="_blank" title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
+                  <a target="_blank" webid="6" title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
               </span>
                <span style="background-color:#a6e0eb;left: 20px;top: 90px;">
-                 <a target="_blank" title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
+                 <a target="_blank" webid="6" title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 90px;top: 125px; ">
-                <a target="_blank" title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
+                <a target="_blank" webid="6" title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 40px;top: 160px;">
-                  <a target="_blank" title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
+                  <a target="_blank" webid="6" title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 60px;top: 195px;">
-                  <a target="_blank" title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
+                  <a target="_blank" webid="6" title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 110px;top: 230px;">
-                  <a target="_blank" title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
+                  <a target="_blank" webid="6" title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
               </span>
                <span style="background-color:#e2efcc;left: 35px;top: 265px;">
-                <a target="_blank" title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
+                <a target="_blank" webid="6" title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 80px;top: 300px;">
-                 <a target="_blank" title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
+                 <a target="_blank" webid="6" title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 45px;top: 335px;">
-                  <a target="_blank" title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
+                  <a target="_blank" webid="6" title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
               </span>
                 <span style="background-color:#a6e0eb;left: 100px;top: 370px;">
-                 <a target="_blank" title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
+                 <a target="_blank" webid="6" title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
                </span>
     </div>
     <? endif; ?>

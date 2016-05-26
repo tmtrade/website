@@ -15,7 +15,7 @@ class ZhuantiAction extends AppAction
     public $expire      = 3600;//1小时
     
     public $seotime		= '一只蝉商标转让平台网';
-
+    public $ptype       = 9;
     /**
      * 专题中心
      * @author  far
@@ -32,6 +32,7 @@ class ZhuantiAction extends AppAction
         $pageBar 	= empty($list) ? '' : getPageBarNew($pager);
         $this->set('list', $list);
         $this->set("pageBar",$pageBar);
+        $this->set("ptype",8);
         $this->setSeo(9);
         $this->display();
     }

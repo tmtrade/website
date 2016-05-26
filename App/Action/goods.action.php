@@ -13,7 +13,7 @@ class GoodsAction extends AppAction
     private $_number    = 30;
     private $_searchArr = array();
     private $_rwfix     = '/g-';
-
+    public $ptype       = 14;
     /**
      * 重定向查询URL
      * 

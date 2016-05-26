@@ -121,7 +121,7 @@ function addTempBuy()
     var name    = $.trim( $("#buyName").val() );
     var sid     = $.trim( $("#sid").val() );
     var area    = $.trim( $("#area").val() );
-
+    sendBehavior(1,12,0,0,'电话:'+mobile+';内容:'+need);//发送统计数据
     $.ajax({
         type: "post",
         url: "/buy/addTemp/",

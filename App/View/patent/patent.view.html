@@ -98,16 +98,16 @@
                         <? if( $info['priceType'] == 1 && $info['isOffprice'] == 1 && ($info['salePriceDate'] == 0 || $info['salePriceDate'] > time())){
                         ?>
                         <?if($isLogin){ ?>
-                        <a href='javascript:;' onclick="createOrder();" class="mj-priceTxtt_link opt_btn">立即抢购</a>
+                        <a href='javascript:;' webid="1" onclick="createOrder();" class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <? }else{ ?>
                         <a href='javascript:;' onclick="goBuy()" class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <?} ?>
                         <!--定价商品-->
                         <?}elseif( $isLogin && $info['priceType'] == 1 ){?>
-                        <a href='javascript:;' onclick="createOrder()" class="opt_btn">我想购买</a>
+                        <a href='javascript:;' webid="1" onclick="createOrder()" class="opt_btn">我想购买</a>
                         <!--议价商品-->
                         <?}elseif( $isLogin && $info['priceType'] == 2 ){?>
-                        <a href='javascript:;' onclick="createOrder()" class="opt_btn">我有兴趣</a>
+                        <a href='javascript:;' webid="1" onclick="createOrder()" class="opt_btn">我有兴趣</a>
                         <?}else{?>
                         <a href='javascript:;' onclick="goLook()" class="opt_btn">查看价格</a>
                         <?}?>
@@ -121,7 +121,7 @@
                             <strong><span>￥</span>议价</strong>
                         </p>
                         <p class="mj-priceTxtt_ie7" style="margin-top: 2px"><b>备注：</b>此专利未在行业出售 - 我们有渠道短时间联系到他</p>
-                        <a href='javascript:;' onclick="createOrder()" class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
+                        <a href='javascript:;' webid="1" onclick="createOrder()" class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
                     <? }else{ ?>
                         <div class="mj-priceTxtt">
                             <div style="width: 50px;height:60px"></div>
@@ -136,7 +136,7 @@
                     <dl>
                         <dd>
                             <i class="us-icon uj_icon2"></i><span class="sqr" title="<?=$info['proName']?>">专利申请人：<?=$info['proName']?></span>
-                            <a href="javascript:;" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
+                            <a href="javascript:;" webid="2" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
@@ -145,7 +145,7 @@
                         <dd class="mj-cTr_bRight_dd">
                             <input id="telInput2" value="" placeholder="输入手机号" type="text">
                             <label for="l-button">
-                                <button type="submit" id="l-button" onclick="createOrderByPhone()">打给我</button>
+                                <button type="submit" webid="1" id="l-button" onclick="createOrderByPhone()">打给我</button>
                             </label>
                         </dd>
                     </dl>
@@ -176,7 +176,7 @@
                 至少<label>1件</label>发明专利<br/>
                 <label>6件</label>实用新型专利
             </p>
-            <a class="Hp-pick" href="javascript:;" onclick="goChat()">帮我选</a>
+            <a class="Hp-pick" webid="2" href="javascript:;" onclick="goChat()">帮我选</a>
         </div>
         <div class="u-patent-ad2 comAd">
             <span style="left:65px;top:190px;">拿高薪</span>
@@ -185,43 +185,43 @@
                 <label>1件</label>实用新型专利<br/>
                 或<label>1件</label>发明专利
             </p>
-            <a class="Hp-pick" href="javascript:;" onclick="goChat()">帮我选</a>
+            <a class="Hp-pick" webid="2" href="javascript:;" onclick="goChat()">帮我选</a>
         </div>
         <div class="u-patent-ad3 comAd">
-            <a class="Hp-pick" href="javascript:;" onclick="goChat()">帮我选</a>
+            <a class="Hp-pick" webid="2" href="javascript:;" onclick="goChat()">帮我选</a>
         </div>
         <? if($tj): ?>
         <div class="u-patent-ad4 comAd">
             <h4><img src="<?=StaticDir?>1.2/images/u-tit.jpg"></h4>
               <span style="background-color:#e2efcc;left: 60px;top: 55px;">
-                  <a target="_blank" title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
+                  <a target="_blank" webid="3" title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
               </span>
                <span style="background-color:#a6e0eb;left: 10px;top: 90px;">
-                 <a target="_blank" title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
+                 <a target="_blank" webid="3" title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 80px;top: 125px; ">
-                <a target="_blank" title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
+                <a target="_blank" webid="3" title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 30px;top: 160px;">
-                  <a target="_blank" title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
+                  <a target="_blank" webid="3" title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 50px;top: 195px;">
-                  <a target="_blank" title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
+                  <a target="_blank" webid="3" title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 100px;top: 230px;">
-                  <a target="_blank" title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
+                  <a target="_blank" webid="3" title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
               </span>
                <span style="background-color:#e2efcc;left: 25px;top: 265px;">
-                <a target="_blank" title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
+                <a target="_blank" webid="3" title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 70px;top: 300px;">
-                 <a target="_blank" title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
+                 <a target="_blank" webid="3" title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 35px;top: 335px;">
-                  <a target="_blank" title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
+                  <a target="_blank" webid="3" title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
               </span>
                 <span style="background-color:#a6e0eb;left: 90px;top: 370px;">
-                    <a target="_blank" title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
+                    <a target="_blank" webid="3" title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
                </span>
         </div>
         <? endif; ?>

@@ -396,6 +396,7 @@ function addSell(){
 	var index = layer.load(1, {
 	    shade: [0.1,'#fff'] //0.1透明度的白色背景
 	});
+	sendBehavior(1,15,0,0,content);//发送统计数据
 	$.ajax({
 		type: "post",
 		url: "/sell/addsell",
@@ -440,6 +441,7 @@ function patentSell(){
 	var index = layer.load(1, {
 	    shade: [0.1,'#fff'] //0.1透明度的白色背景
 	});
+	sendBehavior(1,13,0,0,content);//发送统计数据
 	$.ajax({
 		type: "post",
 		url: "/patent/addsell",
