@@ -30,17 +30,20 @@ function sendCount(args){
             success  : function(data) {
                 if(data.code==1){
                     aCookie('yzcdata',data.msg,315360000000);//更新cookie信息
+                    window.visitid = data.id;//保存此次浏览记录的id
                 }
             },
         }
     );
 }
 //提交行为数据
-function sendBehavior(webid,t,x,y){
-    var t = t || 1;
-    x = x || 0;
-    y = y || 0;
-    webid = webid || '';
+function sendBehavior(webid,t,x,y,add){
+    if(typeof webid =='undefined') webid=0;
+    if(typeof t =='undefined') t=0;
+    if(typeof x =='undefined') x=0;
+    if(typeof y =='undefined') y=0;
+    if(typeof add =='undefined') add='';//补充webid可保存操作名
+    if(typeof visitid =='undefined') visitid=0;//浏览记录的id
     var args = 'yzc=2&cookie='+gCookie('yzcdata');
     if(window && window.screen) {
         args += '&w=' + (window.screen.width || 0);
@@ -50,6 +53,8 @@ function sendBehavior(webid,t,x,y){
     args += '&type='+t;
     args += '&x='+x;
     args += '&y='+y;
+    args += '&addition='+add;
+    args += '&visitid='+visitid;
     sendCount(args);
 }
 $(function(){
@@ -95,7 +100,8 @@ $(function(){
             if(typeof ptype == 'undefined'){//每个页面设置全局的type变量--区分页面
                 ptype = 0;
             }
-            sendBehavior(webid,ptype, e.pageX, e.pageY);
+            var addmsg = $(this).attr('addmsg');//额外信息
+            sendBehavior(webid,ptype, e.pageX, e.pageY,addmsg);
         }
     });
     //离开事件

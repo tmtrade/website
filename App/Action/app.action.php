@@ -20,6 +20,7 @@ abstract class AppAction extends Action
     public $userId       = '';
     
     public $isLogin      = false;
+    public $ptype        = 0;
 
     public $pageTitle     = '商标转让-百万注册商标转让交易买卖平台- 一只蝉商标转让平台网';
     
@@ -64,7 +65,7 @@ abstract class AppAction extends Action
 
         $this->set('_mod_', $this->mod);
         $this->set('_action_', $this->action);
-                
+        $this->set('ptype',$this->ptype);//设置页面标识
         $this->set('title', $this->pageTitle);//页面title
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description

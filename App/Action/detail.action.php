@@ -10,6 +10,7 @@
  */
 class DetailAction extends AppAction
 {
+	public $ptype = 4;
 	/**
 	 * 设置标题
 	 * @param $data

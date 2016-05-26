@@ -23,7 +23,7 @@
                 </span>
                 <p>
                     <span >独家商标风险检测工具<label>蝉精灵</label>准确率<label>95.93%</label></span>
-                    <a href="<?=$tips['safeUrl']?>" target="_blank">检测此商标</a>
+                    <a href="<?=$tips['safeUrl']?>" target="_blank" webid="3">检测此商标</a>
                 </p>
             </div>
             <div class="brde-scfx">
@@ -31,7 +31,7 @@
                     <?if($sale['isLook']):?>
                     <a class="collect"> <img src="<?=StaticDir?>1.2/images/xin_cur.png"><span>取消收藏</span></a>
                     <?else:?>
-                    <a class="collect in_collect"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
+                    <a class="collect in_collect" webid="5"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
                     <?endif;?>
                 </p>
                 <p class="fr">
@@ -64,13 +64,13 @@
                     if(empty($sale['platform'])){//根据类别规则显示
                         foreach($platformIn as $k=>$v){
                             if(checkIn($info['class'],$platformItems[$k])){
-                                echo "<a href='".$platformUrl[$k]."' target='_blank' class='cur' >".$v."</a>";
+                                echo "<a href='".$platformUrl[$k]."' webid='2' target='_blank' class='cur' >".$v."</a>";
                             }
                         }
                     }else{//根据包装信息显示
                      foreach($platformIn as $k=>$v){
                             if(in_array($k, array_filter(explode(',',$sale['platform'])))){
-                                echo "<a href='".$platformUrl[$k]."' target='_blank' class='cur' >".$v."</a>";
+                                echo "<a href='".$platformUrl[$k]."' webid='2' target='_blank' class='cur' >".$v."</a>";
                             }
                         }
                     }
@@ -194,16 +194,16 @@
                         <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){
                         ?>
                         <?if($isLogin){ ?>
-                        <a href='javascript:;' onclick="createOrder();" class="mj-priceTxtt_link opt_btn">立即抢购</a>
+                        <a href='javascript:;' webid="6" onclick="createOrder();" class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <? }else{ ?>
                         <a href='javascript:;' onclick="goBuy()" class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <?} ?>
                         <!--定价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
-                        <a href='javascript:;' onclick="createOrder()" class="opt_btn">我想购买</a>
+                        <a href='javascript:;' webid="6" onclick="createOrder()" class="opt_btn">我想购买</a>
                         <!--议价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
-                        <a href='javascript:;' onclick="createOrder()" class="opt_btn">我有兴趣</a>
+                        <a href='javascript:;' webid="6" onclick="createOrder()" class="opt_btn">我有兴趣</a>
                         <?}else{?>
                         <a href='javascript:;' onclick="goLook()" class="opt_btn">查看价格</a>
                         <?}?>
@@ -220,7 +220,7 @@
                         <? if($baystate == 1){ ?>
                         <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
                         <? }else{ ?>
-                        <a href='javascript:;' onclick="createOrder()" class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
+                        <a href='javascript:;' webid="6" onclick="createOrder()" class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
                         <? } ?>
                     <? }else{ ?>
                         <div class="mj-priceTxtt">
@@ -236,7 +236,7 @@
                     <dl>
                         <dd>
                             <i class="us-icon uj_icon2"></i><span class="sqr" title="<?=$info['proName']?>">申请人：<?=$info['proName']?></span>
-                            <a href="javascript:;" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
+                            <a href="javascript:;" webid="7" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
@@ -245,7 +245,7 @@
                         <dd class="mj-cTr_bRight_dd">
                             <input id="telInput2" value="" placeholder="输入手机号" type="text">
                             <label for="l-button">
-                                <button type="submit" id="l-button" onclick="createOrderByPhone()">打给我</button>
+                                <button type="submit" webid="6" id="l-button" onclick="createOrderByPhone()">打给我</button>
                             </label>
                         </dd>
                     </dl>
@@ -269,7 +269,7 @@
             <h2>猜你喜欢</h2>
             <?foreach($tj as $item):?>
             <li>
-                <a href="<?=$item['viewUrl']?>"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
+                <a href="<?=$item['viewUrl']?>" webid="8"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
             </li>
             <?endforeach;?>
         </ul>
@@ -284,7 +284,7 @@
                    if($k<5){
                    ?>
                    <li>
-                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" ><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" ></a>
+                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" webid="9" ><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" ></a>
                     </li>
                    <?}}?>
                 </ul>
@@ -399,7 +399,7 @@
                                </dd>
                            </dl>
                             <dt>
-                                <a href="<?=$tips['safeUrl']?>" target="_blank">去蝉精灵检测</a>
+                                <a href="<?=$tips['safeUrl']?>" webid="3" target="_blank">去蝉精灵检测</a>
                             </dt>
 
                         </div>
@@ -492,10 +492,10 @@
                                 <label>服务顾问：</label>陈艾<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=14" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
+                        <a href="/case/detail/?id=14" addmsg="格伦贝拉" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=14" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
+                        <a href="/case/detail/?id=14" addmsg="格伦贝拉" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -514,10 +514,10 @@
                                 <label>服务顾问：</label>王桂华<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=12" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
+                        <a href="/case/detail/?id=12" addmsg="Hesiod" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=12" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
+                        <a href="/case/detail/?id=12" addmsg="Hesiod" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -536,10 +536,10 @@
                                 <label>服务顾问：</label>寇飞<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=16" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
+                        <a href="/case/detail/?id=16" addmsg="麦普森" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=16" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
+                        <a href="/case/detail/?id=16" addmsg="麦普森" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -827,11 +827,10 @@
         $('#chaofan-mj-login').trigger('click');
     }
     //专题点击事件
-    $('.wddsb').click(function(){
-        //alert($(this).text());return
-//        if($(this).text() == '买一送一'){
-//            return false;
-//        }
+    $('.wddsb').click(function(e){
+        var webid = '1';
+        var addmsg = $(this).text();
+        sendBehavior(webid,ptype, e.pageX, e.pageY,addmsg);
         $('#wodediv').attr('href',($(this).attr('url')));
         $('#wodediv').get(0).click();
     });
