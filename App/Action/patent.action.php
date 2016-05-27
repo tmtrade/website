@@ -7,7 +7,7 @@
  */
 class PatentAction extends AppAction{
 
-    public $ptype       = 10;
+    public $ptype       = 11;
 
     /**
      * 设置标题

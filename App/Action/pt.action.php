@@ -9,7 +9,7 @@
 class PtAction extends AppAction
 {
     
-    public $ptype = 11;
+    public $ptype = 10;
     //我要买
     public function index()
     {
