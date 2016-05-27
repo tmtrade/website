@@ -65,13 +65,17 @@ $(function(){
             params.host = document.domain || '';
             params.url = document.URL || '';
             params.referrer = document.referrer || '';
-            if(params.referrer.indexOf(params.host)==-1){ //来自其他网站
+            if(params.referrer && params.referrer.indexOf(params.host)==-1){ //来自其他网站
                 params.issem = 1;
             }
         }
         if(login_mobile){ //登录账户
             params.tel = login_mobile;
         }
+        if(typeof ptype == 'undefined'){//每个页面设置全局的type变量--区分页面
+            ptype = 0;
+        }
+        params.type = ptype;
         //得到客户端来源
         if(navigator) {
             var userAgentInfo = navigator.userAgent;
