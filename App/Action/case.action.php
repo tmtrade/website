@@ -32,7 +32,7 @@ class CaseAction extends AppAction
             $this->set("description", $this->description);
             $this->set("pageBar", $pageBar);
             $this->setSeo(11);
-            $this->set("ptype", 6);
+            $this->set("ptype", 5);
             $this->display();
 	}
 
@@ -48,7 +48,7 @@ class CaseAction extends AppAction
             $this->set("title", $title);
             $this->set("id", $id);
             $this->setSeo(12,$id);
-            $this->set("ptype", 7);
+            $this->set("ptype", 6);
             $this->display();
 	}
 
