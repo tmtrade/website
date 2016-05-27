@@ -11,25 +11,25 @@
                 <span>全部结果&nbsp;&gt;</span>
                 <ul class="ms-filterResultsList f-clearfix">
                     <? if ( $kw ) { ?>
-                        <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');" webid="7"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $c ) { ?>
-                        <li title="<?=$c_title?>"><a href="javascript:void(0);" onclick="createUrl('_class', '');"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$c_title?>"><a href="javascript:void(0);" onclick="createUrl('_class', '');" webid="7"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $g ) { ?>
-                        <li title="<?=$g_title?>"><a href="javascript:void(0);" onclick="createUrl('_group', '');"><?=mb_substr($g_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$g_title?>"><a href="javascript:void(0);" onclick="createUrl('_group', '');" webid="7"><?=mb_substr($g_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $t ) { ?>
-                        <li title="<?=$t_title?>"><a href="javascript:void(0);" onclick="createUrl('_sT', '');"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$t_title?>"><a href="javascript:void(0);" onclick="createUrl('_sT', '');" webid="7"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $sn ) { ?>
-                        <li title="<?=$sn_title?>"><a href="javascript:void(0);" onclick="createUrl('_sN', '');"><?=mb_substr($sn_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$sn_title?>"><a href="javascript:void(0);" onclick="createUrl('_sN', '');" webid="7"><?=mb_substr($sn_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $p ) { ?>
-                        <li title="<?=$p_title?>"><a href="javascript:void(0);" onclick="createUrl('_plat', '');"><?=mb_substr($p_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$p_title?>"><a href="javascript:void(0);" onclick="createUrl('_plat', '');" webid="7"><?=mb_substr($p_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $d ) { ?>
-                        <li title="<?=$d_title?>"><a href="javascript:void(0);" onclick="createUrl('_date', '');"><?=mb_substr($d_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$d_title?>"><a href="javascript:void(0);" onclick="createUrl('_date', '');" webid="7"><?=mb_substr($d_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                 </ul>
             </div>
@@ -41,7 +41,7 @@
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="" onclick="createUrl('_class','0');return false;">全部</a></li>
                         <?foreach ($_CLASS as $_cls => $_cn) {?>
-                            <li><a href="javascript:void(0);" onclick="createUrl('_class','<?=$_cls?>');return false;"><?=$_cls?>-<?=$_cn?></a></li>
+                            <li><a href="javascript:void(0);" onclick="createUrl('_class','<?=$_cls?>');return false;" addmsg="<?=$_cls?>-<?=$_cn?>" webid="1"><?=$_cls?>-<?=$_cn?></a></li>
                         <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox cc_all2">
@@ -67,7 +67,7 @@
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="javascript:void(0);" onclick="createUrl('_group','0');return false;">全部群组</a></li>
                         <?foreach ($_GROUP[$c] as $_grp => $_gn) {?>
-                            <li  title="<?=$_gn?>"><a href="" onclick="createUrl('_group','<?=$_grp?>');return false;"><?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?></a></li>
+                            <li  title="<?=$_gn?>"><a href="" onclick="createUrl('_group','<?=$_grp?>');return false;" addmsg="<?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?>" webid="2"><?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?></a></li>
                         <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox groupSty">
@@ -105,7 +105,7 @@
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="javascript:void(0);" onclick="createUrl('_sT','0');return false;">全部</a></li>
                         <?foreach ($_TYPE as $_k => $_v) {?>
-                            <li><a href="javascript:void(0);" onclick="createUrl('_sT','<?=$_k?>');return false;"><?=$_v?></a></li>
+                            <li><a href="javascript:void(0);" onclick="createUrl('_sT','<?=$_k?>');return false;" addmsg="<?=$_v?>" webid="3"><?=$_v?></a></li>
                         <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox">
@@ -130,7 +130,7 @@
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="javascript:void(0);" onclick="createUrl('_sN','0');return false;">全部</a></li>
                             <?foreach ($_NUMBER as $k => $v) {?>
-                                <li><a href="javascript:void(0);" onclick="createUrl('_sN','<?=$k?>');return false;"><?=$v?></a></li>
+                                <li><a href="javascript:void(0);" onclick="createUrl('_sN','<?=$k?>');return false;" addmsg="<?=$v?>" webid="4"><?=$v?></a></li>
                             <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox">
@@ -159,7 +159,7 @@
                                     <ul class="f-clearfix ms-conditionRadio">
                                         <li><a  href="javascript:void(0);" onclick="createUrl('_date','0');return false;">全部</a></li>
                                     <?foreach ($_DATE as $_k => $_v) {?>
-                                        <li><a  href="javascript:void(0);" onclick="createUrl('_date','<?=$_k?>');return false;"><?=$_v?></a></li>
+                                        <li><a  href="javascript:void(0);" onclick="createUrl('_date','<?=$_k?>');return false;" addmsg="<?=$_v?>" webid="5"><?=$_v?></a></li>
                                     <?}?>
                                     </ul>
                                 </div>
@@ -172,7 +172,7 @@
                                     <ul class="f-clearfix ms-conditionRadio">
                                         <li><a href="javascript:void(0);" onclick="createUrl('_plat','0);return false;">全部</a></li>
                                         <?foreach ($_PLATFORM as $k => $v) {?>
-                                            <li><a href="javascript:void(0);" onclick="createUrl('_plat','<?=$k?>');return false;"><?=$v?></a></li>
+                                            <li><a href="javascript:void(0);" onclick="createUrl('_plat','<?=$k?>');return false;" addmsg="<?=$v?>" webid="6"><?=$v?></a></li>
                                         <?}?>
                                     </ul>
                                     <ul class="f-clearfix ms-conditionCheckbox">                                        
@@ -224,16 +224,16 @@
                 <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                     <div>
                         <div class="ms-filterCenter">
-                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg pulse"><a href="<?=$v['viewUrl']?>"  target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="12"><i class="us-icon us-icon20"></i></a>
+                            <span class="ms-filtersImg pulse"><a href="<?=$v['viewUrl']?>"  target="_blank" webid="10"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p><span><?=$v['class']?>类</span>-<?=$_CLASS[$v['class']]?></p>
                                 <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry" webid="8">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" webid="9"><i class="us-icon us-icon22"></i>联系卖家</a>
                             </div>
                         </div>
                     </div>
@@ -245,16 +245,16 @@
                 <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                     <div class="ms-filterMany">
                         <div class="ms-filterCenter">
-                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="12"><i class="us-icon us-icon20"></i></a>
+                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" webid="10"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p>共<em><?=count($_c_)?></em>个分类</p>
                                 <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry"  webid="8">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" webid="9"><i class="us-icon us-icon22" ></i>联系卖家</a>
                             </div>
                         </div>
                         <div class="ms-sortMain">
@@ -322,7 +322,7 @@
             <dd>
                 <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></span>
                 <div class="ms-filtersListTxt">
-                    <a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>">
+                    <a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>" webid="12">
                     <div>
                         <h6><?=$v['name']?></h6>
                         <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>

@@ -19,6 +19,7 @@ class SearchAction extends AppAction
     private $_number    = 30;
     private $_searchArr = array();
     private $_rwfix     = '/s-';
+    public $ptype = 2;
     
     /**
      * 重定向查询URL

@@ -145,7 +145,7 @@ $(document).ready(function(e) {
             });
             return false;
         }
-
+        sendBehavior(100,ptype, e.pageX, e.pageY,kw_value);
         $("#searchForm").submit();
 
     });

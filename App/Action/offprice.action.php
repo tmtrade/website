@@ -19,6 +19,7 @@ class OffpriceAction extends AppAction
     private $_number    = 20;
     private $_col       = array('id', 'tid', 'number', 'class', 'name', 'group', 'price', 'salePrice');
     private $_searchArr = array();
+    public $ptype = 3;
 
     /**
      * 特价页功能
@@ -143,6 +144,7 @@ class OffpriceAction extends AppAction
                 list($cArr,) = $this->load('search')->getClassGroup(0, 0);
                 foreach ($_arr as $v) {
                     $_str .= "$v-".$cArr[$v].'|';
+                    $this->load('keyword')->createKeywordCount("$v-".$cArr[$v],4);
                 }
                 break;
             case 'g':
@@ -150,6 +152,7 @@ class OffpriceAction extends AppAction
                 list(,$gArr) = $this->load('search')->getClassGroup(0, 1);
                 foreach ($_arr as $v) {
                     $_str .= "$v-".$gArr[$all['c']][$v].'|';
+                    $this->load('keyword')->createKeywordCount("$v-".$gArr[$all['c']][$v],5);
                 }
                 break;
         }

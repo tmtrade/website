@@ -13,6 +13,7 @@ class IndexAction extends AppAction
 	public $caches  	= array('index');
 	public $cacheId 	= 'redisHtml';
 	public $expire  	= 3600;//1小时
+        public $ptype = 1;
 
 	public function index()
 	{

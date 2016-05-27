@@ -1,7 +1,7 @@
 <? foreach ($searchList as $k => $v) { ?>
 <li>
     <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
-    <a href="<?=$v['viewUrl']?>" target="_blank">
+    <a href="<?=$v['viewUrl']?>" target="_blank" webid="4">
         <p class="mj-tip">
             <?if ($v['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?};?>
             <?if ($v['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?};?>
@@ -21,7 +21,7 @@
     </a>
     <div class="mj-listButn">
         <!--<a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>-->
-        <a href="javascript:void(0);" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+        <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" webid="3"><i class="us-icon us-icon22"></i>联系卖家</a>
     </div>
 </li>
 <? } ?>

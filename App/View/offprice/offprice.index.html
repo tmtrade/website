@@ -14,7 +14,7 @@
         <?foreach ($channel['adList'] as $k => $v) {?>            
             <li>
                 <div class="gla_inbox">
-                    <a href="<?=$v['link']?>" target="_blank">
+                    <a href="<?=$v['link']?>" target="_blank" webid="5">
                     <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=($v['alt']?$v['alt']:$v['desc'])?>" /></a>
                     <p class="mj-ad">
                         <?=mbSub($v['desc'],0,60)?>
@@ -35,7 +35,7 @@
                 <div class="mj-selection-list" id="j-dltype">
                     <a tid=0 href="javascript:createUrl('_class',0);"  <?if ($c == 0){echo 'class="current"';}?>>全部  </a>
                 <? foreach ($_CLASS as $key => $value) { ?>
-                    <a tid=<?=$key?> href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?>><?echo $key.'类-'.$value?></a>
+                    <a tid=<?=$key?> href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?> addmsg="<?echo $key.'类-'.$value?>" webid="1"><?echo $key.'类-'.$value?></a>
                 <? } ?>
                     <a href="javascript:;" class="curs" id="mj_aclik" style="color: rgb(75, 165, 222);">展开</a>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="mj-selection-list" id="g-dltype">
                     <a href="javascript:createUrl('_group',0);" <?if ($g == ''){echo 'class="current"';}?>>全部  </a>
                 <? foreach ($_GROUP[$c] as $ky => $val) { ?>
-                    <a href="javascript:createUrl('_group','<?=$ky?>');" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>">
+                    <a href="javascript:createUrl('_group','<?=$ky?>');" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>" addmsg="<?=$val?>" webid="2">
                     <?=mb_substr($val, 0, 6, 'utf8')?></a>
                 <? } ?>
                 <? if ( count($_GROUP[$c]) > 10 ){?>
@@ -65,7 +65,7 @@
                 <? foreach ($searchList as $k => $v) { ?>
                     <li>
                         <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
-                        <a href="<?=$v['viewUrl']?>" target="_blank">
+                        <a href="<?=$v['viewUrl']?>" target="_blank" webid="4">
                             <p class="mj-tip">
                                 <?if ($v['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
                                 <?if ($v['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
@@ -85,7 +85,7 @@
                         </a>
                         <div class="mj-listButn">
                             <!--<a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>-->
-                            <a href="javascript:void(0);" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+                            <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" webid="3"><i class="us-icon us-icon22"></i>联系卖家</a>
                         </div>
                     </li>
                 <? } ?>
