@@ -45,16 +45,21 @@ function sendBehavior(webid,t,x,y,add){
     if(typeof add =='undefined') add='';//补充webid可保存操作名
     if(typeof visitid =='undefined') visitid=0;//浏览记录的id
     var args = 'yzc=2&cookie='+gCookie('yzcdata');
+    var param = {};
     if(window && window.screen) {
-        args += '&w=' + (window.screen.width || 0);
-        args += '&h=' + (window.screen.height || 0);
+        param.w = window.screen.width || 0;
+        param.h = window.screen.height || 0;
     }
-    args += '&web_id='+webid;
-    args += '&type='+t;
-    args += '&x='+x;
-    args += '&y='+y;
-    args += '&addition='+add;
-    args += '&visitid='+visitid;
+    param.web_id = webid;
+    param.type = t;
+    param.x = x;
+    param.y = y;
+    param.addition = add;
+    param.visitid = visitid;
+    //拼接参数并转义
+    for( var i in param) {
+        args += '&' + i + '=' +encodeURIComponent(param[i]);
+    }
     sendCount(args);
 }
 $(function(){

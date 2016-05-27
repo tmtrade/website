@@ -142,7 +142,7 @@ class PtAction extends AppAction
         $this->set('title', $this->pageTitle);//页面title
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
-        $this->set('ptype',15);
+        $this->set('ptype',13);
         $this->setSeo(5);
         $this->display();
     }

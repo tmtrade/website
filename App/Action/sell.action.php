@@ -10,7 +10,7 @@
  */
 class SellAction extends AppAction
 {
-	
+	public $ptype = 13;
 	public function index()
 	{
 		$number	= $this->input("m","string");

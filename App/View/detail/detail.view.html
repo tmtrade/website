@@ -194,16 +194,16 @@
                         <? if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){
                         ?>
                         <?if($isLogin){ ?>
-                        <a href='javascript:;' webid="6" onclick="createOrder();" class="mj-priceTxtt_link opt_btn">立即抢购</a>
+                        <a href='javascript:;' webid="30" onclick="createOrder();" class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <? }else{ ?>
                         <a href='javascript:;' onclick="goBuy()" class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <?} ?>
                         <!--定价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
-                        <a href='javascript:;' webid="6" onclick="createOrder()" class="opt_btn">我想购买</a>
+                        <a href='javascript:;' webid="30" onclick="createOrder()" class="opt_btn">我想购买</a>
                         <!--议价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
-                        <a href='javascript:;' webid="6" onclick="createOrder()" class="opt_btn">我有兴趣</a>
+                        <a href='javascript:;' webid="30" onclick="createOrder()" class="opt_btn">我有兴趣</a>
                         <?}else{?>
                         <a href='javascript:;' onclick="goLook()" class="opt_btn">查看价格</a>
                         <?}?>
@@ -220,7 +220,7 @@
                         <? if($baystate == 1){ ?>
                         <a href='javascript:;' class="mj-priceTxtt_link">你已经购买过该商标</a>
                         <? }else{ ?>
-                        <a href='javascript:;' webid="6" onclick="createOrder()" class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
+                        <a href='javascript:;' webid="30" onclick="createOrder()" class="mj-priceTxtt_link opt_btn" id='addorder'>提交需求</a>
                         <? } ?>
                     <? }else{ ?>
                         <div class="mj-priceTxtt">
@@ -236,7 +236,7 @@
                     <dl>
                         <dd>
                             <i class="us-icon uj_icon2"></i><span class="sqr" title="<?=$info['proName']?>">申请人：<?=$info['proName']?></span>
-                            <a href="javascript:;" webid="7" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
+                            <a href="javascript:;" webid="31" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
@@ -245,7 +245,7 @@
                         <dd class="mj-cTr_bRight_dd">
                             <input id="telInput2" value="" placeholder="输入手机号" type="text">
                             <label for="l-button">
-                                <button type="submit" webid="6" id="l-button" onclick="createOrderByPhone()">打给我</button>
+                                <button type="submit" webid="30" id="l-button" onclick="createOrderByPhone()">打给我</button>
                             </label>
                         </dd>
                     </dl>
