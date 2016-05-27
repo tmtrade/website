@@ -103,5 +103,18 @@ class TopicAction extends AppAction
         $this->setSeoByTopic("/topic/tm");
         $this->display();
     }
+    
+        //专利上线专题
+    public function ptline()
+    {
+        $this->pageTitle = '一只蝉专利买卖,专利交易系统,专利交易平台-- 一只蝉专利转让网';
+        $this->pageKey  = '一只蝉专利买卖,专利交易系统,专利交易平台';
+        $this->pageDescription = '一只蝉全新推出专利买卖平台,为你购买专利提供便捷。专利交易平台提供：购买专利,专利转让信息,买卖专利信息,专利申请等服务。一只蝉是超凡集团旗下资产交易平台,为你提供专业的专利转让交易服务。';
+        $this->set('title', $this->pageTitle);//页面title
+        $this->set('keywords', $this->pageKey);//页面keywords
+        $this->set('description', $this->pageDescription);//页面description
+        $this->setSeoByTopic("/topic/ptline");
+        $this->display();
+    }
 }
 ?>
