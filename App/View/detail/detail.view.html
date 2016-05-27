@@ -31,7 +31,7 @@
                     <?if($sale['isLook']):?>
                     <a class="collect"> <img src="<?=StaticDir?>1.2/images/xin_cur.png"><span>取消收藏</span></a>
                     <?else:?>
-                    <a class="collect in_collect" webid="5"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
+                    <a class="collect in_collect" webid="4"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
                     <?endif;?>
                 </p>
                 <p class="fr">
@@ -205,7 +205,7 @@
                         <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
                         <a href='javascript:;' webid="30" onclick="createOrder()" class="opt_btn">我有兴趣</a>
                         <?}else{?>
-                        <a href='javascript:;' onclick="goLook()" class="opt_btn">查看价格</a>
+                        <a href='javascript:;' onclick="goLook()" class="opt_btn" webid="5">查看价格</a>
                         <?}?>
             <?}else{?>
                     <!-- 来自商标库 -->
@@ -269,7 +269,7 @@
             <h2>猜你喜欢</h2>
             <?foreach($tj as $item):?>
             <li>
-                <a href="<?=$item['viewUrl']?>" webid="8"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
+                <a href="<?=$item['viewUrl']?>" webid="6"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
             </li>
             <?endforeach;?>
         </ul>
@@ -284,7 +284,7 @@
                    if($k<5){
                    ?>
                    <li>
-                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" webid="9" ><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" ></a>
+                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" webid="7" ><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" ></a>
                     </li>
                    <?}}?>
                 </ul>
@@ -492,10 +492,10 @@
                                 <label>服务顾问：</label>陈艾<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=14" addmsg="格伦贝拉" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
+                        <a href="/case/detail/?id=14" addmsg="格伦贝拉" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=14" addmsg="格伦贝拉" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
+                        <a href="/case/detail/?id=14" addmsg="格伦贝拉" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -514,10 +514,10 @@
                                 <label>服务顾问：</label>王桂华<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=12" addmsg="Hesiod" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
+                        <a href="/case/detail/?id=12" addmsg="Hesiod" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=12" addmsg="Hesiod" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
+                        <a href="/case/detail/?id=12" addmsg="Hesiod" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -536,10 +536,10 @@
                                 <label>服务顾问：</label>寇飞<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=16" addmsg="麦普森" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
+                        <a href="/case/detail/?id=16" addmsg="麦普森" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=16" addmsg="麦普森" webid="10" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
+                        <a href="/case/detail/?id=16" addmsg="麦普森" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
                     </div>
                 </div>
             </div>
