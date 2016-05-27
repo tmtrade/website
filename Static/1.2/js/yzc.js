@@ -105,7 +105,10 @@ $(function(){
         }
     });
     //离开事件
-    //$(window).bind('beforeunload',function(){
-
-    //});
+    $(window).bind('beforeunload',function(){
+        if(typeof visitid !='undefined'){ //记录离开时间
+            var args = 'yzc=3&visitid='+visitid;
+            sendCount(args);
+        }
+    });
 });
