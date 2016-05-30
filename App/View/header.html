@@ -100,7 +100,25 @@
         //提交数据
         ucBuy.buyAdd(task_aim);
     }
-   }); 
+   });
+    //提交数据
+    function sendCount(args){
+        $.ajax(
+                {
+                    type:'get',
+                    url : '<?=TRADE_URL?>/Count/index?'+args,
+                    async: false,
+                    dataType : 'jsonp',
+                    jsonp:"yzctj",
+                    success  : function(data) {
+                        if(data.code==1){
+                            aCookie('yzcdata',data.msg,315360000000);//更新cookie信息
+                            window.visitid = data.id;//保存此次浏览记录的id
+                        }
+                    },
+                }
+        );
+    }
 </script>
 </head>
 <body>

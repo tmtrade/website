@@ -18,24 +18,7 @@ function gCookie(name){
     var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
     if(arr != null) return unescape(arr[2]); return '';
 }
-//提交数据
-function sendCount(args){
-    $.ajax(
-        {
-            type:'get',
-            url : 'http://tr2.chofn.net/Count/index?'+args,
-            async: false,
-            dataType : 'jsonp',
-            jsonp:"yzctj",
-            success  : function(data) {
-                if(data.code==1){
-                    aCookie('yzcdata',data.msg,315360000000);//更新cookie信息
-                    window.visitid = data.id;//保存此次浏览记录的id
-                }
-            },
-        }
-    );
-}
+
 //提交行为数据
 function sendBehavior(webid,t,x,y,add){
     if(typeof webid =='undefined') webid=0;
