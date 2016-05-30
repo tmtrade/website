@@ -102,12 +102,12 @@
     }
    });
     //提交数据
-    function sendCount(args){
+    function sendCount(args,async){
         $.ajax(
                 {
                     type:'get',
                     url : '<?=TRADE_URL?>/Count/index?'+args,
-                    async: false,
+                    async: async,
                     dataType : 'jsonp',
                     jsonp:"yzctj",
                     success  : function(data) {

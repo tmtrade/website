@@ -43,7 +43,7 @@ function sendBehavior(webid,t,x,y,add){
     for( var i in param) {
         args += '&' + i + '=' +encodeURIComponent(param[i]);
     }
-    sendCount(args);
+    sendCount(args,false);
 }
 $(function(){
     (function(){
@@ -83,7 +83,7 @@ $(function(){
         for( var i in params) {
             args += '&' + i + '=' +encodeURIComponent(params[i]);
         }
-        sendCount(args);
+        sendCount(args,true);
     })();
     //绑定超链接事件
     $(document).on('click','a',function(e){
@@ -100,7 +100,7 @@ $(function(){
     $(window).bind('beforeunload',function(){
         if(typeof visitid !='undefined'){ //记录离开时间
             var args = 'yzc=3&visitid='+visitid;
-            sendCount(args);
+            sendCount(args,false);
         }
     });
 });
