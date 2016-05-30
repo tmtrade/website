@@ -23,6 +23,7 @@ class FaqAction extends AppAction
                             52    => '商标求购信息',
                         );
     public $seotime      = "一只蝉商标转让平台网";
+    public $ptype = 16;
     //公司介绍
     public function index()
     {
@@ -171,6 +172,7 @@ class FaqAction extends AppAction
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
         $this->set("id", $id);
+        $this->set("ptype", 17);
         $this->display('faq/faq.views.html');
     }
 

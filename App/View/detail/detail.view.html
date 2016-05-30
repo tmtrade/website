@@ -245,7 +245,7 @@
                         <dd class="mj-cTr_bRight_dd">
                             <input id="telInput2" value="" placeholder="输入手机号" type="text">
                             <label for="l-button">
-                                <button type="submit" webid="30" id="l-button" onclick="createOrderByPhone()">打给我</button>
+                                <button type="submit" id="l-button" onclick="createOrderByPhone()">打给我</button>
                             </label>
                         </dd>
                     </dl>
@@ -806,6 +806,7 @@
         buyData['subject'] 		= '求购信息';
         buyData['remarks'] 		= remarks;
         //提交数据
+        sendBehavior(30,ptype, 0, 0,'tel:'.tel);//保存操作信息
         ucBuy.buyAdd(buyData);
     }
     //检测用户是否购买回调

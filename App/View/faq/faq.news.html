@@ -13,7 +13,7 @@
                <div class="yzzz">
                     <? $i = 1; foreach ($list as $k=>$item){ ?>
                         <div class="g-cib-a2-b2-d1 cur">
-                            <a href="<? echo $item['url']; ?>"><? echo $i;?>.&nbsp;&nbsp;&nbsp;<? echo $item['title']; ?></a>
+                            <a href="<? echo $item['url']; ?>" addmsg="<?=$category?>|<?=$item['title']?>" webid="1"><? echo $i;?>.&nbsp;&nbsp;&nbsp;<? echo $item['title']; ?></a>
                         </div>
                     <? $i++; } ?>
                </div>
