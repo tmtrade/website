@@ -502,6 +502,7 @@ class SearchAction extends AppAction
             $this->redirect('', '/d-'.$res['tid'].'-'.$res['class'].'.html');
             exit;
         }
+        $this->load('keyword')->createKeywordCount($number,2);//记录搜索次数
         //分类显示标题
         $classGroup = $this->load('search')->getClassGroup(0,0);
         list($_class,) = $classGroup;
