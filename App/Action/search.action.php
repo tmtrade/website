@@ -68,7 +68,6 @@ class SearchAction extends AppAction
             $params = $this->getSearchParams();
             $this->rewriteUrl();
         }
-
         //处理商标号搜索
         if ( !empty($params['number']) ){
             $this->detail($params['number']);
@@ -496,13 +495,13 @@ class SearchAction extends AppAction
     protected function detail($number)
     {
         $res = $this->load('search')->getNumberInfo($number);
+        $this->load('keyword')->createKeywordCount($number,2);//记录搜索次数
         if ( $res['code'] == '1' ){
             //保存搜索历史，方便搜索框处理
             $this->setSearchLog($number, 2);
             $this->redirect('', '/d-'.$res['tid'].'-'.$res['class'].'.html');
             exit;
         }
-        $this->load('keyword')->createKeywordCount($number,2);//记录搜索次数
         //分类显示标题
         $classGroup = $this->load('search')->getClassGroup(0,0);
         list($_class,) = $classGroup;
