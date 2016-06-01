@@ -49,7 +49,10 @@ $rules[] = array(
     '#/lxwm/$#',
     array('mod' => 'faq', 'action' => 'lxwm'),
 );
-
+$rules[] = array(
+    '#/v-54-985/$#',
+    array('mod' => 'topic', 'action' => 'fourth'),
+);
 //定义筛选页规则
 $rules[] = array(
     '#/s(-|/)#',

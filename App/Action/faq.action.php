@@ -195,7 +195,7 @@ class FaqAction extends AppAction
      * 联系我们
      */
     public function lxwm(){
-        $this->views(54,985);
+        $this->redirect('',"/about/");
     }
     /**
      * 问题
