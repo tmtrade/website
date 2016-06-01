@@ -220,14 +220,14 @@
                                 <?$kkk=0;?>
                                 <?if($second['industryId'] == $first['id']):?>
                                 <li>
-                                    <b><a href="<?=$second['link']?>" target="_blank" webid="101"><?=$second['name']?></a></b>
+                                    <b><a href="<?=$second['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-'.$second['name']?>"><?=$second['name']?></a></b>
                                     <p>
                                         <?foreach($menuThird as $third):?>
                                         <?if($third['classId'] == $second['id']):?>
                                         <?$kkk++;?>
                                         <?if($kkk==1):?>
-                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101"><?=$third['name']?> </a>
-                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101"><?=$third['name']?> </a>
+                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101"  addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"><?=$third['name']?> </a>
+                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101" addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"><?=$third['name']?> </a>
                                         <?endif;?>
                                         <?endif;?>
                                         <?endforeach;?>
@@ -242,7 +242,7 @@
                                     <? foreach($menuPic as $menuImg): ?>
                                     <? if($menuImg['industryId'] == $first['id']): ?>
                                     <span>
-                                        <a href="<?=$menuImg['link']?>" target="_blank">
+                                        <a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>">
                                             <img class="headerlazy" src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$menuImg['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$menuImg['alt']?>"></a>
                                     </span>
                                     <? endif; ?>
@@ -257,7 +257,7 @@
         </div>
         <div class="mj-navitems fl">
             <p class="f-clearfix">
-                <a href="/" addmsg="首页" webid="102">
+                <a href="/" addmsg="首页" webid="102" >
                     首页
                 </a>
                 <a href="/offprice"  addmsg="特价商标" webid="102">
