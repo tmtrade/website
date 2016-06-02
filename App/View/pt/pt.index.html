@@ -11,10 +11,10 @@
         <span>全部结果&nbsp;&gt;</span>
         <ul class="ms-filterResultsList f-clearfix">
             <? if ( $t ) { ?>
-                <li title="<?=$t_title?>"><a href="javascript:void(0);" webid="3" onclick="createUrl('_type', '');"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                <li title="<?=$t_title?>"><a href="javascript:void(0);" addmsg="<?=$t_title?>" webid="3" onclick="createUrl('_type', '');"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
             <? } ?>
             <? if ( $c ) { ?>
-                <li title="<?=$c_title?>"><a href="javascript:void(0);" webid="3" onclick="createUrl('_class', '');"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                <li title="<?=$c_title?>"><a href="javascript:void(0);" addmsg="<?=$t_title?>" webid="3" onclick="createUrl('_class', '');"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
             <? } ?>
         </ul>
     </div>
@@ -564,7 +564,12 @@
         str = str ? str.substr(1) : '';
         if ( str ){
             var tname = $(this).attr('tname');
-            sendBehavior(13,ptype, e.pageX, e.pageY,tname+'--'+str);//保存操作信息
+            var lables = $(this).parent().prev().find(':checked').siblings('label');
+            var  temp = '';
+            lables.each(function(){
+                temp += ","+$(this).text();
+            })
+            sendBehavior(13,ptype, e.pageX, e.pageY,temp);//保存操作信息
             createUrl(tname, str);
         }
     });

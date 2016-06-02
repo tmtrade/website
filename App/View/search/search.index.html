@@ -542,7 +542,12 @@
         str = str ? str.substr(1) : '';
         if ( str ){
             var tname = $(this).attr('tname');
-            sendBehavior(13,ptype, e.pageX, e.pageY,tname+'--'+str);//保存操作信息
+            var lables = $(this).parent().prev().find(':checked').siblings('label');
+            var  temp = '';
+            lables.each(function(){
+                temp += ","+$(this).text();
+            })
+            sendBehavior(13,ptype, e.pageX, e.pageY,temp);//保存操作信息
             createUrl(tname, str);
         }
     });
