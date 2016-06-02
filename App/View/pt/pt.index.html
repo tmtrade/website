@@ -24,9 +24,9 @@
             <span>专利类型</span>
             <div class="ms-conditionList-main ms-setHeight">
                 <ul class="f-clearfix ms-conditionRadio">
-                    <li><a href="javascript:void(0);" webid="1" onclick="createUrl('_type','0');return false;">全部</a></li>
+                    <li><a href="javascript:void(0);" webid="1" addmsg="全部专利类型" onclick="createUrl('_type','0');return false;">全部</a></li>
                     <?foreach ($_TYPE as $k => $v) {?>
-                    <li><a href="javascript:void(0);" webid="1" onclick="createUrl('_type','<?=$k?>');return false;"><?=$v?></a></li>
+                    <li><a href="javascript:void(0);" webid="1" addmsg="<?=$v?>" onclick="createUrl('_type','<?=$k?>');return false;"><?=$v?></a></li>
                     <?}?>            
                 </ul>
                 <ul class="f-clearfix ms-conditionCheckbox cc_all2">
@@ -51,9 +51,9 @@
             <span>类型分类</span>
             <div class="ms-conditionList-main">
                 <ul class="f-clearfix ms-conditionRadio">
-                    <li><a href="javascript:void(0);" webid="2" onclick="createUrl('_class','0');return false;">全部</a></li>
+                    <li><a href="javascript:void(0);" webid="2" addmsg="全部类型分类"onclick="createUrl('_class','0');return false;">全部</a></li>
                     <?foreach ($_CLASS as $k => $v) {?>
-                    <li title="<?=$v?>"><a href="javascript:void(0);"  webid="2" onclick="createUrl('_class','<?=$k?>');return false;"><?=mb_substr($v,0,8,'utf-8')?></a></li>
+                    <li title="<?=$v?>"><a href="javascript:void(0);"  webid="2" addmsg="<?=$v?>" onclick="createUrl('_class','<?=$k?>');return false;"><?=mb_substr($v,0,8,'utf-8')?></a></li>
                     <?}?>            
                 </ul>
                 <ul class="f-clearfix ms-conditionCheckbox cc_all2">

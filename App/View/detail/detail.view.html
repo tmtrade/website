@@ -269,7 +269,7 @@
             <h2>猜你喜欢</h2>
             <?foreach($tj as $item):?>
             <li>
-                <a href="<?=$item['viewUrl']?>" webid="6"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
+                <a href="<?=$item['viewUrl']?>" webid="6" addmsg="<?=$item['name']?>"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
             </li>
             <?endforeach;?>
         </ul>
@@ -284,7 +284,7 @@
                    if($k<5){
                    ?>
                    <li>
-                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" webid="7" ><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" ></a>
+                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" webid="7" addmsg="<?=$v['name']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" ></a>
                     </li>
                    <?}}?>
                 </ul>

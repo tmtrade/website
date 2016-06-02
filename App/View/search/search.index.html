@@ -11,25 +11,25 @@
                 <span>全部结果&nbsp;&gt;</span>
                 <ul class="ms-filterResultsList f-clearfix">
                     <? if ( $kw ) { ?>
-                        <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');" webid="7"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');" webid="7" addmsg="<?=$kw_title?>"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $c ) { ?>
-                        <li title="<?=$c_title?>"><a href="javascript:void(0);" onclick="createUrl('_class', '');" webid="7"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$c_title?>"><a href="javascript:void(0);" onclick="createUrl('_class', '');" webid="7" addmsg="<?=$c_title?>"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $g ) { ?>
-                        <li title="<?=$g_title?>"><a href="javascript:void(0);" onclick="createUrl('_group', '');" webid="7"><?=mb_substr($g_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$g_title?>"><a href="javascript:void(0);" onclick="createUrl('_group', '');" webid="7" addmsg="<?=$g_title?>"><?=mb_substr($g_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $t ) { ?>
-                        <li title="<?=$t_title?>"><a href="javascript:void(0);" onclick="createUrl('_sT', '');" webid="7"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$t_title?>"><a href="javascript:void(0);" onclick="createUrl('_sT', '');" webid="7" addmsg="<?=$t_title?>"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $sn ) { ?>
-                        <li title="<?=$sn_title?>"><a href="javascript:void(0);" onclick="createUrl('_sN', '');" webid="7"><?=mb_substr($sn_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$sn_title?>"><a href="javascript:void(0);" onclick="createUrl('_sN', '');" webid="7" addmsg="<?=$t_title?>"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $p ) { ?>
-                        <li title="<?=$p_title?>"><a href="javascript:void(0);" onclick="createUrl('_plat', '');" webid="7"><?=mb_substr($p_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$p_title?>"><a href="javascript:void(0);" onclick="createUrl('_plat', '');" webid="7" addmsg="<?=$p_title?>"><?=mb_substr($p_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $d ) { ?>
-                        <li title="<?=$d_title?>"><a href="javascript:void(0);" onclick="createUrl('_date', '');" webid="7"><?=mb_substr($d_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$d_title?>"><a href="javascript:void(0);" onclick="createUrl('_date', '');" webid="7" addmsg="<?=$d_title?>"><?=mb_substr($d_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                 </ul>
             </div>
