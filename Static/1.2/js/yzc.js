@@ -97,10 +97,17 @@ $(function(){
         }
     });
     //离开事件
-    $(window).bind('beforeunload',function(){
+    /*$(window).bind('beforeunload',function(){ //兼容性问题,暂时弃用
         if(typeof visitid !='undefined'){ //记录离开时间
             var args = 'yzc=3&visitid='+visitid;
             sendCount(args,false);
         }
-    });
+    });*/
+    //通过轮寻的方式获得离开时间 --- 4s
+    setInterval(function(){
+        if(typeof visitid !='undefined'){ //记录离开时间
+            var args = 'yzc=3&visitid='+visitid;
+            sendCount(args,true);
+        }
+    },4000)
 });

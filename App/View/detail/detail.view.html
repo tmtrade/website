@@ -698,7 +698,7 @@
                             for(var i=0,l=json.length;i<l;i++){
                                 neirou = json[i];    //当前层数据
                                 item += '<li>';
-                                item += '<a href="'+neirou.viewUrl+'" ><img src="'+neirou.imgUrl+'" onerror="this.src=\'/Static/images/img1.png\'" ></a>';
+                                item += '<a href="'+neirou.viewUrl+'" webid="7" addmsg="'+neirou.title+'"><img src="'+neirou.imgUrl+'" onerror="this.src=\'/Static/images/img1.png\'" ></a>';
                                 item += '</li>';
                             }
                              $("#sclist").html(item);
@@ -806,7 +806,7 @@
         buyData['subject'] 		= '求购信息';
         buyData['remarks'] 		= remarks;
         //提交数据
-        sendBehavior(30,ptype, 0, 0,'tel:'.tel);//保存操作信息
+        sendBehavior(30,ptype, 0, 0,'tel:'+tel);//保存操作信息
         ucBuy.buyAdd(buyData);
     }
     //检测用户是否购买回调

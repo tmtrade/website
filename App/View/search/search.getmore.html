@@ -6,8 +6,8 @@
             <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
             <div>
                 <div class="ms-filterCenter">
-                    <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="12"><i class="us-icon us-icon20"></i></a>
-                    <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" webid="10" addmsg="<?=$v['name']?>">
+                    <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="11"><i class="us-icon us-icon20"></i></a>
+                    <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" addmsg="<?=$v['name']?>" webid="10">
                     <img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                     <div class="ms-filtersListTxt">
                         <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
@@ -26,8 +26,8 @@
             <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
             <div class="ms-filterMany">
                 <div class="ms-filterCenter">
-                    <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="12"><i class="us-icon us-icon20"></i></a>
-                    <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" webid="10" addmsg="<?=$v['name']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                    <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="11"><i class="us-icon us-icon20"></i></a>
+                    <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" addmsg="<?=$v['name']?>" webid="10"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                     <div class="ms-filtersListTxt">
                         <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                         <p>共<em><?=count($_c_)?></em>个分类</p>

@@ -42,6 +42,7 @@ function addBuy()
     data['subject'] = need;
     data['remarks'] = need;
     data['pttype'] = "求购";
+    sendBehavior(1,12, 0, 0,'tel:'+mobile+' 需求:'+need);//保存操作信息
     ucNetwork.submitData(data);
     
 }

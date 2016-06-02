@@ -11,25 +11,25 @@
                 <span>全部结果&nbsp;&gt;</span>
                 <ul class="ms-filterResultsList f-clearfix">
                     <? if ( $kw ) { ?>
-                        <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');" webid="7" addmsg="<?=$kw_title?>"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');" addmsg='<?=$kw_title?>' webid="7"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $c ) { ?>
-                        <li title="<?=$c_title?>"><a href="javascript:void(0);" onclick="createUrl('_class', '');" webid="7" addmsg="<?=$c_title?>"><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$c_title?>"><a href="javascript:void(0);" onclick="createUrl('_class', '');" webid="7" addmsg='<?=$c_title?>'><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $g ) { ?>
-                        <li title="<?=$g_title?>"><a href="javascript:void(0);" onclick="createUrl('_group', '');" webid="7" addmsg="<?=$g_title?>"><?=mb_substr($g_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$g_title?>"><a href="javascript:void(0);" onclick="createUrl('_group', '');" webid="7" addmsg='<?=$g_title?>'><?=mb_substr($g_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $t ) { ?>
-                        <li title="<?=$t_title?>"><a href="javascript:void(0);" onclick="createUrl('_sT', '');" webid="7" addmsg="<?=$t_title?>"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$t_title?>"><a href="javascript:void(0);" onclick="createUrl('_sT', '');" webid="7" addmsg='<?=$t_title?>'><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $sn ) { ?>
-                        <li title="<?=$sn_title?>"><a href="javascript:void(0);" onclick="createUrl('_sN', '');" webid="7" addmsg="<?=$t_title?>"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$sn_title?>"><a href="javascript:void(0);" onclick="createUrl('_sN', '');" webid="7" addmsg='<?=$sn_title?>'><?=mb_substr($sn_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $p ) { ?>
-                        <li title="<?=$p_title?>"><a href="javascript:void(0);" onclick="createUrl('_plat', '');" webid="7" addmsg="<?=$p_title?>"><?=mb_substr($p_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$p_title?>"><a href="javascript:void(0);" onclick="createUrl('_plat', '');" webid="7" addmsg='<?=$p_title?>'><?=mb_substr($p_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                     <? if ( $d ) { ?>
-                        <li title="<?=$d_title?>"><a href="javascript:void(0);" onclick="createUrl('_date', '');" webid="7" addmsg="<?=$d_title?>"><?=mb_substr($d_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <li title="<?=$d_title?>"><a href="javascript:void(0);" onclick="createUrl('_date', '');" webid="7" addmsg='<?=$d_title?>'><?=mb_substr($d_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
                     <? } ?>
                 </ul>
             </div>
@@ -224,8 +224,8 @@
                 <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                     <div>
                         <div class="ms-filterCenter">
-                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="12"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg pulse"><a href="<?=$v['viewUrl']?>"  target="_blank" webid="10" addmsg="<?=$v['name']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="11"><i class="us-icon us-icon20"></i></a>
+                            <span class="ms-filtersImg pulse"><a href="<?=$v['viewUrl']?>"  target="_blank" addmsg="<?=$v['name']?>" webid="10"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p><span><?=$v['class']?>类</span>-<?=$_CLASS[$v['class']]?></p>
@@ -245,8 +245,8 @@
                 <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                     <div class="ms-filterMany">
                         <div class="ms-filterCenter">
-                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="12"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" webid="10" addmsg="<?=$v['name']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="11"><i class="us-icon us-icon20"></i></a>
+                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" addmsg="<?=$v['name']?>" webid="10"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p>共<em><?=count($_c_)?></em>个分类</p>
@@ -322,7 +322,7 @@
             <dd>
                 <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></span>
                 <div class="ms-filtersListTxt">
-                    <a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>" webid="12">
+                    <a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>" addmsg="<?=$v['name']?>" webid="12">
                     <div>
                         <h6><?=$v['name']?></h6>
                         <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
