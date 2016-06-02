@@ -533,7 +533,7 @@
         });
     }
 
-    $(".ms-condition-btn a").click(function(){
+    $(".ms-condition-btn a").click(function(e){
         var inputDom = $(this).parent().prev().find(':checked');
         var str = '';
         inputDom.each(function(){
@@ -542,6 +542,7 @@
         str = str ? str.substr(1) : '';
         if ( str ){
             var tname = $(this).attr('tname');
+            sendBehavior(13,ptype, e.pageX, e.pageY,tname+'--'+str);//保存操作信息
             createUrl(tname, str);
         }
     });
