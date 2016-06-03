@@ -120,9 +120,6 @@ class FaqAction extends AppAction
             //处理参数---短url或常规url
             $c = $this->input('c', 'int', 0);
             $id = $this->input('id', 'int', 0);
-            if($id==985){
-                $this->redirect('',"/about/");
-            }
             if($c && $id){
                 $this->redirect('',"/v-$c-$id/");
             }
@@ -201,7 +198,7 @@ class FaqAction extends AppAction
      * 联系我们
      */
     public function lxwm(){
-        $this->redirect('',"/about/");
+        $this->views(54,1240);
     }
     /**
      * 问题
