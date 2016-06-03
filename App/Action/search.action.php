@@ -462,7 +462,7 @@ class SearchAction extends AppAction
                     }
                 }
                 if ( $_hasN ){
-                        $_str = $N['1,2'].' '.$_str;
+                        $_str = $N['1,2'].'|'.$_str;
                         $this->load('keyword')->createKeywordCount($N['1,2'],7);
                 } 
                 break;
