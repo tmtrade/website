@@ -96,7 +96,7 @@ $(document).ready(function(e) {
     });
 
     //搜索框按钮触发
-    $(".mj-search-submit").click(function (){
+    $(".mj-search-submit").click(function (e){
 
         var input_kw = $("input[name='kw']");
 
@@ -145,9 +145,7 @@ $(document).ready(function(e) {
             });
             return false;
         }
-        sendBehavior(100,ptype, e.pageX, e.pageY,kw_value);
-        $("#searchForm").submit();
-
+        sendBehavior(100,ptype, e.pageX, e.pageY,kw_value,$('#searchForm').submit());
     });
 
     //登录提示

@@ -102,7 +102,7 @@
     }
    });
     //提交数据
-    function sendCount(args,async){
+    function sendCount(args,async,callback){
         $.ajax(
                 {
                     type:'get',
@@ -111,6 +111,11 @@
                     crossDomain:true,
                     dataType : 'jsonp',
                     jsonp:"yzctj",
+                    complete	: function(xhr,status){
+                        if(typeof callback =='function'){
+                            callback();
+                        }
+                    },
                     success  : function(data) {
                         if(data.code==1){
                             aCookie('yzcdata',data.msg,315360000000);//更新cookie信息

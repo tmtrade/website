@@ -20,7 +20,7 @@ function gCookie(name){
 }
 
 //提交行为数据
-function sendBehavior(webid,t,x,y,add){
+function sendBehavior(webid,t,x,y,add,callback){
     if(typeof webid =='undefined') webid=0;
     if(typeof t =='undefined') t=0;
     if(typeof x =='undefined') x=0;
@@ -43,7 +43,7 @@ function sendBehavior(webid,t,x,y,add){
     for( var i in param) {
         args += '&' + i + '=' +encodeURIComponent(param[i]);
     }
-    sendCount(args,false);
+    sendCount(args,false,callback);
 }
 $(function(){
     (function(){
