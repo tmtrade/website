@@ -169,7 +169,7 @@ class PatentAction extends AppAction{
                         $dataContat['number']       = $item;
                         $dataContat['code']         = $code;
                         $dataContat['price']        = $data['price'][$key];
-                        $dataContat['userId']       = 0;
+                        $dataContat['uid']          = $userId;
                         $dataContat['isVerify']     = 2;
                         $dataContat['date']         = time();
 			if ( $isSale ){//已存在商品，则添加联系人信息

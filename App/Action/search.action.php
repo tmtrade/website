@@ -111,6 +111,9 @@ class SearchAction extends AppAction
                 $this->set($k, $v);
                 $this->set($k.'_title', $this->getSelectTitle($k, $v, $this->_searchArr));
             }
+            //存储每个用户当次的搜索条件为下次搜索去比较
+            $this->com('redisHtml')->set('kw_'.$_COOKIE['sat5_sid'], $this->_searchArr, 300);
+            
             $whereStr   = http_build_query($this->_searchArr);
         }
         $classGroup = $this->load('search')->getClassGroup();
@@ -419,20 +422,19 @@ class SearchAction extends AppAction
 
         $_arr = array_filter( explode(',', $value) );
         if ( empty($_arr) ) return $value;
-
         $_str = '';
         switch ($title) {
             case 'kw':
                 $S      = C('SBSEARCH');
                 $kt     = intval($all['kt']) <= 0 ? 1 : intval($all['kt']);
                 $_str   = $S[$kt].':'.$value;
-                $this->load('keyword')->createKeywordCount($value,$kt);
+                $this->load('keyword')->createKeywordCount($value,$kt,$title,$value);
                 break;
             case 'c':
                 list($cArr,) = $this->load('search')->getClassGroup(0, 0);
                 foreach ($_arr as $v) {
                     $_str .= "$v-".$cArr[$v].'|';
-                    $this->load('keyword')->createKeywordCount("$v-".$cArr[$v],4);
+                    $this->load('keyword')->createKeywordCount("$v-".$cArr[$v],4,$title,$value);
                 }
                 break;
             case 'g':
@@ -440,14 +442,14 @@ class SearchAction extends AppAction
                 list(,$gArr) = $this->load('search')->getClassGroup(0, 1);
                 foreach ($_arr as $v) {
                     $_str .= "$v-".$gArr[$all['c']][$v].'|';
-                    $this->load('keyword')->createKeywordCount("$v-".$gArr[$all['c']][$v],5);
+                    $this->load('keyword')->createKeywordCount("$v-".$gArr[$all['c']][$v],5,$title,$value);
                 }
                 break;
             case 't':
                 $T = C('TYPES');
                 foreach ($_arr as $v) {
                     $_str .= "$v-".$T[$v].'|';
-                    $this->load('keyword')->createKeywordCount("$v-".$T[$v],6);
+                    $this->load('keyword')->createKeywordCount("$v-".$T[$v],6,$title,$value);
                 }
                 break;
             case 'sn':
@@ -458,24 +460,24 @@ class SearchAction extends AppAction
                         $_hasN = true;
                     }else{
                         $_str .= $N[$v].'|';
-                        $this->load('keyword')->createKeywordCount($N[$v],7);
+                        $this->load('keyword')->createKeywordCount($N[$v],7,$title,$value);
                     }
                 }
                 if ( $_hasN ){
                         $_str = $N['1,2'].'|'.$_str;
-                        $this->load('keyword')->createKeywordCount($N['1,2'],7);
+                        $this->load('keyword')->createKeywordCount($N['1,2'],7,$title,$value);
                 } 
                 break;
             case 'd':
                 $D      = $this->load('search')->getDateList();
                 $_str   = $D[$value];
-                $this->load('keyword')->createKeywordCount($_str,8);
+                $this->load('keyword')->createKeywordCount($_str,8,$title,$value);
                 break;
             case 'p':
                 $P = C('PLATFORM_IN');
                 foreach ($_arr as $v) {
                     $_str .= $P[$v].'|';
-                    $this->load('keyword')->createKeywordCount($P[$v],9);
+                    $this->load('keyword')->createKeywordCount($P[$v],9,$title,$value);
                 }
                 break;
         }
@@ -495,7 +497,7 @@ class SearchAction extends AppAction
     protected function detail($number)
     {
         $res = $this->load('search')->getNumberInfo($number);
-        $this->load('keyword')->createKeywordCount($number,2);//记录搜索次数
+        $this->load('keyword')->createKeywordCount($number,2,"kw",$number);//记录搜索次数
         if ( $res['code'] == '1' ){
             //保存搜索历史，方便搜索框处理
             $this->setSearchLog($number, 2);

@@ -136,18 +136,26 @@ class KeywordModule extends AppModule
      * @access  public
      * @param   string      $kw        搜索关键词
      * @param   int         $type      搜索类型
+     * @param   int         $type      搜索类型关键词KEY
+     * @param   int         $type      搜索类型关键词的值（简写）
      */
-    public function createKeywordCount($kw, $type)
+    public function createKeywordCount($kw, $type, $ktype,$val)
     {
         if ( empty($kw) || empty($type)) return '0';
-         $data = array(
-            'keyword'   => $kw,
-            'type'      => $type,
-            'sid'       => $_COOKIE['sat5_sid'],
-            'ip'        =>  getClientIp(),
-            'date'      => time(),
-            );
-            return $this->import('kwcount')->create($data);
+        
+        //判断上一次搜索是否有相同的
+        $list = $this->com('redisHtml')->get('kw_'.$_COOKIE['sat5_sid']);
+        if($list[$ktype]==$val) return '0';
+        
+            
+        $data = array(
+           'keyword'   => $kw,
+           'type'      => $type,
+           'sid'       => $_COOKIE['sat5_sid'],
+           'ip'        =>  getClientIp(),
+           'date'      => time(),
+           );
+           return $this->import('kwcount')->create($data);
     }
 }
 ?>
