@@ -1464,3 +1464,30 @@ table {
 	border-bottom: solid 2px #ff6666 !important;
 	}
 
+
+.yzc-account{
+   position:relative;
+    
+}
+.yzc-account p{
+  line-height: 24px;
+}
+
+.yzc-account a{
+    color:#5b5b5b;
+
+}
+.yzc-account a:hover{
+    cursor: pointer;
+}
+.account-list{
+  width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    z-index: 999;
+    background: #f5f5f5;
+    padding-bottom: 7px;
+    padding-top: 3px;
+    display: none;
+}

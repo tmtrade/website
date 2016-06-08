@@ -10,6 +10,7 @@
     <? if(!empty($description)) {?><meta name="description" content="<?=$description?>"> <? }?>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/import-comm.css?v=<?=$static_version?>"/>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/color.css?v=<?=$static_version?>"/>
+    
     <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery-1.8.3.min.js"></script>
     <script src="<?=StaticDir?>1.2/js/layer/layer.js?v=<?=$static_version?>"></script>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/respond.css?v=<?=$static_version?>"/>
@@ -144,10 +145,27 @@
             <li>交易损失，全额100%赔付</li>
         </ul>
         <ul class="mj-header_right fr">
-            <li id="_login_no">
+            <!-- 登录 -->
+            <!-- <li id="_login_no">
                 <div class="chaofan-login"></div>
+            </li> -->
+            <!-- 登录以后 -->
+            <li>
+                 <div class="yzc-account" id="account-name">
+                    <a>我是账号名</a>
+                    <div class="account-list" id="acc-list">
+                        <p><a>我的需求</a></p>
+                        <p><a>我的收藏</a></p>
+                        <p><a>我的求购</a></p>
+                        <p><a>退出登录</a></p>
+                    </div>
+                </div>
             </li>
-            <li class="spacer xs_login_ zc"></li>
+           <!--  <li class="spacer xs_login_ zc"></li> -->
+            <li class="spacer xs_login_"></li>
+            <li>
+                <a href="">出售者平台</a>
+            </li>
             <li class="spacer xs_login_"></li>
             <li>
                 <a href="/v-54-987/" target="_blank">平台帮助 </a>
@@ -161,9 +179,10 @@
                     <i class="uj_icon4"></i>
                     4006-929-199
                 </div>
-            </li>
+            </li>                                                                                       
         </ul>
-          <h1 class="mj-header_ceter">亲，欢迎来到一只蝉商标转让平台!</h1>
+       
+        <h1 class="mj-header_ceter">亲，欢迎来到一只蝉商标转让平台!</h1>
     </div>
 </div>
 <!-- mj-header end -->
@@ -333,14 +352,11 @@
         }
         });
     });
-
-    // $(".mj-dd dd").hover(function(){
-
-    //     $(this).addClass("mj-ddahoverc").siblings().removeClass("mj-ddahoverc");
-    //     _lazyImg($(this));
-    // },function(){
-    //     $(this).removeClass("mj-ddahoverc");
-    // });
+    $("#account-name").hover(function(){
+        $("#acc-list").show();
+        },function () {
+        $("#acc-list").hide();
+        })
     //延时加载图片
     function _lazyImg(obj){
         obj.find('.headerlazy').each(function(e){
