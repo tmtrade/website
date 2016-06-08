@@ -74,6 +74,14 @@
     if(crm_name){
         getLayer($('#crmlogin'));
     }
+    if(login_mobile){ //账户处链接
+        var privateHtml = '<div class="yzc-account" id="account-name"><a href="'+HOST+'" target="_blank"  id="chaofan-mj-nickname">'+nickname+'</a><div class="account-list" id="acc-list"><p><a target="_blank" href="'+HOST+'/buyer/index/">我的需求</a></p><p><a target="_blank" href="'+HOST+'/collect/trade/">我的收藏</a></p><p><a target="_blank" href="'+HOST+'/buyer/myinfo/">我的求购</a></p><p><a href="javascript:;" id="chaofan-mj-logexit">退出登录</a></p></div></div>';
+        $('#_login_no').hide();
+        $('#login_after').html(privateHtml);
+    }else{
+        $('#login_after').hide();
+        $('#_login_no').show();
+    }
     //设置导航栏样式
     var nav_name = "<?=$nav_name?>";
     if(nav_name=='index'){
@@ -87,12 +95,7 @@
     }else if(nav_name=='sell'){
         $('.mj-navitems p a').eq(5).css('color','#ff6666');
     }
-    
-    //点击跳转用户中心
-    $('.chaofan-login').on('click','#chaofan-mj-nickname',function(){
-        $(this).attr('href','<?=PERSONAL_CENTER?>').attr('target','_blank');
-    });
-    
+
     //执行任务
     var task_aim = getCookie('task_aim');
     delCookie('task_aim');
@@ -145,27 +148,18 @@
             <li>交易损失，全额100%赔付</li>
         </ul>
         <ul class="mj-header_right fr">
-            <!-- 登录 -->
-            <!-- <li id="_login_no">
+             登录
+             <li id="_login_no">
                 <div class="chaofan-login"></div>
-            </li> -->
+            </li>
             <!-- 登录以后 -->
-            <li>
-                 <div class="yzc-account" id="account-name">
-                    <a>我是账号名</a>
-                    <div class="account-list" id="acc-list">
-                        <p><a>我的需求</a></p>
-                        <p><a>我的收藏</a></p>
-                        <p><a>我的求购</a></p>
-                        <p><a>退出登录</a></p>
-                    </div>
-                </div>
+            <li id="login_after">
             </li>
            <!--  <li class="spacer xs_login_ zc"></li> -->
             <li class="spacer xs_login_"></li>
-            <li>
+            <!--<li>
                 <a href="">出售者平台</a>
-            </li>
+            </li>-->
             <li class="spacer xs_login_"></li>
             <li>
                 <a href="/v-54-987/" target="_blank">平台帮助 </a>
@@ -352,11 +346,12 @@
         }
         });
     });
-    $("#account-name").hover(function(){
+    $("#login_after").on('mouseenter','#account-name',function(){
         $("#acc-list").show();
-        },function () {
-        $("#acc-list").hide();
         })
+      $("#login_after").on('mouseleave','#account-name',function(){
+          $("#acc-list").hide();
+      })
     //延时加载图片
     function _lazyImg(obj){
         obj.find('.headerlazy').each(function(e){
