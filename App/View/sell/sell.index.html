@@ -2,7 +2,12 @@
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/patent.css?v=<?=$static_version?>"/>
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>"/>
 	
-   <div class="pt-sell-banner"></div>
+   <div class="pt-sell-banner">
+     <ul>
+        <li class="pt-sell-banner2" ></li>
+       <li class="pt-sell-banner" style="display: none;"></li>
+     </ul>
+   </div>
    <div class="pt-sell-main">
        <ul class="pt-sell-nav">
            <li class="on" id="nav1" onclick="jc('nav',1,2)">
@@ -169,7 +174,16 @@
                     $('.input-number').focus();
             }
     })
-
+    $(".pt-sell-nav li").each(function (i){
+        $(this).click(function () {        
+            $(this).addClass('on');
+            $(this).siblings("li").removeClass('on');
+            $(".pt-sell-banner li").eq(i).siblings("li").hide();
+            $(".pt-sell-banner li").eq(i).show();
+            $(".pt-sell-content").eq(i).parent().siblings().find(".pt-sell-content").hide();
+            $(".pt-sell-content").eq(i).show();
+        })
+    })
     function jc(name,curr,n)
     {
         for(i=1;i<=n;i++)
