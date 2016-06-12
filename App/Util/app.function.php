@@ -551,4 +551,16 @@ function mkdirs($filename)
 	}
 	return true;
 }
+
+/**
+ * 得到md5的密码值
+ * @param $password
+ * @param string $salt 盐
+ * @return string
+ */
+function getPassword($password,$salt = '')
+{
+	$string = md5(md5($password).$salt);
+	return $string;
+}
 ?>
