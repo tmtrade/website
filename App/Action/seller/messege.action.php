@@ -13,11 +13,16 @@ class MessegeAction extends SellerAction{
      * 站内信列表
      */
     public function index(){
-        $p = $this->input('p','int',1);
-        //得到所有的站内信信息
-        $rst = $this->load('messege')->getMsg($p-1,$this->size);
+        $page 	= $this->input('page', 'int', '1');
+        //得到站内信分页数据信息
+        $rst = $this->load('messege')->getMsg($page-1,$this->size);
         $count = $rst['total'];
         $data = $rst['data'];
+        //得到分页工具条
+        $pager 	= $this->pager($count, $this->size);
+        $pageBar 	= empty($data) ? '' : getPageBar($pager);
+        $this->set("pageBar",$pageBar);
+        $this->set("list",$data);
         $this->display();
     }
 
