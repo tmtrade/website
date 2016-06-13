@@ -16,7 +16,10 @@ abstract class SellerAction extends Action
     public $id = '';//本站的用户id
     public $isLogin = false;
     public $ignore = array( //不验证登录的地址
-
+        'member/index',
+        'member/login',
+        'member/loginOut',
+        'member/sendCode',
     );
 
     /**
@@ -156,12 +159,12 @@ abstract class SellerAction extends Action
             return;
         }
         //得到当前url地址
-        $url = $_SERVER['HTTP_HOST'].$this->mod.'/'.$this->action;
+        $url = 'http://'.$_SERVER['HTTP_HOST'].'/'.$this->mod.'/'.$this->action;
         //得到监控触发的信息
-        $monitot = $this->load('messege')->getMonitor();
-        if($monitot){
+        $monitor = $this->load('messege')->getMonitor();
+        if($monitor){
             //判断当前url是否发送信息
-            foreach($monitot as $item){
+            foreach($monitor as $item){
                 if(strpos($item['url'],$url)!==false){
                     $params = array();
                     $params['title'] = $item['title'];

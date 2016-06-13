@@ -19,19 +19,27 @@ class MemberModule extends AppModule{
      * 发送短信验证码
      * @param $phone
      * @param $type string 短信的模板类型
-     * @return bool
+     * @return int 0成功,1发送间隔小于一分钟,2发送失败,3手机号码为空
      */
     public function sendMsg($phone,$type='newValid'){
         if($phone){
+            //检测发送间隔
+            $key = $this->com('redisHtml')->get($phone.'code');
+            if($key && time()-$key['time']<60){
+                return 1;//发送间隔小于1分钟
+            }
             //发送短信,并将验证码保存到redis中
             $code = mt_rand(1000,9999);
             $template = C('MSG_TEMPLATE');
             $content	= sprintf($template[$type], $code);
-            $this->importBi('message')->sendMsg($phone, $content, 0);
-            $this->com('redisHtml')->set($phone.'code', $code, 600);//缓存用户的短信验证码--10分钟
-            return true;
+            $rst = $this->importBi('message')->sendMsg($phone, $content, 0);
+            if(isset($rst['code']) && $rst['code']==1){
+                $this->com('redisHtml')->set($phone.'code', array('code'=>$code,'time'=>time()), 600);//缓存短信验证码
+                return 0;
+            }
+            return 2;
         }
-        return false;
+        return 3;
     }
 
     /**
@@ -44,7 +52,7 @@ class MemberModule extends AppModule{
         if($phone){
             //从redis中获得验证码
             $key = $this->com('redisHtml')->get($phone.'code');
-            if($key && $key==$code){ //验证结果
+            if($key && $key['code']==$code){ //验证结果
                 $this->com('redisHtml')->remove($phone.'code');//删除redis中的数据
                 return true;
             }
@@ -97,15 +105,18 @@ class MemberModule extends AppModule{
      * 绑定手机号码
      * @param $phone
      * @param $code
-     * @return bool
+     * @return int 0成功,1验证失败,2超凡网修改失败
      */
     public function bindMobile($phone,$code){
         $rst = $this->checkMsg($phone,$code);
         if(!$rst){
-            return false;//验证失败
+            return 1;//验证失败
         }
-        $this->importBi('passport')->changeMobile(USERID, $phone);
-        return true;
+        $rst = $this->importBi('passport')->changeMobile(USERID, $phone);
+        if(isset($rst['code']) && $rst['code']==1){
+            return 0;
+        }
+        return 2;
     }
 
     /**
@@ -123,7 +134,7 @@ class MemberModule extends AppModule{
         }
         //调用接口登录
         $rst = $this->importBi('passport')->login($account, $type, $code, getClientIp());
-        if($rst){
+        if(isset($rst['data']['id'])){
             //设置登录信息
             if(!$rst['data']['id']){
                 return false;
@@ -192,14 +203,14 @@ class MemberModule extends AppModule{
     }
 
     /**
-     * 根据超凡网id得到本站对应信息
+     * 根据超凡网id得到本站对应信息(无则创建)
      * @param $uid
      * @return array
      */
     public function getUserByUid($uid){
         $r['eq']['userId'] = $uid;
         $rst = $this->import('user')->find($r);
-        if($rst){
+        if($rst){ //有结果返回信息
             return $rst;
         }
         //无用户表信息,添加信息
@@ -212,21 +223,24 @@ class MemberModule extends AppModule{
     /**
      * 发送邮箱验证邮件
      * @param $email
-     * @param $id
-     * @return bool
+     * @return int 0发送成功,1发送失败,2手机号码为空
      */
-    public function sendEmail($email,$id){
+    public function sendEmail($email){
         if($email){
             //构建激活地址
-            $key = md5($email.$id.'yzc');
+            $key = md5($email.UID.'yzc');
             $encode_email = base64_encode($email);
-            $url = SITE_URL."member/checkEmail/?id={$id}&key={$key}&t={$encode_email}";//激活的地址
+            $url = SITE_URL."member/checkEmail/?id=".UID."&key={$key}&t={$encode_email}";//激活的地址
             //邮件内容-----------------------待确定-------------------------------------
             $content = '';
             $title = '一只蝉出售者平台';
-            $this->importBi('message')->sendMail($email, $title, $content, '', $from='一只蝉');
+            $rst = $this->importBi('message')->sendMail($email, $title, $content, '', $from='一只蝉');
+            if(isset($rst['code']) && $rst['code']==1){
+                return 0;
+            }
+            return 1;
         }
-        return false;
+        return 2;
     }
 
     /**

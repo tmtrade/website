@@ -35,19 +35,41 @@ class MessegeModule extends AppModule
         if(!isset($params['sendtype'])){ //默认发送类型为1对1
             $params['sendtype'] = 1;
         }
+        $ids = explode(',',$params['uids']);
+        unset($params['uids']);
+        $this->begin('Messege');//开启事务
         $rst = $this->import('messege')->create($params);//添加到消息表
-        if($rst && $params['sendtype']!=3){
-            //添加到消息用户关联表
-            $ids = explode(',',$params['uids']);
-            foreach($ids as $id){
-                $temp = array();
-                $temp['mid'] = $rst;
-                $temp['uid'] = $id;
-                $temp['date'] = time();
-                $this->import('messege_user')->create($temp);//添加到关联表中
+        if($rst){
+            if($params['sendtype']!=3){
+                //添加到消息用户关联表
+                $flag = true;
+                foreach($ids as $id){
+                    $temp = array();
+                    $temp['mid'] = $rst;
+                    $temp['uid'] = $id;
+                    $temp['date'] = time();
+                    $res = $this->import('messege_user')->create($temp);//添加到关联表中
+                    if(!$res){
+                        $flag = false;
+                        break;
+                    }
+                }
+                if($flag){
+                    $this->commit('Messege');//提交事务
+                    return $rst;
+                }else{
+                    $this->rollBack('Messege');//回滚事务
+                    return 0;
+                }
             }
         }
+        if($rst){
+            $this->commit('Messege');//提交事务
+        }else{
+            $this->rollBack('Messege');//回滚事务
+        }
         return $rst;
+
     }
 
     /**
@@ -70,6 +92,7 @@ class MessegeModule extends AppModule
         $r['raw'] = '`date`>'.$res['mupdate'];//时间需大于改用户上次的更新时间
         $r['limit'] = $this->limit;
         $rst1 = $this->import('messege')->find($r);
+        $flag = true;
         if($rst1){
             //得到该用户的所有消息信息
             $r = array();
@@ -87,14 +110,20 @@ class MessegeModule extends AppModule
                 $temp['mid'] = $mid;
                 $temp['uid'] = UID;
                 $temp['date'] = time();
-                $this->import('messege_user')->create($temp);//添加到关联表中
+                $res = $this->import('messege_user')->create($temp);//添加到关联表中
+                if(!$res){ //保存失败,终止操作
+                    $flag = false;
+                    break;
+                }
             }
         }
         //更新用户表对应的用户同步消息的时间
-        $r = array();
-        $r['eq']['id'] = UID;
-        $ttt = array('mupdate'=>time());
-        $this->import('user')->modify($ttt,$r);
+        if($flag){ //操作成功才更新用户表的最新更细时间
+            $r = array();
+            $r['eq']['id'] = UID;
+            $ttt = array('mupdate'=>time());
+            $this->import('user')->modify($ttt,$r);
+        }
         return true;
     }
 
@@ -134,15 +163,18 @@ class MessegeModule extends AppModule
     }
 
     /**
-     * 修改站内信(暂时就只有修改站内信已读功能)
+     * 修改站内信(默认修改站内信已读功能)
      * @param $mid
+     * @param $data array 修改的数组
      * @return bool
      */
-    public function modifyMsg($mid){
+    public function modifyMsg($mid,$data = array()){
         $r = array();
         $r['eq']['uid'] = UID;
         $r['eq']['mid'] = $mid;
-        $data = array('status'=>1);
+        if(!$data){
+            $data = array('status'=>1);
+        }
         return $this->import('messege_user')->modify($data,$r);
     }
 
