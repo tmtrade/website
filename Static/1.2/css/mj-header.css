@@ -1477,21 +1477,21 @@ table {
 
 .yzc-account a{
     display: inline-block;
-    color:#5b5b5b;
-    min-width: 72px;
-    width: 72px;
+    color: #5b5b5b;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding-left:3px;
-    padding-right:3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    max-width: 150px;
 
 }
 .yzc-account a:hover{
     cursor: pointer;
 }
 .account-list{
-  width: 100%;
+    width: 100%;
+    min-width: 60px;
     position: absolute;
     top: 30px;
     left: 0px;
@@ -1500,4 +1500,12 @@ table {
     padding-bottom: 7px;
     padding-top: 3px;
     display: none;
+}
+.lg-name{
+    text-decoration: underline;
+    padding-bottom: 2px;
+}
+.lg-name i{
+    margin-bottom:4px;
+    margin-left: 2px;
 }

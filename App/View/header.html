@@ -10,7 +10,7 @@
     <? if(!empty($description)) {?><meta name="description" content="<?=$description?>"> <? }?>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/import-comm.css?v=<?=$static_version?>"/>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/color.css?v=<?=$static_version?>"/>
-    
+    <link rel="stylesheet" href="<?=StaticDir?>1.2/css/font-awesome.min.css?v=<?=$static_version?>"/>
     <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery-1.8.3.min.js"></script>
     <script src="<?=StaticDir?>1.2/js/layer/layer.js?v=<?=$static_version?>"></script>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/respond.css?v=<?=$static_version?>"/>
@@ -75,7 +75,7 @@
         getLayer($('#crmlogin'));
     }
     if(login_mobile){ //账户处链接
-        var privateHtml = '<div class="yzc-account" id="account-name"><a href="'+HOST+'" target="_blank"  id="chaofan-mj-nickname">'+nickname+'</a><div class="account-list" id="acc-list"><p><a target="_blank" href="'+HOST+'/buyer/index/">我的需求</a></p><p><a target="_blank" href="'+HOST+'/collect/trade/">我的收藏</a></p><p><a target="_blank" href="'+HOST+'/buyer/myinfo/">我的求购</a></p><p><a href="javascript:;" id="chaofan-mj-logexit">退出登录</a></p></div></div>';
+        var privateHtml = '<div class="yzc-account" id="account-name"><a href="'+HOST+'" target="_blank" class="lg-name" id="chaofan-mj-nickname">'+nickname+'<i class="fa fa-sort-desc" aria-hidden="true"></i></a><div class="account-list" id="acc-list"><p><a target="_blank" href="'+HOST+'/buyer/index/">我的需求</a></p><p><a target="_blank" href="'+HOST+'/collect/trade/">我的收藏</a></p><p><a target="_blank" href="'+HOST+'/buyer/myinfo/">我的求购</a></p><p><a href="javascript:;" id="chaofan-mj-logexit">退出登录</a></p></div></div>';
         $('#_login_no').hide();
         $('#login_after').html(privateHtml);
     }else{
