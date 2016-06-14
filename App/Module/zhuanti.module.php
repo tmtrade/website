@@ -16,7 +16,7 @@ class ZhuantiModule extends AppModule
     );
     
     //专题列表
-    public function getList($id=0, $page, $limit=20,$order=array('sort'=>'asc'))
+    public function getList($id=0, $page, $limit=20,$order=array('sort'=>'desc'))
     {
         $r = array();
         if($id>0){
@@ -58,7 +58,7 @@ class ZhuantiModule extends AppModule
         $arr = array();
         $r['eq']['topicId'] = $topicId;
         $r['limit'] = 100;
-        $r['order'] = array('sort'=>'asc');
+        $r['order'] = array('sort'=>'desc');
         $data = $this->import('topicitems')->findAll($r);
         $_numbers = arrayColumn($data['rows'], 'number');
         $list = $this->load('goods')->getListInfo($_numbers);
@@ -111,7 +111,7 @@ class ZhuantiModule extends AppModule
         $r['eq']    = array('isUse'=>1);
         $r['raw']   = " `listPic` != '' ";
         $r['limit'] = intval($limit);
-        $r['order'] = array('sort'=>'asc');
+        $r['order'] = array('sort'=>'desc');
         $r['col']   = array('id','listPic', 'alt4');
         $r['ft']    = array('listClass'=>$class);
         $res = $this->import('topic')->find($r);
