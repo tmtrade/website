@@ -51,8 +51,7 @@ abstract class SellerAction extends Action
      */
     public function after()
     {
-        //检测是否发送站内信
-        $this->checkMsg();
+
     }
 
     /**
@@ -81,8 +80,8 @@ abstract class SellerAction extends Action
                 $this->id = $userinfo['id'];
                 $this->isLogin = true;
                 $this->username = $username;
-                define('USERID',$userinfo['userId']);//定义userId常量USERID
-                define('UID',$userinfo['id']);//定义id常量UID
+                if(!defined('USERID')) define('USERID',$userinfo['userId']);//定义userId常量USERID
+                if(!defined('UID')) define('UID',$userinfo['id']);//定义id常量UID
             }else{//未登录,跳转到登录页面
                 $this->redirect('','/member/index');
             }
@@ -90,7 +89,7 @@ abstract class SellerAction extends Action
     }
 
     /**
-     * 输出json数据(换exit为return)
+     * 输出json数据
      *
      * @author    dower
      * @since    2016-6-12
@@ -101,8 +100,7 @@ abstract class SellerAction extends Action
     protected function returnAjax($data=array())
     {
         $jsonStr = json_encode($data);
-        echo $jsonStr;
-        return;
+        exit($jsonStr);
     }
 
     /**
