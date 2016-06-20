@@ -7,8 +7,7 @@ define('SEARCH_URL', 'http://tmsearch.chofn.api/');
 define('SEARCH_KEY', '89eb637c610f94b9d281c458bca42421');
 
 //用户登录URL
-define('UC_URL', 'http://seller.chofn.net/');
-define('PERSONAL_CENTER', 'http://seller.chofn.net/');
+define('UC_URL', 'http://my.test.chofn.net/');
 //一只蝉URL
 define('SITE_URL', 'http://t.chofn.net/');
 //交易站后台URL
