@@ -48,11 +48,12 @@ class IndexAction extends AppAction
 			$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>5));
 			$news['baike']	= $this->load('faq')->newsList(array('c'=>53,'limit'=>2));
 			$news['law']	= $this->load('faq')->newsList(array('c'=>51,'limit'=>2));
-			$this->com('redisHtml')->set('_news_tmp', $news, 3600);
+			$this->com('redisHtml')->set('_news_tmp', $news, 86400);
 		}else{
 			$news = $_news;
 		}
 		$this->set('news',$news);
+		
                 $this->setSeo(1);
 		$this->display();
 	}

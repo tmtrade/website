@@ -39,7 +39,7 @@ abstract class AppAction extends Action
      */
     public function before()
     {
-        //$this->caches = ""; //打开后关闭所有 页面缓存
+       $this->caches = ""; //打开后关闭所有 页面缓存
         //设置访问的action(导航样式)
         $nav_name = $this->getNavType();
         $this->set('nav_name',$nav_name);
@@ -62,7 +62,17 @@ abstract class AppAction extends Action
             $this->com('redisHtml')->set('footer_link', $frendlyLink, 3600);
         }
         $this->set('frendlyLink', $frendlyLink);
-
+	
+	//获取广告位
+	$ad = $this->com('redisHtml')->get('ad_list');
+	if(empty($ad)){
+		$ad['index_middle'] = $this->load('ad')->getPagesList(1);
+		$ad['index_menu']   = $this->load('ad')->getPagesList(2);
+		$ad['seach_list']   = $this->load('ad')->getPagesList(3);
+		$this->com('redisHtml')->set('ad_list', $ad, 3600);
+	}
+	$this->set('ad_list',$ad);
+		
         $this->set('_mod_', $this->mod);
         $this->set('_action_', $this->action);
         $this->set('ptype',$this->ptype);//设置页面标识

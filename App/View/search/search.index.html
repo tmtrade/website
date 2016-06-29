@@ -316,20 +316,13 @@
     <!-- ms-recommend start -->
     <dl class="ms-recommend">
         <dt><span>特价商标推荐</span><img src="<?=StaticDir?>1.2/images/xstj.png" alt=""/></dt>
-        <?foreach ($offpriceList as $k => $v) {
-            $_c_    = explode(',', $v['class']);
-            $_class = current($_c_);?>
+        <?foreach ($ad_list['seach_list'] as $k => $v) {?>
             <dd>
-                <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></span>
-                <div class="ms-filtersListTxt">
-                    <a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>" addmsg="<?=$v['name']?>" webid="12">
-                    <div>
-                        <h6><?=$v['name']?></h6>
-                        <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
-                        <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 12, 'UTF-8'):'-'?></p>
-                    </div>
-                    </a>
-                </div>
+                <span>
+		    <a href="<?=$v['link']?>" target="_blank"  addmsg="<?=$v['alt']?>" webid="12">
+		    <img src="<?=(TRADE_URL.$v['pic'])?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+		    </a>
+		</span>
             </dd>
         <?}?>
     </dl>

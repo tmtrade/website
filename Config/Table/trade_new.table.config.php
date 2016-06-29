@@ -1,6 +1,7 @@
 <?
 $prefix		= 't_';
 $dbId		= 'trade_new';
+$prefixs	= 's_'; //出售者平台
 $configFile	= array( ConfigDir.'/Db/trade_new.master.config.php' );
 
 $tbl['blacklist'] = array(
@@ -255,6 +256,12 @@ $tbl['patentList'] = array(
 
 $tbl['test'] = array(
 	'name'		=> $prefix.'test',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['ad'] = array(
+	'name'		=> $prefixs.'ad',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
