@@ -28,4 +28,6 @@ define('YZC_STATIC', ''.StaticDir);
 //一只蝉后台静态CDN地址
 define('TR2_STATIC', TRADE_URL);
 
+define('TEL400', '4006-929-199');
+
 ?>
