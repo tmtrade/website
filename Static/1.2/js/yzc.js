@@ -28,6 +28,9 @@ function sendBehavior(webid,t,x,y,add,callback){
     if(typeof add =='undefined') add='';//补充webid可保存操作名
     if(typeof visitid =='undefined') visitid=0;//浏览记录的id
     var args = 'yzc=2&cookie='+gCookie('yzcdata');
+    if(login_id){//链接上用户id
+        args += ('&userid='+login_id);
+    }
     var param = {};
     if(window && window.screen) {
         param.w = window.screen.width || 0;
@@ -80,6 +83,9 @@ $(function(){
         params.cookie = gCookie('yzcdata');
         //拼接参数串
         var args = 'yzc=1';
+        if(login_id){//链接上用户id
+            args += ('&userid='+login_id);
+        }
         for( var i in params) {
             args += '&' + i + '=' +encodeURIComponent(params[i]);
         }
@@ -107,6 +113,9 @@ $(function(){
     setInterval(function(){
         if(typeof visitid !='undefined'){ //记录离开时间
             var args = 'yzc=3&visitid='+visitid;
+            if(login_id){//链接上用户id
+                args += ('&userid='+login_id);
+            }
             sendCount(args,true);
         }
     },4000)
