@@ -245,13 +245,25 @@
     </div>
     <div class="bd picbox">
         <ul>
-            <? foreach($ad_list['index_middle'] as $ad): ?>
+            <? 
+	    $j = 10-(count($ad_list['index_middle']));
+	    foreach($ad_list['index_middle'] as $ad): ?>
             <li>
                 <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg="<?=$ad['alt']?>">
                     <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
                 </a>
             </li>
-            <? endforeach; ?>
+            <? endforeach;
+	    
+	    foreach($ads as $ad){
+	    if($j<=0) break;
+	    ?>
+            <li>
+                <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg="<?=$ad['alt']?>">
+                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
+                </a>
+            </li>
+            <?  $j--;} ?>
         </ul>
     </div>
 </div>

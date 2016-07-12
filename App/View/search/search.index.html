@@ -315,16 +315,35 @@
     <!-- ms-filterMain end -->
     <!-- ms-recommend start -->
     <dl class="ms-recommend">
-        <dt><span>特价商标推荐</span><img src="<?=StaticDir?>1.2/images/xstj.png" alt=""/></dt>
-        <?foreach ($ad_list['seach_list'] as $k => $v) {?>
-            <dd>
-                <span>
-		    <a href="<?=$v['link']?>" target="_blank"  addmsg="<?=$v['alt']?>" webid="12">
-		    <img src="<?=(TRADE_URL.$v['pic'])?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
-		    </a>
-		</span>
-            </dd>
-        <?}?>
+	<dt><span>特价商标推荐</span><img src="<?=StaticDir?>1.2/images/xstj.png" alt=""/></dt>
+	<? if(!empty($ad_list['seach_list'])): ?>
+	    <?foreach ($ad_list['seach_list'] as $k => $v) {?>
+		<dd>
+		    <span>
+			<a href="<?=$v['link']?>" target="_blank"  addmsg="<?=$v['alt']?>" webid="12">
+			    <img src="<?=(TRADE_URL.$v['pic'])?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+			</a>
+		    </span>
+		</dd>
+	    <?}?>
+	<? else: ?>
+	    <?foreach ($offpriceList as $k => $v) {
+		$_c_    = explode(',', $v['class']);
+		$_class = current($_c_);?>
+		<dd>
+		    <span><img src="<?=$v['imgUrl']?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></span>
+		    <div class="ms-filtersListTxt">
+			<a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>" addmsg="<?=$v['name']?>" webid="12">
+			<div>
+			    <h6><?=$v['name']?></h6>
+			    <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
+			    <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 12, 'UTF-8'):'-'?></p>
+			</div>
+			</a>
+		    </div>
+		</dd>
+	    <?}?>
+	<? endif;?>
     </dl>
     <!-- ms-recommend end -->
 </div>

@@ -263,14 +263,27 @@
                             <div class="ddItems-like">
                                 <h3><img src="<?=StaticDir?>1.2/images/heart.png">也许您还喜欢</h3>
                                 <div>
-                                    <? foreach($ad_list['index_menu'] as $menuImg): ?>
-                                    <? if($menuImg['module'] == $first['id']): ?>
-                                    <span>
-                                        <a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>">
-                                            <img class="headerlazy" src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$menuImg['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$menuImg['alt']?>"></a>
-                                    </span>
-                                    <? endif; ?>
-                                    <? endforeach; ?>
+				    <? $n=0;?>
+					<? foreach($ad_list['index_menu'] as $menuImg): ?>
+					<? if($menuImg['module'] == $first['id']): ?>
+					    <?  $n=1;?>
+					<span>
+					    <a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>">
+						<img class="headerlazy" src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$menuImg['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$menuImg['alt']?>"></a>
+					</span>
+					<? endif; ?>
+					<? endforeach; ?>
+					
+					<? if($n==0): ?>
+					    <? foreach($menuPic as $menuImg): ?>
+					    <? if($menuImg['industryId'] == $first['id']): ?>
+					    <span>
+						<a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>">
+						    <img class="headerlazy" src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$menuImg['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$menuImg['alt']?>"></a>
+					    </span>
+					    <? endif; ?>
+					    <? endforeach; ?>
+					<? endif; ?>
                                 </div>
                             </div>
                         </div>
