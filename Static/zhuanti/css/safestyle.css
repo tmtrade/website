@@ -1,6 +1,6 @@
 html,body,menu,ul,ol,li,p,div,form,h1,h2,h3,h4,h5,h6,dl,dt,dd,input,select,option{padding:0;margin:0;}
 ul,ol{list-style: none outside none; }
-body {font-size:14px; background:#fff; color:#555;-webkit-font-smoothing:antialiased;}
+body {font-size:14px; background:#fff; color:#555;-webkit-font-smoothing:antialiased;min-width: 1440px;}
 a{text-decoration:none;}
 img {border:none; }
 .fl {float:left; }
