@@ -1132,7 +1132,8 @@ table {
 }
 .mj-ddItems .ddItems-like div span img{
 	display: block;
-    width: 210px;
+    max-width: 210px;
+    max-height: 120px;
 	}
 .mj-navitems p{
     padding-top: 22px;
