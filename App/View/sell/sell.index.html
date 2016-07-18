@@ -8,108 +8,135 @@
        <li class="pt-sell-banner" style="display: none;"></li>
      </ul>
    </div>
-   <div class="pt-sell-main">
-       <ul class="pt-sell-nav">
-           <li class="on" id="nav1" onclick="jc('nav',1,2)">
-               <h4>商标出售登记表</h4>
-               <label>免费获得10大价值包装绝招</label>
-           </li>
-           <li  id="nav2" onclick="jc('nav',2,2)">
-               <h4>专利出售登记表</h4>
-               <label>帮你提升专利价值</label>
-           </li>
-       </ul>
-       <!--商标出售登记表-->
-       <form action="/sell/addsell/" id="addsell">
-       <div class="pt-sell-content" id="con_nav_1">
-           <ul class="pt-sell-list">
-               <li class="firstLi">
-                   <input placeholder="商标号" class="ptNum input-number" name="number[]"  value="<?=$numid?>"/>
-                   <div class="pt-lwp">
-                       <input placeholder="出售低价" class="pt-inp input-price" name="price[]" value="" />
-                       <span>元</span>
-                   </div>
-                   <div class="funBtn">
-                       <a class="delet remove" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
-                       <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加商标</a>
-                   </div>
-               </li>
-                    <p class="error" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
-                    <table style="display:none;" class="sbtable" >
-                            <tbody>
-                            <tr>
-                                    <td class="g-td1" style="width: 62px;">商标名称：</td>
-                                    <td class="g-td2 sbname" style="width: 160px;"></td>
-                                    <td class="g-td1" style="width: 32px;">申请人：</td>
-                                    <td class="g-td2 proposer" style="width: 160px;"></td>
-                            </tr>
-                            <tr>
-                                    <td class="g-td1" style="width: 62px;height: 130px;line-height: 130px;">商标图样：</td>
-                                    <td class="g-td2 imgurl" colspan="3" style="height: 130px;line-height: 130px;width: 571px;">无</td>
-                            </tr>
-                            </tbody>
-                    </table>
-           </ul>
-            
-          <div class="pt-sell-contact">
-              <div class="pt-cont-inp">
-                  <input placeholder="输入手机号方便买家联系" class="tel input-phone" name="phone" value="<?=$userMobile?>" />
-                  <input placeholder="你的姓氏" class="name" name="contact"  />
-              </div>
-              <p class="error" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
-          </div>
-          <div class="pt-sellBtn">
-              <a href="javascript:void(0)" onclick="submitSell()">马上出售</a>
-          </div>
-       </div>
-        <input type="hidden" name="sid" id="sid"  />
-        <input type="hidden" name="area" id="area" />
-    </form>
-       
-       <!--专利出售登记表-->
-       <form action="/patent/addsell/" id="patentsell">
-       <div class="pt-sell-content" id="con_nav_2" style="display: none;">
-           <ul class="pt-sell-list">
-               <li class="firstLi">
-                   <input placeholder="专利号" class="ptNum patent-number" name="number[]"  value="<?=$numid?>"/>
-                   <div class="pt-lwp">
-                       <input placeholder="出售低价" class="pt-inp patent-price" name="price[]" value="" />
-                       <span>元</span>
-                   </div>
-                   <div class="funBtn">
-                       <a class="delet remove" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
-                       <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加专利</a>
-                   </div>
-               </li>
-                    <p class="error" style="display: none;"></p>
-                    <table style="display:none;" class="sbtable" >
-                            <tbody>
-                            <tr>
-                                    <td class="g-td1" style="width: 62px;">专利名称：</td>
-                                    <td class="g-td2 sbname" style="width: 160px;"></td>
-                                    <td class="g-td1" style="width: 32px;">申请人：</td>
-                                    <td class="g-td2 proposer" style="width: 160px;"></td>
-                            </tr>
-                            <tr>
-                                    <td class="g-td1" style="width: 62px;height: 130px;line-height: 130px;">专利图样：</td>
-                                    <td class="g-td2 imgurl" colspan="3" style="height: 130px;line-height: 130px;width: 571px;">无</td>
-                            </tr>
-                            </tbody>
-                    </table>
-           </ul>
-            
-          <div class="pt-sell-contact">
-              <div class="pt-cont-inp">
-                  <input placeholder="输入手机号方便买家联系" class="tel patent-phone" name="phone" value="<?=$userMobile?>"  id="usrMp_popup" />
-                  <input placeholder="你的姓氏" class="name" name="contact" id="contact" />
-              </div>
-              <p class="error" style="display: none;"></p>
-          </div>
-          <div class="pt-sellBtn">
-              <a href="javascript:void(0)" onclick="submitPatentSell()">马上出售</a>
-          </div>
-       </div>
-    </form>
+   <div class="pt-sell-all">
+
+     <div class="pt-sell-main">
+         <ul class="pt-sell-nav">
+             <li class="on">
+                 <h4>商标出售登记表</h4>
+                 <label>免费获得10大价值包装绝招</label>
+             </li>
+             <li >
+                 <h4>专利出售登记表</h4>
+                 <label>帮你提升专利价值</label>
+             </li>
+         </ul>
+         <!--商标出售登记表-->
+         <form action="/sell/addsell/" id="addsell">
+         <div class="pt-sell-content" id="con_nav_1" style="display: none;">
+             <ul class="pt-sell-list">
+                 <li class="firstLi">
+                     <input placeholder="商标号" class="ptNum input-number" name="number[]"  value="<?=$numid?>"/>
+                     <div class="pt-lwp">
+                         <input placeholder="出售低价" class="pt-inp input-price" name="price[]" value="" />
+                         <span>元</span>
+                     </div>
+                     <div class="funBtn">
+                         <a class="delet remove" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
+                         <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加商标</a>
+                     </div>
+                 </li>
+                      <p class="error" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
+                      <table style="display:none;" class="sbtable" >
+                              <tbody>
+                              <tr>
+                                      <td class="g-td1">商标名称：</td>
+                                      <td class="g-td2 sbname"></td>
+                                      <td class="g-td1">申请人：</td>
+                                      <td class="g-td2 proposer"></td>
+                              </tr>
+                              <tr>
+                                      <td class="g-td1" style="">商标图样：</td>
+                                      <td class="g-td2 imgurl" colspan="3" style="">无</td>
+                              </tr>
+                              </tbody>
+                      </table>
+             </ul>
+              
+            <div class="pt-sell-contact">
+                <div class="pt-cont-inp">
+                    <input placeholder="输入手机号方便买家联系" class="tel input-phone" name="phone" value="<?=$userMobile?>" />
+                    <input placeholder="你的姓氏" class="name" name="contact"  />
+                </div>
+                <p class="error" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-err.png">输入错误</p>
+            </div>
+            <div class="pt-sellBtn">
+                <a href="javascript:void(0)" onclick="submitSell()">马上出售</a>
+            </div>
+         </div>
+          <input type="hidden" name="sid" id="sid"  />
+          <input type="hidden" name="area" id="area" />
+      </form>
+         
+         <!--专利出售登记表-->
+         <form action="/patent/addsell/" id="patentsell">
+         <div class="pt-sell-content" id="con_nav_2" >
+             <ul class="pt-sell-list">
+                 <li class="firstLi">
+                     <input placeholder="专利号" class="ptNum patent-number" name="number[]"  value="<?=$numid?>"/>
+                     <div class="pt-lwp">
+                         <input placeholder="出售低价" class="pt-inp patent-price" name="price[]" value="" />
+                         <span>元</span>
+                     </div>
+                     <div class="funBtn">
+                         <a class="delet remove" style="display: none;"><img src="<?=StaticDir?>1.2/images/pt-sell-cha.png">删除</a>
+                         <a class="add"><img src="<?=StaticDir?>1.2/images/pt-sell-jia.png">添加专利</a>
+                     </div>
+                 </li>
+                      <p class="error" style="display: none;"></p>
+                      <table style="display:none;" class="sbtable" >
+                              <tbody>
+                              <tr>
+                                      <td class="g-td1">专利名称：</td>
+                                      <td class="g-td2 sbname"></td>
+                                      <td class="g-td1">申请人：</td>
+                                      <td class="g-td2 proposer"></td>
+                              </tr>
+                              <tr>
+                                      <td class="g-td1" style="">专利图样：</td>
+                                      <td class="g-td2 imgurl" colspan="3" style="">无</td>
+                              </tr>
+                              </tbody>
+                      </table>
+             </ul>
+              
+            <div class="pt-sell-contact">
+                <div class="pt-cont-inp">
+                    <input placeholder="输入手机号方便买家联系" class="tel patent-phone" name="phone" value="<?=$userMobile?>"  id="usrMp_popup" />
+                    <input placeholder="你的姓氏" class="name" name="contact" id="contact" />
+                </div>
+                <p class="error" style="display: none;"></p>
+            </div>
+            <div class="pt-sellBtn">
+                <a href="javascript:void(0)" onclick="submitPatentSell()">马上出售</a>
+            </div>
+         </div>
+      </form>
+     </div>
+     <!-- 添加一只蝉出售平台 -->
+     <div class="yzc-sell-pita">
+       <h3>欢迎加入一只蝉<b>出售者平台</b></h3>
+       <h6>曝光量更大 成交更快</h6>
+         <div class="sell-pita-main">
+              <span class="fl"><img src="<?=StaticDir?>/1.2/images/yzc-sell-pic.jpg"></span>
+              <div class="fr">
+                <p style="margin-top: 0px;">
+                免费批量上传<br/>
+                交易进展实时查看
+              </p>
+               <p>
+                绿色审核通道<br/>
+                商标优先推荐
+              </p>
+               <p>
+                 现在加入<br/>
+                还可获赠超值广告位哟！
+              </p>
+              </div>   
+         </div>
+       <a href="<?=SELLER_URL?>" target="_blank" class="sell-btn"> 免费入驻</a>
+     </div>
+     
    </div>
    
    <!--获取用户信息 start-->
@@ -125,7 +152,7 @@
         <div class="mj-bconRight">
             <h1>您的商品已经进入出售流程</h1>
             <p>
-				您共提交了<em class="allsell"> 5 </em>条商标信息，其中<em class="oldsell"> 2 </em>条曾有报价。<br/>
+				您共提交了<em class="allsell"> 5 </em>条商品信息，其中<em class="oldsell"> 2 </em>条曾有报价。<br/>
                 其中<em class="errorsell"> 1 </em>条未成功。<br/>
                 其余<em class="newsell"> 0 </em>条报价已经成功提交。运营人员与您确认后<br/>马上就能出售您的商品
 				
@@ -143,7 +170,6 @@
         <div class="mj-bconRight">
             <h2>您的商品已经进入出售流程</h2>
             <p>运营人员与你联系确认后马上就能出售你的商品</p>
-            <!--<a href="" class="mj-boBtn1" style="width: 160px;">点击此处查看我的商标</a>-->
 			<a href="javascript:void(0)" class="mj-boBtn1" style="width: 160px;">确认</a>
         </div>
     </div>
@@ -153,11 +179,11 @@
 <div class="mj-boughtM" id="mj-error" style="border:0">
     <span class="ms-close mj-close"></span>
     <div class="mj-bcon f-clearfix">
-        <span class="mj-bconLeft"><img src="<?=StaticDir?>style/img/mj-cimg.jpg" alt=""/></span>
+        <span class="mj-bconLefts"><img src="<?=StaticDir?>style/img/mj-img6s.png" alt=""/></span>
         <div class="mj-bconRight">
-            <h1>您的商品提交失败了</h1>
-            <p class="errorReason">您曾经提交过该商品的报价信息。</p>
-            <a href="javascript:void(0)" class="mj-boBtn1" style="width: 160px;">确认</a>
+            <h2>您的商品提交失败了</h2>
+            <p>您曾经提交过该商品的报价信息</p>
+			<a href="javascript:void(0)" class="mj-boBtn1" style="width: 160px;">确认</a>
         </div>
     </div>
 </div>
@@ -167,6 +193,7 @@
     var _isLogin = "<?=$isLogin?>";
     var _mobile  = "<?=$userMobile?>";
     var _number   = "<?=$number?>";
+    ptype = 13;
     $(function(){
             _number = getQueryString('id');
             if(_number){
@@ -184,25 +211,13 @@
             $(".pt-sell-content").eq(i).show();
         })
     })
-    function jc(name,curr,n)
-    {
-        for(i=1;i<=n;i++)
-        {
-            var menu=document.getElementById(name+i);
-            var cont=document.getElementById("con_"+name+"_"+i);
-            menu.className=i==curr ? "on" : "";
-            if(i==curr){
-                cont.style.display="block";
-            }else{
-                cont.style.display="none";
-            }
-        }
-    }
+   
 function getQueryString(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
 		var r = window.location.search.substr(1).match(reg);
 		if (r != null) return decodeURI(r[2]); return null;
 }
+
 </script>
 <? require(ViewDir.'/sidebar.html'); ?>
 <? require(ViewDir.'/footer.html'); ?>
