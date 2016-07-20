@@ -322,7 +322,6 @@ class SearchModule extends AppModule
             //默认排序
             $r['order']     = array('isTop' => 'desc');
         }
-
         $res            = $this->import('sale')->findAll($r);
         $res['rows']    = $this->getListTips($res['rows']);
 
