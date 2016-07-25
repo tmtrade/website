@@ -126,8 +126,11 @@ class SearchModule extends AppModule
         if ( $type == 1 ){
             return $this->getSaleList($params, $page, $limit);
         }elseif ( $type == 2 ){
-            $list = $this->getTmList($params, $page, $limit);
-            return array('rows'=>$list);
+            //$list = $this->getTmList($params, $page, $limit);
+            //return array('rows'=>$list);
+
+            //2016-07-25关闭其他数据
+            return array('rows'=>array());
         }
 
         $result = array(
