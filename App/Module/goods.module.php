@@ -55,15 +55,16 @@ class GoodsModule extends AppModule
 		foreach ($data as $k => $number) {
 			$sale = $this->load('sale')->getSaleInfo($number, 0, 0);
 			if ( empty($sale) ){
-				$info = $this->load('trademark')->getTmInfo($number);
-				if ( empty($info) ) continue;
-				$list[$k] = array(
-					'tid' 		=> $info['tid'],
-					'name' 		=> $info['name'],
-					'number' 	=> $info['number'],
-					'class' 	=> implode(',', $info['class']),
-					'group' 	=> $info['group'],
-					);
+				//----2016-07-25去掉其他数据，只使用一只蝉后台数据
+				// $info = $this->load('trademark')->getTmInfo($number);
+				// if ( empty($info) ) continue;
+				// $list[$k] = array(
+				// 	'tid' 		=> $info['tid'],
+				// 	'name' 		=> $info['name'],
+				// 	'number' 	=> $info['number'],
+				// 	'class' 	=> implode(',', $info['class']),
+				// 	'group' 	=> $info['group'],
+				// 	);
 			}else{
 				$list[$k] = array(
 					'id' 		=> $sale['id'],
