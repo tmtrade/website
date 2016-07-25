@@ -45,7 +45,6 @@ abstract class AppAction extends Action
         $this->set('nav_name',$nav_name);
         //设置用户信息
         $this->setLoginUser();
-        $this->set('is_index',false);
         //获得热搜数据
         $hotwords = $this->load('index')->getHotWords();
         $this->set('hotwords',$hotwords);
