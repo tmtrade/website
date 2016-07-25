@@ -10,7 +10,7 @@ class HelpAction extends AppAction
 {
   public function index()
     {
-        $this->set("s_url",SHANSOO_URL);
+        $this->set("s_url",GUANJIA_URL);
         $this->setSeo(14);
         $this->display();
     }
