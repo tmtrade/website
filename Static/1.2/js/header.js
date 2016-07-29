@@ -437,10 +437,18 @@ function buyAddCallback(Obj){
         layer.closeAll('loading');
     });
 }
+
 //聊天函数
 function goChat(){
-    window.open("http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165");
+    var type = _YZC_ONLINE_;
+    if ( type=='yzc' )
+    {
+        window.open("http://p.qiao.baidu.com/cps/chat?siteId=9503594&userId=21149642");
+    }else{
+        window.open("http://chat.looyu.com/chat/chat/p.do?c=46344&f=123997&g=51817");
+    }
 }
+
 //隐藏登录提示信息
 function hideLoginTip(num){
     if($("#loginTips").attr('flag')==num){

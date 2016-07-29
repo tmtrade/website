@@ -13,7 +13,8 @@ class IndexAction extends AppAction
 	public $caches  	= array('index');
 	public $cacheId 	= 'redisHtml';
 	public $expire  	= 3600;//1小时
-        public $ptype = 1;
+    public $ptype = 1;
+	protected $onlineName = 'YzCoNlInE';
 
 	public function index()
 	{
@@ -87,5 +88,13 @@ class IndexAction extends AppAction
 		$res = $this->load('index')->sendEmail($email, $title, $content, $name , $from);
 		return $this->returnAjax($res);
 	}
+
+
+	public function getOnlineStatus()
+	{
+		$online = $this->com('redisQc')->get($this->onlineName);
+		$this->returnAjax(array('code'=>1,'msg'=>$online));
+	}
+	
 }
 ?>

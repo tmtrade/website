@@ -53,7 +53,20 @@ var _hmt = _hmt || [];
 <!-- End Piwik Code -->
 
 <script type="text/javascript">
+    var _YZC_ONLINE_ = '';
     $(document).ready(function(e) {
+        //获取客服在线
+        $.ajax({
+            async: false,
+            type : 'post',
+            url  : '/index/getOnlineStatus/',
+            dataType : 'json',
+            success : function (data){
+                if (data.code){
+                    _YZC_ONLINE_ = data.msg;
+                }
+            }
+        });
     //获得登录相关的参数
         $.ajax({
             async: false,
