@@ -69,7 +69,6 @@ body,html{
     }
     .yzc-banner-main{
         width: 1140px;
-        border: 1px solid red;
         height:800px;
         background:url("../images/banner.png") no-repeat center bottom;
         background-size:100% auto;
