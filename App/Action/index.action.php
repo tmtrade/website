@@ -72,11 +72,16 @@ class IndexAction extends AppAction
 		$this->display();
 	}
         
-        //跳转到移动端
-        public function jumpWap() {
-            setcookie("jumpwap",TRUE,0, Session::$path, Session::$domain);
-            $this->redirect('', WAP_URL);
-        }
+    //跳转到移动端
+    public function jumpWap() {
+    	$arr             = explode('.', $_SERVER['HTTP_HOST']);
+		$length          = count($arr);
+		$domain          = '.'.$arr[$length-2].'.'.$arr[$length-1];
+		$domain          = preg_replace("/:\d+/", '', $domain);
+        setcookie("jumpwap", 'true', 0, '/', $domain);
+        
+        $this->redirect('', '/');
+    }
         
 	/**
 	 * 发送邮件

@@ -40,9 +40,13 @@ abstract class AppAction extends Action
     public function before()
     {
         if ( checkmobile() && (!isset($_COOKIE['jumpwap']) || $_COOKIE['jumpwap'] == true) ){
-            setcookie("jumpwap", true, 0, Session::$path, Session::$domain);
-            Header("Location: ".WAP_URL);
-            exit;
+            $arr             = explode('.', $_SERVER['HTTP_HOST']);
+            $length          = count($arr);
+            $domain          = '.'.$arr[$length-2].'.'.$arr[$length-1];
+            $domain          = preg_replace("/:\d+/", '', $domain);
+            setcookie("jumpwap", 'true', 0, '/', $domain);
+            
+            $this->redirect('', WAP_URL);
         }
        //$this->caches = ""; //打开后关闭所有 页面缓存
         //设置访问的action(导航样式)
