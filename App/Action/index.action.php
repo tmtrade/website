@@ -78,8 +78,8 @@ class IndexAction extends AppAction
 		$length          = count($arr);
 		$domain          = '.'.$arr[$length-2].'.'.$arr[$length-1];
 		$domain          = preg_replace("/:\d+/", '', $domain);
-        setcookie("jumpwap", 'true', 0, '/', $domain);
-        
+        setcookie("jumpwap", 1, 0, '/', $domain);
+
         $this->redirect('', WAP_URL);
     }
         
