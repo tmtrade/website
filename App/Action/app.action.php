@@ -39,7 +39,8 @@ abstract class AppAction extends Action
      */
     public function before()
     {
-        if ( checkmobile() && getcookie("jumpwap") == true ){
+        if ( checkmobile() && (!isset($_COOKIE['jumpwap']) || $_COOKIE['jumpwap'] == true) ){
+            setcookie("jumpwap", true, 0, Session::$path, Session::$domain);
             Header("Location: ".WAP_URL);
             exit;
         }
