@@ -144,7 +144,8 @@ class GoodsAction extends AppAction
             $url = $this->_rwfix.implode('-', $params).'/';
         }
         if ( $type == 2 ) return $url;
-
+        
+        Header("HTTP/1.1 301 Moved Permanently");
         $this->redirect('', $url);
         exit;
     }

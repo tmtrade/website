@@ -401,7 +401,8 @@ class SearchAction extends AppAction
             $url = $this->_rwfix.implode('--', $_arr).'/';
         }
         if ( $type == 2 ) return $url;
-
+        
+        Header("HTTP/1.1 301 Moved Permanently");
         $this->redirect('', $url);
         exit;
     }
