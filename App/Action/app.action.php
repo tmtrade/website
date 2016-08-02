@@ -39,6 +39,10 @@ abstract class AppAction extends Action
      */
     public function before()
     {
+        if ( checkmobile() && getcookie("jumpwap") == true ){
+            Header("Location: ".WAP_URL);
+            exit;
+        }
        //$this->caches = ""; //打开后关闭所有 页面缓存
         //设置访问的action(导航样式)
         $nav_name = $this->getNavType();
