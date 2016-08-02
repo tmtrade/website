@@ -71,7 +71,13 @@ class IndexAction extends AppAction
 		$this->set('list',$list);
 		$this->display();
 	}
-
+        
+        //跳转到移动端
+        public function jumpWap() {
+            setcookie("jumpwap",TRUE,0, Session::$path, Session::$domain);
+            $this->redirect('', WAP_URL);
+        }
+        
 	/**
 	 * 发送邮件
 	 */

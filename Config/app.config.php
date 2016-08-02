@@ -12,6 +12,8 @@ define('UC_URL', 'http://my.test.chofn.net/');
 define('SELLER_URL', 'http://seller.chofn.net/');
 //一只蝉URL
 define('SITE_URL', 'http://t.chofn.net/');
+//一移动版URL
+define('WAP_URL', 'http://m.test.chofn.net/');
 //交易站后台URL
 define('TRADE_URL', 'http://tr2.chofn.net');
 define('TRADE_STATIC', 'http://tr2.chofn.net/');
