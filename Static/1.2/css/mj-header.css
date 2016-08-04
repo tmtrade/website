@@ -1127,14 +1127,18 @@ table {
     display: block;
     width: 210px;
     height: 120px;
-    background: #dcdcdc;
+    line-height: 120px;
+     text-align: center;
+    vertical-align: middle;
+    background: #ffffff;
     margin: 10px auto;
 }
 .mj-ddItems .ddItems-like div span img{
-	display: block;
+    display:inline-block;
     max-width: 210px;
     max-height: 120px;
-	}
+    vertical-align: middle;
+}
 .mj-navitems p{
     padding-top: 22px;
 	margin-left: -36px;
