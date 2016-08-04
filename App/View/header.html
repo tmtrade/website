@@ -49,7 +49,10 @@ var _hmt = _hmt || [];
     ///////////自定义设置///////////////
     _paq.push(['setCustomVariable',1,'uid',login_id,'visit']);
     _paq.push(['setCustomVariable',2,'mobile',login_mobile,'visit']);
-    _paq.push(['setUserId', login_id]);
+    if (login_id)
+    {
+        _paq.push(['setUserId', login_id]);
+    }    
     ////////////////////////////////////
 
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
