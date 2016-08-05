@@ -53,6 +53,10 @@ var _hmt = _hmt || [];
     _paq.push(['setSiteId', 1]);
 
     ///////////自定义设置///////////////
+    nick_name       = getCookie('uc_nickname');
+    login_mobile    = getCookie('uc_mobile');
+    //crm_name        = getCookie('crm_name');
+    login_id        = getCookie('uc_identify');
     _paq.push(['setCustomVariable',1,'uid',login_id,'visit']);
     _paq.push(['setCustomVariable',2,'mobile',login_mobile,'visit']);
     if (login_id)
