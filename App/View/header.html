@@ -59,8 +59,7 @@ var _hmt = _hmt || [];
     login_id        = getCookie('uc_identify');
     if (login_id)
     {
-        //_paq.push(['setCustomVariable',1,'uid',login_id,'visit']);
-        _paq.push(['setCustomVariable',2,'mobile',login_mobile,'visit']);
+        _paq.push(['setCustomVariable',1,'mobile',login_mobile,'visit']);
         _paq.push(['setUserId', login_id]);
     }    
     ////////////////////////////////////
@@ -70,6 +69,33 @@ var _hmt = _hmt || [];
   })();
 </script>
 <noscript><p><img src="//douob.cn/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//data.chanshu.wang/fx/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    ///////////自定义设置///////////////
+    nick_name       = getCookie('uc_nickname');
+    login_mobile    = getCookie('uc_mobile');
+    //crm_name        = getCookie('crm_name');
+    login_id        = getCookie('uc_identify');
+    if (login_id)
+    {
+        _paq.push(['setCustomVariable',1,'mobile',login_mobile,'visit']);
+        _paq.push(['setUserId', login_id]);
+    }    
+    ////////////////////////////////////
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//data.chanshu.wang/fx/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 
 <script type="text/javascript">
