@@ -145,6 +145,7 @@ $(document).ready(function(e) {
             });
             return false;
         }
+        setSearch(kw_value,'商标名称');
         sendBehavior(100,ptype, e.pageX, e.pageY,kw_value,$('#searchForm').submit());
     });
 
@@ -258,6 +259,7 @@ $(document).ready(function(e) {
             if(data.code==1){
                 $('.feedback_s').find('span').html('提交成功，感谢您的吐槽!');
                 $('.feedback_s').show();
+                setEvent('咨询浮动条','反馈:'+feedback_content);
                 //重置为空
                 $('.feedback_content').val('');
                 $('.feedback_contact').val('');
@@ -494,29 +496,29 @@ $(document).on('click','a',function(e){
 function analyzePage(ptype){
     var str = '';
     switch (ptype){
-        case 1:
+        case '1':
             str = '首页';break;
-        case 2:
+        case '2':
             str = '商标筛选页';break;
-        case 3:
+        case '3':
             str = '特价页';break;
-        case 4:
+        case '4':
             str = '商标详情页';break;
-        case 5:
+        case '5':
             str = '案例列表页';break;
-        case 6:
+        case '6':
             str = '案例详情页';break;
-        case 8:
+        case '8':
             str = '专题列表页';break;
-        case 9:
+        case '9':
             str = '专题详情页';break;
-        case 10:
+        case '10':
             str = '专利筛选页';break;
-        case 11:
+        case '11':
             str = '专利详情页';break;
-        case 12:
+        case '12':
             str = '我要买';break;
-        case 13:
+        case '13':
             str = '我要卖';break;
         default:
             str = '未知';

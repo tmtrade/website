@@ -27,5 +27,12 @@
            <?=$pageBar?>
        </div>
    </div>
+<script type="text/javascript">
+    $('.yzc-succeeal-main li a').click(function(){
+       var page = $('.mj-pages a').hasClass('on').text();
+        var index = $(this).closest('li').index();
+        setEvent('案例列表','第'+page+'页第'+(index-0+1)+'条');
+    });
+</script>
 <? require(ViewDir.'/sidebar.html'); ?>
 <? require(ViewDir.'/footer.html'); ?>

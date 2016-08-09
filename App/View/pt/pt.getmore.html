@@ -3,10 +3,10 @@
     <li url="/pt-<?=$v['number']?>.html">
         <input class="xunjia_data" type="hidden" p_type="7" tid="<?=$v['code']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="专利号：<?=$v['number']?>;专利名称：<?=$v['title']?>">
        <span class="pt-fil-pic">
-           <a target="_blank" addmsg="<?=$v['title']?>" webid="7" href="/pt-<?=$v['number']?>.html"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" ></a>
+           <a target="_blank" addmsg="<?=$v['title']?>" webid="7" module="查看详情" href="/pt-<?=$v['number']?>.html"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" ></a>
        </span>
         <div class="pt-fil-des">
-            <h6 title="<?=$v['title']?>"><a addmsg="<?=$v['title']?>" webid="7" target="_blank" href="/pt-<?=$v['number']?>.html"><?=mb_substr($v['title'], 0, 24, 'utf-8')?></a></h6>
+            <h6 title="<?=$v['title']?>"><a addmsg="<?=$v['title']?>" webid="7" module="查看详情" target="_blank" href="/pt-<?=$v['number']?>.html"><?=mb_substr($v['title'], 0, 24, 'utf-8')?></a></h6>
             <p>专利申请号：<label><?=strtoupper($v['number'])?></label></p>
             <p>专利类型：<label><a href="/pt/?t=<?=$v['type']?>"><?=$v['typeName']?></a></label></p>
             <p>行业分类：<label title="<?=$v['className']?>"><a  href="/pt/?t=<?=$v['type']?>&c=<?=$v['class']?>"><?=mb_substr($v['className'], 0, 24, 'utf-8')?></a></label></p>
@@ -19,8 +19,8 @@
             <?}?>
         </div>
         <div class="pt-fil-zx">
-            <a class="enq" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="30" onclick="xunjia(this);">询 价</a>
-            <a class="cont" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="31" onclick="goChat()">联系卖家</a>
+            <a class="enq" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="30" module="询价" onclick="xunjia(this);">询 价</a>
+            <a class="cont" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="31" module="联系卖家" onclick="goChat()">联系卖家</a>
         </div>
     </li>
 

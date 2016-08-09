@@ -24,9 +24,9 @@
             <span>专利类型</span>
             <div class="ms-conditionList-main ms-setHeight">
                 <ul class="f-clearfix ms-conditionRadio">
-                    <li><a href="javascript:void(0);" webid="1" addmsg="全部专利类型" onclick="createUrl('_type','0');return false;">全部</a></li>
+                    <li><a href="javascript:void(0);" webid="1" addmsg="全部专利类型" module="专利类型" onclick="createUrl('_type','0');return false;">全部</a></li>
                     <?foreach ($_TYPE as $k => $v) {?>
-                    <li><a href="javascript:void(0);" webid="1" addmsg="<?=$v?>" onclick="createUrl('_type','<?=$k?>');return false;"><?=$v?></a></li>
+                    <li><a href="javascript:void(0);" webid="1" addmsg="<?=$v?>" module="专利类型" onclick="createUrl('_type','<?=$k?>');return false;"><?=$v?></a></li>
                     <?}?>            
                 </ul>
                 <ul class="f-clearfix ms-conditionCheckbox cc_all2">
@@ -51,9 +51,9 @@
             <span>类型分类</span>
             <div class="ms-conditionList-main">
                 <ul class="f-clearfix ms-conditionRadio">
-                    <li><a href="javascript:void(0);" webid="2" addmsg="全部类型分类"onclick="createUrl('_class','0');return false;">全部</a></li>
+                    <li><a href="javascript:void(0);" webid="2" addmsg="全部类型分类" module="专利类型分类" onclick="createUrl('_class','0');return false;">全部</a></li>
                     <?foreach ($_CLASS as $k => $v) {?>
-                    <li title="<?=$v?>"><a href="javascript:void(0);"  webid="2" addmsg="<?=$v?>" onclick="createUrl('_class','<?=$k?>');return false;"><?=mb_substr($v,0,8,'utf-8')?></a></li>
+                    <li title="<?=$v?>"><a href="javascript:void(0);"  webid="2" addmsg="<?=$v?>" module="专利类型分类" onclick="createUrl('_class','<?=$k?>');return false;"><?=mb_substr($v,0,8,'utf-8')?></a></li>
                     <?}?>            
                 </ul>
                 <ul class="f-clearfix ms-conditionCheckbox cc_all2">
@@ -97,10 +97,10 @@
         <li url="/pt-<?=$v['number']?>.html">
         <input class="xunjia_data" type="hidden" p_type="7" tid="<?=$v['code']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="专利号：<?=$v['number']?>;专利名称：<?=$v['title']?>">
            <span class="pt-fil-pic">
-               <a target="_blank" addmsg="<?=$v['title']?>" webid="7" href="/pt-<?=$v['number']?>.html"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" ></a>
+               <a target="_blank" addmsg="<?=$v['title']?>" webid="7" module="查看详情" href="/pt-<?=$v['number']?>.html"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" ></a>
            </span>
             <div class="pt-fil-des">
-                <h6 title="<?=$v['title']?>"><a addmsg="<?=$v['title']?>" webid="7" target="_blank" href="/pt-<?=$v['number']?>.html"><?=mb_substr($v['title'], 0, 24, 'utf-8')?></a></h6>
+                <h6 title="<?=$v['title']?>"><a addmsg="<?=$v['title']?>" webid="7" module="查看详情" target="_blank" href="/pt-<?=$v['number']?>.html"><?=mb_substr($v['title'], 0, 24, 'utf-8')?></a></h6>
                 <p>专利申请号：<label><?=strtoupper($v['number'])?></label></p>
                 <p>专利类型：<label><a href="/pt/?t=<?=$v['type']?>"><?=$v['typeName']?></a></label></p>
                 <p>行业分类：<label title="<?=$v['className']?>"><a  href="/pt/?t=<?=$v['type']?>&c=<?=$v['class']?>"><?=mb_substr($v['className'], 0, 24, 'utf-8')?></a></label></p>
@@ -113,8 +113,8 @@
                 <?}?>
             </div>
             <div class="pt-fil-zx">
-                <a class="enq" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="30" onclick="xunjia(this);">询 价</a>
-                <a class="cont" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="31" onclick="goChat()">联系卖家</a>
+                <a class="enq" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="30" module="询价" onclick="xunjia(this);">询 价</a>
+                <a class="cont" href="javascript:void(0);" addmsg="<?=$v['title']?>" webid="31" module="联系卖家" onclick="goChat()">联系卖家</a>
             </div>
         </li>
 
@@ -184,7 +184,7 @@
 
         </ul>
         <div class="pt-seek-btn">
-            <a href="javascript:void(0);" id="choose">帮我选</a><br/>
+            <a href="javascript:void(0);" id="choose" module="帮我选">帮我选</a><br/>
             <font>一次多件有优惠</font>
         </div>
     </div>
@@ -196,41 +196,41 @@
             <label><font>免费</font>评估包装</label>
             <label>让专利<font>卖出好价格</font></label>
         </p>
-        <a href="/pt/sell" class="pt-sell-btn">我要出售</a>
+        <a href="/pt/sell" class="pt-sell-btn" module="我要出售">我要出售</a>
     </div>
     <!--更多专利产品-->
     <? if($tj): ?>
     <div class="u-patent-ad4 comAd" style="width: 100%;">
         <h4><img src="<?=StaticDir?>1.2/images/u-tit.jpg"></h4>
               <span style="background-color:#e2efcc;left: 70px;top: 55px;">
-                  <a target="_blank" webid="6" title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
+                  <a target="_blank" webid="6" module="更多专利" addmsg="第1条" title="<?=$tj[0]['title']?>" href="<?=$tj[0]['url']?>"><?=$tj[0]['thumb_title']?></a>
               </span>
                <span style="background-color:#a6e0eb;left: 20px;top: 90px;">
-                 <a target="_blank" webid="6" title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
+                 <a target="_blank" webid="6" module="更多专利" addmsg="第2条" title="<?=$tj[1]['title']?>" href="<?=$tj[1]['url']?>"><?=$tj[1]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 90px;top: 125px; ">
-                <a target="_blank" webid="6" title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
+                <a target="_blank" webid="6" module="更多专利" addmsg="第3条" title="<?=$tj[2]['title']?>" href="<?=$tj[2]['url']?>"><?=$tj[2]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 40px;top: 160px;">
-                  <a target="_blank" webid="6" title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
+                  <a target="_blank" webid="6" module="更多专利" addmsg="第4条" title="<?=$tj[3]['title']?>" href="<?=$tj[3]['url']?>"><?=$tj[3]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 60px;top: 195px;">
-                  <a target="_blank" webid="6" title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
+                  <a target="_blank" webid="6" module="更多专利" addmsg="第5条" title="<?=$tj[4]['title']?>" href="<?=$tj[4]['url']?>"><?=$tj[4]['thumb_title']?></a>
               </span>
                <span style="background-color:#dfe2ef;left: 110px;top: 230px;">
-                  <a target="_blank" webid="6" title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
+                  <a target="_blank" webid="6" module="更多专利" addmsg="第6条" title="<?=$tj[5]['title']?>" href="<?=$tj[5]['url']?>"><?=$tj[5]['thumb_title']?></a>
               </span>
                <span style="background-color:#e2efcc;left: 35px;top: 265px;">
-                <a target="_blank" webid="6" title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
+                <a target="_blank" webid="6" module="更多专利" addmsg="第7条" title="<?=$tj[6]['title']?>" href="<?=$tj[6]['url']?>"><?=$tj[6]['thumb_title']?></a>
               </span>
                <span style="background-color:#f9e7d8;left: 80px;top: 300px;">
-                 <a target="_blank" webid="6" title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
+                 <a target="_blank" webid="6" module="更多专利" addmsg="第8条" title="<?=$tj[7]['title']?>" href="<?=$tj[7]['url']?>"><?=$tj[7]['thumb_title']?></a>
               </span>
                <span style="background-color:#ffdcd5;left: 45px;top: 335px;">
-                  <a target="_blank" webid="6" title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
+                  <a target="_blank" webid="6" module="更多专利" addmsg="第9条" title="<?=$tj[8]['title']?>" href="<?=$tj[8]['url']?>"><?=$tj[8]['thumb_title']?></a>
               </span>
                 <span style="background-color:#a6e0eb;left: 100px;top: 370px;">
-                 <a target="_blank" webid="6" title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
+                 <a target="_blank" webid="6" module="更多专利" addmsg="第10条" title="<?=$tj[9]['title']?>" href="<?=$tj[9]['url']?>"><?=$tj[9]['thumb_title']?></a>
                </span>
     </div>
     <? endif; ?>
@@ -570,6 +570,7 @@
                 temp += ","+$(this).text();
             })
             sendBehavior(13,ptype, e.pageX, e.pageY,temp);//保存操作信息
+            setEvent('专利多选',temp);
             createUrl(tname, str);
         }
     });

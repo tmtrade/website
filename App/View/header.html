@@ -157,7 +157,7 @@
         </ul>
         <ul class="mj-header_right fr">
              <li id="_login_no">
-                <div class="chaofan-login"></div>
+                <div class="chaofan-login" onclick="setEvent('登录')"></div>
             </li>
             <!-- 登录以后 -->
             <li id="login_after">
@@ -165,19 +165,19 @@
            <!--  <li class="spacer xs_login_ zc"></li> -->
             <li class="spacer xs_login_"></li>
             <li>
-                <a target="_blank" href="<?=SELLER_URL?>">出售者平台</a>
+                <a target="_blank" href="<?=SELLER_URL?>" module="出售者平台">出售者平台</a>
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-                <a href="/v-54-987/" target="_blank">平台帮助 </a>
+                <a href="/v-54-987/" target="_blank" module="平台帮助">平台帮助 </a>
             </li>
 	    <li class="spacer xs_login_"></li>
             <li>
-                <a href="/index/jumpWap/">移动版 </a>
+                <a href="/index/jumpWap/" module="移动版">移动版 </a>
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-                <a href="/lxwm/" target="_blank">关于一只蝉 </a>
+                <a href="/lxwm/" target="_blank" module="关于一只蝉">关于一只蝉 </a>
             </li>
             <li>
                 <div class="mj-phone">
@@ -203,7 +203,7 @@
 <div class="mj-search-all f-clearfix">
     <div class="w1180 mj-search f-clearfix">
         <div class="mj-logo">
-            <a href="/"><img src="/Static/1.2/images/logo.png" alt="一只蝉商标转让网站:快速买到放心商标"/></a>
+            <a href="/"><img src="/Static/1.2/images/logo.png" alt="一只蝉商标转让网站:快速买到放心商标" module="logo"/></a>
         </div>
         <div class="mj-search_con fl">
 
@@ -227,8 +227,8 @@
             </p>
         </div>
         <div class="mj-search_btn fr">
-            <a href="/buy" target="_blank" class="mj-btnBuy"><h2><i class="uj_icon5"></i>我要买商标</h2></a>
-            <a href="/sell" target="_blank" class="mj-btnSell"><h2><i class="uj_icon6"></i>我要卖商标</h2></a>
+            <a href="/buy" target="_blank" class="mj-btnBuy" module="我要买"><h2><i class="uj_icon5"></i>我要买商标</h2></a>
+            <a href="/sell" target="_blank" class="mj-btnSell" module="我要卖"><h2><i class="uj_icon6"></i>我要卖商标</h2></a>
         </div>
     </div>
 </div>
@@ -255,14 +255,14 @@
                                 <?$kkk=0;?>
                                 <?if($second['industryId'] == $first['id']):?>
                                 <li>
-                                    <b><a href="<?=$second['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-'.$second['name']?>"><?=$second['name']?></a></b>
+                                    <b><a href="<?=$second['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-'.$second['name']?>" module="菜单"><?=$second['name']?></a></b>
                                     <p>
                                         <?foreach($menuThird as $third):?>
                                         <?if($third['classId'] == $second['id']):?>
                                         <?$kkk++;?>
                                         <?if($kkk==1):?>
-                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101"  addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"><?=$third['name']?> </a>
-                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101" addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"><?=$third['name']?> </a>
+                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101"  addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"  module="菜单"><?=$third['name']?> </a>
+                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101" addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"  module="菜单"><?=$third['name']?> </a>
                                         <?endif;?>
                                         <?endif;?>
                                         <?endforeach;?>
@@ -279,7 +279,7 @@
 					<? if($menuImg['module'] == $first['id']): ?>
 					    <?  $n=1;?>
 					<span>
-					    <a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>">
+					    <a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>" module="菜单">
 						<img class="headerlazy" src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$menuImg['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$menuImg['alt']?>"></a>
 					</span>
 					<? endif; ?>
@@ -289,7 +289,7 @@
 					    <? foreach($menuPic as $menuImg): ?>
 					    <? if($menuImg['industryId'] == $first['id']): ?>
 					    <span>
-						<a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>">
+						<a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>" module="菜单">
 						    <img class="headerlazy" src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$menuImg['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$menuImg['alt']?>"></a>
 					    </span>
 					    <? endif; ?>
@@ -305,22 +305,22 @@
         </div>
         <div class="mj-navitems fl">
             <p class="f-clearfix">
-                <a href="/" addmsg="首页" webid="102" >
+                <a href="/" addmsg="首页" webid="102" module="频道">
                     首页
                 </a>
-                <a href="/offprice"  addmsg="特价商标" webid="102">
+                <a href="/offprice"  addmsg="特价商标" webid="102" module="频道">
                     特价商标
                 </a>
-                <a href="/s/" addmsg="商标筛选" webid="102">
+                <a href="/s/" addmsg="商标筛选" webid="102" module="频道">
                     商标筛选
                 </a>
-                <a href="http://r.chaofan.wang/reg/" target="_blank" addmsg="商标注册" webid="102">
+                <a href="http://r.chaofan.wang/reg/" target="_blank" addmsg="商标注册" webid="102" module="频道">
                     商标注册
                 </a>
-                <a href="/pt" addmsg="专利购买" webid="102">
+                <a href="/pt" addmsg="专利购买" webid="102" module="频道">
                     专利购买
                 </a>
-                 <a href="/pt/sell" addmsg="专利出售" webid="102">
+                 <a href="/pt/sell" addmsg="专利出售" webid="102" module="频道">
                     专利出售
                 </a>
             </p>
@@ -421,7 +421,7 @@
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
         if ( _value != '' ){
-            html = '<li><a href="/search/?kw='+_value+'&kt=1" onclick="layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=2" onclick="layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标号</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=3" onclick="layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">适用服务</font>“'+_value+' ”搜索结果</span></a></li>';
+            html = '<li><a href="/search/?kw='+_value+'&kt=1" onclick="layer.load(1,{shade: [0.2,\'#000\']});setSearch('+_value+',\'商标名称\');" addmsg="'+_value+'" webid="100" module="商标名称"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=2" onclick="layer.load(1,{shade: [0.2,\'#000\']};setSearch('+_value+',\'商标号\'););" addmsg="'+_value+'" webid="100" module="商标号"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标号</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=3" onclick="layer.load(1,{shade: [0.2,\'#000\']});setSearch('+_value+',\'适用服务\');" addmsg="'+_value+'" webid="100" module="适用服务"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">适用服务</font>“'+_value+' ”搜索结果</span></a></li>';
             $(".mj-pull-down").html(html);
             $(".mj-pull-down").show();
         }else{
