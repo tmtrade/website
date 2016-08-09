@@ -73,13 +73,14 @@ a:active {outline: none;star:expression(this.onFocus=this.blur());}
 }
 
 .fdkf-zk{
-    height: 137px;
-    background:#000;
-    opacity: 0.8;  
-    /* IE 4-9 */  
-    filter:alpha(opacity=80);  
-    /*This works in IE 8 & 9 too*/  
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    width: 100%;
+    height: 170px;
+    background:url("../images/pc-zx-tc.png") no-repeat bottom center;
+    /*opacity: 0.8;  */
+    /* IE 4-9 *//*  */
+    /*filter:alpha(opacity=80);  */
+    /*This works in IE 8 & 9 too*//*  */
+    /*-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";*/
     position: fixed;
     bottom: 0px;
     left: 0px;
@@ -93,7 +94,7 @@ a:active {outline: none;star:expression(this.onFocus=this.blur());}
     width: 24px;
     height: 24px;
     position: absolute;
-    top:5px;
+    top:45px;
     right:0px;
     background: url("../images/btm-cha.png") no-repeat center top;
     cursor:pointer;
@@ -101,8 +102,21 @@ a:active {outline: none;star:expression(this.onFocus=this.blur());}
 .fdkf-zk li{
     float: left;
     margin-left: 15px;
+    margin-top: 102px;
 
 }
+.fdkf-zk .zxzx{
+    display: block;
+    width: 125px;
+    height: 50px;
+    /*border: 1px solid red;*/
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 100px;
+    margin-right: 62px;
+}
+
 .fdkf-zk li.btm-tel{
     display: inline-block;
     width: 232px;
@@ -129,9 +143,9 @@ a:active {outline: none;star:expression(this.onFocus=this.blur());}
     margin-left:65px;
 }
 .fdkf-zk li.btm-tj{
-   float: right;
-   margin-right: 45px;
-
+   float:left;
+   /*margin-right: 45px;*/
+    margin-left:  420px;
 }
 .fdkf-zk li.btm-tj p{
     margin-top:18px;
@@ -152,22 +166,22 @@ a:active {outline: none;star:expression(this.onFocus=this.blur());}
 }
 .fdkf-zk li.btm-tj div input{
     width: 174px;
-    padding-top:7px;
-	padding-bottom:7px;
+    padding-top:8px;
+	padding-bottom:8px;
     border: 1px solid #dadada;
     color: #777777;
     text-indent: 15px;
     float: left;
-    margin-left: 15px;
+    margin-left:10px;
 	
 }
 .fdkf-zk li.btm-tj div  a{
     display: inline-block;
-    padding:7px 16px;
+    padding:7px 24px;
     background: #ff5656;
     border-radius:3px;
     float: left;
-    margin-left: 15px;
+    margin-left:10px;
     color: #ffffff;
     font-size: 14px;
 }
