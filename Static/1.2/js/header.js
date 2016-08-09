@@ -467,3 +467,62 @@ function countDown(){
         });
     },1000)
 }
+//piwik设置事件
+function setEvent(module,name,page){
+    if(typeof page == 'undefined'){
+        page = ptype;
+    }
+    page = analyzePage(page);
+    _paq.push(['trackEvent', page, module, name]);
+}
+//添加站内搜索
+function setSearch(keyword,category){
+    if(typeof category == 'undefined'){
+        category = '商标';
+    }
+    _paq.push(['trackSiteSearch', keyword, category]);
+}
+//绑定超链接事件
+$(document).on('click','a',function(e){
+    var module = $(this).attr('module');
+    if(module){
+        if(typeof ptype == 'undefined'){//每个页面设置全局的type变量--区分页面
+            ptype = 0;
+        }
+        var addmsg = $(this).attr('addmsg');//额外信息
+        setEvent(ptype,module,addmsg);
+    }
+});
+//解析页面
+function analyzePage(ptype){
+    var str = '';
+    switch (ptype){
+        case 1:
+            str = '首页';break;
+        case 2:
+            str = '商标筛选页';break;
+        case 3:
+            str = '特价页';break;
+        case 4:
+            str = '商标详情页';break;
+        case 5:
+            str = '案例列表页';break;
+        case 6:
+            str = '案例详情页';break;
+        case 8:
+            str = '专题列表页';break;
+        case 9:
+            str = '专题详情页';break;
+        case 10:
+            str = '专利筛选页';break;
+        case 11:
+            str = '专利详情页';break;
+        case 12:
+            str = '我要买';break;
+        case 13:
+            str = '我要卖';break;
+        default:
+            str = '未知';
+    }
+    return str;
+}
