@@ -475,14 +475,14 @@ function setEvent(module,name,page){
         page = ptype;
     }
     page = analyzePage(page);
-    _paq.push(['trackEvent', page, module, name]);
+    //_paq.push(['trackEvent', page, module, name]);
 }
 //添加站内搜索
 function setSearch(keyword,category){
     if(typeof category == 'undefined'){
         category = '商标';
     }
-    _paq.push(['trackSiteSearch', keyword, category]);
+    //_paq.push(['trackSiteSearch', keyword, category]);
 }
 //绑定超链接事件
 $(document).on('click','a',function(e){
