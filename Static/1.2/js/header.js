@@ -486,11 +486,8 @@ function setSearch(keyword,category){
 $(document).on('click','a',function(e){
     var module = $(this).attr('module');
     if(module){
-        if(typeof ptype == 'undefined'){//每个页面设置全局的type变量--区分页面
-            ptype = 0;
-        }
         var addmsg = $(this).attr('addmsg');//额外信息
-        setEvent(ptype,module,addmsg);
+        setEvent(module,addmsg);
     }
 });
 //解析页面
