@@ -64,13 +64,13 @@
                     if(empty($sale['platform'])){//根据类别规则显示
                         foreach($platformIn as $k=>$v){
                             if(checkIn($info['class'],$platformItems[$k])){
-                                echo "<a href='".$platformUrl[$k]."' webid='2' addmsg='".$v."' module='点击了平台' target='_blank' class='cur' >".$v."</a>";
+                                echo "<a href='".$platformUrl[$k]."' webid='2' addmsg='".$v."' module='入驻平台' target='_blank' class='cur' >".$v."</a>";
                             }
                         }
                     }else{//根据包装信息显示
                      foreach($platformIn as $k=>$v){
                             if(in_array($k, array_filter(explode(',',$sale['platform'])))){
-                                echo "<a href='".$platformUrl[$k]."' webid='2' addmsg='".$v."' module='点击了平台' target='_blank' class='cur' >".$v."</a>";
+                                echo "<a href='".$platformUrl[$k]."' webid='2' addmsg='".$v."' module='入驻平台' target='_blank' class='cur' >".$v."</a>";
                             }
                         }
                     }
@@ -196,7 +196,7 @@
                         <?if($isLogin){ ?>
                         <a href='javascript:;' webid="30" onclick="createOrder();" class="mj-priceTxtt_link opt_btn">立即抢购</a>
                         <? }else{ ?>
-                        <a href='javascript:;' onclick="goBuy()" class="mj-priceTxtt_link opt_btn">立即抢购</a>
+                        <a href='javascript:;' onclick="goBuy()" class="mj-priceTxtt_link opt_btn" >立即抢购</a>
                         <?} ?>
                         <!--定价商品-->
                         <?}elseif( $isLogin && $sale['priceType'] == 1 ){?>
@@ -205,7 +205,7 @@
                         <?}elseif( $isLogin && $sale['priceType'] == 2 ){?>
                         <a href='javascript:;' webid="30" onclick="createOrder()" class="opt_btn">我有兴趣</a>
                         <?}else{?>
-                        <a href='javascript:;' onclick="goLook()" class="opt_btn" webid="5">查看价格</a>
+                        <a href='javascript:;' onclick="goLook()" class="opt_btn" webid="5" module="查看价格">查看价格</a>
                         <?}?>
             <?}else{?>
                     <!-- 来自商标库 -->
@@ -227,7 +227,7 @@
                             <div style="width: 50px;height:60px"></div>
                             <p class="mj-priceTxtt_ie7" style="margin-top: 2px"><b>备注：</b>此商标未在行业出售 - 我们有渠道短时间联系到他</p>
                             <div style="width: 50px;height: 10px"></div>
-                            <a href='javascript:;' onclick="goLook()" class="opt_btn">我有兴趣</a>
+                            <a href='javascript:;' onclick="goLook()" class="opt_btn" module="咨询ta">我有兴趣</a>
                         <? } ?>
                 <?}?>
             </div>
@@ -236,7 +236,7 @@
                     <dl>
                         <dd>
                             <i class="us-icon uj_icon2"></i><span class="sqr" title="<?=$info['proName']?>">申请人：<?=$info['proName']?></span>
-                            <a href="javascript:;" webid="31" onclick="goChat()"><i class="us-icon uj_icon30"></i>咨询ta</a>
+                            <a href="javascript:;" webid="31" onclick="goChat()" module="咨询ta"><i class="us-icon uj_icon30"></i>咨询ta</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
@@ -267,9 +267,9 @@
     <div class="detail-recom fl">
         <ul class="recompic">
             <h2>猜你喜欢</h2>
-            <?foreach($tj as $item):?>
+            <?foreach($tj as $k=>$item):?>
             <li>
-                <a href="<?=$item['viewUrl']?>" webid="6" addmsg="<?=$item['name']?>"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
+                <a href="<?=$item['viewUrl']?>" webid="6" addmsg="第<?=($k+1)?>条" module="猜你喜欢"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
             </li>
             <?endforeach;?>
         </ul>
@@ -284,7 +284,7 @@
                    if($k<5){
                    ?>
                    <li>
-                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" webid="7" addmsg="<?=$v['name']?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" ></a>
+                       <a href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" webid="7" addmsg="第<?=($k+1)?>条" module="浏览记录"><img src="<?=$v['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" ></a>
                     </li>
                    <?}}?>
                 </ul>
@@ -492,10 +492,10 @@
                                 <label>服务顾问：</label>陈艾<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=14" addmsg="格伦贝拉" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
+                        <a href="/case/detail/?id=14" addmsg="第1条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=14" addmsg="格伦贝拉" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
+                        <a href="/case/detail/?id=14" addmsg="第1条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -514,10 +514,10 @@
                                 <label>服务顾问：</label>王桂华<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=12" addmsg="Hesiod" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
+                        <a href="/case/detail/?id=12" addmsg="第2条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=12" addmsg="Hesiod" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
+                        <a href="/case/detail/?id=12" addmsg="第2条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -536,10 +536,10 @@
                                 <label>服务顾问：</label>寇飞<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=16" addmsg="麦普森" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
+                        <a href="/case/detail/?id=16" addmsg="第3条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=16" addmsg="麦普森" webid="8" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
+                        <a href="/case/detail/?id=16" addmsg="第3条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -757,6 +757,7 @@
             buyData['class'] 		= $('#class').val();
             buyData['subject'] 		= '求购信息';
             buyData['remarks'] 		= remarks;
+	    setEvent('立即购买','提交了账号'+tel);
             //提交数据
             ucBuy.buyAdd(buyData);
         }else{
@@ -807,6 +808,7 @@
         buyData['remarks'] 		= remarks;
         //提交数据
         sendBehavior(30,ptype, 0, 0,'tel:'+tel);//保存操作信息
+	setEvent('打给我','提交了电话号'+tel);
         ucBuy.buyAdd(buyData);
     }
     //检测用户是否购买回调

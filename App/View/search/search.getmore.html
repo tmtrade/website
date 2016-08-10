@@ -6,8 +6,8 @@
             <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
             <div>
                 <div class="ms-filterCenter">
-                    <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="第<?=$page?>屏加入收藏<?=$v['name']?>" webid="11" module="商品列表模块"><i class="us-icon us-icon20"></i></a>
-                    <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" addmsg="第<?=$page?>屏查看详情<?=$v['name']?>" webid="10" module="商品列表模块">
+                    <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="04-加入收藏" webid="11" module="商标列表-第<?=$page?>屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon20"></i></a>
+                    <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank"addmsg="01-查看详情" webid="10" module="商标列表-第<?=$page?>屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>">
                     <img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                     <div class="ms-filtersListTxt">
                         <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
@@ -15,8 +15,8 @@
                         <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                     </div>
                     <div class="ms-filterBtn">
-                        <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry" addmsg="第<?=$page?>屏询价<?=$v['name']?>" webid="30" module="商品列表模块">&yen;&nbsp;询&nbsp;价</a>
-                        <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="第<?=$page?>屏联系卖家<?=$v['name']?>" webid="31" module="商品列表模块"><i class="us-icon us-icon22"></i>联系卖家</a>
+                        <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry" addmsg="02-询价" webid="30" module="商标列表-第<?=$page?>屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>">&yen;&nbsp;询&nbsp;价</a>
+                        <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="02-联系卖家" webid="31" module="商标列表-第<?=$page?>屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon22"></i>联系卖家</a>
                     </div>
                 </div>
             </div>
@@ -26,16 +26,16 @@
             <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
             <div class="ms-filterMany">
                 <div class="ms-filterCenter">
-                    <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="第<?=$page?>屏加入收藏<?=$v['name']?>" webid="11" module="商品列表模块"><i class="us-icon us-icon20"></i></a>
-                    <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" addmsg="第<?=$page?>屏查看详情<?=$v['name']?>" webid="10" module="商品列表模块"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                    <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="04-加入收藏" webid="11" module="商标列表-第<?=$page?>屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon20"></i></a>
+                    <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" addmsg="01-查看详情" webid="10" module="商标列表-第<?=$page?>屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                     <div class="ms-filtersListTxt">
                         <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                         <p>共<em><?=count($_c_)?></em>个分类</p>
                         <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                     </div>
                     <div class="ms-filterBtn">
-                        <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry" addmsg="第<?=$page?>屏询价<?=$v['name']?>" webid="30" module="商品列表模块">&yen;&nbsp;询&nbsp;价</a>
-                        <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="第<?=$page?>屏联系卖家<?=$v['name']?>" webid="31" module="商品列表模块"><i class="us-icon us-icon22"></i>联系卖家</a>
+                        <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry" addmsg="02-询价" webid="30" module="商标列表-第<?=$page?>屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>">&yen;&nbsp;询&nbsp;价</a>
+                        <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="02-联系卖家" webid="31" module="商标列表-第<?=$page?>屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon22"></i>联系卖家</a>
                     </div>
                 </div>
                 <div class="ms-sortMain">

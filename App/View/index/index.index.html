@@ -387,8 +387,8 @@
                 <div  class="slideBox">
                     <div class="sbd">
                         <ul>
-                            <? foreach($module['pic'] as $pic): ?>
-                            <li><a href="<?=$pic['link']?>" target="_blank" webid="<?=($tk+4)?>" addmsg="广告名-<?=$pic['alt']?>" module='楼层第<?=($tk+1)?>层'><img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$pic['alt']?>"/></a></li>
+                            <? foreach($module['pic'] as $k=>$pic): ?>
+                            <li><a href="<?=$pic['link']?>" target="_blank" webid="<?=($tk+4)?>" addmsg="广告第-0<?=($k+1)?>条" module='楼层第<?=($tk+1)?>层'><img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$pic['alt']?>"/></a></li>
                             <? endforeach; ?>
                         </ul>
                     </div>
@@ -398,11 +398,11 @@
                 </div>
 
                 <div class="cate-list">
-                    <? foreach($module['link'] as $link): ?>
+                    <? foreach($module['link'] as $k=>$link): ?>
                     <p>
-                        <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="广告名-<?=$link[0]['title']?>" module='楼层第<?=($tk+1)?>层'><span>></span><?=$link[0]['title']?></a>
+                        <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第01条" module='楼层第<?=($tk+1)?>层'><span>></span><?=$link[0]['title']?></a>
                         <?if(isset($link[1])):?>
-                        <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="广告名-<?=$link[0]['title']?>" module='楼层第<?=($tk+1)?>层'><span>></span><?=$link[1]['title']?></a>
+                        <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第02条" module='楼层第<?=($tk+1)?>层'><span>></span><?=$link[1]['title']?></a>
                         <?endif;?>
                     </p>
                     <? endforeach; ?>
@@ -413,12 +413,12 @@
                 <div class="brandlist-show">      
                     <ul class="yzc-categorbrand fr">
 
-                        <? foreach($class['items'] as $item): ?>
+                        <? foreach($class['items'] as $k=>$item): ?>
                         <li>
                             <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
                             <div class="brand-show">
                                 <span>
-                                    <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>" module='楼层第<?=($tk+1)?>层'>
+                                    <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="01-查看详情" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
 
                                         <?if ($_k == 0){?>
                                         <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$item['alt']?>">
@@ -431,13 +431,13 @@
                                 <p><b><?=$item['thum_name']?></b> <?=$item['classStr']?></p>
                             </div>
                             <div class="brand-buy">
-                                <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>" module='楼层第<?=($tk+1)?>层'> <span> </span> </a>
+                                <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'> <span> </span> </a>
                                 <font>
-                                <a href="javascript:;" class="first" addmsg="30" onclick="xunjia(this);" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层'>
+                                <a href="javascript:;" class="first" addmsg="02-询价" onclick="xunjia(this);" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
                                     <img src="<?=StaticDir?>1.2/images/catebuy1.png">
                                     询 价
                                 </a>
-                                <a href="javascript:void(0);" class="sec" addmsg="31" onclick="goChat()" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层'>
+                                <a href="javascript:void(0);" class="sec" addmsg="03-联系卖家" onclick="goChat()" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
                                     <img src="<?=StaticDir?>1.2/images/cate-ck.png">
                                     联系卖家
                                 </a>
@@ -470,10 +470,10 @@
                                 <label>服务顾问：</label>陈艾<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="格伦贝拉" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al1.png"></a>
+                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="01-格伦贝拉" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al1.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="格伦贝拉" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-1.jpg"></a>
+                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="01-格伦贝拉" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-1.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -490,10 +490,10 @@
                                 <label>服务顾问：</label>王桂华<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="Hesiod" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al2.png"></a>
+                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="02-Hesiod" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al2.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="Hesiod" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-2.jpg"></a>
+                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="02-Hesiod" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-2.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -510,10 +510,10 @@
                                 <label>服务顾问：</label>寇飞<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="麦普森" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al3.png"></a>
+                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="03-麦普森" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al3.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="麦普森" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-3.jpg"></a>                        
+                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="03-麦普森" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-3.jpg"></a>                        
                     </div>
                 </div>
             </div>
@@ -580,8 +580,8 @@
 <!--订阅商标start-->
 <div class="yzc-take">
     <div class="w1180">
-        <a class="take1" target="_blank" href="/search" webid="16" module='订阅商标'>快速筛选出好标</a>
-        <a class="take2" href="javascript:;" onclick="goChat()" webid="16" module='订阅商标'>联系我们-免费为你找</a>
+        <a class="take1" target="_blank" href="/search" webid="16"  addmsg="01" module='订阅商标'>快速筛选出好标</a>
+        <a class="take2" href="javascript:;" onclick="goChat()" webid="16" addmsg="02" module='订阅商标'>联系我们-免费为你找</a>
     </div>
 
 </div>

@@ -19,7 +19,7 @@
                 <li>
                     <div class="front" style="width: 188px;">
                         <span>
-                            <a href="<?=$v['viewUrl']?>" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="145" height="89" alt="<?=$v['alt']?>"></a>
+                            <a href="<?=$v['viewUrl']?>" addmsg="01-查看详情" module="专题商品列表第<?=($k+1)?>条" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="145" height="89" alt="<?=$v['alt']?>"></a>
                         </span>
                         <p>
                            <font> <?=mbSub($v['name'],0,9);?> <?=mbSub($v['class'],0,10)?>类</font>
@@ -28,11 +28,11 @@
                           <div class="reverse">
                         <label>
                              <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
-                            <a addmsg="<?=$v['name']?>" webid="30" href="javascript:void(0);" onclick="xunjia(this);" class="first cl-red">
+                            <a addmsg="02-询价" webid="30" module="专题商品列表第<?=($k+1)?>条" href="javascript:void(0);" onclick="xunjia(this);" class="first cl-red">
                                 <img src="<?=StaticDir?>zhuanti/images/catebuy1.png"/>
                                 询 价
                             </a>
-                            <a addmsg="<?=$v['name']?>" webid="31" href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165" target="_blank" class="sec cl-org">
+                            <a addmsg="03-联系卖家" webid="31" module="专题商品列表第<?=($k+1)?>条" href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165" target="_blank" class="sec cl-org">
                                 <img src="<?=StaticDir?>zhuanti/images/cate-ck.png"/>
                                 联系卖家
                             </a>
@@ -55,7 +55,7 @@
             ?>
                 <div class="fl">
                 <span>
-                    <a href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221" alt="<?=$v['alt1']?>"></a>
+                    <a module="更多精彩模块第<?=($k+1)?>条" href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221" alt="<?=$v['alt1']?>"></a>
                 </span>
                     <dl>
                         <dt>
@@ -63,14 +63,14 @@
                         <label><?=date('Y-m-d', $v['date'])?></label>
                         </dt>
                         <dd>
-                            <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
+                            <a module="更多精彩模块第<?=($k+1)?>条" href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
                         </dd>
                     </dl>
                 </div>
             <? }else{?>
                 <div class="fr">
                 <span>
-                     <a href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221" alt="<?=$v['alt1']?>"></a>
+                     <a module="更多精彩模块第<?=($k+1)?>条" href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221" alt="<?=$v['alt1']?>"></a>
                 </span>
                     <dl>
                         <dt>
@@ -78,7 +78,7 @@
                         <label><?=date('Y-m-d', $v['date'])?></label>
                         </dt>
                         <dd>
-                            <a href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
+                            <a module="更多精彩模块第<?=($k+1)?>条" href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
                         </dd>
                     </dl>
                 </div>

@@ -24,7 +24,7 @@
                             <p><label>名称类别：</label><font><?=$caseInfo['name']?></font></p>
                             <p><label>适用范围：</label><font><?=$caseInfo['goods']?></font></p>
                             <p><label>购 &nbsp;买 人：</label><font><?=$caseInfo['buyer']?></font></p>
-                            <p><label>服务顾问：</label><font><?=$caseInfo['adviser']?> <a href="javascript:void(0);" onclick="goChat()" webid="31">联系我</a></font></p>
+                            <p><label>服务顾问：</label><font><?=$caseInfo['adviser']?> <a href="javascript:void(0);" onclick="goChat()" webid="31" addmsg="02-联系卖家" module="联系我">联系我</a></font></p>
                         </div>
                     </dd>
                 </dl>
@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="case-contact">
-            <p>还有更多好听好记的商标，想了解吗？ 马上联系客服<a href="javascript:void(0);" onclick="goChat()" webid="31"><img src="<?=StaticDir?>1.2/images/zx-ico.png">在线咨询</a></p>
+            <p>还有更多好听好记的商标，想了解吗？ 马上联系客服<a href="javascript:void(0);" onclick="goChat()" webid="31" addmsg="01-查看详情" addmsg="02-联系卖家" module="在线咨询"><img src="<?=StaticDir?>1.2/images/zx-ico.png">在线咨询</a></p>
         </div>
     </div>
     <div class="yzc-succeeal comSty">
@@ -69,7 +69,7 @@
                             <b>”</b>
                        </label>
                         
-                       <a href="/case/detail/?id=<?=$v['id']?>" addmsg="<?=$v['name']?>" target="blank" webid="1">查看详情</a>
+                       <a href="/case/detail/?id=<?=$v['id']?>" addmsg="<?=$v['name']?>" target="blank" webid="1" addmsg="01-查看详情" webid="1" module="案例更多第<?=($k+1)?>条">查看详情</a>
                    </div>
                </li>
                <? }?>

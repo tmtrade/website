@@ -405,6 +405,7 @@ function addSell(){
 		success: function(data){
 			layer.close(index);
 			if (data.state == 1){
+				setEvent("商标登记模块","提交了"+content);
 				sellok(data);
 			}else if (data.state == -2){
 				var msg = data.msg == undefined ? '提交的数据不正确' : data.msg;
@@ -450,6 +451,7 @@ function patentSell(){
 		success: function(data){
 			layer.close(index);
 			if (data.state == 1){
+				setEvent("专利登记模块","提交了"+content);
 				sellok(data);
 			}else if (data.state == -2){
 				var msg = data.msg == undefined ? '提交的数据不正确' : data.msg;
