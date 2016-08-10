@@ -41,7 +41,7 @@
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="" onclick="createUrl('_class','0');return false;">全部</a></li>
                         <?foreach ($_CLASS as $_cls => $_cn) {?>
-                            <li><a href="javascript:void(0);" onclick="createUrl('_class','<?=$_cls?>');return false;" addmsg="<?=$_cls?>-<?=$_cn?>" webid="1"><?=$_cls?>-<?=$_cn?></a></li>
+                            <li><a href="javascript:void(0);" onclick="createUrl('_class','<?=$_cls?>');return false;" addmsg="单选–<?=$_cls?>-<?=$_cn?>" webid="1" module='筛选分类'><?=$_cls?>-<?=$_cn?></a></li>
                         <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox cc_all2">
@@ -51,7 +51,7 @@
                         <?}?>
                         </ul>
                         <div class="ms-condition-btn">
-                            <a href="javascript:void(0);" tname="_class">确定</a>
+                            <a href="javascript:void(0);" tname="_class" module="商标分类">确定</a>
                             <span onclick="cancelFun(this);">取消</span>
                         </div>
                         <div class="ms-conditionBtn">
@@ -67,7 +67,7 @@
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="javascript:void(0);" onclick="createUrl('_group','0');return false;">全部群组</a></li>
                         <?foreach ($_GROUP[$c] as $_grp => $_gn) {?>
-                            <li  title="<?=$_gn?>"><a href="" onclick="createUrl('_group','<?=$_grp?>');return false;" addmsg="<?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?>" webid="2"><?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?></a></li>
+                            <li  title="<?=$_gn?>"><a href="" onclick="createUrl('_group','<?=$_grp?>');return false;" addmsg="单选–<?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?>" webid="2" module='筛选群组'><?=$_grp?>-<?=mb_substr($_gn, 0, 8, 'UTF-8')?></a></li>
                         <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox groupSty">
@@ -77,7 +77,7 @@
                         <?}?>
                         </ul>
                         <div class="ms-condition-btn">
-                            <a href="javascript:void(0);" tname="_group">确定</a>
+                            <a href="javascript:void(0);" tname="_group" module="分类群组">确定</a>
                             <span onclick="cancelFun(this);">取消</span>
                         </div>
                         <div class="ms-conditionBtn">
@@ -105,7 +105,7 @@
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="javascript:void(0);" onclick="createUrl('_sT','0');return false;">全部</a></li>
                         <?foreach ($_TYPE as $_k => $_v) {?>
-                            <li><a href="javascript:void(0);" onclick="createUrl('_sT','<?=$_k?>');return false;" addmsg="<?=$_v?>" webid="3"><?=$_v?></a></li>
+                            <li><a href="javascript:void(0);" onclick="createUrl('_sT','<?=$_k?>');return false;" addmsg="单选–<?=$_v?>" webid="3" module='筛选组合类型'><?=$_v?></a></li>
                         <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox">
@@ -114,7 +114,7 @@
                         <?}?>
                         </ul>
                         <div class="ms-condition-btn">
-                            <a href="javascript:void(0);" tname="_sT">确定</a>
+                            <a href="javascript:void(0);" tname="_sT" module="组合类型">确定</a>
                             <span onclick="cancelFun(this);">取消</span>
                         </div>
                         <div class="ms-conditionBtn">
@@ -130,7 +130,7 @@
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="javascript:void(0);" onclick="createUrl('_sN','0');return false;">全部</a></li>
                             <?foreach ($_NUMBER as $k => $v) {?>
-                                <li><a href="javascript:void(0);" onclick="createUrl('_sN','<?=$k?>');return false;" addmsg="<?=$v?>" webid="4"><?=$v?></a></li>
+                                <li><a href="javascript:void(0);" onclick="createUrl('_sN','<?=$k?>');return false;" addmsg="单选–<?=$v?>" webid="4" module='筛选商标字数'><?=$v?></a></li>
                             <?}?>
                         </ul>
                         <ul class="f-clearfix ms-conditionCheckbox">
@@ -139,7 +139,7 @@
                             <?}?>
                         </ul>
                         <div class="ms-condition-btn">
-                            <a href="javascript:;" tname="_sN">确定</a>
+                            <a href="javascript:;" tname="_sN" module="商标字数">确定</a>
                             <span onclick="cancelFun(this);">取消</span>
                         </div>
                         <div class="ms-conditionBtn">
@@ -159,7 +159,7 @@
                                     <ul class="f-clearfix ms-conditionRadio">
                                         <li><a  href="javascript:void(0);" onclick="createUrl('_date','0');return false;">全部</a></li>
                                     <?foreach ($_DATE as $_k => $_v) {?>
-                                        <li><a  href="javascript:void(0);" onclick="createUrl('_date','<?=$_k?>');return false;" addmsg="<?=$_v?>" webid="5"><?=$_v?></a></li>
+                                        <li><a  href="javascript:void(0);" onclick="createUrl('_date','<?=$_k?>');return false;" addmsg="单选–<?=$_v?>" webid="5" module='筛选注册时间'><?=$_v?></a></li>
                                     <?}?>
                                     </ul>
                                 </div>
@@ -172,7 +172,7 @@
                                     <ul class="f-clearfix ms-conditionRadio">
                                         <li><a href="javascript:void(0);" onclick="createUrl('_plat','0);return false;">全部</a></li>
                                         <?foreach ($_PLATFORM as $k => $v) {?>
-                                            <li><a href="javascript:void(0);" onclick="createUrl('_plat','<?=$k?>');return false;" addmsg="<?=$v?>" webid="6"><?=$v?></a></li>
+                                            <li><a href="javascript:void(0);" onclick="createUrl('_plat','<?=$k?>');return false;" addmsg="单选–<?=$v?>" webid="6" module='筛选入驻平台'><?=$v?></a></li>
                                         <?}?>
                                     </ul>
                                     <ul class="f-clearfix ms-conditionCheckbox">                                        
@@ -181,7 +181,7 @@
                                         <?}?>
                                     </ul>
                                     <div class="ms-condition-btn">
-                                        <a href="javascript:void(0);" tname="_plat">确定</a>
+                                        <a href="javascript:void(0);" tname="_plat" module="入驻平台">确定</a>
                                         <span onclick="cancelFun(this);">取消</span>
                                     </div>
                                     <div class="ms-conditionBtn">
@@ -224,16 +224,16 @@
                 <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                     <div>
                         <div class="ms-filterCenter">
-                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="11"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg pulse"><a href="<?=$v['viewUrl']?>"  target="_blank" addmsg="<?=$v['name']?>" webid="10"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="第1屏加入收藏<?=$v['name']?>" webid="11" module="商品列表模块"><i class="us-icon us-icon20"></i></a>
+                            <span class="ms-filtersImg pulse"><a href="<?=$v['viewUrl']?>"  target="_blank" addmsg="第1屏查看详情<?=$v['name']?>" webid="10" module="商品列表模块"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p><span><?=$v['class']?>类</span>-<?=$_CLASS[$v['class']]?></p>
                                 <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry" addmsg="<?=$v['name']?>" webid="30">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="<?=$v['name']?>" webid="31"><i class="us-icon us-icon22"></i>联系卖家</a>
+                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry" addmsg="第1屏询价<?=$v['name']?>" webid="30" module="商品列表模块">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="第1屏联系卖家<?=$v['name']?>" webid="31" module="商品列表模块"><i class="us-icon us-icon22"></i>联系卖家</a>
                             </div>
                         </div>
                     </div>
@@ -245,16 +245,16 @@
                 <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
                     <div class="ms-filterMany">
                         <div class="ms-filterCenter">
-                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="<?=$v['name']?>" webid="11"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" addmsg="<?=$v['name']?>" webid="10"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                            <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>" addmsg="第1屏加入收藏<?=$v['name']?>" webid="11" module="商品列表模块"><i class="us-icon us-icon20"></i></a>
+                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank" addmsg="第1屏查看详情<?=$v['name']?>" webid="10" module="商品列表模块"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p>共<em><?=count($_c_)?></em>个分类</p>
                                 <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry"  addmsg="<?=$v['name']?>" webid="30">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="<?=$v['name']?>" webid="31"><i class="us-icon us-icon22" ></i>联系卖家</a>
+                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry"  addmsg="第1屏询价<?=$v['name']?>" webid="30" module="商品列表模块">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="第1屏联系卖家<?=$v['name']?>" webid="31" module="商品列表模块"><i class="us-icon us-icon22" ></i>联系卖家</a>
                             </div>
                         </div>
                         <div class="ms-sortMain">
@@ -320,7 +320,7 @@
 	    <?foreach ($ad_list['seach_list'] as $k => $v) {?>
 		<dd>
 		    <span>
-			<a href="<?=$v['link']?>" target="_blank"  addmsg="<?=$v['alt']?>" webid="12">
+			<a href="<?=$v['link']?>" target="_blank"  addmsg="推荐第<?=($k+1)?>条" webid="12" module="特价商标推荐">
 			    <img src="<?=(TRADE_URL.$v['pic'])?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
 			</a>
 		    </span>
@@ -333,7 +333,7 @@
 		<dd>
 		    <span><img src="<?=$v['imgUrl']?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></span>
 		    <div class="ms-filtersListTxt">
-			<a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>" addmsg="<?=$v['name']?>" webid="12">
+			<a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>" addmsg="推荐第<?=($k+1)?>条" webid="12" module="特价商标推荐">
 			<div>
 			    <h6><?=$v['name']?></h6>
 			    <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
@@ -355,19 +355,20 @@
    <img src="<?=StaticDir?>1.2/images/fdkf-ss.png">
 </div>
 <div class="fdkf-zk" style="z-index:100;">
+
     <ul class="w1180">
         <span class="gb-ss"></span>
-        <!--<li class="btm-tel">-->
-            <!--<a href="javascript:void(0);" onclick="goChat();">-->
-                <!--<img src="<?=StaticDir?>1.2/images/zx-ico.png">-->
-                <!--在线咨询-->
-            <!--</a>-->
-        <!--</li>-->
-        <!--<li class="btm-pel">-->
-            <!--<img src="<?=StaticDir?>1.2/images/btm-pel.png">-->
-        <!--</li>-->
+        <li class="btm-tel">
+            <a href="javascript:void(0);" onclick="goChat();" addmsg="在线咨询"  module="客服浮动层模块">
+                <img src="<?=StaticDir?>1.2/images/zx-ico.png">
+                在线咨询
+            </a>
+        </li>
+        <li class="btm-pel">
+            <img src="<?=StaticDir?>1.2/images/btm-pel.png">
+        </li>
         <li class="btm-tj">
-            <!--<p><img src="<?=StaticDir?>1.2/images/btm-wz.png"></p>-->
+            <p><img src="<?=StaticDir?>1.2/images/btm-wz.png"></p>
             <div>
                 <select id="my_select">
                     <option value="行业:用户未选择行业">请选择商标所属行业</option>
@@ -386,9 +387,6 @@
                 <a href="javascript:;" onclick="freeIntro()">免费推荐</a>
             </div>
         </li>
-
-        <a href="http://p.qiao.baidu.com/cps/chat?siteId=9503594&userId=21149642" class="zxzx"></a>
-
     </ul>
 </div>
 <? require(ViewDir.'/sidebar.html'); ?>
@@ -560,7 +558,9 @@
             var  temp = '';
             lables.each(function(){
                 temp += ","+$(this).text();
-            })
+            });
+	    var module = $(this).attr('module');
+	    setEvent("筛选"+module,"多选 –"+temp);
             sendBehavior(13,ptype, e.pageX, e.pageY,temp);//保存操作信息
             createUrl(tname, str);
         }
@@ -616,6 +616,7 @@
         data['tel'] 	= freeTel;
         data['subject'] = freeContent;
         data['remarks'] = freeContent;
+	setEvent("客服浮动层模块","提交了所属行业"+freeContent+"联系方式:"+freeTel);
         ucNetwork.submitData(data);
     }
     //发布回调

@@ -102,28 +102,37 @@
     //快捷登录回调
     function submitDataCallback(Obj) {
         $.each(Obj, function(i, n) {
+	    var name = $.trim($('#buyName').val());
+            var tel = $.trim($('#buyMoblie').val());
+            var subject = $.trim($('#buyNeed').val());
             if (login_mobile) {
                 //用户登录情况下
                 if (n.code != -1) {
                     //弹出成功框
-                    clearKJLogin();
+		    setEvent("快捷登记","提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     getLayer($('#mj-submitteS'));
+                    clearKJLogin();
                 } else {
                     //弹出失败框
+		    setEvent("快捷登记","提交失败了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     getLayer($('#mj-submitteF'));
+		    
                 }
             } else {
                 //用户未登录情况下
                 if (n.code == 1) {
                     //用户不存在
+		    setEvent("快捷登记","提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     clearKJLogin();
                     getLogin(_buyTitle, tel, 0);
                 } else if (n.code == 2) {
                     //用户存在
+		    setEvent("快捷登记","提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     clearKJLogin();
                     getLogin(_login, tel, 1);
                 } else {
                     //弹出失败框
+		    setEvent("快捷登记","提交失败了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     getLayer($('#mj-submitteF'));
                 }
             }
@@ -211,10 +220,11 @@
             <ul class="mj-banner-img">
                 <?
                 $bannerStr = '';
-                foreach($banners as $banner){
+                foreach($banners as $k=>$banner){
+		$k = $k+1;
                 $url	 = TRADE_URL.'/'.substr($banner['pic'],1);
                 $_banner = $banner['link'] ? $banner['link'] : 'javascript:void(0);';
-                $bannerStr .= "<li class='mj-banner-itme'><a href='{$_banner}' target='_blank' webid='1' addmsg=".$banner["alt"]."><img src='{$url}' alt='".$banner["alt"]."'></a></li>";
+                $bannerStr .= "<li class='mj-banner-itme'><a href='{$_banner}' target='_blank' webid='1' addmsg='第{$k}条' module='大图广告'><img src='{$url}' alt='".$banner["alt"]."'></a></li>";
                 }
                 echo $bannerStr;
                 ?>
@@ -247,9 +257,9 @@
         <ul>
             <? 
 	    $j = 10-(count($ad_list['index_middle']));
-	    foreach($ad_list['index_middle'] as $ad): ?>
+	    foreach($ad_list['index_middle'] as $k=>$ad): ?>
             <li>
-                <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg="<?=$ad['alt']?>">
+                <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第{$k}条' module='轮播广告'>
                     <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
                 </a>
             </li>
@@ -259,7 +269,7 @@
 	    if($j<=0) break;
 	    ?>
             <li>
-                <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg="<?=$ad['alt']?>">
+                <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第<?=$k+1?>条' module='轮播广告'>
                     <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
                 </a>
             </li>
@@ -284,59 +294,59 @@
         <ul class="brand-fl">
             <li>
                 <!--重点红色-->
-                <p><span><label>&bull;</label>01类</span><a target="_blank" webid="3" addmsg="01类" href="/s-c-1/" class="piont">化工原料</a></p>
-                <p><span><label>&bull;</label>02类</span><a target="_blank" webid="3" addmsg="02类" href="/s-c-2/">油漆涂料</a></p>
-                <p><span><label>&bull;</label>03类</span><a target="_blank" webid="3" addmsg="03类" href="/s-c-3/" class="piont">化妆日化</a></p>
-                <p><span><label>&bull;</label>04类</span><a target="_blank" webid="3" addmsg="04类" href="/s-c-4/">燃料油脂</a></p>
-                <p><span><label>&bull;</label>05类</span><a target="_blank" webid="3" addmsg="05类" href="/s-c-5/" class="piont">医药</a></p>
-                <p><span><label>&bull;</label>06类</span><a target="_blank" webid="3" addmsg="06类" href="/s-c-6/" class="piont">五金金属</a></p>
-                <p><span><label>&bull;</label>07类</span><a target="_blank" webid="3" addmsg="07类" href="/s-c-7/">机械电动</a></p>
-                <p><span><label>&bull;</label>08类</span><a target="_blank" webid="3" addmsg="08类" href="/s-c-8/">手工器械</a></p>
-                <p><span><label>&bull;</label>09类</span><a target="_blank" webid="3" addmsg="09类" href="/s-c-9/" class="piont">科学仪器</a></p>
+                <p><span><label>&bull;</label>01类</span><a target="_blank" webid="3" addmsg="01类" module='商品全类快捷入口'  href="/s-c-1/" class="piont">化工原料</a></p>
+                <p><span><label>&bull;</label>02类</span><a target="_blank" webid="3" addmsg="02类" module='商品全类快捷入口' href="/s-c-2/">油漆涂料</a></p>
+                <p><span><label>&bull;</label>03类</span><a target="_blank" webid="3" addmsg="03类" module='商品全类快捷入口' href="/s-c-3/" class="piont">化妆日化</a></p>
+                <p><span><label>&bull;</label>04类</span><a target="_blank" webid="3" addmsg="04类" module='商品全类快捷入口' href="/s-c-4/">燃料油脂</a></p>
+                <p><span><label>&bull;</label>05类</span><a target="_blank" webid="3" addmsg="05类" module='商品全类快捷入口' href="/s-c-5/" class="piont">医药</a></p>
+                <p><span><label>&bull;</label>06类</span><a target="_blank" webid="3" addmsg="06类" module='商品全类快捷入口' href="/s-c-6/" class="piont">五金金属</a></p>
+                <p><span><label>&bull;</label>07类</span><a target="_blank" webid="3" addmsg="07类" module='商品全类快捷入口' href="/s-c-7/">机械电动</a></p>
+                <p><span><label>&bull;</label>08类</span><a target="_blank" webid="3" addmsg="08类" module='商品全类快捷入口' href="/s-c-8/">手工器械</a></p>
+                <p><span><label>&bull;</label>09类</span><a target="_blank" webid="3" addmsg="09类" module='商品全类快捷入口' href="/s-c-9/" class="piont">科学仪器</a></p>
             </li>
             <li>
-                <p><span><label>&bull;</label>10类</span><a target="_blank" webid="3" addmsg="10类" href="/s-c-10/">医疗器械</a></p>
-                <p><span><label>&bull;</label>11类</span><a target="_blank" webid="3" addmsg="11类" href="/s-c-11/" class="piont">家用电器</a></p>
-                <p><span><label>&bull;</label>12类</span><a target="_blank" webid="3" addmsg="12类" href="/s-c-12/">运输工具</a></p>
-                <p><span><label>&bull;</label>13类</span><a target="_blank" webid="3" addmsg="13类" href="/s-c-13/">军火烟火</a></p>
-                <p><span><label>&bull;</label>14类</span><a target="_blank" webid="3" addmsg="14类" href="/s-c-14/" class="piont">珠宝钟表</a></p>
-                <p><span><label>&bull;</label>15类</span><a target="_blank" webid="3" addmsg="15类" href="/s-c-15/">乐器</a></p>
-                <p><span><label>&bull;</label>16类</span><a target="_blank" webid="3" addmsg="16类" href="/s-c-16/">办公用品</a></p>
-                <p><span><label>&bull;</label>17类</span><a target="_blank" webid="3" addmsg="17类" href="/s-c-17/">橡胶制品</a></p>
-                <p><span><label>&bull;</label>18类</span><a target="_blank" webid="3" addmsg="18类" href="/s-c-18/" class="piont">皮革皮具</a></p>
+                <p><span><label>&bull;</label>10类</span><a target="_blank" webid="3" addmsg="10类" module='商品全类快捷入口' href="/s-c-10/">医疗器械</a></p>
+                <p><span><label>&bull;</label>11类</span><a target="_blank" webid="3" addmsg="11类" module='商品全类快捷入口' href="/s-c-11/" class="piont">家用电器</a></p>
+                <p><span><label>&bull;</label>12类</span><a target="_blank" webid="3" addmsg="12类" module='商品全类快捷入口' href="/s-c-12/">运输工具</a></p>
+                <p><span><label>&bull;</label>13类</span><a target="_blank" webid="3" addmsg="13类" module='商品全类快捷入口' href="/s-c-13/">军火烟火</a></p>
+                <p><span><label>&bull;</label>14类</span><a target="_blank" webid="3" addmsg="14类" module='商品全类快捷入口' href="/s-c-14/" class="piont">珠宝钟表</a></p>
+                <p><span><label>&bull;</label>15类</span><a target="_blank" webid="3" addmsg="15类" module='商品全类快捷入口' href="/s-c-15/">乐器</a></p>
+                <p><span><label>&bull;</label>16类</span><a target="_blank" webid="3" addmsg="16类" module='商品全类快捷入口' href="/s-c-16/">办公用品</a></p>
+                <p><span><label>&bull;</label>17类</span><a target="_blank" webid="3" addmsg="17类" module='商品全类快捷入口' href="/s-c-17/">橡胶制品</a></p>
+                <p><span><label>&bull;</label>18类</span><a target="_blank" webid="3" addmsg="18类" module='商品全类快捷入口' href="/s-c-18/" class="piont">皮革皮具</a></p>
             </li>
             <li>
-                <p><span><label>&bull;</label>19类</span><a target="_blank" webid="3" addmsg="19类" href="/s-c-19/">建筑材料</a></p>
-                <p><span><label>&bull;</label>20类</span><a target="_blank" webid="3" addmsg="20类" href="/s-c-20/">家具</a></p>
-                <p><span><label>&bull;</label>21类</span><a target="_blank" webid="3" addmsg="21类" href="/s-c-21/">洁具厨房</a></p>
-                <p><span><label>&bull;</label>22类</span><a target="_blank" webid="3" addmsg="22类" href="/s-c-22/">绳网袋蓬</a></p>
-                <p><span><label>&bull;</label>23类</span><a target="_blank" webid="3" addmsg="23类" href="/s-c-23/">纺织纱线</a></p>
-                <p><span><label>&bull;</label>24类</span><a target="_blank" webid="3" addmsg="24类" href="/s-c-24/">布料床单</a></p>
-                <p><span><label>&bull;</label>25类</span><a target="_blank" webid="3" addmsg="25类" href="/s-c-25/" class="piont">服装鞋帽</a></p>
-                <p><span><label>&bull;</label>26类</span><a target="_blank" webid="3" addmsg="26类" href="/s-c-26/">纽扣拉链</a></p>
-                <p><span><label>&bull;</label>27类</span><a target="_blank" webid="3" addmsg="27类" href="/s-c-27/">地毯席垫</a></p>
+                <p><span><label>&bull;</label>19类</span><a target="_blank" webid="3" addmsg="19类" module='商品全类快捷入口' href="/s-c-19/">建筑材料</a></p>
+                <p><span><label>&bull;</label>20类</span><a target="_blank" webid="3" addmsg="20类" module='商品全类快捷入口' href="/s-c-20/">家具</a></p>
+                <p><span><label>&bull;</label>21类</span><a target="_blank" webid="3" addmsg="21类" module='商品全类快捷入口' href="/s-c-21/">洁具厨房</a></p>
+                <p><span><label>&bull;</label>22类</span><a target="_blank" webid="3" addmsg="22类" module='商品全类快捷入口' href="/s-c-22/">绳网袋蓬</a></p>
+                <p><span><label>&bull;</label>23类</span><a target="_blank" webid="3" addmsg="23类" module='商品全类快捷入口' href="/s-c-23/">纺织纱线</a></p>
+                <p><span><label>&bull;</label>24类</span><a target="_blank" webid="3" addmsg="24类" module='商品全类快捷入口' href="/s-c-24/">布料床单</a></p>
+                <p><span><label>&bull;</label>25类</span><a target="_blank" webid="3" addmsg="25类" module='商品全类快捷入口' href="/s-c-25/" class="piont">服装鞋帽</a></p>
+                <p><span><label>&bull;</label>26类</span><a target="_blank" webid="3" addmsg="26类" module='商品全类快捷入口' href="/s-c-26/">纽扣拉链</a></p>
+                <p><span><label>&bull;</label>27类</span><a target="_blank" webid="3" addmsg="27类" module='商品全类快捷入口' href="/s-c-27/">地毯席垫</a></p>
             </li>
             <li>
-                <p><span><label>&bull;</label>28类</span><a target="_blank" webid="3" addmsg="28类" href="/s-c-28/">健身器材</a></p>
-                <p><span><label>&bull;</label>29类</span><a target="_blank" webid="3" addmsg="29类" href="/s-c-29/" class="piont">食品</a></p>
-                <p><span><label>&bull;</label>30类</span><a target="_blank" webid="3" addmsg="30类" href="/s-c-30/" class="piont">方便食品</a></p>
-                <p><span><label>&bull;</label>31类</span><a target="_blank" webid="3" addmsg="31类" href="/s-c-31/">饲料种籽</a></p>
-                <p><span><label>&bull;</label>32类</span><a target="_blank" webid="3" addmsg="32类" href="/s-c-32/" class="piont">啤酒饮料</a></p>
-                <p><span><label>&bull;</label>33类</span><a target="_blank" webid="3" addmsg="33类" href="/s-c-33/" class="piont">酒</a></p>
-                <p><span><label>&bull;</label>34类</span><a target="_blank" webid="3" addmsg="34类" href="/s-c-34/">烟草烟具</a></p>
-                <p><span><label>&bull;</label>35类</span><a target="_blank" webid="3" addmsg="35类" href="/s-c-35/" class="piont">广告销售</a></p>
-                <p><span><label>&bull;</label>36类</span><a target="_blank" webid="3" addmsg="36类" href="/s-c-36/">金融物管</a></p>
+                <p><span><label>&bull;</label>28类</span><a target="_blank" webid="3" addmsg="28类" module='商品全类快捷入口' href="/s-c-28/">健身器材</a></p>
+                <p><span><label>&bull;</label>29类</span><a target="_blank" webid="3" addmsg="29类" module='商品全类快捷入口' href="/s-c-29/" class="piont">食品</a></p>
+                <p><span><label>&bull;</label>30类</span><a target="_blank" webid="3" addmsg="30类" module='商品全类快捷入口' href="/s-c-30/" class="piont">方便食品</a></p>
+                <p><span><label>&bull;</label>31类</span><a target="_blank" webid="3" addmsg="31类" module='商品全类快捷入口' href="/s-c-31/">饲料种籽</a></p>
+                <p><span><label>&bull;</label>32类</span><a target="_blank" webid="3" addmsg="32类" module='商品全类快捷入口' href="/s-c-32/" class="piont">啤酒饮料</a></p>
+                <p><span><label>&bull;</label>33类</span><a target="_blank" webid="3" addmsg="33类" module='商品全类快捷入口' href="/s-c-33/" class="piont">酒</a></p>
+                <p><span><label>&bull;</label>34类</span><a target="_blank" webid="3" addmsg="34类" module='商品全类快捷入口' href="/s-c-34/">烟草烟具</a></p>
+                <p><span><label>&bull;</label>35类</span><a target="_blank" webid="3" addmsg="35类" module='商品全类快捷入口' href="/s-c-35/" class="piont">广告销售</a></p>
+                <p><span><label>&bull;</label>36类</span><a target="_blank" webid="3" addmsg="36类" module='商品全类快捷入口' href="/s-c-36/">金融物管</a></p>
             </li>
             <li>
-                <p><span><label>&bull;</label>37类</span><a target="_blank" webid="3" addmsg="37类" href="/s-c-37/">建筑修理</a></p>
-                <p><span><label>&bull;</label>38类</span><a target="_blank" webid="3" addmsg="38类" href="/s-c-38/">通讯传媒</a></p>
-                <p><span><label>&bull;</label>39类</span><a target="_blank" webid="3" addmsg="39类" href="/s-c-39/">运输旅行</a></p>
-                <p><span><label>&bull;</label>40类</span><a target="_blank" webid="3" addmsg="40类" href="/s-c-40/">材料加工</a></p>
-                <p><span><label>&bull;</label>41类</span><a target="_blank" webid="3" addmsg="41类" href="/s-c-41/" class="piont">教育娱乐</a></p>
-                <p><span><label>&bull;</label>42类</span><a target="_blank" webid="3" addmsg="42类" href="/s-c-42/">科学服务</a></p>
-                <p><span><label>&bull;</label>43类</span><a target="_blank" webid="3" addmsg="43类" href="/s-c-43/" class="piont">餐饮住宿</a></p>
-                <p><span><label>&bull;</label>44类</span><a target="_blank" webid="3" addmsg="44类" href="/s-c-44/">医疗园艺</a></p>
-                <p><span><label>&bull;</label>45类</span><a id='mytest' target="_blank" webid="3" addmsg="45类" href="/s-c-45/">社会服务</a></p>
+                <p><span><label>&bull;</label>37类</span><a target="_blank" webid="3" addmsg="37类" module='商品全类快捷入口' href="/s-c-37/">建筑修理</a></p>
+                <p><span><label>&bull;</label>38类</span><a target="_blank" webid="3" addmsg="38类" module='商品全类快捷入口' href="/s-c-38/">通讯传媒</a></p>
+                <p><span><label>&bull;</label>39类</span><a target="_blank" webid="3" addmsg="39类" module='商品全类快捷入口' href="/s-c-39/">运输旅行</a></p>
+                <p><span><label>&bull;</label>40类</span><a target="_blank" webid="3" addmsg="40类" module='商品全类快捷入口' href="/s-c-40/">材料加工</a></p>
+                <p><span><label>&bull;</label>41类</span><a target="_blank" webid="3" addmsg="41类" module='商品全类快捷入口' href="/s-c-41/" class="piont">教育娱乐</a></p>
+                <p><span><label>&bull;</label>42类</span><a target="_blank" webid="3" addmsg="42类" module='商品全类快捷入口' href="/s-c-42/">科学服务</a></p>
+                <p><span><label>&bull;</label>43类</span><a target="_blank" webid="3" addmsg="43类" module='商品全类快捷入口' href="/s-c-43/" class="piont">餐饮住宿</a></p>
+                <p><span><label>&bull;</label>44类</span><a target="_blank" webid="3" addmsg="44类" module='商品全类快捷入口' href="/s-c-44/">医疗园艺</a></p>
+                <p><span><label>&bull;</label>45类</span><a id='mytest' target="_blank" webid="3" addmsg="45类" module='商品全类快捷入口' href="/s-c-45/">社会服务</a></p>
             </li>
         </ul>
         <ul class="tj-recom">
@@ -348,7 +358,7 @@
                 <div class="tj-recom-hover">
                     <label>
                         <? foreach($rClass['class'] as $class): ?>
-                        <a target="_blank" href="/s-c-<?=$class[0]?>/" webid="3" addmsg="<?=$class[1]?>"> <?=$class[1]?>  </a>
+                        <a target="_blank" href="/s-c-<?=$class[0]?>/" webid="3" addmsg="<?=$class[1]?>" module='商品全类快捷入口'> <?=$class[1]?>  </a>
                         <? endforeach; ?>
                     </label>
                 </div>
@@ -378,7 +388,7 @@
                     <div class="sbd">
                         <ul>
                             <? foreach($module['pic'] as $pic): ?>
-                            <li><a href="<?=$pic['link']?>" target="_blank" webid="<?=($tk+4)?>" addmsg="广告名-<?=$pic['alt']?>"><img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$pic['alt']?>"/></a></li>
+                            <li><a href="<?=$pic['link']?>" target="_blank" webid="<?=($tk+4)?>" addmsg="广告名-<?=$pic['alt']?>" module='楼层第<?=($tk+1)?>层'><img class="lazy" src="/Static/images/idx01.gif"  data-original="<?=(TRADE_URL.$pic['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$pic['alt']?>"/></a></li>
                             <? endforeach; ?>
                         </ul>
                     </div>
@@ -390,9 +400,9 @@
                 <div class="cate-list">
                     <? foreach($module['link'] as $link): ?>
                     <p>
-                        <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="广告名-<?=$link[0]['title']?>"><span>></span><?=$link[0]['title']?></a>
+                        <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="广告名-<?=$link[0]['title']?>" module='楼层第<?=($tk+1)?>层'><span>></span><?=$link[0]['title']?></a>
                         <?if(isset($link[1])):?>
-                        <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="广告名-<?=$link[0]['title']?>"><span>></span><?=$link[1]['title']?></a>
+                        <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="广告名-<?=$link[0]['title']?>" module='楼层第<?=($tk+1)?>层'><span>></span><?=$link[1]['title']?></a>
                         <?endif;?>
                     </p>
                     <? endforeach; ?>
@@ -408,7 +418,7 @@
                             <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
                             <div class="brand-show">
                                 <span>
-                                    <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>">
+                                    <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>" module='楼层第<?=($tk+1)?>层'>
 
                                         <?if ($_k == 0){?>
                                         <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$item['alt']?>">
@@ -421,13 +431,13 @@
                                 <p><b><?=$item['thum_name']?></b> <?=$item['classStr']?></p>
                             </div>
                             <div class="brand-buy">
-                                <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>"> <span> </span> </a>
+                                <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>" module='楼层第<?=($tk+1)?>层'> <span> </span> </a>
                                 <font>
-                                <a href="javascript:;" class="first" addmsg="30" onclick="xunjia(this);" webid="<?=($tk+4)?>">
+                                <a href="javascript:;" class="first" addmsg="30" onclick="xunjia(this);" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层'>
                                     <img src="<?=StaticDir?>1.2/images/catebuy1.png">
                                     询 价
                                 </a>
-                                <a href="javascript:void(0);" class="sec" addmsg="31" onclick="goChat()" webid="<?=($tk+4)?>">
+                                <a href="javascript:void(0);" class="sec" addmsg="31" onclick="goChat()" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层'>
                                     <img src="<?=StaticDir?>1.2/images/cate-ck.png">
                                     联系卖家
                                 </a>
@@ -460,10 +470,10 @@
                                 <label>服务顾问：</label>陈艾<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="格伦贝拉"><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al1.png"></a>
+                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="格伦贝拉" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al1.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="格伦贝拉"><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-1.jpg"></a>
+                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="格伦贝拉" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-1.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -480,10 +490,10 @@
                                 <label>服务顾问：</label>王桂华<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="Hesiod"><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al2.png"></a>
+                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="Hesiod" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al2.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="Hesiod"><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-2.jpg"></a>
+                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="Hesiod" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-2.jpg"></a>
                     </div>
                 </div>
             </div>
@@ -500,10 +510,10 @@
                                 <label>服务顾问：</label>寇飞<br/>
                             </p>
                         </dl>
-                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="麦普森"><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al3.png"></a>
+                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="麦普森" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al3.png"></a>
                     </div>
                     <div class="back">
-                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="麦普森"><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-3.jpg"></a>                        
+                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="麦普森" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-3.jpg"></a>                        
                     </div>
                 </div>
             </div>
@@ -522,16 +532,16 @@
                 <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/brand1.png">
                 </dt>
                 <dd>
-                    <? foreach ($news['news'] as $item){ ?>
-                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="<? echo $item['title'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                    <? foreach ($news['news'] as $k=>$item){ ?>
+                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="新闻第<?=($k+1)?>条" module='新闻'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
                     <? } ?>
-                    <a class="more" hidden="" href="/n-50/" target="_blank" webid="15">更多 ></a>
+                    <a class="more" hidden="" href="/n-50/" target="_blank" webid="15"  addmsg="新闻更多" module='新闻'>更多 ></a>
                 </dd>
             </dl>
             <div class="btm">
-                <? foreach ($news['baike'] as $item){ ?>
+                <? foreach ($news['baike'] as $k=>$item){ ?>
                 <p>
-                    <span class="fl">[<a href="/n-53/" target="_blank" webid="15">商标百科</a>] <a href="<? echo $item['url'];?>" target="_blank" webid="15" addmsg="<? echo $item['title'];?>"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
+                    <span class="fl">[<a href="/n-53/" target="_blank" webid="15" addmsg="其他分类第<?=($k+1)?>条" module='新闻'>商标百科</a>] <a href="<? echo $item['url'];?>" target="_blank" webid="15" addmsg="其他新闻第<?=($k+1)?>条" module='新闻'><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
                 </p>
                 <? } ?>
             </div>
@@ -548,16 +558,16 @@
                 <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/brand2.png">
                 </dt>
                 <dd>
-                    <? foreach ($news['faq'] as $item){ ?>
-                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="<? echo $item['title'];?>"><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                    <? foreach ($news['faq'] as $k=>$item){ ?>
+                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
                     <? } ?>
-                    <a class="more" hidden="" target="_blank" href="/n-45/" webid="15">更多 ></a>
+                    <a class="more" hidden="" target="_blank" href="/n-45/" webid="15" addmsg="问答更多" module='问答'>更多 ></a>
                 </dd>
             </dl>
             <div class="btm">
-                <? foreach ($news['law'] as $item){ ?>
+                <? foreach ($news['law'] as $k=>$item){ ?>
                 <p>
-                    <span class="fl">[<a href="/n-51/" target="_blank" webid="15">商标法律</a>] <a href="<? echo $item['url'];?>" target="_blank" webid="15" addmsg="<? echo $item['title'];?>"><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
+                    <span class="fl">[<a href="/n-51/" target="_blank" webid="15"  addmsg="其他分类第<?=($k+1)?>条" module='问答'>商标法律</a>] <a href="<? echo $item['url'];?>" target="_blank" webid="15"  addmsg="其他问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
                 </p>
                 <? } ?>
             </div>
@@ -570,8 +580,8 @@
 <!--订阅商标start-->
 <div class="yzc-take">
     <div class="w1180">
-        <a class="take1" target="_blank" href="/search" webid="16">快速筛选出好标</a>
-        <a class="take2" href="javascript:;" onclick="goChat()" webid="16">联系我们-免费为你找</a>
+        <a class="take1" target="_blank" href="/search" webid="16" module='订阅商标'>快速筛选出好标</a>
+        <a class="take2" href="javascript:;" onclick="goChat()" webid="16" module='订阅商标'>联系我们-免费为你找</a>
     </div>
 
 </div>

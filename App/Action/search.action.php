@@ -571,6 +571,7 @@ class SearchAction extends AppAction
             $this->set('_GROUP', $_group);//群组
         }
 
+        $this->set('page', $page);
         $this->set('searchList', $res['rows']);
         $this->display();
     }
