@@ -5,12 +5,12 @@
         <label id="mj-stclose">X关闭</label>
     </div>
     <div class="mj-sidebarCon">
-        <a href="javascript:void(0);" onclick="goChat()" style="border: none;padding: 0;" webid="103" addmsg="免费咨询"><span><i class="us-icon us-icon14"></i><br>免费咨询<b></b></span></a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="购买商标" module="咨询浮动条">购买<br>商标</a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="出售商标" module="咨询浮动条">出售<br>商标</a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="购买专利" module="咨询浮动条">购买<br>专利</a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="出售专利" module="咨询浮动条">出售<br>专利</a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="其他服务" module="咨询浮动条">其他<br>服务</a>
+        <a href="javascript:void(0);" onclick="goChat()" style="border: none;padding: 0;" webid="103" addmsg="1免费咨询" module="咨询浮动条1"><span><i class="us-icon us-icon14"></i><br>免费咨询<b></b></span></a>
+        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="2购买商标" module="咨询浮动条2">购买<br>商标</a>
+        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="3出售商标" module="咨询浮动条3">出售<br>商标</a>
+        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="4购买专利" module="咨询浮动条4">购买<br>专利</a>
+        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="5出售专利" module="咨询浮动条5">出售<br>专利</a>
+        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="6其他服务" module="咨询浮动条6">其他<br>服务</a>
         <div class="ms-call">
             <a href="javascript:;" ><i class="us-icon us-icon15"></i><br>免费<br>电话</a>
             <div class="ms-sidebarTel">
@@ -59,7 +59,7 @@ document.write('<script type="text/javascript"  data-lxb-uid="1268165" data-lxb-
 $(function(){
     //侧边与回呼
     $("#callBtn").on("click",function(){
-        setEvent('咨询浮动条','免费通话:'+$('#telInput').val());
+        setEvent('咨询浮动条7','7免费通话:'+$('#telInput').val());
             lxb.call(document.getElementById("telInput"));
     })
 });
@@ -143,7 +143,7 @@ $(function(){
     //当点击跳转链接后，回到页面顶部位置
     $(".mj-topIcon").click(function(){
         $('body,html').animate({scrollTop:0},1000);
-        setEvent('咨询浮动条','返回顶部');
+        setEvent('咨询浮动条9','9返回顶部');
         return false;
     });
  </script>

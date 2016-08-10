@@ -29,9 +29,8 @@
    </div>
 <script type="text/javascript">
     $('.yzc-succeeal-main li a').click(function(){
-       var page = $('.mj-pages a').hasClass('on').text();
         var index = $(this).closest('li').index();
-        setEvent('案例列表','第'+page+'页第'+(index-0+1)+'条');
+        setEvent('案例列表<?=$page?>-'+(index-0+1),'1查看详情');
     });
 </script>
 <? require(ViewDir.'/sidebar.html'); ?>

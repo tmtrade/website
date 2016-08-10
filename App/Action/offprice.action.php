@@ -117,6 +117,7 @@ class OffpriceAction extends AppAction
 
         $list = $this->load('search')->getSaleList($params, $page, $this->_number,$this->_col);
         $this->set('searchList', empty($list['rows']) ? array() : $list['rows']);
+        $this->set('page',$page);
         $this->display();
     }
 

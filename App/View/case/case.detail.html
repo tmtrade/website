@@ -88,8 +88,8 @@
 </div>
 </div>
 <script>
-    setEvent('案例详情','<?=$caseInfo["name"]?>');
     $(function(){
+        setEvent('案例详情','<?=$caseInfo["name"]?>','<?=$ptype?>');
         $('.f_bd1').click(function(){
             $('.bd1')[0].click();
         });

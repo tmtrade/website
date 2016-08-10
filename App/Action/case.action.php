@@ -31,6 +31,7 @@ class CaseAction extends AppAction
             $this->set("keywords", $this->keyword);
             $this->set("description", $this->description);
             $this->set("pageBar", $pageBar);
+            $this->set("page", $page);
             $this->setSeo(11);
             $this->set("ptype", 5);
             $this->display();

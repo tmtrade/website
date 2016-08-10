@@ -259,7 +259,7 @@ $(document).ready(function(e) {
             if(data.code==1){
                 $('.feedback_s').find('span').html('提交成功，感谢您的吐槽!');
                 $('.feedback_s').show();
-                setEvent('咨询浮动条','反馈:'+feedback_content);
+                setEvent('咨询浮动条8','8反馈:'+feedback_content);
                 //重置为空
                 $('.feedback_content').val('');
                 $('.feedback_contact').val('');
@@ -475,14 +475,14 @@ function setEvent(module,name,page){
         page = ptype;
     }
     page = analyzePage(page);
-    //_paq.push(['trackEvent', page, module, name]);
+    _paq.push(['trackEvent', page, module, name]);
 }
 //添加站内搜索
 function setSearch(keyword,category){
     if(typeof category == 'undefined'){
         category = '商标';
     }
-    //_paq.push(['trackSiteSearch', keyword, category]);
+    _paq.push(['trackSiteSearch', keyword, category]);
 }
 //绑定超链接事件
 $(document).on('click','a',function(e){

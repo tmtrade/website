@@ -25,25 +25,34 @@
     <script src="<?=UC_URL?>Static/script/user/script/user.js?v=<?=$static_version?>"></script>
     <script src="<?=StaticDir?>1.2/js/header.js?v=<?=$static_version?>"></script>
     <script language="javascript" src="http://st.chofn.com/code.php"></script>
-    <!--<script type="text/javascript" src="http://data.chanshu.wang/data.js?v=<?=$static_version?>"> </script> -->
-<!-- Piwik -->
+    <!--<script type="text/javascript" src="http://data.chanshu.wang/data.js?v=<?=$static_version?>"> </script>-->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(["setDomains", ["*.t.chofn.net"]]);
+        _paq.push(["setCampaignNameKey", "\u63a8\u5e7f"]);
+        _paq.push(["setCampaignKeywordKey", "sem"]);
+        var piwik_title = analyzePage('<?=$ptype?>');//页面标识
+        _paq.push(['setDocumentTitle',encodeURIComponent(piwik_title)]);
+        if (getCookie('uc_identify')){
+            _paq.push(['setCustomVariable',1,'mobile',getCookie('uc_mobile'),'visit']);
+            _paq.push(['setUserId', getCookie('uc_identify')]);
+        }
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+//            var u="//piwik.my//";
+            var u="//douob.cn//";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '5']);
+//            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <noscript><p><img src="//douob.cn/piwik.php?idsite=5" style="border:0;" alt="" /></p></noscript>
+    <!--<noscript><p><img src="//piwik.my/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>-->
 <script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(["setDomains", ["*.www.yizhchan.com"]]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//douob.cn/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//douob.cn/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
-
-<script type="text/javascript">
+    var ptype = '<?=$ptype?>';//页面标识
     var _YZC_ONLINE_    = '';
     $(document).ready(function(e) {
         //获取客服在线
@@ -77,7 +86,6 @@
             }
         });
         ucConfig.setConfig(timestamp,nonceStr,signature);
-        ptype = '<?=$ptype?>';//页面标识
         var copyArr = new Array();
         var isLoghtml = '';
         ucLoginTemp.setLoginTemp();
@@ -181,19 +189,19 @@
            <!--  <li class="spacer xs_login_ zc"></li> -->
             <li class="spacer xs_login_"></li>
             <li>
-                <a target="_blank" href="<?=SELLER_URL?>" module="出售者平台">出售者平台</a>
+                <a target="_blank" href="<?=SELLER_URL?>" module="顶部1" addmsg="出售者平台">出售者平台</a>
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-                <a href="/v-54-987/" target="_blank" module="平台帮助">平台帮助 </a>
+                <a href="/v-54-987/" target="_blank" module="顶部2" addmsg="平台帮助">平台帮助 </a>
             </li>
 	    <li class="spacer xs_login_"></li>
             <li>
-                <a href="/index/jumpWap/" module="移动版">移动版 </a>
+                <a href="/index/jumpWap/" module="顶部3" addmsg="移动版">移动版 </a>
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-                <a href="/lxwm/" target="_blank" module="关于一只蝉">关于一只蝉 </a>
+                <a href="/lxwm/" target="_blank" module="顶部4" addmsg="关于一只蝉">关于一只蝉 </a>
             </li>
             <li>
                 <div class="mj-phone">
@@ -259,7 +267,9 @@
                     <a href="javascript:;" class="mj-mainL">全部商标分类</a>
                 </div>
                 <div class="mj-dd" style="display: none;min-height:454px;">
+                    <? $k1=0 ?>
                     <? foreach($menuFirst as $first): ?>
+                    <? $k2=0;$k4=0;$k5=0;++$k1 ?>
                     <dd>
                         <a href="javascript:;">
                             <span><?=$first['title']?></span>
@@ -268,17 +278,18 @@
                         <div class="mj-ddItems">
                             <ul>
                                 <?foreach($menuSecond as $second):?>
-                                <?$kkk=0;?>
+                                <? $k3=0 ?>
                                 <?if($second['industryId'] == $first['id']):?>
+                                <?$kkk=0;++$k2?>
                                 <li>
-                                    <b><a href="<?=$second['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-'.$second['name']?>" module="菜单"><?=$second['name']?></a></b>
+                                    <b><a href="<?=$second['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-'.$second['name']?>" module="菜单<?=$k1?>-<?=$k2?>"><?=$second['name']?></a></b>
                                     <p>
                                         <?foreach($menuThird as $third):?>
                                         <?if($third['classId'] == $second['id']):?>
-                                        <?$kkk++;?>
+                                        <?$kkk++;++$k3?>
                                         <?if($kkk==1):?>
-                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101"  addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"  module="菜单"><?=$third['name']?> </a>
-                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101" addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"  module="菜单"><?=$third['name']?> </a>
+                                        <a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101"  addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"  module="菜单<?=$k1?>-<?=$k2?>-<?=$k3?>"><?=$third['name']?> </a>
+                                        <?else:?><span>|</span><a class="<?if($third['show']==1){echo 'color-red';}elseif($third['show']==2){echo 'color-green';}else{echo '';}?>" href="<?=$third['link']?>" target="<?=($third['open']==1?'_blank':'_self')?>" webid="101" addmsg="<?=$first['title'].'-'.$second['name'].'-'.$third['name']?>"  module="菜单<?=$k1?>-<?=$k2?>-<?=$k3?>"><?=$third['name']?> </a>
                                         <?endif;?>
                                         <?endif;?>
                                         <?endforeach;?>
@@ -293,9 +304,9 @@
 				    <? $n=0;?>
 					<? foreach($ad_list['index_menu'] as $menuImg): ?>
 					<? if($menuImg['module'] == $first['id']): ?>
-					    <?  $n=1;?>
+					    <?  $n=1;++$k4 ?>
 					<span>
-					    <a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>" module="菜单">
+					    <a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$k4?>" module="菜单<?=$k1?>广告<?=$k4?>">
 						<img class="headerlazy" src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$menuImg['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$menuImg['alt']?>"></a>
 					</span>
 					<? endif; ?>
@@ -304,8 +315,9 @@
 					<? if($n==0): ?>
 					    <? foreach($menuPic as $menuImg): ?>
 					    <? if($menuImg['industryId'] == $first['id']): ?>
+                        <? ++$k5 ?>
 					    <span>
-						<a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$menuImg['alt']?>" module="菜单">
+						<a href="<?=$menuImg['link']?>" target="_blank" webid="101" addmsg="<?=$first['title'].'-下的广告'.$k5?>" module="菜单<?=$k1?>广告<?=$k5?>">
 						    <img class="headerlazy" src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$menuImg['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$menuImg['alt']?>"></a>
 					    </span>
 					    <? endif; ?>
@@ -321,22 +333,22 @@
         </div>
         <div class="mj-navitems fl">
             <p class="f-clearfix">
-                <a href="/" addmsg="首页" webid="102" module="频道">
+                <a href="/" addmsg="1首页" webid="102" module="频道1">
                     首页
                 </a>
-                <a href="/offprice"  addmsg="特价商标" webid="102" module="频道">
+                <a href="/offprice"  addmsg="2特价商标" webid="102" module="频道2">
                     特价商标
                 </a>
-                <a href="/s/" addmsg="商标筛选" webid="102" module="频道">
+                <a href="/s/" addmsg="3商标筛选" webid="102" module="频道3">
                     商标筛选
                 </a>
-                <a href="http://r.chaofan.wang/reg/" target="_blank" addmsg="商标注册" webid="102" module="频道">
+                <a href="http://r.chaofan.wang/reg/" target="_blank" addmsg="4商标注册" webid="102" module="频道4">
                     商标注册
                 </a>
-                <a href="/pt" addmsg="专利购买" webid="102" module="频道">
+                <a href="/pt" addmsg="5专利购买" webid="102" module="频道5">
                     专利购买
                 </a>
-                 <a href="/pt/sell" addmsg="专利出售" webid="102" module="频道">
+                 <a href="/pt/sell" addmsg="6专利出售" webid="102" module="频道6">
                     专利出售
                 </a>
             </p>
@@ -437,7 +449,7 @@
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
         if ( _value != '' ){
-            html = '<li><a href="/search/?kw='+_value+'&kt=1" onclick="layer.load(1,{shade: [0.2,\'#000\']});setSearch('+_value+',\'商标名称\');" addmsg="'+_value+'" webid="100" module="商标名称"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=2" onclick="layer.load(1,{shade: [0.2,\'#000\']};setSearch('+_value+',\'商标号\'););" addmsg="'+_value+'" webid="100" module="商标号"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标号</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=3" onclick="layer.load(1,{shade: [0.2,\'#000\']});setSearch('+_value+',\'适用服务\');" addmsg="'+_value+'" webid="100" module="适用服务"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">适用服务</font>“'+_value+' ”搜索结果</span></a></li>';
+            html = '<li><a href="/search/?kw='+_value+'&kt=1" onclick="setSearch('+_value+',\'商标名称\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="商标名称"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=2" onclick="setSearch('+_value+',\'商标号\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="商标号"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标号</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=3" onclick="setSearch('+_value+',\'适用服务\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="适用服务"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">适用服务</font>“'+_value+' ”搜索结果</span></a></li>';
             $(".mj-pull-down").html(html);
             $(".mj-pull-down").show();
         }else{

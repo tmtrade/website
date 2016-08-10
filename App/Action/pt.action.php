@@ -128,6 +128,7 @@ class PtAction extends AppAction
         }
         $res = $this->load('pt')->getPtList($params, $page, $this->rowNum);
         $this->set('list', $res['rows']);
+        $this->set('page', $page);
         $this->display();
     }
     
