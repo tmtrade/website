@@ -60,13 +60,15 @@ class AnquanAction extends AppAction
 	);
 	public function index()
 	{
-		$count  = $this->load('checkcount')->getAllCount();
-		$sj     = date('Y年m月d日',time());
-		$host	= 'http://'.$_SERVER['HTTP_HOST'].'/Static/style/img/mj-qrcode.gif';//'http://www.tmmark.com/images/mj-qrcode.gif';//
-		$this->set('count',$count);
-		$this->set('sj',$sj);
-		$this->set('hostpic',$host);
-		$this->display();
+		Header("HTTP/1.1 301 Moved Permanently");
+        $this->redirect('', 'http://ce.chanshu.im/');
+		// $count  = $this->load('checkcount')->getAllCount();
+		// $sj     = date('Y年m月d日',time());
+		// $host	= 'http://'.$_SERVER['HTTP_HOST'].'/Static/style/img/mj-qrcode.gif';//'http://www.tmmark.com/images/mj-qrcode.gif';//
+		// $this->set('count',$count);
+		// $this->set('sj',$sj);
+		// $this->set('hostpic',$host);
+		// $this->display();
 	}
 	/**
 	* 检测商标号是否存在
