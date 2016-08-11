@@ -520,6 +520,12 @@ function analyzePage(ptype){
             str = '我要买';break;
         case '13':
             str = '我要卖';break;
+        case '14':
+            str = '商品聚合页';break;
+        case '16':
+            str = 'faq列表页';break;
+        case '17':
+            str = 'faq详情页';break;
         default:
             str = '未知';
     }
