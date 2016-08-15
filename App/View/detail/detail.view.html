@@ -834,6 +834,7 @@
         var webid = '1';
         var addmsg = $(this).text();
         sendBehavior(webid,ptype, e.pageX, e.pageY,addmsg);
+	setEvent(addmsg);
         $('#wodediv').attr('href',($(this).attr('url')));
         $('#wodediv').get(0).click();
     });
