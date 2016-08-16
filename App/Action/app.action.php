@@ -48,7 +48,7 @@ abstract class AppAction extends Action
 
             $this->redirect('', WAP_URL);
         }
-       $this->caches = ""; //打开后关闭所有 页面缓存
+       //$this->caches = ""; //打开后关闭所有 页面缓存
         //设置访问的action(导航样式)
         $nav_name = $this->getNavType();
         $this->set('nav_name',$nav_name);
@@ -70,17 +70,17 @@ abstract class AppAction extends Action
             $this->com('redisHtml')->set('footer_link', $frendlyLink, 3600);
         }
         $this->set('frendlyLink', $frendlyLink);
-	
-	//获取广告位
-	$ad = $this->com('redisHtml')->get('ad_list');
-	if(empty($ad)){
-		$ad['index_middle'] = $this->load('ad')->getPagesList(1);
-		$ad['index_menu']   = $this->load('ad')->getPagesList(2);
-		$ad['seach_list']   = $this->load('ad')->getPagesList(3);
-		$this->com('redisHtml')->set('ad_list', $ad, 3600);
-	}
-	$this->set('ad_list',$ad);
-		
+    
+        //获取广告位
+        $ad = $this->com('redisHtml')->get('ad_list');
+        if(empty($ad)){
+            $ad['index_middle'] = $this->load('ad')->getPagesList(1);
+            $ad['index_menu']   = $this->load('ad')->getPagesList(2);
+            $ad['seach_list']   = $this->load('ad')->getPagesList(3);
+            $this->com('redisHtml')->set('ad_list', $ad, 3600);
+        }
+        $this->set('ad_list',$ad);
+        
         $this->set('_mod_', $this->mod);
         $this->set('_action_', $this->action);
         $this->set('ptype',$this->ptype);//设置页面标识
@@ -88,7 +88,7 @@ abstract class AppAction extends Action
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
         
-        $this->set('static_version', 11353);//静态文件版本号>>控制js,css缓存
+        $this->set('static_version', 11456);//静态文件版本号>>控制js,css缓存
 
         // $this->set('CLASSES', C('CLASSES'));//国际分类
         // $this->set('CATEGORY', C('CATEGORY'));//分类
