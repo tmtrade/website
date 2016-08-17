@@ -23,7 +23,12 @@ define('GUANJIA_URL', 'http://m.tuotu.net/');
 define('WM_URL', 'http://wm.chofn.net/');
 //CRM地址URL
 define('CRM_URL', 'http://demo.chofn.com:88/');
-
+//蝉检测
+define('CHECK_URL', 'http://jingling.yizhchan.com/');
+//商标注册
+define('TM_URL', 'http://r.chaofan.wang/reg/');
+//专利注册
+define('PT_URL', 'http://r.chaofan.wang/reg/');
 //一只蝉前台静态CDN地址
 define('YZC_STATIC', ''.StaticDir);
 //一只蝉后台静态CDN地址

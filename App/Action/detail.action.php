@@ -95,7 +95,7 @@ class DetailAction extends AppAction
 			$isSale 	= $this->load('blacklist')->isBlack($number) ? false : true;
 			$tips = $sale = array();
 
-			$tips['safeUrl'] 	= 'http://jingling.yizhchan.com/?nid='.$number.'&class='.$class;
+			$tips['safeUrl'] 	= CHECK_URL.'?nid='.$number.'&class='.$class;
 			$contact['name']	= '蝉妹妹';
 			$contact['phone']	= $this->getPhoneName($tid, $class, 0);
 		}else{

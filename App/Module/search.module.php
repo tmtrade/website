@@ -580,7 +580,7 @@ class SearchModule extends AppModule
         }
         $_class = current( explode(',', $data['class']) );
         $data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';
-        $data['safeUrl'] = 'http://jingling.yizhchan.com/?nid='.$data['number'].'&class='.$data['class'];
+        $data['safeUrl'] = CHECK_URL.'?nid='.$data['number'].'&class='.$data['class'];
 
         //显示商品数据
         $_info = $this->load('trademark')->getInfo($data['tid'], array('goods'));

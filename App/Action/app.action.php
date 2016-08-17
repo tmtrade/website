@@ -50,8 +50,7 @@ abstract class AppAction extends Action
         }
        $this->caches = ""; //打开后关闭所有 页面缓存
         //设置访问的action(导航样式)
-        $nav_name = $this->getNavType();
-        $this->set('nav_name',$nav_name);
+        $this->set('nav_name',$this->getNavType());
         //设置用户信息
         $this->setLoginUser();
         //获得热搜数据
@@ -87,7 +86,8 @@ abstract class AppAction extends Action
         $this->set('title', $this->pageTitle);//页面title
         $this->set('keywords', $this->pageKey);//页面keywords
         $this->set('description', $this->pageDescription);//页面description
-        
+        $this->set('qq_num', C('qq_num'));//页面description
+
         $this->set('static_version', 11456);//静态文件版本号>>控制js,css缓存
 
         // $this->set('CLASSES', C('CLASSES'));//国际分类
@@ -250,6 +250,8 @@ abstract class AppAction extends Action
             $tmp = 'sell';
         }elseif(strpos($this->mod,'pt') !== false){
             $tmp = 'pt';
+        }elseif(strpos($this->mod,'zhuanti') !== false){
+            $tmp = 'zhuanti';
         }
         return $tmp;
     }

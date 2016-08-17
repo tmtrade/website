@@ -3,6 +3,7 @@
  * 定义应用所需常量
  */
 $define = array(
+	'qq_num' => 3406987180,
     'PATENT_PRICE' => array(
         '1'     => '1万以下',
         '2'     => '1~2万',

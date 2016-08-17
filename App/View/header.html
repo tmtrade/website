@@ -107,21 +107,6 @@
             $('#login_after').hide();
             $('#_login_no').show();
         }
-
-        //设置导航栏样式
-        var nav_name = "<?=$nav_name?>";
-        if(nav_name=='index'){
-            $('.mj-navitems p a').eq(0).css('color','#ff6666');
-        }else if(nav_name=='offprice'){
-            $('.mj-navitems p a').eq(1).css('color','#ff6666');
-        }else if(nav_name=='search'){
-            $('.mj-navitems p a').eq(2).css('color','#ff6666');
-        }else if(nav_name=='pt'){
-            $('.mj-navitems p a').eq(4).css('color','#ff6666');
-        }else if(nav_name=='sell'){
-            $('.mj-navitems p a').eq(5).css('color','#ff6666');
-        }
-
         //执行任务
         var task_aim = getCookie('task_aim');
         delCookie('task_aim');
@@ -187,21 +172,21 @@
             <li class="spacer xs_login_"></li>
             <li class="mj-web-nav">
                 <div class="yzc-account">
-                    <a href="/v-54-987/" id="web-nav" target="_blank">网站导航<i class="fa fa-angle-down"></i> </a>
+                    <a href="javascript:;" id="web-nav">网站导航<i class="fa fa-angle-down"></i> </a>
                     <div class="account-list" id="acc-list" style="left: -5px;">
-                        <p><a href="/lxwm/" target="_blank" module="顶部4" addmsg="关于一只蝉">关于一只蝉</a></p>
-                        <p><a target="_blank" href="/n-50/">新闻资讯</a></p>
-                        <p><a href="/v-54-987/" target="_blank">帮助中心</a></p>
+                        <p><a href="/lxwm/" target="_blank" module="顶部2-1" addmsg="关于一只蝉">关于一只蝉</a></p>
+                        <p><a target="_blank" href="/n-50/" module="顶部2-2" addmsg="新闻资讯">新闻资讯</a></p>
+                        <p><a href="/v-54-987/" target="_blank" module="顶部2-3" addmsg="帮助中心">帮助中心</a></p>
                     </div>
                 </div>
             <li>
             <li class="spacer xs_login_"></li>
             <li>
-                <a href="/lxwm/" target="_blank">商标安全检测</a>
+                <a href="<?=CHECK_URL?>" target="_blank"  module="顶部3" addmsg="商标安全检测">商标安全检测</a>
             </li>
 	    <li class="spacer xs_login_"></li>
             <li>
-                <a href="/index/jumpWap/" module="顶部3" addmsg="移动版">移动版 </a>
+                <a href="/index/jumpWap/" module="顶部4" addmsg="移动版">移动版 </a>
             </li>
             <li class="spacer xs_login_"></li>
             <li>
@@ -211,7 +196,7 @@
                 </div>
             </li>
             <li  class="mj-wx-qq">
-                <a href=""><i class="yzc-tp-QQ"></i></a>
+                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes"><i class="yzc-tp-QQ"></i></a>
             </li>
             <li  class="mj-wx-qq mj-wx">
                 <div class="yzc-account">
@@ -261,8 +246,8 @@
                 </ul>
             </div>
             <div class="mj-search_box" id="con_sear_2">
-                <form id="searchForm" method="GET" action="/search/index/">
-                    <input type="text" name="kw" class="inptext"  placeholder="输入你想买的专利名称/专利号/适用服务" autocomplete="off"/>
+                <form id="searchPtForm" method="GET" action="/pt/index/">
+                    <input type="text" name="kw" class="inptext"  placeholder="输入你想买的专利名称/专利号" autocomplete="off"/>
                     <div class="mj-search-submit">
                         <i class="uj_icon8"></i>
                     </div>
@@ -366,25 +351,26 @@
         </div>
         <div class="mj-navitems fl">
             <p class="f-clearfix">
-                <a href="/" addmsg="1首页" webid="102" module="频道1">
+                <? $nav_style = 'style="color:#ff6666"'; ?>
+                <a href="/" addmsg="1首页" module="频道1" <? if($nav_name=='index') echo $nav_style; ?>>
                     首页
                 </a>
-                <a href="/offprice"  addmsg="2特价商标" webid="102" module="频道2">
+                <a href="/offprice"  addmsg="2特价商标" module="频道2" <? if($nav_name=='offprice') echo $nav_style; ?>>
                     特价商标
                 </a>
-                <a href="/s/" addmsg="3商标筛选" webid="102" module="频道3">
+                <a href="/s/" addmsg="3商标购买" module="频道3" <? if($nav_name=='search') echo $nav_style; ?>>
                     商标购买
                 </a>
-                <a href="/pt" addmsg="5专利购买" webid="102" module="频道4">
+                <a href="/pt" addmsg="4专利购买" module="频道4" <? if($nav_name=='pt') echo $nav_style; ?>>
                     专利购买
                 </a>
-                <a href="/pt" addmsg="5专利购买" webid="102" module="频道5">
+                <a href="/zhuanti" addmsg="5专题活动" module="频道5" <? if($nav_name=='zhuanti') echo $nav_style; ?>>
                     专题活动
                 </a>
-                 <a href="http://r.chaofan.wang/reg/" target="_blank" addmsg="4商标注册" webid="102" module="频道6">
+                 <a href="<?=TM_URL?>" target="_blank" addmsg="6商标注册" module="频道6">
                      商标注册
                  </a>
-                <a href="/pt/sell" addmsg="6专利出售" webid="102" module="频道6">
+                <a href="<?=PT_URL?>" target="_blank" addmsg="7专利注册" module="频道7">
                     专利注册
                 </a>
             </p>
