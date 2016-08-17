@@ -48,7 +48,7 @@ abstract class AppAction extends Action
 
             $this->redirect('', WAP_URL);
         }
-       //$this->caches = ""; //打开后关闭所有 页面缓存
+       $this->caches = ""; //打开后关闭所有 页面缓存
         //设置访问的action(导航样式)
         $nav_name = $this->getNavType();
         $this->set('nav_name',$nav_name);

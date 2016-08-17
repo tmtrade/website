@@ -37,11 +37,12 @@
 
 .uj_icon4{
 
-    width: 23px;
+    width:17px;
 
-    height: 22px;
+    height:16px;
 
     background-image: url("../images/mj-icon4.png");
+    background-size: 100% 100%;
 
 }
 

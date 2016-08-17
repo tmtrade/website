@@ -393,14 +393,21 @@ $(document).ready(function(){
 });
 
 //简单选项卡
-function jc(name,curr,n)
-{
-    for(var i=1;i<=n;i++)
+ function jc(name,curr,n)
     {
-        var menu=document.getElementById(name+i);
-        menu.className=i==curr ? "up" : "";
+        for(i=1;i<=n;i++)
+        {
+            var menu=document.getElementById(name+i);
+            var cont=document.getElementById("con_"+name+"_"+i);
+            menu.className=i==curr ? "up" : "";
+            if(i==curr){
+                cont.style.display="block";    
+            }else{
+                cont.style.display="none";    
+            }
+        }
     }
-}
+
 $(".contUstit").each(function(i){
     $(this).click(function(){
         $(".contUstit").find('img').attr('src',"/Static/images/cont-rg.png");

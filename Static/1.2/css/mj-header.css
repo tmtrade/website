@@ -156,6 +156,32 @@ table {
     margin-top: 0px;
    
 }
+.mj-web-nav:hover .account-list{
+    display: block;
+}
+.mj-web-nav i{
+    font-size: 14px;
+    margin-left: 3px;
+}
+.mj-wx-qq{
+    padding:3px !important;
+   
+}
+.mj-wx:hover .account-list{
+    display: block;
+}
+.mj-wx-pic p{
+    text-align: center;
+    color: #333;
+    margin-top: 4px;
+}
+
+
+.mj-wx-pic span img{
+    max-width: 125px;
+    max-height: 125px;
+}
+
 .security i{
 
     margin-right: 2px;
@@ -165,10 +191,19 @@ table {
     vertical-align: middle;
 
 }
-
-
-
-.mj-header_right{}
+.yzc-tp-QQ{
+    width: 15px;
+    height: 15px;
+    background: url(../images/yzc-tp-QQ.png) no-repeat center  top;
+    margin-bottom:6px;
+    
+}
+.yzc-tp-WX{
+    width: 15px;
+    height: 15px;
+    background: url(../images/yzc-tp-WX.png) no-repeat center  top;
+    margin-bottom:4px;
+}
 
 .mj-header_right li{
 
@@ -322,7 +357,7 @@ table {
 
 .mj-header_right li .mj-phone{
 
-    font-size: 17px;
+    font-size: 14px;
 
     color: #6b554c;
 
@@ -412,7 +447,7 @@ table {
 }
 .mj-search_con  span.Bran_note{
     position: absolute;
-    top:10px;
+    top:80px;
     right:1px;
     color: #999999;
     font-size: 12px;
@@ -441,20 +476,22 @@ table {
 .mj-search_con form{
     position: relative;
 
-   margin-top: 31px;
+   // margin-top: 31px;
 
     width: 481px;
 
-    height: 44px;
+    // height: 44px;
+     height:39px;
 
     border: solid 2px #404040;
 
-    border-radius: 3px;
+    border-radius:0px 3px 3px 3px;
 
 }
 .mj-search_con form input.inptext{
     width:400px;
-    height: 43px;
+    // height: 43px;
+    height:39px;
     text-indent:5px;
     outline: none;
     border: none;
@@ -462,7 +499,8 @@ table {
 .mj-search_con p.tj-fl{
     overflow: hidden;
     margin-top: 3px;
-    width: 481px;
+    width: 390px;
+    margin-left: -8px;
 	
 }
 .mj-search_con p.tj-fl a{
@@ -487,9 +525,12 @@ table {
 
     padding-left: 20px;
 
-    height: 44px;
+    // height: 44px;
 
-    line-height: 44px;
+    // line-height: 44px;
+    height:39px;
+
+    line-height:39px;
 
     color: #999;
 
@@ -498,6 +539,33 @@ table {
     outline: none;
 
 }
+.mj-search_nav{
+    overflow: hidden;
+    margin-top:8px;
+}
+.mj-search_nav span{
+    display: inline-block;
+    width: 64px;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+    float: left;
+}
+.mj-search_nav span.up{
+    background: #404040;
+    color: #ffffff;
+}
+.mj-search_box{
+    display: none;
+}
+.mj-search_btm{
+    overflow: hidden;
+    width: 100%;
+}
+
+
+
 /*添加下拉框*/
 .mj-pull-down{
     position: absolute;
@@ -623,14 +691,15 @@ table {
 
     width: 58px;
 
-    height: 44px;
+    // height: 44px;
+   height: 39px;
 
     background: #404040;
 
     text-align: center;
 
-    line-height: 44px;
-
+    // line-height: 44px;
+    line-height:39px;
     cursor: pointer;
 
 }
@@ -650,6 +719,7 @@ table {
 .mj-search_btn{
 
     padding: 31px 0;
+    margin-right: 105px;
 
 }
 
@@ -657,16 +727,16 @@ table {
 
     display: inline-block;
 
-    margin-left: 10px;
+    // margin-left: 10px;
 
-     padding-left: 8px;
-    padding-right: 8px;
+    //  padding-left: 8px;
+    // padding-right: 8px;
 
-    height: 46px;
+    height: 39px;
 
     text-align: center;
 
-    line-height: 46px;
+    line-height:39px;
 
     color: #333333;
 
@@ -704,9 +774,14 @@ table {
 /*}*/
 
 .mj-btnSell{
-
+    width: 134px;
     background: #fc7d28;
 
+}
+.mj-btnSell i{
+    color: #ff7473;
+    margin-left:10px;
+    font-size: 12px;
 }
 
 /*.mj-btnSell:hover{*/
@@ -962,11 +1037,9 @@ table {
     -o-transition: all 0.2s;
     transition: all 0.2s;
 }
-// .mj-dd dd a:hover{
-
-//     color: #ff6666;
-
-}
+ /*.mj-dd dd a:hover{*/
+    /*color: #ff6666;*/
+/*}*/
 
 .mj-dd dd.mj-ddahoverc a span{
 
@@ -1124,17 +1197,18 @@ table {
     margin-top: 10px;
 }
 .mj-ddItems .ddItems-like div span{
-    display: block;
+    display:block;
     width: 210px;
     height: 120px;
     line-height: 120px;
-     text-align: center;
-    vertical-align: middle;
     background: #ffffff;
     margin: 10px auto;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #dcdcdc;
 }
 .mj-ddItems .ddItems-like div span img{
-    display:inline-block;
+	display:inline-block;
     max-width: 210px;
     max-height: 120px;
     vertical-align: middle;
@@ -1142,7 +1216,6 @@ table {
 .mj-navitems p{
     padding-top: 22px;
 	margin-left: -36px;
-
 }
 .mj-navitems p a{
     display: inline-block;
@@ -1473,8 +1546,6 @@ table {
 
 .yzc-account{
    position:relative;
-
-    
 }
 .yzc-account p{
   line-height: 24px;
@@ -1494,17 +1565,33 @@ table {
 .yzc-account a:hover{
     cursor: pointer;
 }
+.mj-wx-pic{
+    min-width:185px !important;
+    overflow: hidden;
+    left: -140px !important;
+}
+.mj-wx-pic img{
+    margin-top: 10px;
+}
+.mj-wx-pic p{
+    margin-top:5px;
+    line-height: 22px;
+}
 .account-list{
-    width: 100%;
-    min-width: 60px;
+   width: 100%;
+    min-width: 72px;
     position: absolute;
-    top: 30px;
-    left: 0px;
+    top: 40px;
+    left: -10px;
     z-index: 999;
-    background: #f5f5f5;
+    background: #ffffff;
     padding-bottom: 7px;
-    padding-top: 3px;
-    display: none;
+    padding-top: 5px;
+    border: 1px solid #d1d1d1;
+    box-shadow: 1px 1px 1px 1px #efefef;
+    color: #5b5b5b;
+    display: none; 
+
 }
 .lg-name{
     text-decoration: underline;

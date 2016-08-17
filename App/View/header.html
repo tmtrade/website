@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title><?=$title?></title>
     <? if(!empty($keywords)) {?><meta name="keywords" content="<?=$keywords?>"><? }?>
-    
     <? if(!empty($description)) {?><meta name="description" content="<?=$description?>"> <? }?>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/import-comm.css?v=<?=$static_version?>"/>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/color.css?v=<?=$static_version?>"/>
@@ -158,7 +157,7 @@
                             aCookie('yzcdata',data.msg,315360000000);//更新cookie信息
                             window.visitid = data.id;//保存此次浏览记录的id
                         }
-                    },
+                    }
                 }
         );
     }
@@ -181,14 +180,24 @@
             <!-- 登录以后 -->
             <li id="login_after">
             </li>
-           <!--  <li class="spacer xs_login_ zc"></li> -->
             <li class="spacer xs_login_"></li>
             <li>
                 <a target="_blank" href="<?=SELLER_URL?>" module="顶部1" addmsg="出售者平台">出售者平台</a>
             </li>
             <li class="spacer xs_login_"></li>
+            <li class="mj-web-nav">
+                <div class="yzc-account">
+                    <a href="/v-54-987/" id="web-nav" target="_blank">网站导航<i class="fa fa-angle-down"></i> </a>
+                    <div class="account-list" id="acc-list" style="left: -5px;">
+                        <p><a href="/lxwm/" target="_blank" module="顶部4" addmsg="关于一只蝉">关于一只蝉</a></p>
+                        <p><a target="_blank" href="/n-50/">新闻资讯</a></p>
+                        <p><a href="/v-54-987/" target="_blank">帮助中心</a></p>
+                    </div>
+                </div>
             <li>
-                <a href="/v-54-987/" target="_blank" module="顶部2" addmsg="平台帮助">平台帮助 </a>
+            <li class="spacer xs_login_"></li>
+            <li>
+                <a href="/lxwm/" target="_blank">商标安全检测</a>
             </li>
 	    <li class="spacer xs_login_"></li>
             <li>
@@ -196,17 +205,29 @@
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-                <a href="/lxwm/" target="_blank" module="顶部4" addmsg="关于一只蝉">关于一只蝉 </a>
-            </li>
-            <li>
                 <div class="mj-phone">
                     <i class="uj_icon4"></i>
-                    <?=TEL400?>
+                    4006-929-199
                 </div>
-            </li>                                                                                       
+            </li>
+            <li  class="mj-wx-qq">
+                <a href=""><i class="yzc-tp-QQ"></i></a>
+            </li>
+            <li  class="mj-wx-qq mj-wx">
+                <div class="yzc-account">
+                    <a href=""><i class="yzc-tp-WX"></i></a>
+                    <div class="mj-wx-pic account-list">
+                        <span>
+                            <img src="<?=StaticDir?>1.2/images/yzc-wx.jpg">
+                        </span>
+                        <p>
+                            专注知识产权流转<br/>
+                            欢迎关注微信，随时获取资讯
+                        <p>
+                    </div>
+                </div>
+            </li>
         </ul>
-       
-        <h1 class="mj-header_ceter">亲，欢迎来到一只蝉商标转让平台!</h1>
     </div>
 </div>
 <!-- mj-header end -->
@@ -225,29 +246,46 @@
             <a href="/"><img src="/Static/1.2/images/logo.png" alt="一只蝉商标转让网站:快速买到放心商标" module="logo"/></a>
         </div>
         <div class="mj-search_con fl">
-
-            <a href="/help" target="_blank"><span class="Bran_note"><i></i>商标45类注释</span></a>
-            <form id="searchForm" method="GET" action="/search/index/">
-                <input type="text" name="kw" class="inptext"  placeholder="输入你想买的商标名称/商标号/适用服务" autocomplete="off"/>
-                <div class="mj-search-submit">
-                    <i class="uj_icon8"></i>
-                </div>
-            </form>
-            <ul class="mj-pull-down">
-            </ul>
-            <p class="tj-fl">
-                <?
-                    $hotwordStr = '';
-                    foreach($hotwords as $hotword){
-                        $hotwordStr .= "<a target='_blank' class='{$hotword['other']}' href='{$hotword['link']}'>{$hotword['desc']}</a>";
+            <p class="mj-search_nav">
+                <span id="sear1" onclick="jc('sear',1,2)" class="up">搜商标</span>
+                <span id="sear2" onclick="jc('sear',2,2)">搜专利</span>
+            </p>
+            <div class="mj-search_box" id="con_sear_1" style="display: block;">
+                <form id="searchForm" method="GET" action="/search/index/">
+                    <input type="text" name="kw" class="inptext"  placeholder="输入你想买的商标名称/商标号/适用服务" autocomplete="off"/>
+                    <div class="mj-search-submit">
+                        <i class="uj_icon8"></i>
+                    </div>
+                </form>
+                <ul class="mj-pull-down">
+                </ul>
+            </div>
+            <div class="mj-search_box" id="con_sear_2">
+                <form id="searchForm" method="GET" action="/search/index/">
+                    <input type="text" name="kw" class="inptext"  placeholder="输入你想买的专利名称/专利号/适用服务" autocomplete="off"/>
+                    <div class="mj-search-submit">
+                        <i class="uj_icon8"></i>
+                    </div>
+                </form>
+                <ul class="mj-pull-down">
+                </ul>
+            </div>
+            <div class="mj-search_btm">
+                <p class="tj-fl">
+                    <?
+                        $hotwordStr = '';
+                        foreach($hotwords as $hotword){
+                            $hotwordStr .= "<a target='_blank' class='{$hotword['other']}' href='{$hotword['link']}'>{$hotword['desc']}</a>";
                     }
                     echo $hotwordStr;
-                ?>
-            </p>
+                    ?>
+                </p>
+                <a href="/help" target="_blank"><span class="Bran_note"><i></i>商标45类注释</span></a>
+            </div>
         </div>
         <div class="mj-search_btn fr">
-            <a href="/buy" target="_blank" class="mj-btnBuy" module="我要买"><h2><i class="uj_icon5"></i>我要买商标</h2></a>
-            <a href="/sell" target="_blank" class="mj-btnSell" module="我要卖"><h2><i class="uj_icon6"></i>我要卖商标</h2></a>
+
+            <a href="/sell" target="_blank" class="mj-btnSell" module="我要卖"><h2><i class="uj_icon6"></i>我要出售</h2></a>
         </div>
     </div>
 </div>
@@ -335,16 +373,19 @@
                     特价商标
                 </a>
                 <a href="/s/" addmsg="3商标筛选" webid="102" module="频道3">
-                    商标筛选
+                    商标购买
                 </a>
-                <a href="http://r.chaofan.wang/reg/" target="_blank" addmsg="4商标注册" webid="102" module="频道4">
-                    商标注册
-                </a>
-                <a href="/pt" addmsg="5专利购买" webid="102" module="频道5">
+                <a href="/pt" addmsg="5专利购买" webid="102" module="频道4">
                     专利购买
                 </a>
-                 <a href="/pt/sell" addmsg="6专利出售" webid="102" module="频道6">
-                    专利出售
+                <a href="/pt" addmsg="5专利购买" webid="102" module="频道5">
+                    专题活动
+                </a>
+                 <a href="http://r.chaofan.wang/reg/" target="_blank" addmsg="4商标注册" webid="102" module="频道6">
+                     商标注册
+                 </a>
+                <a href="/pt/sell" addmsg="6专利出售" webid="102" module="频道6">
+                    专利注册
                 </a>
             </p>
         </div>
