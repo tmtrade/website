@@ -720,6 +720,7 @@ table {
 
     padding: 31px 0;
     margin-right: 105px;
+    text-align: center;
 
 }
 
@@ -750,14 +751,14 @@ table {
 .mj-search_btn a h2{
     font-weight: normal;
     font-size: 14px;
+    text-align: center;
 }
 .mj-search_btn a i{
-
-    margin-right: 5px;
 
     display: inline-block;
 
     vertical-align: middle;
+    margin-bottom: 5px;
 
 }
 
@@ -780,7 +781,6 @@ table {
 }
 .mj-btnSell i{
     color: #ff7473;
-    margin-left:10px;
     font-size: 12px;
 }
 
