@@ -1,3 +1,19 @@
+
+//简单选项卡
+function jc(name,curr,n)
+{
+    for(i=1;i<=n;i++)
+    {
+        var menu=document.getElementById(name+i);
+        var cont=document.getElementById("con_"+name+"_"+i);
+        menu.className=i==curr ? "up" : "";
+        if(i==curr){
+            cont.style.display="block";
+        }else{
+            cont.style.display="none";
+        }
+    }
+}
 $(document).ready(function(e) {
     //悬浮窗提醒标题
     _defLogin   = "<h6>登录</h6> <p style=\"margin-left: 10px;\"></p>";
