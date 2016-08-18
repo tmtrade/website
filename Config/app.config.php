@@ -28,7 +28,7 @@ define('CHECK_URL', 'http://jingling.yizhchan.com/');
 //商标注册
 define('TM_URL', 'http://r.chaofan.wang/reg/');
 //专利注册
-define('PT_URL', 'http://r.chaofan.wang/reg/');
+define('PT_URL', 'http://pt.chofnipr.com/');
 //一只蝉前台静态CDN地址
 define('YZC_STATIC', ''.StaticDir);
 //一只蝉后台静态CDN地址
