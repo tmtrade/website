@@ -26,27 +26,33 @@ class PtAction extends AppAction
         $page   = $this->input('page', 'int', 1);
         $type   = $this->input('t', 'string', '');
         $class  = $this->input('c', 'string', '');
+        $keyword  = $this->input('kw', 'string', '');
+        $keytype  = $this->input('kt', 'int', 1);//搜索选项:1名称,2专利号
 
         $_type  = array_filter( array_unique( explode(',', $type) ) );
         $_class = array_filter( array_unique( explode(',', $class) ) );
-
-        if ( empty($type) && empty($class) ){
-            $params = array();
-        }else{
-            $params = array(
-                'type'      => count($_type) > 1 ? $_type : current($_type),
-                'class'     => implode(',', $_class),
-                );
+        //得到当前的url参数字符串的查询参数
+        $_whereArr = array();
+        $params = array();
+        if($type){
+            $_whereArr['t'] = $type;
+            $params['type'] = count($_type) > 1 ? $_type : current($_type);
         }
-        //debug($params);
-        $_whereArr = array(
-            't'     => $type,
-            'c'     => $class
-            );
+        if($class){
+            $_whereArr['c'] = $class;
+            $params['class'] =implode(',', $_class);
+        }
+        if($keyword){
+            $_whereArr['kw'] = $keyword;
+            $params['keyword'] = $keyword;
+        }
+        $params['keytype'] = $keytype;
+        if($keytype==2){
+            $_whereArr['kt'] = $keytype;
+        }
         $whereStr = http_build_query($_whereArr);
-
+        //查询数据
         $list = $this->load('pt')->getPtList($params, $page, $this->rowNum);
-
         $ptType     = C('PATENT_TYPE');
         $ptOne      = C('PATENT_ClASS_ONE');
         $ptTwo      = C('PATENT_ClASS_TWO');
@@ -67,6 +73,13 @@ class PtAction extends AppAction
         $this->set("tj", $tj);
         $this->set('t', $type);
         $this->set('c', $class);
+        if($keyword){
+            $kw_title = '专利名称:'.$keyword;
+            if($keytype==2) $kw_title = '专利号:'.$keyword;
+            $this->set('kw_title',$kw_title);
+            $this->set('kw',$keyword);
+            $this->set('kt',$keytype);
+        }
         $this->set('whereStr', $whereStr);//专利类型
         $this->set('list', $list['rows']);//专利类型
         $this->set('total', $list['total']);//专利类型
@@ -114,17 +127,25 @@ class PtAction extends AppAction
         $page   = $this->input('_p', 'int', 2);
         $type   = $this->input('t', 'string', '');
         $class  = $this->input('c', 'string', '');
+        $keyword  = $this->input('kw', 'string', '');
+        $keytype  = $this->input('kt', 'int', 1);//搜索选项:1名称,2专利号
 
         $_type  = array_filter( array_unique( explode(',', $type) ) );
         $_class = array_filter( array_unique( explode(',', $class) ) );
 
-        if ( empty($type) && empty($class) ){
-            $params = array();
-        }else{
-            $params = array(
-                'type'      => implode(',', $_type),
-                'class'     => implode(',', $_class),
-                );
+        //得到当前的url参数字符串的查询参数
+        $params = array();
+        if($type){
+            $params['type'] = count($_type) > 1 ? $_type : current($_type);
+        }
+        if($class){
+            $params['class'] =implode(',', $_class);
+        }
+        if($keyword){
+            $params['keyword'] = $keyword;
+        }
+        if($keytype==2){
+            $params['keytype'] = $keytype;
         }
         $res = $this->load('pt')->getPtList($params, $page, $this->rowNum);
         $this->set('list', $res['rows']);

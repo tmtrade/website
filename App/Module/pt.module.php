@@ -53,7 +53,14 @@ class PtModule extends AppModule
                 }
             }
         }
-
+        //判断搜索条件
+        if($params['keyword']){
+            if($params['keytype']==1){
+                $r['like'] = array('title'=>$params['keyword']);
+            }else{
+                $r['like'] = array('number'=>$params['keyword']);
+            }
+        }
         $r['eq']['status']  = 1;
         $r['eq']['isSale']  = 1;
 

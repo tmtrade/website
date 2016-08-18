@@ -237,22 +237,22 @@
             </p>
             <div class="mj-search_box" id="con_sear_1" style="display: block;">
                 <form id="searchForm" method="GET" action="/search/index/">
-                    <input type="text" name="kw" class="inptext"  placeholder="输入你想买的商标名称/商标号/适用服务" autocomplete="off"/>
-                    <div class="mj-search-submit">
+                    <input type="text" name="kw" class="inptext tm_kw"  placeholder="输入你想买的商标名称/商标号/适用服务" autocomplete="off"/>
+                    <div class="mj-search-submit mj-search-submit-tm">
                         <i class="uj_icon8"></i>
                     </div>
                 </form>
-                <ul class="mj-pull-down">
+                <ul class="mj-pull-down tm-pull-down">
                 </ul>
             </div>
             <div class="mj-search_box" id="con_sear_2">
                 <form id="searchPtForm" method="GET" action="/pt/index/">
-                    <input type="text" name="kw" class="inptext"  placeholder="输入你想买的专利名称/专利号" autocomplete="off"/>
-                    <div class="mj-search-submit">
+                    <input type="text" name="kw" class="inptext pt_kw"  placeholder="输入你想买的专利名称/专利号" autocomplete="off"/>
+                    <div class="mj-search-submit mj-search-submit-pt">
                         <i class="uj_icon8"></i>
                     </div>
                 </form>
-                <ul class="mj-pull-down">
+                <ul class="mj-pull-down pt-pull-down">
                 </ul>
             </div>
             <div class="mj-search_btm">
@@ -438,7 +438,7 @@
         });
     }
 
-    $('input[name="kw"]').focus(function (){
+    $('.tm_kw').focus(function (){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
         if ( _value == '' ){
@@ -458,22 +458,29 @@
     
     $('input[name="kw"]').blur(function (){
         var _this   = $(this);
-        var _value  = $.trim( _this.val() );
-        //if ( _value == '' ){
-            setTimeout(function(){
-                $(".mj-pull-down").hide();
-                $(".mj-pull-down").html('');
-            },200);
-        //}
+        setTimeout(function(){
+            $(".mj-pull-down").hide();
+            $(".mj-pull-down").html('');
+        },200);
     });
-
-    $('input[name="kw"]').keyup(function (){
+    $('.tm_kw').keyup(function(){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
         if ( _value != '' ){
             html = '<li><a href="/search/?kw='+_value+'&kt=1" onclick="setSearch('+_value+',\'商标名称\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="商标名称"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=2" onclick="setSearch('+_value+',\'商标号\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="商标号"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标号</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=3" onclick="setSearch('+_value+',\'适用服务\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="适用服务"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">适用服务</font>“'+_value+' ”搜索结果</span></a></li>';
-            $(".mj-pull-down").html(html);
-            $(".mj-pull-down").show();
+            $(".tm-pull-down").html(html);
+            $(".tm-pull-down").show();
+        }else{
+            _this.focus();
+        }
+    });
+    $('.pt_kw').keyup(function(){
+        var _this   = $(this);
+        var _value  = $.trim( _this.val() );
+        if ( _value != '' ){
+            html = '<li><a href="/pt/?kw='+_value+'&kt=1" onclick="setSearch('+_value+',\'专利名称\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="专利名称"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">专利名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/pt/?kw='+_value+'&kt=2" onclick="setSearch('+_value+',\'专利号\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="专利号"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">专利号</font>“ '+_value+'”搜索结果</span></a></li>';
+            $(".pt-pull-down").html(html);
+            $(".pt-pull-down").show();
         }else{
             _this.focus();
         }

@@ -68,7 +68,9 @@ function objURL(url){
 		var objps=[];
 		var strurl='';
 		for(var k in params){
-			objps.push(k+"="+params[k]);
+			if(params[k]){
+				objps.push(k+"="+params[k]);
+			}
 		}
 		if(objps.length>0){
             strurl+=objps.join("&");

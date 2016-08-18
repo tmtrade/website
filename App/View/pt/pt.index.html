@@ -10,6 +10,9 @@
     <div class="ms-filterResults">
         <span>全部结果&nbsp;&gt;</span>
         <ul class="ms-filterResultsList f-clearfix">
+            <? if ( isset($kw_title) ) { ?>
+            <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+            <? } ?>
             <? if ( $t ) { ?>
                 <li title="<?=$t_title?>"><a href="javascript:void(0);" addmsg="<?=$t_title?>" webid="3" onclick="createUrl('_type', '');"><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
             <? } ?>
@@ -90,6 +93,7 @@
 </div>
 <!-- ms-filterSearch end -->
 <!-- ms-filtersList start -->
+    <? if($list):?>
 <div class="pt-filtrate">
     <ul id="s-all-list">
     <?foreach ($list as $k => $v) {?>
@@ -117,19 +121,33 @@
                 <a class="cont" href="javascript:void(0);" addmsg="03-联系卖家" webid="31" module="专利列表1-<?=$k+1?>" onclick="goChat()">联系卖家</a>
             </div>
         </li>
-
     <?}?>
     </ul>
 </div>
+    <? else: ?>
+    <div class="sbhwjg">
+        <div class="sbhwjg-main">
+            <h3>抱歉！没找到相关信息</h3>
+            <font>
+                建议你：<br>
+                <? if ( $kw && $kt == '1' ) { ?>
+                1 . 修改下<lable>专利名称</lable>试试呢；<br>
+                <? }else{ ?>
+                1 . 修改<lable>筛选条件</lable>，重新试试<br>
+                <? } ?>
+                2 . <a javascript="void(0);" onclick="goChat();">联系我们</a> 让我们帮你找吧！<br>
+                <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">3秒极速匹配</span> <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">1对1专业服务</span>
+            </font>
+        </div>
+    </div>
+    <? endif ?>
 <div id="s-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
 <!-- ms-filtersList end -->
 
 <!--<div id="s-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="http://f2.chofn.net/yzc/Static/images/loading.gif"></div>-->
 <!--<button type="button" onclick="changeDD();"></button>-->
 </div>
-
 <div id="_tmpDiv" style="display:none"></div>
-
 <!-- ms-filterMain end -->
 <!-- ms-recommend start -->
 <div class="pt-choice">
@@ -237,7 +255,6 @@
 </div>
 <!-- ms-recommend end -->
 </div>
-
 <!--弹窗重写-->
 <div class="choice-shade" id="choice-shade" style="z-index:19891015;width: 100%;position:fixed;top:0px;left: 0px; background-color:#000; opacity:0.3; filter:alpha(opacity=30);display: none;"></div>
 <div class="choice-popup" id="choice-popup" style="display: none;">
@@ -298,7 +315,6 @@
            $(".ms-conditionList-main").css({"border-bottom":"none"});
          }
     });
-    
     var usubmit = 0;
     $(function(){
         if( login_mobile ){
@@ -316,7 +332,6 @@
             }
             ucNetwork.sendCode(tel, $(this), '点击获取验证码', callbackSend);
         });
-        
         //求购信息发布事件
         $('.chaofan-mj-logBtn').click(function(){
             if (usubmit > 0 ) return false;
@@ -376,7 +391,6 @@
                 });//验证码登录
                 return false;
             }
-
             $(".umerror").show();
             $("#umerror").text('提交中');
             data    = new Array();
@@ -468,15 +482,13 @@
         $('#umobile1').val('');
         $('#upatent').val('');
         $('#ucode1').val('');
-    }        
-
+    }
     //初始化更多
     var minHeight = 40; //最小高度
     var conditionDom = $('.ms-condition');
     var conditionList = conditionDom.find('.ms-conditionList-main');
     var setHeight = 'ms-setHeight';
     var curCls = 'cur';
-
     function initMore(isTure){
         conditionList.each(function(){
             var $this = $(this);
@@ -490,9 +502,7 @@
             conditionBtn.append(conditionMore);
         });
     }
-
     initMore(true);
-
     //多选
     function multi(dom){
         var $this = $(dom);
@@ -504,7 +514,6 @@
             moreDom.addClass(curCls).text('收起');
         }
     }
-
     //取消多选
     function cancelFun(dom){
         var $this = $(dom);
@@ -514,7 +523,6 @@
         moreDom.removeClass(curCls).text('更多');
         initMore(false);
     }
-
     //更多
     function moreFun(dom){
         var $this = $(dom);
@@ -539,7 +547,7 @@
     $("#chaofan-mj-close").click(function(){
         $("#choice-popup").hide();
         $("#choice-shade").hide();
-    })
+    });
     $("#choose").on("click","",function() {
         if(login_mobile){
             $('#umobile1').val(login_mobile);
@@ -550,11 +558,9 @@
         $("#choice-shade").show();
         $("#choice-shade").css("height",wHeight);
     });
-
     function removeClass(){
         $("#choice-popup").removeClass('bounceIn animated infinite');
     }
-
     $(".ms-condition-btn a").click(function(e){
         var inputDom = $(this).parent().prev().find(':checked');
         var str = '';
@@ -574,23 +580,18 @@
             createUrl(tname, str);
         }
     });
-
-
     var _start      = 1;
     var _whereStr   = "<?=$whereStr?>";
     var _moreUrl    = '/<?=$_mod_?>/getMore/';
-    var _url        = '/<?=$_mod_?>/?';
+    var _url        = '/<?=$_mod_?>/';
     var _urlSearch  = '/<?=$_mod_?>/?';
     var _hasSale    = "<?=$has?>";
     var _times      = 0;
     var _objTime ;
-
     //处理URL
     function createUrl(parameter,value){
         $(this).addClass("cilk");
-
         var obj = new objURL('/?'+_whereStr);
-
         switch(parameter){
             case "_type" :
                 obj.set('t', value);
@@ -599,8 +600,13 @@
             case "_class" :
                 obj.set('c', value);
                 break;
+            case "_kw" :
+                obj.remove('kw');
+                obj.remove('kt');
+                break;
         }        
         var params = obj.strparams();
+        var params = params?'?'+params:'';
         var index = layer.load(1, {
             shade: [0.1,'#fff'] //0.1透明度的白色背景
         });
@@ -610,7 +616,6 @@
             layer.close(index);
         },400);
     }
-
     //加载剩余数据
     function loadMore(){
         //出售与专利库都没有了
@@ -643,7 +648,6 @@
             }
         });
     }
-
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
         var scrollHeight = $(document).height();
@@ -652,7 +656,6 @@
             loadMore();
         }
     });
-
 </script>
 <? require(ViewDir.'/sidebar.html'); ?>
 <? require(ViewDir.'/footer.html'); ?>
