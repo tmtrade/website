@@ -402,7 +402,7 @@ class SearchAction extends AppAction
         }
         if ( $type == 2 ) return $url;
         
-        Header("HTTP/1.1 301 Moved Permanently");
+//        Header("HTTP/1.1 301 Moved Permanently");//存在ie8兼容性问题
         $this->redirect('', $url);
         exit;
     }
