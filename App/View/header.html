@@ -244,6 +244,18 @@
                 </form>
                 <ul class="mj-pull-down tm-pull-down">
                 </ul>
+                <div class="mj-search_btm">
+                    <p class="tj-fl">
+                        <?
+                        $hotwordStr = '';
+                        foreach($hotwords as $hotword){
+                            $hotwordStr .= "<a target='_blank' class='{$hotword['other']}' href='{$hotword['link']}'>{$hotword['desc']}</a>";
+                        }
+                        echo $hotwordStr;
+                        ?>
+                    </p>
+                    <a href="/help" target="_blank"><span class="Bran_note"><i></i>商标45类注释</span></a>
+                </div>
             </div>
             <div class="mj-search_box" id="con_sear_2">
                 <form id="searchPtForm" method="GET" action="/pt/index/">
@@ -254,19 +266,20 @@
                 </form>
                 <ul class="mj-pull-down pt-pull-down">
                 </ul>
-            </div>
-            <div class="mj-search_btm">
-                <p class="tj-fl">
-                    <?
+                <div class="mj-search_btm">
+                    <p class="tj-fl">
+                        <?
                         $hotwordStr = '';
                         foreach($hotwords as $hotword){
                             $hotwordStr .= "<a target='_blank' class='{$hotword['other']}' href='{$hotword['link']}'>{$hotword['desc']}</a>";
-                    }
-                    echo $hotwordStr;
-                    ?>
-                </p>
-                <a href="/help" target="_blank"><span class="Bran_note"><i></i>商标45类注释</span></a>
+                        }
+                        echo $hotwordStr;
+                        ?>
+                    </p>
+                    <a href="/help" target="_blank"><span class="Bran_note"><i></i>商标45类注释</span></a>
+                </div>
             </div>
+
         </div>
         <div class="mj-search_btn fr">
 
