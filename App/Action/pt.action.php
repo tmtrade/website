@@ -128,6 +128,7 @@ class PtAction extends AppAction
         $type   = $this->input('t', 'string', '');
         $class  = $this->input('c', 'string', '');
         $keyword  = $this->input('kw', 'string', '');
+        $keyword = urldecode($keyword);
         $keytype  = $this->input('kt', 'int', 1);//搜索选项:1名称,2专利号
 
         $_type  = array_filter( array_unique( explode(',', $type) ) );
@@ -144,9 +145,7 @@ class PtAction extends AppAction
         if($keyword){
             $params['keyword'] = $keyword;
         }
-        if($keytype==2){
-            $params['keytype'] = $keytype;
-        }
+        $params['keytype'] = $keytype;
         $res = $this->load('pt')->getPtList($params, $page, $this->rowNum);
         $this->set('list', $res['rows']);
         $this->set('page', $page);
