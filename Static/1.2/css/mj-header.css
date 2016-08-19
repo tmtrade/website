@@ -726,27 +726,16 @@ table {
 
 .mj-search_btn a{
 
-    display: inline-block;
-
-    // margin-left: 10px;
-
-    //  padding-left: 8px;
-    // padding-right: 8px;
-
-    height: 39px;
-
+   display: inline-block;
+    height: 41px;
     text-align: center;
-
-    line-height:39px;
-
+    line-height: 39px;
     color: #333333;
-
     font-size: 14px;
-
     border-radius: 2px;
     background: #fff4ec;
     border: 1px solid #ffbfbf;
-
+    margin-top: 2px;
 }
 .mj-search_btn a h2{
     font-weight: normal;
