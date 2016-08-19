@@ -443,7 +443,7 @@ table {
 
 .mj-search_con{
     position: relative;
-
+    width: 486px;
 }
 .mj-search_con  span.Bran_note{
     position: absolute;
