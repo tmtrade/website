@@ -76,7 +76,9 @@ class FaqAction extends AppAction
         $page = $this->input('page', 'int', 1);
         if($c){
             Header("HTTP/1.1 301 Moved Permanently");
-            $this->redirect('',"/n-$c-$page/");
+            Header("Location: /n-$c-$page/");
+            exit;
+//            $this->redirect('',"/n-$c-$page/");
         }
         $tag = $this->input('short', 'string', '');
         if ( $tag ){
@@ -88,7 +90,9 @@ class FaqAction extends AppAction
         }
         if($c==0){
             Header("HTTP/1.1 301 Moved Permanently");
-            $this->redirect('未找到页面', '/index/error');
+            Header("Location: /index/error");
+            exit;
+//            $this->redirect('未找到页面', '/index/error');
         }
         $this->getLeftData();//得到左菜单数据
         $limit = 15;
@@ -124,29 +128,40 @@ class FaqAction extends AppAction
             $id = $this->input('id', 'int', 0);
             if($c && $id){
                 Header("HTTP/1.1 301 Moved Permanently");
-                $this->redirect('',"/v-$c-$id/");
+                Header("Location: /v-{$c}-{$id}/");
+                exit;
+//                $this->redirect('',"/v-$c-$id/");
             }
             $tag = $this->input('short', 'string', '');
             if ( $tag ){
                 if ( strpos($tag, '-') === false ) {
                     Header("HTTP/1.1 301 Moved Permanently");
-                    $this->redirect('未找到页面', '/index/error');
+                    Header("Location: /index/error");
+                    exit;
+//                    $this->redirect('未找到页面', '/index/error');
                 }
                 list($c, $id) = explode('-', $tag);
             }
             if($c==0 || $id==0){
                 Header("HTTP/1.1 301 Moved Permanently");
-                $this->redirect('未找到页面', '/index/error');
+                Header("Location: /index/error");
+                exit;
+//                $this->redirect('未找到页面', '/index/error');
             }
         }else{
+            $url = "/v-{$c}-{$id}/";
             Header("HTTP/1.1 301 Moved Permanently");
-            $this->redirect('',"/v-$c-$id/");
+            Header("Location: {$url}");
+            exit;
+//            $this->redirect('',"/v-$c-$id/");
         }
         $this->getLeftData();//得到左菜单数据
         $data        = $this->load('faq')->getNextThree(array('c'=>$c,'id'=>$id));
         if(empty($data)){
             Header("HTTP/1.1 301 Moved Permanently");
-            $this->redirect('未找到页面', '/index/error');
+            Header("Location: /index/error");
+            exit;
+//            $this->redirect('未找到页面', '/index/error');
         }
         $this->set("list", $data[1]);
         switch ($id){
