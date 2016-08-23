@@ -146,13 +146,16 @@
 }
 
 .yzc-ztlishow ul li:hover .reverse{
-    display: block;
+     display: block;
+    position:absolute;
+     border: 1px solid #ff3e3f;
+     left:-1px;
+     border-top:none;
 }
 .yzc-ztlishow ul li:hover{
-	 border: 1px solid #ff3e3f;
-	height: 265px;
-	margin-bottom:-15px;
-	}
+     border: 1px solid #ff3e3f;
+    
+    }
 .yzc-ztlishow ul li div.reverse dt{
     display: inline-block;
      position:absolute ;
