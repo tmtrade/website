@@ -1,5 +1,6 @@
 <?
 $prefix		= 't_';
+$prefix2	= 'S_';
 $dbId		= 'trade_new';
 $prefixs	= 's_'; //出售者平台
 $configFile	= array( ConfigDir.'/Db/trade_new.master.config.php' );
@@ -273,6 +274,11 @@ $tbl['quotation'] = array(
 );
 $tbl['quotationItems'] = array(
 	'name'		=> $prefix2.'quotation_items',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+$tbl['userImage'] = array(
+	'name'		=> $prefix2.'user_image',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
