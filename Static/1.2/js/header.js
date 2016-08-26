@@ -548,6 +548,8 @@ function analyzePage(ptype){
             str = 'faq列表页';break;
         case '17':
             str = 'faq详情页';break;
+        case '18':
+            str = '报价单页面';break;
         default:
             str = '未知';
     }

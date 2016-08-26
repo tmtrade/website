@@ -266,4 +266,15 @@ $tbl['ad'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['quotation'] = array(
+	'name'		=> $prefix2.'quotation',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+$tbl['quotationItems'] = array(
+	'name'		=> $prefix2.'quotation_items',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 ?>
