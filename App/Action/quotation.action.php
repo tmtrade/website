@@ -24,4 +24,16 @@ class QuotationAction extends AppAction{
         $this->assign('list',$res);
         $this->display();
     }
+
+    /**
+     * 报价单模板
+     */
+    public function templet(){
+        $id = $this->input('id','int');
+        if($id==1){
+            $this->display('quotation/quotation.templet1.html');
+        }else{
+            $this->display('quotation/quotation.templet0.html');
+        }
+    }
 }
