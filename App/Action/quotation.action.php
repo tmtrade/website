@@ -9,18 +9,18 @@
 class QuotationAction extends AppAction{
 
     public $pageTitle   = "商品报价单-一只蝉出售者平台";
-    public $size = 20;
     public $ptype = 18;
 
     /**
      * 商品报价单首页
      */
     public function index(){
-        exit('还没有完成呢');
-        $id = $this->input('id','input');
-        if(!$id) exit('参数不合法');
+        $id = $this->input('id','int');
+        $uid = $this->input('u','int');
+        if(!$id || !$uid) exit('参数不合法');
         //得到详情数据
-        $res = $this->load('quotation')->getDetail($id);
+        $res = $this->load('quotation')->getDetail($id,$uid);
+        var_dump($res);exit;
         $this->assign('list',$res);
         $this->display();
     }
