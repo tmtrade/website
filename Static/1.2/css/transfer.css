@@ -161,9 +161,27 @@ h1,h2,h3,h4,h5,h6,b {font-size:100%;font-family: "微软雅黑"; -webkit-font-sm
 .trans-brand-list ul li:hover {
     z-index: 999;
 }
-
 .trans-xl-ban{
+    width: 972px;
+    height: 102px;
     margin-top: 12px;
+    background: url("../images/lx-ban.png") no-repeat top center;
+    position: relative;
+}
+
+.trans-xl-ban  label{
+    position: absolute;
+    color: #fff2b1;
+    font-size: 22px;
+    margin-left: 110px;
+}
+.trans-xl-ban  label.pos1{
+    bottom: 15px;
+    right:334px;
+}
+.trans-xl-ban  label.pos2{
+    bottom: 15px;
+    right:144px;
 }
 .trans-btm{
     width: 100%;
