@@ -21,6 +21,7 @@ class QuotationAction extends AppAction{
         //得到详情数据
         $res = $this->load('quotation')->getDetail($id,$uid);
         $this->set('list',$res);
+        $this->set('label',C('QUOTATION_LABEL'));
         if($res['style']==1){
             $this->display();
         }else{
