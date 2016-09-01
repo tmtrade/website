@@ -116,7 +116,7 @@ class quotationModule extends AppModule
     private function getTm($number){
         $r = array();
         $r['eq']['id'] = $number;
-        $r['col'] = array('goods,apply_date,class');
+        $r['col'] = array('goods,apply_date,class,trademark');
 //        $r['limit'] = 50;//此处待处理----多类问题
         $rst = $this->import('tm')->find($r);
         if(!$rst) return array();

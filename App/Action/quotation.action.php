@@ -20,9 +20,12 @@ class QuotationAction extends AppAction{
         if(!$id || !$uid) exit('参数不合法');
         //得到详情数据
         $res = $this->load('quotation')->getDetail($id,$uid);
-        var_dump($res);exit;
-        $this->assign('list',$res);
-        $this->display();
+        $this->set('list',$res);
+        if($res['style']==1){
+            $this->display();
+        }else{
+            $this->display('quotation/quotation.index1.html');
+        }
     }
 
     /**
