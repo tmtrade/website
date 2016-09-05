@@ -45,8 +45,8 @@ $(document).ready(function(e) {
 	//END
 	$(document).on('click','.back',function(){
 		host = window.location.host;
-		if(host='jingling.yizhchan.com'){
-			url = 'http://jingling.yizhchan.com/';	
+		if(host='ce.chanshu.im'){
+			url = 'http://ce.chanshu.im/';	
 		}else{
 			url = '/anquan/';	
 		}

@@ -1954,7 +1954,7 @@ var epub360_book_data = {
                         }],
                         "iScreenAdapt": false,
                         "linktype": 1,
-                        "url": "http://jingling.yizhchan.com/",
+                        "url": "http://ce.chanshu.im/",
                         "dragin": 0,
                         "ratiofixxed": false,
                         "init_rotation": 0,

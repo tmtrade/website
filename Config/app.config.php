@@ -24,7 +24,7 @@ define('WM_URL', 'http://wm.chofn.net/');
 //CRM地址URL
 define('CRM_URL', 'http://demo.chofn.com:88/');
 //蝉检测
-define('CHECK_URL', 'http://jingling.yizhchan.com/');
+define('CHECK_URL', 'http://ce.chanshu.im/');
 //商标注册
 define('TM_URL', 'http://r.chaofan.wang/reg/');
 //专利注册
