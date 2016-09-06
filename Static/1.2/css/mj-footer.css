@@ -407,6 +407,7 @@ border-bottom: solid 1px #eee;
     background-color: #d42727;
     transition: all 0.2s;
     -webkit-transition: all 0.2s;
+    cursor: pointer;
 }
 .com-nav li:hover .rg-nav-pic{
     border-bottom:1px solid #d42727;
@@ -460,6 +461,7 @@ border-bottom: solid 1px #eee;
     color: #f2f2f2;
     text-align: center;
     margin-top: 10px;
+    color: #666666;
 }
 .rg-nav-tel a{
     display: inline-block;
