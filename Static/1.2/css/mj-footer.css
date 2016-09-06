@@ -290,7 +290,197 @@ border-bottom: solid 1px #eee;
 /* ����� */
 
 /* ms-sidebar */
+.animated {
+    -webkit-animation-duration: 0.6s;
+    animation-duration: 0.6s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
 
+.animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite
+}
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+        -ms-transform: translateY(-20px);
+        transform: translateY(-20px)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown
+}
+
+.mj-rg-side{
+    width: 35px;
+    height: 100%;
+    position: fixed;
+    right: 0px;
+    top:0px;
+    background-color: rgba(0,0,0,0.8);
+    color: #ffffff;
+    font-size: 12px;
+    z-index: 999999992211;
+}
+.mj-rg-side a{
+    color: #ffffff;
+}
+@media \0screen\,screen\9 {
+    .mj-rg-side{
+        background-color:#000000;
+        filter:Alpha(opacity=80);
+        position:static;
+        *zoom:1;
+    }
+    .mj-rg-nav1, .mj-rg-nav2{
+        position: relative;
+    }
+}
+.mj-rg-nav1{
+    position: absolute;
+    top:235px;
+}
+.mj-rg-nav2{
+    position: absolute;
+    bottom:15px;
+}
+
+.com-nav li{
+    position: relative;
+    z-index: 999999992211;
+    width: 35px;
+    margin-top:5px;
+}
+.rg-nav-pic{
+    width: 28px;
+    border-bottom: 1px solid #4f4f4f;
+    margin-left: 3px;
+    padding-top:8px;
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+.rg-nav-pic img{
+    display: block;
+    margin: auto;
+    margin-bottom: 4px;
+}
+.rg-nav-hove{
+    display: inline-block;
+    min-width:86px;
+    background:#494949 url("../images/lit-zb.png") no-repeat -10px center;
+    padding: 10px 12px 10px 12px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    position: absolute;
+    right:35px;
+    top:0px;
+    z-index: 999999992211;
+    display: none;
+}
+.com-nav li:hover{
+    background-color: #d42727;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+.com-nav li:hover .rg-nav-pic{
+    border-bottom:1px solid #d42727;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+.com-nav li:hover .rg-nav-hove{
+    display: block;
+}
+.rg-nav-wx{
+    width: 170px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    top: -74px;
+}
+.rg-nav-wx .lit-zb{
+    top: 76px !important;
+}
+.rg-nav-wx p{
+    line-height:16px;
+    margin-top: 4px;
+}
+.rg-nav-tel{
+    width: 145px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+.rg-nav-tel p em{
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "微软雅黑";
+    border-bottom: 1px solid #424242;
+    padding-bottom: 4px;
+}
+.rg-nav-tel span.jxwz{
+    color: #bebebe;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: bold;
+    font-family: "微软雅黑";
+    margin-top: 10px;
+}
+.rg-nav-tel input{
+    width: 124px;
+    height: 24px;
+    line-height: 24px;
+    background: #f2f2f2;
+    border: 1px solid #bebebe;
+    color: #f2f2f2;
+    text-align: center;
+    margin-top: 10px;
+}
+.rg-nav-tel a{
+    display: inline-block;
+    width: 126px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    background: #ff5656;
+    color: #ffffff;
+    margin-top: 10px;
+   padding-bottom: 5px;
+}
+.lit-zb{
+    display: inline-block;
+    width: 4px;
+    height: 8px;
+    background: url("../images/lit-zb.png") no-repeat top center;
+    position: absolute;
+    right: -4px;
+    top:12px;
+}
 .mj-sidebar{
 
     position: fixed;
@@ -739,7 +929,7 @@ div.mj-stclose label{
 
 .bounceIn {
     -webkit-animation-name: bounceIn;
-    animation-name: bounceIn；
+    animation-name: bounceIn;
 }
 /*footer mj-footerTip*/
 

@@ -1,37 +1,144 @@
 <!--侧面咨询-->
-
-<div class="mj-sidebar">
-    <div class="mj-stclose">
-        <label id="mj-stclose">X关闭</label>
-    </div>
-    <div class="mj-sidebarCon">
-        <a href="javascript:void(0);" onclick="goChat()" style="border: none;padding: 0;" webid="103" addmsg="1免费咨询" module="咨询浮动条1"><span><i class="us-icon us-icon14"></i><br>免费咨询<b></b></span></a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="2购买商标" module="咨询浮动条2">购买<br>商标</a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="3出售商标" module="咨询浮动条3">出售<br>商标</a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="4购买专利" module="咨询浮动条4">购买<br>专利</a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="5出售专利" module="咨询浮动条5">出售<br>专利</a>
-        <a href="javascript:;" onclick="goChat()" webid="103" addmsg="6其他服务" module="咨询浮动条6">其他<br>服务</a>
-        <div class="ms-call">
-            <a href="javascript:;" ><i class="us-icon us-icon15"></i><br>免费<br>电话</a>
-            <div class="ms-sidebarTel">
+<div class="mj-rg-side">
+    <ul class="mj-rg-nav1 com-nav">
+        <li>
+            <a href="/">
+                <div class="rg-nav-pic">
+                    <img src="<?=StaticDir?>1.2/images/rg-nav-1.png">
+                </div>
+            </a>
+            <div class="rg-nav-hove">
+                我的收藏
+                <i class="lit-zb"></i>
+            </div>
+        </li>
+        <li>
+            <a href="/">
+                <div class="rg-nav-pic">
+                    <img src="<?=StaticDir?>1.2/images/rg-nav-2.png">
+                    买
+                </div>
+            </a>
+            <div class="rg-nav-hove">
+                购买商标、专利
+                <i class="lit-zb"></i>
+            </div>
+        </li>
+        <li style="margin-top: 0px;">
+            <a href="/">
+                <div class="rg-nav-pic">
+                    <img src="<?=StaticDir?>1.2/images/rg-nav-3.png">
+                    卖
+                </div>
+            </a>
+            <div class="rg-nav-hove">
+                出售商标、专利
+                <i class="lit-zb"></i>
+            </div>
+        </li>
+        <li class="ms-call">
+            <a href="javascript:;" >
+                <div class="rg-nav-pic">
+                    <img src="<?=StaticDir?>1.2/images/rg-nav-8.png">
+                </div>
+            </a>
+            <div class="rg-nav-hove rg-nav-tel">
                 <p><em><?=TEL400?></em></p>
                 <span class="jxwz">电话免费开通在线管理平台账户(国内唯一)</span>
                 <input type="text" id="telInput" name="telInput" placeholder="输入电话号码">
-                <a href="javascript:;" id="callBtn" addmsg="立即免费通话"></a><br>
+                <a href="javascript:;" id="callBtn" addmsg="立即免费通话">免费咨询</a><br>
+                <i class="lit-zb"></i>
             </div>
-        </div>
-       
-    </div>
+        </li>
+       </ul>
+    <ul class="mj-rg-nav2 com-nav">
+        <li>
+            <a href="/">
+                <div class="rg-nav-pic">
+                    <img src="<?=StaticDir?>1.2/images/rg-nav-4.png">
+                </div>
+            </a>
+            <div class="rg-nav-hove">
+                QQ客服
+                <i class="lit-zb"></i>
+            </div>
+        </li>
 
-    <div class="mj-siright">
-        <i class="us-icon us-icon14"></i>
-        <em>免费咨询</em>
-    </div>
-    <div class="mj-sidebarConfk">
-        <a href="javascript:" class="mj-ifk" id="mj-ifk"><i class="mj-iconfk"></i><br>反馈</a>
-        <a href="javascript:" class="mj-topIcon"><i class="uj_icon25"></i><br>顶部</a>
-    </div>  
+        <li class="ms-call">
+            <a href="javascript:;" >
+                <div class="rg-nav-pic">
+                    <img src="<?=StaticDir?>1.2/images/rg-nav-5.png">
+                </div>
+            </a>
+
+            <div class="rg-nav-hove rg-nav-wx">
+                <span>
+                    <img src="/Static/1.2/images/yzc-wx.jpg">
+                </span>
+                <p>
+                    专注知识产权流转<br>
+                    欢迎关注微信，随时获取资讯
+                </p>
+                <i class="lit-zb"></i>
+            </div>
+        </li>
+        <li>
+            <a  id="mj-ifk">
+                <div class="rg-nav-pic">
+                    <img src="<?=StaticDir?>1.2/images/rg-nav-6.png">
+                </div>
+            </a>
+            <div class="rg-nav-hove">
+                意见反馈
+                <i class="lit-zb"></i>
+            </div>
+        </li>
+        <li>
+            <a id="mj-topIcon">
+                <div class="rg-nav-pic">
+                    <img src="<?=StaticDir?>1.2/images/rg-nav-7.png">
+                </div>
+            </a>
+            <div class="rg-nav-hove" >
+                返回顶部
+                <i class="lit-zb"></i>
+            </div>
+        </li>
+
+    </ul>
 </div>
+<!--<div class="mj-sidebar">-->
+    <!--<div class="mj-stclose">-->
+        <!--<label id="mj-stclose">X关闭</label>-->
+    <!--</div>-->
+    <!--<div class="mj-sidebarCon">-->
+        <!--<a href="javascript:void(0);" onclick="goChat()" style="border: none;padding: 0;" webid="103" addmsg="1免费咨询" module="咨询浮动条1"><span><i class="us-icon us-icon14"></i><br>免费咨询<b></b></span></a>-->
+        <!--<a href="javascript:;" onclick="goChat()" webid="103" addmsg="2购买商标" module="咨询浮动条2">购买<br>商标</a>-->
+        <!--<a href="javascript:;" onclick="goChat()" webid="103" addmsg="3出售商标" module="咨询浮动条3">出售<br>商标</a>-->
+        <!--<a href="javascript:;" onclick="goChat()" webid="103" addmsg="4购买专利" module="咨询浮动条4">购买<br>专利</a>-->
+        <!--<a href="javascript:;" onclick="goChat()" webid="103" addmsg="5出售专利" module="咨询浮动条5">出售<br>专利</a>-->
+        <!--<a href="javascript:;" onclick="goChat()" webid="103" addmsg="6其他服务" module="咨询浮动条6">其他<br>服务</a>-->
+        <!--<div class="ms-call">-->
+            <!--<a href="javascript:;" ><i class="us-icon us-icon15"></i><br>免费<br>电话</a>-->
+            <!--<div class="ms-sidebarTel">-->
+                <!--<p><em><?=TEL400?></em></p>-->
+                <!--<span class="jxwz">电话免费开通在线管理平台账户(国内唯一)</span>-->
+                <!--<input type="text" id="telInput" name="telInput" placeholder="输入电话号码">-->
+                <!--<a href="javascript:;" id="callBtn" addmsg="立即免费通话"></a><br>-->
+            <!--</div>-->
+        <!--</div>-->
+       <!---->
+    <!--</div>-->
+
+    <!--<div class="mj-siright">-->
+        <!--<i class="us-icon us-icon14"></i>-->
+        <!--<em>免费咨询</em>-->
+    <!--</div>-->
+    <!--<div class="mj-sidebarConfk">-->
+        <!--<a href="javascript:" class="mj-ifk" id="mj-ifk"><i class="mj-iconfk"></i><br>反馈</a>-->
+        <!--<a href="javascript:" class="mj-topIcon"><i class="uj_icon25"></i><br>顶部</a>-->
+    <!--</div>  -->
+<!--</div>-->
 
 <!-- 意见反馈 -->
 <div class="opi_fk_all"></div>
@@ -141,9 +248,15 @@ $(function(){
         $(this).removeClass('current');
     });
     //当点击跳转链接后，回到页面顶部位置
-    $(".mj-topIcon").click(function(){
+    $("#mj-topIcon").click(function(){
         $('body,html').animate({scrollTop:0},1000);
         setEvent('咨询浮动条9','9返回顶部');
         return false;
     });
+    //华丽丽的出现
+    $(".com-nav li").each(function(){
+        $(this).mouseover(function(){
+            $(this).find(".rg-nav-hove").addClass("fadeInDown animated");
+        })
+    })
  </script>
