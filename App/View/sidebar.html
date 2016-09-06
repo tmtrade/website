@@ -2,7 +2,7 @@
 <div class="mj-rg-side">
     <ul class="mj-rg-nav1 com-nav">
         <li>
-            <a href="/">
+            <a href="javascript:;" id="c-colect">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-1.png">
                 </div>
@@ -13,7 +13,7 @@
             </div>
         </li>
         <li>
-            <a href="/">
+            <a href="javascript:;" onclick="goChat()">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-2.png">
                     买
@@ -25,7 +25,7 @@
             </div>
         </li>
         <li style="margin-top: 0px;">
-            <a href="/">
+            <a href="javascript:;" onclick="goChat()">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-3.png">
                     卖
@@ -53,7 +53,7 @@
        </ul>
     <ul class="mj-rg-nav2 com-nav">
         <li>
-            <a href="/">
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-4.png">
                 </div>
@@ -168,7 +168,15 @@ $(function(){
     $("#callBtn").on("click",function(){
         setEvent('咨询浮动条7','7免费通话:'+$('#telInput').val());
             lxb.call(document.getElementById("telInput"));
-    })
+    });
+    //收藏按钮
+    $('#c-colect').click(function(){
+       if(login_mobile){
+           $(this).attr('href','<?=UC_URL?>collect/trade/').attr('target','_blank');
+       }else{
+           $('#chaofan-mj-login').trigger('click');
+       }
+    });
 });
 
     $("#mj-ifk").click(function() {
