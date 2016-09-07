@@ -2,7 +2,7 @@
 <div class="mj-rg-side">
     <ul class="mj-rg-nav1 com-nav">
         <li>
-            <a href="javascript:;" id="c-colect">
+            <a href="javascript:;" id="c-colect" module="右侧浮动栏1" addmsg="我的收藏">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-1.png">
                 </div>
@@ -13,7 +13,7 @@
             </div>
         </li>
         <li>
-            <a href="javascript:;" onclick="goChat()">
+            <a href="javascript:;" onclick="goChat()" module="右侧浮动栏2" addmsg="买">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-2.png">
                     买
@@ -25,7 +25,7 @@
             </div>
         </li>
         <li style="margin-top: 0px;">
-            <a href="javascript:;" onclick="goChat()">
+            <a href="javascript:;" onclick="goChat()"  module="右侧浮动栏3" addmsg="卖">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-3.png">
                     卖
@@ -46,14 +46,14 @@
                 <p><em><?=TEL400?></em></p>
                 <span class="jxwz">电话免费开通在线管理平台账户(国内唯一)</span>
                 <input type="text" id="telInput" name="telInput" placeholder="输入电话号码">
-                <a href="javascript:;" id="callBtn" addmsg="立即免费通话">免费咨询</a><br>
+                <a href="javascript:;" id="callBtn">免费咨询</a><br>
                 <i class="lit-zb"></i>
             </div>
         </li>
        </ul>
     <ul class="mj-rg-nav2 com-nav">
         <li>
-            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes">
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes"  module="右侧浮动栏5" addmsg="qq客服">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-4.png">
                 </div>
@@ -65,7 +65,7 @@
         </li>
 
         <li class="ms-call">
-            <a href="javascript:;" >
+            <a href="javascript:;"  module="右侧浮动栏6" addmsg="微信">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-5.png">
                 </div>
@@ -94,7 +94,7 @@
             </div>
         </li>
         <li>
-            <a id="mj-topIcon">
+            <a id="mj-topIcon" module="右侧浮动栏8" addmsg="返回顶部">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-7.png">
                 </div>
@@ -166,7 +166,7 @@ document.write('<script type="text/javascript"  data-lxb-uid="1268165" data-lxb-
 $(function(){
     //侧边与回呼
     $("#callBtn").on("click",function(){
-        setEvent('咨询浮动条7','7免费通话:'+$('#telInput').val());
+            setEvent('右侧浮动栏4','免费通话:'+$('#telInput').val());
             lxb.call(document.getElementById("telInput"));
     });
     //收藏按钮
@@ -258,7 +258,6 @@ $(function(){
     //当点击跳转链接后，回到页面顶部位置
     $("#mj-topIcon").click(function(){
         $('body,html').animate({scrollTop:0},1000);
-        setEvent('咨询浮动条9','9返回顶部');
         return false;
     });
     //华丽丽的出现

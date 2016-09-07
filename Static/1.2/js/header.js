@@ -281,7 +281,7 @@ $(document).ready(function(e) {
             if(data.code==1){
                 $('.feedback_s').find('span').html('提交成功，感谢您的吐槽!');
                 $('.feedback_s').show();
-                setEvent('咨询浮动条8','8反馈:'+feedback_content);
+                setEvent('右侧浮动栏7','意见反馈');
                 //重置为空
                 $('.feedback_content').val('');
                 $('.feedback_contact').val('');
