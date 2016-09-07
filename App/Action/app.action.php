@@ -65,7 +65,7 @@ abstract class AppAction extends Action
         //获得友情链接数据
         $frendlyLink = $this->com('redisHtml')->get('footer_link');
         if(empty($frendlyLink)){
-            $frendlyLink = $this->load('faq')->newsList(array('c'=>47,'limit'=>20));
+            $frendlyLink = $this->load('faq')->newsList(array('c'=>47,'limit'=>50));
             $this->com('redisHtml')->set('footer_link', $frendlyLink, 3600);
         }
         $this->set('frendlyLink', $frendlyLink);
