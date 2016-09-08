@@ -30,15 +30,15 @@
                     <div>
                         <div class="ms-filterCenter">
                             <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" module="聚合页列表1-<?=$k+1?>" addmsg="01-查看详情" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p><span><?=$v['class']?>类</span>-<?=$_CLASS[$v['class']]?></p>
                                 <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="javascript:void(0);" addmsg="<?=$v['name']?>" webid="30" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="javascript:void(0);" addmsg="<?=$v['name']?>" webid="31" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+                                <a href="javascript:void(0);" module="聚合页列表1-<?=$k+1?>" addmsg="表单-02-询价" webid="30" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" addmsg="咨询-03-联系卖家" webid="31" module="聚合页列表1-<?=$k+1?>" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
                             </div>
                         </div>
                     </div>
@@ -49,15 +49,15 @@
                     <div class="ms-filterMany">
                         <div class="ms-filterCenter">
                             <a href="javascript:void(0);" tnumber="<?=$v['number']?>" class="ms-collect <?if($v['isLook']=='1'){echo 'cur';}?>"><i class="us-icon us-icon20"></i></a>
-                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
+                            <span class="ms-filtersImg"><a href="<?=$v['viewUrl']?>" module="聚合页列表1-<?=$k+1?>" addmsg="01-查看详情" target="_blank"><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></a></span>
                             <div class="ms-filtersListTxt">
                                 <h6 title="<?=$v['name']?>"><?=$v['name']?mb_substr($v['name'], 0, 10, 'UTF-8'):'-'?></h6>
                                 <p>共<em><?=count($_c_)?></em>个分类</p>
                                 <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="javascript:void(0);" addmsg="<?=$v['name']?>" webid="30" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="javascript:void(0);" addmsg="<?=$v['name']?>" webid="31" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
+                                <a href="javascript:void(0);" module="聚合页列表1-<?=$k+1?>" addmsg="表单-02-询价" webid="30" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" addmsg="咨询-03-联系卖家" module="聚合页列表1-<?=$k+1?>" webid="31" onclick="goChat()" class="ms-seller"><i class="us-icon us-icon22"></i>联系卖家</a>
                             </div>
                         </div>
                         <div class="ms-sortMain">
@@ -83,7 +83,7 @@
                 <font>
                     建议你：<br>
                     1 . 修改<lable>筛选条件</lable>，重新试试<br>
-                    2 . <a javascript="void(0);" onclick="goChat();">联系我们</a> 让我们帮你找吧！<br>
+                    2 . <a javascript="void(0);" onclick="goChat();" module="查询无结果" addmsg="咨询-查询无结果">联系我们</a> 让我们帮你找吧！<br>
                     <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">3秒极速匹配</span> <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">1对1专业服务</span>
                 </font>
             </div>

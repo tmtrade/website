@@ -1526,6 +1526,7 @@
         //限时抢功能
         $('.limittime').click(function(){
             goChat();
+            setEvent('母亲节','咨询-');
         });
         //失去焦点事件
         $('#lesson_tel').blur(function(){
@@ -1575,6 +1576,7 @@
         $.each(Obj,function(i,n){
             if(n.code!=-1){
                 //弹出成功框
+                setEvent('母亲节','求购需求');
                 getLayer($('#mj-submitteS'));
             }else{
                 //弹出失败框

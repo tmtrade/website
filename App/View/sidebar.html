@@ -13,7 +13,7 @@
             </div>
         </li>
         <li>
-            <a href="javascript:;" onclick="goChat()" module="右侧浮动栏2" addmsg="买">
+            <a href="javascript:;" onclick="goChat()" module="右侧浮动栏2" addmsg="咨询-买">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-2.png">
                     买
@@ -25,7 +25,7 @@
             </div>
         </li>
         <li style="margin-top: 0px;">
-            <a href="javascript:;" onclick="goChat()"  module="右侧浮动栏3" addmsg="卖">
+            <a href="javascript:;" onclick="goChat()"  module="右侧浮动栏3" addmsg="咨询-卖">
                 <div class="rg-nav-pic">
                     <img src="<?=StaticDir?>1.2/images/rg-nav-3.png">
                     卖
@@ -166,7 +166,7 @@ document.write('<script type="text/javascript"  data-lxb-uid="1268165" data-lxb-
 $(function(){
     //侧边与回呼
     $("#callBtn").on("click",function(){
-            setEvent('右侧浮动栏4','免费通话:'+$('#telInput').val());
+            setEvent('右侧浮动栏4','表单-免费通话:'+$('#telInput').val());
             lxb.call(document.getElementById("telInput"));
     });
     //收藏按钮

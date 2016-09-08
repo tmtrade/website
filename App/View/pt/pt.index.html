@@ -117,8 +117,8 @@
                 <?}?>
             </div>
             <div class="pt-fil-zx">
-                <a class="enq" href="javascript:void(0);" addmsg="02-询价" webid="30" module="专利列表1-<?=$k+1?>" onclick="xunjia(this);">询 价</a>
-                <a class="cont" href="javascript:void(0);" addmsg="03-联系卖家" webid="31" module="专利列表1-<?=$k+1?>" onclick="goChat()">联系卖家</a>
+                <a class="enq" href="javascript:void(0);" addmsg="表单-02-询价" webid="30" module="专利列表1-<?=$k+1?>" onclick="xunjia(this);">询 价</a>
+                <a class="cont" href="javascript:void(0);" addmsg="咨询-03-联系卖家" webid="31" module="专利列表1-<?=$k+1?>" onclick="goChat()">联系卖家</a>
             </div>
         </li>
     <?}?>
@@ -135,7 +135,7 @@
                 <? }else{ ?>
                 1 . 修改<lable>筛选条件</lable>，重新试试<br>
                 <? } ?>
-                2 . <a javascript="void(0);" onclick="goChat();">联系我们</a> 让我们帮你找吧！<br>
+                2 . <a javascript="void(0);" onclick="goChat();" module="无结果" addmsg="咨询-帮你找">联系我们</a> 让我们帮你找吧！<br>
                 <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">3秒极速匹配</span> <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">1对1专业服务</span>
             </font>
         </div>
@@ -454,6 +454,7 @@
                 if(n.code!=-1){
                     //弹出成功框
                     clearKJLogin();
+                    setEvent('帮我选','表单-专利需求');
                     getLayer($('#mj-submitteS'));
                 }else{
                     //弹出失败框

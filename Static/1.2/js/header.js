@@ -140,6 +140,7 @@ $(document).ready(function(e) {
             return false;
         }
         setSearch(kw_value,'商标名称');
+        setEvent('搜索-商标名称',kw_value);
         sendBehavior(100,ptype, e.pageX, e.pageY,kw_value,$('#searchForm').submit());
     });
     //专利搜索框按钮触发
@@ -169,6 +170,7 @@ $(document).ready(function(e) {
             kw_value = kw_value.substr(0, 30);
         }
         setSearch(kw_value,'专利名称');
+        setEvent('搜索-专利名称',kw_value);
         $('#searchPtForm').submit();
     });
     //登录提示
@@ -548,6 +550,8 @@ function analyzePage(ptype){
             str = 'faq列表页';break;
         case '17':
             str = 'faq详情页';break;
+        case '18':
+            str = '活动页';break;
         default:
             str = '未知';
     }

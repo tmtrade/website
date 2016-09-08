@@ -13,7 +13,7 @@ class TopicAction extends AppAction
     public $caches      = array('lesson_one','tmall_jd');
     public $cacheId     = 'redisHtml';
     public $expire      = 3600;//1小时
-    public $ptype       = 9;
+    public $ptype       = 18;
     
     //第一课
     public function lesson_one()

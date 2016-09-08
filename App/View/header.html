@@ -119,6 +119,7 @@
             task_aim['remarks'] += ';电话号码：' + login_mobile;
             task_aim['tel'] 			= login_mobile;
             //提交数据
+            setEvent('需求登记','表单-'+login_mobile);
             ucBuy.buyAdd(task_aim);
         }
    });
@@ -479,7 +480,7 @@
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
         if ( _value != '' ){
-            html = '<li><a href="/search/?kw='+_value+'&kt=1" onclick="setSearch('+_value+',\'商标名称\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="商标名称"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=2" onclick="setSearch('+_value+',\'商标号\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="商标号"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标号</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=3" onclick="setSearch('+_value+',\'适用服务\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="适用服务"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">适用服务</font>“'+_value+' ”搜索结果</span></a></li>';
+            html = '<li><a href="/search/?kw='+_value+'&kt=1" onclick="setSearch('+_value+',\'商标名称\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="搜索-商标名称"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=2" onclick="setSearch('+_value+',\'商标号\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="搜索-商标号"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">商标号</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/search/?kw='+_value+'&kt=3" onclick="setSearch('+_value+',\'适用服务\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="搜索-适用服务"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">适用服务</font>“'+_value+' ”搜索结果</span></a></li>';
             $(".tm-pull-down").html(html);
             $(".tm-pull-down").show();
         }else{
@@ -490,7 +491,7 @@
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
         if ( _value != '' ){
-            html = '<li><a href="/pt/?kw='+_value+'&kt=1" onclick="setSearch('+_value+',\'专利名称\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="专利名称"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">专利名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/pt/?kw='+_value+'&kt=2" onclick="setSearch('+_value+',\'专利号\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="专利号"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">专利号</font>“ '+_value+'”搜索结果</span></a></li>';
+            html = '<li><a href="/pt/?kw='+_value+'&kt=1" onclick="setSearch('+_value+',\'专利名称\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="搜索-专利名称"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">专利名称</font>“ '+_value+'”搜索结果</span></a></li><li><a href="/pt/?kw='+_value+'&kt=2" onclick="setSearch('+_value+',\'专利号\');layer.load(1,{shade: [0.2,\'#000\']});" addmsg="'+_value+'" webid="100" module="搜索-专利号"><span class="fl" style="width:100%">按 <font style="font-weight: bold;color:#ff6666">专利号</font>“ '+_value+'”搜索结果</span></a></li>';
             $(".pt-pull-down").html(html);
             $(".pt-pull-down").show();
         }else{

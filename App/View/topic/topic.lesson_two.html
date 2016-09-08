@@ -356,7 +356,7 @@
         </li>
     </ul>
     <ul class="less-zx" style="border: 1px">
-        <li><a class="aaaa" href="javascript:void(0)" onclick="goChat()"><img src="<?=StaticDir?>topic/lesson-two/images/lesson-mes.png">在线咨询</a></li>
+        <li><a class="aaaa" href="javascript:void(0)" onclick="goChat()" module="第二课" addmsg="咨询-"><img src="<?=StaticDir?>topic/lesson-two/images/lesson-mes.png">在线咨询</a></li>
         <li><a class="aaaa" id="top"><img src="<?=StaticDir?>topic/lesson-two/images/lesson-jt.png">返回顶部</a></li>
     </ul>
 </div>
@@ -468,6 +468,7 @@
             if(n.code!=-1){
                 //弹出成功框
                 getLayer($('#mj-submitteS'));
+                setEvent('第二课','求购需求');
                 $('#lesson_tel').val("");
             }else{
                 //弹出失败框

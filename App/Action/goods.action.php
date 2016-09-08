@@ -102,6 +102,7 @@ class GoodsAction extends AppAction
         }
 
         $this->set('list', $result);
+        $this->set('page', $page);
         $this->display();
     }
 

@@ -136,7 +136,7 @@
                     <dl>
                         <dd>
                             <i class="us-icon uj_icon2"></i><span class="sqr" title="<?=$info['proName']?>">专利申请人：<?=$info['proName']?></span>
-                            <a href="javascript:;" webid="31" onclick="goChat()" module="咨询ta"><i class="us-icon uj_icon30"></i>咨询ta</a>
+                            <a href="javascript:;" webid="31" onclick="goChat()" module="咨询-咨询ta"><i class="us-icon uj_icon30"></i>咨询ta</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
@@ -176,7 +176,7 @@
                 至少<label>1件</label>发明专利<br/>
                 <label>6件</label>实用新型专利
             </p>
-            <a class="Hp-pick" webid="31" href="javascript:;" onclick="goChat()" module="帮我选">帮我选</a>
+            <a class="Hp-pick" webid="31" href="javascript:;" onclick="goChat()" module="帮我选" addmsg="咨询-帮我选">帮我选</a>
         </div>
         <div class="u-patent-ad2 comAd">
             <span style="left:65px;top:190px;">拿高薪</span>
@@ -185,10 +185,10 @@
                 <label>1件</label>实用新型专利<br/>
                 或<label>1件</label>发明专利
             </p>
-            <a class="Hp-pick" webid="31" href="javascript:;" onclick="goChat()" module="帮我选">帮我选</a>
+            <a class="Hp-pick" webid="31" href="javascript:;" onclick="goChat()" module="帮我选" addmsg="咨询-帮我选">帮我选</a>
         </div>
         <div class="u-patent-ad3 comAd">
-            <a class="Hp-pick" webid="31" href="javascript:;" onclick="goChat()" module="帮我选">帮我选</a>
+            <a class="Hp-pick" webid="31" href="javascript:;" onclick="goChat()" module="帮我选" addmsg="咨询-帮我选">帮我选</a>
         </div>
         <? if($tj): ?>
         <div class="u-patent-ad4 comAd">
@@ -368,7 +368,7 @@
                                     <label>•</label>积分落户？<br/>
                                     <label>•</label>还是完成指标？<br/>
                                 </p>
-                                <div class="more-qk"><font>更多情况 </font><a href="javascript:;" onclick="goChat()"><span>我要咨询</span></a>
+                                <div class="more-qk"><font>更多情况 </font><a href="javascript:;" onclick="goChat()" addmsg="咨询-我要咨询"><span>我要咨询</span></a>
                                 </div>
                             </dd>
                             <dd>
@@ -561,7 +561,7 @@
             buyData['type'] 		= 7;
             buyData['remarks'] 		= remarks;
             //提交数据
-            setEvent('立即购买',tel);
+            setEvent('立即购买','表单-'+tel);
             ucBuy.buyAdd(buyData);
         }else{
             //分为登录无手机和未登录两种情况
@@ -616,7 +616,7 @@
         buyData['type'] 		= 7;
         buyData['remarks'] 		= remarks;
         //提交数据
-        setEvent('打给我',tel);
+        setEvent('打给我','表单-'+tel);
         ucBuy.buyAdd(buyData);
     }
     //检测用户是否购买回调
