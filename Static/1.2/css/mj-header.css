@@ -1532,7 +1532,13 @@ table {
 .chaofan-mj-logR_top span.cur{
 	border-bottom: solid 2px #ff6666 !important;
 	}
-
+.chaofan-mj-logR_top{
+    overflow: hidden;
+    padding-bottom: 0px !important;
+}
+.chaofan-mj-logR_top span{
+    float: left;
+}
 .yzc-account{
    position:relative;
 }
