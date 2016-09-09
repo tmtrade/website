@@ -236,7 +236,7 @@
                     <dl>
                         <dd>
                             <i class="us-icon uj_icon2"></i><span class="sqr" title="<?=$info['proName']?>">申请人：<?=$info['proName']?></span>
-                            <a href="javascript:;" webid="31" onclick="goChat()" module="咨询ta"><i class="us-icon uj_icon30"></i>咨询ta</a>
+                            <a href="javascript:;" webid="31" onclick="goChat()" addmsg="咨询-咨询ta" module="咨询ta"><i class="us-icon uj_icon30"></i>咨询ta</a>
                         </dd>
                         <dd>
                             <i class="us-icon uj_icon31"></i>&nbsp;&nbsp;<span>电话：</span>
@@ -757,7 +757,7 @@
             buyData['class'] 		= $('#class').val();
             buyData['subject'] 		= '求购信息';
             buyData['remarks'] 		= remarks;
-	    setEvent('立即购买','提交了账号'+tel);
+	    setEvent('立即购买','表单-提交了账号'+tel);
             //提交数据
             ucBuy.buyAdd(buyData);
         }else{
@@ -808,7 +808,7 @@
         buyData['remarks'] 		= remarks;
         //提交数据
         sendBehavior(30,ptype, 0, 0,'tel:'+tel);//保存操作信息
-	setEvent('打给我','提交了电话号'+tel);
+	setEvent('打给我','表单-提交了电话号'+tel);
         ucBuy.buyAdd(buyData);
     }
     //检测用户是否购买回调

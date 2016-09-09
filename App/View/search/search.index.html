@@ -232,8 +232,8 @@
                                 <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry" addmsg="02-询价" webid="30" module="商标列表-第1屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="03-联系卖家" webid="31" module="商标列表-第1屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon22"></i>联系卖家</a>
+                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry" addmsg="表单-02-询价" webid="30" module="商标列表-第1屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="咨询-03-联系卖家" webid="31" module="商标列表-第1屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon22"></i>联系卖家</a>
                             </div>
                         </div>
                     </div>
@@ -253,8 +253,8 @@
                                 <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 14, 'UTF-8'):'-'?></p>
                             </div>
                             <div class="ms-filterBtn">
-                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry"  addmsg="02-询价" webid="30" module="商标列表-第1屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>">&yen;&nbsp;询&nbsp;价</a>
-                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="03-联系卖家" webid="31" module="商标列表-第1屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon22" ></i>联系卖家</a>
+                                <a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry"  addmsg="表单-02-询价" webid="30" module="商标列表-第1屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>">&yen;&nbsp;询&nbsp;价</a>
+                                <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" addmsg="咨询-03-联系卖家" webid="31" module="商标列表-第1屏-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon22" ></i>联系卖家</a>
                             </div>
                         </div>
                         <div class="ms-sortMain">
@@ -295,7 +295,7 @@
                     <? }else{ ?>
                     1 . 修改<lable>筛选条件</lable>，重新试试<br>
                     <? } ?>
-                    2 . <a javascript="void(0);" onclick="goChat();">联系我们</a> 让我们帮你找吧！<br>
+                    2 . <a javascript="void(0);" onclick="goChat();"  module="无结果" addmsg="咨询-帮你找">联系我们</a> 让我们帮你找吧！<br>
                     <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">3秒极速匹配</span> <span><img src="<?=StaticDir?>1.2/images/wjg-ico.png">1对1专业服务</span>
                 </font>
             </div>
@@ -644,7 +644,7 @@
         data['tel'] 	= freeTel;
         data['subject'] = freeContent;
         data['remarks'] = freeContent;
-	setEvent("客服浮动层","提交了所属行业"+freeContent+"联系方式:"+freeTel);
+        setEvent("客服浮动层","表单-提交了所属行业"+freeContent+"联系方式:"+freeTel);
         ucNetwork.submitData(data);
     }
     //发布回调

@@ -109,12 +109,12 @@
                 //用户登录情况下
                 if (n.code != -1) {
                     //弹出成功框
-		    setEvent("快捷登记","提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
+		    setEvent("快捷登记","表单-提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     getLayer($('#mj-submitteS'));
                     clearKJLogin();
                 } else {
                     //弹出失败框
-		    setEvent("快捷登记","提交失败了要求"+subject+"联系方式:"+tel+"姓名:"+name);
+		    setEvent("快捷登记","表单-提交失败了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     getLayer($('#mj-submitteF'));
 		    
                 }
@@ -122,17 +122,17 @@
                 //用户未登录情况下
                 if (n.code == 1) {
                     //用户不存在
-		    setEvent("快捷登记","提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
+		    setEvent("快捷登记","表单-提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     clearKJLogin();
                     getLogin(_buyTitle, tel, 0);
                 } else if (n.code == 2) {
                     //用户存在
-		    setEvent("快捷登记","提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
+		    setEvent("快捷登记","表单-提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     clearKJLogin();
                     getLogin(_login, tel, 1);
                 } else {
                     //弹出失败框
-		    setEvent("快捷登记","提交失败了要求"+subject+"联系方式:"+tel+"姓名:"+name);
+		    setEvent("快捷登记","表单-提交失败了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     getLayer($('#mj-submitteF'));
                 }
             }
@@ -433,11 +433,11 @@
                             <div class="brand-buy">
                                 <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'> <span> </span> </a>
                                 <font>
-                                <a href="javascript:;" class="first" addmsg="02-询价" onclick="xunjia(this);" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
+                                <a href="javascript:;" class="first" addmsg="表单-02-询价" onclick="xunjia(this);" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
                                     <img src="<?=StaticDir?>1.2/images/catebuy1.png">
                                     询 价
                                 </a>
-                                <a href="javascript:void(0);" class="sec" addmsg="03-联系卖家" onclick="goChat()" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
+                                <a href="javascript:void(0);" class="sec" addmsg="咨询-03-联系卖家" onclick="goChat()" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
                                     <img src="<?=StaticDir?>1.2/images/cate-ck.png">
                                     联系卖家
                                 </a>
