@@ -147,7 +147,9 @@ class KeywordModule extends AppModule
         $list = $this->com('redisHtml')->get('kw_'.$_COOKIE['sat5_sid']);
         if($list[$ktype]==$val) return '0';
         
-            
+        $kw = $this->load('trademark')->getTmType($kw) > 0 ? $kw : '';
+        if ( empty($kw) ) return '0';
+        
         $data = array(
            'keyword'   => $kw,
            'type'      => $type,
@@ -155,7 +157,7 @@ class KeywordModule extends AppModule
            'ip'        =>  getClientIp(),
            'date'      => time(),
            );
-           return $this->import('kwcount')->create($data);
+        return $this->import('kwcount')->create($data);
     }
 }
 ?>
