@@ -409,7 +409,7 @@ body,html{
     width: 100%;
     height:50px;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-image: url("../images/classi-ico-bg.png");
 }
 
 .sell-bk2 ul li:hover{
@@ -417,306 +417,306 @@ body,html{
     color: #ffffff;
 }
 .s-clas1{
-    background-image: url("../images/s-clas1.png");
+    background-position:20px 10px;
 }
 .sell-bk2 ul li:hover .s-clas1{
-    background-image: url("../images/s-clas1-1.png");
+    background-position:20px -32px;
 }
 
 .s-clas2{
-    background-image: url("../images/s-clas2.png");
+    background-position:-60px 10px;
 }
 .sell-bk2 ul li:hover .s-clas2{
-    background-image: url("../images/s-clas2-1.png");
+    background-position:-58px -32px;
 }
 
 .s-clas3{
-    background-image: url("../images/s-clas3.png");
+    background-position:-136px 10px;
 }
 .sell-bk2 ul li:hover .s-clas3{
-    background-image: url("../images/s-clas3-1.png");
+    background-position:-134px -32px;
 }
 
 .s-clas4{
-    background-image: url("../images/s-clas4.png");
+    background-position:-206px 10px;
 }
 .sell-bk2 ul li:hover .s-clas4{
-    background-image: url("../images/s-clas4-1.png");
+    background-position:-204px -32px;
 }
 
 .s-clas5{
-    background-image: url("../images/s-clas5.png");
+    background-position: -284px 13px;
 }
 .sell-bk2 ul li:hover .s-clas5{
-    background-image: url("../images/s-clas5-1.png");
+    background-position:-284px -31px;
 }
 
 .s-clas6{
-    background-image: url("../images/s-clas6.png");
+    background-position: -362px 13px;
 }
 .sell-bk2 ul li:hover .s-clas6{
-    background-image: url("../images/s-clas6-1.png");
+    background-position: -362px -28px;
 }
 
 .s-clas7{
-    background-image: url("../images/s-clas7.png");
+    background-position: -438px 13px;
 }
 .sell-bk2 ul li:hover .s-clas7{
-    background-image: url("../images/s-clas7-1.png");
+    background-position: -437px -32px;
 }
 
 .s-clas8{
-    background-image: url("../images/s-clas8.png");
+    background-position: -512px 13px;
 }
 .sell-bk2 ul li:hover .s-clas8{
-    background-image: url("../images/s-clas8-1.png");
+    background-position: -512px -32px;
 }
 
 .s-clas9{
-    background-image: url("../images/s-clas9.png");
+    background-position: -590px 13px;
 }
 .sell-bk2 ul li:hover .s-clas9{
-    background-image: url("../images/s-clas9-1.png");
+    background-position: -590px -32px;
 }
 .s-clas10{
-    background-image: url("../images/s-clas10.png");
+    background-position: -665px 13px;
 }
 .sell-bk2 ul li:hover .s-clas10{
-    background-image: url("../images/s-clas10-1.png");
+    background-position: -665px  -32px;
 }
 .s-clas11{
-    background-image: url("../images/s-clas11.png");
+    background-position: -744px 13px;
 }
 .sell-bk2 ul li:hover .s-clas11{
-    background-image: url("../images/s-clas11-1.png");
+    background-position: -744px  -32px;
 }
 
 .s-clas12{
-    background-image: url("../images/s-clas12.png");
+    background-position: -820px 14px;
 }
 .sell-bk2 ul li:hover .s-clas12{
-    background-image: url("../images/s-clas12-1.png");
+    background-position: -820px  -32px;
 }
 
 .s-clas13{
-    background-image: url("../images/s-clas13.png");
+    background-position: -894px 15px;
 }
 .sell-bk2 ul li:hover .s-clas13{
-    background-image: url("../images/s-clas13-1.png");
+    background-position: -894px  -28px;
 }
 .s-clas14{
-    background-image: url("../images/s-clas14.png");
+    background-position: -970px 15px;
 }
 .sell-bk2 ul li:hover .s-clas14{
-    background-image: url("../images/s-clas14-1.png");
+    background-position: -970px -32px;
 }
 
 .s-clas15{
-    background-image: url("../images/s-clas15.png");
+    background-position: -1045px 15px;
 }
 .sell-bk2 ul li:hover .s-clas15{
-    background-image: url("../images/s-clas15-1.png");
+    background-position: -1045px -32px;
 }
 
 .s-clas16{
-    background-image: url("../images/s-clas16.png");
+    background-position:20px -75px;
 }
 .sell-bk2 ul li:hover .s-clas16{
-    background-image: url("../images/s-clas16-1.png");
+    background-position:20px -120px;
 }
 
 .s-clas17{
-    background-image: url("../images/s-clas17.png");
+    background-position:-56px -75px;
 }
 .sell-bk2 ul li:hover .s-clas17{
-    background-image: url("../images/s-clas17-1.png");
+    background-position:-56px -120px;
 }
 
 .s-clas18{
-    background-image: url("../images/s-clas18.png");
+    background-position:-134px -75px;
 }
 .sell-bk2 ul li:hover .s-clas18{
-    background-image: url("../images/s-clas18-1.png");
+    background-position:-134px -120px;
 }
 
 .s-clas19{
-    background-image: url("../images/s-clas19.png");
+    background-position:-210px -75px;
 }
 .sell-bk2 ul li:hover .s-clas19{
-    background-image: url("../images/s-clas19-1.png");
+    background-position:-210px -120px;
 }
 .s-clas20{
-    background-image: url("../images/s-clas20.png");
+    background-position:-284px -72px;
 }
 .sell-bk2 ul li:hover .s-clas20{
-    background-image: url("../images/s-clas20-1.png");
+    background-position:-284px -120px;
 }
 .s-clas21{
-    background-image: url("../images/s-clas21.png");
+    background-position:-362px -70px;
 }
 .sell-bk2 ul li:hover .s-clas21{
-    background-image: url("../images/s-clas21-1.png");
+    background-position:-362px -118px;
 }
 
 
 .s-clas22{
-    background-image: url("../images/s-clas22.png");
+    background-position:-438px -70px;
 }
 .sell-bk2 ul li:hover .s-clas22{
-    background-image: url("../images/s-clas22-1.png");
+    background-position:-438px -120px;
 }
 
 .s-clas23{
-    background-image: url("../images/s-clas23.png");
+    background-position:-518px -70px;
 }
 .sell-bk2 ul li:hover .s-clas23{
-    background-image: url("../images/s-clas23-1.png");
+    background-position:-518px -120px;
 }
 .s-clas24{
-    background-image: url("../images/s-clas24.png");
+    background-position:-590px -70px;
 }
 .sell-bk2 ul li:hover .s-clas24{
-    background-image: url("../images/s-clas24-1.png");
+    background-position:-590px -116px;
 }
 
 .s-clas25{
-    background-image: url("../images/s-clas25.png");
+    background-position:-668px -70px;
 }
 .sell-bk2 ul li:hover .s-clas25{
-    background-image: url("../images/s-clas25-1.png");
+    background-position:-668px -120px;
 }
 
 .s-clas26{
-    background-image: url("../images/s-clas26.png");
+    background-position:-742px -70px;
 }
 .sell-bk2 ul li:hover .s-clas26{
-    background-image: url("../images/s-clas26-1.png");
+    background-position:-742px -120px;
 }
 
 .s-clas27{
-    background-image: url("../images/s-clas27.png");
+    background-position:-818px -70px;
 }
 .sell-bk2 ul li:hover .s-clas27{
-    background-image: url("../images/s-clas27-1.png");
+    background-position:-818px -116px;
 }
 
 .s-clas28{
-    background-image: url("../images/s-clas28.png");
+    background-position:-897px -70px;
 }
 .sell-bk2 ul li:hover .s-clas28{
-    background-image: url("../images/s-clas28-1.png");
+    background-position:-897px -120px;
 }
 
 .s-clas29{
-    background-image: url("../images/s-clas29.png");
+    background-position:-970px -70px;
 }
 .sell-bk2 ul li:hover .s-clas29{
-    background-image: url("../images/s-clas29-1.png");
+    background-position:-970px -120px;
 }
 .s-clas30{
-    background-image: url("../images/s-clas30.png");
+    background-position:-1048px -73px;
 }
 .sell-bk2 ul li:hover .s-clas30{
-    background-image: url("../images/s-clas30-1.png");
+    background-position:-1048px -120px;
 }
 
 .s-clas31{
-    background-image: url("../images/s-clas31.png");
+    background-position:14px -164px;
 }
 .sell-bk2 ul li:hover .s-clas31{
-    background-image: url("../images/s-clas31-1.png");
+    background-position:14px -212px;
 }
 .s-clas32{
-    background-image: url("../images/s-clas32.png");
+    background-position:-62px -164px;
 }
 .sell-bk2 ul li:hover .s-clas32{
-    background-image: url("../images/s-clas32-1.png");
+    background-position:-62px -212px;
 }
 
 .s-clas33{
-    background-image: url("../images/s-clas33.png");
+    background-position:-132px -164px;
 }
 .sell-bk2 ul li:hover .s-clas33{
-    background-image: url("../images/s-clas33-1.png");
+    background-position:-132px -212px;
 }
 .s-clas34{
-    background-image: url("../images/s-clas34.png");
+    background-position:-210px -164px;
 }
 .sell-bk2 ul li:hover .s-clas34{
-    background-image: url("../images/s-clas34-1.png");
+    background-position:-210px -212px;
 }
 
 .s-clas35{
-    background-image: url("../images/s-clas35.png");
+    background-position:-288px -164px;
 }
 .sell-bk2 ul li:hover .s-clas35{
-    background-image: url("../images/s-clas35-1.png");
+    background-position:-288px -212px;
 }
 
 .s-clas36{
-    background-image: url("../images/s-clas36.png");
+    background-position:-365px -164px;
 }
 .sell-bk2 ul li:hover .s-clas36{
-    background-image: url("../images/s-clas36-1.png");
+    background-position:-365px -212px;
 }
 
 .s-clas37{
-    background-image: url("../images/s-clas37.png");
+    background-position:-438px -164px;
 }
 .sell-bk2 ul li:hover .s-clas37{
-    background-image: url("../images/s-clas37-1.png");
+    background-position:-438px -212px;
 }
 
 .s-clas38{
-    background-image: url("../images/s-clas38.png");
+    background-position:-514px -164px;
 }
 .sell-bk2 ul li:hover .s-clas38{
-    background-image: url("../images/s-clas38-1.png");
+    background-position:-514px -212px;
 }
 
 .s-clas39{
-    background-image: url("../images/s-clas39.png");
+    background-position:-590px -164px;
 }
 .sell-bk2 ul li:hover .s-clas39{
-    background-image: url("../images/s-clas39-1.png");
+    background-position:-590px -212px;
 }
 .s-clas40{
-    background-image: url("../images/s-clas40.png");
+    background-position:-668px -164px;
 }
 .sell-bk2 ul li:hover .s-clas40{
-    background-image: url("../images/s-clas40-1.png");
+    background-position:-668px -212px;
 }
 .s-clas41{
-    background-image: url("../images/s-clas41.png");
+    background-position:-746px -164px;
 }
 .sell-bk2 ul li:hover .s-clas41{
-    background-image: url("../images/s-clas41-1.png");
+    background-position:-746px -212px;
 }
 .s-clas42{
-    background-image: url("../images/s-clas42.png");
+    background-position:-820px -162px;
 }
 .sell-bk2 ul li:hover .s-clas42{
-    background-image: url("../images/s-clas42-1.png");
+    background-position:-821px -210px;
 }
 
 .s-clas43{
-    background-image: url("../images/s-clas43.png");
+    background-position:-894px -160px;
 }
 .sell-bk2 ul li:hover .s-clas43{
-    background-image: url("../images/s-clas43-1.png");
+    background-position:-894px -208px;
 }
 .s-clas44{
-    background-image: url("../images/s-clas44.png");
+    background-position:-972px -162px;
 }
 .sell-bk2 ul li:hover .s-clas44{
-    background-image: url("../images/s-clas44-1.png");
+    background-position:-972px -210px;
 }
 
 .s-clas45{
-    background-image: url("../images/s-clas45.png");
+    background-position:-1048px -162px;
 }
 .sell-bk2 ul li:hover .s-clas45{
-    background-image: url("../images/s-clas45-1.png");
+    background-position:-1048px -208px;
 }
 .Bout-spec{
     margin-top: 42px;
