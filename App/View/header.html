@@ -153,7 +153,7 @@
 </head>
 <body>
 <!--头部-->
-<div class="mj-header">
+<div class="mj-header f-clearfix">
     <input type="hidden" name="sid" id="sid" value="" />
     <input type="hidden" name="area" id="area" value="" />
     <div class="w1180 mj-nav f-clearfix">
@@ -163,8 +163,10 @@
         </ul>
         <ul class="mj-header_right fr">
              <li id="_login_no">
-                <div class="chaofan-login" onclick="setEvent('登录')"></div>
+                 <div class="p-lg">您好，请 <a class="chaofan-login" onclick="setEvent('登录')"></a></div>
+                 <div class="reg"><a>免费注册</a></div>
             </li>
+
             <!-- 登录以后 -->
             <li id="login_after">
             </li>
@@ -172,6 +174,45 @@
             <li>
                 <a target="_blank" href="<?=SELLER_URL?>" module="顶部1" addmsg="出售者平台">出售者平台</a>
             </li>
+            <li class="spacer xs_login_"></li>
+            <li>
+                <a target="_blank" href="<?=SELLER_URL?>" module="顶部1" addmsg="数据共享">数据共享</a>
+            </li>
+            <li class="spacer xs_login_"></li>
+            <li>
+                <a href="/index/jumpWap/" module="顶部4" addmsg="商标报价单工具">商标报价单工具 </a>
+            </li>
+            <li class="spacer xs_login_"></li>
+            <li>
+                <a href="<?=CHECK_URL?>" target="_blank"  module="顶部3" addmsg="商标安全检测">商标安全检测</a>
+            </li>
+	        <li class="spacer xs_login_"></li>
+            <li>
+                <a href="<?=CHECK_URL?>" target="_blank"  module="顶部3" addmsg="商标安全检测">移动版</a>
+            </li>
+            <!--<li>-->
+                <!--<div class="mj-phone">-->
+                    <!--<i class="uj_icon4"></i>-->
+                    <!--<?=TEL400?>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li  class="mj-wx-qq">-->
+                <!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes"><i class="yzc-tp-QQ"></i></a>-->
+            <!--</li>-->
+            <!--<li  class="mj-wx-qq mj-wx">-->
+                <!--<div class="yzc-account">-->
+                    <!--<a href=""><i class="yzc-tp-WX"></i></a>-->
+                    <!--<div class="mj-wx-pic account-list">-->
+                        <!--<span>-->
+                            <!--<img src="<?=StaticDir?>1.2/images/yzc-wx.jpg">-->
+                        <!--</span>-->
+                        <!--<p>-->
+                            <!--专注知识产权流转<br/>-->
+                            <!--欢迎关注微信，随时获取资讯-->
+                        <!--<p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
             <li class="spacer xs_login_"></li>
             <li class="mj-web-nav">
                 <div class="yzc-account">
@@ -183,38 +224,6 @@
                     </div>
                 </div>
             <li>
-            <li class="spacer xs_login_"></li>
-            <li>
-                <a href="<?=CHECK_URL?>" target="_blank"  module="顶部3" addmsg="商标安全检测">商标安全检测</a>
-            </li>
-	    <li class="spacer xs_login_"></li>
-            <li>
-                <a href="/index/jumpWap/" module="顶部4" addmsg="移动版">移动版 </a>
-            </li>
-            <li class="spacer xs_login_"></li>
-            <li>
-                <div class="mj-phone">
-                    <i class="uj_icon4"></i>
-                    <?=TEL400?>
-                </div>
-            </li>
-            <li  class="mj-wx-qq">
-                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes"><i class="yzc-tp-QQ"></i></a>
-            </li>
-            <li  class="mj-wx-qq mj-wx">
-                <div class="yzc-account">
-                    <a href=""><i class="yzc-tp-WX"></i></a>
-                    <div class="mj-wx-pic account-list">
-                        <span>
-                            <img src="<?=StaticDir?>1.2/images/yzc-wx.jpg">
-                        </span>
-                        <p>
-                            专注知识产权流转<br/>
-                            欢迎关注微信，随时获取资讯
-                        <p>
-                    </div>
-                </div>
-            </li>
         </ul>
     </div>
 </div>
@@ -234,58 +243,104 @@
             <a href="/"><img src="/Static/1.2/images/logo.png" alt="一只蝉商标转让网站:快速买到放心商标" module="logo"/></a>
         </div>
         <div class="mj-search_con fl f-clearfix">
-            <p class="mj-search_nav">
-                <span id="sear1" onclick="jc('sear',1,2)" class="up">搜商标</span>
-                <span id="sear2" onclick="jc('sear',2,2)">搜专利</span>
-            </p>
-            <div class="mj-search_box" id="con_sear_1" style="display: block;">
-                <form id="searchForm" method="GET" action="/search/index/">
-                    <input type="text" name="kw" class="inptext tm_kw"  placeholder="输入你想买的商标名称/商标号/适用服务" autocomplete="off"/>
-                    <div class="mj-search-submit mj-search-submit-tm">
-                        <i class="uj_icon8"></i>
-                    </div>
-                </form>
-                <ul class="mj-pull-down tm-pull-down">
-                </ul>
-                <div class="mj-search_btm">
-                    <p class="tj-fl">
-                        <?
+
+            <div class="mj-search_box">
+                <div  class="mj-search-nav">
+                    <a class="sea-btn"><font> 搜商标</font>  <i class="fa fa-angle-down"></i></a>
+                    <p class="pul-lis">
+                        搜专利
+                    </p>
+
+                </div>
+                <div id="con_sear_1" style="display: block">
+                    <form id="searchForm" method="GET" action="/search/index/">
+                        <input type="text" name="kw" class="inptext tm_kw" placeholder="输入你想买的商标名称/商标号/适用服务" autocomplete="off">
+                        <div class="mj-search-submit mj-search-submit-tm">
+                            <i class="uj_icon8"></i>
+                        </div>
+                    </form>
+                    <ul class="mj-pull-down tm-pull-down">
+                    </ul>
+                    <div class="mj-search_btm">
+                        <p class="tj-fl">
+                            <?
                         $hotwordStr = '';
                         foreach($hotwords as $hotword){
                             $hotwordStr .= "<a class='{$hotword['other']}' href='{$hotword['link']}'>{$hotword['desc']}</a>";
-                        }
-                        echo $hotwordStr;
-                        ?>
-                    </p>
-                    <a href="/help" target="_blank"><span class="Bran_note"><i></i>商标45类注释</span></a>
-                </div>
-            </div>
-            <div class="mj-search_box" id="con_sear_2">
-                <form id="searchPtForm" method="GET" action="/pt/index/">
-                    <input type="text" name="kw" class="inptext pt_kw"  placeholder="输入你想买的专利名称/专利号" autocomplete="off"/>
-                    <div class="mj-search-submit mj-search-submit-pt">
-                        <i class="uj_icon8"></i>
+                            }
+                            echo $hotwordStr;
+                            ?>
+                        </p>
+                        <a href="/help" target="_blank"><span class="Bran_note"><i></i>商标45类注释</span></a>
                     </div>
-                </form>
-                <ul class="mj-pull-down pt-pull-down">
-                </ul>
-                <div class="mj-search_btm">
-                    <p class="tj-fl">
-                        <a target="_blank" href='/pt/?t=1'>发明</a>
-                        <a target="_blank" href='/pt/?t=2'>实用新型</a>
-                        <a target="_blank" href='/pt/?t=3'>外观设计</a>
-                        <a target="_blank" href='/pt/?t=2&c=c'>化工</a>
-                        <a target="_blank" href='/pt/?t=2&c=f'>机械</a>
-                        <a target="_blank" href='/pt/?t=2&c=h'>电学</a>
-                    </p>
-                    <a href="/help" target="_blank"><span class="Bran_note"><i></i>商标45类注释</span></a>
+                </div>
+                <div id="con_sear_2">
+                    <form id="searchPtForm" method="GET" action="/pt/index/">
+                        <input type="text" name="kw" class="inptext pt_kw" placeholder="输入你想买的专利名称/专利号" autocomplete="off">
+                        <div class="mj-search-submit mj-search-submit-pt">
+                            <i class="uj_icon8"></i>
+                        </div>
+                    </form>
+                    <ul class="mj-pull-down tm-pull-down">
+                    </ul>
+                    <div class="mj-search_btm">
+                        <p class="tj-fl">
+                            <?
+                        $hotwordStr = '';
+                        foreach($hotwords as $hotword){
+                            $hotwordStr .= "<a class='{$hotword['other']}' href='{$hotword['link']}'>{$hotword['desc']}</a>";
+                            }
+                            echo $hotwordStr;
+                            ?>
+                        </p>
+                        <a href="/help" target="_blank" class="fr"><span class="Bran_note"><i></i>商标45类注释</span></a>
+                    </div>
                 </div>
             </div>
+            <!--<div class="mj-search_box" id="con_sear_2">-->
+                <!--<form id="searchPtForm" method="GET" action="/pt/index/">-->
+                    <!--<input type="text" name="kw" class="inptext pt_kw"  placeholder="输入你想买的专利名称/专利号" autocomplete="off"/>-->
+                    <!--<div class="mj-search-submit mj-search-submit-pt">-->
+                        <!--<i class="uj_icon8"></i>-->
+                    <!--</div>-->
+                <!--</form>-->
+                <!--<ul class="mj-pull-down pt-pull-down">-->
+                <!--</ul>-->
+                <!--<div class="mj-search_btm">-->
+                    <!--<p class="tj-fl">-->
+                        <!--<a target="_blank" href='/pt/?t=1'>发明</a>-->
+                        <!--<a target="_blank" href='/pt/?t=2'>实用新型</a>-->
+                        <!--<a target="_blank" href='/pt/?t=3'>外观设计</a>-->
+                        <!--<a target="_blank" href='/pt/?t=2&c=c'>化工</a>-->
+                        <!--<a target="_blank" href='/pt/?t=2&c=f'>机械</a>-->
+                        <!--<a target="_blank" href='/pt/?t=2&c=h'>电学</a>-->
+                    <!--</p>-->
+                    <!--<a href="/help" target="_blank"><span class="Bran_note"><i></i>商标45类注释</span></a>-->
+                <!--</div>-->
+            <!--</div>-->
 
         </div>
         <div class="mj-search_btn fr f-clearfix">
-
-            <a href="/sell" target="_blank" class="mj-btnSell" module="我要卖"><h2><i class="uj_icon6"></i>我要出售</h2></a>
+            <div class="mj-weix-qq">
+                <span><img src="/Static/1.2/images/tp-sel-ico.png">4006-762-003</span>
+                <em>|</em>
+                <div  class="mj-wx">
+                    <a href=""><img src="/Static/1.2/images/tp-sel-ic.png"></a>
+                    <div class="mj-wx-pic account-list">
+                        <span>
+                             <img src="<?=StaticDir?>1.2/images/yzc-wx.jpg">
+                        </span>
+                        <p>
+                            专注知识产权流转<br/>
+                            欢迎关注微信，随时获取资讯
+                        <p>
+                    </div>
+                </div>
+                <!--<i><img src="/Static/1.2/images/tp-sel-ic.png"></i>-->
+                <em>|</em>
+                <a class="mj-qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes"><img src="/Static/1.2/images/yzc-tp-QQ.png"></a>
+            </div>
+            <a href="/sell" target="_blank" class="mj-btnSell" module="我要卖"><h2><i><img src="/Static/1.2/images/tp-sel-ic2.png"></i>我要出售</h2></a>
         </div>
     </div>
 </div>
@@ -380,7 +435,7 @@
                     专利购买
                 </a>
                 <a href="/zhuanti" addmsg="5专题活动" module="频道5" <? if($nav_name=='zhuanti') echo $nav_style; ?>>
-                    专题活动
+                    专题活动<span class="nav-hot">new</span>
                 </a>
                  <a href="<?=TM_URL?>" target="_blank" addmsg="6商标注册" module="频道6">
                      商标注册
@@ -397,6 +452,7 @@
 <script src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <!--mj-mNav end-->
 <script type="text/javascript">
+
   //左边菜单栏
    (function($){
         $.fn.hoverDelay = function(options){
@@ -452,7 +508,24 @@
             _this.attr('_original', '');
         });
     }
-
+    $(".mj-search-nav").toggle(function(){
+       $(".mj-search-nav p").slideDown();
+    },function(){
+        $(".mj-search-nav p").slideUp();
+    });
+    $(".mj-search-nav p").click(function(){
+        if( $.trim($(".mj-search-nav p").html())=="搜专利"){
+            $(".mj-search-nav p").html('搜商标');
+            $(".mj-search-nav a").find("font").html("搜专利");
+            $("#con_sear_1, #con_sear_2").css({"display":"none"});
+            $(" #con_sear_2").css({"display":"block"});
+        }else{
+            $(".mj-search-nav p").html('搜专利');
+            $(".mj-search-nav a").find("font").html("搜商标");
+            $("#con_sear_1, #con_sear_2").css({"display":"none"});
+            $(" #con_sear_1").css({"display":"block"});
+        }
+    })
     $('.tm_kw').focus(function (){
         var _this   = $(this);
         var _value  = $.trim( _this.val() );
