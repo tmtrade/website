@@ -95,6 +95,24 @@ class SitemapAction extends ConsoleAction{
             $flag = false;
             $str .= $rst6['msg'];
         }
+        //生成专利分类数据
+        $rst7 = $this->createType();
+        if($rst7['code']==0){
+            $flag = false;
+            $str .= $rst7['msg'];
+        }
+        //生成专利类型数据
+        $rst8 = $this->createPtFenLei();
+        if($rst8['code']==0){
+            $flag = false;
+            $str .= $rst8['msg'];
+        }
+        //生成专利详情数据
+        $rst9 = $this->createPtDetail();
+        if($rst9['code']==0){
+            $flag = false;
+            $str .= $rst9['msg'];
+        }
         //生成主文件
         $rst5 = $this->createMain();
         if($rst5['code']==0){
@@ -136,6 +154,32 @@ class SitemapAction extends ConsoleAction{
     }
 
     /**
+     * 生成详情页xml
+     * @throws SpringException
+     */
+    public function createPtDetail(){
+        $root = C('SITEMAP_ROOT');
+        $data = $this->load('sitemap')->getPtDetail();
+        foreach($data as $k=>$v){
+            ob_start();
+            if($k==0){
+                $k = '';
+            }
+            //获取输出内容,并写文件
+            $this->set('data',$v);
+            $this->set('level',0.6);
+            $str = $this->fetch('sitemap/conten.html');
+            $str = $this->xmlHead.$str;
+            $rst = file_put_contents($root.'/patents'.$k.'.xml',$str);
+            if($rst===false){
+                return array('code'=>0,'msg'=>'pt_detail--error ');
+            }
+        }
+        //返回结果
+        return array('code'=>1);
+    }
+
+    /**
      * 生成分类xml
      * @throws SpringException
      */
@@ -151,6 +195,26 @@ class SitemapAction extends ConsoleAction{
         //返回结果
         if($rst===false){
             return array('code'=>0,'msg'=>'fenlei--error ');
+        }
+        return array('code'=>1);
+    }
+
+    /**
+     * 生成专利类型xml
+     * @throws SpringException
+     */
+    public function createType(){
+        //取数据
+        $data = $this->load('sitemap')->getPtType();
+        //获取输出内容,并写文件
+        $this->set('data',$data);
+        $this->set('level',0.8);
+        $str = $this->fetch('sitemap/conten.html');
+        $str = $this->xmlHead.$str;
+        $rst = file_put_contents(C('SITEMAP_ROOT').'/pt_type.xml',$str);
+        //返回结果
+        if($rst===false){
+            return array('code'=>0,'msg'=>'pt_type--error ');
         }
         return array('code'=>1);
     }
@@ -227,6 +291,26 @@ class SitemapAction extends ConsoleAction{
         }
         return array('code'=>1);
     }
+
+    /**
+     * 生成专利类型xml
+     * @return array
+     * @throws SpringException
+     */
+    public function createPtFenLei(){
+        $data = $this->load('sitemap')->getPtFenLei();
+        $this->set('data',$data);
+        $this->set('level',0.7);
+        $str = $this->fetch('sitemap/conten.html');
+        $str = $this->xmlHead.$str;
+        $rst = file_put_contents(C('SITEMAP_ROOT').'/pt_fenlei.xml',$str);
+        //返回结果
+        if($rst===false){
+            return array('code'=>0,'msg'=>'pt_fenlei--error ');
+        }
+        return array('code'=>1);
+    }
+
     /**
      * 生成index.xml文件
      * @return array

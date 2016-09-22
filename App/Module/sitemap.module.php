@@ -14,6 +14,7 @@ class SitemapModule extends AppModule{
         'topic'		    => 'topic',
         'sale'          => 'sale',
         'group'         => 'group',
+        'pt'            => 'patent',
     );
 
     public $maxSize = 40000;//xml文件中最大的网址数
@@ -113,5 +114,67 @@ class SitemapModule extends AppModule{
             $data[] = array('url'=>'/s-c-'.$item['class'].'--g-'.$item['group'].'/');
         }
         return $data;
+    }
+
+    /**
+     * 得到专利类型数据(从配置文件获得)
+     */
+    public function getPtType(){
+        //得到配置文件
+        $ptType     = C('PATENT_TYPE');
+        $data = array();
+        foreach($ptType as $k=>$v){
+            $data[] = array('url'=>'/pt/?t='.$k);
+        }
+        return $data;
+    }
+
+    /**
+     * 得到专利类型分类数据(从配置文件获得)
+     */
+    public function getPtFenLei(){
+        //得到配置文件
+        $ptType     = C('PATENT_TYPE');
+        $ptOne      = C('PATENT_ClASS_ONE');
+        $ptTwo      = C('PATENT_ClASS_TWO');
+        $data = array();
+        foreach($ptType as $k=>$v){
+            if($k==3){
+                foreach($ptTwo as $k1=>$v1){
+                    $data[] = array('url'=>'/pt/?t='.$k.'&amp;c='.$k1);
+                }
+            }else{
+                foreach($ptOne as $k2=>$v2){
+                    $data[] = array('url'=>'/pt/?t='.$k.'&amp;c='.$k2);
+                }
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * 得到专利详情页的数据
+     * @return array
+     */
+    public function getPtDetail(){
+        $count = $this->import('pt')->count();
+        $pageSize = floor($count/($this->maxSize));
+        $dataB = array();
+        $r['col'] = array('number','updated');
+        for($i=0;$i<=$pageSize;++$i){
+            $dataS = array();
+            //查询数据
+            $r['index'] = array($i*($this->maxSize),$this->maxSize);
+            $tmp = $this->import('pt')->find($r);
+            //组装数据
+            foreach($tmp as $v){
+                $ii = array();
+                $ii['url'] = '/pt-'.$v['number'].'.html';
+                $ii['time'] = $v['updated'];
+                $dataS[] = $ii;
+            }
+            $dataB[] = $dataS;
+        }
+        return $dataB;
     }
 }

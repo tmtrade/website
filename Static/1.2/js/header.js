@@ -2,6 +2,7 @@
 //简单选项卡
 function jc(name,curr,n)
 {
+    return;
     for(i=1;i<=n;i++)
     {
         var menu=document.getElementById(name+i);
