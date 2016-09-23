@@ -16,9 +16,10 @@ class PatentAction extends AppAction{
      */
     private function getTitle($data)
     {
-        $title = $data['name']."_".$data['class']."类_"."专利转让|买卖|交易|价格 – 一只蝉商标转让平台网";
-        $keywords = $data['name'].'专利转让,'.$data['class'].'类专利转让'.',商标转让,注册商标交易买卖';
-        $description = $data['name'].','.$data['class'].'类专利转让交易买卖价格信息。购买专利商标到一只蝉商标交易平台第一时间获取商标价格信息,一只蝉商标转让平台网-独家签订交易损失赔付保障协议商标交易买卖平台';
+        $title = $data['name']."_".$data['class']."类_"."专利_".$data['temp']."专利转让|申请|交易|查询 – 一只蝉商标转让平台网";
+        $keywords = $data['name'].'专利转让,'.$data['number'].','.$data['class'].'类专利转让,'.$data['temp'].'专利转让申请交易,专利交易平台网';
+         
+        $description =$data['name'].'专利,专利号：'.$data['number'].','.$data['class'].'类专利。'.$data['temp'].'专利转让查询申请交易平台。购买'.$data['class'].'类专利上一只蝉专利交易平台第一时间获取专利转让价格信息,一只蝉专利转让交易平台网-独家签订交易损失赔付保障协议专利交易买卖平台';
         return array("title"=>$title,"keywords"=>$keywords,"description"=>$description);
     }
 
@@ -60,9 +61,26 @@ class PatentAction extends AppAction{
         $patentType 	= C("PATENT_TYPE");//专利类别
         $patentClassOne	= C("PATENT_ClASS_ONE");//行业分类
         $patentClassTwo	= C("PATENT_ClASS_TWO");//行业分类
+        
+        //获取行业分类
+        $classList = explode(",", $info['class']);
+        if($info['type']==1 || $info['type']==2){
+            $classArr = $patentClassOne;
+        }else{
+            $classArr = $patentClassTwo;
+        }
+        $temp = '';
+        foreach($classList as $v){
+            $temp .= $classArr[$v]."/";
+        }
+        $temp = trim($temp,'/');
+        
         //设置标题
         $title['name'] 	= $info['title'];
         $title['class']	= $patentType[$info['type']];
+        $title['temp']	= $temp;
+        $title['number']= $number;
+        
         //设置SEO
         $seoList = $this->getTitle($title);
         $this->set('title', $seoList['title']);
@@ -72,6 +90,9 @@ class PatentAction extends AppAction{
         $need = "专利号:".$number;
         //得到推荐专利
         $tj = $this->load('pdetail')->getRandPT();
+        
+        
+        
         //分配数据
         $this->set('patentType', $patentType);
         $this->set('patentClassOne', $patentClassOne);
@@ -82,6 +103,7 @@ class PatentAction extends AppAction{
         $this->set("tminfo", $tminfo);
         $this->set("need", $need);
         $this->set("number", $number);
+        $this->set("temp", $temp);
         $this->display();
     }
 

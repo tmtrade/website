@@ -10,19 +10,11 @@ class PtAction extends AppAction
 {
     
     public $ptype = 10;
+    
     //我要买
     public function index()
     {
-        $this->pageTitle 	= '专利购买,专利转让,买卖专利信息网-- 一只蝉专利转让网';
-
-        $this->pageKey          = '专利购买,专利转让,专利转让信息,买卖专利,专利买卖信息';
-
-        $this->pageDescription  = '一只蝉为你提供购买专利,专利转让信息,买卖专利信息,专利申请等服务，一只蝉是超凡集团资产交易平台。多年专利行业经验，为你提供专业的专利转让买卖服务。';
-        $this->set('title', $this->pageTitle);//页面title
-        $this->set('keywords', $this->pageKey);//页面keywords
-        $this->set('description', $this->pageDescription);//页面description
         //$this->setSeo(4);
-
         $page   = $this->input('page', 'int', 1);
         $type   = $this->input('t', 'string', '');
         $class  = $this->input('c', 'string', '');
@@ -68,6 +60,18 @@ class PtAction extends AppAction
         if ( !empty($list['rows']) ){
             $this->set('has', true);
         }
+        
+         //设置标题
+        $title['name'] 	= $keyword;
+        $title['class']	= $t_title;
+        $title['temp']	= $c_title;
+        
+        //设置SEO
+        $seoList = $this->getTitle($title);
+        $this->set('title', $seoList['title']);
+        $this->set('keywords', $seoList['keywords']);
+        $this->set('description', $seoList['description']);
+        
         //得到推荐专利
         $tj = $this->load('pdetail')->getRandPT();
         $this->set("tj", $tj);
@@ -166,6 +170,30 @@ class PtAction extends AppAction
         $this->set('ptype',13);
         $this->setSeo(5);
         $this->display();
+    }
+    
+    /**
+     * 设置标题
+     * @param $data
+     * @return string
+     */
+    private function getTitle($data)
+    {
+        if(!empty($data['name'])){
+            $name = "专利名称:".$data['name']." ";
+        }
+        if(!empty($data['class'])){
+            $class = $data['class']."类";
+        }
+        if(!empty($data['temp'])){
+            $temp = $data['temp']."专利";
+            $temp_title = "_".$data['temp']."专利";
+        }
+        $title = $name.$class.'专利转让查询'.$temp_title.'_买卖专利_专利转让交易网 一只蝉商标转让平台网';
+        $keywords = $class.'专利,'.$class.'专利申请,'.$temp.','.$temp.'申请,购买'.$temp.$class.',专利交易转让网';
+         
+        $description ='购买'.$class.$temp.',上一只蝉专利查询申请交易网。为广大的专利人提供'.$class.'专利转移全流程服务,包括'.$temp.'技术申请，专利技术转让，专利技术查询以及专利维权服务，一只蝉努力成为国内最大最专业的专利交易平台！';
+        return array("title"=>$title,"keywords"=>$keywords,"description"=>$description);
     }
 }
 ?>
