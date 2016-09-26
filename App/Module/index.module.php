@@ -30,11 +30,11 @@ class IndexModule extends AppModule
         $r['limit'] = 1000;
         $r['neq'] = array('type'=>2);
         $data = $this->import('indexBasic')->find($r);
-        $r = array();
         //处理数据
         $banners = array();
         $ads = array();
         $recommendClasses = array();
+        $case = array();
         foreach($data as $item){
             switch($item['type']){
                 case '1':
@@ -50,6 +50,8 @@ class IndexModule extends AppModule
                         'pic'=>$item['pic'],
                         'link'=>$item['link'],
                         'alt'=>$item['alt'],
+                        'desc'=>$item['desc'],
+                        'text'=>$item['text'],
                     );
                     break;
                 case '4':
@@ -67,9 +69,16 @@ class IndexModule extends AppModule
                         'classStr'=>$item['desc'],
                     );
                     break;
+                case '5':
+                    $case[] = array(
+                        'url'=>$item['link'],
+                        'alt'=>$item['alt'],
+                        'pic'=>$item['pic'],
+                    );
+                    break;
             }
         }
-        return array($banners,$ads,$recommendClasses);
+        return array($banners,$ads,$recommendClasses,$case);
     }
 
     /**

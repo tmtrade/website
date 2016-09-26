@@ -54,14 +54,22 @@ abstract class AppAction extends Action
         //设置用户信息
         $this->setLoginUser();
         //获得热搜数据
-        $hotwords = $this->load('index')->getHotWords();
+        $hotwords = $this->com('redisHtml')->get('hotwords');
+        if(empty($hotwords)){
+            $hotwords = $this->load('index')->getHotWords();
+            $this->com('redisHtml')->set('hotwords', $hotwords, 3600);
+        }
         $this->set('hotwords',$hotwords);
         //得到通栏行业菜单信息
-        list($menuFirst,$menuSecond,$menuThird,$menuPic) = $this->load('index')->getIndustry();
-        $this->set('menuFirst',$menuFirst);
-        $this->set('menuSecond',$menuSecond);
-        $this->set('menuThird',$menuThird);
-        $this->set('menuPic',$menuPic);
+        $menu = $this->com('redisHtml')->get('index_menu');
+        if(empty($menu)){
+            $menu = $this->load('index')->getIndustry();
+            $this->com('redisHtml')->set('index_menu', $menu, 7200);
+        }
+        $this->set('menuFirst',$menu[0]);
+        $this->set('menuSecond',$menu[1]);
+        $this->set('menuThird',$menu[2]);
+        $this->set('menuPic',$menu[3]);
         //获得友情链接数据
         $frendlyLink = $this->com('redisHtml')->get('footer_link');
         if(empty($frendlyLink)){

@@ -21,14 +21,18 @@ class IndexAction extends AppAction
 		//首页标识
 		$this->set('is_index',true);
 		//得到首页基本基本配置信息
-		list($banners,$ads,$recommendClasses) = $this->load('index')->getIndexBasic();
+		list($banners,$ads,$recommendClasses,$case) = $this->load('index')->getIndexBasic();
 		$this->set('banners',$banners);
 		$this->set('ads',$ads);
 		$this->set('recommendClasses',$recommendClasses);
+		$this->set('case',$case);
 		//得到模块信息
-		$modules = $this->load('index')->getModule();
+		$modules = $this->com('redisHtml')->get('index_modules');
+		if(empty($modules)){
+			$modules = $this->load('index')->getModule();
+			$this->com('redisHtml')->set('index_modules', $modules,86400);
+		}
 		$this->set('modules',$modules);
-
 		//最新交易记录
 		$_tradeInfo = $this->com('redisHtml')->get('_tradeInfo_tmp');
 		if ( empty($_tradeInfo) ){
