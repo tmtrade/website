@@ -163,7 +163,7 @@
                 <div class="mj-cTr-atten">
                     <p class="fl">
                         <img src="<?=StaticDir?>1.2/images/ate-ico.png">
-                        注：该商标与其他商标绑定出售，购买套餐更划算！
+                        注：该商标与其他商标绑定出售，不可单独购买
                     </p>
                     <a class="fr" target="_blank" href="<?=$pack['url']?>">查看全部商标</a>
                 </div>
@@ -695,6 +695,7 @@
     });
     //生成订单
     function createOrder(){
+        layer.load(1,{shade: [0.2,'#000']});
         //检测是否有电话号码
         var tel= $('#tels').val();
         if(tel){
@@ -712,6 +713,7 @@
             //提交数据
             ucBuy.buyAdd(buyData);
         }else{
+            layer.closeAll();
             //分为登录无手机和未登录两种情况
             if(nick_name){
                 getLayer($('#goCenter'));
@@ -739,12 +741,14 @@
     })
     //生成订单--2
     function createOrderByPhone(){
+        layer.load(1,{shade: [0.2,'#000']});
         //检测是否电话号码
         var tel= $.trim($('#telInput2').val());
         //验证手机号码
         if(!tel || !mobilereg.test(tel) || tel.length!=11){
             $('#telInput2').addClass('ddw_input');
             $('#telInput2').val('请输入正确的手机号');
+            layer.closeAll();
             return false;
         }
         //获得数据

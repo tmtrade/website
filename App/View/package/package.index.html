@@ -13,8 +13,8 @@
                 <label class="ft1">特价商标</label>> <label class="ft2">打包出售</label>
             </p>
             <div class="pack-tp-rg fr">
-                <a class="collect in_collect" webid="4" addmsg="爱森鸟" module="收藏商标"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
-                <a href="javascript:;" class="jiathis jiathis_txt" addmsg="爱森鸟" module="分享"> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
+                <!--<a class="collect in_collect" webid="4" addmsg="爱森鸟" module="收藏商标"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>-->
+                <a href="javascript:;" class="jiathis jiathis_txt" addmsg="<?=$all['title']?>" module="分享"> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
             </div>
         </div>
         <div class="td-pk-del">
@@ -201,7 +201,7 @@
                     <div class="fl">
                         <p class="pri"><span>价格<label>￥<b><?=$all['price']?></b></label>元</span> 温馨提示：80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
                         <p class="sale">
-                            <a href="javascript:;"><img src="<?=StaticDir?>1.2/images/shop-ico.png">购买全部商标</a>
+                            <a href="javascript:;" class="opt_btn" onclick="createOrder();"><img src="<?=StaticDir?>1.2/images/shop-ico.png">购买全部商标</a>
                             促销
                             <em title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</em>
                         </p>
@@ -209,7 +209,7 @@
                     <div class="fr">
                         <!--<p class="pro"><img src="<?=StaticDir?>1.2/images/pel-ico.png">申请人：逗我???<a href="javascript:;">咨询TA</a></p>-->
                         <p class="pel"><img src="<?=StaticDir?>1.2/images/tel.png">电话：<b><?=$all['viewPhone']?></b></p>
-                        <p class="dial"><input type="text" placeholder="输入手机号"/><a href="javascript:;">打给我</a></p>
+                        <p class="dial"><input class="fl" id="telInput2" value="" placeholder="输入手机号" type="text"><a href="javascript:;" id="l-button" onclick="createOrderByPhone()">打给我</a></p>
                     </div>
                 </div>
             </div>
@@ -610,102 +610,25 @@
 <script type="text/javascript">
     $(function(){
         //有手机登录情况下 检测该用户是否购买
-        var trademark = "<?=$info['number']?>";
-        var tm_class = "<?=implode(',',$info['class'])?>";
+        var trademark = "<?=$all['id']?>";
+        var tm_class = "<?=$all['isAll']?>";
         if(login_mobile){
             ucBuy.isexist(trademark,tm_class);
         }
         //给隐藏域赋值
         var user_tel = login_mobile;
         $('#tels').val(user_tel);
-        $('#tid').val("<?=$info['tid']?>");
+        $('#tid').val("<?=$all['id']?>");
         $('#trademark').val(trademark);
         $('#class').val(tm_class);
         $('#remarks').val("<?=$need?>");
         if(user_tel){
             $('#telInput2').val(user_tel);
         }
-        if(nick_name!=null){
-            getSclist();
-        }
-        //点击登录后几秒钟执行获取收藏列表
-//        $('.chaofan-mj-logBtn').live('click', function() {
-//             setTimeout(getSclist, 5000);
-//
-//          });
-        //获取收藏列表
-        function getSclist(){
-            userCollectList(5,function(data){
-                var tidstr = "";
-                var tids = "";
-                var datas = eval("("+data+")");
-                if(datas.length==0) return;
-                for(var j=0,n=datas.length;j<n;j++){
-                        tids = datas[j];    //当前层数据
-                        if(j==0){
-                            tidstr = tids.number;
-                        }else{
-                             tidstr +=","+tids.number;
-                        }
-                    }
-
-                $.ajax({
-                traditional :true,
-                 url:'/Detail/ajaxSclist',
-                 type:'POST',
-                 data:"tid="+tidstr,
-                 dataType:'json',
-                 success:function(json){
-                     if(typeof json == 'object'){
-                            var neirou;
-                            var item="";
-                            for(var i=0,l=json.length;i<l;i++){
-                                neirou = json[i];    //当前层数据
-                                item += '<li>';
-                                item += '<a href="'+neirou.viewUrl+'" webid="7" addmsg="'+neirou.title+'"><img src="'+neirou.imgUrl+'" onerror="this.src=\'/Static/images/img1.png\'" ></a>';
-                                item += '</li>';
-                            }
-                             $("#sclist").html(item);
-                        }
-                    }
-                });
-            });
-
-        }
-        //收藏功能
-        $('.collect').click(function(){
-            var nowObj = this;//保存当前this
-            if($(this).hasClass('in_collect')){
-                //收藏
-                collectTrademark(trademark, 1, function(data){
-                    if (data.type == 1){
-                        $(nowObj).removeClass('in_collect');
-                        $(nowObj).find('span').html('取消收藏');
-                        $(nowObj).find('img').attr("src","/Static/1.2/images/xin_cur.png");
-                        layer.msg('收藏成功',{time:1500});
-                        getSclist();
-                    }else{
-                        layer.msg('收藏失败',{time:1500});
-                    }
-                });
-            }else{
-                //取消收藏
-                deleteCollectTrademark(trademark, 1,function(data){
-                    if (data.type != 0){
-                        $(nowObj).addClass('in_collect');
-                        $(nowObj).find('span').html('收藏商标');
-                        $(nowObj).find('img').attr("src","/Static/1.2/images/sbxq-ico1.png");
-                        layer.msg('取消成功',{time:1500});
-                        getSclist();
-                    }else{
-                        layer.msg('取消失败',{time:1500});
-                    }
-                });
-            }
-        });
     });
     //生成订单
     function createOrder(){
+        layer.load(1,{shade: [0.2,'#000']});
         //检测是否有电话号码
         var tel= $('#tels').val();
         if(tel){
@@ -719,10 +642,11 @@
             buyData['class'] 		= $('#class').val();
             buyData['subject'] 		= '求购信息';
             buyData['remarks'] 		= remarks;
-	    setEvent('立即购买','表单-提交了账号'+tel);
+	        setEvent('立即购买','表单-提交了账号'+tel);
             //提交数据
             ucBuy.buyAdd(buyData);
         }else{
+            layer.closeAll();
             //分为登录无手机和未登录两种情况
             if(nick_name){
                 getLayer($('#goCenter'));
@@ -750,6 +674,7 @@
     })
     //生成订单--2
     function createOrderByPhone(){
+        layer.load(1,{shade: [0.2,'#000']});
         //检测是否电话号码
         var tel= $.trim($('#telInput2').val());
         //验证手机号码
@@ -770,7 +695,7 @@
         buyData['remarks'] 		= remarks;
         //提交数据
         sendBehavior(30,ptype, 0, 0,'tel:'+tel);//保存操作信息
-	setEvent('打给我','表单-提交了电话号'+tel);
+	    setEvent('打给我','表单-提交了电话号'+tel);
         ucBuy.buyAdd(buyData);
     }
     //检测用户是否购买回调

@@ -122,16 +122,15 @@ class DetailAction extends AppAction
 		//得到用户订单的need字段
 		$need = "商标号:".$info['number'].",类别:".implode(',',$info['class']);
 		//得到打包数据
-		//$pack = $this->load('pack')->getPackInfo($number);
+		$pack = $this->load('pack')->getPackInfo($number);
 		//判断用户的状态(显示不同的价格页面和操作按钮)
-//		$is_pack = $pack && $pack['isAll']==1;
-		$is_pack = false;
+		$is_pack = $pack && $pack['isAll']==1;
 		$price_module = $this->getTips($sale,$is_pack);
 		$this->set('price_module',$price_module);
 		//分配数据
 		$this->set("info", $info);
 		$this->set("sale", $sale);
-		//$this->set("pack", $pack);
+		$this->set("pack", $pack);
 		$this->set("need", $need);
 		$this->set("topic", $topic);
 		$this->set("tips", $tips);
