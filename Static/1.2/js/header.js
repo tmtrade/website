@@ -1,4 +1,3 @@
-
 //简单选项卡
 function jc(name,curr,n)
 {
@@ -82,8 +81,6 @@ $(document).ready(function(e) {
             ucNetwork.userLog(account,password);//密码登录
         }
     });
-
-
     //登录弹窗失去焦点验证
     $('#loginUser').blur(function(){
         var tel 	= $.trim($('#loginUser').val());
@@ -111,7 +108,6 @@ $(document).ready(function(e) {
         }
         hideLoginTip(2);
     });
-
     //搜索框按钮触发
     $(".mj-search-submit-tm").click(function (e){
         var input_kw = $(".tm_kw");
@@ -191,7 +187,6 @@ $(document).ready(function(e) {
     $('.mj-inpuVs').click(function(){
         $(this).parent().parent().find($("input")).val('').focus();
     });
-
     //邮件反馈的js
     $('.feedback_content,.feedback_contact').focus(function(){
         $('.feedback_s').hide();
@@ -211,7 +206,6 @@ $(document).ready(function(e) {
         $('.feedback_f').find('span').html('');
         $('.feedback_f').hide();
     });
-
     $('.feedback_contact').blur(function(){
         var feedback_contact = $.trim($('.feedback_contact').val());
         if(feedback_contact==''){
@@ -295,7 +289,6 @@ $(document).ready(function(e) {
             $('#feedback_btn').attr('flag',0);
         },'json');
     });
-
 });
 //成功失败弹窗
 function getLayer(obj) {
@@ -313,7 +306,6 @@ function getLayer(obj) {
         $('.ddw_error21').text('可能因为网络问题或其他原因导致');
     });
 }
-
 //询价登录回调
 function userLogCallback(Obj,data){
     $.each(Obj,function(i,n){
@@ -336,7 +328,6 @@ function userLogCallback(Obj,data){
         }
     });
 }
-
 //发送验证码
 function sendCodeCallback(Obj,htmlobj,title){
     $.each(Obj,function(i,n){
@@ -373,7 +364,6 @@ function verifyCodeCallback(Obj,account,code){
         }
     });
 }
-
 //调用登录弹窗
 function getLogin(title,tel,isExist){
     $("#loginUser").val('');
@@ -459,12 +449,11 @@ function buyAddCallback(Obj){
             }
         }else{
             getLayer($('#mj-submitteS'));
-            $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>求购信息已提交</a>");
+            $('.opt_btn').replaceWith("<a href='javascript:;' class='opt_btn'>求购信息已提交</a>");
         }
         layer.closeAll('loading');
     });
 }
-
 //聊天函数
 function goChat(){
     var type = _YZC_ONLINE_;
@@ -475,7 +464,6 @@ function goChat(){
         window.open("http://chat.looyu.com/chat/chat/p.do?c=46344&f=123997&g=51817");
     }
 }
-
 //隐藏登录提示信息
 function hideLoginTip(num){
     if($("#loginTips").attr('flag')==num){

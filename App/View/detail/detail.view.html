@@ -11,7 +11,9 @@
         <div class="fl fl-details">
             <div class="brde-pic">
                 <div class="brde-pic-box">
+                    <? if($pack): ?>
                     <em>打包出售<i></i></em>
+                    <? endif; ?>
                     <span>
                             <img src="<?=$sale['imgUrl']?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$sale['alt1']?>">
                     </span>
@@ -50,41 +52,14 @@
                <?if(count($info['class'])==1):?><span title="<?=$info['label']?>" class="light_title">(<?=$info['class'][0]?>类 <?=$info['thum_label']?>)</span><?endif;?>
               </h3>
             <label class="bm"><?=$sale['value']?></label>
-
+            <?if($tm_status):?>
             <span class="o-reg-lg">
-                 <?if($tm_status):?><a>已注册</a><?endif;?>
+                 <a>已注册</a>
             </span>
+            <?endif;?>
             <!--是否上架-->
             <?if($isSale):?>
            <div class="classify">
-               <? if ( count($info['items']) > 1 ){?>
-               <div class="classify-tit">
-                   <span class="fl">共<label><?=count($info['items'])?></label>个分类，所有分类一起转让</span>
-                   <a class="fr all-class" data-index=1>全部分类<i class="us-icon fel-down"></i></a>
-               </div>
-               <ul class="classify-main f-clearfix">
-                   <? foreach ($info['items'] as $ky => $vl) { ?>
-                   <li>
-                       <div class="dw">
-                           <a class="lb">第<?=$vl['class']?>类-<?=$CLASSES[$vl['class']]?><i class="us-icon fel-down"></i></a>
-                           <div class="multi-show">
-                               <h6>群组</h6>
-                               <p>
-                                   <a><?=$vl['group']?></a>
-                               </p>
-
-                               <h6>商品列表</h6>
-                               <div class="splb">
-                                   <label>
-                                       <?=$vl['goods']?>
-                                   </label>
-                               </div>
-                           </div>
-                       </div>
-                   </li>
-                   <? } ?>
-               </ul>
-               <?}else{?>
                <p class="may"><font>此商标可入驻：
                    <?php
                     //定义一个函数
@@ -112,88 +87,121 @@
 
                    ?>
                </font></p>
+               <!--多类-->
+               <? if (count($info['items'])>1): ?>
+               <div class="classify-tit">
+                   <span class="fl">共<label><?=count($info['items'])?></label>个分类，所有分类一起转让</span>
+                   <a class="fr all-class" data-index=1>全部分类<i class="us-icon fel-down"></i></a>
+               </div>
+               <ul class="classify-main f-clearfix">
+                   <? foreach ($info['items'] as $ky => $vl): ?>
+                   <li>
+                       <div class="dw">
+                           <a class="lb">第<?=$vl['class']?>类-<?=$CLASSES[$vl['class']]?><i class="us-icon fel-down"></i></a>
+                           <div class="multi-show">
+                               <h6>群组</h6>
+                               <p>
+                                   <a><?=$vl['group']?></a>
+                               </p>
+                               <h6>商品列表</h6>
+                               <div class="splb">
+                                   <label>
+                                       <?=$vl['goods']?>
+                                   </label>
+                               </div>
+                           </div>
+                       </div>
+                   </li>
+                   <? endforeach; ?>
+               </ul>
+               <? else: ?>
+               <!--单类-->
                <ul class="mj-cTr_center">
-                       <li>
-                           <span><label>商标分类</label><font>第<?=$class?>类 - <?=$info['className']?></font></span>
-                       </li>
-                       <li>
-                             <span><label>当前群组</label><font><?=$info['items'][0]['group']?></font></span>
-                       </li>
-                       <li>
-                            <span><label>商品列表</label><font><?=$info['goods']?></font></span>
-                       </li>
-                   </ul>
-                 <div class="zx-sqr">
-                     <p class="pro fl" title="<?=$info['proName']?>"><img src="<?=StaticDir?>1.2/images/pel-ico.png">
-                         申请人：<label><?=$info['proName']?></label>(上
+                   <li>
+                       <span><label>商标分类</label><font>第<?=$class?>类 - <?=$info['className']?></font></span>
+                   </li>
+                   <li>
+                       <span><label>当前群组</label><font><?=$info['items'][0]['group']?></font></span>
+                   </li>
+                   <li>
+                       <span><label>商品列表</label><font><?=$info['goods']?></font></span>
+                   </li>
+               </ul>
+               <? endif; ?>
+               <div class="zx-sqr">
+                   <p class="pro fl" title="<?=$info['proName']?>"><img src="<?=StaticDir?>1.2/images/pel-ico.png">
+                         申请人：<label><?=$info['proName']?></label>
                          <a href="javascript:;" webid="31" onclick="goChat()" addmsg="咨询-咨询ta" module="咨询ta">咨询TA</a></p>
-                     <div class="pel fl">
+                   <div class="pel fl">
                          <p class="tel">
-                              <img src="<?=StaticDir?>1.2/images/tel.png">电话：<b>15811137365</b>
+                              <img src="<?=StaticDir?>1.2/images/tel.png">电话：<b><?=$contact['phone']?></b>
                          </p>
                          <p class="dial">
-                             <input class="fl" id="telInput2" value=""  type="text">
-                             <label for="l-button fl">
+                             <input class="fl" id="telInput2" value="" placeholder="输入手机号" type="text">
+                             <label>
                                  <button type="submit" id="l-button" onclick="createOrderByPhone()">打给我</button>
                              </label>
                           </p>
-                      </div>
-                 </div>
-               <?}?>
+                   </div>
+               </div>
            </div>
             <!--绑定销售-单卖-->
+            <? if($pack && $pack['isAll']==2): ?>
             <div class="sell-state">
                 <div class="mj-cTr-atten">
                     <p class="fl">
                         <img src="<?=StaticDir?>1.2/images/ate-ico.png">
                         注：该商标与其他商标绑定出售，购买套餐更划算！
                     </p>
-                    <a class="fr">查看全部商标</a>
-                </div>
-                <div class="mj-cTr-btm f-clearfix">
-                    <p class="mj-cTr-tp f-clearfix f-hidden">
-                        价格<label>￥<b>13200</b></label>元<span>原价：<s>￥38000</s></span><span>温馨提示：80%卖家标注都是弹性出售价格-有较大的商谈空间</span>
-                    </p>
-                    <p class="mj-cTr-ls f-clearfix f-hidden">
-                        <a><img src="<?=StaticDir?>1.2/images/shop-ico.png">立即购买</a>
-                        促销
-                        <em>买一送一</em><em>热门商标</em><em>特价商标</em>
-                    </p>
+                    <a class="fr" target="_blank" href="<?=$pack['url']?>">查看全部商标</a>
                 </div>
             </div>
+            <? endif; ?>
             <!--绑定销售-不单卖-->
-            <div class="sell-state" style="display: none;">
+            <? if($pack && $pack['isAll']==1): ?>
+            <div class="sell-state">
                 <div class="mj-cTr-atten">
                     <p class="fl">
                         <img src="<?=StaticDir?>1.2/images/ate-ico.png">
                         注：该商标与其他商标绑定出售，购买套餐更划算！
                     </p>
-                    <a class="fr">查看全部商标</a>
-                </div>
-                <div class="mj-cTr-btm f-clearfix">
-
-                    <p class="mj-cTr-ls f-clearfix f-hidden">
-                        <a><img src="<?=StaticDir?>1.2/images/shop-ico.png">购买全部</a>
-                        促销
-                        <em>买一送一</em><em>热门商标</em><em>特价商标</em>
-                    </p>
+                    <a class="fr" target="_blank" href="<?=$pack['url']?>">查看全部商标</a>
                 </div>
             </div>
-            <!--价格-未登录-->
-            <div class="sell-state" style="display: none;">
-                <div class="mj-cTr-btm f-clearfix">
-                    <p class="mj-cTr-ls f-clearfix f-hidden">
-                        <a><img src="<?=StaticDir?>1.2/images/ck-ye.png">查看价格</a>
-                        促销
-                        <em>买一送一</em><em>热门商标</em><em>特价商标</em>
-                    </p>
-                </div>
+            <? endif; ?>
+            <!--价格展示部分-->
+            <div class="mj-cTr-btm f-clearfix">
+                <? if($price_module['show']): ?>
+                <p class="mj-cTr-tp f-clearfix f-hidden">
+                    <? if($price_module['price']): ?>价格<label>￥<b><?=$price_module['price']?></b></label>元<? endif; ?>
+                    <? if($price_module['key']==1): ?>
+                    <span>原价：<s>￥<?=$sale['price']?></s></span>
+                    <? endif; ?>
+                    <span><?=$price_module['tip']?></span>
+                </p>
+                <? endif; ?>
+                <p class="mj-cTr-ls f-clearfix f-hidden">
+                    <? if($price_module['key']==5): ?>
+                    <a target="_blank" href="<?=$pack['url']?>" class="opt_btn"><img src="<?=StaticDir?>1.2/images/shop-ico.png"><?=$price_module['button']?></a>
+                    <? elseif($isLogin): ?>
+                    <a href='javascript:;' webid="30" onclick="createOrder();" class="opt_btn"><img src="<?=StaticDir?>1.2/images/shop-ico.png"><?=$price_module['button']?></a>
+                    <? else: ?>
+                    <a href='javascript:;' onclick="goLook()" class="opt_btn"><img src="<?=StaticDir?>1.2/images/ck-ye.png"><?=$price_module['button']?></a>
+                    <? endif; ?>
+                    促销
+                    <em title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</em>
+                    <?if($topic):?>
+                    <?foreach($topic as $item):?>
+                    <em title="<?=$item['title']?>" class="wddsb" url="<?=$item['topicUrl']?>"><?=$item['thumb_title']?></em>
+                    <?endforeach;?>
+                    <?endif;?>
+                </p>
             </div>
-            <?else:?>
+            <? else: ?>
             <div style="padding-top:50px ">
                 <img src="<?=StaticDir?>1.2/images/nogoods.png">
             </div>
-            <?endif;?>
+            <? endif; ?>
         </div>
     </div>
 </div>
@@ -211,7 +219,6 @@
             </li>
             <?endforeach;?>
         </ul>
-
     </div>
     <div class="intr-flow fr">
         <div class="intr-flow-tit">
@@ -225,7 +232,6 @@
               <li style="border-right:none; ">
                   <a href="#jcwt">常见问题</a>
               </li>
-
           </ul>
         </div>
         <div class="detail-recom-main f-clearfix">
@@ -358,10 +364,7 @@
                            </p>
                        </div>
                    </li>
-
                </ul>
-
-
             </div>
             <div class="tran-FAQ f-clearfix">
                 <h4>常见问题解疑</h4>
@@ -409,7 +412,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </div>
 <!--数据提交的隐藏域-->
@@ -422,7 +424,6 @@
 </div>
 <!--成功案列start-->
 <div class="w1180 succeed-al" id="succal">
-
     <ul class="succeed-al-main">
         <li>
             <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
@@ -430,7 +431,6 @@
                     <div class="front">
                         <dl>
                             <font>格伦贝拉<span style="background: #ff9f8c;">服装鞋帽25类
-
 </span></font>
                             <p>
                                 <label>使用商品：</label>服装鞋帽、服装配饰<br/>
@@ -452,7 +452,6 @@
                     <div class="front">
                         <dl>
                             <font>Hesiod<span style="background: #ffc061;">化妆清洁3类
-
 </span></font>
                             <p>
                                 <label>使用商品：</label>清洁用品、化妆品<br/>
@@ -474,7 +473,6 @@
                     <div class="front">
                         <dl>
                             <font>麦普森<span style="background: #8cdcff;">3C数码9类
-
 </span></font>
                             <p>
                                 <label>使用商品：</label>计算机、数码产品<br/>
@@ -504,18 +502,15 @@
             $(".intr-flow-tit").addClass("f-tp");
             $(".intr-flow-tit a").removeClass("on");
             $(".intr-flow-tit a").eq(2).addClass("on");
-            console.log("333")
         }
         else if($('.transaction').offset().top-$(document).scrollTop()<=78){
         $(".intr-flow-tit").addClass("f-tp");
         $(".intr-flow-tit a").removeClass("on");
         $(".intr-flow-tit a").eq(1).addClass("on");
-           console.log("111");
        }else if($(".intr-flow").offset().top-$(document).scrollTop()<=0){
         $(".intr-flow-tit").addClass("f-tp");
         $(".intr-flow-tit a").removeClass("on");
         $(".intr-flow-tit a").eq(0).addClass("on");
-           console.log("222");
        } else{
         $(".intr-flow-tit").removeClass("f-tp");
         $(".intr-flow-tit a").removeClass("on");
@@ -602,7 +597,6 @@
 </script>
 <!--购买相关js-->
 <script type="text/javascript">
-
     $(function(){
         //有手机登录情况下 检测该用户是否购买
         var trademark = "<?=$info['number']?>";
@@ -667,7 +661,6 @@
             });
 
         }
-
         //收藏功能
         $('.collect').click(function(){
             var nowObj = this;//保存当前this
@@ -699,7 +692,6 @@
                 });
             }
         });
-
     });
     //生成订单
     function createOrder(){
@@ -775,7 +767,7 @@
         $.each(Obj,function(i,n){
             //弹窗提示
             if(n.code==2){
-                $('.opt_btn').replaceWith("<a href='javascript:;' class='mj-priceTxtt_link'>求购信息已提交</a>");
+                $('.opt_btn').replaceWith("<a href='javascript:;' class='opt_btn'>求购信息已提交</a>");
             }
         });
     }
@@ -796,13 +788,6 @@
 	setEvent(addmsg);
         $('#wodediv').attr('href',($(this).attr('url')));
         $('#wodediv').get(0).click();
-    });
-    //如何做到 鼠标效果
-    $('.rhzd_a').mouseover(function(){
-        $('.rhzd').show();
-    });
-    $('.rhzd_a').mouseout(function(){
-        $('.rhzd').hide();
     });
 	//全部分类鼠标移动浮动层位置效果
 	$(".classify-main li").hover(function(){

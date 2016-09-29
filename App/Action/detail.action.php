@@ -36,7 +36,6 @@ class DetailAction extends AppAction
 		}else{
 			$this->set('user_tel','');
 		}
-                
 		$tag = $this->input('short', 'string', '');
 		//获取参数
 		if ( $tag ){
@@ -61,11 +60,6 @@ class DetailAction extends AppAction
 		if ( !in_array($class, $info['class']) ){
 			$this->redirect('未找到页面6', '/index/error');
 		}
-		//解析商标群组名
-//		foreach($info['items'] as &$item){
-//			$item['groupName'] = $this->load('search')->handleGroup($item['group']);
-//		}
-		//unset($item);
 		//得到商标的分类描述
 		if(count($info['class']==1)){
 			$res = $this->load('search')->getClassInfo($info['class'][0]);
@@ -84,7 +78,6 @@ class DetailAction extends AppAction
 		$this->set("platformUrl", C('PLATFORM_URL'));
 		$this->set("platformItems", C('PLATFORM_ITEMS'));
 		//商标是否出售,获取其他信息
-		$issale = 0;
 		$tid 	= $info['tid'];
 		$class 	= current($info['class']);
 		$_class = implode(',', $info['class']);
@@ -120,47 +113,25 @@ class DetailAction extends AppAction
                 $this->set('keywords', $seoList['keywords']);
                 $this->set('description', $seoList['description']);
 		//读取推荐商标
-		$refer 	= $this->load("internal")->getReferrer($_class, 8, $number);
+		$refer 	= $this->load("internal")->getReferrer($_class, 3, $number);
 		$tj 	= $this->load('search')->getListTips($refer);
-
-                //存取浏览记录
-                $prefix = C('COOKIE_PREFIX');
-                $cookie_record = $prefix.C('PUBLIC_RECORD');
-                $is_record = FALSE;
-                $record = $_COOKIE[$cookie_record]; 
-                $record = unserialize($record);
-                foreach ($record as $v){
-                    if($v['tid']==$tid){
-                        $is_record = TRUE;
-                    }
-                }
-                if(!$is_record){
-                    $recordList = array(0=>array("tid"=>$tid,"class"=>$class,"name"=>$info['name'],"imgUrl"=>$sale['imgUrl']));
-                    for($i=0;$i<7;$i++){
-                        if(!empty($record[$i])){
-                            $recordList[] = $record[$i];
-                        }
-                    }
-                    $recordList = serialize($recordList);
-                    setcookie($cookie_record,$recordList,0, Session::$path, Session::$domain);
-                }
-                if(!empty($record)){
-                    $this->set("recordList", $record);
-                }else{//没有浏览记录时推荐5个
-                    $newList 	= $this->load("internal")->getNewSale($_class, $number,5);
-                    $newLists 	= $this->load('search')->getListTips($newList);
-                    $this->set("recordList", $newLists);
-                }
-
 		//电话旁边联系人信息
 		$this->set("contact", $contact);
 		//得到商标参与的专题
 		$topic = $this->load('zhuanti')->getTopicByNumber($number);
 		//得到用户订单的need字段
 		$need = "商标号:".$info['number'].",类别:".implode(',',$info['class']);
+		//得到打包数据
+		//$pack = $this->load('pack')->getPackInfo($number);
+		//判断用户的状态(显示不同的价格页面和操作按钮)
+//		$is_pack = $pack && $pack['isAll']==1;
+		$is_pack = false;
+		$price_module = $this->getTips($sale,$is_pack);
+		$this->set('price_module',$price_module);
 		//分配数据
 		$this->set("info", $info);
 		$this->set("sale", $sale);
+		//$this->set("pack", $pack);
 		$this->set("need", $need);
 		$this->set("topic", $topic);
 		$this->set("tips", $tips);
@@ -170,7 +141,7 @@ class DetailAction extends AppAction
 		$this->set("userMobile", $this->userMobile);
 		$this->set("platform", $platform);
 		$this->set("tj", $tj);
-                $this->setSeo(8,$tid);
+		$this->setSeo(8,$tid);
 		$this->display();
 	}
 
@@ -180,7 +151,6 @@ class DetailAction extends AppAction
 	 * @param $class
 	 * @param int $issale
 	 * @return string
-	 * @throws SpringException
 	 */
 	private function getPhoneName($tid,$class,$issale = 0)
 	{
@@ -190,7 +160,6 @@ class DetailAction extends AppAction
 			滕 殷 罗 毕 郝 邬 安 常 乐 于 时 傅 皮 卞 齐 康 伍 余 元 卜 顾 孟 平 黄 和 穆 萧 尹 姚 邵 湛 汪 祁 毛 禹 狄 欧阳 慕容
 			米 贝 明 臧 计 伏 成 戴 谈 宋 茅 庞 熊 纪 舒 屈 项 祝 董 梁 杜 阮 蓝 闵 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 蒲 崔 沙
 			梅 盛 林 刁 锺 徐 邱 骆 高 夏 蔡 田 樊 胡 凌 霍 虞 万 支 柯 昝 管 卢 莫 经 房 裘 缪 干 解 应 宗 丁 宣 贲 邓";
-
 			$lastTid 	= ceil(substr($tid,-1)/3)*$class;
 			$sex 		= ($class % 2 == 0) ? 1 : 2;
 			$gender 	= array(1 => '先生', 2 => '女士');
@@ -198,7 +167,6 @@ class DetailAction extends AppAction
 			$name 		= $nameArr[$lastTid].$gender[$sex];
 			return $name;
 		}
-
 		$phoneArr 	= $this->load('phone')->getSexPhone();
 		$phoneid 	= ceil(substr($tid,-1)/3*2) > 5 ? 5 : ceil(substr($tid,-1)/3*2);
 		$phone 		= empty($phoneArr[$phoneid]) ? '18602868321' : $phoneArr[$phoneid];
@@ -209,9 +177,65 @@ class DetailAction extends AppAction
 	public function ajaxSclist(){
 		$arr = $this->input('tid', 'string', '');
 		$number = explode(",", $arr);
-                $list = $this->load('goods')->getListInfo($number);
-                $sclist = $this->load('search')->getListTips($list);
+		$list = $this->load('goods')->getListInfo($number);
+		$sclist = $this->load('search')->getListTips($list);
 		$this->returnAjax($sclist);
+	}
+
+	/**
+	 * 得到详情页价格相关模块数据
+	 * @param $sale
+	 * @param $flag
+	 * @return array
+	 */
+	private function getTips($sale,$flag = false){
+		$data = array(
+			'show'=>false,
+			'tip'=>'温馨提示：80%卖家标注都是弹性出售价格-有较大的商谈空间',
+			'price'=>'',
+			'button'=>'查看价格',
+			'key'=>0,
+		);
+		if(isset($sale['id'])){
+			if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ //特价
+				if($this->isLogin){
+					$data['show'] = true;
+				}
+				$data['button'] = '立即购买';
+				$data['key'] = 1;
+				$data['price'] = $sale['salePrice'];
+			}elseif($sale['priceType'] == 1){//定价
+				if($this->isLogin){
+					$data['show'] = true;
+				}
+				$data['button'] = '立即购买';
+				$data['key'] = 2;
+				$data['price'] = $sale['price']*1.1;
+			}else{//议价
+				if($this->isLogin){
+					$data['show'] = true;
+				}
+				$data['button'] = '我有兴趣';
+				$data['key'] = 3;
+				$data['price'] = '议价';
+				$data['tip'] = '温馨提示：卖家选择了议价方式，请联系卖家确定价格';
+			}
+		}else{ //商标局
+			$data['key'] = 4;
+			$data['tip'] = '温馨提示：此商标未在行业出售 - 我们有渠道短时间联系到他';
+			if($this->isLogin){
+				$data['show'] = true;
+				$data['button'] = '提交需求';
+			}else{
+				$data['button'] = '我有兴趣';
+			}
+		}
+		//捆绑销售的
+		if($flag){
+			$data['button'] = '购买全部';
+			$data['key'] = 5;
+		}
+		return $data;
 	}
 }
 ?>
