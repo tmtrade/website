@@ -166,7 +166,7 @@
         $('#buyNeed').val('');
     }
 </script>
-<a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
+<a class="detail-nav" id="tip" style="display:none;"><i class="fa fa-angle-left"></i>点击查看详情</a>
 <div class="mj-banner-bg">
     <div class="mj-banner">
         <div class="w1180 mj-formW">
@@ -808,6 +808,7 @@
                 $(this).click(function() {
                     var t =  $(oafls[i]).offset().top;
                     $("html, body").animate({"scrollTop": t-$(oafls[i]).outerHeight(true)});
+                    console.log($(oafls[i]).outerHeight(true))
                     $(this).addClass("on");
                 })
             })
