@@ -256,47 +256,44 @@
 <!--mj-banner end-->
 <!--活动推荐start-->
 <div class="yzc-Act-all">
-            <div class="yzc-Activities w1180">
+    <div class="yzc-Activities w1180">
                 <!--<div class="hd">-->
                     <!--<a class="og_prev prev"></a>-->
                     <!--<a class="og_next next"></a>-->
                 <!--</div>-->
                 <div class="bd picbox">
                     <ul>
-                        <?
-	    $j = 10-(count($ad_list['index_middle']));
-	    foreach($ad_list['index_middle'] as $k=>$ad): ?>
+                        <?  $j = 10-(count($ad_list['index_middle']));
+	                        foreach($ad_list['index_middle'] as $k=>$ad): ?>
                         <li>
                             <div class="fl">
-                                <h4>品质之选</h4>
-                                <label>让肌肤如风一样</label>
+                                <h4><?=$ad['desc']?></h4>
+                                <label><?=$ad['text']?></label>
                                 <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第{$k}条' module='轮播广告'>查看</a>
                             </div>
                             <span class="fr">
-                                <img src="<?=StaticDir?>1.2/images/tj-adv3.png">
+                                <img src="<?=($ad['pic']?TRADE_URL.$ad['pic']:'')?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
                             </span>
                         </li>
-                        <? endforeach;
-
-	    foreach($ads as $ad){
-	    if($j<=0) break;
-	    ?>
+                        <? endforeach; ?>
+                        <? foreach($ads as $ad): ?>
+                        <? if($j<=0) break; ?>
                         <li>
                             <div class="fl">
-                                <h4>品质之选</h4>
-                                <label>让肌肤如风一样</label>
+                                <h4><?=$ad['desc']?></h4>
+                                <label><?=$ad['text']?></label>
                                 <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第<?=$k+1?>条' module='轮播广告'>查看</a>
                             </div>
                             <span class="fr">
-                                <img src="<?=StaticDir?>1.2/images/tj-adv3.png">
+                                <img src="<?=($ad['pic']?TRADE_URL.$ad['pic']:'')?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
                             </span>
                         </li>
-                        <?  $j--;} ?>
+                        <?  $j--; ?>
+                        <?  endforeach; ?>
                     </ul>
                 </div>
             </div>
-        </div>
-
+</div>
 <!--活动推荐end-->
 <!--商标分类start-->
 <div class="yzc-Brand w1180" id="flr1">
@@ -442,78 +439,79 @@
                 <? endforeach; ?>
             </div>
         </div>
+        <? if($tk==0): ?>
         <div class="yzc-buy-sell w1180">
-        <div class="buy-se-lf fl">
-            <a>
-                <img src="<?=StaticDir?>1.2/images/buy-ico1.png">
-                <p>
-                    <b>买商标</b><br/>
-                    我帮你选
-                </p>
-            </a>
-            <a>
-                <img src="<?=StaticDir?>1.2/images/sell-ico.png">
-                <p>
-                    <b>卖商标</b><br/>
-                    知产变现
-                </p>
-            </a>
+            <div class="buy-se-lf fl">
+                <a>
+                    <img src="<?=StaticDir?>1.2/images/buy-ico1.png">
+                    <p>
+                        <b>买商标</b><br/>
+                        我帮你选
+                    </p>
+                </a>
+                <a>
+                    <img src="<?=StaticDir?>1.2/images/sell-ico.png">
+                    <p>
+                        <b>卖商标</b><br/>
+                        知产变现
+                    </p>
+                </a>
+            </div>
+            <ul class="buy-se-rg fl">
+                <i class="fl">
+                    <img src="<?=StaticDir?>1.2/images/buy-sell-tit.png">
+                </i>
+                <li>
+                    <a>
+                        <span>
+                            <img src="<?=StaticDir?>1.2/images/buy-sell-ico1.png">
+                        </span>
+                        <p>
+                            <b>卖家急售</b><br/>
+                            <label>价格一定很实惠</label>
+                        </p>
+                    </a>
+                </li>
+                <em></em>
+                <li>
+                    <a>
+                        <span>
+                            <img src="<?=StaticDir?>1.2/images/buy-sell-ico2.png">
+                        </span>
+                        <p>
+                            <b>即将续展</b><br/>
+                            <label>续展期买标，更便宜</label>
+                        </p>
+                    </a>
+                </li>
+                <em></em>
+                <li>
+                    <a>
+                        <span>
+                            <img src="<?=StaticDir?>1.2/images/buy-sell-ico3.png">
+                        </span>
+                        <p>
+                            <b>商品小于5项</b><br/>
+                            <label>商品虽少，够用就好</label>
+                        </p>
+                    </a>
+                </li>
+                <em></em>
+                <li>
+                    <a>
+                        <span>
+                            <img src="<?=StaticDir?>1.2/images/buy-sell-ico4.png">
+                        </span>
+                        <p>
+                            <b>多类转让</b><br/>
+                            <label>多类打包更划算</label>
+                        </p>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <ul class="buy-se-rg fl">
-            <i class="fl">
-                <img src="<?=StaticDir?>1.2/images/buy-sell-tit.png">
-            </i>
-            <li>
-                <a>
-                    <span>
-                        <img src="<?=StaticDir?>1.2/images/buy-sell-ico1.png">
-                    </span>
-                    <p>
-                        <b>卖家急售</b><br/>
-                        <label>价格一定很实惠</label>
-                    </p>
-                </a>
-            </li>
-            <em></em>
-            <li>
-                <a>
-                    <span>
-                        <img src="<?=StaticDir?>1.2/images/buy-sell-ico2.png">
-                    </span>
-                    <p>
-                        <b>即将续展</b><br/>
-                        <label>续展期买标，更便宜</label>
-                    </p>
-                </a>
-            </li>
-            <em></em>
-            <li>
-                <a>
-                    <span>
-                        <img src="<?=StaticDir?>1.2/images/buy-sell-ico3.png">
-                    </span>
-                    <p>
-                        <b>商品小于5项</b><br/>
-                        <label>商品虽少，够用就好</label>
-                    </p>
-                </a>
-            </li>
-            <em></em>
-            <li>
-                <a>
-                    <span>
-                        <img src="<?=StaticDir?>1.2/images/buy-sell-ico4.png">
-                    </span>
-                    <p>
-                        <b>多类转让</b><br/>
-                        <label>多类打包更划算</label>
-                    </p>
-                </a>
-            </li>
-        </ul>
+        <? endif; ?>
     </div>
-    </div>
-
     <? endforeach; ?>
 
 </div>
@@ -524,17 +522,12 @@
         <h3 class="fl">成功案例</h3>
         <a class="fr" href="/case">查看更多</a>
     </div>
-
     <ul class="succeed-al-main">
+        <? foreach($case as $item): ?>
         <li>
-          <img src="<?=StaticDir?>1.2/images/suc-al-pic1.png">
+          <a target="_blank" href="<?=$item['url']?>"><img src="<?=($item['pic']?TRADE_URL.$item['pic']:'')?>" alt="<?=$item['alt']?>" onerror="this.src='/Static/images/img1.png'"></a>
         </li>
-        <li>
-            <img src="<?=StaticDir?>1.2/images/suc-al-pic2.png">
-        </li>
-        <li>
-            <img src="<?=StaticDir?>1.2/images/suc-al-pic3.png">
-        </li>
+        <? endforeach; ?>
     </ul>
 </div>
 <!--成功案列end-->
@@ -542,13 +535,13 @@
 <div class="brand-ques w1180">
         <div class="brand-ques-tit  f-clearfix f-hidden">
             <div class="succeed-al-tit f-clearfix f-hidden fl">
-            <h3 class="fl">行业新闻</h3>
-            <a class="fr" href="/case">查看更多</a>
-        </div>
+                <h3 class="fl">行业新闻</h3>
+                <a class="fr" target="_blank" module="新闻查看更多" href="/n-50/">查看更多</a>
+            </div>
             <div class="succeed-al-tit f-clearfix f-hidden fr">
-            <h3 class="fl">转让问答</h3>
-            <a class="fr" href="/case">查看更多</a>
-        </div>
+                <h3 class="fl">转让问答</h3>
+                <a class="fr" href="/n-53/" target="_blank" module="问答查看更多">查看更多</a>
+            </div>
         </div>
         <div class="Trad-all">
          <div class="Tradenews">
