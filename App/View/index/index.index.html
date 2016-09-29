@@ -1,6 +1,9 @@
 <? require(ViewDir.'/header.html'); ?>
 <!--mj-banner start-->
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css?v=<?=$static_version?>"/>
+<style>
+    body{background-color: #ffffff !important;}
+</style>
 <!--求购信息发布模块-->
 <script type="text/javascript">
     $(function() {
@@ -164,220 +167,210 @@
     }
 </script>
 <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
-<div class="mj-banner">
-    <div class="w1180 mj-formW">
-        <div class="mj-from">
-            <form id="buyForm" action="/buy/add/">
-                <div class="mj-from-title">
-                    <h2><label></label><span>购买商标快捷登记</span><label></label></h2>
-                    <p>线下专家10分钟为你快速匹配商标</p>
-                </div>
-                <div class="ms-errorTips mj-eed">
-                    <p class="reg-tip reg-tip22"><i class="us-icon us-icon19"></i><em></em></p>
-                </div>
-                <div class="mj-form-wrapper">
-
-                    <!--<span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>-->
-
-                    <i class="us-icon uj-icon4"></i>
-
-                    <input type="text" id="buyNeed" name="content" placeholder="对商标的特殊要求  如：25类鞋子" maxlength="100">
-
-                </div>
-                <div class="mj_form_wpo f-clearfix">
-                    <div class="mj-form-wrapper w178 fl">
-                        <!--<span class="mj-inpuV">留下电话方便卖家联系你</span>-->
-                        <i class="us-icon uj-icon5"></i>
-                        <input id="buyMoblie" type="text" placeholder="留下电话方便卖家联系你" name="mobile" style="width: 155px;">
+<div class="mj-banner-bg">
+    <div class="mj-banner">
+        <div class="w1180 mj-formW">
+            <div class="mj-from">
+                <form id="buyForm" action="/buy/add/">
+                    <div class="mj-from-title">
+                        <h2><label></label><span>购买商标快捷登记</span><label></label></h2>
+                        <p>线下专家10分钟为你快速匹配商标</p>
                     </div>
-                    <div class="mj_form_wrapper_input fr">
-                        <!--<span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>-->
-                        <input type="text" name="buyName" id="buyName" placeholder="姓氏" maxlength="8">
+                    <div class="ms-errorTips mj-eed">
+                        <p class="reg-tip reg-tip22"><i class="us-icon us-icon19"></i><em></em></p>
+                    </div>
+                    <div class="mj-form-wrapper">
+
+                        <!--<span class="mj-inpuV">对商标的特殊要求  如：25类鞋子</span>-->
+
+                        <i class="us-icon uj-icon4"></i><em class="form-xx"></em>
+
+                        <input type="text" id="buyNeed" name="content" placeholder="对商标的特殊要求  如：25类鞋子" maxlength="100">
+
+                    </div>
+                    <div class="mj_form_wpo f-clearfix">
+                        <div class="mj-form-wrapper w178 fl">
+                            <!--<span class="mj-inpuV">留下电话方便卖家联系你</span>-->
+                            <i class="us-icon uj-icon5"></i><em class="form-xx"></em>
+                            <input id="buyMoblie" type="text" placeholder="留下电话方便卖家联系你" name="mobile" style="width: 155px;">
+                        </div>
+                        <div class="mj_form_wrapper_input fr">
+                            <!--<span class="mj-inpuV" style="padding-left: 10px;">姓氏</span>-->
+                            <input type="text" name="buyName" id="buyName" placeholder="姓氏" maxlength="8">
+                        </div>
+                    </div>
+                    <a href="javascript:;" class="mj-from-btn" id="mj-from-btn">立即登记</a>
+                    <p class="mj-from-txt">我们将严格保密您的个人信息</p>
+                </form>
+                <!--添加最新交易-->
+                <div class="mj-newjy">
+                    <h3><img src="<?=StaticDir?>1.2/images/jy-ic.png">最新交易记录</h3>
+                    <div class="bd">
+                        <ul><? foreach($tradeInfo as $item): ?>
+                            <li>
+
+                                <p>
+
+                                    <label> [出售]</label><label><?=$item['name']?></label><a>（<?=$item['tel']?>）</a><?=$item['remarks']?>
+                                    <!--<font><label>“</label><b></b><label>”</label></font>-->
+                                </p>
+                            </li><? endforeach; ?>
+                        </ul>
                     </div>
                 </div>
-                <a href="javascript:;" class="mj-from-btn" id="mj-from-btn">立即登记</a>
-                <p class="mj-from-txt">我们将严格保密您的个人信息</p>
-            </form>
-            <!--添加最新交易-->
-            <div class="mj-newjy">
-                <h3><img src="<?=StaticDir?>1.2/images/jy-ic.png">最新交易记录</h3>
-                <div class="bd">
-                    <ul><? foreach($tradeInfo as $item): ?>
+            </div>
+        </div>
+        <div class="mj-bannerIimg">
+            <div class="bd">
+                <ul class="mj-banner-img">
+                    <?
+                $bannerStr = '';
+                foreach($banners as $k=>$banner){
+                    $k = $k+1;
+                    $url	 = TRADE_URL.'/'.substr($banner['pic'],1);
+                    $_banner = $banner['link'] ? $banner['link'] : 'javascript:void(0);';
+                    $bannerStr .= "<li class='mj-banner-itme'><a href='{$_banner}' target='_blank' webid='1' addmsg='第{$k}条' module='大图广告'><img src='{$url}' alt='".$banner["alt"]."'></a></li>";
+                    }
+                    echo $bannerStr;
+                    ?>
+                </ul>
+            </div>
+            <div class="hd">
+                <ul class="f-clearfix">
+                    <?
+                $bannerBar = '';
+                for($i=1,$len=count($banners);$i<=$len;++$i){
+                $bannerBar .= "<li></li>";
+                    }
+                    echo $bannerBar;
+                    ?>
+                </ul>
+            </div>
+            <!-- 下面是前/后按钮代码 -->
+            <!--<a class="sprev" href="javascript:void(0)"></a>-->
+            <!--<a class="snext" href="javascript:void(0)"></a>-->
+        </div>
+    </div>
+</div>
+
+<!--mj-banner end-->
+<!--活动推荐start-->
+<div class="yzc-Act-all">
+            <div class="yzc-Activities w1180">
+                <!--<div class="hd">-->
+                    <!--<a class="og_prev prev"></a>-->
+                    <!--<a class="og_next next"></a>-->
+                <!--</div>-->
+                <div class="bd picbox">
+                    <ul>
+                        <?
+	    $j = 10-(count($ad_list['index_middle']));
+	    foreach($ad_list['index_middle'] as $k=>$ad): ?>
                         <li>
-                            <img src="<?=StaticDir?>1.2/images/<?=($item['pttype']=='出售')?'buy':'buy2'?>.png">
-                            <p>
-                                <span><?=$item['name']?><a>（<?=$item['tel']?>）</a></span>
-                                <font><label>“</label><b><?=$item['remarks']?></b><label>”</label></font>
-                            </p>
-                        </li><? endforeach; ?>
+                            <div class="fl">
+                                <h4>品质之选</h4>
+                                <label>让肌肤如风一样</label>
+                                <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第{$k}条' module='轮播广告'>查看</a>
+                            </div>
+                            <span class="fr">
+                                <img src="<?=StaticDir?>1.2/images/tj-adv3.png">
+                            </span>
+                        </li>
+                        <? endforeach;
+
+	    foreach($ads as $ad){
+	    if($j<=0) break;
+	    ?>
+                        <li>
+                            <div class="fl">
+                                <h4>品质之选</h4>
+                                <label>让肌肤如风一样</label>
+                                <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第<?=$k+1?>条' module='轮播广告'>查看</a>
+                            </div>
+                            <span class="fr">
+                                <img src="<?=StaticDir?>1.2/images/tj-adv3.png">
+                            </span>
+                        </li>
+                        <?  $j--;} ?>
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="mj-bannerIimg">
-        <div class="bd">
-            <ul class="mj-banner-img">
-                <?
-                $bannerStr = '';
-                foreach($banners as $k=>$banner){
-		$k = $k+1;
-                $url	 = TRADE_URL.'/'.substr($banner['pic'],1);
-                $_banner = $banner['link'] ? $banner['link'] : 'javascript:void(0);';
-                $bannerStr .= "<li class='mj-banner-itme'><a href='{$_banner}' target='_blank' webid='1' addmsg='第{$k}条' module='大图广告'><img src='{$url}' alt='".$banner["alt"]."'></a></li>";
-                }
-                echo $bannerStr;
-                ?>
-            </ul>
-        </div>
-        <div class="hd">
-            <ul class="f-clearfix">
-                <?
-                $bannerBar = '';
-                for($i=1,$len=count($banners);$i<=$len;++$i){
-                $bannerBar .= "<li></li>";
-                }
-                echo $bannerBar;
-                ?>
-            </ul>
-        </div>
-        <!-- 下面是前/后按钮代码 -->
-        <a class="sprev" href="javascript:void(0)"></a>
-        <a class="snext" href="javascript:void(0)"></a>
-    </div>
-</div>
-<!--mj-banner end-->
-<!--活动推荐start-->
-<div class="yzc-Activities w1180">
-    <div class="hd">
-        <a class="og_prev prev"></a>
-        <a class="og_next next"></a>
-    </div>
-    <div class="bd picbox">
-        <ul>
-            <? 
-	    $j = 10-(count($ad_list['index_middle']));
-	    foreach($ad_list['index_middle'] as $k=>$ad): ?>
-            <li>
-                <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第{$k}条' module='轮播广告'>
-                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
-                </a>
-            </li>
-            <? endforeach;
-	    
-	    foreach($ads as $ad){
-	    if($j<=0) break;
-	    ?>
-            <li>
-                <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第<?=$k+1?>条' module='轮播广告'>
-                    <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=(TRADE_URL.$ad['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
-                </a>
-            </li>
-            <?  $j--;} ?>
-        </ul>
-    </div>
-</div>
+
 <!--活动推荐end-->
 <!--商标分类start-->
-<div class="yzc-Brand w1180">
-    <div class="hd">
-        <ul class="Brand-tit">
-            <li>
-                <h3>商标转让全类</h3>
-            </li>
-            <li>
-                <h3>推荐商标分类</h3>
-            </li>
-        </ul>
-    </div>
-    <div class="bd">
-        <ul class="brand-fl">
+<div class="yzc-Brand w1180" id="flr1">
+    <ul class="brand-fl">
             <li>
                 <!--重点红色-->
-                <p><span><label>&bull;</label>01类</span><a target="_blank" webid="3" addmsg="01类" module='商品全类快捷入口'  href="/s-c-1/" class="piont">化工原料</a></p>
-                <p><span><label>&bull;</label>02类</span><a target="_blank" webid="3" addmsg="02类" module='商品全类快捷入口' href="/s-c-2/">油漆涂料</a></p>
-                <p><span><label>&bull;</label>03类</span><a target="_blank" webid="3" addmsg="03类" module='商品全类快捷入口' href="/s-c-3/" class="piont">化妆日化</a></p>
-                <p><span><label>&bull;</label>04类</span><a target="_blank" webid="3" addmsg="04类" module='商品全类快捷入口' href="/s-c-4/">燃料油脂</a></p>
-                <p><span><label>&bull;</label>05类</span><a target="_blank" webid="3" addmsg="05类" module='商品全类快捷入口' href="/s-c-5/" class="piont">医药</a></p>
-                <p><span><label>&bull;</label>06类</span><a target="_blank" webid="3" addmsg="06类" module='商品全类快捷入口' href="/s-c-6/" class="piont">五金金属</a></p>
-                <p><span><label>&bull;</label>07类</span><a target="_blank" webid="3" addmsg="07类" module='商品全类快捷入口' href="/s-c-7/">机械电动</a></p>
-                <p><span><label>&bull;</label>08类</span><a target="_blank" webid="3" addmsg="08类" module='商品全类快捷入口' href="/s-c-8/">手工器械</a></p>
-                <p><span><label>&bull;</label>09类</span><a target="_blank" webid="3" addmsg="09类" module='商品全类快捷入口' href="/s-c-9/" class="piont">科学仪器</a></p>
+                <p><span><label class="sy-cls1"></label></span><a target="_blank" webid="3" addmsg="01类" module='商品全类快捷入口'  href="/s-c-1/" class="piont">01类-化工原料</a></p>
+                <p><span><label class="sy-cls2"></label></span><a target="_blank" webid="3" addmsg="02类" module='商品全类快捷入口' href="/s-c-2/">02类-油漆涂料</a></p>
+                <p><span><label class="sy-cls3"></label></span><a target="_blank" webid="3" addmsg="03类" module='商品全类快捷入口' href="/s-c-3/" class="piont">03类-化妆日化</a></p>
+                <p><span><label class="sy-cls4"></label></span><a target="_blank" webid="3" addmsg="04类" module='商品全类快捷入口' href="/s-c-4/">04类-燃料油脂</a></p>
+                <p><span><label class="sy-cls5"></label></span><a target="_blank" webid="3" addmsg="05类" module='商品全类快捷入口' href="/s-c-5/" class="piont">05类-医药</a></p>
+                <p><span><label class="sy-cls6"></label></span><a target="_blank" webid="3" addmsg="06类" module='商品全类快捷入口' href="/s-c-6/" class="piont">06类-五金金属</a></p>
+                <p><span><label class="sy-cls7"></label></span><a target="_blank" webid="3" addmsg="07类" module='商品全类快捷入口' href="/s-c-7/">07类-机械电动</a></p>
+                <p><span><label class="sy-cls8"></label></span><a target="_blank" webid="3" addmsg="08类" module='商品全类快捷入口' href="/s-c-8/">08类-手工器械</a></p>
+                <p><span><label class="sy-cls9"></label></span><a target="_blank" webid="3" addmsg="09类" module='商品全类快捷入口' href="/s-c-9/" class="piont">09类-科学仪器</a></p>
             </li>
             <li>
-                <p><span><label>&bull;</label>10类</span><a target="_blank" webid="3" addmsg="10类" module='商品全类快捷入口' href="/s-c-10/">医疗器械</a></p>
-                <p><span><label>&bull;</label>11类</span><a target="_blank" webid="3" addmsg="11类" module='商品全类快捷入口' href="/s-c-11/" class="piont">家用电器</a></p>
-                <p><span><label>&bull;</label>12类</span><a target="_blank" webid="3" addmsg="12类" module='商品全类快捷入口' href="/s-c-12/">运输工具</a></p>
-                <p><span><label>&bull;</label>13类</span><a target="_blank" webid="3" addmsg="13类" module='商品全类快捷入口' href="/s-c-13/">军火烟火</a></p>
-                <p><span><label>&bull;</label>14类</span><a target="_blank" webid="3" addmsg="14类" module='商品全类快捷入口' href="/s-c-14/" class="piont">珠宝钟表</a></p>
-                <p><span><label>&bull;</label>15类</span><a target="_blank" webid="3" addmsg="15类" module='商品全类快捷入口' href="/s-c-15/">乐器</a></p>
-                <p><span><label>&bull;</label>16类</span><a target="_blank" webid="3" addmsg="16类" module='商品全类快捷入口' href="/s-c-16/">办公用品</a></p>
-                <p><span><label>&bull;</label>17类</span><a target="_blank" webid="3" addmsg="17类" module='商品全类快捷入口' href="/s-c-17/">橡胶制品</a></p>
-                <p><span><label>&bull;</label>18类</span><a target="_blank" webid="3" addmsg="18类" module='商品全类快捷入口' href="/s-c-18/" class="piont">皮革皮具</a></p>
+                <p><span><label class="sy-cls10"></label></span><a target="_blank" webid="3" addmsg="10类" module='商品全类快捷入口' href="/s-c-10/">10类-医疗器械</a></p>
+                <p><span><label class="sy-cls11"></label></span><a target="_blank" webid="3" addmsg="11类" module='商品全类快捷入口' href="/s-c-11/" class="piont">11类-家用电器</a></p>
+                <p><span><label class="sy-cls12"></label></span><a target="_blank" webid="3" addmsg="12类" module='商品全类快捷入口' href="/s-c-12/">12类-运输工具</a></p>
+                <p><span><label class="sy-cls13"></label></span><a target="_blank" webid="3" addmsg="13类" module='商品全类快捷入口' href="/s-c-13/">13类-军火烟火</a></p>
+                <p><span><label class="sy-cls14"></label></span><a target="_blank" webid="3" addmsg="14类" module='商品全类快捷入口' href="/s-c-14/" class="piont">14类-珠宝钟表</a></p>
+                <p><span><label class="sy-cls15"></label></span><a target="_blank" webid="3" addmsg="15类" module='商品全类快捷入口' href="/s-c-15/">15类-乐器</a></p>
+                <p><span><label class="sy-cls16"></label></span><a target="_blank" webid="3" addmsg="16类" module='商品全类快捷入口' href="/s-c-16/">16类-办公用品</a></p>
+                <p><span><label class="sy-cls17"></label></span><a target="_blank" webid="3" addmsg="17类" module='商品全类快捷入口' href="/s-c-17/">17类-橡胶制品</a></p>
+                <p><span><label class="sy-cls18"></label></span><a target="_blank" webid="3" addmsg="18类" module='商品全类快捷入口' href="/s-c-18/" class="piont">18类-皮革皮具</a></p>
             </li>
             <li>
-                <p><span><label>&bull;</label>19类</span><a target="_blank" webid="3" addmsg="19类" module='商品全类快捷入口' href="/s-c-19/">建筑材料</a></p>
-                <p><span><label>&bull;</label>20类</span><a target="_blank" webid="3" addmsg="20类" module='商品全类快捷入口' href="/s-c-20/">家具</a></p>
-                <p><span><label>&bull;</label>21类</span><a target="_blank" webid="3" addmsg="21类" module='商品全类快捷入口' href="/s-c-21/">洁具厨房</a></p>
-                <p><span><label>&bull;</label>22类</span><a target="_blank" webid="3" addmsg="22类" module='商品全类快捷入口' href="/s-c-22/">绳网袋蓬</a></p>
-                <p><span><label>&bull;</label>23类</span><a target="_blank" webid="3" addmsg="23类" module='商品全类快捷入口' href="/s-c-23/">纺织纱线</a></p>
-                <p><span><label>&bull;</label>24类</span><a target="_blank" webid="3" addmsg="24类" module='商品全类快捷入口' href="/s-c-24/">布料床单</a></p>
-                <p><span><label>&bull;</label>25类</span><a target="_blank" webid="3" addmsg="25类" module='商品全类快捷入口' href="/s-c-25/" class="piont">服装鞋帽</a></p>
-                <p><span><label>&bull;</label>26类</span><a target="_blank" webid="3" addmsg="26类" module='商品全类快捷入口' href="/s-c-26/">纽扣拉链</a></p>
-                <p><span><label>&bull;</label>27类</span><a target="_blank" webid="3" addmsg="27类" module='商品全类快捷入口' href="/s-c-27/">地毯席垫</a></p>
+                <p><span><label class="sy-cls19"></label></span><a target="_blank" webid="3" addmsg="19类" module='商品全类快捷入口' href="/s-c-19/">19类-建筑材料</a></p>
+                <p><span><label class="sy-cls20"></label></span><a target="_blank" webid="3" addmsg="20类" module='商品全类快捷入口' href="/s-c-20/">20类-家具</a></p>
+                <p><span><label class="sy-cls21"></label></span><a target="_blank" webid="3" addmsg="21类" module='商品全类快捷入口' href="/s-c-21/">21类-洁具厨房</a></p>
+                <p><span><label class="sy-cls22"></label></span><a target="_blank" webid="3" addmsg="22类" module='商品全类快捷入口' href="/s-c-22/">22类-绳网袋蓬</a></p>
+                <p><span><label class="sy-cls23"></label></span><a target="_blank" webid="3" addmsg="23类" module='商品全类快捷入口' href="/s-c-23/">23类-纺织纱线</a></p>
+                <p><span><label class="sy-cls24"></label></span><a target="_blank" webid="3" addmsg="24类" module='商品全类快捷入口' href="/s-c-24/">24类-布料床单</a></p>
+                <p><span><label class="sy-cls25"></label></span><a target="_blank" webid="3" addmsg="25类" module='商品全类快捷入口' href="/s-c-25/" class="piont">25类-服装鞋帽</a></p>
+                <p><span><label class="sy-cls26"></label></span><a target="_blank" webid="3" addmsg="26类" module='商品全类快捷入口' href="/s-c-26/">26类-纽扣拉链</a></p>
+                <p><span><label class="sy-cls27"></label></span><a target="_blank" webid="3" addmsg="27类" module='商品全类快捷入口' href="/s-c-27/">27类-地毯席垫</a></p>
             </li>
             <li>
-                <p><span><label>&bull;</label>28类</span><a target="_blank" webid="3" addmsg="28类" module='商品全类快捷入口' href="/s-c-28/">健身器材</a></p>
-                <p><span><label>&bull;</label>29类</span><a target="_blank" webid="3" addmsg="29类" module='商品全类快捷入口' href="/s-c-29/" class="piont">食品</a></p>
-                <p><span><label>&bull;</label>30类</span><a target="_blank" webid="3" addmsg="30类" module='商品全类快捷入口' href="/s-c-30/" class="piont">方便食品</a></p>
-                <p><span><label>&bull;</label>31类</span><a target="_blank" webid="3" addmsg="31类" module='商品全类快捷入口' href="/s-c-31/">饲料种籽</a></p>
-                <p><span><label>&bull;</label>32类</span><a target="_blank" webid="3" addmsg="32类" module='商品全类快捷入口' href="/s-c-32/" class="piont">啤酒饮料</a></p>
-                <p><span><label>&bull;</label>33类</span><a target="_blank" webid="3" addmsg="33类" module='商品全类快捷入口' href="/s-c-33/" class="piont">酒</a></p>
-                <p><span><label>&bull;</label>34类</span><a target="_blank" webid="3" addmsg="34类" module='商品全类快捷入口' href="/s-c-34/">烟草烟具</a></p>
-                <p><span><label>&bull;</label>35类</span><a target="_blank" webid="3" addmsg="35类" module='商品全类快捷入口' href="/s-c-35/" class="piont">广告销售</a></p>
-                <p><span><label>&bull;</label>36类</span><a target="_blank" webid="3" addmsg="36类" module='商品全类快捷入口' href="/s-c-36/">金融物管</a></p>
+                <p><span><label class="sy-cls28"></label></span><a target="_blank" webid="3" addmsg="28类" module='商品全类快捷入口' href="/s-c-28/">28类-健身器材</a></p>
+                <p><span><label class="sy-cls29"></label></span><a target="_blank" webid="3" addmsg="29类" module='商品全类快捷入口' href="/s-c-29/" class="piont">29类-食品</a></p>
+                <p><span><label class="sy-cls30"></label></span><a target="_blank" webid="3" addmsg="30类" module='商品全类快捷入口' href="/s-c-30/" class="piont">30类-方便食品</a></p>
+                <p><span><label class="sy-cls31"></label></span><a target="_blank" webid="3" addmsg="31类" module='商品全类快捷入口' href="/s-c-31/">31类-饲料种籽</a></p>
+                <p><span><label class="sy-cls32"></label></span><a target="_blank" webid="3" addmsg="32类" module='商品全类快捷入口' href="/s-c-32/" class="piont">32类-啤酒饮料</a></p>
+                <p><span><label class="sy-cls33"></label></span><a target="_blank" webid="3" addmsg="33类" module='商品全类快捷入口' href="/s-c-33/" class="piont">33类-酒</a></p>
+                <p><span><label class="sy-cls34"></label></span><a target="_blank" webid="3" addmsg="34类" module='商品全类快捷入口' href="/s-c-34/">34类-烟草烟具</a></p>
+                <p><span><label class="sy-cls35"></label></span><a target="_blank" webid="3" addmsg="35类" module='商品全类快捷入口' href="/s-c-35/" class="piont">35类-广告销售</a></p>
+                <p><span><label class="sy-cls36"></label></span><a target="_blank" webid="3" addmsg="36类" module='商品全类快捷入口' href="/s-c-36/">36类-金融物管</a></p>
             </li>
             <li>
-                <p><span><label>&bull;</label>37类</span><a target="_blank" webid="3" addmsg="37类" module='商品全类快捷入口' href="/s-c-37/">建筑修理</a></p>
-                <p><span><label>&bull;</label>38类</span><a target="_blank" webid="3" addmsg="38类" module='商品全类快捷入口' href="/s-c-38/">通讯传媒</a></p>
-                <p><span><label>&bull;</label>39类</span><a target="_blank" webid="3" addmsg="39类" module='商品全类快捷入口' href="/s-c-39/">运输旅行</a></p>
-                <p><span><label>&bull;</label>40类</span><a target="_blank" webid="3" addmsg="40类" module='商品全类快捷入口' href="/s-c-40/">材料加工</a></p>
-                <p><span><label>&bull;</label>41类</span><a target="_blank" webid="3" addmsg="41类" module='商品全类快捷入口' href="/s-c-41/" class="piont">教育娱乐</a></p>
-                <p><span><label>&bull;</label>42类</span><a target="_blank" webid="3" addmsg="42类" module='商品全类快捷入口' href="/s-c-42/">科学服务</a></p>
-                <p><span><label>&bull;</label>43类</span><a target="_blank" webid="3" addmsg="43类" module='商品全类快捷入口' href="/s-c-43/" class="piont">餐饮住宿</a></p>
-                <p><span><label>&bull;</label>44类</span><a target="_blank" webid="3" addmsg="44类" module='商品全类快捷入口' href="/s-c-44/">医疗园艺</a></p>
-                <p><span><label>&bull;</label>45类</span><a id='mytest' target="_blank" webid="3" addmsg="45类" module='商品全类快捷入口' href="/s-c-45/">社会服务</a></p>
+                <p><span><label class="sy-cls37"></label></span><a target="_blank" webid="3" addmsg="37类" module='商品全类快捷入口' href="/s-c-37/">37类-建筑修理</a></p>
+                <p><span><label class="sy-cls38"></label></span><a target="_blank" webid="3" addmsg="38类" module='商品全类快捷入口' href="/s-c-38/">38类-通讯传媒</a></p>
+                <p><span><label class="sy-cls39"></label></span><a target="_blank" webid="3" addmsg="39类" module='商品全类快捷入口' href="/s-c-39/">39类-运输旅行</a></p>
+                <p><span><label class="sy-cls40"></label></span><a target="_blank" webid="3" addmsg="40类" module='商品全类快捷入口' href="/s-c-40/">40类-材料加工</a></p>
+                <p><span><label class="sy-cls41"></label></span><a target="_blank" webid="3" addmsg="41类" module='商品全类快捷入口' href="/s-c-41/" class="piont">41类-教育娱乐</a></p>
+                <p><span><label class="sy-cls42"></label></span><a target="_blank" webid="3" addmsg="42类" module='商品全类快捷入口' href="/s-c-42/">42类-科学服务</a></p>
+                <p><span><label class="sy-cls43"></label></span><a target="_blank" webid="3" addmsg="43类" module='商品全类快捷入口' href="/s-c-43/" class="piont">43类-餐饮住宿</a></p>
+                <p><span><label class="sy-cls44"></label></span><a target="_blank" webid="3" addmsg="44类" module='商品全类快捷入口' href="/s-c-44/">44类-医疗园艺</a></p>
+                <p><span><label class="sy-cls45"></label></span><a id='mytest' target="_blank" webid="3" addmsg="45类" module='商品全类快捷入口' href="/s-c-45/">45类-社会服务</a></p>
             </li>
         </ul>
-        <ul class="tj-recom">
-            <? foreach($recommendClasses as $rClass): ?>
-            <li>
-                <p>
-                    <img src="/Static/images/idx01.gif" _original="<?=(TRADE_URL.$rClass['pic'])?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$rClass['alt']?>"/>
-                </p>
-                <div class="tj-recom-hover">
-                    <label>
-                        <? foreach($rClass['class'] as $class): ?>
-                        <a target="_blank" href="/s-c-<?=$class[0]?>/" webid="3" addmsg="<?=$class[1]?>" module='商品全类快捷入口'> <?=$class[1]?>  </a>
-                        <? endforeach; ?>
-                    </label>
-                </div>
-            </li>
-            <? endforeach; ?>
-        </ul>
-    </div>
+    <a class="all-clas">全部分类<i class="fa fa-angle-down"></i></a>
 </div>
 <!--商标分类end-->
 <!--类别展示start-->
 <div class="sbzs" id="sbzs">
     <? foreach($modules as $tk=>$module): ?>
     <div class="yzc-category w1180" <?=(($tk!=0)?'':'id="cloth"')?>>
-         <div class="yzc-category-tit">
-            <h3 class="fl"><img src="<?=StaticDir?>1.2/images/cate-ico1.png"><?=($tk+1)?>F <span> / </span><?=$module['name']?></h3>
+        <div class="yzc-category-tit">
+            <h3 class="fl"><?=$module['name']?></h3>
             <div class="parHd" style="position:relative;z-index:9999;">
                 <ul class="fr">
                     <? foreach($module['class'] as $class): ?>
-                    <li><?=$class['name']?><span></span></li>
+                    <li><?=$class['name']?></li>
                     <? endforeach; ?>
                 </ul>
             </div>
@@ -415,34 +408,33 @@
 
                         <? foreach($class['items'] as $k=>$item): ?>
                         <li>
+                            <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="01-查看详情" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
                             <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
                             <div class="brand-show">
                                 <span>
-                                    <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="01-查看详情" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
-
-                                        <?if ($_k == 0){?>
-                                        <img class="lazy pulse" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$item['alt']?>">
-                                        <?}else{?>
-                                        <img src="/Static/images/idx01.gif" _original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"  alt="<?=$item['alt']?>">
-                                        <?}?>
-
-                                    </a>
+                                    <?if ($_k == 0){?>
+                                    <img class="lazy pulse" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$item['alt']?>">
+                                    <?}else{?>
+                                    <img src="/Static/images/idx01.gif" _original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"  alt="<?=$item['alt']?>">
+                                    <?}?>
                                 </span>
                                 <p><b><?=$item['thum_name']?></b> <?=$item['classStr']?></p>
                             </div>
                             <div class="brand-buy">
-                                <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'> <span> </span> </a>
+                                <em>点击查看详情</em>
+                                <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>  </a>
                                 <font>
                                 <a href="javascript:;" class="first" addmsg="表单-02-询价" onclick="xunjia(this);" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
-                                    <img src="<?=StaticDir?>1.2/images/catebuy1.png">
+                                    <i class="cate-buy"></i>
                                     询 价
                                 </a>
                                 <a href="javascript:void(0);" class="sec" addmsg="咨询-03-联系卖家" onclick="goChat()" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
-                                    <img src="<?=StaticDir?>1.2/images/cate-ck.png">
+                                    <i class="cate-ck"></i>
                                     联系卖家
                                 </a>
                                 </font>
                             </div>
+                            </a>
                         </li>
                         <? endforeach; ?>
                     </ul>
@@ -450,154 +442,287 @@
                 <? endforeach; ?>
             </div>
         </div>
+        <div class="yzc-buy-sell w1180">
+        <div class="buy-se-lf fl">
+            <a>
+                <img src="<?=StaticDir?>1.2/images/buy-ico1.png">
+                <p>
+                    <b>买商标</b><br/>
+                    我帮你选
+                </p>
+            </a>
+            <a>
+                <img src="<?=StaticDir?>1.2/images/sell-ico.png">
+                <p>
+                    <b>卖商标</b><br/>
+                    知产变现
+                </p>
+            </a>
+        </div>
+        <ul class="buy-se-rg fl">
+            <i class="fl">
+                <img src="<?=StaticDir?>1.2/images/buy-sell-tit.png">
+            </i>
+            <li>
+                <a>
+                    <span>
+                        <img src="<?=StaticDir?>1.2/images/buy-sell-ico1.png">
+                    </span>
+                    <p>
+                        <b>卖家急售</b><br/>
+                        <label>价格一定很实惠</label>
+                    </p>
+                </a>
+            </li>
+            <em></em>
+            <li>
+                <a>
+                    <span>
+                        <img src="<?=StaticDir?>1.2/images/buy-sell-ico2.png">
+                    </span>
+                    <p>
+                        <b>即将续展</b><br/>
+                        <label>续展期买标，更便宜</label>
+                    </p>
+                </a>
+            </li>
+            <em></em>
+            <li>
+                <a>
+                    <span>
+                        <img src="<?=StaticDir?>1.2/images/buy-sell-ico3.png">
+                    </span>
+                    <p>
+                        <b>商品小于5项</b><br/>
+                        <label>商品虽少，够用就好</label>
+                    </p>
+                </a>
+            </li>
+            <em></em>
+            <li>
+                <a>
+                    <span>
+                        <img src="<?=StaticDir?>1.2/images/buy-sell-ico4.png">
+                    </span>
+                    <p>
+                        <b>多类转让</b><br/>
+                        <label>多类打包更划算</label>
+                    </p>
+                </a>
+            </li>
+        </ul>
     </div>
+    </div>
+
     <? endforeach; ?>
+
 </div>
 <!--类别展示end-->
 <!--成功案列start-->
-<div class="w1180 succeed-al" id="succal">
-    <a href="/case"><h3 style="left: 43%;">商标转让成功案例</h3></a>
+<div class="w1180 succeed-al" id="flr2">
+    <div class="succeed-al-tit f-clearfix f-hidden">
+        <h3 class="fl">成功案例</h3>
+        <a class="fr" href="/case">查看更多</a>
+    </div>
+
     <ul class="succeed-al-main">
         <li>
-            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                <div class="flipper">
-                    <div class="front">
-                        <dl>
-                            <font>格伦贝拉<span style="background: #ff9f8c;">服装鞋帽25类</span></font>
-                            <p>
-                                <label>使用商品：</label>服装鞋帽、服装配饰<br/>
-                                <label>购  买 人：</label> 慈先生<br/>
-                                <label>服务顾问：</label>陈艾<br/>
-                            </p>
-                        </dl>
-                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="01-格伦贝拉" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al1.png"></a>
-                    </div>
-                    <div class="back">
-                        <a href="/case/detail/?id=14" target="_blank" webid="14" addmsg="01-格伦贝拉" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-1.jpg"></a>
-                    </div>
-                </div>
-            </div>
+          <img src="<?=StaticDir?>1.2/images/suc-al-pic1.png">
         </li>
         <li>
-            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                <div class="flipper">
-                    <div class="front">
-                        <dl>
-                            <font>Hesiod<span style="background: #ffc061;">化妆清洁3类</span></font>
-                            <p>
-                                <label>使用商品：</label>清洁用品、化妆品<br/>
-                                <label>购  买 人：</label> 某商贸公司<br/>
-                                <label>服务顾问：</label>王桂华<br/>
-                            </p>
-                        </dl>
-                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="02-Hesiod" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al2.png"></a>
-                    </div>
-                    <div class="back">
-                        <a href="/case/detail/?id=12" target="_blank" webid="14" addmsg="02-Hesiod" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-2.jpg"></a>
-                    </div>
-                </div>
-            </div>
+            <img src="<?=StaticDir?>1.2/images/suc-al-pic2.png">
         </li>
         <li>
-            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                <div class="flipper">
-                    <div class="front">
-                        <dl>
-                            <font>麦普森<span style="background: #8cdcff;">3C数码9类</span></font>
-                            <p>
-                                <label>使用商品：</label>计算机、数码产品<br/>
-                                <label>购  买 人：</label> 王先生<br/>
-                                <label>服务顾问：</label>寇飞<br/>
-                            </p>
-                        </dl>
-                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="03-麦普森" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/al3.png"></a>
-                    </div>
-                    <div class="back">
-                        <a href="/case/detail/?id=16" target="_blank" webid="14" addmsg="03-麦普森" module='成功案例'><img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/c-3.jpg"></a>                        
-                    </div>
-                </div>
-            </div>
+            <img src="<?=StaticDir?>1.2/images/suc-al-pic3.png">
         </li>
     </ul>
 </div>
 <!--成功案列end-->
 <!--商标新闻start-->
 <div class="brand-ques w1180">
-
-    <div class="fl">
-        <h2> 商标新闻</h2>
-        <div class="Tradenews">
-            <dl>
-                <dt>
-                <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/brand1.png">
-                </dt>
-                <dd>
-                    <? foreach ($news['news'] as $k=>$item){ ?>
-                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="新闻第<?=($k+1)?>条" module='新闻'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
-                    <? } ?>
-                    <a class="more" hidden="" href="/n-50/" target="_blank" webid="15"  addmsg="新闻更多" module='新闻'>更多 ></a>
-                </dd>
-            </dl>
-            <div class="btm">
-                <? foreach ($news['baike'] as $k=>$item){ ?>
-                <p>
-                    <span class="fl">[<a href="/n-53/" target="_blank" webid="15" addmsg="其他分类第<?=($k+1)?>条" module='新闻'>商标百科</a>] <a href="<? echo $item['url'];?>" target="_blank" webid="15" addmsg="其他新闻第<?=($k+1)?>条" module='新闻'><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
-                </p>
-                <? } ?>
-            </div>
+        <div class="brand-ques-tit  f-clearfix f-hidden">
+            <div class="succeed-al-tit f-clearfix f-hidden fl">
+            <h3 class="fl">行业新闻</h3>
+            <a class="fr" href="/case">查看更多</a>
         </div>
+            <div class="succeed-al-tit f-clearfix f-hidden fr">
+            <h3 class="fl">转让问答</h3>
+            <a class="fr" href="/case">查看更多</a>
+        </div>
+        </div>
+        <div class="Trad-all">
+         <div class="Tradenews">
+             <dl class="fl">
+                 <dt>
+                     <img  src="<?=StaticDir?>1.2/images/hyxw.jpg" >
+                 </dt>
+                 <dd>
+                     <? foreach ($news['news'] as $k=>$item){ ?>
+                     <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="新闻第<?=($k+1)?>条" module='新闻'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                     <? } ?>
 
+                 </dd>
+             </dl>
+             <dl class="fr">
+                 <dt>
+                     <img  src="<?=StaticDir?>1.2/images/zrhd.jpg">
+                 </dt>
+                 <dd>
+                     <? foreach ($news['faq'] as $k=>$item){ ?>
+                     <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                     <? } ?>
+
+                 </dd>
+             </dl>
+         </div>
+         <div class="btm">
+             <? foreach ($news['law'] as $k=>$item){ ?>
+             <p>
+                 <span class="fl">[<a href="/n-51/" target="_blank" webid="15"  addmsg="其他分类第<?=($k+1)?>条" module='问答'>商标法律</a>] <a href="<? echo $item['url'];?>" target="_blank" webid="15"  addmsg="其他问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
+             </p>
+             <? } ?>
+         </div>
+     </div>
 
     </div>
 
-    <div class="fr">
-        <h2> 商标转让问答</h2>
-        <div class="trademark">
-            <dl>
-                <dt>
-                <img class="lazy" src="/Static/images/idx01.gif" data-original="<?=StaticDir?>1.2/images/brand2.png">
-                </dt>
-                <dd>
-                    <? foreach ($news['faq'] as $k=>$item){ ?>
-                    <p><span class="fl"><label>&bull;</label><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
-                    <? } ?>
-                    <a class="more" hidden="" target="_blank" href="/n-45/" webid="15" addmsg="问答更多" module='问答'>更多 ></a>
-                </dd>
-            </dl>
-            <div class="btm">
-                <? foreach ($news['law'] as $k=>$item){ ?>
-                <p>
-                    <span class="fl">[<a href="/n-51/" target="_blank" webid="15"  addmsg="其他分类第<?=($k+1)?>条" module='问答'>商标法律</a>] <a href="<? echo $item['url'];?>" target="_blank" webid="15"  addmsg="其他问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
-                </p>
-                <? } ?>
-            </div>
-        </div>
-
-
-    </div>
-</div>
 <!--商标新闻end-->
+<!--一只蝉知产工具-->
+<div class="yzc-tool w1180" id="flr3">
+    <div class="yzc-tool-tit">
+        <h3>一只蝉知产工具</h3>
+        <span>知产从业者的随身工具包，一点即用</span>
+    </div>
+    <ul>
+        <li>
+            <div>
+                <span class="tool-pic1"></span>
+                <b>数据共享</b>
+                <i></i>
+            </div>
+            <label>买家喜欢什么样的商品</label>
+        </li>
+        <li>
+            <div>
+                <span class="tool-pic2"></span>
+                <b>商标查询</b>
+                <i></i>
+            </div>
+            <label>查查能不能注册</label>
+        </li>
+        <li>
+            <div>
+                <span class="tool-pic3"></span>
+                <b>商标注册</b>
+                <i></i>
+            </div>
+            <label>太棒了，注册下来</label>
+        </li>
+        <li>
+            <div>
+                <span class="tool-pic4"></span>
+                <b>商标出售者平台</b>
+                <i></i>
+            </div>
+            <label>批量上架 成交率高 <br/>免费广告展示</label>
+        </li>
+        <li>
+            <div>
+                <span class="tool-pic5"></span>
+                <b>商标报价单工具</b>
+                <i></i>
+            </div>
+            <label>做个在线报价单把给客户看</label>
+        </li>
+        <li>
+            <div>
+                <span class="tool-pic6"></span>
+                <b>商标安全检测工具</b>
+                <i></i>
+            </div>
+            <label>我的商标有无风险？测一下</label>
+        </li>
+    </ul>
+</div>
+<!--一只蝉知产工具end-->
 <!--订阅商标start-->
 <div class="yzc-take">
     <div class="w1180">
         <a class="take1" target="_blank" href="/s/" webid="16"  addmsg="01" module='订阅商标'>快速筛选出好标</a>
         <a class="take2" href="javascript:;" onclick="goChat()" webid="16" addmsg="02" module='订阅商标'>联系我们-免费为你找</a>
     </div>
-
 </div>
 <!--订阅商标end-->
+
 <!--漂浮楼层start-->
+<!--<ul class="float-floor" id="float-floor" style="display: none;">-->
+    <!--<?foreach($modules as $k=>$module):?>-->
+    <!--<li>-->
+        <!--<a><?=(mb_substr($module['name'],0,2,'utf-8'))?><br/><?=(mb_substr($module['name'],2,2,'utf-8'))?> </a>-->
+    <!--</li>-->
+    <!--<?endforeach;?>-->
+<!--</ul>-->
 <ul class="float-floor" id="float-floor" style="display: none;">
-    <?foreach($modules as $k=>$module):?>
-    <li>
-        <a><?=(mb_substr($module['name'],0,2,'utf-8'))?><br/><?=(mb_substr($module['name'],2,2,'utf-8'))?> </a>
+    <li id="flr-lc1">
+        <a>
+            <span class="flr-pic1"></span>
+            <label>
+                商标<br/>
+                分类
+            </label>
+        </a>
     </li>
-    <?endforeach;?>
+    <li id="flr-lc2">
+        <a>
+            <span class="flr-pic2"></span>
+            <label>
+                商标<br/>
+               交易
+            </label>
+        </a>
+    </li>
+    <li id="flr-lc3">
+        <a>
+            <span class="flr-pic3"></span>
+            <label>
+                专利<br/>
+                交易
+            </label>
+        </a>
+    </li>
+    <li id="flr-lc4">
+        <a>
+            <span class="flr-pic4"></span>
+            <label>
+                知产<br/>
+               工具
+            </label>
+        </a>
+    </li>
+    <li id="flr-lc5">
+        <a>
+            <span class="flr-pic5"></span>
+            <label>
+                成功<br/>
+                案例
+            </label>
+        </a>
+    </li>
 </ul>
 <!--漂浮楼层end-->
 <? require(ViewDir.'/sidebar.html'); ?>
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
 <script type="text/javascript">
+    //全部分类展示与收起
+    $(".yzc-Brand").hover(function(){
+        $(".brand-fl").css({"height":"auto"});
+        $(".all-clas").html('收起<i class="fa fa-angle-up"></i>');
+    },function(){
+        $(".brand-fl").css({"height":"96px"});
+        $(".all-clas").html('全部分类<i class="fa fa-angle-down"></i>');
+    })
+
+ //交易无缝滚动
             $('.mj-dd').show();
 //交易无缝滚动
             jQuery(".mj-newjy").slide({mainCell: ".bd ul", autoPlay: true, effect: "topMarquee", vis: 3, interTime: 50, trigger: "click"});
@@ -626,6 +751,12 @@
             }
 
             //漂浮楼层
+            var farrs=$("#sbzs>div");
+            var ofls1=$("#flr1");
+            var ofls3=$("#flr3");
+            var ofls2=$("#flr2");
+            var oafls=[ofls1,farrs[0],farrs[1],ofls3,ofls2]
+
             var cet_w = $("#cloth").offset().left;
             var oflr = $("#float-floor");
             var sbzs = $(".sbzs>div");
@@ -646,7 +777,6 @@
                 var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
                 var ofh = owh / 2 - $("#float-floor").height() / 2;
                 if (cet_w < $("#float-floor").width() + 20) {
-
                     oflr.hide();
                 }
                 else {
@@ -657,58 +787,57 @@
 
             $(window).scroll(function() {
                 var w_top = $(window).scrollTop();
-                if (w_top + $(window).height() > $("#cloth").offset().top + 300 && w_top < $("#succal").offset().top) {
+                if (w_top> $("#flr1").offset().top-400 && w_top < $("#flr3").offset().top-100) {
                     oflr.show();
                     oflr.css({"left": oft, "top": ofh})
                     if (owf < 1180) {
                         oflr.hide();
                     }
-
                 }
                 else {
                     oflr.hide();
                 }
-                for (var i = 0; i < $("#float-floor li").length; i++) {
-                    if (w_top < $(".sbzs>div").eq(i).offset().top && w_top > $(".sbzs>div").eq(i).offset().top - $(".sbzs>div").eq(i).outerHeight(true)) {
+                for(var i=0;i<oflis.length;i++){
+                    if(w_top > $(oafls[i]).offset().top-300 && w_top >  $(oafls[i]).offset().top-$(oafls[i]).outerHeight(true)){
                         $("#float-floor li").removeClass("on");
                         $(oflis[i]).addClass("on");
-                    } else {
-
                     }
                 }
-
             });
             $("#float-floor li").each(function(i) {
                 $(this).click(function() {
-                    var t = $(".sbzs>div").eq(i).offset().top;
-                    $("html, body").animate({"scrollTop": t - $(".sbzs>div").eq(i).outerHeight(true) / 2});
+                    var t =  $(oafls[i]).offset().top;
+                    $("html, body").animate({"scrollTop": t-$(oafls[i]).outerHeight(true)});
                     $(this).addClass("on");
                 })
             })
-// 添加查看详情标签；
-            $(document).ready(function() {
-                $('.yzc-categorbrand li div ').on('mouseover', 'span',
-                        function() {
-
-                            $('#tip').show();
-                        }
-                );
-                $('.yzc-categorbrand li div ').on('mouseleave', 'span',
-                        function() {
-                            $('#tip').hide();
-                        }
-                );
-                $('.yzc-categorbrand li div ').on('mousemove', 'span', function(e) {
-
-                    var top = e.pageY + 5;
-                    var left = e.pageX + 5;
-                    $('#tip').css({
-                        'top': top + 'px',
-                        'left': left + 'px'
-                    });
-                });
 
 
-            });
+
+
+    // 添加查看详情标签；
+//            $(document).ready(function() {
+//                $('.yzc-categorbrand li div ').on('mouseover', 'span',
+//                        function() {
+//
+//                            $('#tip').show();
+//                        }
+//                );
+//                $('.yzc-categorbrand li div ').on('mouseleave', 'span',
+//                        function() {
+//                            $('#tip').hide();
+//                        }
+//                );
+//                $('.yzc-categorbrand li div ').on('mousemove', 'span', function(e) {
+//                    var top = e.pageY + 5;
+//                    var left = e.pageX + 5;
+//                    $('#tip').css({
+//                        'top': top + 'px',
+//                        'left': left + 'px'
+//                    });
+//                });
+//
+//
+//            });
 </script>
 <? require(ViewDir.'/footer.html'); ?>

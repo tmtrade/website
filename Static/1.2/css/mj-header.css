@@ -995,11 +995,7 @@ table {
     text-align: center;
 
     line-height: 50px;
-
-    /* background: #ff3f3f;*/
-
-    /* background:#404040; */
-
+    background: url("../images/nav-bg-ico.png") repeat;
     cursor: pointer;
 
     margin-top: 12px;
@@ -1028,32 +1024,16 @@ table {
 .mj-dd{
 
     position: relative;
-
-    /* margin-top: 2px; */
-
-    /*height: 480px;*/
-
     width: 175px;
-
     text-align: left;
-
-    /* padding-top: 12px; */
-
-    padding-bottom: 12px;
 }
 
 .mj-dd dd{
-
     width: 174px;
-
-    height: 37px;
-
-    line-height: 37px;
-
+    height: 33px;
+    line-height: 33px;
     font-size: 14px;
 }
-
-
 
 .mj-ddahoverc .mj-ddItems{
 
@@ -1073,9 +1053,9 @@ table {
 
     width:100%;
 
-    background: #404040;
+    /*background: #404040;*/
 
-    border-left: 1px solid #404040;
+    /*border-left: 1px solid #404040;*/
 
     text-indent: 15px;
 
@@ -1130,33 +1110,24 @@ table {
 }
 
 .mj-ddItems{
-
     display: none;
-
     position: absolute;
-
     padding: 0 0px 0 0px;
-
-    left: 180px;
-
+    left: 175px;
     top: 0;
-
-    min-width:1000px;
-
-    height: 480px;
-
+    min-width: 1000px;
+    height:400px;
     background: #fff;
-
     box-shadow: 1px 1px 2px #e5e6e6;
 
 }
 
 .mj-ddItems ul{
-
     width:755px;
-
+    height:375px;
     float: left;
     margin-top:15px;
+    overflow: auto;
 
 }
 
@@ -1258,7 +1229,8 @@ table {
 }
 .mj-ddItems .ddItems-like div{
     overflow: hidden;
-    margin-top: 10px;
+    margin-top:20px;
+    border-top: 1px solid #dcdcdc;
 }
 .mj-ddItems .ddItems-like div span{
     display:block;
@@ -1266,10 +1238,11 @@ table {
     height: 120px;
     line-height: 115px;
     background: #ffffff;
-    margin: 10px auto;
+    margin:0px auto;
     text-align: center;
     vertical-align: middle;
     border: 1px solid #dcdcdc;
+    border-top:none;
 }
 .mj-ddItems .ddItems-like div span img{
     display:inline-block;

@@ -7,7 +7,7 @@
 @import url("../css/normalize.css");
 /*重置body*/
 body{
-    font:13px / 1.5  'microsoft yahei', 'helvetica neue', 'hiragino sans gb', 'stheiti','\5FAE\8F6F\96C5\9ED1', 'tahoma',"微软雅黑";
+    font:13px / 1.5  'arial','宋体',"微软雅黑";
     /*
       -webkit-font-smoothing 在win7 Safari 下面会触发属性导致字体模糊 设置 antialiased
           none  禁用该属性

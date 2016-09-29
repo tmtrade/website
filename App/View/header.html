@@ -7,6 +7,7 @@
     <? if(!empty($description)) {?><meta name="description" content="<?=$description?>"> <? }?>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/import-comm.css?v=<?=$static_version?>"/>
     <link rel="stylesheet" href="<?=StaticDir?>1.2/css/color.css?v=<?=$static_version?>"/>
+    <link rel="stylesheet" href="<?=StaticDir?>1.2/css/animate.min.css?v=<?=$static_version?>"/>
     <link rel="stylesheet" href="/Static/1.2/css/font-awesome.min.css?v=<?=$static_version?>"/>
     <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery-1.8.3.min.js"></script>
     <script src="<?=StaticDir?>1.2/js/layer/layer.js?v=<?=$static_version?>"></script>
@@ -354,7 +355,7 @@
                     <i class="uj_icon9"></i>
                     <a href="javascript:;" class="mj-mainL">全部商标分类</a>
                 </div>
-                <div class="mj-dd" style="display: none;min-height:454px;">
+                <div class="mj-dd" style="display: none;min-height:400px;">
                     <? $k1=0 ?>
                     <? foreach($menuFirst as $first): ?>
                     <? $k2=0;$k4=0;$k5=0;++$k1 ?>
@@ -387,7 +388,7 @@
                                 <?endforeach;?>
                             </ul>
                             <div class="ddItems-like">
-                                <h3><img src="<?=StaticDir?>1.2/images/heart.png">也许您还喜欢</h3>
+                                <!--<h3><img src="<?=StaticDir?>1.2/images/heart.png">也许您还喜欢</h3>-->
                                 <div>
 				    <? $n=0;?>
 					<? foreach($ad_list['index_menu'] as $menuImg): ?>

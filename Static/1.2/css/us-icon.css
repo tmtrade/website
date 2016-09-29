@@ -499,7 +499,7 @@
 
     width: 18px;
 
-    height: 17px;
+    height: 16px;
 
     background-image: url("../images/icon4.png");
 
@@ -509,11 +509,13 @@
 
 .uj-icon5 {
 
-    width: 13px;
+    width: 17px;
 
-    height: 20px;
+    height: 16px;
 
-    background-image: url("../images/icon5.png");
+    background-image: url("../images/tp-sel-ico2.png");
+
+    margin-top:3px;
 
 }
 
