@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="td-pk-del">
-            <h3><?=$all['title']?>等<?=$all['count']?>条商品</h3>
+            <h3><?=mbSub($all['title'],0,20)?>等<?=$all['count']?>条商品</h3>
             <p class="pk-sell"><span class="red"><font>打包出售</font>/bundling</span>
                 <? if($all['isAll']==1): ?>
                 <span class="yew">注：该商品包不支持单独购买</span>
