@@ -541,6 +541,8 @@ function analyzePage(ptype){
             str = 'faq详情页';break;
         case '18':
             str = '活动页';break;
+        case '19':
+            str = '商标打包页';break;
         default:
             str = '未知';
     }

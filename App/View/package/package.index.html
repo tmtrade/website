@@ -1,0 +1,850 @@
+﻿<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/import-comm.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>/1.2/css/trade.css"/>
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/mj-index.css?v=<?=$static_version?>" />
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>" />
+<!--弹窗css-->
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css?v=<?=$static_version?>"/>
+<!--介绍模块-->
+<div class="td-header">
+    <div class="w1180">
+        <div class="td-pack-tp">
+            <p class="fl">
+                <label class="ft1">特价商标</label>> <label class="ft2">打包出售</label>
+            </p>
+            <div class="pack-tp-rg fr">
+                <a class="collect in_collect" webid="4" addmsg="爱森鸟" module="收藏商标"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
+                <a href="javascript:;" class="jiathis jiathis_txt" addmsg="爱森鸟" module="分享"> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
+            </div>
+        </div>
+        <div class="td-pk-del">
+            <h3><?=$all['title']?>等<?=$all['count']?>条商品</h3>
+            <p class="pk-sell"><span class="red"><font>打包出售</font>/bundling</span>
+                <? if($all['isAll']==1): ?>
+                <span class="yew">注：该商品包不支持单独购买</span>
+                <? endif; ?>
+            </p>
+            <label class="pk-ms"><?=$all['value']?></label>
+            <div class="pack-brand-show">
+                <div class="multipleColumn" style="margin:0 auto">
+                    <div class="hd">
+                        <ul></ul>
+                    </div>
+                    <div class="pack-brand-pic bd">
+                        <div class="ulWrap">
+                            <ul><!-- 把每次滚动的n个li放到1个ul里面 -->
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+
+                            </ul>
+                            <ul><!-- 把每次滚动的n个li放到1个ul里面 -->
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+
+                            </ul>
+                            <ul><!-- 把每次滚动的n个li放到1个ul里面 -->
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+
+                            </ul>
+                            <ul><!-- 把每次滚动的n个li放到1个ul里面 -->
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+
+                            </ul>
+                            <ul><!-- 把每次滚动的n个li放到1个ul里面 -->
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+
+                            </ul>
+                            <ul><!-- 把每次滚动的n个li放到1个ul里面 -->
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="pack-pic">
+                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="pack-brand-des">
+                                        <h4>大家好，我是商标名</h4>
+                                        <label>第28类 金属材料  </label>
+                                    </div>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="pack-brand-del">
+                    <div class="fl">
+                        <p class="pri"><span>价格<label>￥<b><?=$all['price']?></b></label>元</span> 温馨提示：80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
+                        <p class="sale">
+                            <a href="javascript:;"><img src="<?=StaticDir?>1.2/images/shop-ico.png">购买全部商标</a>
+                            促销
+                            <em title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</em>
+                        </p>
+                    </div>
+                    <div class="fr">
+                        <!--<p class="pro"><img src="<?=StaticDir?>1.2/images/pel-ico.png">申请人：逗我???<a href="javascript:;">咨询TA</a></p>-->
+                        <p class="pel"><img src="<?=StaticDir?>1.2/images/tel.png">电话：<b><?=$all['viewPhone']?></b></p>
+                        <p class="dial"><input type="text" placeholder="输入手机号"/><a href="javascript:;">打给我</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: none">
+    <a id="wodediv" href="" target="_blank">1</a>
+</div>
+<!--商标详情主要内容-->
+<div class="w1180 details-main" style="padding-top: 25px;">
+    <div class="detail-recom fl">
+        <ul class="recompic">
+            <h2>猜你喜欢</h2>
+            <?foreach($tj as $k=>$item):?>
+            <li>
+                <a href="<?=$item['viewUrl']?>" webid="6" addmsg="第<?=($k+1)?>条" module="猜你喜欢"><img src="<?=$item['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a>
+            </li>
+            <?endforeach;?>
+        </ul>
+    </div>
+    <div class="intr-flow fr">
+        <div class="intr-flow-tit">
+          <ul>
+              <li>
+                  <a href="#sbjj" class="on">商标介绍</a>
+              </li>
+             <li>
+                 <a href="#jylc">交易流程</a>
+             </li>
+              <li style="border-right:none; ">
+                  <a href="#jcwt">常见问题</a>
+              </li>
+          </ul>
+        </div>
+        <div class="detail-recom-main f-clearfix">
+            <div class="detail-recom-trademark">
+               	<?=$all['desc']?>
+            </div>
+            <div class="transaction f-clearfix">
+               <h4 class="trans-tit"><b>一只蝉</b>独家交易体系  <span>独家交易体系</span></h4>
+               <ul class="trans-jytx">
+                   <li>
+                       <div class="trans-pic">
+                         <span>
+                               <img src="<?=StaticDir?>1.2/images/jytx-ico1.png">
+                         </span>
+                          1 风险检测
+                       </div>
+                       <div class="cover">
+                           <i class="arrow-up"></i>
+                          <p>
+                              独家商标风险检测报告<br/>
+                              保障商标状态安全
+                          </p>
+                       </div>
+                   </li>
+                   <li class="trans-jytx-jt">
+
+                   </li>
+                   <li>
+                       <div class="trans-pic">
+                         <span>
+                               <img src="<?=StaticDir?>1.2/images/jytx-ico2.png">
+                         </span>
+                           2 价格评估
+                       </div>
+                       <div class="cover">
+                           <i class="arrow-up"></i>
+                           <p>
+                               独家商标风险检测报告<br/>
+                               保障商标状态安全
+                           </p>
+                       </div>
+                   </li>
+                   <li class="trans-jytx-jt">
+
+                   </li>
+                   <li class="lht">
+                       <div class="trans-pic">
+                         <span>
+                               <img src="<?=StaticDir?>1.2/images/jytx-ico3.png">
+                         </span>
+                           3 匹配商标
+                       </div>
+                       <div class="cover">
+                           <i class="arrow-up"></i>
+                           <p>
+                               独家商标风险检测报告<br/>
+                               保障商标状态安全
+                           </p>
+                       </div>
+                   </li>
+                   <li class="trans-jytx-jt">
+
+                   </li>
+                   <li>
+                       <div class="trans-pic">
+                         <span>
+                               <img src="<?=StaticDir?>1.2/images/jytx-ico4.png">
+                         </span>
+                           4 签订协议
+                       </div>
+                       <div class="cover">
+                           <i class="arrow-up"></i>
+                           <p>
+                               独家商标风险检测报告<br/>
+                               保障商标状态安全
+                           </p>
+                       </div>
+                   </li>
+                   <li class="trans-jytx-jt">
+
+                   </li>
+                   <li>
+                       <div class="trans-pic">
+                         <span>
+                               <img src="<?=StaticDir?>1.2/images/jytx-ico5.png">
+                         </span>
+                           5 转让公证
+                       </div>
+                       <div class="cover">
+                           <i class="arrow-up"></i>
+                           <p>
+                               独家商标风险检测报告<br/>
+                               保障商标状态安全
+                           </p>
+                       </div>
+                   </li>
+                   <li class="trans-jytx-jt">
+
+                   </li>
+                   <li class="lht">
+                       <div class="trans-pic">
+                         <span>
+                               <img src="<?=StaticDir?>1.2/images/jytx-ico6.png">
+                         </span>
+                           6 上报商标局
+                       </div>
+                       <div class="cover">
+                           <i class="arrow-up"></i>
+                           <p>
+                               独家商标风险检测报告<br/>
+                               保障商标状态安全
+                           </p>
+                       </div>
+                   </li>
+                   <li class="trans-jytx-jt">
+
+                   </li>
+                   <li>
+                       <div class="trans-pic">
+                         <span>
+                               <img src="<?=StaticDir?>1.2/images/jytx-ico7.png">
+                         </span>
+                           7 转让完成
+                       </div>
+                       <div class="cover">
+                           <i class="arrow-up"></i>
+                           <p>
+                               独家商标风险检测报告<br/>
+                               保障商标状态安全
+                           </p>
+                       </div>
+                   </li>
+               </ul>
+            </div>
+            <div class="tran-FAQ f-clearfix">
+                <h4>常见问题解疑</h4>
+                <ul>
+                    <li>
+                        <b>如何尽快找到想要的标？</b>
+                        <p>
+                            14年代理资源 30家合作机构<br/>
+                            30万闲置在售 21种筛选方法<br/>
+                        </p>
+                    </li>
+                    <li>
+                        <b>付款后，卖家跑了/不卖了咋办？</b>
+                        <p>
+                            全国独家签订《损失100%赔付协议》<br/>
+                            交易损失，24小时全额赔付<br/>
+                        </p>
+                    </li>
+                    <li>
+                        <b>买的商标什么时候可以用？</b>
+                        <p>
+                            签订《独占许可协议》<br/>
+                            今天选中，明天就用
+                         <a>
+                            如何做到？
+
+                        </a><br/>
+
+                        </p>
+                        <div class="cover">
+                            <i class="arrow-up"></i>
+                            <label>
+                                一只蝉督促双方签订《独占许可协议》，签完立<br/>
+                                即对外使用，无需等8-10个月转让流程。
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <b>需要准备哪些资料？</b>
+                        <p>
+                            只需提供身份证或营业执照<br/>
+                            剩下的资料我们帮你准备<br/>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--数据提交的隐藏域-->
+<div style="display: none">
+    <input type="hidden" id="tels">
+    <input type="hidden" id="tid">
+    <input type="hidden" id="trademark">
+    <input type="hidden" id="class">
+    <input type="hidden" id="remarks">
+</div>
+<!--成功案列start-->
+<div class="w1180 succeed-al" id="succal">
+    <ul class="succeed-al-main">
+        <li>
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front">
+                        <dl>
+                            <font>格伦贝拉<span style="background: #ff9f8c;">服装鞋帽25类
+</span></font>
+                            <p>
+                                <label>使用商品：</label>服装鞋帽、服装配饰<br/>
+                                <label>购  买 人：</label> 慈先生<br/>
+                                <label>服务顾问：</label>陈艾<br/>
+                            </p>
+                        </dl>
+                        <a href="/case/detail/?id=14" addmsg="第1条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
+                    </div>
+                    <div class="back">
+                        <a href="/case/detail/?id=14" addmsg="第1条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front">
+                        <dl>
+                            <font>Hesiod<span style="background: #ffc061;">化妆清洁3类
+</span></font>
+                            <p>
+                                <label>使用商品：</label>清洁用品、化妆品<br/>
+                                <label>购  买 人：</label> 某商贸公司<br/>
+                                <label>服务顾问：</label>王桂华<br/>
+                            </p>
+                        </dl>
+                        <a href="/case/detail/?id=12" addmsg="第2条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
+                    </div>
+                    <div class="back">
+                        <a href="/case/detail/?id=12" addmsg="第2条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front">
+                        <dl>
+                            <font>麦普森<span style="background: #8cdcff;">3C数码9类
+</span></font>
+                            <p>
+                                <label>使用商品：</label>计算机、数码产品<br/>
+                                <label>购  买 人：</label> 王先生<br/>
+                                <label>服务顾问：</label>寇飞<br/>
+                            </p>
+                        </dl>
+                        <a href="/case/detail/?id=16" addmsg="第3条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
+                    </div>
+                    <div class="back">
+                        <a href="/case/detail/?id=16" addmsg="第3条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--成功案列end-->
+<? require(ViewDir.'/sidebar.html'); ?>
+<script type="text/javascript">
+    //商品详情选项卡
+    jQuery(".record-collect").slide({titCell:".hd a",mainCell:".main-db",effect:"fold",pnLoop:false});
+    //滚动事件
+    var qtp=$(".tran-FAQ").offset().top
+    $(window).scroll(function(){
+        if($('.tran-FAQ').offset().top-$(document).scrollTop()<=88){
+            $(".intr-flow-tit").addClass("f-tp");
+            $(".intr-flow-tit a").removeClass("on");
+            $(".intr-flow-tit a").eq(2).addClass("on");
+        }
+        else if($('.transaction').offset().top-$(document).scrollTop()<=78){
+        $(".intr-flow-tit").addClass("f-tp");
+        $(".intr-flow-tit a").removeClass("on");
+        $(".intr-flow-tit a").eq(1).addClass("on");
+       }else if($(".intr-flow").offset().top-$(document).scrollTop()<=0){
+        $(".intr-flow-tit").addClass("f-tp");
+        $(".intr-flow-tit a").removeClass("on");
+        $(".intr-flow-tit a").eq(0).addClass("on");
+       } else{
+        $(".intr-flow-tit").removeClass("f-tp");
+        $(".intr-flow-tit a").removeClass("on");
+        $(".intr-flow-tit a").eq(0).addClass("on");
+       }
+    })
+    //点击选项卡事件
+    $(".intr-flow-tit a").eq(0).click(function(){
+        var t=$(".intr-flow").offset().top-48;
+        $("html, body").animate({"scrollTop":t});
+    })
+    $(".intr-flow-tit a").eq(1).click(function(){
+        var t=$(".transaction").offset().top-88;
+        $("html, body").animate({"scrollTop":t});
+    })
+    $(".intr-flow-tit a").eq(2).click(function(){
+        var t=$(".tran-FAQ").offset().top-68;
+        $("html, body").animate({"scrollTop":t});
+    })
+    $(".classify-main li").each(function(){
+        $(this).hover(
+                function(){
+                    if($(".splb").height()>85){
+                        $(".splb").css({"overflow-y":"scroll","height":"85px"});
+                    }
+                            $(this).find("a.lb").css({"z-index":"99999"});
+                            $(this).find("div.multi-show").css({"z-index":"9999"});
+                },function(){
+                                   $(this).find("a.lb").css({"z-index":"0"});
+                                   $(this).find("div.multi-show").css({"z-index":"99999"});
+                })
+
+    })
+
+    //收藏登录
+    $("#loginShow").click(function(){
+        $("#chaofan-mj-login").click();
+    })
+
+    var olis=$(".classify-main li");
+    for(var i=0;i<=olis.length;i++){
+        if(olis.length>10){
+            olis.slice(10,i).hide();
+        }
+        else{
+            olis.slice(0,9).show();
+        }
+    }
+    $(".all-class").each(function(){
+        $(this).click(function(){
+            var dataindex= $(this).attr("data-index");
+			if(olis.length<10){
+				 $(this).attr("data-index","1");
+				}
+		    else{
+					if(dataindex==1){
+					$(this).css("color","#ff6666");
+					$(this).find("i.fel-down").css("background-image"," url('<?=StaticDir?>1.2/images/xq-up.png')")
+					for(var i=0;i<=olis.length;i++){
+						if(olis.length>10){
+							olis.slice(10,i).show();
+						}
+						else{
+							olis.slice(10,i).hide();
+						}
+					}
+					$(this).attr("data-index","0");
+					}
+					else{
+						$(this).css("color","#666666");
+						$(this).find("i.fel-down").css("background-image"," url('<?=StaticDir?>1.2/images/xq-down.png')")
+						for(var i=0;i<=olis.length;i++){
+							if(olis.length>10){
+								olis.slice(10,i).hide();
+							}
+						}
+						$(this).attr("data-index","1");
+					}
+				}
+
+
+        })
+    })
+</script>
+<!--购买相关js-->
+<script type="text/javascript">
+    $(function(){
+        //有手机登录情况下 检测该用户是否购买
+        var trademark = "<?=$info['number']?>";
+        var tm_class = "<?=implode(',',$info['class'])?>";
+        if(login_mobile){
+            ucBuy.isexist(trademark,tm_class);
+        }
+        //给隐藏域赋值
+        var user_tel = login_mobile;
+        $('#tels').val(user_tel);
+        $('#tid').val("<?=$info['tid']?>");
+        $('#trademark').val(trademark);
+        $('#class').val(tm_class);
+        $('#remarks').val("<?=$need?>");
+        if(user_tel){
+            $('#telInput2').val(user_tel);
+        }
+        if(nick_name!=null){
+            getSclist();
+        }
+        //点击登录后几秒钟执行获取收藏列表
+//        $('.chaofan-mj-logBtn').live('click', function() {
+//             setTimeout(getSclist, 5000);
+//
+//          });
+        //获取收藏列表
+        function getSclist(){
+            userCollectList(5,function(data){
+                var tidstr = "";
+                var tids = "";
+                var datas = eval("("+data+")");
+                if(datas.length==0) return;
+                for(var j=0,n=datas.length;j<n;j++){
+                        tids = datas[j];    //当前层数据
+                        if(j==0){
+                            tidstr = tids.number;
+                        }else{
+                             tidstr +=","+tids.number;
+                        }
+                    }
+
+                $.ajax({
+                traditional :true,
+                 url:'/Detail/ajaxSclist',
+                 type:'POST',
+                 data:"tid="+tidstr,
+                 dataType:'json',
+                 success:function(json){
+                     if(typeof json == 'object'){
+                            var neirou;
+                            var item="";
+                            for(var i=0,l=json.length;i<l;i++){
+                                neirou = json[i];    //当前层数据
+                                item += '<li>';
+                                item += '<a href="'+neirou.viewUrl+'" webid="7" addmsg="'+neirou.title+'"><img src="'+neirou.imgUrl+'" onerror="this.src=\'/Static/images/img1.png\'" ></a>';
+                                item += '</li>';
+                            }
+                             $("#sclist").html(item);
+                        }
+                    }
+                });
+            });
+
+        }
+        //收藏功能
+        $('.collect').click(function(){
+            var nowObj = this;//保存当前this
+            if($(this).hasClass('in_collect')){
+                //收藏
+                collectTrademark(trademark, 1, function(data){
+                    if (data.type == 1){
+                        $(nowObj).removeClass('in_collect');
+                        $(nowObj).find('span').html('取消收藏');
+                        $(nowObj).find('img').attr("src","/Static/1.2/images/xin_cur.png");
+                        layer.msg('收藏成功',{time:1500});
+                        getSclist();
+                    }else{
+                        layer.msg('收藏失败',{time:1500});
+                    }
+                });
+            }else{
+                //取消收藏
+                deleteCollectTrademark(trademark, 1,function(data){
+                    if (data.type != 0){
+                        $(nowObj).addClass('in_collect');
+                        $(nowObj).find('span').html('收藏商标');
+                        $(nowObj).find('img').attr("src","/Static/1.2/images/sbxq-ico1.png");
+                        layer.msg('取消成功',{time:1500});
+                        getSclist();
+                    }else{
+                        layer.msg('取消失败',{time:1500});
+                    }
+                });
+            }
+        });
+    });
+    //生成订单
+    function createOrder(){
+        //检测是否有电话号码
+        var tel= $('#tels').val();
+        if(tel){
+            //获得数据
+            var remarks 	= $('#remarks').val();
+            remarks = remarks + ';电话号码：' + tel;
+            var buyData 			= new Array();
+            buyData['tel'] 			= tel;
+            buyData['tid'] 			= $('#tid').val();
+            buyData['trademark'] 	= $('#trademark').val();
+            buyData['class'] 		= $('#class').val();
+            buyData['subject'] 		= '求购信息';
+            buyData['remarks'] 		= remarks;
+	    setEvent('立即购买','表单-提交了账号'+tel);
+            //提交数据
+            ucBuy.buyAdd(buyData);
+        }else{
+            //分为登录无手机和未登录两种情况
+            if(nick_name){
+                getLayer($('#goCenter'));
+            }else{
+                //登录
+                $('#chaofan-mj-login').trigger('click');
+            }
+        }
+        return false;
+    }
+    //生成订单--2  (直接输入电话)
+    //失去焦点,检测用户输入的手机号
+    $('#telInput2').blur(function(){
+        var tel= $.trim($('#telInput2').val());
+        //验证手机号码
+        if(!tel || !mobilereg.test(tel) || tel.length!=11){
+            $('#telInput2').addClass('ddw_input');
+            $('#telInput2').val('请输入正确的手机号');
+            return false;
+        }
+    });
+    $('#telInput2').focus(function(){
+        $('#telInput2').removeClass('ddw_input');
+        $('#telInput2').val('');
+    })
+    //生成订单--2
+    function createOrderByPhone(){
+        //检测是否电话号码
+        var tel= $.trim($('#telInput2').val());
+        //验证手机号码
+        if(!tel || !mobilereg.test(tel) || tel.length!=11){
+            $('#telInput2').addClass('ddw_input');
+            $('#telInput2').val('请输入正确的手机号');
+            return false;
+        }
+        //获得数据
+        var remarks 	= $('#remarks').val();
+        remarks = remarks + ';电话号码：' + tel;
+        var buyData 			= new Array();
+        buyData['tel'] 			= tel;
+        buyData['tid'] 			= $('#tid').val();
+        buyData['trademark'] 	= $('#trademark').val();
+        buyData['class'] 		= $('#class').val();
+        buyData['subject'] 		= '求购信息';
+        buyData['remarks'] 		= remarks;
+        //提交数据
+        sendBehavior(30,ptype, 0, 0,'tel:'+tel);//保存操作信息
+	setEvent('打给我','表单-提交了电话号'+tel);
+        ucBuy.buyAdd(buyData);
+    }
+    //检测用户是否购买回调
+    function isexistCallback(Obj){
+        $.each(Obj,function(i,n){
+            //弹窗提示
+            if(n.code==2){
+                $('.opt_btn').replaceWith("<a href='javascript:;' class='opt_btn'>求购信息已提交</a>");
+            }
+        });
+    }
+    //打开登录窗口
+    function goLook()
+    {
+        $('#chaofan-mj-login').trigger('click');
+    }
+    function goBuy()
+    {
+        $('#chaofan-mj-login').trigger('click');
+    }
+    //专题点击事件
+    $('.wddsb').click(function(e){
+        var webid = '1';
+        var addmsg = $(this).text();
+        sendBehavior(webid,ptype, e.pageX, e.pageY,addmsg);
+	setEvent(addmsg);
+        $('#wodediv').attr('href',($(this).attr('url')));
+        $('#wodediv').get(0).click();
+    });
+	//全部分类鼠标移动浮动层位置效果
+	$(".classify-main li").hover(function(){
+       var  omult=$(this).children(".dw").children(".multi-show");
+        var owr=$(window).width()-omult.offset().left-omult.width();
+        if(owr<50){
+            omult.css({"left":"-293px"});
+        }
+    })
+</script>
+<!--看不懂-->
+<script type="text/javascript">
+    var othl=
+            '<ul>'+
+            '<li>'+
+            '<a href="javascript:;">'+
+            '<div class="pack-pic">'+
+            '<img src="../../../Static/1.2/images/brand-pic-ep.jpg">'+
+            '</div>'+
+            '</a>'+
+            '<div class="pack-brand-des">'+
+            '<h4>大家好，我是商标名</h4>'+
+            '<label>第28类 金属材料</label>'+
+            '</div>'+
+            '</li>'+
+            '</ul>';
+    var olth=$(".bd").find("li").length;
+    $(document).ready(function(){
+        if(olth>10){
+            jQuery(".multipleColumn").slide({titCell:".hd ul",mainCell:".bd .ulWrap",autoPage:true,effect:"leftLoop",autoPlay:true,vis:5});
+            $(".pack-brand-des").css({"display":"none"});
+            $(".slideBox .hd").css({"display":"block"});
+        }
+        else{
+            $(".multipleColumn .bd ul").css({"width":"auto"});
+            $(".multipleColumn .bd").html(othl);
+        }
+        //专题点击事件
+        $('.wddsb').click(function(e){
+            var addmsg = $(this).text();
+            setEvent(addmsg);
+            $('#wodediv').attr('href',($(this).attr('url')));
+            $('#wodediv').get(0).click();
+        });
+    })
+</script>
+<!--分享相关js-->
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+<? require(ViewDir.'/footer.html'); ?>

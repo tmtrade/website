@@ -199,6 +199,7 @@ body,html{
     -webkit-border-radius: 0px 3px 0px 3px;
     margin-left: 10px;
     font-style:normal;
+    cursor: pointer;
 }
 .pack-brand-del div.fr p{
     display: block;

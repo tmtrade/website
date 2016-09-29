@@ -12,7 +12,7 @@ class PackModule extends AppModule
 	*/
 	public $models = array(
         'package'      => 'package',
-        'package_items'      => 'package_items',
+        'package_items'      => 'packageitems',
         'tmclass'            => 'tmclass',
 	);
 
@@ -42,6 +42,9 @@ class PackModule extends AppModule
      * @return array
      */
     public function getAll($id){
+        if(!$id){
+            return array();
+        }
         //打包信息
         $r = array(
             'eq'=>array('id'=>$id),
@@ -53,7 +56,7 @@ class PackModule extends AppModule
         //详情信息
         $r = array(
             'limit'=>100,
-            'order'=>array('sort'),
+            'order'=>array('sort'=>'asc'),
             'eq'=>array('pkgId'=>$id),
             'col'=>array('number'),
         );
