@@ -26,33 +26,6 @@
     <script type="text/javascript" src="http://data.chanshu.wang/data.js?v=<?=$static_version?>"> </script>
     <script type="text/javascript" src="http://nigeda.com/pub.js?v=<?=$static_version?>"> </script>
     <script type="text/javascript" src="<?=StaticDir?>1.2/js/socket.io.js?v=<?=$static_version?>"> </script>
-    
-<!-- Piwik 
-<script type="text/javascript">
-	var _paq = _paq || [];
-	_paq.push(["setDomains", ["*.t.chofn.net"]]);
-	_paq.push(["setCampaignNameKey", "\u63a8\u5e7f"]);
-        _paq.push(["setCampaignKeywordKey", "sem"]);
-        var piwik_title = analyzePage('<?=$ptype?>');//页面标识
-	_paq.push(['setRequestMethod','POST']);
-        _paq.push(['setDocumentTitle',encodeURIComponent(piwik_title)]);
-        if (getCookie('uc_identify')){
-            _paq.push(['setCustomVariable',1,'mobile',getCookie('uc_mobile'),'visit']);
-            _paq.push(['setUserId', getCookie('uc_identify')]);
-        }
-	_paq.push(['trackPageView']);
-	_paq.push(['enableLinkTracking']);
-	(function() {
-	  var u="//douob.cc/";
-	  _paq.push(['setTrackerUrl', u+'piwik.php']);
-	  _paq.push(['setSiteId', 1]);
-	  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-	  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-	})();
-</script>
-<noscript><p><img src="//douob.cc/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
-
 <script type="text/javascript">
     var ptype = '<?=$ptype?>';//页面标识
     var _YZC_ONLINE_    = '';
@@ -165,9 +138,8 @@
         <ul class="mj-header_right fr">
              <li id="_login_no">
                  <div class="p-lg">您好，请 <a class="chaofan-login" onclick="setEvent('登录')"></a></div>
-                 <div class="reg"><a>免费注册</a></div>
+                 <div class="reg"><a href="javascript:;" onclick="$('#chaofan-mj-login').trigger('click');$('#chaofn_dl_kaccount').trigger('click');setEvent('登录')">免费注册</a></div>
             </li>
-
             <!-- 登录以后 -->
             <li id="login_after">
             </li>
@@ -177,51 +149,28 @@
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-                <a target="_blank" href="<?=SELLER_URL?>" module="顶部1" addmsg="数据共享">数据共享</a>
+                <a target="_blank" href="<?=SELLER_URL?>" module="顶部2" addmsg="数据共享">数据共享</a>
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-                <a href="/index/jumpWap/" module="顶部4" addmsg="商标报价单工具">商标报价单工具 </a>
+                <a href="/index/jumpWap/" module="顶部3" addmsg="商标报价单工具">商标报价单工具 </a>
             </li>
             <li class="spacer xs_login_"></li>
             <li>
-                <a href="<?=CHECK_URL?>" target="_blank"  module="顶部3" addmsg="商标安全检测">商标安全检测</a>
+                <a href="<?=CHECK_URL?>" target="_blank"  module="顶部4" addmsg="商标安全检测">商标安全检测</a>
             </li>
 	        <li class="spacer xs_login_"></li>
             <li>
-                <a href="<?=CHECK_URL?>" target="_blank"  module="顶部3" addmsg="商标安全检测">移动版</a>
+                <a href="<?=CHECK_URL?>" target="_blank"  module="顶部5" addmsg="商标安全检测">移动版</a>
             </li>
-            <!--<li>-->
-                <!--<div class="mj-phone">-->
-                    <!--<i class="uj_icon4"></i>-->
-                    <!--<?=TEL400?>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li  class="mj-wx-qq">-->
-                <!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes"><i class="yzc-tp-QQ"></i></a>-->
-            <!--</li>-->
-            <!--<li  class="mj-wx-qq mj-wx">-->
-                <!--<div class="yzc-account">-->
-                    <!--<a href=""><i class="yzc-tp-WX"></i></a>-->
-                    <!--<div class="mj-wx-pic account-list">-->
-                        <!--<span>-->
-                            <!--<img src="<?=StaticDir?>1.2/images/yzc-wx.jpg">-->
-                        <!--</span>-->
-                        <!--<p>-->
-                            <!--专注知识产权流转<br/>-->
-                            <!--欢迎关注微信，随时获取资讯-->
-                        <!--<p>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</li>-->
             <li class="spacer xs_login_"></li>
             <li class="mj-web-nav">
                 <div class="yzc-account">
                     <a href="javascript:;" id="web-nav">网站导航<i class="fa fa-angle-down"></i> </a>
                     <div class="account-list" id="acc-list" style="left: -5px;">
-                        <p><a href="/lxwm/" target="_blank" module="顶部2-1" addmsg="关于一只蝉">关于一只蝉</a></p>
-                        <p><a target="_blank" href="/n-50/" module="顶部2-2" addmsg="新闻资讯">新闻资讯</a></p>
-                        <p><a href="/v-54-987/" target="_blank" module="顶部2-3" addmsg="帮助中心">帮助中心</a></p>
+                        <p><a href="/lxwm/" target="_blank" module="顶部6-1" addmsg="关于一只蝉">关于一只蝉</a></p>
+                        <p><a target="_blank" href="/n-50/" module="顶部6-2" addmsg="新闻资讯">新闻资讯</a></p>
+                        <p><a href="/v-54-987/" target="_blank" module="顶部6-3" addmsg="帮助中心">帮助中心</a></p>
                     </div>
                 </div>
             <li>
@@ -244,14 +193,12 @@
             <a href="/"><img src="/Static/1.2/images/logo.png" alt="一只蝉商标转让网站:快速买到放心商标" module="logo"/></a>
         </div>
         <div class="mj-search_con fl f-clearfix">
-
             <div class="mj-search_box">
                 <div  class="mj-search-nav">
                     <a class="sea-btn"><font> 搜商标</font>  <i class="fa fa-angle-down"></i></a>
                     <p class="pul-lis">
                         搜专利
                     </p>
-
                 </div>
                 <div id="con_sear_1" style="display: block">
                     <form id="searchForm" method="GET" action="/search/index/">
@@ -448,12 +395,10 @@
         </div>
     </div>
 </div>
-
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/mj-index.css?v=<?=$static_version?>"/>
 <script src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js"></script>
 <!--mj-mNav end-->
 <script type="text/javascript">
-
   //左边菜单栏
    (function($){
         $.fn.hoverDelay = function(options){
@@ -480,7 +425,6 @@
             });
         }
     })(jQuery);
-
     $(".mj-dd dd").each(function(i){
         $(this).hoverDelay({
         hoverEvent: function(){          
@@ -495,9 +439,9 @@
     $("#login_after").on('mouseenter','#account-name',function(){
         $("#acc-list").show();
         })
-      $("#login_after").on('mouseleave','#account-name',function(){
+    $("#login_after").on('mouseleave','#account-name',function(){
           $("#acc-list").hide();
-      })
+    });
     //延时加载图片
     function _lazyImg(obj){
         obj.find('.headerlazy').each(function(e){
@@ -544,7 +488,6 @@
             _this.keyup();
         }
     });
-    
     $('input[name="kw"]').blur(function (){
         var _this   = $(this);
         setTimeout(function(){

@@ -62,9 +62,11 @@ class PackModule extends AppModule
         );
         $rst2 = $this->import('package_items')->find($r);
         if($rst2){
-            $rst['count'] = count($rst2);
+            $count = count($rst2);
+            $rst['count'] = $count;
             //处理数据
             $data = array();
+            $ii = 1;
             foreach($rst2 as $k=>$v){
                 //得到其他信息
                 $temp = $this->load('trademark')->getTmInfo($v['number']);
@@ -72,7 +74,7 @@ class PackModule extends AppModule
                     $class = array_shift($temp['class']);
                     $className = '';
                     //小于5条才去查询分类名
-                    if(count($rst2)<=5){
+                    if($count<=5){
                         $className = $this->getClassName($class);
                     }
                     $url = '/d-'.$temp['tid'].'-'.$class.'.html';
@@ -81,12 +83,25 @@ class PackModule extends AppModule
                     $saleId = $this->load('internal')->existSale($v['number']);//是否出售
                     if($saleId){
                         $img = $this->load('internal')->getViewImg($saleId);
-                        $data[] = array(
-                            'name'=>$name,
-                            'className'=>$className,
-                            'url'=>$url,
-                            'img'=>$img,
-                        );
+                        $key = ceil($ii/12);
+                        ++$ii;
+                        if($count>5){
+                            $data[$key][] = array(
+                                'name'=>$name,
+                                'className'=>$className,
+                                'class'=>$class,
+                                'url'=>$url,
+                                'img'=>$img,
+                            );
+                        }else{
+                            $data[] = array(
+                                'name'=>$name,
+                                'className'=>$className,
+                                'class'=>$class,
+                                'url'=>$url,
+                                'img'=>$img,
+                            );
+                        }
                     }
                 }
             }

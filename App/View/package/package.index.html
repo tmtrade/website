@@ -28,276 +28,56 @@
             <div class="pack-brand-show">
                 <div class="pack-pic-show">
                     <!--商标条数小于5条的时候-->
-                    <div  style="display: none;" class="pack-brand-pic">
-                        <ul><!-- 把每次滚动的n个li放到1个ul里面 -->
+                    <? if($all['count']<=5): ?>
+                    <div class="pack-brand-pic">
+                        <ul>
+                            <? foreach($all['items'] as $item): ?>
                             <li>
                                 <div class="bd-show">
-                                    <a href="javascript:;">
+                                    <a href="<?=$item['url']?>" target="_blank">
                                         <div class="pack-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
+                                            <img src="<?=$item['img']?>">
                                         </div>
                                     </a>
                                     <div class="pack-brand-des">
-                                        <h4>大家好，我是商标名</h4>
-                                        <label>第28类 金属材料  </label>
+                                        <h4><?=$item['name']?></h4>
+                                        <label>第<?=$item['class']?>类 <?=$item['className']?>  </label>
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="bd-show">
-                                    <a href="javascript:;">
-                                        <div class="pack-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <div class="pack-brand-des">
-                                        <h4>大家好，我是商标名</h4>
-                                        <label>第28类 金属材料  </label>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="bd-show">
-                                    <a href="javascript:;">
-                                        <div class="pack-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <div class="pack-brand-des">
-                                        <h4>大家好，我是商标名</h4>
-                                        <label>第28类 金属材料  </label>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="bd-show">
-                                    <a href="javascript:;">
-                                        <div class="pack-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <div class="pack-brand-des">
-                                        <h4>大家好，我是商标名</h4>
-                                        <label>第28类 金属材料  </label>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="bd-show">
-                                    <a href="javascript:;">
-                                        <div class="pack-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <div class="pack-brand-des">
-                                        <h4>大家好，我是商标名</h4>
-                                        <label>第28类 金属材料  </label>
-                                    </div>
-                                </div>
-                            </li>
+                            <? endforeach; ?>
                         </ul>
                     </div>
                     <!--商标条数大于5条的时候-->
+                    <? else: ?>
                     <div  id="pk-slideBox" class="pk-slideBox">
                         <div class="hd">
-                            <ul><li class="on">1</li><li class="">2</li><li class="">3</li></ul>
-                        </div>
-                         <div class="bd">
                             <ul>
-                                <li>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="more-pic">
-                                            <img src="<?=StaticDir?>1.2/images/brand-pic-ep.jpg">
-                                        </div>
-                                    </a>
-                                </li>
+                                <? for($i=1,$len=count($all['items']);$i<=$len;++$i): ?>
+                                <li class="<?=($i==1?'on':'')?>"><?=$i?></li>
+                                <? endfor; ?>
                             </ul>
-                          </div>
-
-                    <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
-                    <a class="prev" href="javascript:void(0)"></a>
-                    <a class="next" href="javascript:void(0)"></a>
-
+                        </div>
+                        <div class="bd">
+                            <ul>
+                                <? foreach($all['items'] as $item): ?>
+                                <li>
+                                    <? foreach($item as $v): ?>
+                                    <a href="<?=$v['url']?>" target="_blank">
+                                        <div class="more-pic">
+                                            <img src="<?=$v['img']?>">
+                                        </div>
+                                    </a>
+                                    <? endforeach; ?>
+                                </li>
+                                <? endforeach; ?>
+                            </ul>
+                        </div>
+                        <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+                        <a class="prev" href="javascript:void(0)"></a>
+                        <a class="next" href="javascript:void(0)"></a>
                     </div>
+                    <? endif; ?>
                 </div>
                 <div class="pack-brand-del">
                     <div class="fl">

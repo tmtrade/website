@@ -517,7 +517,6 @@
         <? endif; ?>
     </div>
     <? endforeach; ?>
-
 </div>
 <!--类别展示end-->
 <!--成功案列start-->
@@ -580,9 +579,7 @@
              <? } ?>
          </div>
      </div>
-
     </div>
-
 <!--商标新闻end-->
 <!--一只蝉知产工具-->
 <div class="yzc-tool w1180" id="flr3">
@@ -650,15 +647,6 @@
     </div>
 </div>
 <!--订阅商标end-->
-
-<!--漂浮楼层start-->
-<!--<ul class="float-floor" id="float-floor" style="display: none;">-->
-    <!--<?foreach($modules as $k=>$module):?>-->
-    <!--<li>-->
-        <!--<a><?=(mb_substr($module['name'],0,2,'utf-8'))?><br/><?=(mb_substr($module['name'],2,2,'utf-8'))?> </a>-->
-    <!--</li>-->
-    <!--<?endforeach;?>-->
-<!--</ul>-->
 <ul class="float-floor" id="float-floor" style="display: none;">
     <li id="flr-lc1">
         <a>
@@ -717,125 +705,90 @@
     },function(){
         $(".brand-fl").css({"height":"96px"});
         $(".all-clas").html('全部分类<i class="fa fa-angle-down"></i>');
-    })
-
- //交易无缝滚动
-            $('.mj-dd').show();
-//交易无缝滚动
-            jQuery(".mj-newjy").slide({mainCell: ".bd ul", autoPlay: true, effect: "topMarquee", vis: 3, interTime: 50, trigger: "click"});
-//banner焦点图
-            jQuery(".mj-bannerIimg").slide({titCell: ".hd ul li", mainCell: ".bd ul", prevCell: ".sprev", nextCell: ".snext", autoPlay: true});
-//活动推荐点击切换
-            jQuery(".yzc-Activities").slide({titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 5, easing: "easeOutCirc"});
-//商标分类选项卡
-            jQuery(".yzc-Brand").slide({effect: "fold", switchLoad: "_original"});
-//类别展示选项卡和焦点图
-            /*jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"leftLoop",autoPlay:true});*/
-            jQuery(".slideBox").slide({mainCell: ".sbd ul", prevCell: ".sprev", nextCell: ".snext", effect: "fold", delayTime: "500", autoPlay: true});
-//楼层
-            jQuery(".yzc-category").slide({titCell: ".parHd li", mainCell: ".parBd", effect: "fold", pnLoop: false, switchLoad: "_original"});
-            $(".slideBox").each(function() {
-                if ($(this).children(".sbd").children("ul").children("li").length <= 1) {
-                    $(this).children("a.sprev").hide();
-                    $(this).children("a.snext").hide();
-                }
-            })
-            if ($(".picbox").children("div").children("ul").children("li").length <= 5) {
-                $(".og_prev").css("opacity", "0");
-                $(".og_next").css("opacity", "0");
-
-
-            }
-
-            //漂浮楼层
-            var farrs=$("#sbzs>div");
-            var ofls1=$("#flr1");
-            var ofls3=$("#flr3");
-            var ofls2=$("#flr2");
-            var oafls=[ofls1,farrs[0],farrs[1],ofls3,ofls2]
-
-            var cet_w = $("#cloth").offset().left;
-            var oflr = $("#float-floor");
-            var sbzs = $(".sbzs>div");
-            var oflis = $("#float-floor li");
-            var owf = document.body.clientWidth;
-            var owh = $(window).height();
-            var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
-            var ofh = owh / 2 - $("#float-floor").height() / 2;
+    });
+    //交易无缝滚动
+    $('.mj-dd').show();
+    //交易无缝滚动
+    jQuery(".mj-newjy").slide({mainCell: ".bd ul", autoPlay: true, effect: "topMarquee", vis: 3, interTime: 50, trigger: "click"});
+    //banner焦点图
+    jQuery(".mj-bannerIimg").slide({titCell: ".hd ul li", mainCell: ".bd ul", prevCell: ".sprev", nextCell: ".snext", autoPlay: true});
+    //活动推荐点击切换
+    jQuery(".yzc-Activities").slide({titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 5, easing: "easeOutCirc"});
+    //商标分类选项卡
+    jQuery(".yzc-Brand").slide({effect: "fold", switchLoad: "_original"});
+    //类别展示选项卡和焦点图
+    /*jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"leftLoop",autoPlay:true});*/
+    jQuery(".slideBox").slide({mainCell: ".sbd ul", prevCell: ".sprev", nextCell: ".snext", effect: "fold", delayTime: "500", autoPlay: true});
+    //楼层
+    jQuery(".yzc-category").slide({titCell: ".parHd li", mainCell: ".parBd", effect: "fold", pnLoop: false, switchLoad: "_original"});
+    $(".slideBox").each(function() {
+        if ($(this).children(".sbd").children("ul").children("li").length <= 1) {
+            $(this).children("a.sprev").hide();
+            $(this).children("a.snext").hide();
+        }
+    });
+    if ($(".picbox").children("div").children("ul").children("li").length <= 5) {
+        $(".og_prev").css("opacity", "0");
+        $(".og_next").css("opacity", "0");
+    }
+    //漂浮楼层
+    var farrs=$("#sbzs>div");
+    var ofls1=$("#flr1");
+    var ofls3=$("#flr3");
+    var ofls2=$("#flr2");
+    var oafls=[ofls1,farrs[0],farrs[1],ofls3,ofls2]
+    var cet_w = $("#cloth").offset().left;
+    var oflr = $("#float-floor");
+    var sbzs = $(".sbzs>div");
+    var oflis = $("#float-floor li");
+    var owf = document.body.clientWidth;
+    var owh = $(window).height();
+    var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
+    var ofh = owh / 2 - $("#float-floor").height() / 2;
+    oflr.css({"left": oft, "top": ofh})
+    $(window).resize(function() {
+        var cet_w = $("#cloth").offset().left;
+        var oflr = $("#float-floor");
+        var sbzs = $(".sbzs>div");
+        var oflis = $("#float-floor li");
+        var owf = document.body.clientWidth;
+        var owh = $(window).height();
+        var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
+        var ofh = owh / 2 - $("#float-floor").height() / 2;
+        if (cet_w < $("#float-floor").width() + 20) {
+            oflr.hide();
+        }
+        else {
+            oflr.show();
             oflr.css({"left": oft, "top": ofh})
-
-            $(window).resize(function() {
-                var cet_w = $("#cloth").offset().left;
-                var oflr = $("#float-floor");
-                var sbzs = $(".sbzs>div");
-                var oflis = $("#float-floor li");
-                var owf = document.body.clientWidth;
-                var owh = $(window).height();
-                var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
-                var ofh = owh / 2 - $("#float-floor").height() / 2;
-                if (cet_w < $("#float-floor").width() + 20) {
-                    oflr.hide();
-                }
-                else {
-                    oflr.show();
-                    oflr.css({"left": oft, "top": ofh})
-                }
-            })
-
-            $(window).scroll(function() {
-                var w_top = $(window).scrollTop();
-                if (w_top> $("#flr1").offset().top-400 && w_top < $("#flr3").offset().top-100) {
-                    oflr.show();
-                    oflr.css({"left": oft, "top": ofh})
-                    if (owf < 1180) {
-                        oflr.hide();
-                    }
-                }
-                else {
-                    oflr.hide();
-                }
-                for(var i=0;i<oflis.length;i++){
-                    if(w_top > $(oafls[i]).offset().top-300 && w_top >  $(oafls[i]).offset().top-$(oafls[i]).outerHeight(true)){
-                        $("#float-floor li").removeClass("on");
-                        $(oflis[i]).addClass("on");
-                    }
-                }
-            });
-            $("#float-floor li").each(function(i) {
-                $(this).click(function() {
-                    var t =  $(oafls[i]).offset().top;
-                    $("html, body").animate({"scrollTop": t-$(oafls[i]).outerHeight(true)});
-                    console.log($(oafls[i]).outerHeight(true))
-                    $(this).addClass("on");
-                })
-            })
-
-
-
-
-    // 添加查看详情标签；
-//            $(document).ready(function() {
-//                $('.yzc-categorbrand li div ').on('mouseover', 'span',
-//                        function() {
-//
-//                            $('#tip').show();
-//                        }
-//                );
-//                $('.yzc-categorbrand li div ').on('mouseleave', 'span',
-//                        function() {
-//                            $('#tip').hide();
-//                        }
-//                );
-//                $('.yzc-categorbrand li div ').on('mousemove', 'span', function(e) {
-//                    var top = e.pageY + 5;
-//                    var left = e.pageX + 5;
-//                    $('#tip').css({
-//                        'top': top + 'px',
-//                        'left': left + 'px'
-//                    });
-//                });
-//
-//
-//            });
+        }
+    })
+    $(window).scroll(function() {
+        var w_top = $(window).scrollTop();
+        if (w_top> $("#flr1").offset().top-400 && w_top < $("#flr3").offset().top-100) {
+            oflr.show();
+            oflr.css({"left": oft, "top": ofh})
+            if (owf < 1180) {
+                oflr.hide();
+            }
+        }
+        else {
+            oflr.hide();
+        }
+        for(var i=0;i<oflis.length;i++){
+            if(w_top > $(oafls[i]).offset().top-300 && w_top >  $(oafls[i]).offset().top-$(oafls[i]).outerHeight(true)){
+                $("#float-floor li").removeClass("on");
+                $(oflis[i]).addClass("on");
+            }
+        }
+    });
+    $("#float-floor li").each(function(i) {
+        $(this).click(function() {
+            var t =  $(oafls[i]).offset().top;
+            $("html, body").animate({"scrollTop": t-$(oafls[i]).outerHeight(true)});
+            console.log($(oafls[i]).outerHeight(true))
+            $(this).addClass("on");
+        })
+    });
 </script>
 <? require(ViewDir.'/footer.html'); ?>

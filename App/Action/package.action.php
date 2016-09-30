@@ -16,7 +16,14 @@ class PackageAction extends AppAction
 	public function index(){
 		//得到打包信息
 		$id = $this->input('id','int');
-		$all = $this->load('pack')->getAll($id);
+		//缓存2个小时的打包数据
+		$all = $this->com('redisHtml')->get('pack_detail_'.$id);
+		if ( empty($all) ){
+			$all = $this->load('pack')->getAll($id);
+			if($all){
+				$this->com('redisHtml')->set('pack_detail_'.$id, $all, 7200);
+			}
+		}
 		if(!$all){
 			$this->redirect('未找到页面', '/index/error');
 		}
