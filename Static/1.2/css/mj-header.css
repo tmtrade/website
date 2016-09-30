@@ -63,18 +63,20 @@ table {
 
 .add-adver{
     border: 1px solid #eaeaea;
-    width: 182px;
-    height: 225px;
+    width: 187px;
+    height: 218px;
     float: left;
-    margin: 0 10px 10px 0;
+    margin: 0 9px 9px 0;
 
 }
 .add-adver:hover{
-    border: 1px solid #ff6666;
+    width: 183px;
+    height: 245px;
+    border: 3px solid #ff5656;
 }
 .add-adver img{
-    width: 182px;
-    height: 225px;
+    width: 183px;
+    height: 218px;
 }
 @-webkit-keyframes pulse {
     0% {

@@ -404,35 +404,39 @@
                     <ul class="yzc-categorbrand fr">
 
                         <? foreach($class['items'] as $k=>$item): ?>
-                        <li>
-                            <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="01-查看详情" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
-                            <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
-                            <div class="brand-show">
-                                <span>
-                                    <?if ($_k == 0){?>
-                                    <img class="lazy pulse" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$item['alt']?>">
-                                    <?}else{?>
-                                    <img src="/Static/images/idx01.gif" _original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"  alt="<?=$item['alt']?>">
-                                    <?}?>
-                                </span>
-                                <p><b><?=$item['thum_name']?></b> <?=$item['classStr']?></p>
-                            </div>
-                            <div class="brand-buy">
-                                <em>点击查看详情</em>
-                                <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="<?=$class['name'].'-'.$item['thum_name']?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>  </a>
-                                <font>
-                                <a href="javascript:;" class="first" addmsg="表单-02-询价" onclick="xunjia(this);" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
-                                    <i class="cate-buy"></i>
-                                    询 价
-                                </a>
-                                <a href="javascript:void(0);" class="sec" addmsg="咨询-03-联系卖家" onclick="goChat()" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
-                                    <i class="cate-ck"></i>
-                                    联系卖家
-                                </a>
-                                </font>
-                            </div>
-                            </a>
-                        </li>
+
+                            <li>
+                                <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
+                                <div class="brand-show">
+                                    <span>
+                                        <?if ($_k == 0){?>
+                                        <img class="lazy pulse" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$item['alt']?>">
+                                        <?}else{?>
+                                        <img src="/Static/images/idx01.gif" _original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"  alt="<?=$item['alt']?>">
+                                        <?}?>
+                                    </span>
+                                    <p><b><?=$item['thum_name']?></b> <?=$item['classStr']?></p>
+                                </div>
+
+                                <div class="brand-buy">
+                                    <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="01-查看详情" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
+                                    <em>点击查看详情</em>
+
+                                    <font>
+                                    <a href="javascript:;" class="first" addmsg="表单-02-询价" onclick="xunjia(this);" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
+                                        <i class="cate-buy"></i>
+                                        询 价
+                                    </a>
+                                    <a href="javascript:void(0);" class="sec" addmsg="咨询-03-联系卖家" onclick="goChat()" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
+                                        <i class="cate-ck"></i>
+                                        联系卖家
+                                    </a>
+                                    </font>
+                                    </a>
+                                </div>
+
+                             </li>
+
                         <? endforeach; ?>
                     </ul>
                 </div>

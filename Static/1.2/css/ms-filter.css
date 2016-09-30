@@ -6,16 +6,35 @@
 }
 .ms-filterResults{
     position: relative;
-    min-height: 25px;
+    border: 1px solid #eeeeee;
+    height: 48px;
+
+    border-bottom: none;
 }
 .ms-filterResults span{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    line-height: 25px;
+    line-height: 48px;
     color: #666;
     font-weight: bold;
+    font-size: 15px;
+    padding-left: 16px;
+}
+.ms-filterResults  em{
+    display: inline-block;
+    padding:4px 5px;
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    color: #999999;
+    font-size: 13px;
+    margin-left: 6px;
+}
+.ms-filterResults  em i{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background: url("../images/Res-qx-ico.png") no-repeat top center;
+    vertical-align: middle;
+    margin-bottom: 2px;
+    margin-left: 4px;
 }
 .ms-filterResultsList{
     padding-left: 75px;
@@ -40,12 +59,14 @@
 }
 .ms-condition{
     border: 1px solid #eaeaea;
-    margin-top: 5px;
 }
 .ms-conditionList{
     position: relative;
     background: #ffffff;
     min-height: 40px;
+}
+.gry-bg{
+    background-color: #f5f5f5;
 }
 .ms-conditionList > span{
     position: absolute;
@@ -55,12 +76,11 @@
     line-height: 40px;
     width: 100px;
     text-align: center;
-    color: #999999;
-    background: #fafafa;
+    color: #666;
 }
 .ms-conditionList-main{
     padding: 10px 100px 0 100px;
-    border-bottom: 1px dashed #e3e3e3;
+    border-bottom: 1px solid #eeeeee;
 }
 .ms-noBorder .ms-conditionList-main{
     border-bottom: 0 none;
@@ -107,38 +127,48 @@
 	padding: 2px 5px;
 	}
 .ms-condition-btn{
-    text-align: center;
-    padding-bottom: 10px;
+    text-align:left;
+    padding-bottom:5px;
+    padding-top: 5px;
+    border-top:1px solid #dddddd;
 }
 .ms-condition-btn > a,
 .ms-condition-btn > span{
     display: inline-block;
     margin: 5px;
-    height: 20px;
-    width: 42px;
-    line-height: 20px;
+    height:35px;
+    color: #ffffff;
+    line-height: 35px;
     text-align: center;
     cursor: pointer;
-    color: #666;
-    border: 1px solid #e3e3e3;
+    background-size: cover;
 }
 .ms-condition-btn > a{
-    color: #fff;
-    background: #FF5656;
-    border: 1px solid #FF5656;
+    width: 100px;
+    background:url("../images/red-btn.png") no-repeat top center;
+}
+.ms-condition-btn > span{
+    width: 70px;
+    background:url("../images/gry-btn.png") no-repeat top center;
+    background-size: 100% 100%;
 }
 .ms-conditionBtn span:hover,
 .ms-condition-btn > span:hover{
-    border: 1px solid #FF5656;
-    color: #FF5656;
+    /*border: 1px solid #FF5656;*/
+    /*color: #FF5656;*/
 }
 .ms-condition-btn > a:hover{
-    background: #f25252;
-    border: 1px solid #f25252;
+    /*background: #f25252;*/
+    /*border: 1px solid #f25252;*/
+}
+.ms-noBorder{
+    border: 1px solid #eeeeee;
+    margin-bottom: 10px;
+    width: 99%;
 }
 .ms-advancedFilter{
     position: relative;
-    padding: 10px 0 0 105px;
+    padding:6px 0 0 12px;
 }
 .ms-advancedFilter ul li a:hover .us-icon24{
     background-image: url("../images/us-icon3_cur.png");
@@ -148,14 +178,16 @@
 }
 .ms-advancedFilter > ul > li > a{
     display: block;
-    padding: 0 15px 10px;
+    padding: 4px 10px;
     height: 20px;
     line-height: 20px;
-    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    margin-left: 10px;
 }
 .ms-advancedFilter .ms-conditionList-main{
     position: absolute;
-    top: 40px;
+    top: 34px;
     left: 0;
     right: 0;
     padding: 10px 100px 0 10px;
@@ -191,23 +223,27 @@
     display: inline-block;
     height: 18px;
     line-height: 18px;
-    padding: 0 8px;
+    padding: 3px 11px;
     color: #666666;
     cursor: pointer;
-    margin: 0 5px;
+    margin: -3px 5px;
     border: 1px solid #e3e3e3;
 }
 .ms-conditionBtn .ms-conditionMore{
-    padding: 0 12px 0 0;
-    background: url("../images/us-icon3.png") right center no-repeat;
+    padding: 3px 17px 3px 6px;
+    background: url(../images/us-icon3.png) 34px center no-repeat;
 }
 .ms-conditionBtn .ms-conditionMore.cur{
-    background: url("../images/us-icon3_cur.png") right center no-repeat;
-    color: #ff6d6d;
+    display: inline-block;
+    background: url(../images/us-icon3.png) 34px center no-repeat;
+    background-color: #ffffff;
+    color: #666666;
+    padding:   3px 17px 3px 6px;
+    border: 1px solid #eeeeee;
 }
 .ms-conditionBtn .ms-conditionMore,
 .ms-conditionBtn .ms-conditionMore:hover{
-    border: 0 none;
+    /*border: 0 none;*/
 }
 .ms-setHeight{
     height: 30px;
@@ -219,31 +255,40 @@
 .ms-filterSearchMain{
     padding-top:5px;
 	padding-bottom:0px;
+    padding-left:22px;
+    padding-right: 15px;
 }
 .ms-filterSearchMain p{
     float: right;
     line-height: 48px;
     color: #666666;
 }
-.ms-filterSearchMain p span{
-    color: #ff5656;
+.ms-filterSearchMain p i{
+    color: #ff6600;
+    margin-right: 5px;
+    margin-left: 3px;
 }
 .ms-filterSearch{
-    height: 26px;
-    width: 184px;
+    height: 33px;
+    width: 180px;
     border: 1px solid #e3e3e3;
     background: #ffffff;
-	margin-top:10px;
-	margin-bottom:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
 }
 .ms-filterSearch input[type="text"]{
-    height: 26px;
+    height: 25px;
     line-height: 26px\9;
-    width: 135px;
+    width: 128px;
     padding: 0 10px;
     vertical-align: middle;
     border: 0 none;
     outline: none;
+    border-radius: 7px 0px 0px 7px;
+    border-right: 1px solid #ddd;
+    margin-top: 4px;
 }
 
 
@@ -255,7 +300,7 @@
 /* ms-filterMain */
 .ms-filterMain{
     float: left;
-    width: 962px;
+    width: 982px;
 }
 .ms-filtersList > ul{
     width: 100%;
@@ -265,9 +310,9 @@
 .ms-filtersList > ul > li{
     position: relative;
     float: left;
-    width: 182px;
-	height: 227px;
-    margin: 0 10px 10px 0;
+    width: 187px;
+	height: 218px;
+    margin: 0 9px 9px 0;
     
 }
 
@@ -282,14 +327,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 182px;
-    height: 225px;
+    width: 187px;
+    height: 218px;
     border: 1px solid #eaeaea;
     overflow: hidden;
 }
 .ms-filterCenter{
-    width: 162px;
-    padding: 10px;
+    width: 169px;
+    padding:8px;
     background: #ffffff;
     position: relative;
 }
@@ -297,18 +342,19 @@
 .ms-collect{
     position: absolute;
     top: 0px;
-    right: 8px;
+    left:6px;
     z-index: 99;
 }
 
 .ms-filtersImg{
     display: table-cell;
     *display: inline-block;
-    width: 162px;
+    width: 170px;
     height: 130px;
     text-align: center;
     vertical-align: middle;
     *font-size: 102px;
+    border-bottom: 1px solid #eeeeee;
 }
 .ms-filtersImg img{
     max-height: 130px;
@@ -327,12 +373,13 @@
 .ms-filtersListTxt{
     text-align: center;
     line-height: 18px;
-	margin-top: 15px;
-	height:55px;
+	margin-top: 6px;
+    height: 64px;
 }
 .ms-filtersListTxt h6{
 	font-size:13px;
 	-ms-font-size:13px;
+    margin-bottom: 6px;
 	}
 .ms-filtersListTxt p{
     color: #999999;
@@ -344,7 +391,7 @@
 }
 .ms-filterBtn{
     text-align: center;
-    padding-top: 20px;
+    padding-top:10px;
     padding-bottom: 10px;
 }
 .ms-filterBtn a{
@@ -352,14 +399,14 @@
     vertical-align: middle;
     height: 30px;
     line-height: 30px;
-    width: 75px;
+    width: 80px;
     text-align: center;
-    margin: 0 2px;
+    margin: 0 1px;
     color: #ffffff;
     border-radius: 3px;
 }
 .ms-filterBtn .ms-inquiry{
-    background: #ff8b3e;
+    background: #e57272;
 }
 .ms-filterBtn .ms-inquiry:hover{
     background: #f5843a;
@@ -368,7 +415,7 @@
     background: #ff5656;
 }
 .ms-filterBtn .ms-seller:hover{
-    background: #f74f4f;
+    background: #ffa734;
 }
 .ms-sortMain{
     position: absolute;
@@ -400,9 +447,13 @@
     text-decoration: underline;
 }
 .ms-filtersList > ul > li:hover > div{
-    height: 275px;
-    border: 1px solid #ff5656;
+    width:183px;
+    height: 245px;
+    border: 3px solid #ff5656;
     z-index: 1;
+}
+.ms-filtersList > ul > li:hover .ms-filtersListTxt{
+    height:55px;
 }
 .ms-filtersList > ul > li:hover > div.ms-filterMany{
     width: 302px;
@@ -414,11 +465,16 @@
 /* ms-recommend */
 .ms-recommend{
     float: right;
-    width: 166px;
-    padding: 0 20px;
-    border: 1px solid #eaeaea;
+    width: 180px;
     background: #ffffff;
 	overflow:hidden;
+}
+.ms-recommend  ul li{
+    margin-top:13px;
+}
+.ms-recommend  ul li img{
+    max-width: 180px;
+    height: auto;
 }
 .ms-recommend > dt{
     position: relative;
@@ -426,6 +482,14 @@
     height:10px;
     border-top: 1px solid #e3e3e3;
     background: #ffffff;
+}
+.ms-recommend  h3{
+    color: #666666;
+    font-size: 15px;
+    border-bottom: 1px solid #dadada;
+    padding-left:10px;
+    height: 40px;
+    line-height: 35px;
 }
 .ms-recommend > dt > span{
     position: absolute;

@@ -4,11 +4,11 @@
  <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
 <div class="w1180 ms-filterWrapper f-clearfix">
     <!-- ms-filterMain start -->
-    <div class="ms-filterMain">
+
         <!-- ms-filters start -->
         <div class="ms-filters">
             <div class="ms-filterResults">
-                <span>全部结果&nbsp;&gt;</span>
+                <span>全部结果&nbsp;&gt;</span><em>1-化工原料<i></i></em>
                 <ul class="ms-filterResultsList f-clearfix">
                     <? if ( $kw ) { ?>
                         <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');" addmsg='<?=$kw_title?>' webid="7"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
@@ -61,7 +61,7 @@
                 </div>
                 <? } ?>
                 <? if ( empty($g) && !empty($c) && count(explode(',', $c)) == 1 ) {?>
-                <div class="ms-conditionList">
+                <div class="ms-conditionList gry-bg">
                     <span>分类群组</span>
                     <div class="ms-conditionList-main groupSty">
                         <ul class="f-clearfix ms-conditionRadio">
@@ -124,7 +124,7 @@
                 </div>
                 <? } ?>
                 <? if ( empty($sn) ) {?>
-                <div class="ms-conditionList">
+                <div class="ms-conditionList gry-bg">
                     <span>商标字数</span>
                     <div class="ms-conditionList-main">
                         <ul class="f-clearfix ms-conditionRadio">
@@ -148,57 +148,13 @@
                     </div>
                 </div>
                 <? } ?>
-                <div class="ms-conditionList ms-noBorder">
-                    <span>高级筛选</span>
-                    <div class="ms-advancedFilter">
-                        <ul class="f-clearfix">
-                        <? if ( empty($d) ) {?>
-                            <li>
-                                <a href="">注册时间<i class="us-icon us-icon24"></i></a>
-                                <div class="ms-conditionList-main">
-                                    <ul class="f-clearfix ms-conditionRadio">
-                                        <li><a  href="javascript:void(0);" onclick="createUrl('_date','0');return false;">全部</a></li>
-                                    <?foreach ($_DATE as $_k => $_v) {?>
-                                        <li><a  href="javascript:void(0);" onclick="createUrl('_date','<?=$_k?>');return false;" addmsg="单选–<?=$_v?>" webid="5" module='筛选商标注册时间'><?=$_v?></a></li>
-                                    <?}?>
-                                    </ul>
-                                </div>
-                            </li>
-                        <? } ?>
-                        <? if ( empty($p) ) {?>
-                            <li>
-                                <a href="">入驻平台<i class="us-icon us-icon24"></i></a>
-                                <div class="ms-conditionList-main">
-                                    <ul class="f-clearfix ms-conditionRadio">
-                                        <li><a href="javascript:void(0);" onclick="createUrl('_plat','0);return false;">全部</a></li>
-                                        <?foreach ($_PLATFORM as $k => $v) {?>
-                                            <li><a href="javascript:void(0);" onclick="createUrl('_plat','<?=$k?>');return false;" addmsg="单选–<?=$v?>" webid="6" module='筛选商标入驻平台'><?=$v?></a></li>
-                                        <?}?>
-                                    </ul>
-                                    <ul class="f-clearfix ms-conditionCheckbox">                                        
-                                        <?foreach ($_PLATFORM as $k => $v) {?>
-                                            <li><input type="checkbox" value="<?=$k?>" id="platform-checkbox<?=$k?>" name="platform-checkbox<?=$k?>" /><label for="platform-checkbox<?=$k?>"><?=$v?></label></li>
-                                        <?}?>
-                                    </ul>
-                                    <div class="ms-condition-btn">
-                                        <a href="javascript:void(0);" tname="_plat" module="入驻平台">确定</a>
-                                        <span onclick="cancelFun(this);">取消</span>
-                                    </div>
-                                    <div class="ms-conditionBtn">
-                                        <span class="ms-multi" onclick="multi(this);">多选</span>
-                                    </div>
-                                </div>
-                            </li>
-                        <? } ?>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
         </div>
         <!-- ms-filters end -->
         <!-- ms-filterSearch start -->
         <div class="ms-filterSearchMain f-clearfix">
-            <p>共有<span><?=$total?></span>个商标</p>
+            <p>共有<i><?=$total?></i>个商标</p>
             <?if( empty($kw) ){?>
             <div class="ms-filterSearch">
                 <!--[if !IE]><!-->
@@ -207,12 +163,73 @@
                 <!--[if IE]>
                 <input type="text" value="在结果中搜索" onblur="if(value == ''){value = '在结果中搜索'}" onfocus="if(value == '在结果中搜索'){value = ''}" />
                 <![endif]-->
+                <em></em>
                 <a href="javascript:void(0);" onclick="reSearch();return false;"><i class="us-icon us-icon21"></i></a>
             </div>
             <?}?>
         </div>
         <!-- ms-filterSearch end -->
         <!-- ms-filtersList start -->
+    <div class="ms-filterMain">
+        <div class="ms-conditionList ms-noBorder gry-bg">
+
+            <div class="ms-advancedFilter">
+                <ul class="f-clearfix">
+
+                    <? if ( empty($d) ) {?>
+                    <li>
+                        <a href="">注册时间<i class="us-icon us-icon24"></i></a>
+                        <div class="ms-conditionList-main">
+                            <ul class="f-clearfix ms-conditionRadio">
+                                <li><a  href="javascript:void(0);" onclick="createUrl('_date','0');return false;">全部</a></li>
+                                <?foreach ($_DATE as $_k => $_v) {?>
+                                <li><a  href="javascript:void(0);" onclick="createUrl('_date','<?=$_k?>');return false;" addmsg="单选–<?=$_v?>" webid="5" module='筛选商标注册时间'><?=$_v?></a></li>
+                                <?}?>
+                            </ul>
+                        </div>
+                    </li>
+                    <? } ?>
+                    <? if ( empty($p) ) {?>
+                    <li>
+                        <a href="">入驻平台<i class="us-icon us-icon24"></i></a>
+                        <div class="ms-conditionList-main">
+                            <ul class="f-clearfix ms-conditionRadio">
+                                <li><a href="javascript:void(0);" onclick="createUrl('_plat','0);return false;">全部</a></li>
+                                <?foreach ($_PLATFORM as $k => $v) {?>
+                                <li><a href="javascript:void(0);" onclick="createUrl('_plat','<?=$k?>');return false;" addmsg="单选–<?=$v?>" webid="6" module='筛选商标入驻平台'><?=$v?></a></li>
+                                <?}?>
+                            </ul>
+                            <ul class="f-clearfix ms-conditionCheckbox">
+                                <?foreach ($_PLATFORM as $k => $v) {?>
+                                <li><input type="checkbox" value="<?=$k?>" id="platform-checkbox<?=$k?>" name="platform-checkbox<?=$k?>" /><label for="platform-checkbox<?=$k?>"><?=$v?></label></li>
+                                <?}?>
+                            </ul>
+                            <div class="ms-condition-btn">
+                                <a href="javascript:void(0);" tname="_plat" module="入驻平台">确定</a>
+                                <span onclick="cancelFun(this);">取消</span>
+                            </div>
+                            <div class="ms-conditionBtn">
+                                <span class="ms-multi" onclick="multi(this);">多选</span>
+                            </div>
+                        </div>
+                    </li>
+                    <? } ?>
+                    <? if ( empty($d) ) {?>
+                    <li>
+                        <a href="">特价类型<i class="us-icon us-icon24"></i></a>
+                        <div class="ms-conditionList-main">
+                            <ul class="f-clearfix ms-conditionRadio">
+                                <li><a  href="javascript:void(0);" onclick="createUrl('_date','0');return false;">全部</a></li>
+                                <?foreach ($_DATE as $_k => $_v) {?>
+                                <li><a  href="javascript:void(0);" onclick="createUrl('_date','<?=$_k?>');return false;" addmsg="单选–<?=$_v?>" webid="5" module='筛选商标注册时间'><?=$_v?></a></li>
+                                <?}?>
+                            </ul>
+                        </div>
+                    </li>
+                    <? } ?>
+                </ul>
+            </div>
+        </div>
         <div class="ms-filtersList" style="padding-top:0px;">
             <ul class="f-clearfix" id="s-all-list">
     <?if ( !empty($searchList) ){?>
@@ -314,64 +331,34 @@
     </div>
     <!-- ms-filterMain end -->
     <!-- ms-recommend start -->
-    <dl class="ms-recommend">
-        <dt><span>推荐好标</span><img src="<?=StaticDir?>1.2/images/xstj.png" alt=""/></dt>
-        <dd>
-            <span><img src="http://f2.chofn.net//Static/upload/913982a0a56547b92cfbefa640eb5355.jpg" width="166" height="124" onerror="this.src='/Static/images/img1.png'" alt=""></span>
-            <div class="ms-filtersListTxt">
-                <a href="/d-13731053-25.html" title="VE" addmsg="推荐第1条" webid="12" module="特价商标推荐">
-                    <div>
-                        <h6>VE</h6>
-                        <p>第25类 - 服装鞋帽</p>
-                        <p title="服装;婴儿全套衣;游泳衣;雨衣;鞋;帽;袜;手套（服装）;围巾;皮带（服饰用）">服装;婴儿全套衣;</p>
-                    </div>
-                </a>
-            </div>
-        </dd>
-        <dd>
-            <span><img src="http://f2.chofn.net//Static/upload/9f209b3e4d6c7ce181fe32913bb28800.jpg" width="166" height="124" onerror="this.src='/Static/images/img1.png'" alt=""></span>
-            <div class="ms-filtersListTxt">
-                <a href="/d-15077797-30.html" title="稻滋" addmsg="推荐第1条" webid="12" module="特价商标推荐">
-                    <div>
-                        <h6>稻滋</h6>
-                        <p>第30类 - 食品佐料</p>
-                        <p title="甜食（糖果）;以米为主的零食小吃;谷粉制食品;以谷物为主的零食小吃;八宝饭;方便米饭;米;人食用的去壳谷物;谷类制品;面粉">甜食（糖果）;</p>
-                    </div>
-                </a>
-            </div>
-        </dd>
-    </dl>
-    <dl class="ms-recommend" style="margin-top:15px;">
-	<dt><span>特价商标推荐</span><img src="<?=StaticDir?>1.2/images/xstj.png" alt=""/></dt>
-	<? if(!empty($ad_list['seach_list'])): ?>
-	    <?foreach ($ad_list['seach_list'] as $k => $v) {?>
-		<dd>
+
+    <div class="ms-recommend">
+
+	<h3>特价商标推荐</h3>
+        <ul>
+            <? if(!empty($ad_list['seach_list'])): ?>
+            <?foreach ($ad_list['seach_list'] as $k => $v) {?>
+            <li>
 		    <span>
 			<a href="<?=$v['link']?>" target="_blank"  addmsg="推荐第<?=($k+1)?>条" webid="12" module="特价商标推荐">
-			    <img src="<?=(TRADE_URL.$v['pic'])?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
-			</a>
+                <img src="<?=(TRADE_URL.$v['pic'])?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+            </a>
 		    </span>
-		</dd>
-	    <?}?>
-	<? else: ?>
-	    <?foreach ($offpriceList as $k => $v) {
-		$_c_    = explode(',', $v['class']);
-		$_class = current($_c_);?>
-		<dd>
-		    <span><img src="<?=$v['imgUrl']?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></span>
-		    <div class="ms-filtersListTxt">
-			<a href="<?=$v['viewUrl']?>" title="<?=$v['name']?>" addmsg="推荐第<?=($k+1)?>条" webid="12" module="特价商标推荐">
-			<div>
-			    <h6><?=$v['name']?></h6>
-			    <p><?=$_class?>类 - <?=$_CLASS[$_class]?></p>
-			    <p title="<?=$v['goods']?>"><?=$v['goods']?mb_substr($v['goods'], 0, 12, 'UTF-8'):'-'?></p>
-			</div>
-			</a>
-		    </div>
-		</dd>
-	    <?}?>
-	<? endif;?>
-    </dl>
+            </li>
+            <?}?>
+            <? else: ?>
+            <?foreach ($offpriceList as $k => $v) {
+            $_c_    = explode(',', $v['class']);
+            $_class = current($_c_);?>
+            <li>
+                <span><img src="<?=$v['imgUrl']?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></span>
+
+            </li>
+            <?}?>
+            <? endif;?>
+        </ul>
+
+    </div>
     <!-- ms-recommend end -->
 </div>
 

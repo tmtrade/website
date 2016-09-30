@@ -617,6 +617,8 @@
     width: 16px;
     height: 16px;
     background-image: url("../images/us-icon2.png");
+    margin-left: 5px;
+    margin-top: 2px;
 }
 .us-icon22{
     width: 12px;

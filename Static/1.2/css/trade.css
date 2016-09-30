@@ -63,7 +63,7 @@ body,html{
     font-size: 13px;
 }
 .td-pk-del label.pk-ms{
-    display: inline-block;
+    display:block;
     text-align: center;
     color: #ff5656;
     margin-top: 10px;
@@ -79,14 +79,16 @@ body,html{
 }
 
 .pack-brand-pic ul li{
+
+}
+.pack-brand-pic ul li .bd-show{
     width: 210px;
     float: left;
-    margin-left: 20px;
+    margin-left: 15px;
     margin-top: 35px;
     text-align: center;
     cursor: pointer;
 }
-
 .pack-brand-pic ul li .pack-pic{
     display: table-cell;
     width: 204px;
@@ -94,7 +96,7 @@ body,html{
     border:3px solid #dddddd;
     text-align: center;
 }
-.pack-brand-pic ul li:hover  .pack-pic{
+.pack-brand-pic ul li .bd-show:hover  .pack-pic{
     border:3px solid #ad2e21;
 }
 .pack-brand-pic ul li  .pack-pic img{
@@ -112,34 +114,21 @@ body,html{
     margin-top: 12px;
 }
 
-/*.slideBox{ width:100%;min-height: 265px;overflow: hidden;padding-bottom: 25px;  position:relative; background: url("../images/brand-pic-bg.jpg") no-repeat center top;  background-size: cover; -ms-behavior: url(../css/backgroundsize.min.htc);*/
-    /*behavior: url(../css/backgroundsize.min.htc); }*/
-/*.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; display: none;text-align: center; }*/
-/*.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }*/
-/*.slideBox .hd ul li{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; border-radius: 100%;-webkit-border-radius: 100%;background:#a9a9a9; cursor:pointer; }*/
-/*.slideBox .hd ul li.on{*/
-    /*background: #FFFFFF;*/
-/*}*/
-/*.slideBox .bd{ position:relative; height:100%; z-index:0;   }*/
-/*.slideBox .bd li{ zoom:1; vertical-align:middle; }*/
 
-.multipleColumn{ width:100%;min-height:465px;overflow: hidden;padding-bottom: 25px;  position:relative; background: url("../images/brand-pic-bg.jpg") no-repeat center top;  background-size:100% 100%; -ms-behavior: url(../css/backgroundsize.min.htc);
+.slideBox{ width:100%;min-height:465px;overflow: hidden;padding-bottom: 25px;  position:relative; background: url("../images/brand-pic-bg.jpg") no-repeat center top;  background-size:100% 100%; -ms-behavior: url(../css/backgroundsize.min.htc);
     behavior: url(../css/backgroundsize.min.htc); }
-.multipleColumn .hd{ overflow:hidden;width: 222px; height:30px; padding:0 10px;position: absolute;left: 50%;margin-left: -111px; bottom: 40px;  }
-.multipleColumn .hd .prev,.multipleColumn .hd .next{ display:block;  width:5px; height:9px; float:right; margin-right:5px; margin-top:10px;  overflow:hidden;
-    cursor:pointer; background:url("images/icoLeft.gif") no-repeat;}
-.multipleColumn .hd .next{ background:url("images/icoRight.gif") no-repeat;  }
-.multipleColumn .hd ul{ overflow:hidden; zoom:1; margin-top:10px; zoom:1; }
-.multipleColumn .hd ul li{ float:left;  width:15px; height:15px; overflow:hidden;margin-right:10px; text-indent:-999px; cursor:pointer; background:#a9a9a9; border-radius: 100%;-webkit-border-radius: 100%;}
-.multipleColumn .hd ul li.on{background-color: #FFFFFF; }
+.slideBox .hd{ overflow:hidden;width: 222px; height:30px; padding:0 10px;position: absolute;left: 50%;margin-left: -111px; bottom: 40px;  }
+.slideBox .hd ul{ overflow:hidden; zoom:1; margin-top:10px; zoom:1; }
+.slideBox .hd ul li{ float:left;  width:15px; height:15px; overflow:hidden;margin-right:10px; text-indent:-999px; cursor:pointer; background:#a9a9a9; border-radius: 100%;-webkit-border-radius: 100%;}
+.slideBox .hd ul li.on{background-color: #FFFFFF; }
 
-.multipleColumn .bd{ padding:10px; overflow:hidden;  }
-.multipleColumn .bd ul{ overflow:hidden; zoom:1; width:230px;  float:left; _display:inline;  }
-.multipleColumn .bd ul li{ margin:0 8px; float:left; _display:inline; overflow:hidden; text-align:center;margin-top: 25px; }
-.multipleColumn .bd ul li .pic{ text-align:center; }
-.multipleColumn .bd ul li .pic img{ width:120px; height:90px; display:block;  padding:2px; border:1px solid #ccc; }
-.multipleColumn .bd ul li .pic a:hover img{ border-color:#999;  }
-.multipleColumn .bd ul li .title{ line-height:24px;   }
+.slideBox .bd{padding:10px;   }
+.slideBox .bd ul{  overflow:hidden; zoom:1; height: 505px;}
+.slideBox .bd ul li{ margin:0 8px; float:left; _display:inline; overflow:hidden; text-align:center; }
+.slideBox .bd ul li .pic{ text-align:center; }
+.slideBox .bd ul li .pic img{ width:120px; height:90px; display:block;  padding:2px; border:1px solid #ccc; }
+.slideBox .bd ul li .pic a:hover img{ border-color:#999;  }
+.slideBox .bd ul li .title{ line-height:24px;   }
 .pack-brand-del{
     padding-top:12px;
     padding-bottom: 12px;
@@ -272,7 +261,7 @@ body,html{
 .sel-banner-img .sel-banner-itme{
     background-size:100%;
 }
-.sel-banner-img .sel-banner-itme, .sel-banner-img .sel-banner-itme a {
+.sel-banner-img .sel-banner-itme{
     display: block;
     width: 100%!important;
     height:312px;
@@ -315,13 +304,34 @@ body,html{
 .sel-bannerIimg .hd .on{
     background: #efe6e1;
 }
-
+.sell-banner1{
+    background: url("../images/sell-banner1.jpg") no-repeat top center;
+    background-size: 100% 100%;
+}
+.sell-banner1 a{
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    left: 20%;
+    bottom: 45px;
+}
 .sel-title{
     width: 100%;
     height: 1px;
     background: #e6e6e6;
     position: relative;
     margin-top: 70px;
+}
+.sel-tit-bg{
+    display: inline-block;
+    padding-left:35px;
+    padding-right:35px;
+    background:#ffffff;
+    position: absolute;
+    left: 50%;
+    margin-left: -95px;
+    top:-15px;
 }
 
 .sel-title-main{
@@ -335,11 +345,6 @@ body,html{
     color: #ffffff;
     border-radius:15px;
     -webkit-border-radius:15px;
-    position: absolute;
-    left: 50%;
-    margin-left: -60px;
-    top:-15px;
-
 }
 .sell-bk1{
     overflow: hidden;
@@ -379,7 +384,7 @@ body,html{
 .sell-tang li div h6{
     color: #666666;
     font-size: 18px;
-    font-weight: normal;
+    font-family: "微软雅黑";
 }
 .sell-bk2{
     position: relative;
@@ -387,6 +392,12 @@ body,html{
     border-radius:5px;
     -webkit-border-radius:5px;
     margin-top: 65px;
+}
+.sell-bk2 .sel-title-main{
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    top:-15px;
 }
 .sell-bk2 ul{
     margin-top: 30px;
@@ -416,6 +427,9 @@ body,html{
 .sell-bk2 ul li:hover{
     background: #e57272;
     color: #ffffff;
+}
+.sell-bk2 ul li i{
+    font-style: normal;
 }
 .s-clas1{
     background-position:20px 10px;
@@ -729,6 +743,9 @@ body,html{
     background: #fff;
     position: relative;
 }
+.Bout-spec li:hover{
+    border: 3px solid #e57272;
+}
 .Bout-spec li i{
     display: inline-block;
     width: 76px;
@@ -842,6 +859,11 @@ body,html{
     margin-top: 38px;
 
 }
+.sel-low-price li:hover{
+    width: 274px;
+    height: 354px;
+    border: 3px solid #e57272;
+}
 .sel-low-price div{
     display: table-cell;
     width: 278px;
@@ -882,7 +904,7 @@ body,html{
     font-weight: normal;
 
 }
-.sel-low-price li a{
+.sel-low-price li a.cont{
     display: inline-block;
     width:90% ;
     height:40px;
@@ -906,4 +928,6 @@ body,html{
     -webkit-border-radius: 5px;
     text-decoration: underline;
     margin: 50px auto 0px;
+    font-family: "微软雅黑";
+    font-weight: 600;
 }
