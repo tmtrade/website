@@ -78,13 +78,17 @@ body,html{
     overflow: hidden;
 }
 
-.pack-brand-pic ul li{
-
+.pack-pic-show{
+    width: 1170px;
+    min-height: 265px;
+    overflow: hidden;
+    background:url("../images/brand-pic-bg.jpg") no-repeat top center;
+    background-size: 100% 100%;
 }
 .pack-brand-pic ul li .bd-show{
     width: 210px;
     float: left;
-    margin-left: 15px;
+    margin-left: 20px;
     margin-top: 35px;
     text-align: center;
     cursor: pointer;
@@ -115,20 +119,20 @@ body,html{
 }
 
 
-.slideBox{ width:100%;min-height:465px;overflow: hidden;padding-bottom: 25px;  position:relative; background: url("../images/brand-pic-bg.jpg") no-repeat center top;  background-size:100% 100%; -ms-behavior: url(../css/backgroundsize.min.htc);
+.pk-slideBox{ width:100%;overflow: hidden;padding-bottom: 25px;  position:relative; background: url("../images/brand-pic-bg.jpg") no-repeat center top;  background-size:100% 100%; -ms-behavior: url(../css/backgroundsize.min.htc);
     behavior: url(../css/backgroundsize.min.htc); }
-.slideBox .hd{ overflow:hidden;width: 222px; height:30px; padding:0 10px;position: absolute;left: 50%;margin-left: -111px; bottom: 40px;  }
-.slideBox .hd ul{ overflow:hidden; zoom:1; margin-top:10px; zoom:1; }
-.slideBox .hd ul li{ float:left;  width:15px; height:15px; overflow:hidden;margin-right:10px; text-indent:-999px; cursor:pointer; background:#a9a9a9; border-radius: 100%;-webkit-border-radius: 100%;}
-.slideBox .hd ul li.on{background-color: #FFFFFF; }
+.pk-slideBox .hd{ overflow:hidden;width: 222px; height:30px; padding:0 10px;position: absolute;left: 50%;margin-left: -111px; bottom:20px;  }
+.pk-slideBox .hd ul{ overflow:hidden; zoom:1; margin-top:15px; zoom:1; }
+.pk-slideBox .hd ul li{ float:left;  width:15px; height:15px; overflow:hidden;margin-right:10px; text-indent:-999px; cursor:pointer; background:#a9a9a9; border-radius: 100%;-webkit-border-radius: 100%;}
+.pk-slideBox .hd ul li.on{background-color: #FFFFFF; }
 
-.slideBox .bd{padding:10px;   }
-.slideBox .bd ul{  overflow:hidden; zoom:1; height: 505px;}
-.slideBox .bd ul li{ margin:0 8px; float:left; _display:inline; overflow:hidden; text-align:center; }
-.slideBox .bd ul li .pic{ text-align:center; }
-.slideBox .bd ul li .pic img{ width:120px; height:90px; display:block;  padding:2px; border:1px solid #ccc; }
-.slideBox .bd ul li .pic a:hover img{ border-color:#999;  }
-.slideBox .bd ul li .title{ line-height:24px;   }
+.pk-slideBox .bd{padding:10px;   }
+.pk-slideBox .bd ul{  overflow:hidden; zoom:1;padding-bottom: 25px;}
+.pk-slideBox .bd ul li{ margin:0 -24px; float:left; _display:inline; overflow:hidden; text-align:center; }
+.pk-slideBox .bd ul li .more-pic{ text-align:center;width:160px; height:100px;float:left;margin-left: 34px;margin-top: 27px;}
+.pk-slideBox .bd ul li .more-pic img{ width:160px; height:100px; }
+
+.pk-slideBox .bd ul li .title{ line-height:24px;   }
 .pack-brand-del{
     padding-top:12px;
     padding-bottom: 12px;
