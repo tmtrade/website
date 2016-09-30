@@ -64,6 +64,8 @@ class PackModule extends AppModule
         if($rst2){
             $count = count($rst2);
             $rst['count'] = $count;
+            //得到描述
+            $rst['desc'] = preg_replace('/src="/','src="'.TRADE_URL,htmlspecialchars_decode($rst['desc']));//添加上域名
             //处理数据
             $data = array();
             $ii = 1;
