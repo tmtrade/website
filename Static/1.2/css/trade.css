@@ -38,10 +38,16 @@ body,html{
     text-align:center;
 }
 .td-pk-del h3{
+    max-width:610px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
    color: #444444;
    font-size: 25px;
+    margin: auto;
    margin-top: 30px;
    font-weight: normal;
+   font-family: "微软雅黑";
 }
 .pk-sell span{
     display: inline-block;
@@ -50,6 +56,7 @@ body,html{
     padding-left: 8px;
     padding-right:14px;
     margin-top:5px;
+    margin-left: -4px;
 }
 
 .pk-sell .red{
@@ -95,10 +102,12 @@ body,html{
 }
 .pack-brand-pic ul li .pack-pic{
     display: table-cell;
+    background-color: #FFFFFF;
     width: 204px;
     height: 144px;
     border:3px solid #dddddd;
     text-align: center;
+    vertical-align: middle;
 }
 .pack-brand-pic ul li .bd-show:hover  .pack-pic{
     border:3px solid #ad2e21;
@@ -121,13 +130,13 @@ body,html{
 
 .pk-slideBox{ width:100%;overflow: hidden;padding-bottom: 25px;  position:relative; background: url("../images/brand-pic-bg.jpg") no-repeat center top;  background-size:100% 100%; -ms-behavior: url(../css/backgroundsize.min.htc);
     behavior: url(../css/backgroundsize.min.htc); }
-.pk-slideBox .hd{ overflow:hidden;width: 222px; height:30px; padding:0 10px;position: absolute;left: 50%;margin-left: -111px; bottom:20px;  }
-.pk-slideBox .hd ul{ overflow:hidden; zoom:1; margin-top:15px; zoom:1; }
-.pk-slideBox .hd ul li{ float:left;  width:15px; height:15px; overflow:hidden;margin-right:10px; text-indent:-999px; cursor:pointer; background:#a9a9a9; border-radius: 100%;-webkit-border-radius: 100%;}
+.pk-slideBox .hd{ overflow:hidden;width: 222px; height:30px; padding:0 10px;position: absolute;left: 50%;margin-left: -111px; bottom:20px;text-align: center;  }
+.pk-slideBox .hd ul{ overflow:hidden; zoom:1; margin-top:15px; zoom:1;margin-left: -10px;}
+.pk-slideBox .hd ul li{display:inline-block;width:15px; height:15px; overflow:hidden;margin-right:10px; text-indent:-999px; cursor:pointer; background:#a9a9a9; border-radius: 100%;-webkit-border-radius: 100%;}
 .pk-slideBox .hd ul li.on{background-color: #FFFFFF; }
 
 .pk-slideBox .bd{padding:10px;   }
-.pk-slideBox .bd ul{  overflow:hidden; zoom:1;padding-bottom: 25px;}
+.pk-slideBox .bd ul{ height: 275px; overflow:hidden; zoom:1;padding-bottom: 25px;}
 .pk-slideBox .bd ul li{ margin:0 -24px; float:left; _display:inline; overflow:hidden; text-align:center; }
 .pk-slideBox .bd ul li .more-pic{ text-align:center;width:160px; height:100px;float:left;margin-left: 34px;margin-top: 27px;}
 .pk-slideBox .bd ul li .more-pic img{ width:160px; height:100px; }

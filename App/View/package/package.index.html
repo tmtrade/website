@@ -316,71 +316,17 @@
     <input type="hidden" id="remarks">
 </div>
 <!--成功案列start-->
-<div class="w1180 succeed-al" id="succal">
-    <ul class="succeed-al-main">
+<div class="w1180 succeed-al" id="flr2">
+    <div class="succeed-al-tit f-clearfix f-hidden">
+        <h3 class="fl">成功案例</h3>
+        <a class="fr" href="/case">查看更多</a>
+    </div>
+    <ul class="succeed-al-sy">
+        <? foreach($case as $item): ?>
         <li>
-            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                <div class="flipper">
-                    <div class="front">
-                        <dl>
-                            <font>格伦贝拉<span style="background: #ff9f8c;">服装鞋帽25类
-</span></font>
-                            <p>
-                                <label>使用商品：</label>服装鞋帽、服装配饰<br/>
-                                <label>购  买 人：</label> 慈先生<br/>
-                                <label>服务顾问：</label>陈艾<br/>
-                            </p>
-                        </dl>
-                        <a href="/case/detail/?id=14" addmsg="第1条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/al1.png"></a>
-                    </div>
-                    <div class="back">
-                        <a href="/case/detail/?id=14" addmsg="第1条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/c-1.jpg"></a>
-                    </div>
-                </div>
-            </div>
+            <a target="_blank" href="<?=$item['url']?>"><img src="<?=($item['pic']?TRADE_URL.$item['pic']:'')?>" alt="<?=$item['alt']?>" onerror="this.src='/Static/images/img1.png'"></a>
         </li>
-        <li>
-            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                <div class="flipper">
-                    <div class="front">
-                        <dl>
-                            <font>Hesiod<span style="background: #ffc061;">化妆清洁3类
-</span></font>
-                            <p>
-                                <label>使用商品：</label>清洁用品、化妆品<br/>
-                                <label>购  买 人：</label> 某商贸公司<br/>
-                                <label>服务顾问：</label>王桂华<br/>
-                            </p>
-                        </dl>
-                        <a href="/case/detail/?id=12" addmsg="第2条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/al2.png"></a>
-                    </div>
-                    <div class="back">
-                        <a href="/case/detail/?id=12" addmsg="第2条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/c-2.jpg"></a>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                <div class="flipper">
-                    <div class="front">
-                        <dl>
-                            <font>麦普森<span style="background: #8cdcff;">3C数码9类
-</span></font>
-                            <p>
-                                <label>使用商品：</label>计算机、数码产品<br/>
-                                <label>购  买 人：</label> 王先生<br/>
-                                <label>服务顾问：</label>寇飞<br/>
-                            </p>
-                        </dl>
-                        <a href="/case/detail/?id=16" addmsg="第3条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/al3.png"></a>
-                    </div>
-                    <div class="back">
-                        <a href="/case/detail/?id=16" addmsg="第3条" webid="8" module="成功案例" target="_blank"><img src="<?=StaticDir?>1.2/images/c-3.jpg"></a>
-                    </div>
-                </div>
-            </div>
-        </li>
+        <? endforeach; ?>
     </ul>
 </div>
 <!--成功案列end-->

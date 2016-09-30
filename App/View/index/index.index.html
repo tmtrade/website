@@ -296,8 +296,9 @@
 </div>
 <!--活动推荐end-->
 <!--商标分类start-->
-<div class="yzc-Brand w1180" id="flr1">
-    <ul class="brand-fl">
+<div class="yzc-Brand-all w1180" id="flr1">
+    <div class="yzc-Brand">
+        <ul class="brand-fl">
             <li>
                 <!--重点红色-->
                 <p><span><label class="sy-cls1"></label></span><a target="_blank" webid="3" addmsg="01类" module='商品全类快捷入口'  href="/s-c-1/" class="piont">01类-化工原料</a></p>
@@ -355,8 +356,10 @@
                 <p><span><label class="sy-cls45"></label></span><a id='mytest' target="_blank" webid="3" addmsg="45类" module='商品全类快捷入口' href="/s-c-45/">45类-社会服务</a></p>
             </li>
         </ul>
-    <a class="all-clas">全部分类<i class="fa fa-angle-down"></i></a>
+        <a class="all-clas">全部分类<i class="fa fa-angle-down"></i></a>
+    </div>
 </div>
+
 <!--商标分类end-->
 <!--类别展示start-->
 <div class="sbzs" id="sbzs">
@@ -525,7 +528,7 @@
         <h3 class="fl">成功案例</h3>
         <a class="fr" href="/case">查看更多</a>
     </div>
-    <ul class="succeed-al-main">
+    <ul class="succeed-al-sy">
         <? foreach($case as $item): ?>
         <li>
           <a target="_blank" href="<?=$item['url']?>"><img src="<?=($item['pic']?TRADE_URL.$item['pic']:'')?>" alt="<?=$item['alt']?>" onerror="this.src='/Static/images/img1.png'"></a>
@@ -648,7 +651,7 @@
 </div>
 <!--订阅商标end-->
 <ul class="float-floor" id="float-floor" style="display: none;">
-    <li id="flr-lc1">
+    <li>
         <a>
             <span class="flr-pic1"></span>
             <label>
@@ -657,7 +660,7 @@
             </label>
         </a>
     </li>
-    <li id="flr-lc2">
+    <li>
         <a>
             <span class="flr-pic2"></span>
             <label>
@@ -666,7 +669,7 @@
             </label>
         </a>
     </li>
-    <li id="flr-lc3">
+    <li>
         <a>
             <span class="flr-pic3"></span>
             <label>
@@ -675,21 +678,21 @@
             </label>
         </a>
     </li>
-    <li id="flr-lc4">
-        <a>
-            <span class="flr-pic4"></span>
-            <label>
-                知产<br/>
-               工具
-            </label>
-        </a>
-    </li>
-    <li id="flr-lc5">
+    <li>
         <a>
             <span class="flr-pic5"></span>
             <label>
                 成功<br/>
                 案例
+            </label>
+        </a>
+    </li>
+    <li>
+        <a>
+            <span class="flr-pic4"></span>
+            <label>
+                知产<br/>
+                工具
             </label>
         </a>
     </li>
@@ -731,64 +734,88 @@
         $(".og_prev").css("opacity", "0");
         $(".og_next").css("opacity", "0");
     }
-    //漂浮楼层
-    var farrs=$("#sbzs>div");
-    var ofls1=$("#flr1");
-    var ofls3=$("#flr3");
-    var ofls2=$("#flr2");
-    var oafls=[ofls1,farrs[0],farrs[1],ofls3,ofls2]
-    var cet_w = $("#cloth").offset().left;
-    var oflr = $("#float-floor");
-    var sbzs = $(".sbzs>div");
-    var oflis = $("#float-floor li");
-    var owf = document.body.clientWidth;
-    var owh = $(window).height();
-    var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
-    var ofh = owh / 2 - $("#float-floor").height() / 2;
-    oflr.css({"left": oft, "top": ofh})
-    $(window).resize(function() {
-        var cet_w = $("#cloth").offset().left;
-        var oflr = $("#float-floor");
-        var sbzs = $(".sbzs>div");
-        var oflis = $("#float-floor li");
-        var owf = document.body.clientWidth;
-        var owh = $(window).height();
-        var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
-        var ofh = owh / 2 - $("#float-floor").height() / 2;
-        if (cet_w < $("#float-floor").width() + 20) {
-            oflr.hide();
-        }
-        else {
-            oflr.show();
+            //漂浮楼层
+            var farrs=$("#sbzs>div");
+            var ofls1=$("#flr1");
+            var ofls2=$("#flr2");
+            var ofls3=$("#flr3");
+            var oafls=[ofls1,farrs[0],farrs[1],ofls2,ofls3]
+            var cet_w = $("#cloth").offset().left;
+            var oflr = $("#float-floor");
+            var sbzs = $(".sbzs>div");
+            var oflis = $("#float-floor li");
+            var owf = document.body.clientWidth;
+            var owh = $(window).height();
+            var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
+            var ofh = owh / 2 - $("#float-floor").height() / 2;
             oflr.css({"left": oft, "top": ofh})
-        }
-    })
-    $(window).scroll(function() {
-        var w_top = $(window).scrollTop();
-        if (w_top> $("#flr1").offset().top-400 && w_top < $("#flr3").offset().top-100) {
-            oflr.show();
-            oflr.css({"left": oft, "top": ofh})
-            if (owf < 1180) {
-                oflr.hide();
-            }
-        }
-        else {
-            oflr.hide();
-        }
-        for(var i=0;i<oflis.length;i++){
-            if(w_top > $(oafls[i]).offset().top-300 && w_top >  $(oafls[i]).offset().top-$(oafls[i]).outerHeight(true)){
-                $("#float-floor li").removeClass("on");
-                $(oflis[i]).addClass("on");
-            }
-        }
-    });
-    $("#float-floor li").each(function(i) {
-        $(this).click(function() {
-            var t =  $(oafls[i]).offset().top;
-            $("html, body").animate({"scrollTop": t-$(oafls[i]).outerHeight(true)});
-            console.log($(oafls[i]).outerHeight(true))
-            $(this).addClass("on");
-        })
-    });
+            $(window).resize(function() {
+                var cet_w = $("#cloth").offset().left;
+                var oflr = $("#float-floor");
+                var sbzs = $(".sbzs>div");
+                var oflis = $("#float-floor li");
+                var owf = document.body.clientWidth;
+                var owh = $(window).height();
+                var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
+                var ofh = owh / 2 - $("#float-floor").height() / 2;
+                if (cet_w < $("#float-floor").width() + 20) {
+                    oflr.hide();
+                }
+                else {
+                    oflr.show();
+                    oflr.css({"left": oft, "top": ofh})
+                }
+            })
+            $(window).scroll(function() {
+                var w_top = $(window).scrollTop();
+                if (w_top> $("#flr1").offset().top-400 && w_top < $("#flr3").offset().top-100) {
+                    oflr.show();
+                    oflr.css({"left": oft, "top": ofh})
+                    if (owf < 1180) {
+                        oflr.hide();
+                    }
+                }
+                else {
+                    oflr.hide();
+                }
+                for(var i=0;i<oflis.length;i++){
+                    if(w_top > $(oafls[i]).offset().top-600 && w_top < $(oafls[i+1]).offset().top+600){
+                        $("#float-floor li").removeClass("on");
+                        $(oflis[i]).addClass("on");
+                        console.log($(oafls[4]).offset().top)
+                    }
+                }
+            });
+            $("#float-floor li").each(function(i) {
+                $(this).click(function() {
+                    var t =  $(oafls[i]).offset().top;
+                    $("html, body").animate({"scrollTop": t-300});
+                    $(this).addClass("on");
+                })
+            })
+    //添加查看详情标签；
+//            $(document).ready(function() {
+//                $('.yzc-categorbrand li div ').on('mouseover', 'span',
+//                        function() {
+//
+//                            $('#tip').show();
+//                        }
+//                );
+//                $('.yzc-categorbrand li div ').on('mouseleave', 'span',
+//                        function() {
+//                            $('#tip').hide();
+//                        }
+//                );
+//                $('.yzc-categorbrand li div ').on('mousemove', 'span', function(e) {
+//                    var top = e.pageY + 5;
+//                    var left = e.pageX + 5;
+//                    $('#tip').css({
+//                        'top': top + 'px',
+//                        'left': left + 'px'
+//                    });
+//                });
+//            })
+
+
 </script>
 <? require(ViewDir.'/footer.html'); ?>

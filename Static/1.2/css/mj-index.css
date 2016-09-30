@@ -592,7 +592,7 @@
 
 .yzc-Activities ul li div.fl{
     max-width: 120px;
-    margin-left: 25px;
+    margin-left: 22px;
     margin-top:10px;
     text-align: left;
 }
@@ -627,13 +627,13 @@
     -webkit-transition: all .4s;
 }
 .yzc-Activities ul li span{
-    width: 80px;
+    width:120px;
     height:101px;
     position: relative;
-    margin-right:8px;
+    margin-right:0px;
 }
 .yzc-Activities ul li span img{
-    max-width:98px;
+    max-width:120px;
     max-height:98px;
     z-index: 1;
     vertical-align: middle;
@@ -698,7 +698,10 @@
     position: relative;
     /*position: absolute;*/
 }
+.yzc-Brand-all{
+    height: 165px;
 
+}
 .yzc-Brand{
     /* overflow: hidden;*/
     margin-top: 10px;
@@ -709,6 +712,9 @@
     transition:all .4s;
     -webkit-transition:all .4s;
     cursor: pointer;
+    background-color: #fff;
+    position: relative;
+    z-index: 9999;
 }
 
 .yzc-Brand .all-clas{
@@ -1052,7 +1058,7 @@
     overflow: hidden;
     position: relative;
     z-index: 9999999;
-    margin-bottom: -1px;
+    margin-bottom:-3px;
 
 }
 .yzc-category-tit h3{
@@ -1073,11 +1079,12 @@
 }
 .yzc-category-tit ul.fr{
     margin-left: -2px;
+    border-bottom: 3px solid #d3d3d3;
 }
 .yzc-category-tit ul.fr li{
     display: inline-block;
     min-width:70px;
-    height: 35px;
+    height: 38px;
     line-height: 30px;
     float: left;
     text-align: center;
@@ -1103,13 +1110,14 @@
     border-left: 1px solid #d3d3d3;
     color: #ff5656;
     text-decoration: underline;
-    line-height: 27px;
     position: relative;
     left: -2px;
     bottom: -2px;
     margin-bottom: -3px;
     border-radius: 5px 5px 0px 0px;
     -webkit-border-radius:  5px 5px 0px 0px;
+    position: relative;
+    z-index: 9999999;
 
 }
 .yzc-category-tit ul.fr li.on span{
@@ -1491,12 +1499,23 @@
     background: #fff;
 }
 .succeed-al-main li img{
+    max-width: 395px;
+    max-height: 204px;
+}
+
+.succeed-al-sy li{
+    float: left;
+    width: 392px;
+    position: relative;
+    background: #fff;
+}
+.succeed-al-sy li img{
     opacity: 0.8;
     filter:Alpha(opacity=80);
     max-width: 395px;
     max-height: 204px;
 }
-.succeed-al-main li:hover img{
+.succeed-al-sy li:hover img{
     opacity: 1;
     filter:Alpha(opacity=100)
 }

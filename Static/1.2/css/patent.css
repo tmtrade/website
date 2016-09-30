@@ -236,6 +236,52 @@ body,html{font-family: "微软雅黑";font-size: 12px;min-width: 1400px;}
 .u-patent-ad4 a{
     color: black;
 }
+.intr-flow {
+    width: 924px;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+}
+.intr-flow p.intr-flow-tit {
+    height: 48px;
+    border-bottom: 1px solid #eeeeee;
+    width: 926px;
+    background: #fbfbfb;
+}
+.intr-flow p.intr-flow-tit a {
+    display: inline-block;
+    width: 160px;
+    height: 48px;
+    background: #fbfbfb;
+    border-right: 1px solid #eeeeee;
+    color: #666666;
+    text-align: center;
+    line-height: 45px;
+    float: left;
+    font-size: 16px;
+    text-decoration: none;
+}
+.intr-flow p.intr-flow-tit a.on {
+    border-top: 2px solid #ff6666;
+    background: #ffffff;
+    border-bottom: none;
+    padding-bottom: 0px !important;
+}
+.succeed-al {
+    border-top: 1px solid #d8d8d8;
+    margin-top: 25px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.succeed-al h3 {
+    color: #333333;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background:#ffffff;
+    position: absolute;
+    top: -18px;
+    left: 48%;
+}
 .patent-descri{
     overflow: hidden;
     text-align: left;

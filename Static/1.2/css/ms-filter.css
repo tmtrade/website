@@ -79,7 +79,7 @@
     color: #666;
 }
 .ms-conditionList-main{
-    padding: 10px 100px 0 100px;
+    padding: 10px 100px 0 84px;
     border-bottom: 1px solid #eeeeee;
 }
 .ms-noBorder .ms-conditionList-main{
@@ -152,9 +152,8 @@
     background:url("../images/gry-btn.png") no-repeat top center;
     background-size: 100% 100%;
 }
-.ms-conditionBtn span:hover,
-.ms-condition-btn > span:hover{
-    /*border: 1px solid #FF5656;*/
+.ms-conditionBtn span:hover{
+    border: 1px solid #FF5656;
     /*color: #FF5656;*/
 }
 .ms-condition-btn > a:hover{
@@ -278,17 +277,26 @@
     border-radius: 7px;
     -webkit-border-radius: 7px;
 }
+.ms-filterSearch em{
+    display: inline-block;
+    width: 1px;
+    height: 13px;
+    background-color: #bebebe;
+    vertical-align: middle;
+    margin-top:2px;
+}
 .ms-filterSearch input[type="text"]{
-    height: 25px;
+    height:30px;
     line-height: 26px\9;
-    width: 128px;
+    width: 120px;
     padding: 0 10px;
     vertical-align: middle;
     border: 0 none;
     outline: none;
     border-radius: 7px 0px 0px 7px;
-    border-right: 1px solid #ddd;
-    margin-top: 4px;
+}
+.ms-filterSearch a{
+    margin-right:2px;
 }
 
 

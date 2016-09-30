@@ -333,11 +333,14 @@ body{ background:#ffffff !important;}
     text-shadow: 1px 1px 3px #e0a122;
     position: absolute;
     left: -2px;
-    top:4px;
+    top:10px;
 }
 
 .brand-details .brde-pic-box span{
     display: table-cell;
+    width: 380px;
+    height: 265px;
+    vertical-align: middle;
     text-align: center;
 }
 .brand-details .brde-pic-box span img{
@@ -444,8 +447,8 @@ body{ background:#ffffff !important;}
     text-align: center;
     line-height: 87px;
     position: absolute;
-    right: 234px;
-    top: 0px;
+    right: 14px;
+    top: -5px;
 }
 .brand-details div.fr-details p.may font{
     color: #666666;
@@ -967,6 +970,7 @@ body{ background:#ffffff !important;}
 }
 .trans-jytx li .trans-pic{
     font-weight: 600;
+    font-family: "微软雅黑";
 }
 .trans-jytx li span{
     display: block;
@@ -1120,6 +1124,7 @@ body{ background:#ffffff !important;}
     float: left;
     font-size: 16px;
     text-decoration: none;
+    font-family: "微软雅黑";
 }
 .intr-flow .intr-flow-tit li a{
     display: inline-block;
@@ -2144,6 +2149,7 @@ body{ background:#ffffff !important;}
     text-decoration: underline;
     margin-right: 12px;
     cursor: pointer;
+    color: #ffffff;
 }
 
 .mj-cTr-tp span{
