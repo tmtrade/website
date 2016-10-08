@@ -21,11 +21,11 @@ class IndexAction extends AppAction
 		//首页标识
 		$this->set('is_index',true);
 		//得到首页基本基本配置信息
-		list($banners,$ads,$recommendClasses,$case) = $this->load('index')->getIndexBasic();
-		$this->set('banners',$banners);
-		$this->set('ads',$ads);
-		$this->set('recommendClasses',$recommendClasses);
-		$this->set('case',$case);
+		$configs = $this->getBasic();
+		$this->set('banners',$configs[0]);
+		$this->set('ads',$configs[1]);
+		$this->set('recommendClasses',$configs[2]);
+		$this->set('case',$configs[3]);
 		//得到模块信息
 		$modules = $this->com('redisHtml')->get('index_modules');
 		if(empty($modules)){
@@ -51,15 +51,19 @@ class IndexAction extends AppAction
 		if(empty($_news)){
 			$news['news']	= $this->load('faq')->newsList(array('c'=>50,'limit'=>5));
 			$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>5));
-			$news['baike']	= $this->load('faq')->newsList(array('c'=>53,'limit'=>2));
-			$news['law']	= $this->load('faq')->newsList(array('c'=>51,'limit'=>2));
 			$this->com('redisHtml')->set('_news_tmp', $news, 86400);
 		}else{
 			$news = $_news;
 		}
 		$this->set('news',$news);
-		
-                $this->setSeo(1);
+		//得到faq其他信息
+		$faq_other = $this->com('redisHtml')->get('faq_other');
+		if(empty($faq_other)){
+			$faq_other = $this->load('faq')->getOther(6);
+			if($faq_other) $this->com('redisHtml')->set('faq_other', $faq_other, 86400);
+		}
+		$this->set('faq_other',$faq_other);
+		$this->setSeo(1);
 		$this->display();
 	}
 

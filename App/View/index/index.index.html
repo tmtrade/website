@@ -546,14 +546,14 @@
             </div>
             <div class="succeed-al-tit f-clearfix f-hidden fr">
                 <h3 class="fl">转让问答</h3>
-                <a class="fr" href="/n-53/" target="_blank" module="问答查看更多">查看更多</a>
+                <a class="fr" href="/n-45/" target="_blank" module="问答查看更多">查看更多</a>
             </div>
         </div>
         <div class="Trad-all">
          <div class="Tradenews">
              <dl class="fl">
                  <dt>
-                     <img  src="<?=StaticDir?>1.2/images/hyxw.jpg" >
+                     <a target="_blank" href="/n-50/" module="新闻(图)"><img src="<?=StaticDir?>1.2/images/hyxw.jpg" ></a>
                  </dt>
                  <dd>
                      <? foreach ($news['news'] as $k=>$item){ ?>
@@ -564,7 +564,7 @@
              </dl>
              <dl class="fr">
                  <dt>
-                     <img  src="<?=StaticDir?>1.2/images/zrhd.jpg">
+                     <a target="_blank" href="/n-45/" module="问答(图)"><img src="<?=StaticDir?>1.2/images/zrhd.jpg"></a>
                  </dt>
                  <dd>
                      <? foreach ($news['faq'] as $k=>$item){ ?>
@@ -575,9 +575,9 @@
              </dl>
          </div>
          <div class="btm">
-             <? foreach ($news['law'] as $k=>$item){ ?>
+             <? foreach ($faq_other as $k=>$item){ ?>
              <p>
-                 <span class="fl">[<a href="/n-51/" target="_blank" webid="15"  addmsg="其他分类第<?=($k+1)?>条" module='问答'>商标法律</a>] <a href="<? echo $item['url'];?>" target="_blank" webid="15"  addmsg="其他问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
+                 <span class="fl">[<a href="<?=$item['type_url']?>" target="_blank" addmsg="其他分类第<?=($k+1)?>条" module='问答'><?=$item['type']?></a>] <a href="<? echo $item['url'];?>" target="_blank" addmsg="其他问答第<?=($k+1)?>条" module='问答' title="<? echo $item['title'];?>"><? echo $item['thumtitle'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
              </p>
              <? } ?>
          </div>
@@ -600,43 +600,53 @@
             <label>买家喜欢什么样的商品</label>
         </li>
         <li>
+            <a href="<?=BJ_URL?>" target="_blank">
             <div>
                 <span class="tool-pic2"></span>
                 <b>商标查询</b>
                 <i></i>
             </div>
+            </a>
             <label>查查能不能注册</label>
         </li>
         <li>
+            <a href="<?=TM_URL?>" target="_blank">
             <div>
                 <span class="tool-pic3"></span>
                 <b>商标注册</b>
                 <i></i>
             </div>
+            </a>
             <label>太棒了，注册下来</label>
         </li>
         <li>
+            <a href="<?=SELLER_URL?>" target="_blank">
             <div>
                 <span class="tool-pic4"></span>
                 <b>商标出售者平台</b>
                 <i></i>
             </div>
+            </a>
             <label>批量上架 成交率高 <br/>免费广告展示</label>
         </li>
         <li>
+            <a href="<?=SELLER_URL?>login/seller" target="_blank">
             <div>
                 <span class="tool-pic5"></span>
                 <b>商标报价单工具</b>
                 <i></i>
             </div>
+            </a>
             <label>做个在线报价单把给客户看</label>
         </li>
         <li>
+            <a href="<?=CHECK_URL?>" target="_blank">
             <div>
                 <span class="tool-pic6"></span>
                 <b>商标安全检测工具</b>
                 <i></i>
             </div>
+            </a>
             <label>我的商标有无风险？测一下</label>
         </li>
     </ul>
@@ -782,7 +792,7 @@
                     if(w_top > $(oafls[i]).offset().top-600 && w_top < $(oafls[i+1]).offset().top+600){
                         $("#float-floor li").removeClass("on");
                         $(oflis[i]).addClass("on");
-                        console.log($(oafls[4]).offset().top)
+//                        console.log($(oafls[4]).offset().top)
                     }
                 }
             });

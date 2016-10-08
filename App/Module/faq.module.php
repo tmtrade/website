@@ -167,5 +167,42 @@ class FaqModule extends AppModule
 		}
 		return $list;
 	}
+
+	/**
+	 * 得到出新闻和问答外的其他faq
+	 * @param $num
+	 * @return array
+	 */
+	public function getOther($num)
+	{
+		$param		= array(
+			'limit' 		=> 50,
+			'order' 		=> array('updated' => 'DESC'),
+		);
+		//调用接口
+		$data = $this->importBi('faq')->getNewsList($param);
+		$list = array();
+		if(!empty($data['rows'])){
+			//处理数据
+			foreach($data['rows'] as $k => $v){
+				//非新闻和问答
+				if( in_array($v['categoryId'],array(51,52,53))){
+					$temp = array();
+					$temp['url'] = '/v-'.$v['categoryId'].'-'.$v['id'].'/';
+					$temp['thumtitle'] = mbSub($v['title'],0,16);;
+					$temp['title'] = $v['title'];
+					$temp['time'] = $v['updated'];
+					$temp['type'] = $v['categoryId']==51?'商标法律':( $v['categoryId']==52?'求购信息':'交易百科');
+					$temp['type_url'] = '/n-'.$v['categoryId'].'/';
+					$list[] = $temp;
+					if(count($list)>=$num){
+						break;
+					}
+				}
+			}
+		}
+		return $list;
+	}
+
 }
 ?>

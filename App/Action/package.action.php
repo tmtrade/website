@@ -31,6 +31,9 @@ class PackageAction extends AppAction
 		$tj = $this->load('faq')->getTm(3);
 		//得到用户订单的need字段
 		$need = "打包商标id:".$id.",打包名:{$all['title']}";
+		//得到成功案例
+		$case = $this->getBasic(2);
+		$this->set('case',$case);
 		//加载页面
 		$this->set("need", $need);
 		$this->set('all',$all);

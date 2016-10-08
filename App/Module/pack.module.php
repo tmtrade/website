@@ -67,6 +67,7 @@ class PackModule extends AppModule
             //得到描述
             $rst['desc'] = preg_replace('/src="/','src="'.TRADE_URL,htmlspecialchars_decode($rst['desc']));//添加上域名
             //处理数据
+            $rst['proName'] = '';
             $data = array();
             $ii = 1;
             foreach($rst2 as $k=>$v){
@@ -74,13 +75,14 @@ class PackModule extends AppModule
                 $temp = $this->load('trademark')->getTmInfo($v['number']);
                 if($temp){
                     $class = array_shift($temp['class']);
-                    $className = '';
-                    //小于5条才去查询分类名
-                    if($count<=5){
-                        $className = $this->getClassName($class);
-                    }
+                    //注册日期
+                    $reg_date = $temp['reg_date'];
                     $url = '/d-'.$temp['tid'].'-'.$class.'.html';
                     $name = $temp['name'];
+                    //得到申请人
+                    if($k==0){
+                        $rst['proName'] = $temp['proName'];
+                    }
                     //得到商标图片
                     $saleId = $this->load('internal')->existSale($v['number']);//是否出售
                     if($saleId){
@@ -90,7 +92,7 @@ class PackModule extends AppModule
                         if($count>5){
                             $data[$key][] = array(
                                 'name'=>$name,
-                                'className'=>$className,
+                                'reg_date'=>$reg_date,
                                 'class'=>$class,
                                 'url'=>$url,
                                 'img'=>$img,
@@ -98,7 +100,7 @@ class PackModule extends AppModule
                         }else{
                             $data[] = array(
                                 'name'=>$name,
-                                'className'=>$className,
+                                'reg_date'=>$reg_date,
                                 'class'=>$class,
                                 'url'=>$url,
                                 'img'=>$img,

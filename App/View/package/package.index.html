@@ -13,7 +13,7 @@
                 <label class="ft1">特价商标</label>> <label class="ft2">打包出售</label>
             </p>
             <div class="pack-tp-rg fr">
-                <!--<a class="collect in_collect" webid="4" addmsg="爱森鸟" module="收藏商标"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>-->
+                <!--<a class="collect in_collect" addmsg="<?=$all['title']?>" module="收藏打包商标"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>-->
                 <a href="javascript:;" class="jiathis jiathis_txt" addmsg="<?=$all['title']?>" module="分享"> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
             </div>
         </div>
@@ -41,7 +41,7 @@
                                     </a>
                                     <div class="pack-brand-des">
                                         <h4><?=$item['name']?></h4>
-                                        <label>第<?=$item['class']?>类 <?=$item['className']?>  </label>
+                                        <label><?=$item['class']?>类 注册日期:<?=$item['reg_date']?>  </label>
                                     </div>
                                 </div>
                             </li>
@@ -84,12 +84,12 @@
                         <p class="pri"><span>价格<label>￥<b><?=$all['price']?></b></label>元</span> 温馨提示：80%卖家标注都是弹性出售价格-有较大的商谈空间</p>
                         <p class="sale">
                             <a href="javascript:;" class="opt_btn" onclick="createOrder();"><img src="<?=StaticDir?>1.2/images/shop-ico.png">购买全部商标</a>
-                            促销
-                            <em title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</em>
+                            <!--促销
+                            <em title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</em>-->
                         </p>
                     </div>
                     <div class="fr">
-                        <!--<p class="pro"><img src="<?=StaticDir?>1.2/images/pel-ico.png">申请人：逗我???<a href="javascript:;">咨询TA</a></p>-->
+                        <p class="pro" title="<?=$all['proName']?>"><img src="<?=StaticDir?>1.2/images/pel-ico.png">申请人：<?=mbSub($all['proName'],0,10)?><a href="javascript:;">咨询TA</a></p>
                         <p class="pel"><img src="<?=StaticDir?>1.2/images/tel.png">电话：<b><?=$all['viewPhone']?></b></p>
                         <p class="dial"><input class="fl" id="telInput2" value="" placeholder="输入手机号" type="text"><a href="javascript:;" id="l-button" onclick="createOrderByPhone()">打给我</a></p>
                     </div>
@@ -519,6 +519,7 @@
         if(!tel || !mobilereg.test(tel) || tel.length!=11){
             $('#telInput2').addClass('ddw_input');
             $('#telInput2').val('请输入正确的手机号');
+            layer.closeAll();
             return false;
         }
         //获得数据

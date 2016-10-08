@@ -265,6 +265,26 @@ abstract class AppAction extends Action
     }
 
     /**
+     * 得到首页配置信息
+     * @param int $type 默认为1, 返回所有信息, 为2时仅返回成功案例信息
+     */
+    protected function getBasic($type=1){
+        $configs = $this->com('redisHtml')->get('index_configs');
+        if(empty($configs)){
+            $configs = $this->load('index')->getIndexBasic();
+            if($configs){
+                $this->com('redisHtml')->set('index_configs',$configs,3600);
+            }
+        }
+        //返回信息
+        if($type==2){
+            return $configs[3];
+        }else{
+            return $configs;
+        }
+    }
+
+    /**
      * 获取输入参数
      *
      * @access    protected

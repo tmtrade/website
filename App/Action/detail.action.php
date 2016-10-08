@@ -127,6 +127,9 @@ class DetailAction extends AppAction
 		$is_pack = $pack && $pack['isAll']==1;
 		$price_module = $this->getTips($sale,$is_pack);
 		$this->set('price_module',$price_module);
+		//得到成功案例
+		$case = $this->getBasic(2);
+		$this->set('case',$case);
 		//分配数据
 		$this->set("info", $info);
 		$this->set("sale", $sale);
