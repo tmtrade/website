@@ -320,10 +320,10 @@ class SearchModule extends AppModule
         //判断是否列表筛选只有class
         if ( count($params) <= 2 && count($_arrClass) == 1 ){
             //走另一种排序
-            $r['order']     = array('listSort' => 'desc','isTop' => 'desc');
+            $r['order']     = array('listSort' => 'desc','isTop' => 'desc','id' => 'desc');
         }else{
             //默认排序
-            $r['order']     = array('isTop' => 'desc');
+            $r['order']     = array('isTop' => 'desc','id' => 'desc');
         }
         $res            = $this->import('sale')->findAll($r);
         $res['rows']    = $this->getListTips($res['rows']);
