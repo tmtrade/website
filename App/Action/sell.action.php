@@ -188,6 +188,7 @@ class SellAction extends AppAction
         $platform   = implode(',', $other['platform']);
         $viewPhone  = $this->load('phone')->getRandPhone();
         $regDate    = strtotime($info['reg_date']) > 0 ? strtotime($info['reg_date']) : 0;
+        $endDate    = strtotime($info['valid_end']) > 0 ? strtotime($info['valid_end']) : 0;
         $sale = array(
             'tid'           => intval($info['tid']),
             'number'        => $number,
@@ -209,6 +210,7 @@ class SellAction extends AppAction
             'label'         => '',
             'length'        => $other['length'],
             'regDate'       => $regDate,
+            'endDate'       => $endDate,
             'date'          => time(),
             'hits'          => 0,
             'viewPhone' 	=> $viewPhone,
