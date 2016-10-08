@@ -35,7 +35,7 @@ class SearchAction extends AppAction
         
         $grp = array_filter( explode('--', $short) );
 
-        $select = array('kw','kt','n','c','g','t','sn','d','p');
+        $select = array('kw','kt','n','c','g','t','sn','d','p','l');
         $params = array();
         foreach ($grp as $k => $v) {
             $_prefix = strstr($v, '-', true); // 从 PHP 5.3.0 起
@@ -139,7 +139,8 @@ class SearchAction extends AppAction
         $this->set('_PLATFORM', C('PLATFORM_IN'));//平台列表
         $this->set('_NUMBER', C('SBNUMBER'));//商标字数
         $this->set('_TYPE', C('TYPES'));//组合类型
-
+        $this->set('_LABEL', C('LABEL'));//特价类型
+        
         $this->set('searchList', $res['rows']);
         $this->set('total', $res['total']);
         $this->set('has', empty($res['rows']) ? false : true);
@@ -177,6 +178,7 @@ class SearchAction extends AppAction
             $length     = $this->getParam('sn', 'string');//商标字数
             $date       = $this->getParam('d', 'string');//注册日期
             $platform   = $this->getParam('p', 'string');//平台
+            $label      = $this->getParam('l', 'string');//特价类型
         }else{            
             $keyword    = $this->input('kw', 'string', '');//搜索项
             if ( !empty($keyword) && $isMore == 0 ){
@@ -192,6 +194,7 @@ class SearchAction extends AppAction
             $length     = $this->input('sn', 'string', '');//商标字数
             $date       = $this->input('d', 'string', '');//注册日期
             $platform   = $this->input('p', 'string', '');//平台
+            $label      = $this->input('l', 'string', '');//特价类型
         }
 
         $_class     = $this->strToArr($class);
@@ -251,6 +254,12 @@ class SearchAction extends AppAction
                 if ( count($_platform) == count(C('PLATFORM_IN')) ){
                     unset($params['platform']);
                 }
+            }
+            
+            //高级筛选，特价类型
+            if ( !empty($label) ){
+                $params['label']         = $label;
+                $this->_searchArr['l']  = $params['label'];
             }
             return $params;
         }
@@ -312,6 +321,12 @@ class SearchAction extends AppAction
                     unset($params['platform']);
                 }
             }
+            
+             //高级筛选，特价类型
+            if ( !empty($label) ){
+                $params['label']         = $label;
+                $this->_searchArr['l']  = $params['label'];
+            }
 
             return $params;
         }elseif ( $keytype == 1 ){//有关键词，搜索项类型为1：商标名称
@@ -366,6 +381,13 @@ class SearchAction extends AppAction
                     unset($params['platform']);
                 }
             }
+            
+             //高级筛选，特价类型
+            if ( !empty($label) ){
+                $params['label']         = $label;
+                $this->_searchArr['l']  = $params['label'];
+            }
+            
             $this->_searchArr['kt'] = $keytype;
 
             return $params;
@@ -438,6 +460,7 @@ class SearchAction extends AppAction
                     $_str .= "$v-".$cArr[$v].'|';
                     $this->load('keyword')->createKeywordCount("$v-".$cArr[$v],4,$title,$value);
                 }
+                $_str = substr($_str,0,-1);
                 break;
             case 'g':
                 if ( empty($all['c']) ) return $value;
@@ -446,6 +469,7 @@ class SearchAction extends AppAction
                     $_str .= "$v-".$gArr[$all['c']][$v].'|';
                     $this->load('keyword')->createKeywordCount("$v-".$gArr[$all['c']][$v],5,$title,$value);
                 }
+                $_str = substr($_str,0,-1);
                 break;
             case 't':
                 $T = C('TYPES');
@@ -453,6 +477,7 @@ class SearchAction extends AppAction
                     $_str .= "$v-".$T[$v].'|';
                     $this->load('keyword')->createKeywordCount("$v-".$T[$v],6,$title,$value);
                 }
+                $_str = substr($_str,0,-1);
                 break;
             case 'sn':
                 $N      = C('SBNUMBER');
@@ -469,6 +494,7 @@ class SearchAction extends AppAction
                         $_str = $N['1,2'].'|'.$_str;
                         $this->load('keyword')->createKeywordCount($N['1,2'],7,$title,$value);
                 } 
+                $_str = substr($_str,0,-1);
                 break;
             case 'd':
                 $D      = $this->load('search')->getDateList();
@@ -481,6 +507,13 @@ class SearchAction extends AppAction
                     $_str .= $P[$v].'|';
                     $this->load('keyword')->createKeywordCount($P[$v],9,$title,$value);
                 }
+                
+                $_str = substr($_str,0,-1);
+                break;
+            case 'l':
+                $L = C('LABEL');
+                $_str   = $L[$value];
+                $this->load('keyword')->createKeywordCount($_str,10,$title,$value);
                 break;
         }
         return $_str;

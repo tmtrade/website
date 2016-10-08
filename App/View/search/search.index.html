@@ -8,30 +8,32 @@
         <!-- ms-filters start -->
         <div class="ms-filters">
             <div class="ms-filterResults">
-                <span>全部结果&nbsp;&gt;</span><em>1-化工原料<i></i></em>
-                <ul class="ms-filterResultsList f-clearfix">
+                <span>全部结果&nbsp;&gt;</span>
                     <? if ( $kw ) { ?>
-                        <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');" addmsg='<?=$kw_title?>' webid="7"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <em title="<?=$kw_title?>"><?=mb_substr($kw_title,0,12,'utf-8')?><a href="javascript:void(0);" onclick="createUrl('_kw', '','');" addmsg='<?=$kw_title?>' webid="7"><i class="us-icon us-icon23"></i></a></em>
                     <? } ?>
                     <? if ( $c ) { ?>
-                        <li title="<?=$c_title?>"><a href="javascript:void(0);" onclick="createUrl('_class', '');" webid="7" addmsg='<?=$c_title?>'><?=mb_substr($c_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <em title="<?=$c_title?>"><?=mb_substr($c_title,0,12,'utf-8')?><a href="javascript:void(0);" onclick="createUrl('_class', '');" webid="7" addmsg='<?=$c_title?>'><i class="us-icon us-icon23"></i></a></em>
                     <? } ?>
                     <? if ( $g ) { ?>
-                        <li title="<?=$g_title?>"><a href="javascript:void(0);" onclick="createUrl('_group', '');" webid="7" addmsg='<?=$g_title?>'><?=mb_substr($g_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <em title="<?=$g_title?>"><?=mb_substr($g_title,0,12,'utf-8')?><a href="javascript:void(0);" onclick="createUrl('_group', '');" webid="7" addmsg='<?=$g_title?>'><i class="us-icon us-icon23"></i></a></em>
                     <? } ?>
                     <? if ( $t ) { ?>
-                        <li title="<?=$t_title?>"><a href="javascript:void(0);" onclick="createUrl('_sT', '');" webid="7" addmsg='<?=$t_title?>'><?=mb_substr($t_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <em title="<?=$t_title?>"><?=mb_substr($t_title,0,12,'utf-8')?><a href="javascript:void(0);" onclick="createUrl('_sT', '');" webid="7" addmsg='<?=$t_title?>'><i class="us-icon us-icon23"></i></a></em>
                     <? } ?>
                     <? if ( $sn ) { ?>
-                        <li title="<?=$sn_title?>"><a href="javascript:void(0);" onclick="createUrl('_sN', '');" webid="7" addmsg='<?=$sn_title?>'><?=mb_substr($sn_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <em title="<?=$sn_title?>"><?=mb_substr($sn_title,0,12,'utf-8')?><a href="javascript:void(0);" onclick="createUrl('_sN', '');" webid="7" addmsg='<?=$sn_title?>'><i class="us-icon us-icon23"></i></a></em>
                     <? } ?>
                     <? if ( $p ) { ?>
-                        <li title="<?=$p_title?>"><a href="javascript:void(0);" onclick="createUrl('_plat', '');" webid="7" addmsg='<?=$p_title?>'><?=mb_substr($p_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <em title="<?=$p_title?>"><?=mb_substr($p_title,0,12,'utf-8')?><a href="javascript:void(0);" onclick="createUrl('_plat', '');" webid="7" addmsg='<?=$p_title?>'><i class="us-icon us-icon23"></i></a></em>
                     <? } ?>
                     <? if ( $d ) { ?>
-                        <li title="<?=$d_title?>"><a href="javascript:void(0);" onclick="createUrl('_date', '');" webid="7" addmsg='<?=$d_title?>'><?=mb_substr($d_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
+                        <em title="<?=$d_title?>"><?=mb_substr($d_title,0,12,'utf-8')?><a href="javascript:void(0);" onclick="createUrl('_date', '');" webid="7" addmsg='<?=$d_title?>'><i class="us-icon us-icon23"></i></a></em>
                     <? } ?>
-                </ul>
+                    <? if ( $l ) { ?>
+                        <em title="<?=$l_title?>"><?=mb_substr($l_title,0,12,'utf-8')?><a href="javascript:void(0);" onclick="createUrl('_label', '');" webid="7" addmsg='<?=$l_title?>'><i class="us-icon us-icon23"></i></a></em>
+                    <? } ?>
+               
             </div>
             <div class="ms-condition">
                 <? if ( empty($c) && $kt != 3 ) {?>
@@ -214,16 +216,15 @@
                         </div>
                     </li>
                     <? } ?>
-                    <? if ( empty($d) ) {?>
+                    <? if ( empty($l) ) {?>
                     <li>
                         <a href="">特价类型<i class="us-icon us-icon24"></i></a>
                         <div class="ms-conditionList-main">
                             <ul class="f-clearfix ms-conditionRadio">
-                                <li><a  href="javascript:void(0);" onclick="createUrl('_date','0');return false;">全部</a></li>
-                                <li><a  href="javascript:void(0);" >卖家急售</a></li>
-                                <li><a  href="javascript:void(0);" >即将续展</a></li>
-                                <li><a  href="javascript:void(0);" >商品小于五项</a></li>
-                                <li><a  href="javascript:void(0);" >多类转让</a></li>
+                                <li><a  href="javascript:void(0);" onclick="createUrl('_label','0');return false;">全部</a></li>
+                                <?foreach ($_LABEL as $_k => $_v) {?>
+                                <li><a  href="javascript:void(0);" onclick="createUrl('_label','<?=$_k?>');return false;" addmsg="单选–<?=$_v?>" webid="5" module='筛选商标特价类型'><?=$_v?></a></li>
+                                <?}?>
                             </ul>
                         </div>
                     </li>
@@ -536,6 +537,9 @@
                 break;
             case "_date" :
                 obj.set('d', value);
+                break;
+            case "_label" :
+                obj.set('l', value);
                 break;
         }        
         var params = obj.strparams();

@@ -94,6 +94,12 @@ class SearchModule extends AppModule
                         }
                         if ( $_hasN ) $sn_str = $N['1,2'].' '.$sn_str;
                         break;
+                    case 'l':
+                        $l = C('LABEL'); /*特价类型*/
+                        foreach ($_arr as $v) {
+                            $l_str .= $l[$v].' ';
+                        }
+                        break;
                 }
             }
             if(count($all)<=3 && !empty($c_name) && empty($g_name) && count($_arr)==1){
@@ -104,8 +110,8 @@ class SearchModule extends AppModule
                 $title = $g_id.' '.$g_name.'_第'.$c_id.'类-商标转让交易买卖价格|一只蝉商标转让平台网';
                 $description = $g_name.'商标转让价格要多少钱？了解'.$g_name.'商标转让价格到一只蝉'.$c_name.'商标交易平台第一时间获取'.$g_id.'类商标交易价格动态变化；一只蝉商标转让平台-独家签订交易损失赔付保障协议商标交易平台';
             }else{
-                $title = $kname.$p_str.$g_str.$c_str.$sn_str.$t_str.'商标转让交易买卖价格|一只蝉商标转让平台网';
-                $description =$kname.$p_str.$g_name_str.'商标转让价格要多少钱？了解'.$c_name_str.$sn_str.$t_str.'商标转让价格到一只蝉'.$c_id_str.'商标交易平台第一时间获取'.$g_name_str.'商标交易价格动态变化；一只蝉商标转让平台-独家签订交易损失赔付保障协议商标买卖平台';
+                $title = $kname.$l_str.$p_str.$g_str.$c_str.$sn_str.$t_str.'商标转让交易买卖价格|一只蝉商标转让平台网';
+                $description =$kname.$l_str.$p_str.$g_name_str.'商标转让价格要多少钱？了解'.$c_name_str.$sn_str.$t_str.'商标转让价格到一只蝉'.$c_id_str.'商标交易平台第一时间获取'.$g_name_str.'商标交易价格动态变化；一只蝉商标转让平台-独家签订交易损失赔付保障协议商标买卖平台';
             }
             return array("title"=>$title,"description"=>$description);
     }
@@ -298,6 +304,11 @@ class SearchModule extends AppModule
         //特价
         if ( !empty($params['isOffprice']) ){
             $r['raw'] .= ' AND `priceType` = 1 AND `isOffprice` = 1 AND (`salePriceDate` = 0 OR `salePriceDate` > unix_timestamp(now())) ';
+        }
+        
+        //特价标签
+        if ( !empty($params['label']) ){
+            $r['ft']['offpriceLabel'] = $params['label'];
         }
 
         //商标号
