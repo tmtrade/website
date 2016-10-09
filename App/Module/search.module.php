@@ -308,7 +308,7 @@ class SearchModule extends AppModule
         
         //特价标签
         if ( !empty($params['label']) ){
-            $r['ft']['offpriceLabel'] = $params['label'];
+            $r['ft']['offprice'] = $params['label'];
         }
 
         //商标号
@@ -463,7 +463,7 @@ class SearchModule extends AppModule
     {
         if ( empty($number) ) return '3';
 
-        $sale = $this->load('sale')->getSaleInfo($number,0,0);
+        $sale = $this->load('sale')->getSaleInfo($number);
         //debug($sale);
         if ( empty($sale) ){
             $r['eq']    = array('trademark_id'=>$number);
@@ -683,14 +683,16 @@ class SearchModule extends AppModule
         if ( $channel['isAd'] == '1' ){
             $channel['adList'] = $this->getChannelItems($channel['id'], 1);
         }
-        if ( $channel['isAd'] == '1' ){
-            $channel['topList'] = $this->getChannelItems($channel['id'], 2);
+        if($index== 'offprice'){
+            $channel['goodsList'] = $this->getChannelItems($channel['id'], 3, 1);
+            $channel['lowList'] = $this->getChannelItems($channel['id'], 4, 1);
         }
+        
         return $channel;
     }
 
     //获取频道页设置Items
-    public function getChannelItems($cid, $type=1)
+    public function getChannelItems($cid, $type=1, $saleinfo="")
     {   
         if ( empty($cid) || empty($cid) ) return array();
         $r['eq'] = array(
@@ -700,6 +702,16 @@ class SearchModule extends AppModule
         $r['limit'] = 1000;
         $r['order'] = array('sort'=>'asc');
         $items = $this->import('channelItems')->find($r);
+        if(!empty($saleinfo)){
+            foreach($items as $k=>$v){
+                $items[$k]['imgUrl'] = $this->load('trademark')->getImg($v['pic']);
+                $sale = $this->load('sale')->getSaleInfo($v['pic'],array('tid','salePrice','class'));
+                $_class = current( explode(',', $sale['class']) );
+                $items[$k]['viewUrl'] = '/d-'.$sale['tid'].'-'.$_class.'.html';
+                $items[$k]['salePrice'] = $sale['salePrice'];
+            }
+            
+        }
         return $items;
     }
 

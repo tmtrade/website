@@ -1,368 +1,554 @@
 <? require(ViewDir.'/header.html'); ?>
-<script type="text/javascript" src="<?=StaticDir?>script/objurl.js"></script>
-<script type="text/javascript" src="<?=StaticDir?>script/jquery.corner.js"></script>
-<script type="text/javascript" src="<?=StaticDir?>script/jquery.roundabout.js"></script>
-<script type="text/javascript" src="<?=StaticDir?>script/jquery.roundabout-shapes.js"></script>
-<link rel="stylesheet" href="<?=StaticDir?>style/mj-strademark.css?v=<?=$static_version?>"/>
-
-<!--content start-->
-<div id="gla">
-    <div id="gla_box">
-        <span class="prev"></span>
-        <span class="next"></span>
-        <ul>
-        <?foreach ($channel['adList'] as $k => $v) {?>            
-            <li>
-                <div class="gla_inbox">
-                    <a href="<?=$v['link']?>" target="_blank" webid="5" addmsg="01-查看详情" module="特价banner-<?=$k+1?>">
-                    <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=($v['alt']?$v['alt']:$v['desc'])?>" /></a>
-                    <p class="mj-ad">
-                        <?=mbSub($v['desc'],0,60)?>
-                    </p>
-                </div>
+<link rel="stylesheet" href="<?=StaticDir?>1.2/css/trade.css?v=<?=$static_version?>"/>
+<div class="sel-bannerIimg">
+    <div class="bd">
+        <ul class="sel-banner-img">
+            <?foreach ($channel['adList'] as $k => $v) {?>            
+            <li class="sel-banner-itme">
+                <a href="<?=$v['link']?>" target="_blank" webid="5" addmsg="01-查看详情" module="特价banner-<?=$k+1?>">
+                    <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=($v['alt']?$v['alt']:$v['desc'])?>"  width="1903" height='312'/>
+                </a>
             </li>
-        <?}?>
+            <?}?>
+        </ul>
+    </div>
+    <div class="hd">
+        <ul class="f-clearfix">
+            <?foreach ($channel['adList'] as $k => $v) {?>            
+            <li <?if($k==0) echo 'class="on"';?>></li>
+            <?}?>
         </ul>
     </div>
 </div>
-
-<div class="mj-content">
-    <div class="w1180">
-        <!--search start-->
-        <dl class="mj-selection">
-            <dd class="f-clearfix">
-                <span class="mj-selection-span">商标类别：</span>
-                <div class="mj-selection-list" id="j-dltype">
-                    <a module="商标类别" addmsg="全部类别" tid=0 href="javascript:createUrl('_class',0);"  <?if ($c == 0){echo 'class="current"';}?>>全部  </a>
-                <? foreach ($_CLASS as $key => $value) { ?>
-                    <a tid=<?=$key?> href="javascript:createUrl('_class',<?=$key?>);" <?if ($c == $key){echo 'class="current"';}?> addmsg="<?echo $key.'类-'.$value?>" module="商标类别" webid="1"><?echo $key.'类-'.$value?></a>
-                <? } ?>
-                    <a href="javascript:;" class="curs" id="mj_aclik" style="color: rgb(75, 165, 222);">展开</a>
-                </div>
-            </dd>
-        <? if( !empty($c) ){ ?>
-            <dd class="f-clearfix">
-                <span class="mj-selection-span">所属群组：</span>
-                <div class="mj-selection-list" id="g-dltype">
-                    <a addmsg="全部群组" module="商标群组" href="javascript:createUrl('_group',0);" <?if ($g == ''){echo 'class="current"';}?>>全部  </a>
-                <? foreach ($_GROUP[$c] as $ky => $val) { ?>
-                    <a href="javascript:createUrl('_group','<?=$ky?>');" <?if ($g == $ky){echo 'class="current"';}?> title="<?=$val?>" addmsg="<?=$val?>" webid="2" module="商标群组">
-                    <?=mb_substr($val, 0, 6, 'utf8')?></a>
-                <? } ?>
-                <? if ( count($_GROUP[$c]) > 10 ){?>
-                    <a href="javascript:;" class="curs" id="mg_aclik" style="color: rgb(75, 165, 222);">展开</a>
-                <?}?>
-                </div>
-            </dd>
-        <? } ?>
-        </dl>
+<div class="w1180">
+    <div class="sel-title">
+        <p class="sel-tit-bg"><span class="sel-title-main">淘实惠</span></p>
     </div>
-        <!--search end-->
-        <!--imglist start-->
-        <div class="w1180" id="sept">
-            <div class="mj-imglists">
-                <ul class="f-clearfix" id="s-all-list">
-                <? foreach ($searchList as $k => $v) { ?>
-                    <li>
-                        <input class="xunjia_data" type="hidden" tid="<?=$v['tid']?>" data_class="<?=$v['class']?>" number="<?=$v['number']?>" remarks="<?echo '商标号：'.$v['number'].';商标名称：'.$v['name']?>">
-                        <a href="<?=$v['viewUrl']?>" target="_blank" webid="4"  addmsg="01-查看详情" module="特价列表1-<?=$k+1?>">
-                            <p class="mj-tip">
-                                <?if ($v['isOffprice'] == true){?><label class="mj-tThe" title="特价产品">特</label><?}?>
-                                <?if ($v['isBest'] == true){?><label class="mj-tJing" title="精品推荐">精</label><?}?>
-                                <?if ($v['isLicence'] == true){?><label class="mj-tShow" title="授权租用">授</label><?}?>
-                            </p>
-                            <div class="mj-imglT">
-                                <label class="mj-imglT">
-                                    <span><img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" title="<?=$v['name']?>" alt="<?=$v['alt']?>"></span>
-                                </label>
-                            </div>
-                            <div class="mj-imglB">
-                                <p title="<?=$v['name']?>"><?=mb_substr($v['name'],0,10,'utf8')?>&nbsp;&nbsp;<?if($c){echo $CLASSES[$c];}else{$_cc = explode(',', $v['class']);echo $CLASSES[$v['class']];}?></p>
-                                 <span class="mj-imgspan"><label><strong>
-                                 <? if ($v['price'] <= $v['salePrice']){echo '10';}else{$zk = (($v['salePrice'])/($v['price']))*10;echo number_format($zk,1);}?>
-                                 </strong>折</label> <b><em>￥</em><em><?=$v['salePrice']?></em></b></span>
-                            </div>
-                        </a>
-                        <div class="mj-listButn">
-                            <!--<a href="javascript:void(0);" onclick="xunjia(this);" class="ms-inquiry">&yen;&nbsp;询&nbsp;价</a>-->
-                            <a href="javascript:void(0);" onclick="goChat()" class="ms-seller" webid="31"  addmsg="咨询-03-联系卖家" module="特价列表1-<?=$k+1?>"><i class="us-icon us-icon22"></i>联系卖家</a>
-                        </div>
-                    </li>
-                <? } ?>
-                </ul>
-            </div>
-            <? if (empty($searchList) || $has == false){?>
-                <div id="s-nothing" style="padding-top:33px;text-align:center;"><img src="<?=StaticDir?>images/nogoods.png"></div>
+    <div class="sell-bk1 f-clearfix">
+        <ul class="sell-tang">
+            <li>
+                <a href="/s-l-1/" target="_blank">
+                    <span>
+                        <img src="<?=StaticDir?>1.2/images/sell-cate1.png">
+                    </span>
+                    <div>
+                        <h6>卖家急售</h6>
+                        <label>价格一定很实惠</label>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/s-l-2/" target="_blank">
+                    <span>
+                        <img src="<?=StaticDir?>1.2/images/sell-cate2.png">
+                    </span>
+                    <div>
+                        <h6>即将续展</h6>
+                        <label>续展期买标，更便宜</label>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/s-l-3/" target="_blank">
+                    <span>
+                        <img src="<?=StaticDir?>1.2/images/sell-cate3.png">
+                    </span>
+                    <div>
+                        <h6>商品小于5项</h6>
+                        <label>商品虽少，够用就好</label>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/s-l-4/" target="_blank">
+                    <span>
+                        <img src="<?=StaticDir?>1.2/images/sell-cate4.png">
+                    </span>
+                    <div>
+                        <h6>多类转让</h6>
+                        <label>多类打包更划算</label>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="sell-bk2 f-clearfix">
+        <span class="sel-title-main">商标转让全类</span>
+        <ul class="">
+            <a href="/s-c-1/" target="_blank">
+                <li>
+                    <span class="s-clas1">
+
+                    </span>
+                    <i></i>化工原料
+                </li>
+            </a>
+            <a href="/s-c-2/" target="_blank">
+                <li>
+                    <span class="s-clas2">
+
+                    </span>
+                    <i></i>油漆涂料
+                </li>
+            </a>
+            <a href="/s-c-3/" target="_blank">
+                <li class="hot">
+                    <span class="s-clas3">
+
+                    </span>
+                    <i></i>化妆日化
+                </li>
+            </a>
+            <a href="/s-c-4/" target="_blank">
+                <li>
+                    <span class="s-clas4">
+
+                    </span>
+                    <i></i>燃料油脂
+                </li>
+            </a>
+            <a href="/s-c-5/" target="_blank">
+                <li  class="hot">
+                    <span class="s-clas5">
+
+                    </span>
+                    <i></i> 医药
+                </li>
+            </a>
+            <a href="/s-c-6/" target="_blank">
+                <li class="hot">
+                    <span class="s-clas6">
+
+                    </span>
+                    <i></i>五金金属
+                </li>
+            </a>
+            <a href="/s-c-7/" target="_blank">
+                <li>
+                    <span class="s-clas7">
+
+                    </span>
+                    <i></i>机械电动
+                </li>
+            </a>
+            <a href="/s-c-8/" target="_blank">
+                <li>
+                    <span class="s-clas8">
+
+                    </span>
+                    <i></i>手工器械
+                </li>
+            </a>
+            <a href="/s-c-9/" target="_blank">
+                <li>
+                    <span class="s-clas9">
+
+                    </span>
+                    <i></i>科学仪器
+                </li>
+            </a>
+            <a href="/s-c-10/" target="_blank">
+                <li>
+                    <span class="s-clas10">
+
+                    </span>
+                    <i></i> 医疗器械
+                </li>
+            </a>
+            <a href="/s-c-11/" target="_blank">
+                <li>
+                    <span class="s-clas11">
+
+                    </span>
+                    <i></i>家用电器
+                </li>
+            </a>
+            <a href="/s-c-12/" target="_blank">
+                <li>
+                    <span class="s-clas12">
+
+                    </span>
+                    <i></i>运输工具
+                </li>
+            </a>
+            <a href="/s-c-13/" target="_blank">
+                <li>
+                    <span class="s-clas13">
+
+                    </span>
+                    <i></i> 军火烟火
+                </li>
+            </a>
+            <a href="/s-c-14/" target="_blank">
+                <li class="hot">
+                    <span class="s-clas14">
+
+                    </span>
+                    <i></i>珠宝钟表
+                </li>
+            </a>
+            <a href="/s-c-15/" target="_blank">
+                <li>
+                    <span class="s-clas15">
+
+                    </span>
+                    <i></i>乐器
+                </li>
+            </a>
+            <a href="/s-c-16/" target="_blank">
+                <li>
+                    <span class="s-clas16">
+
+                    </span>
+                    <i></i>办公用品
+                </li>
+            </a>
+            <a href="/s-c-17/" target="_blank">
+                <li>
+                    <span class="s-clas17">
+
+                    </span>
+                    <i></i>橡胶制品
+                </li>
+            </a>
+            <a href="/s-c-18/" target="_blank">
+                <li>
+                    <span class="s-clas18">
+
+                    </span>
+                    <i></i>皮革皮具
+                </li>
+            </a>
+            <a href="/s-c-19/" target="_blank">
+                <li>
+                    <span class="s-clas19">
+
+                    </span>
+                    <i></i>建筑材料
+                </li>
+            </a>
+            <a href="/s-c-20/" target="_blank">
+                <li>
+                    <span class="s-clas20">
+
+                    </span>
+                    <i></i> 家具
+                </li>
+            </a>
+            <a href="/s-c-21/" target="_blank">
+                <li class="hot">
+                    <span class="s-clas21">
+
+                    </span>
+                    <i></i>洁具厨房
+                </li>
+            </a>
+            <a href="/s-c-22/" target="_blank">
+                <li>
+                    <span class="s-clas22">
+
+                    </span>
+                    <i></i>绳网袋蓬
+                </li>
+            </a>
+            <a href="/s-c-23/" target="_blank">
+                <li>
+                    <span class="s-clas23">
+
+                    </span>
+                    <i></i> 纺织纱线
+                </li>
+            </a>
+            <a href="/s-c-24/" target="_blank">
+                <li class="hot">
+                    <span class="s-clas24">
+
+                    </span>
+                    <i></i>布料床单
+                </li>
+            </a>
+            <a href="/s-c-25/" target="_blank">
+                <li>
+                    <span class="s-clas25">
+
+                    </span>
+                    <i></i>服装鞋帽
+                </li>
+            </a>
+            <a href="/s-c-26/" target="_blank">
+                <li>
+                    <span class="s-clas26">
+
+                    </span>
+                    <i></i>纽扣拉链
+                </li>
+            </a>
+            <a href="/s-c-27/" target="_blank">
+                <li>
+                    <span class="s-clas27">
+
+                    </span>
+                    <i></i>地毯席垫
+                </li>
+            </a>
+            <a href="/s-c-28/" target="_blank">
+                <li>
+                    <span class="s-clas28">
+
+                    </span>
+                    <i></i>健身器材
+                </li>
+            </a>
+            <a href="/s-c-29/" target="_blank">
+                <li>
+                    <span class="s-clas29">
+
+                    </span>
+                    <i></i>食品
+                </li>
+            </a>
+            <a href="/s-c-30/" target="_blank">
+                <li class="hot">
+                    <span class="s-clas30">
+
+                    </span>
+                    <i></i>方便食品
+                </li>
+            </a>
+            <a href="/s-c-31/" target="_blank">
+                <li>
+                    <span class="s-clas31">
+
+                    </span>
+                    <i></i>饲料种籽
+                </li>
+            </a>
+            <a href="/s-c-32/" target="_blank">
+                <li>
+                    <span class="s-clas32">
+
+                    </span>
+                    <i></i>啤酒饮料
+                </li>
+            </a>
+            <a href="/s-c-33/" target="_blank">
+                <li>
+                    <span class="s-clas33">
+
+                    </span>
+                    <i></i>酒
+                </li>
+            </a>
+            <a href="/s-c-34/" target="_blank">
+                <li>
+                    <span class="s-clas34">
+
+                    </span>
+                    <i></i>烟草烟具
+                </li>
+            </a>
+            <a href="/s-c-35/" target="_blank">
+                <li class="hot">
+                    <span class="s-clas35">
+
+                    </span>
+                    <i></i>广告销售
+                </li>
+            </a>
+            <a href="/s-c-36/" target="_blank">
+                <li>
+                    <span class="s-clas36">
+
+                    </span>
+                    <i></i>金融物管
+                </li>
+            </a>
+            <a href="/s-c-37/" target="_blank">
+                <li>
+                    <span class="s-clas37">
+
+                    </span>
+                    <i></i>建筑修理
+                </li>
+            </a>
+            <a href="/s-c-38/" target="_blank">
+                <li>
+                    <span class="s-clas38">
+
+                    </span>
+                    <i></i>通讯传媒
+                </li>
+            </a>
+            <a href="/s-c-39/" target="_blank">
+                <li>
+                    <span class="s-clas39">
+
+                    </span>
+                    <i></i>运输旅行
+                </li>
+            </a>
+            <a href="/s-c-40/" target="_blank">
+                <li class="hot">
+                    <span class="s-clas40">
+
+                    </span>
+                    <i></i>材料加工
+                </li>
+            </a>
+            <a href="/s-c-41/" target="_blank">
+                <li>
+                    <span class="s-clas41">
+
+                    </span>
+                    <i></i> 教育娱乐
+                </li>
+            </a>
+            <a href="/s-c-42/" target="_blank">
+                <li>
+                    <span class="s-clas42">
+
+                    </span>
+                    <i></i>科学服务
+                </li>
+            </a>
+            <a href="/s-c-43/" target="_blank">
+                <li>
+                    <span class="s-clas43">
+
+                    </span>
+                    <i></i>餐饮住宿
+                </li>
+            </a>
+            <a href="/s-c-44/" target="_blank">
+                <li>
+                    <span class="s-clas44">
+
+                    </span>
+                    <i></i> 医疗园艺
+                </li>
+            </a>
+            <a href="/s-c-45/" target="_blank">
+                <li>
+                    <span class="s-clas45">
+
+                    </span>
+                    <i></i>社会服务
+                </li>
+            </a>
+        </ul>
+    </div>
+    <div class="sel-title">
+        <p class="sel-tit-bg"><span class="sel-title-main">精品特卖</span></p>
+    </div>
+    <div class="sell-bk3 f-clearfix">
+        <ul class="Bout-spec">
+            <li class="fl">
+                <i>精品特卖</i>
+                <span class="fl">
+                    <img src="<?=$channel['goodsList'][1]['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+                </span>
+                <div class="fr">
+                    <h4><?=$channel['goodsList'][1]['link']?mb_substr($channel['goodsList'][1]['link'], 0, 10, 'UTF-8'):'-'?> </h4>
+                    <label>(<?=$channel['goodsList'][1]['desc']?>类 <?=$_CLASS[$channel['goodsList'][1]['desc']]?>)</label>
+                    <label><font>￥<b><?=$channel['goodsList'][1]['salePrice']?></b></font>元</label>
+                    <label class="lit-siz">离结束还有：<em><em id="d">0</em>天 <em id="h">0</em>小时 <em id="i">0</em>分 <em id="s">0</em>秒</em></label>
+                    <p class="end">
+                        <a href="javascript:void(0);" onclick="xunjia(this);" class="apply" addmsg="表单-02-询价" webid="30" module="精品特卖">我要报名 ></a>
+                        <a class="inter"><em>XXX </em>人有兴趣</a>
+                    </p>
+                </div>
+            </li>
+            <li class="fr">
+                <i>精品特卖</i>
+                <span class="fl">
+                    <img src="<?=$channel['goodsList'][1]['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+                </span>
+                <div class="fr">
+                    <h4><?=$channel['goodsList'][1]['link']?mb_substr($channel['goodsList'][1]['link'], 0, 10, 'UTF-8'):'-'?> </h4>
+                    <label>(<?=$channel['goodsList'][1]['desc']?>类 <?=$_CLASS[$channel['goodsList'][1]['desc']]?>)</label>
+                    <label><font>￥<b><?=$channel['goodsList'][1]['salePrice']?></b></font>元</label>
+                    <label class="lit-siz">离开始还有：<em><em id="d1">0</em>天 <em id="h1">0</em>小时 <em id="i1">0</em>分 <em id="s1">0</em>秒</em></label>
+                    <p class="start">
+                        <a href="javascript:;" class="apply">我要报名 ></a>
+                        <a href="javascript:;" class="inter">即将开始</a>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="sel-title">
+        <p class="sel-tit-bg"><span class="sel-title-main">天天低价</span></p>
+    </div>
+    <div class="sell-bk4 f-clearfix">
+        <ul class="sel-low-price f-clearfix">
+
+            <?foreach ($channel['lowList'] as $k => $v) {?>            
+            <li>
+                <a href="<?=$v['viewUrl']?>"  target="_blank" addmsg="01-查看详情" webid="10" module="特价列表-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>">
+                    <div>
+                        <img src="<?=$v['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+                    </div>
+                </a>
+
+                <h4><?=$v['link']?mb_substr($v['link'], 0, 10, 'UTF-8'):'-'?></h4>
+                <label>(<?=$v['desc']?>类 <?=$_CLASS[$v['desc']]?>)</label>
+                <p>价格<span>￥<b><?=$v['salePrice']?></b></span>元</p>
+                <a href="javascript:void(0);" onclick="goChat()" class="cont" addmsg="咨询-03-联系卖家" webid="31" module="特价列表-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon22"></i>联系卖家</a>
+            </li>
             <?}?>
-            <div id="s-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>images/loading.gif"></div>
-        </div>
-        <!--imglist end-->
+        </ul>
+        <a href="/s/" target="_blank" class="sel-check-all">查看全部特价商品</a>
+    </div>
 </div>
 
-<div id="_tmpDiv" style="display:none"></div>
-<? require(ViewDir.'/sidebar.html'); ?>
+
 <script type="text/javascript">
-    var _start      = 1;
-    var _whereStr   = "<?=$whereStr?>";
-    var _moreUrl    = '/offprice/getMore/';
-    var _url        = '/offprice/index/?';
-	var _urlSearch  = '/search/index/?';
-    var _has        = "<?=$has?>";
-    var _class      = "<?=$c?>";
-    var _group      = "<?=$g?>";
-    var _times      = 0;
-    var _objTime ;
-
-    function loadMore(){
-        if (!_has) return false;
-        $('#s-uploading').show();
-        var obj = new objURL('/?'+_whereStr);        
-        if ( _times != 0 ) return false;
-
-        _start ++;
-        _times      = 1;
-        _objTime    = setTimeout(function(){_times = 0;},30000);
-        obj.set('_p', _start);
-        var params = obj.getparams();
-        $("#_tmpDiv").load(_moreUrl, params, function(data,status,xml){
-            if (data) {
-                $("#s-all-list").append(data);
-                $("#_tmpDiv").html('');
-                $('#s-uploading').hide();
-                clearTimeout(_objTime);
-                _times = 0;
-            }else{
-                _has = false;
-                $('#s-uploading').hide();
-                $("#list-more").html("<span>没找到中意的？还有近<strong> 29814 </strong>商标没上线，让我来帮你找找？</span>");
-                $(".mj-maclose").hide();
-                $(".mj-footerTip").show();
-                _times = 1;
+    //banner图交互效果
+    jQuery(".sel-bannerIimg").slide({mainCell: ".bd ul", autoPlay: true});
+    //45分类鼠标移动上去的效果
+    var ofls = $(".sell-bk2 ul li");
+    ofls.each(function(i) {
+        $(this).hover(function() {
+            if (i < 9) {
+                $(this).find("i").html("0" + (i + 1) + "-");
             }
+            else {
+                $(this).find("i").html((i + 1) + "-");
+            }
+        }, function() {
+            $(this).find("i").html("");
         });
-    }
-	
-	var _isshow = 0;
-	//提交URL
-	function createUrl(parameter,value){
-		t =_isshow;
-		if(parameter == '_class'){
-			_group = "";
-		}
-		switch(parameter){
-			case "_class" :
-				_class = value;
-				break;
-			case "_group" :
-				_group = value;
-				break;
-		}
-		var obj = new objURL('/?'+_whereStr);
-		obj.set('c', _class==0?'':_class);
-		obj.set('g', _group==0?'':_group);
-        var params = obj.strparams();
-		if(t == 1){
-			var allurl = _url+params+_maodian;
-		}else{
-			var allurl = _url+params;
-		}
-        window.location = allurl;
-	}
-
-    $("#mj-label").click(function(){
-        $(".mj-footerTip").hide();
-        $(".mj-maclose").show();
-    });
-    $(".mj-maclose").click(function(){
-        $(".mj-footerTip").show();
-        $(".mj-maclose").hide();
-    });
-
-    if ( _class >= 10 ){
-        var _first = $("#j-dltype").find('a').first();
-        $("#j-dltype").prepend($("#j-dltype > .current"));
-        $("#j-dltype").prepend(_first);
-    }
-    
-    $("#g-dltype").find('a').each(function (k,v){
-        if ( $(this).hasClass('current') ){
-            if ( k >= 10 && $("#g-dltype").find('a').length > 11){
-                var _first = $("#g-dltype").find('a').first();
-                $("#g-dltype").prepend($("#g-dltype > .current"));
-                $("#g-dltype").prepend(_first);
-            }
-        }
-    });
-
-	
-	//搜索提交
-	$('#sSubmit').click(function(){
-		var _kw = $('#keywords').val();
-		var obj = new objURL('/?'+_whereStr);
-		obj.set('kw',_kw==''?'':$.trim(_kw));
-		obj.set('c', _class==0?'':_class);
-		obj.set('g', _group==0?'':_group);
-        obj.set('p', _plat==0?'':_plat);
-        obj.set('t', _sT==0?'':_sT);
-        obj.set('sn', _sN==0?'':_sN);
-        var params = obj.strparams();
-        window.location = _urlSearch+params+_maodian;
-	})
-	
-    /*select*/
-    $('.son_ul').hide(); //初始ul隐藏
-    $('.select_boxs span').hover(function(){ //鼠标移动函数
-                $(this).parent().find('ul.son_ul').show();  //找到ul.son_ul显示
-                $(this).parent().find('li').hover(function(){$(this).addClass('hover')},function(){$(this).removeClass('hover')}); //li的hover效果
-                $(this).parent().hover(function(){},
-                        function(){
-                            $(this).parent().find("ul.son_ul").hide();
-                        }
-                );
-            },function(){}
-    );
-    $('ul.son_ul li').click(function(){
-        $(this).parents('li').find('.mj-textS').html($(this).html());
-        $(this).parents('li').find('.mj-textS').attr('tid', $(this).attr('tid'));
-        $(this).parents('li').find('ul').hide();
-    });
-
-    //悬浮层
-    _nav = $('.mj_goods_check');
-    $(window).scroll(function(){
-        if($(window).scrollTop()>=700){
-            _nav.addClass("mj-navT");
-            $("#mj-dnul").show();
-            $("#sept").addClass("sept");
-			_isshow = 1;
-        }else if($(window).scrollTop()<=700){
-            _nav.removeClass("mj-navT");
-            $("#mj-dnul").hide();
-            $("#sept").removeClass("sept");
-			_isshow = 0;
-        }
-    });
-
-    //banner切换
-    var _prveDom = null;
-    var c = $('#gla_box>ul').roundabout({
-        minOpacity:0.5,
-        btnNext: ".next",
-        duration: 1000,
-        reflect: false,
-        btnPrev: '.prev',
-        autoplay:false,
-        autoplayDuration:3000,
-        autoplayPauseOnHover: false,
-        tilt:0,
-        bearing:0,
-        shape: 'figure7',
-        autoplayCallback: function(obj){
-            var _cur = this.find('.roundabout-in-focus');
-            var _li = this.find('li');
-            var _index = _cur.index();
-            var _css = { 'visibility' : 'visible' };
-            var _css1 = { 'visibility' : 'hidden' };
-
-            //_cur.find('.jShow').css(_css);
-            _li.find('.jShow').css(_css1).end().eq(_index).find('.jShow').css(_css);
-        }
-    });
-    var foor=$(".mj-footer").height();
-    $(window).scroll(function () {
-        var scrollTop = $(this).scrollTop();
-        var scrollHeight = $(document).height()-foor;
-        var windowHeight = $(this).height();
-        if (scrollHeight - scrollTop - windowHeight < 500)  {
-            loadMore();
-        }
-    });
-//(function (){
-    var _ddNum = 10;
-    var _jDltype = $("#j-dltype");
-    var _jDltypeNum = _jDltype.find('a');
-    var obj = _jDltypeNum.slice(_ddNum, _jDltypeNum.length - 1);
-    obj.css({'display':'none'});
-    $("#mj_aclik").click(function(){
-        var _hasClass = $(this).hasClass('curs');
-        if( _hasClass ){
-            obj.removeAttr('style');
-            $(this).removeClass('curs');
-            $(this).css("color","#4ba5de");
-            $(this).text("收起");
-        }else{
-
-            obj.css({'display':'none'});
-            $(this).addClass('curs');
-            $(this).css("color","#4ba5de");
-            $(this).text("展开");
-        }
-    });
-
-    var _gDltype = $("#g-dltype");
-    var _gDltypeNum = _gDltype.find('a');
-    var gobj = _gDltypeNum.slice(_ddNum, _gDltypeNum.length - 1);
-    gobj.css({'display':'none'});
-    $("#mg_aclik").click(function(){
-        var _hasClass = $(this).hasClass('curs');
-        if( _hasClass ){
-            gobj.removeAttr('style');
-            $(this).removeClass('curs');
-            $(this).css("color","#4ba5de");
-            $(this).text("收起");
-        }else{
-            gobj.css({'display':'none'});
-            $(this).addClass('curs');
-            $(this).css("color","#4ba5de");
-            $(this).text("展开");
-        }
-    });
-//});
-    //类别
-    $("#mj-leb").click(function(){
-        $("#mj-qzList").hide();
-        $("#mj-lbList").show();
-        $('.select_boxs span').hover(function(){ //鼠标移动函数
-            $('ul.son_ul').hide();  //找到ul.son_ul显示
-        },function(){});
-    });
-    $("#mj-lbList dd a").click(function(){
-        $(this).addClass("current").siblings().removeClass("current");
-        $("#mj-leb").text($(this).text());
-        $("#mj-lbList").hide();
-        $('.select_boxs span').hover(function(){ //鼠标移动函数
-            $(this).parent().find('ul.son_ul').show();   //找到ul.son_ul显示
-        },function(){});
-        if($(this).attr('tid') > 0){
-            $("#mj-qz").show();
-        }
-    });
-    $(".mj-mdl .mj-close").click(function(){
-        $(".mj-mdl").hide();
-        $('.select_boxs span').hover(function(){ //鼠标移动函数
-            $(this).parent().find('ul.son_ul').show();   //找到ul.son_ul显示
-        },function(){});
-    });
-    //群组
-    $("#mj-qz>span").click(function(){
-        $("#mj-lbList").hide();
-        $("#mj-qzList").show();
-        $('.select_boxs span').hover(function(){ //鼠标移动函数
-            $('ul.son_ul').hide();  //找到ul.son_ul显示
-        },function(){});
-    });
-    $("#mj-qzList dd a").click(function(){
-        $(this).addClass("current").siblings().removeClass("current");
-        $("#mj-qz>span").text($(this).text());
-        $("#mj-qzList").hide();
-        $("#mj-qz").show();
-        $('.select_boxs span').hover(function(){ //鼠标移动函数
-            $(this).parent().find('ul.son_ul').show();  //找到ul.son_ul显示
-        },function(){});
     });
     
-    //$(".mj-dd").remove();
+    var monday = "<?=$monday_date?>";
+    function clock() {
+        // 当前时间
+        var nowTime = new Date().getTime();
+        // 2016/12/22 hh:mm:ee
+        // 结束时间
+        var endTime = new Date(monday);
 
+        // 相差的时间	
+        var t = endTime.getTime() - nowTime;
+
+        var d = Math.floor(t / 1000 / 60 / 60 / 24);
+
+        var h = Math.floor(t / 1000 / 60 / 60 % 24);
+        var i = Math.floor(t / 1000 / 60 % 60);
+        var s = Math.floor(t / 1000 % 60);
+
+        document.getElementById('d').innerHTML = d;
+        document.getElementById('h').innerHTML = h;
+        document.getElementById('i').innerHTML = i;
+        document.getElementById('s').innerHTML = s;
+        
+        document.getElementById('d1').innerHTML = d;
+        document.getElementById('h1').innerHTML = h;
+        document.getElementById('i1').innerHTML = i;
+        document.getElementById('s1').innerHTML = s;
+
+        setTimeout(clock, 1000);
+    }
+    setTimeout(clock, 1000);
 </script>
-
 <? require(ViewDir.'/footer.html'); ?>

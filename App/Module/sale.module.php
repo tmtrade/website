@@ -107,11 +107,14 @@ class SaleModule extends AppModule{
     }
     
     //获取商品信息
-    public function getSaleInfo($number)
+    public function getSaleInfo($number,$col = array())
     {
         $arr['eq'] = array(
             'number' => $number,
             );
+        if(!empty($col)){
+            $arr['col'] = $col;
+        }
         $info = $this->import('sale')->find($arr);
         if ( empty($info) ) return array();
         return $info;

@@ -33,56 +33,21 @@ class OffpriceAction extends AppAction
      */
     public function index()
     {
-        $class  = $this->input('c', 'int', '');
-        $group  = $this->input('g', 'string', '');
-        $page   = $this->input('_p', 'int', 1);
-
-        //$_class = $this->strToArr($class);
-        //$_group = $this->strToArr($group);
-
-        $this->_searchArr['c']  = $class;
-        $this->_searchArr['g']  = $group;
-        $this->_searchArr['_p'] = $page;
-
-        $params = array('isOffprice'=>'1');
-        if ( in_array($class, range(1,45)) ){
-            $params['class'] = $class;
-            if ( !empty($page) ){
-                $params['group'] = $group;
-            }
-        }
-
         $res = $this->load('search')->getSaleList($params, $page, $this->_number, $this->_col);
         
-        if ( !empty($this->_searchArr) ){
-            foreach ($this->_searchArr as $k => $v) {
-                $this->set($k, $v);
-                $this->set($k.'_title', $this->getSelectTitle($k, $v, $this->_searchArr));
-            }
-            $whereStr   = http_build_query($this->_searchArr);
-        }
-        $classGroup = $this->load('search')->getClassGroup();
-        list($_class, $_group) = $classGroup;
 
         //频道设置
-        $channel = $this->load('search')->getChannel($this->mod);        
+        $channel = $this->load('search')->getChannel($this->mod);
         $this->set('channel', $channel);
         
-         //设置页面TITLE
-        $seoList = $this->load('search')->getSeo($this->_searchArr);
-        if(!empty($seoList['title'])){
-            $this->set('title', $seoList['title']);
-            $this->set('description', $seoList['description']);
-        }
-        
-
+        $classGroup = $this->load('search')->getClassGroup();
+        list($_class, $_group) = $classGroup;
         $this->set('_CLASS', $_class);//分类
-        $this->set('_GROUP', $_group);//群组
-		
-        $this->set('searchList', empty($res['rows']) ? array() : $res['rows']);
-        $this->set('total', intval($res['total']));
-        $this->set('has', empty($res['rows']) ? false : true);
-        $this->set('whereStr', $whereStr);
+        
+        //获取下周时间
+        $monday_date = date('Y/m/d',strtotime('+1 week last monday'));
+        $this->set('monday_date', $monday_date);//分类
+        
         $this->setSeo(2);
         $this->display();
     }

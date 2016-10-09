@@ -87,8 +87,8 @@ class SearchAction extends AppAction
         $this->set('listTopic', $listTopic);
         
         //频道设置
-        $channel = $this->load('search')->getChannel($this->mod);
-        $this->set('channel', $channel);
+//        $channel = $this->load('search')->getChannel($this->mod);
+//        $this->set('channel', $channel);
 
         $isData = 2;//默认没数据
         //保存搜索历史，方便搜索框处理

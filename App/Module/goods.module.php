@@ -53,7 +53,7 @@ class GoodsModule extends AppModule
 		if ( empty($data) ) return array();
 		$list = array();
 		foreach ($data as $k => $number) {
-			$sale = $this->load('sale')->getSaleInfo($number, 0, 0);
+			$sale = $this->load('sale')->getSaleInfo($number);
 			if ( empty($sale) ){
 				//----2016-07-25去掉其他数据，只使用一只蝉后台数据
 				// $info = $this->load('trademark')->getTmInfo($number);
