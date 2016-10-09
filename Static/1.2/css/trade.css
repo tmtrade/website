@@ -28,6 +28,7 @@ body,html{
 }
 .pack-tp-rg a.collect{
    margin-right: 25px;
+    cursor: pointer;
 }
 .pack-tp-rg a img{
     vertical-align: middle;

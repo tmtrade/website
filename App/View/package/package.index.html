@@ -13,7 +13,11 @@
                 <label class="ft1">特价商标</label>> <label class="ft2">打包出售</label>
             </p>
             <div class="pack-tp-rg fr">
-                <!--<a class="collect in_collect" addmsg="<?=$all['title']?>" module="收藏打包商标"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>-->
+                <? if($isLook): ?>
+                <a class="collect" addmsg="<?=$all['title']?>" module="取消收藏打包商标"> <img src="<?=StaticDir?>1.2/images/xin_cur.png"><span>取消收藏</span></a>
+                <? else: ?>
+                <a class="collect in_collect" addmsg="<?=$all['title']?>" module="收藏打包商标"> <img src="<?=StaticDir?>1.2/images/sbxq-ico1.png"><span>收藏商标</span></a>
+                <? endif; ?>
                 <a href="javascript:;" class="jiathis jiathis_txt" addmsg="<?=$all['title']?>" module="分享"> <img src="<?=StaticDir?>1.2/images/sbxq-ico2.png">分享</a>
             </div>
         </div>
@@ -575,7 +579,7 @@
 </script>
 <!--看不懂-->
 <script type="text/javascript">
-
+        var package_id = '<?=$all["id"]?>';
         //专题点击事件
         $('.wddsb').click(function(e){
             var addmsg = $(this).text();
@@ -583,7 +587,35 @@
             $('#wodediv').attr('href',($(this).attr('url')));
             $('#wodediv').get(0).click();
         });
-
+        //收藏功能
+        $('.collect').click(function(){
+            var nowObj = this;//保存当前this
+            if($(this).hasClass('in_collect')){
+                //收藏
+                collectTrademark(package_id, 1, function(data){
+                    if (data.type == 1){
+                        $(nowObj).removeClass('in_collect');
+                        $(nowObj).find('span').html('取消收藏');
+                        $(nowObj).find('img').attr("src","/Static/1.2/images/xin_cur.png");
+                        layer.msg('收藏成功',{time:1500});
+                    }else{
+                        layer.msg('收藏失败',{time:1500});
+                    }
+                },2);
+            }else{
+                //取消收藏
+                deleteCollectTrademark(package_id, 1,function(data){
+                    if (data.type != 0){
+                        $(nowObj).addClass('in_collect');
+                        $(nowObj).find('span').html('收藏商标');
+                        $(nowObj).find('img').attr("src","/Static/1.2/images/sbxq-ico1.png");
+                        layer.msg('取消成功',{time:1500});
+                    }else{
+                        layer.msg('取消失败',{time:1500});
+                    }
+                },2);
+            }
+        });
 </script>
 <!--分享相关js-->
 <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>

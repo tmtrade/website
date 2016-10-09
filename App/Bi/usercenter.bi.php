@@ -26,20 +26,20 @@ class UserCenterBi extends Bi
 	*	[10000] => 0 
 	*	) 
 	*/
-    public function existLook($numbers, $ukey)
+    public function existLook($numbers, $ukey,$type=1)
     {
     	if ( empty($numbers) || !is_array($numbers) ) return array();
-    	
+
     	if ( empty($ukey) ) return array();
 
 		$params = array(
 			'uc_ukey'	=> $ukey,
 			'trademark'	=> $numbers,
 			'source'	=> '1',
+			'type'	=> $type,
 			'webname'	=> 'usercenter',//不变
 			'key'		=> "trademark1104martinewodd",//不变
 		);
-
 		return $this->request("systemapi/getCollectTrademark/", $params);
     }
 

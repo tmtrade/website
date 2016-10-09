@@ -27,6 +27,13 @@ class PackageAction extends AppAction
 		if(!$all){
 			$this->redirect('未找到页面', '/index/error');
 		}
+		//查看是否被收藏
+		$isLook = 0;
+		$lookList   = $this->load('usercenter')->existLook(array($id),2);
+		if($lookList){
+			$isLook = 1;
+		}
+		$this->set('isLook',$isLook);
 		//得到推荐商标
 		$tj = $this->load('faq')->getTm(3);
 		//得到用户订单的need字段

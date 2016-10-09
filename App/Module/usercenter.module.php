@@ -11,13 +11,13 @@
 class UserCenterModule extends AppModule
 {
     //判断用户是否收藏商标
-    public function existLook($numbers)
+    public function existLook($numbers,$type=1)
     {
         //判断是否登录
         if ( empty($this->loginId) ) return array();
         if ( empty($numbers) ) return array();
 
-        $res = $this->importBi('usercenter')->existLook($numbers, $this->loginId);
+        $res = $this->importBi('usercenter')->existLook($numbers, $this->loginId,$type);
         return $res;
     }
 
