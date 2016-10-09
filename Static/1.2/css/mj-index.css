@@ -864,7 +864,7 @@
     overflow: hidden;
     background: #ffffff;
     padding-top:5px;
-    height: 96px;
+    height:82px;
 }
 .yzc-Brand:hover .brand-fl{
     height:auto;
@@ -878,7 +878,7 @@
     display: inline-block;
     width: 124px;
     text-align: left !important;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 .brand-fl li span{
     color: #999999;
@@ -1648,29 +1648,29 @@
 .brand-ques div dl dd{
     width:380px;
     float: left;
-    margin-top: 15px;
+    margin-top:5px;
 }
 .brand-ques  dl dd p{
     overflow: hidden;
-    margin-top:5px;
-    font-size: 12px;
+    margin-top:6px;
     color: #666666;
     margin-left: 15px;
 }
 .brand-ques  dl dd p span{
     width:245px;
-    line-height:22px;
+    line-height:24px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
 }
 .brand-ques  dl dd a{
-    color: #333333;
+    color: #666666;
 }
 .brand-ques  dl dd p label{
     color: #999999;
     margin-right: 6px;
+    font-family: "arial";
 }
 .brand-ques .btm{
     overflow: hidden;
@@ -1691,6 +1691,7 @@
 }
 .brand-ques .btm p label{
     padding-right:25px;
+    font-family: "arial";
 }
 .brand-ques  a.more{
     display:inline-block;
@@ -1875,6 +1876,7 @@
     /*display: none;*/
     z-index: 9999;
     padding-bottom: 15px;
+    border-bottom: 2px solid #f4b4b4;
 }
 @media screen and (max-width:1180px) {
     .float-floor{

@@ -768,13 +768,14 @@ body,html{
     background: url("../images/Bout-bg.png") no-repeat top center;
     color: #ffffff;
     position: absolute;
-    left: -4px;
+    left: -5px;
     top:8px;
     font-style: normal;
+    font-family: "微软雅黑";
 }
 .Bout-spec li span{
     display:block;
-    width: 206px;
+    width: 268px;
     height: 140px;
     line-height: 140px;
     text-align: center;
@@ -787,18 +788,25 @@ body,html{
    max-height: 140px;
    vertical-align: middle;
 }
+.lit-siz{
+    margin-top: 7px;
+}
 .Bout-spec li div{
-    width: 340px;
-    padding-left: 16px;
+    width: 272px;
+    padding-left: 23px;
     border-left: 1px solid #e1e1e1;
     height: 180px;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 11px;
 }
 .Bout-spec li div h4{
     color: #444444;
     font-size: 20px;
+    font-weight: normal;
+    font-family: "微软雅黑";
+    margin-top: 8px;
 }
+
 .Bout-spec li div label{
     display: block;
     color: #999999;
@@ -815,11 +823,13 @@ body,html{
 .Bout-spec li div em{
     font-style: normal;
     color: #e79325;
+
 }
 
 .Bout-spec li div a{
     display: inline-block;
     margin-top: 10px;
+    float: left;
 }
 .Bout-spec li div p.end a.apply{
     width: 128px;
@@ -895,7 +905,7 @@ body,html{
     color: #444444;
     font-size: 20px;
     font-weight: normal;
-    margin-top: 12px;
+    margin-top:7px;
 }
 .sel-low-price label{
     display: block;
@@ -926,6 +936,7 @@ body,html{
     color: #FFFFFF;
     font-size: 16px;
     margin-top:8px;
+    font-weight: bold;
 }
 .sel-check-all{
     display:block;

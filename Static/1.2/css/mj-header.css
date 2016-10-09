@@ -508,7 +508,7 @@ table {
 }
 .mj-search_con p.tj-fl a{
     display: inline-block;
-    color: #999999;
+    color: #666;
     font-size: 12px;
     margin-left: 10px;
 }
@@ -767,35 +767,50 @@ table {
 
 .mj-weix-qq{
     margin-top: 11px;
-    margin-left: 15px;
+    margin-left:10px;
     font-size: 15px;
     float: left;
 }
+.mj-weix-qq span{
+    color: #666666;
+    font-family: "arial";
+}
+.mj-weix-qq span img{
+    margin-top: 3px;
+}
 .mj-weix-qq em{
     color: #cccccc;
+    margin-left: 2px;
 }
 
 .mj-wx{
     display: inline-block;
-    width: 23px;
+
     height: 40px;
+}
+.mj-wx a{
+    display: inline-block;
+    width: 15px;
 }
 .mj-wx img,.mj-qq img{
     margin-top: 4px;
 }
+.mj-wx{
+   margin-right: 3px;
+}
 .mj-search_btn img{
     vertical-align: middle;
     margin-bottom: 4px;
-    margin-right: 4px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 .mj-search_btn a.mj-btnSell{
     display: inline-block;
     width: 138px;
     height: 45px;
-    line-height: 45px;
+    line-height: 43px;
     background: url("../images/tp-sel-bg2.png") no-repeat top center;
     text-align: center;
-    line-height: 42px;
     color: #ffffff;
     font-size: 14px;
     border-radius: 2px;
@@ -804,12 +819,13 @@ table {
     /* margin-top: 2px; */
     position: absolute;
     top: 0px;
-    right: -50px;
+    right: -35px;
 }
 .mj-search_btn a.mj-btnSell h2{
     font-weight: normal;
     font-size: 14px;
     text-align: center;
+    font-family: "宋体";
 }
 
 .mj-btnBuy{
@@ -963,6 +979,7 @@ table {
     position: absolute;
     top: -16px;
     right: -25px;
+    font-family: "arial" !important;
 }
 .mj-search-all{
     width: 100%;
@@ -1253,13 +1270,13 @@ table {
     vertical-align: middle;
 }
 .mj-navitems p{
-    padding-top: 22px;
-    margin-left: -36px;
+    padding-top: 26px;
+    margin-left: -23px;
 }
 .mj-navitems p a{
     display: inline-block;
     font-size: 17px;
-    color:#444444;
+    color:#666666 !important;
     margin-left:40px;
     font-family: "微软雅黑";
     position: relative;
@@ -1613,9 +1630,9 @@ table {
 .mj-wx-pic{
     /* min-width: 155px !important; */
     overflow: hidden;
-    left: 84px !important;
+    left: 43px !important;
     width: 222px !important;
-    top: 45px !important;
+    top: 46px !important;
 }
 .mj-wx-pic img{
     margin-top: 10px;

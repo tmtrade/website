@@ -370,6 +370,7 @@ body{ background:#ffffff !important;}
     /* height: 47px; */
     padding-top: 17px;
     padding-bottom: 16px;
+    border-top:1px solid #eeeeee ;
 
 }
 .brand-details div.fl-details .brde-pic p span{
@@ -413,7 +414,8 @@ body{ background:#ffffff !important;}
 }
 .brand-details div.fr-details h3 .light_title{
     color: #666666;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: bold;
 }
 .brand-details div.fr-details h3 a{
     display: inline-block;
@@ -433,8 +435,8 @@ body{ background:#ffffff !important;}
 }
 
 .brand-details div.fr-details p.may{
-    padding-top:8px;
-    padding-bottom: 8px;
+    padding-top:11px;
+    padding-bottom:11px;
     border-bottom: 1px solid #eeeeee;
 }
 .o-reg-lg{
@@ -458,7 +460,7 @@ body{ background:#ffffff !important;}
     display: inline-block;
     margin-left: 5px;
     padding: 5px;
-    color:#999;
+    color:#666666;
 }
 .brand-details div.fr-details p.may a.cur{
     display: inline-block;
@@ -830,7 +832,6 @@ body{ background:#ffffff !important;}
     margin: auto;
 }
 .detail-recom-trademark{
-    border: 1px solid #f0f0f0;
     background: #ffffff;
     padding: 10px;
     margin-top: 10px;
@@ -855,24 +856,26 @@ body{ background:#ffffff !important;}
     font-weight: normal;
 
 }
+.recompic{
+    margin-top: 12px;
+    padding-bottom: 24px;
+}
 .recompic li{
-    width: 90%;
-    height: 110px;
-    line-height: 110px;
+    width:82%;
+    height: 128px;
+    line-height: 128px;
     text-align: center;
     overflow: hidden;
     margin: auto;
-    border-bottom: 1px dashed #dedede;
+    border: 1px solid #f0f0f0;
+    margin-top: 12px;
 }
-.recompic li:last-child{
-    border-bottom:none;
-}
+
 .recompic li img{
     /* display:block;*/
-    max-width: 146px;
-    max-height: 82px;
+    max-width:185px;
+    max-height:128px;
     /*margin:15px auto 0px;*/
-    border: 1px solid #ff0000;
     vertical-align: middle;
 }
 
@@ -947,7 +950,7 @@ body{ background:#ffffff !important;}
 .trans-tit span{
     display: inline-block;
     background: #acacac;
-    padding: 4px 10px;
+    padding:2px 10px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     color: #ffffff;
@@ -1124,7 +1127,6 @@ body{ background:#ffffff !important;}
     float: left;
     font-size: 16px;
     text-decoration: none;
-    font-family: "微软雅黑";
 }
 .intr-flow .intr-flow-tit li a{
     display: inline-block;
@@ -2006,6 +2008,10 @@ body{ background:#ffffff !important;}
 .mj-priceTxtt_ie7{
     color: #666;
 }
+.mj-cTr_center{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
 .mj-cTr_center li label {
     display: inline-block;
     min-width:60px;
@@ -2015,8 +2021,7 @@ body{ background:#ffffff !important;}
 }
 .mj-cTr_center li {
     min-width: 590px;
-    font-size: 12px;
-    padding: 3px 0px;
+    padding: 2px 0px;
     overflow:hidden;
     margin-left: -10px;
 }
@@ -2037,8 +2042,8 @@ body{ background:#ffffff !important;}
 }
 .zx-sqr {
     overflow: hidden;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    padding-bottom: 11px;
+    padding-top: 11px;
     border-top:1px solid #eeeeee ;
 }
 .zx-sqr .pro{
@@ -2051,7 +2056,6 @@ body{ background:#ffffff !important;}
     display: inline-block;
     max-width:140px;
     vertical-align: middle;
-    margin-bottom:4px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -2080,8 +2084,11 @@ body{ background:#ffffff !important;}
     margin-top: 4px;
 }
 .zx-sqr .pel b{
+    display: inline-block;
     font-size: 20px;
     font-weight: normal;
+    vertical-align: middle;
+    margin-top:-4px;
 }
 .zx-sqr .pel input{
     width: 124px;
@@ -2173,10 +2180,13 @@ body{ background:#ffffff !important;}
 }
 .mj-cTr-ls a{
     display: inline-block;
+    width: 185px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
     background-color: #ce0000;
     border-radius: 5px;
     -webkit-border-radius: 5px;
-    padding: 9px 40px;
     color: #ffffff;
     font-size: 16px;
     margin-right: 10px;
@@ -2193,7 +2203,7 @@ body{ background:#ffffff !important;}
     color: #ffffff;
     border-radius: 0px 5px 0px 5px;
     -webkit-border-radius: 0px 5px 0px 5px;
-    margin-left: 10px;
+    margin-left:6px;
     font-style: normal;
     cursor: pointer;
 }
