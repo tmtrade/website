@@ -119,4 +119,14 @@ class SaleModule extends AppModule{
         if ( empty($info) ) return array();
         return $info;
     }
+    
+    //递增点击率
+    public function click($number)
+    {
+        $record = array(
+                'hits' => array('hits', 1),
+            );
+        $r['eq']['number']    = $number;
+        return $this->import('sale')->modify($record,$r);
+    }
 }

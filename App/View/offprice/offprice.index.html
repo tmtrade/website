@@ -445,16 +445,16 @@
             <li class="fl">
                 <i>精品特卖</i>
                 <span class="fl">
-                    <img src="<?=$channel['goodsList'][1]['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+                    <img src="<?=$channel['goodsList'][0]['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
                 </span>
                 <div class="fr">
-                    <h4><?=$channel['goodsList'][1]['link']?mb_substr($channel['goodsList'][1]['link'], 0, 10, 'UTF-8'):'-'?> </h4>
-                    <label>(<?=$channel['goodsList'][1]['desc']?>类 <?=$_CLASS[$channel['goodsList'][1]['desc']]?>)</label>
-                    <label><font>￥<b><?=$channel['goodsList'][1]['salePrice']?></b></font>元</label>
+                    <h4><?=$channel['goodsList'][0]['link']?mb_substr($channel['goodsList'][0]['link'], 0, 10, 'UTF-8'):'-'?> </h4>
+                    <label>(<?=$channel['goodsList'][0]['desc']?>类 <?=$_CLASS[$channel['goodsList'][0]['desc']]?>)</label>
+                    <label><font>￥<b><?=$channel['goodsList'][0]['salePrice']?></b></font>元</label>
                     <label class="lit-siz">离结束还有：<em><em id="d">0</em>天 <em id="h">0</em>小时 <em id="i">0</em>分 <em id="s">0</em>秒</em></label>
                     <p class="end">
-                        <a href="javascript:void(0);" onclick="xunjia(this);" class="apply" addmsg="表单-02-询价" webid="30" module="精品特卖">我要报名 ></a>
-                        <a class="inter"><em>XXX </em>人有兴趣</a>
+                        <a href="javascript:void(0);" onclick="xunjia(this);" class="apply" id="baoming" data-number="<?=$channel['goodsList'][0]['pic']?>" addmsg="表单-02-询价" webid="30" module="精品特卖">我要报名 ></a>
+                        <a class="inter"><em><?=$channel['goodsList'][0]['hits']?> </em>人有兴趣</a>
                     </p>
                 </div>
             </li>
@@ -518,6 +518,27 @@
         }, function() {
             $(this).find("i").html("");
         });
+    });
+    
+    //报名点击
+    $("#baoming").click(function(){
+        var number = $(this).data("number");
+        $.ajax({
+                async: false,
+                type: 'post',
+                url: '/offprice/checkAjax',
+                data: 'number=' + number,
+                dataType: 'json',
+                success: function(data) {
+                    if (data.code != 0) {
+                        layer.msg(data.msg, {
+                            time: 1500
+                        });
+                    } else {
+                        strs += data.msg;
+                    }
+                }
+            });
     });
     
     var monday = "<?=$monday_date?>";

@@ -17,8 +17,6 @@ class OffpriceAction extends AppAction
     public $pageDescription = '特价商标买卖,特价商标转让交易上一只蝉商标转让交易平台,一只蝉是超凡集团资产交易平台：13年积累约200余万商标转让信息。也是中国独家签订交易损失赔付协议保障风险平台。买特价商标，买便宜商标上一只蝉。一只蝉商标交易网,为用户精心挑选的众多特价商标,方便不同需求用户。提供特价商标交易,特价商标交易。';
 
     private $_number    = 20;
-    private $_col       = array('id', 'tid', 'number', 'class', 'name', 'group', 'price', 'salePrice');
-    private $_searchArr = array();
     public $ptype = 3;
 
     /**
@@ -52,97 +50,11 @@ class OffpriceAction extends AppAction
         $this->display();
     }
 
-    /**
-     * 获取特价列表加载数据
-     *
-     * 获取特价列表加载数据
-     * 
-     * @author  Xuni
-     * @since   2016-03-10
-     *
-     * @return  void
-     */
-    public function getMore()
-    {
-        $class  = $this->input('c', 'string', '');
-        $group  = $this->input('g', 'string', '');
-        $page   = $this->input('_p', 'int', 1);
-
-        $_class = $this->strToArr($class);
-        $_group = $this->strToArr($group);
-        $params = array('isOffprice'=>'1');
-        if ( count($_class) > 1 ){
-            $params['class'] = implode(',', $_class);
-        }else{
-            $params['class'] = implode(',', $_class);
-            if ( !empty($_group) ){
-                $params['group'] = implode(',', $_group);
-            }
-        }
-
-        $list = $this->load('search')->getSaleList($params, $page, $this->_number,$this->_col);
-        $this->set('searchList', empty($list['rows']) ? array() : $list['rows']);
-        $this->set('page',$page);
-        $this->display();
-    }
-
-
-    /**
-     * 获取搜索项显示标题
-     *
-     * 处理单个搜索项的中文显示标题
-     * 
-     * @author  Xuni
-     * @since   2016-03-07
-     *
-     * @return  void
-     */
-    protected function getSelectTitle($title, $value, $all)
-    {
-        if ( empty($value) || empty($title) ) return $value;
-
-        $_arr = array_filter( explode(',', $value) );
-        if ( empty($_arr) ) return $value;
-
-        $_str = '';
-        switch ($title) {
-            case 'c':
-                list($cArr,) = $this->load('search')->getClassGroup(0, 0);
-                foreach ($_arr as $v) {
-                    $_str .= "$v-".$cArr[$v].'|';
-                    $this->load('keyword')->createKeywordCount("$v-".$cArr[$v],4);
-                }
-                break;
-            case 'g':
-                if ( empty($all['c']) ) return $value;
-                list(,$gArr) = $this->load('search')->getClassGroup(0, 1);
-                foreach ($_arr as $v) {
-                    $_str .= "$v-".$gArr[$all['c']][$v].'|';
-                    $this->load('keyword')->createKeywordCount("$v-".$gArr[$all['c']][$v],5);
-                }
-                break;
-        }
-        return $_str;
-    }
-
-    /**
-     * 将字符串转换为数据并去空去重
-     * @author  Xuni
-     * @since   2016-03-03
-     *
-     * @access  protected
-     * @param   string      $str        字符串
-     * @param   string      $prefix     分隔符
-     * @return  array
-     */
-    protected function strToArr($str, $prefix=',')
-    {
-        if ( empty($str) ) return array();
-
-        $arr = explode($prefix, $str);
-        $arr = array_unique( array_filter($arr) );
-        return $arr;
-    }
+    public function checkAjax()
+	{
+		$number     = $this->input('number', 'string', '');
+		$res = $this->load('sale')->click($number);
+		$this->returnAjax($res);
+	}
 
 }
-?>

@@ -690,8 +690,15 @@ class SearchModule extends AppModule
         
         return $channel;
     }
-
-    //获取频道页设置Items
+    
+    /**
+     * 获取频道页设置Items
+     * @param type $cid  频道ＩＤ
+     * @param type $type 分类
+     * @param type $saleinfo　是否获取详情数据
+     * @return type
+     * 
+     */
     public function getChannelItems($cid, $type=1, $saleinfo="")
     {   
         if ( empty($cid) || empty($cid) ) return array();
@@ -705,10 +712,11 @@ class SearchModule extends AppModule
         if(!empty($saleinfo)){
             foreach($items as $k=>$v){
                 $items[$k]['imgUrl'] = $this->load('trademark')->getImg($v['pic']);
-                $sale = $this->load('sale')->getSaleInfo($v['pic'],array('tid','salePrice','class'));
+                $sale = $this->load('sale')->getSaleInfo($v['pic'],array('tid','salePrice','class','hits'));
                 $_class = current( explode(',', $sale['class']) );
-                $items[$k]['viewUrl'] = '/d-'.$sale['tid'].'-'.$_class.'.html';
+                $items[$k]['viewUrl']   = '/d-'.$sale['tid'].'-'.$_class.'.html';
                 $items[$k]['salePrice'] = $sale['salePrice'];
+                $items[$k]['hits']      = $sale['hits'];
             }
             
         }
