@@ -332,7 +332,7 @@ table {
 
 .mj-header_right li a{
 
-    color: #5b5b5b;
+    color: #666666;
 
 }
 
@@ -774,6 +774,7 @@ table {
 .mj-weix-qq span{
     color: #666666;
     font-family: "arial";
+    font-size: 15px;
 }
 .mj-weix-qq span img{
     margin-top: 3px;
@@ -826,6 +827,7 @@ table {
     font-size: 14px;
     text-align: center;
     font-family: "宋体";
+    font-weight: bold;
 }
 
 .mj-btnBuy{
@@ -971,11 +973,11 @@ table {
     display: inline-block;
     width: 30px;
     height: 18px;
+    line-height: 13px;
     background: url("../images/new-ico.png") no-repeat top center;
     text-align: center;
     color: #ffffff;
     font-size: 12px;
-    line-height: 10px;
     position: absolute;
     top: -16px;
     right: -25px;

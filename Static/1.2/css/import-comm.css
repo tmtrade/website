@@ -66,7 +66,7 @@ a:active {outline: none;star:expression(this.onFocus=this.blur());}
 }
 .brand-fl li a:-webkit-any-link{
 	-webkit-appearance:none !important;
-	color:#333;
+	color:#666;
 	}
 
 

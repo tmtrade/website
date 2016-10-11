@@ -160,7 +160,7 @@
 
 .mj-from-title {
 
-    margin:0px 0 5px 0;
+    margin:-14px 0 5px 0;
 
     padding: 0;
 
@@ -364,14 +364,15 @@
     position: relative;
 }
 .mj-newjy h3{
-    color: #37393e;
-    font-size: 14px;
+    color: #666;
     padding-left: 5px;
     padding-right: 5px;
     background: #ffffff;
     position: absolute;
     top:-10px;
     left: 0px;
+    font-family: "宋体";
+    font-weight: bold;
 
 }
 .mj-newjy h3 img{
@@ -495,6 +496,7 @@
     background: #f4b4b4;
 
     border-radius: 5px;
+    font-weight: bold;
 }
 
 .mj-from-btn:hover{
@@ -864,7 +866,7 @@
     overflow: hidden;
     background: #ffffff;
     padding-top:5px;
-    height:82px;
+    height:114px;
 }
 .yzc-Brand:hover .brand-fl{
     height:auto;
@@ -882,9 +884,7 @@
 }
 .brand-fl li span{
     color: #999999;
-    margin-right:2px;
-
-
+    margin-right:8px;
 }
 .brand-fl li span label{
     display: inline-block;
@@ -1647,7 +1647,7 @@
 .brand-ques div dl dd{
     width:380px;
     float: left;
-    margin-top:5px;
+    margin-top:7px;
 }
 .brand-ques  dl dd p{
     overflow: hidden;
@@ -1681,7 +1681,6 @@
     overflow: hidden;
     margin-top: 15px;
     color: #666666;
-    font-size: 12px;
     text-align: center;
     float: left;
 }
@@ -1689,7 +1688,6 @@
     padding-left:25px;
 }
 .brand-ques .btm p label{
-    padding-right:25px;
     font-family: "arial";
 }
 .brand-ques  a.more{
