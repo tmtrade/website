@@ -9,7 +9,9 @@
 <div class="brand-details f-clearfix">
     <div class="w1180">
         <div class="fl fl-details">
-            <p class="fl-details-tit">特价商标 ><a>打包出售</a></p>
+            <? if($pack): ?>
+            <p class="fl-details-tit"><a href="/offprice">特价商标</a> >打包出售</p>
+            <? endif; ?>
             <div class="brde-pic">
                 <div class="brde-pic-box">
                     <? if($pack): ?>
