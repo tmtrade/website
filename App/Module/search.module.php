@@ -308,7 +308,11 @@ class SearchModule extends AppModule
         
         //特价标签
         if ( !empty($params['label']) ){
-            $r['ft']['offprice'] = $params['label'];
+            if($params['label']=='a'){
+                $r['raw'] .= " AND offprice!='' ";
+            }else{
+                $r['ft']['offprice'] = $params['label'];
+            }
         }
 
         //商标号

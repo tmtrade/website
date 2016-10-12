@@ -44,7 +44,7 @@ class OffpriceAction extends AppAction
         
         //获取下周时间
         $monday_date = date('Y/m/d',strtotime('+1 week last monday'));
-        $this->set('monday_date', $monday_date);//分类
+        $this->set('monday_date', $monday_date);
         
         $this->setSeo(2);
         $this->display();
