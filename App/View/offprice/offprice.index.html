@@ -445,7 +445,9 @@
             <li class="fl">
                 <i>精品特卖</i>
                 <span class="fl">
-                    <img src="<?=$channel['goodsList'][0]['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+                    <a href="<?=$channel['goodsList'][0]['viewUrl']?>"  target="_blank" addmsg="01-查看详情" webid="10" module="精品特卖">
+                        <img src="<?=$channel['goodsList'][0]['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+                    </a>
                 </span>
                 <div class="fr">
                     <h4><?=$channel['goodsList'][0]['link']?mb_substr($channel['goodsList'][0]['link'], 0, 10, 'UTF-8'):'-'?> </h4>
@@ -461,7 +463,9 @@
             <li class="fr">
                 <i>精品特卖</i>
                 <span class="fl">
-                    <img src="<?=$channel['goodsList'][1]['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+                    <a href="<?=$channel['goodsList'][1]['viewUrl']?>"  target="_blank" addmsg="01-查看详情" webid="10" module="精品特卖">
+                        <img src="<?=$channel['goodsList'][1]['imgUrl']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
+                    </a>
                 </span>
                 <div class="fr">
                     <h4><?=$channel['goodsList'][1]['link']?mb_substr($channel['goodsList'][1]['link'], 0, 10, 'UTF-8'):'-'?> </h4>
@@ -492,7 +496,19 @@
 
                 <h4><?=$v['link']?mb_substr($v['link'], 0, 10, 'UTF-8'):'-'?></h4>
                 <label>(<?=$v['desc']?>类 <?=$_CLASS[$v['desc']]?>)</label>
-                <p>价格<span>￥<b><?=$v['salePrice']?></b></span>元</p>
+                <p>价格<span>￥<b>
+                <?if($v['info']['priceType']==1){
+                    if($v['info']['isOffprice']==1){
+                        echo $v['info']['salePrice'];
+                    }else{
+                        echo $v['info']['price'];
+                    }
+                }else{
+                    echo "议价";
+                }
+                ?>
+                        
+                        </b></span>元</p>
                 <a href="javascript:void(0);" onclick="goChat()" class="cont" addmsg="咨询-03-联系卖家" webid="31" module="特价列表-<?=($k+1)>9? ($k+1) : '0'.($k+1);?>"><i class="us-icon us-icon22"></i>联系卖家</a>
             </li>
             <?}?>

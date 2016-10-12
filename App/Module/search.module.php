@@ -716,11 +716,12 @@ class SearchModule extends AppModule
         if(!empty($saleinfo)){
             foreach($items as $k=>$v){
                 $items[$k]['imgUrl'] = $this->load('trademark')->getImg($v['pic']);
-                $sale = $this->load('sale')->getSaleInfo($v['pic'],array('tid','salePrice','class','hits'));
+                $sale = $this->load('sale')->getSaleInfo($v['pic'],array('tid','salePrice','class','price','priceType','isOffprice','hits'));
                 $_class = current( explode(',', $sale['class']) );
                 $items[$k]['viewUrl']   = '/d-'.$sale['tid'].'-'.$_class.'.html';
                 $items[$k]['salePrice'] = $sale['salePrice'];
                 $items[$k]['hits']      = $sale['hits'];
+                $items[$k]['info']      = $sale;
             }
             
         }
