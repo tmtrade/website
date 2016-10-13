@@ -335,7 +335,7 @@
 
     <div class="ms-recommend">
 
-	<h3>特价商标推荐</h3>
+	<h3>推荐商品</h3>
         <ul>
             <? if(!empty($ad_list['seach_list'])): ?>
             <?foreach ($ad_list['seach_list'] as $k => $v) {?>
@@ -348,11 +348,13 @@
             </li>
             <?}?>
             <? else: ?>
-            <?foreach ($offpriceList as $k => $v) {
-            $_c_    = explode(',', $v['class']);
-            $_class = current($_c_);?>
+            <?foreach ($channel['adList'] as $k => $v) {?>
             <li>
-                <span><img src="<?=$v['imgUrl']?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/></span>
+                <span>
+                <a href="<?=$v['link']?>" target="_blank" webid="5" addmsg="01-查看详情" module="筛选页推荐商品-<?=$k+1?>">
+                    <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=($v['alt']?$v['alt']:$v['desc'])?>"/>
+                </a>
+                </span>
 
             </li>
             <?}?>

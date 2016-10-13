@@ -87,8 +87,8 @@ class SearchAction extends AppAction
         $this->set('listTopic', $listTopic);
         
         //频道设置
-//        $channel = $this->load('search')->getChannel($this->mod);
-//        $this->set('channel', $channel);
+        $channel = $this->load('search')->getChannel($this->mod);
+        $this->set('channel', $channel);
 
         $isData = 2;//默认没数据
         //保存搜索历史，方便搜索框处理
@@ -126,11 +126,6 @@ class SearchAction extends AppAction
             $this->set('description', $seoList['description']);
         }
         
-
-        //特价推荐
-        $_arr   = array('isOffprice'=>'1');
-        $list   = $this->load('search')->getSaleList($_arr, 1, 8);
-        $this->set('offpriceList', $list['rows']);
 
         $this->set('_CLASS', $_class);//分类
         $this->set('_GROUP', $_group);//群组
