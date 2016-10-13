@@ -390,7 +390,12 @@
     margin-bottom: 6px;
 	}
 .ms-filtersListTxt p{
+    width: 169px;
+    height: 18px;
     color: #999999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .ms-filtersListTxt em{
     font-style: normal;

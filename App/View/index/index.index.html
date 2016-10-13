@@ -393,9 +393,10 @@
                 <div class="cate-list">
                     <? foreach($module['link'] as $k=>$link): ?>
                     <p>
-                        <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第01条" module='楼层第<?=($tk+1)?>层'><span>></span><?=$link[0]['title']?></a>
+                        <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第01条" module='楼层第<?=($tk+1)?>层'>
+                            ><span><?=$link[0]['title']?></span></a>
                         <?if(isset($link[1])):?>
-                        <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第02条" module='楼层第<?=($tk+1)?>层'><span>></span><?=$link[1]['title']?></a>
+                        <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第02条" module='楼层第<?=($tk+1)?>层'>><span><?=$link[1]['title']?></span></a>
                         <?endif;?>
                     </p>
                     <? endforeach; ?>
@@ -418,7 +419,7 @@
                                         <img src="/Static/images/idx01.gif" _original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"  alt="<?=$item['alt']?>">
                                         <?}?>
                                     </span>
-                                    <p><b><?=$item['thum_name']?></b> <?=$item['classStr']?></p>
+                                    <p><label><?=$item['thum_name']?></label><?=$item['classStr']?></p>
                                 </div>
 
                                 <div class="brand-buy">
@@ -735,7 +736,7 @@
     //banner焦点图
     jQuery(".mj-bannerIimg").slide({titCell: ".hd ul li", mainCell: ".bd ul", prevCell: ".sprev", nextCell: ".snext", autoPlay: true});
     //活动推荐点击切换
-    jQuery(".yzc-Activities").slide({titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 5, easing: "easeOutCirc"});
+    //jQuery(".yzc-Activities").slide({titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 5, easing: "easeOutCirc"});
     //商标分类选项卡
     jQuery(".yzc-Brand").slide({effect: "fold", switchLoad: "_original"});
     //类别展示选项卡和焦点图

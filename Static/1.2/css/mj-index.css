@@ -527,6 +527,7 @@
 }
 
 .yzc-Activities{
+    height: 119px;
     overflow:hidden;
     zoom:1;
     position: relative;
@@ -579,14 +580,11 @@
 }
 
 .yzc-Activities ul li{
-    width: 234px;
-    /* height: 140px; */
+    width: 235px;
     overflow:hidden;
     float: left;
-    margin-left:2px;
     position: relative;
     display: table-cell;
-
     vertical-align: middle;
     background:#FFF;
     cursor: pointer;
@@ -594,7 +592,7 @@
 
 .yzc-Activities ul li div.fl{
     max-width: 120px;
-    margin-left:18px;
+    margin-left:10px;
     margin-top:10px;
     text-align: left;
 }
@@ -629,14 +627,13 @@
     -webkit-transition: all .4s;
 }
 .yzc-Activities ul li span{
-    width:120px;
-    height:101px;
+    width:105px;
+    height:97px;
     position: relative;
-    margin-right:0px;
 }
 .yzc-Activities ul li span img{
-    max-width:120px;
-    max-height:98px;
+    max-width:105px;
+    max-height:97px;
     z-index: 1;
     vertical-align: middle;
     position: absolute;
@@ -1188,7 +1185,7 @@
 
 .cate-list{
     width: 300px;
-    height: 120px;
+    height: 100px;
     position: absolute;
     bottom:0px;
     left: 0px;
@@ -1200,7 +1197,7 @@
     margin-top:5px;
 }
 .cate-list p span{
-    margin-right: 5px;
+    margin-left: 5px;
 }
 .cate-list p a.fl{
     text-indent: 55px;
@@ -1216,7 +1213,8 @@
     color: #ffffff;
     /* margin-left: 15px; */
 }
-.cate-list a:hover{
+
+.cate-list a:hover span{
     text-decoration:underline;
 }
 .yzc-categorbrand{
@@ -1265,13 +1263,12 @@
 .yzc-categorbrand li div p{
     margin-top: 15px;
     text-align: center;
-    color: #999999;
+    color: #666666;
 }
 
-.yzc-categorbrand li div p b{
-    color: #333333;
+.yzc-categorbrand li div p label{
     margin-right:6px;
-    font-family:"Arial";
+
 }
 .yzc-categorbrand li div.brand-buy {
     display: none;
@@ -1301,7 +1298,7 @@
     min-width: 98px;
     width/***/: 98px\9;
     height: 20px;
-    line-height: 19px;
+    line-height:20px;
     text-indent: 20px;
     padding-right: 5px;
     background: url(../images/tj-hot-bg.png) no-repeat top center;
@@ -1437,13 +1434,13 @@
     color:#666666;
     font-size: 16px;
 }
-.buy-se-rg li:hover{
-    border: 3px solid #db4343;
-    width: 203px;
-    height: 74px;
-    margin-top: -1px;
-    margin-left: -1px;
-}
+/*.buy-se-rg li:hover{*/
+    /*border: 3px solid #db4343;*/
+    /*width: 203px;*/
+    /*height: 74px;*/
+    /*margin-top: -1px;*/
+    /*margin-left: -1px;*/
+/*}*/
 .buy-se-rg li:hover b{
     color: #ff5656;
 }
@@ -1699,6 +1696,7 @@
 }
 .brand-ques  a:hover{
     color: #ff6666;
+    text-decoration: underline;
 }
 .brand-ques .btm p label{
     color: #999999;
@@ -1790,6 +1788,9 @@
 }
 .yzc-tool ul li:hover div i{
     background: url("../images/lc-spot-2.png") no-repeat top center;
+}
+.yzc-tool ul li:hover b{
+    text-decoration: underline;
 }
 .tool-pic1{
     background: url("../images/lc-ico1.png") no-repeat top center;

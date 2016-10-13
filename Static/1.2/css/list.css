@@ -298,12 +298,12 @@ body{ background:#ffffff !important;}
     margin-right:7px;
 }
 .fl-details-tit {
-    font-size: 14px;
+    font-size: 13px;
     margin-top: -20px;
     margin-bottom: 20px;
 }
 .fl-details-tit a{
-    font-size: 13px;
+    font-size: 14px;
     color: #666666;
 }
 .brand-details div.w1180{
@@ -369,7 +369,7 @@ body{ background:#ffffff !important;}
     font-size:12px;
     position:absolute;
     bottom:15px;
-    left: 31%;
+    left:37%;
 
 }
 .brand-details div.fl-details .brde-pic p{
@@ -444,6 +444,7 @@ body{ background:#ffffff !important;}
     display: inline-block;
     color: #ff6666;
     margin-top:6px;
+    width: 635px;
 }
 
 .brand-details div.fr-details p.may{
@@ -1018,10 +1019,10 @@ body{ background:#ffffff !important;}
 .trans-jytx li .cover{
     position: absolute;
     text-align: center;
-    margin-top: -5px;
+    margin-top:12px;
     min-width: 150px;
     display: none;
-    left: -9px;
+    left: -12px;
 }
 .trans-jytx li .cover p{
     display: inline-block;
@@ -2049,8 +2050,11 @@ body{ background:#ffffff !important;}
 }
 .mj-cTr_center li  font{
     display: inline-block;
-    max-width: 645px;
+    max-width: 630px;
     margin-left: 20px;
+    max-height: 120px;
+    overflow: auto;
+    line-height: 24px;
 }
 .mj-cTr_center{
     padding-top: 5px;

@@ -116,8 +116,8 @@ table {
 }
 
 .pulse:hover{
-    -webkit-animation: pulse 1s infinite;
-    animation: pulse  1s infinite;
+    /*-webkit-animation: pulse 1s infinite;*/
+    /*animation: pulse  1s infinite;*/
 }
 
 .mj-header_left{}
@@ -1039,6 +1039,7 @@ table {
     color: #fff;
 
     font-size: 18px;
+    font-family: "微软雅黑";
 
 }
 
@@ -1078,7 +1079,7 @@ table {
 
     /*border-left: 1px solid #404040;*/
 
-    text-indent: 15px;
+    text-indent: 13px;
 
     color: #fff;
 
@@ -1278,7 +1279,7 @@ table {
 .mj-navitems p a{
     display: inline-block;
     font-size: 17px;
-    color:#666666 !important;
+    color:#666666;
     margin-left:40px;
     font-family: "微软雅黑";
     position: relative;

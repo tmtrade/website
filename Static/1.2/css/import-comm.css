@@ -30,6 +30,9 @@ a {outline: none;}
 a:active {outline: none;star:expression(this.onFocus=this.blur());}
 :focus{outline:0}
 /*清除浮动*/
+.hot-red{
+    color: #ff5656!important;
+}
 .f-clearfix:after {
     clear: both;
     display: block;
