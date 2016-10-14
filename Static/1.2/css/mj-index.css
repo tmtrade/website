@@ -538,7 +538,8 @@
     float:left;
     overflow:hidden;
     padding-right: 1px;
-    margin-top: 18px;
+    padding-top: 22px;
+    height: 120px;
 }
 .yzc-Activities:hover .og_prev{
     opacity:1;
@@ -551,9 +552,7 @@
     zoom:1;
     /*margin-left:-5px;*/
 }
-.yzc-Activities .bd ul{
-    overflow: hidden;
-}
+
 .yzc-Activities .og_prev,.og_next{
     width: 26px;
     height: 63px;
@@ -581,7 +580,6 @@
 
 .yzc-Activities ul li{
     width: 235px;
-    overflow:hidden;
     float: left;
     position: relative;
     display: table-cell;
@@ -1846,10 +1844,10 @@
     font-size: 16px;
     display: inline-block;
     height: 42px;
-    line-height: 40px;
+    line-height: 44px;
     text-align: center;
     text-indent: 25px;
-
+    font-family: "微软雅黑";
 }
 
 .take1{

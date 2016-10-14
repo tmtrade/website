@@ -721,6 +721,7 @@
 <? require(ViewDir.'/sidebar.html'); ?>
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
 <script type="text/javascript">
+
     //全部分类展示与收起
     $(".yzc-Brand").hover(function(){
         $(".brand-fl").css({"height":"auto"});
@@ -735,6 +736,7 @@
     jQuery(".mj-newjy").slide({mainCell: ".bd ul", autoPlay: true, effect: "topMarquee", vis: 3, interTime: 50, trigger: "click"});
     //banner焦点图
     jQuery(".mj-bannerIimg").slide({titCell: ".hd ul li", mainCell: ".bd ul", prevCell: ".sprev", nextCell: ".snext", autoPlay: true});
+
     //活动推荐点击切换
     //jQuery(".yzc-Activities").slide({titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 5, easing: "easeOutCirc"});
     //商标分类选项卡
@@ -813,6 +815,12 @@
                     $(this).addClass("on");
                 })
             })
+    //banner焦点图等于1张的时候 不显示点
+    $(document).ready(function(){
+        if($(".mj-banner-img .mj-banner-itme").length<=1){
+            $(".mj-bannerIimg .hd").css({"display":"none"})
+        }
+    })
     //添加查看详情标签；
 //            $(document).ready(function() {
 //                $('.yzc-categorbrand li div ').on('mouseover', 'span',
