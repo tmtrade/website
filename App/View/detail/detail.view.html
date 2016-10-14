@@ -176,7 +176,7 @@
             <div class="mj-cTr-btm f-clearfix">
                 <? if($price_module['show']): ?>
                 <p class="mj-cTr-tp f-clearfix f-hidden">
-                    <? if($price_module['price']): ?>价格<label>￥<b><?=$price_module['price']?></b></label>元<? endif; ?>
+                    <? if($price_module['price']): ?>价格<label>￥<b><?=$price_module['price']?></b></label><? if($price_module['key']!=3): ?>元<? endif;endif; ?>
                     <? if($price_module['key']==1): ?>
                     <span>原价：<s>￥<?=$sale['price']?></s></span>
                     <? endif; ?>
