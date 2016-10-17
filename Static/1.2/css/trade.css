@@ -1,6 +1,7 @@
 body,html{
     background-color:#ffffff !important;
     color: #666666;
+
 }
 .td-header{
     width: 100%;
@@ -287,6 +288,9 @@ body,html{
     height:312px;
     width:100% !important;
     z-index: 1;
+}
+.sel-banner-img img{
+    max-width: 100%;
 }
 
 .sel-banner-img .sel-banner-itme{
