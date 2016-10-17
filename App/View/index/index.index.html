@@ -726,6 +726,9 @@
     $(".yzc-Brand").hover(function(){
         $(".brand-fl").css({"height":"auto"});
         $(".all-clas").html('收起<i class="fa fa-angle-up"></i>');
+        $(".all-clas").click(function(){
+            $(".brand-fl").css({"height":"114px"});
+        })
     },function(){
         $(".brand-fl").css({"height":"114px"});
         $(".all-clas").html('全部分类<i class="fa fa-angle-down"></i>');
@@ -761,7 +764,7 @@
             var ofls1=$("#flr1");
             var ofls2=$("#flr2");
             var ofls3=$("#flr3");
-            var oafls=[ofls1,farrs[0],farrs[1],ofls2,ofls3]
+            var oafls=[ofls1,farrs[0],farrs[1],ofls3,ofls2]
             var cet_w = $("#cloth").offset().left;
             var oflr = $("#float-floor");
             var sbzs = $(".sbzs>div");
@@ -800,18 +803,26 @@
                 else {
                     oflr.hide();
                 }
-                for(var i=0;i<oflis.length;i++){
-                    if(w_top > $(oafls[i]).offset().top-600 && w_top < $(oafls[i+1]).offset().top+600){
+                for(var i=0;i<4;i++){
+                    if(w_top > $(oafls[i]).offset().top-400 && w_top < $(oafls[i+1]).offset().top+200){
                         $("#float-floor li").removeClass("on");
                         $(oflis[i]).addClass("on");
-//                        console.log($(oafls[4]).offset().top)
+
                     }
+                }
+                if(w_top > $(oafls[2]).offset().top-200 && w_top < $(".brand-ques").offset().top-400){
+                    $("#float-floor li").removeClass("on");
+                    $(oflis[4]).addClass("on");
+                }
+                if(w_top > $(".brand-ques").offset().top-400){
+                    $("#float-floor li").removeClass("on");
+                    $(oflis[3]).addClass("on");
                 }
             });
             $("#float-floor li").each(function(i) {
                 $(this).click(function() {
                     var t =  $(oafls[i]).offset().top;
-                    $("html, body").animate({"scrollTop": t-300});
+                    $("html, body").animate({"scrollTop": t-350});
                     $(this).addClass("on");
                 })
             })

@@ -1183,7 +1183,7 @@
 
 .cate-list{
     width: 300px;
-    height: 100px;
+    height:96px;
     position: absolute;
     bottom:0px;
     left: 0px;
@@ -1192,7 +1192,7 @@
 }
 .cate-list p{
     overflow: hidden;
-    margin-top:5px;
+    margin-top:3px;
 }
 .cate-list p span{
     margin-left: 5px;
@@ -1219,15 +1219,16 @@
     width:880px;
     background:#ffffff;
     border-right: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .yzc-categorbrand li{
-    width:219px;
+    width: 219px;
     height: 174px;
     float: left;
     position: relative;
     border-left: 1px solid #f0f0f0;
-    border-bottom:1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
     background: #ffffff;
 }
 .yzc-categorbrand li>a{
@@ -1506,7 +1507,7 @@
 .succeed-al-sy li img{
     opacity: 0.8;
     filter:Alpha(opacity=80);
-    max-width: 395px;
+    max-width: 393px;
     max-height: 204px;
 }
 .succeed-al-sy li:hover img{

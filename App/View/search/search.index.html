@@ -352,7 +352,7 @@
             <? else: ?>
             <?foreach ($channel['adList'] as $k => $v) {?>
             <li>
-               
+
                 <span>
                 <a href="<?=$v['link']?>" target="_blank" webid="5" addmsg="01-查看详情" module="筛选页推荐商品-<?=$k+1?>">
                     <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=($v['alt']?$v['alt']:$v['desc'])?>"/>

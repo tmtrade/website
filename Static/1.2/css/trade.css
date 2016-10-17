@@ -298,11 +298,8 @@ body,html{
     height:312px;
 }
 .sel-bannerIimg .hd {
-
-    /* width:100%;*/
-    width:1480px;
-    left: 195px;
-
+    width: 100%;
+    left:0px;
     position: absolute;
 
     bottom: 10px;
