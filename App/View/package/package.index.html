@@ -93,7 +93,7 @@
                         </p>
                     </div>
                     <div class="fr">
-                        <p class="pro" title="<?=$all['proName']?>"><img src="<?=StaticDir?>1.2/images/pel-ico.png">申请人：<?=mbSub($all['proName'],0,10)?><a href="javascript:;">咨询TA</a></p>
+                        <p class="pro" title="<?=$all['proName']?>"><img src="<?=StaticDir?>1.2/images/pel-ico.png">申请人：<?=mbSub($all['proName'],0,10)?><a href="javascript:;" onclick="goChat()" addmsg="咨询-咨询ta" module="咨询ta">咨询TA</a></p>
                         <p class="pel"><img src="<?=StaticDir?>1.2/images/tel.png">电话：<b><?=$all['viewPhone']?></b></p>
                         <p class="dial"><input class="fl" id="telInput2" value="" placeholder="输入手机号" type="text"><a href="javascript:;" id="l-button" onclick="createOrderByPhone()">打给我</a></p>
                     </div>
