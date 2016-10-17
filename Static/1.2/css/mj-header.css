@@ -614,11 +614,11 @@ table {
 /*添加下拉框*/
 .mj-pull-down{
     position: absolute;
-    width: 484px;
+    width: 434px;
     overflow: hidden;
     background: #faf9f9;
     left: 0px;
-    top: 76px;
+    top: 41px;
     padding-bottom:10px;
     box-shadow:1px 1px 1px rgba(0,0,0,0.2);
     display: none;
