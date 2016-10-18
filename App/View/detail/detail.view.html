@@ -184,7 +184,7 @@
                 </p>
                 <? endif; ?>
                 <p class="mj-cTr-ls f-clearfix f-hidden">
-                    <? if($price_module['key']==5): ?>
+                    <? if(in_array($price_module['key'],array(1,5))): ?>
                     <a target="_blank" href="<?=$pack['url']?>" class="opt_btn"><img src="<?=StaticDir?>1.2/images/shop-ico.png"><?=$price_module['button']?></a>
                     <? elseif($isLogin): ?>
                     <a href='javascript:;' webid="30" onclick="createOrder();" class="opt_btn"><img src="<?=StaticDir?>1.2/images/shop-ico.png"><?=$price_module['button']?></a>
