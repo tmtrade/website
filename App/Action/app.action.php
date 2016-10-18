@@ -86,6 +86,7 @@ abstract class AppAction extends Action
             $ad['seach_list']   = $this->load('ad')->getPagesList(3);
             $this->com('redisHtml')->set('ad_list', $ad, 3600);
         }
+        $ad['index_middle'] = array();//无滑动广告---此处屏蔽
         $this->set('ad_list',$ad);
         
         $this->set('_mod_', $this->mod);
