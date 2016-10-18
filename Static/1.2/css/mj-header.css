@@ -52,6 +52,9 @@ table {
 
 .detail-nav{
     padding: 3px 8px;
+    background-color: #000000;
+    filter:alpha(opacity=40);
+    -moz-opacity:0.4;
     background:rgba(0,0,0,0.4);
     color:#fff;
     font-size:12px;
@@ -465,13 +468,11 @@ table {
     padding-bottom: 40px;
 }
 .mj-search_con  span.Bran_note{
-    /* position: absolute; */
-    /* top: 49px; */
-    /* right:1px; */
+     position: absolute;
+     top: 45px;
+     right:1px;
     color: #424b5a;
     font-size: 12px;
-    float: right;
-    margin-top: -35px;
     text-decoration: underline;
 }
 /*.mj-search_con  span.Bran_note:hover{*/
@@ -505,7 +506,7 @@ table {
 }
 .mj-search_con p.tj-fl{
     overflow: hidden;
-    margin-top: 3px;
+    margin-top:5px;
     width: 370px;
     margin-left: -8px;
 }
@@ -1112,9 +1113,11 @@ table {
 /*}*/
 
 .mj-dd dd.mj-ddahoverc a span{
-
+    display: inline-block;
+    height: 33px;
+    line-height: 33px;
+    text-indent: 0px !important;
     color: #333;
-
 }
 
 

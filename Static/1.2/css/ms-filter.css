@@ -149,8 +149,9 @@
 }
 .ms-condition-btn > span{
     width: 70px;
-    background:url("../images/gry-btn.png") no-repeat top center;
-    background-size: 100% 100%;
+    background:url("http://yizhichan.com/Static/1.2/images/gry-btn.png") no-repeat top center;
+    background-size:100% 100%;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://yizhichan.com/Static/1.2/images/gry-btn.png',  sizingMethod='scale');
 }
 .ms-conditionBtn span:hover{
     border: 1px solid #FF5656;

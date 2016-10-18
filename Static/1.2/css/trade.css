@@ -104,7 +104,9 @@ body,html{
     min-height: 265px;
     overflow: hidden;
     background:url("../images/brand-pic-bg.jpg") no-repeat top center;
-    background-size: 100% 100%;
+    background-size: cover;
+    -ms-behavior: url(../css/backgroundsize.min.htc);
+    behavior: url(../css/backgroundsize.min.htc);
 }
 .pack-brand-pic ul li .bd-show{
     width: 210px;
@@ -142,9 +144,16 @@ body,html{
 }
 
 
-.pk-slideBox{ width:100%;overflow: hidden;
-    position:relative; background: url("../images/brand-pic-bg.jpg") no-repeat center top;  background-size:100% 100%; -ms-behavior: url(../css/backgroundsize.min.htc);
-    behavior: url(../css/backgroundsize.min.htc); }
+.pk-slideBox{
+    width:100%;
+    overflow: hidden;
+    position:relative;
+    background: url("http://yizhichan.com/Static/1.2/images/brand-pic-bg.jpg") no-repeat center top;
+    background-size:100% 100%;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+        src='http://yizhichan.com/Static/1.2/images/brand-pic-bg.jpg',
+        sizingMethod='scale')
+}
 .pk-slideBox .hd{ overflow:hidden;width: 222px; height:30px; padding:0 10px;position: absolute;left: 50%;margin-left: -111px; bottom:20px;text-align: center;  }
 .pk-slideBox .hd ul{ overflow:hidden; zoom:1; margin-top:15px; zoom:1;margin-left: -10px;}
 .pk-slideBox .hd ul li{display:inline-block;width:15px; height:15px; overflow:hidden;margin-right:10px; text-indent:-999px; cursor:pointer; background:#a9a9a9; border-radius: 100%;-webkit-border-radius: 100%;}
