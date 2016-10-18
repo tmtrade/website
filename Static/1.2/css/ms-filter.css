@@ -248,6 +248,241 @@
     height: 30px;
     overflow: hidden;
 }
+/*专利*/
+
+.ms-filterResults-zl{
+    position: relative;
+    min-height: 25px;
+}
+.ms-filterResults-zl span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    line-height: 25px;
+    color: #666;
+    font-weight: bold;
+}
+.ms-filterResults-zl  em{
+    display: inline-block;
+    padding:4px 5px;
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    color: #999999;
+    font-size: 13px;
+    margin-left: 6px;
+}
+.ms-filterResults-zl  em i{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background: url("../images/Res-qx-ico.png") no-repeat top center;
+    vertical-align: middle;
+    margin-bottom: 2px;
+    margin-left: 4px;
+}
+.ms-filterResultsList-zl{
+    padding-left: 75px;
+}
+.ms-filterResultsList-zl li{
+    float: left;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 10px;
+    border: 1px solid #e3e3e3;
+    background: #ffffff;
+    margin: 0 10px 10px 0;
+}
+.ms-filterResultsList-zl li a{
+    color: #666666;
+}
+.ms-filterResultsList-zl li:hover{
+    border: 1px solid #ff6d6d;
+}
+.ms-filterResultsList-zl li:hover a{
+    color: #ff6d6d;
+}
+.ms-condition-zl{
+    border: 1px solid #eaeaea;
+    margin-top: 5px;
+}
+.ms-conditionList-zl{
+    position: relative;
+    background: #ffffff;
+    min-height: 40px;
+}
+
+.ms-conditionList-zl > span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 1px;
+    line-height: 40px;
+    width: 100px;
+    text-align: center;
+    color: #999999;
+    background: #fafafa;
+}
+.ms-conditionList-main-zl{
+    padding: 10px 100px 0 84px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.ms-conditionList-main-zl li{
+    float: left;
+    padding: 0px 18px 10px;
+    height: 20px;
+    line-height: 20px;
+    width: auto;
+}
+.groupSty li{
+    width: 170px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cc_all2 li{
+    width: 120px;
+}
+.ms-conditionList-main-zl input[type="checkbox"]{
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.ms-advancedFilter-zl > ul > li > a,
+.ms-conditionList-main-zl label,
+.ms-conditionList-main-zl li a{
+    /*padding: 2px 5px;*/
+    color: #666666;
+}
+
+
+.ms-conditionList-main-zl label:hover,
+.ms-conditionList-main-zl li a:hover{
+    color: #ff5656;
+
+}
+
+.ms-condition-btn-zl{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.ms-condition-btn-zl > a,
+.ms-condition-btn-zl > span{
+    display: inline-block;
+    margin: 5px;
+    height: 20px;
+    width: 42px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    color: #666;
+    border: 1px solid #e3e3e3;
+}
+.ms-condition-btn-zl > a{
+    color: #fff;
+    background: #FF5656;
+    border: 1px solid #FF5656;
+}
+
+.ms-conditionBtn-zl span:hover{
+    border: 1px solid #FF5656;
+    /*color: #FF5656;*/
+}
+.ms-condition-btn-zl > a:hover{
+    background: #f25252;
+    border: 1px solid #f25252;
+}
+.ms-noBorder-zl{
+    border: 1px solid #eeeeee;
+    margin-bottom: 10px;
+    width: 99%;
+}
+.ms-advancedFilter-zl{
+    position: relative;
+    padding:6px 0 0 12px;
+}
+.ms-advancedFilter-zl ul li a:hover .us-icon24{
+    background-image: url("../images/us-icon3_cur.png");
+}
+.ms-advancedFilter-zl > ul > li{
+    float: left;
+}
+.ms-advancedFilter-zl > ul > li > a{
+    display: block;
+    padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    margin-left: 10px;
+}
+.ms-advancedFilter-zl .ms-conditionList-main-zl{
+    position: absolute;
+    top: 34px;
+    left: 0;
+    right: 0;
+    padding: 10px 100px 0 10px;
+    background: #ffffff;
+    z-index: 3;
+    border: 1px solid #ff6666;
+    display: none;
+}
+.ms-advancedFilter-zl > ul > li:hover > a{
+    border: 1px solid #ff6666;
+    border-bottom: 0 none;
+    background: #ffffff;
+    position: relative;
+    z-index: 4;
+}
+.ms-conditionList-main-zl.cur .ms-conditionCheckbox-zl,
+.ms-conditionList-main-zl.cur .ms-condition-btn-zl,
+.ms-advancedFilter-zl > ul > li:hover .ms-conditionList-main-zl{
+    display: block;
+}
+.ms-conditionList-main-zl.cur .ms-conditionRadio-zl,
+.ms-conditionList-main-zl.cur .ms-multi-zl,
+.ms-condition-btn-zl,
+.ms-conditionCheckbox-zl{
+    display: none;
+}
+.ms-conditionBtn-zl{
+    position: absolute;
+    top: 10px;
+    right: 8px;
+}
+.ms-conditionBtn-zl span{
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 8px;
+    color: #666666;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid #e3e3e3;
+}
+.ms-conditionBtn-zl .ms-conditionMore-zl{
+    padding: 3px 17px 3px 6px;
+    background: url(../images/us-icon3.png) 34px center no-repeat;
+}
+.ms-conditionBtn-zl .ms-conditionMore-zl.cur{
+    display: inline-block;
+    background: url(../images/us-icon3.png) 34px center no-repeat;
+    background-color: #ffffff;
+    color: #666666;
+    padding:   3px 17px 3px 6px;
+    border: 1px solid #eeeeee;
+}
+.ms-conditionBtn-zl .ms-conditionMore-zl,
+.ms-conditionBtn-zl .ms-conditionMore-zl:hover{
+    /*border: 0 none;*/
+}
+.ms-setHeight-zl{
+    height: 30px;
+    overflow: hidden;
+}
+.ms-filterSearchMain p span {
+    color: #ff5656;
+}
 
 
 /* ms-filterSearch */

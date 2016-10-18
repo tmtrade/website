@@ -625,6 +625,7 @@
     -webkit-transition: all .4s;
 }
 .yzc-Activities ul li span{
+    display: block;
     width:105px;
     height:97px;
     position: relative;
@@ -635,11 +636,11 @@
     z-index: 1;
     vertical-align: middle;
     position: absolute;
-    bottom:0px;
-    right: 0px;
+    bottom:-13px;
+    left: 0px;
 }
 .yzc-Activities ul li:hover span img{
-    bottom:10px;
+    bottom:0px;
     transition: all .4s;
     -webkit-transition: all .4s;
     -webkit-animation-name: bounce;

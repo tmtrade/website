@@ -697,16 +697,6 @@
             </label>
         </a>
     </li>
-
-    <li>
-        <a>
-            <span class="flr-pic4"></span>
-            <label>
-                知产<br/>
-                工具
-            </label>
-        </a>
-    </li>
     <li>
         <a>
             <span class="flr-pic5"></span>
@@ -716,6 +706,16 @@
             </label>
         </a>
     </li>
+    <li>
+        <a>
+            <span class="flr-pic4"></span>
+            <label>
+                知产<br/>
+                工具
+            </label>
+        </a>
+    </li>
+
 </ul>
 <!--漂浮楼层end-->
 <? require(ViewDir.'/sidebar.html'); ?>
@@ -764,7 +764,7 @@
             var ofls1=$("#flr1");
             var ofls2=$("#flr2");
             var ofls3=$("#flr3");
-            var oafls=[ofls1,farrs[0],farrs[1],ofls3,ofls2]
+            var oafls=[ofls1,farrs[0],farrs[1],ofls2,ofls3]
             var cet_w = $("#cloth").offset().left;
             var oflr = $("#float-floor");
             var sbzs = $(".sbzs>div");
@@ -812,11 +812,11 @@
                 }
                 if(w_top > $(oafls[2]).offset().top-200 && w_top < $(".brand-ques").offset().top-400){
                     $("#float-floor li").removeClass("on");
-                    $(oflis[4]).addClass("on");
+                    $(oflis[3]).addClass("on");
                 }
                 if(w_top > $(".brand-ques").offset().top-400){
                     $("#float-floor li").removeClass("on");
-                    $(oflis[3]).addClass("on");
+                    $(oflis[4]).addClass("on");
                 }
             });
             $("#float-floor li").each(function(i) {

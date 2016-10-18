@@ -2,14 +2,19 @@
 <link type="text/css" href="<?=StaticDir?>1.2/css/list.css?v=<?=$static_version?>" rel="stylesheet"/>
 <link type="text/css" href="<?=StaticDir?>1.2/css/ms-filter.css?v=<?=$static_version?>" rel="stylesheet"/>
 <link type="text/css" href="<?=StaticDir?>1.2/css/patent.css?v=<?=$static_version?>" rel="stylesheet"/>
+<style type="text/css">
+    body,html{
+        background-color:#f5f5f5 !important;
+    }
+</style>
 <div class="w1180 ms-filterWrapper f-clearfix">
 <!-- ms-filterMain start -->
 <div class="ms-filterMain f-clearfix" style="width: 903px;">
 <!-- ms-filters start -->
 <div class="ms-filters f-clearfix">
-    <div class="ms-filterResults">
+    <div class="ms-filterResults-zl">
         <span>全部结果&nbsp;&gt;</span>
-        <ul class="ms-filterResultsList f-clearfix">
+        <ul class="ms-filterResultsList-zl f-clearfix">
             <? if ( isset($kw_title) ) { ?>
             <li title="<?=$kw_title?>"><a href="javascript:void(0);" onclick="createUrl('_kw', '','');"><?=mb_substr($kw_title,0,12,'utf-8')?><i class="us-icon us-icon23"></i></a></li>
             <? } ?>
@@ -21,28 +26,28 @@
             <? } ?>
         </ul>
     </div>
-    <div class="ms-condition">
+    <div class="ms-condition-zl">
         <?if ( empty($t) ){?>
-        <div class="ms-conditionList">
+        <div class="ms-conditionList-zl">
             <span>专利类型</span>
-            <div class="ms-conditionList-main ms-setHeight">
-                <ul class="f-clearfix ms-conditionRadio">
+            <div class="ms-conditionList-main-zl ms-setHeight-zl">
+                <ul class="f-clearfix ms-conditionRadio-zl">
                     <li><a href="javascript:void(0);" webid="1" addmsg="全部专利类型" module="专利类型" onclick="createUrl('_type','0');return false;">全部</a></li>
                     <?foreach ($_TYPE as $k => $v) {?>
                     <li><a href="javascript:void(0);" webid="1" addmsg="<?=$v?>" module="专利类型" onclick="createUrl('_type','<?=$k?>');return false;"><?=$v?></a></li>
                     <?}?>            
                 </ul>
-                <ul class="f-clearfix ms-conditionCheckbox cc_all2">
+                <ul class="f-clearfix ms-conditionCheckbox-zl cc_all2">
                     <?foreach ($_TYPE as $k => $v) {?>
                     <li><input type="checkbox" value="<?=$k?>" id="class-checkbox<?=$k?>" name="class-checkbox<?=$k?>">
                         <label for="class-checkbox<?=$k?>"><?=$v?></label></li>
                     <?}?>
                 </ul>
-                <div class="ms-condition-btn">
+                <div class="ms-condition-btn-zl">
                     <a href="javascript:void(0);" webid="1" tname="_type">确定</a>
                     <span onclick="cancelFun(this);">取消</span>
                 </div>
-                <div class="ms-conditionBtn">
+                <div class="ms-conditionBtn-zl">
                     <span class="ms-multi" onclick="multi(this);">多选</span>
                 </div>
             </div>
@@ -50,26 +55,26 @@
         <?}?>
         <?$_tp = array_filter(array_unique(explode(',', $t)));
         if ( count($_tp) == 1 && empty($c) ){?>
-        <div class="ms-conditionList">
+        <div class="ms-conditionList-zl">
             <span>类型分类</span>
-            <div class="ms-conditionList-main">
-                <ul class="f-clearfix ms-conditionRadio">
+            <div class="ms-conditionList-main-zl">
+                <ul class="f-clearfix ms-conditionRadio-zl">
                     <li><a href="javascript:void(0);" webid="2" addmsg="全部类型分类" module="专利类型分类" onclick="createUrl('_class','0');return false;">全部</a></li>
                     <?foreach ($_CLASS as $k => $v) {?>
                     <li title="<?=$v?>"><a href="javascript:void(0);"  webid="2" addmsg="<?=$v?>" module="专利类型分类" onclick="createUrl('_class','<?=$k?>');return false;"><?=mb_substr($v,0,8,'utf-8')?></a></li>
                     <?}?>            
                 </ul>
-                <ul class="f-clearfix ms-conditionCheckbox cc_all2">
+                <ul class="f-clearfix ms-conditionCheckbox-zl cc_all2">
                     <?foreach ($_CLASS as $k => $v) {?>
                     <li title="<?=$v?>"><input type="checkbox" value="<?=$k?>" id="class-checkbox<?=$k?>" name="class-checkbox<?=$k?>">
                         <label for="class-checkbox<?=$k?>"><?=mb_substr($v,0,8,'utf-8')?></label></li>
                     <?}?>
                 </ul>
-                <div class="ms-condition-btn">
+                <div class="ms-condition-btn-zl">
                     <a href="javascript:void(0);"  webid="2" tname="_class">确定</a>
                     <span onclick="cancelFun(this);">取消</span>
                 </div>
-                <div class="ms-conditionBtn">
+                <div class="ms-conditionBtn-zl">
                     <span class="ms-multi" onclick="multi(this);">多选</span>
                 </div>
             </div>
@@ -487,19 +492,19 @@
     }
     //初始化更多
     var minHeight = 40; //最小高度
-    var conditionDom = $('.ms-condition');
-    var conditionList = conditionDom.find('.ms-conditionList-main');
-    var setHeight = 'ms-setHeight';
+    var conditionDom = $('.ms-condition-zl');
+    var conditionList = conditionDom.find('.ms-conditionList-main-zl');
+    var setHeight = 'ms-setHeight-zl';
     var curCls = 'cur';
     function initMore(isTure){
         conditionList.each(function(){
             var $this = $(this);
             var conditionMore = '';
-            var conditionBtn = $this.find('.ms-conditionBtn');
+            var conditionBtn = $this.find('.ms-conditionBtn-zl');
             var conditionListHeight = $this.innerHeight();
             if(conditionListHeight > minHeight){
                 $this.addClass(setHeight);
-                isTure ? conditionMore = '<span class="ms-conditionMore" onclick="moreFun(this);">更多</span>' : true;
+                isTure ? conditionMore = '<span class="ms-conditionMore-zl" onclick="moreFun(this);">更多</span>' : true;
             }
             conditionBtn.append(conditionMore);
         });
@@ -512,7 +517,7 @@
         var parent = $this.parent().parent();
         parent.removeClass(setHeight).addClass(curCls);
         resetFun(parent);
-        if(moreDom.hasClass('ms-conditionMore')){
+        if(moreDom.hasClass('ms-conditionMore-zl')){
             moreDom.addClass(curCls).text('收起');
         }
     }
@@ -520,7 +525,7 @@
     function cancelFun(dom){
         var $this = $(dom);
         var parent = $this.parent().parent();
-        var moreDom = parent.find('.ms-conditionMore');
+        var moreDom = parent.find('.ms-conditionMore-zl');
         parent.removeClass(curCls);
         moreDom.removeClass(curCls).text('更多');
         initMore(false);
@@ -541,8 +546,8 @@
     }
     //重置
     function resetFun(dom){
-        dom.parent().siblings().find('.ms-conditionList-main').removeClass(curCls)
-                .find('.ms-conditionMore').removeClass(curCls).text('更多');
+        dom.parent().siblings().find('.ms-conditionList-main-zl').removeClass(curCls)
+                .find('.ms-conditionMore-zl').removeClass(curCls).text('更多');
     }
     // 帮我选弹窗
     var wHeight=$(document).height();
@@ -563,7 +568,7 @@
     function removeClass(){
         $("#choice-popup").removeClass('bounceIn animated infinite');
     }
-    $(".ms-condition-btn a").click(function(e){
+    $(".ms-condition-btn-zl a").click(function(e){
         var inputDom = $(this).parent().prev().find(':checked');
         var str = '';
         inputDom.each(function(){
