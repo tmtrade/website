@@ -315,11 +315,11 @@
 </div>
 <script src="<?=StaticDir?>script/objurl.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
-    jc('sear',2,2);//搜索框选中专利
     $(document).ready(function() {
         if($(".ms-conditionList-main").length<=1){
            $(".ms-conditionList-main").css({"border-bottom":"none"});
          }
+        $(".mj-search-nav p").click().hide();//搜索框选中专利
     });
     var usubmit = 0;
     $(function(){
