@@ -159,7 +159,7 @@
             <p>共有<i><?=$total?></i>个商标</p>
             <?if( empty($kw) ){?>
             <div class="ms-filterSearch">
-                <!--[if !IE]><!-->
+                <!--[if !IE]-->
                  <input type="text" id="research" placeholder="在结果中搜索" />
                 <!--<![endif]-->
                 <!--[if IE]>
@@ -619,6 +619,7 @@
     function reSearch()
     {
         var _s = $.trim( $("#research").val() );
+        alert(_s);
         if ( _s == '' ) return false;
         createUrl('_kw', _s, '1');
     }

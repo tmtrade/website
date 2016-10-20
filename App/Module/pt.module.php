@@ -120,9 +120,6 @@ class PtModule extends AppModule
      */
     public function getTips($data, $img=true)
     {
-        //$data['viewUrl'] = '/d-'.$data['tid'].'-'.$_class.'.html';
-        
-
         $ptType     = C('PATENT_TYPE');
         $ptOne      = C('PATENT_ClASS_ONE');
         $ptTwo      = C('PATENT_ClASS_TWO');
@@ -147,7 +144,34 @@ class PtModule extends AppModule
         return $data;
     }
 
-
+    /**
+     * 判断专利是否销售中
+     * @author dower
+     * @param $number
+     * @return bool
+     */
+    public function isSale($number){
+        $r['eq'] = array('number'=>$number);
+        $r['col'] = array('status');
+        $result = $this->import('pt')->find($r);
+        if($result && $result['status']==1){
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * 根据专利得到sale信息(分类第一个)
+     * @author dower
+     * @param $number
+     * @return mixed
+     */
+    public function getPatentInfoByNumber($number,$col = array('id', 'number', 'code', 'class', 'type', 'title', 'price')){
+        $r['eq'] = array('number'=>$number);
+        $r['col'] = $col;
+        $rst = $this->import('pt')->find($r);
+        return $rst;
+    }
 
 }
 ?>

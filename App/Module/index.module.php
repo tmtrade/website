@@ -144,12 +144,12 @@ class IndexModule extends AppModule
         $r = array();
         $r['eq']['moduleId'] = $moduleId;
         $r['limit'] = 100;
-        $r['col'] = array('id','name');
+        $r['col'] = array('id','name','type');
         $r['order'] = array('sort'=>'asc');
         $data = $this->import('moduleClass')->find($r);
         //得到分类的子分类列表
         foreach($data as &$item){
-            $item['items'] = $this->getModuleClassItems($item['id']);
+            $item['items'] = $this->getModuleClassItems($item['id'], $item['type']);
         }
         return $data;
     }
@@ -160,7 +160,7 @@ class IndexModule extends AppModule
      * @return array
      * @throws array
      */
-    private function getModuleClassItems($classId)
+    private function getModuleClassItems($classId, $type)
     {
         $r = array();
         $r['eq']['classId'] = $classId;
@@ -168,6 +168,18 @@ class IndexModule extends AppModule
         $r['order'] = array('sort'=>'asc');
         $r['col'] = array('id','name','number');
         $data = $this->import('moduleClassItems')->find($r);
+        if($type==1){ //商标
+            $datas= $this->getSaleInfo($data);
+        }
+        else if($type==2){//专利
+            $datas= $this->getPatentInfo($data);
+        }
+        
+        return $datas;
+    }
+    
+    //获取模块的商标信息
+    private function getSaleInfo($data){
         //添加额外信息
         foreach($data as $k=>&$item){
             //判断商品是否销售中
@@ -187,6 +199,34 @@ class IndexModule extends AppModule
             $aaa = $this->load('Sale')->getSaltTminfoByNumber($item['number']);
             $item['embellish'] = $aaa['embellish'];
             $item['alt'] = $aaa['alt1'];
+            //处理商标名
+            $item['thum_name'] = mbSub($item['name'],0,12);
+        }
+        return $data;
+    }
+    
+        //获取模块的商标信息
+    private function getPatentInfo($data){
+        //添加额外信息
+        foreach($data as $k=>&$item){
+            //判断商品是否销售中
+            $rst = $this->load('pt')->isSale($item['number']);
+            if(!$rst){
+                unset($data[$k]);
+                continue;
+            }
+            
+            $res = $this->load('pt')->getPatentInfoByNumber($item['number']);
+            $result = $this->load('pt')->getTips($res);
+            
+            $item['classStr'] = $result['typeName'];
+            $item['viewUrl'] = '/pt-'.$item['number'].'.html';
+            $item['tid'] = $item['number'];
+            $item['class'] = $res['class'];
+            $item['remarks'] = "专利号:".$item['number'].",专利名称:".$item['name'];
+            //得到商标包装图
+            $item['embellish'] = $result['imgUrl'];
+            $item['alt'] = $item['name'];
             //处理商标名
             $item['thum_name'] = mbSub($item['name'],0,12);
         }
