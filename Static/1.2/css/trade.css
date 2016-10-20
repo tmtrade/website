@@ -148,10 +148,10 @@ body,html{
     width:100%;
     overflow: hidden;
     position:relative;
-    background: url("http://yizhichan.com/Static/1.2/images/brand-pic-bg.jpg") no-repeat center top;
+    background: url("http://t.chofn.net/Static/1.2/images/brand-pic-bg.jpg") no-repeat center top;
     background-size:100% 100%;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
-        src='http://yizhichan.com/Static/1.2/images/brand-pic-bg.jpg',
+        src='http://t.chofn.net/Static/1.2/images/brand-pic-bg.jpg',
         sizingMethod='scale')
 }
 .pk-slideBox .hd{ overflow:hidden;width: 222px; height:30px; padding:0 10px;position: absolute;left: 50%;margin-left: -111px; bottom:20px;text-align: center;  }
