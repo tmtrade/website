@@ -221,6 +221,7 @@
             </div>
         </div>
         <div class="mj-bannerIimg">
+
             <div class="bd">
                 <ul class="mj-banner-img">
                     <?
@@ -229,7 +230,11 @@
                     $k = $k+1;
                     $url	 = TRADE_URL.'/'.substr($banner['pic'],1);
                     $_banner = $banner['link'] ? $banner['link'] : 'javascript:void(0);';
-                    $bannerStr .= "<li class='mj-banner-itme'><a href='{$_banner}' target='_blank' webid='1' addmsg='第{$k}条' module='大图广告'><img src='{$url}' alt='".$banner["alt"]."'></a></li>";
+                    $bannerStr .= "<li class='mj-banner-itme'>
+                    <a href='{$_banner}' target='_blank' webid='1' addmsg='第{$k}条' module='大图广告'>
+                        <div style='width:100%;height:400px;background:url({$url}) center center'></div>
+                    </a>
+                     </li>";
                     }
                     echo $bannerStr;
                     ?>
@@ -378,6 +383,11 @@
         <div class="f-clearfix">
             <div class="yzc-categorypic-show fl">
                 <div  class="slideBox">
+                    <div class="shd">
+                        <p class="f-clearfix">
+                            <a  class="on"></a><a class=""></a><a class=""></a>
+                        </p>
+                    </div>
                     <div class="sbd">
                         <ul>
                             <? foreach($module['pic'] as $k=>$pic): ?>
@@ -389,16 +399,14 @@
                     <a class="sprev" href="javascript:void(0)"></a>
                     <a class="snext" href="javascript:void(0)"></a>
                 </div>
-
-                <div class="cate-list">
+               <!--红色背景 cate-list-bg1 蓝色背景cate-list-bg2-->
+                <div class="cate-list  cate-list-bg1">
                     <? foreach($module['link'] as $k=>$link): ?>
-                    <p>
                         <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第01条" module='楼层第<?=($tk+1)?>层'>
                             ><span><?=$link[0]['title']?></span></a>
                         <?if(isset($link[1])):?>
                         <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第02条" module='楼层第<?=($tk+1)?>层'>><span><?=$link[1]['title']?></span></a>
                         <?endif;?>
-                    </p>
                     <? endforeach; ?>
                 </div>
             </div>
@@ -716,7 +724,6 @@
 <? require(ViewDir.'/sidebar.html'); ?>
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
 <script type="text/javascript">
-
     //全部分类展示与收起
     $(".yzc-Brand").hover(function(){
         $(".brand-fl").css({"height":"auto"});
@@ -741,7 +748,7 @@
     jQuery(".yzc-Brand").slide({effect: "fold", switchLoad: "_original"});
     //类别展示选项卡和焦点图
     /*jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"leftLoop",autoPlay:true});*/
-    jQuery(".slideBox").slide({mainCell: ".sbd ul", prevCell: ".sprev", nextCell: ".snext", effect: "fold", delayTime: "500", autoPlay: true});
+    jQuery(".slideBox").slide({titCell:".shd a",mainCell: ".sbd ul", prevCell: ".sprev", nextCell: ".snext", effect: "fold", delayTime: "500", autoPlay: true});
     //楼层
     jQuery(".yzc-category").slide({titCell: ".parHd li", mainCell: ".parBd", effect: "fold", pnLoop: false, switchLoad: "_original"});
     $(".slideBox").each(function() {

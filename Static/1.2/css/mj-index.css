@@ -28,7 +28,7 @@
 
     /* width:100%;*/
 
-    width: 680px;
+    width: 500px;
 
     left: 50%;
 
@@ -118,7 +118,8 @@
 
 .mj-banner-itme img{
 
-    width: 100%;
+    width:1903px;
+    height: 400px;
 
 }
 
@@ -134,7 +135,7 @@
     height:337px;
     z-index: 5;
     top: 10px;
-    right: 20px;
+    right:5px;
     padding: 21px 13px;
     background: #fff url("../images/mj-from-top.png") no-repeat top center;
     border-radius: 5px;
@@ -1156,11 +1157,12 @@
 }
 
 
+
 .slideBox{ width:300px; height:350px; text-align:center; line-height:300px; overflow:hidden; position:relative; background:#fff;}
-.slideBox .shd{ width:300px; text-align:center;height:15px; overflow:hidden; position:absolute;  right:5px; bottom:5px; z-index:999; }
-.slideBox .shd p{ overflow:hidden; zoom:1; float:left;  }
-.slideBox .shd p a{ float:left; margin-right:2px;  width:15px; height:15px; border-radius:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
-.slideBox .shd p a.on{ background:#f00; color:#fff; }
+.slideBox .shd{ width:300px; text-align:center;height:15px; overflow:hidden; position:absolute;  right:0px; bottom:115px; z-index:999; }
+.slideBox .shd p{ overflow:hidden; zoom:1;    width:300px; text-align:center;height:15px;}
+.slideBox .shd p a{ display:inline-block;margin-right:6px;  width:10px; height:10px; border-radius:15px; line-height:14px; text-align:center; background:#a6a6a6; cursor:pointer; }
+.slideBox .shd p a.on{ background:#bd3838;  }
 .slideBox .bd1{ position:relative; height:100%; z-index:0;   }
 .slideBox .bd1 li{ zoom:1; vertical-align:middle;}
 .slideBox .bd1 img{width:300px; height:350px;display:block;  }
@@ -1185,18 +1187,25 @@
 
 .cate-list{
     width: 300px;
-    height:96px;
+    height: 100px;
+    padding-top: 7px;
     position: absolute;
     bottom:0px;
     left: 0px;
     z-index: 99;
 
 }
+.cate-list-bg1{
+    background:url("../images/cate-bg1.png") repeat;
+}
+.cate-list-bg2{
+    background:url("../images/cate-bg2.png") repeat;
+}
 .cate-list p{
     overflow: hidden;
     margin-top:3px;
 }
-.cate-list p span{
+.cate-list a span{
     margin-left: 5px;
 }
 .cate-list p a.fl{
@@ -1208,9 +1217,16 @@
 }
 .cate-list a{
     display: inline-block;
-    width: 49%;
+    width: 33%;
+    height:31px;
+    line-height: 31px;
+    float: left;
     text-align: left;
+    text-indent: 25px;
     color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     /* margin-left: 15px; */
 }
 
@@ -1300,8 +1316,8 @@
     min-width: 98px;
     width/***/: 98px\9;
     height: 20px;
-    line-height:20px;
-    text-indent: 20px;
+    line-height:21px;
+    text-indent: 16px;
     padding-right: 5px;
     background: url(../images/tj-hot-bg.png) no-repeat top center;
     position: absolute;
