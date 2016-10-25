@@ -337,32 +337,16 @@
 
 	<h3>推荐商品</h3>
         <ul>
-            <? if(!empty($ad_list['seach_list'])): ?>
-            <?foreach ($ad_list['seach_list'] as $k => $v) {?>
-            <li>
-
-		    <span>
-			<a href="<?=$v['link']?>" target="_blank"  addmsg="推荐第<?=($k+1)?>条" webid="12" module="特价商标推荐">
-                <img src="<?=(TRADE_URL.$v['pic'])?>" width="166" height="124" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=$v['alt']?>"/>
-                <em></em>
-            </a>
-		    </span>
-            </li>
-            <?}?>
-            <? else: ?>
             <?foreach ($channel['adList'] as $k => $v) {?>
             <li>
-
                 <span>
                 <a href="<?=$v['link']?>" target="_blank" webid="5" addmsg="01-查看详情" module="筛选页推荐商品-<?=$k+1?>">
                     <img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=($v['alt']?$v['alt']:$v['desc'])?>"/>
                     <em></em>
                 </a>
                 </span>
-
             </li>
             <?}?>
-            <? endif;?>
         </ul>
 
     </div>
