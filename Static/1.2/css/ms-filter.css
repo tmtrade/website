@@ -511,6 +511,9 @@
 }
 .ms-filtersListTxt-oter p{
     color: #999999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .ms-filtersListTxt-oter em{
     font-style: normal;
