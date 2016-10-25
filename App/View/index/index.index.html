@@ -400,12 +400,12 @@
                     <a class="snext" href="javascript:void(0)"></a>
                 </div>
                <!--红色背景 cate-list-bg1 蓝色背景cate-list-bg2-->
-                <div class="cate-list  cate-list-bg1">
+                <div class="cate-list  <?=($tk==0)?'cate-list-bg1':'cate-list-bg2'?>">
                     <? foreach($module['link'] as $k=>$link): ?>
                         <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第01条" module='楼层第<?=($tk+1)?>层'>
-                            ><span><?=$link[0]['title']?></span></a>
+                            ><span title="<?=$link[0]['title']?>"><?=$link[0]['title']?></span></a>
                         <?if(isset($link[1])):?>
-                        <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第02条" module='楼层第<?=($tk+1)?>层'>><span><?=$link[1]['title']?></span></a>
+                        <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第02条" module='楼层第<?=($tk+1)?>层'>><span title="<?=$link[1]['title']?>"><?=$link[1]['title']?></span></a>
                         <?endif;?>
                     <? endforeach; ?>
                 </div>
