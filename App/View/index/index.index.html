@@ -385,7 +385,9 @@
                 <div  class="slideBox">
                     <div class="shd">
                         <p class="f-clearfix">
-                            <a  class="on"></a><a class=""></a><a class=""></a>
+                            <? for($lin_i=0,$maxlin=count($module['pic']);$lin_i<$maxlin;++$lin_i): ?>
+                            <a  class="<?=($lin_i==0)?'on':''?>">
+                            <? endfor; ?>
                         </p>
                     </div>
                     <div class="sbd">
