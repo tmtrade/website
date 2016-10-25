@@ -315,7 +315,7 @@ body{ background:#ffffff !important;}
 .brand-details div.fr-details{
     width:750px;
     position: relative;
-    margin-top: 12px;
+    margin-top:-5px;
 }
 .brand-details div.fl-details .brde-pic{
     height: 334px;
@@ -874,7 +874,7 @@ body{ background:#ffffff !important;}
 
 }
 .recompic{
-    margin-top: 12px;
+
     padding-bottom: 24px;
 }
 .recompic li{
@@ -990,8 +990,7 @@ body{ background:#ffffff !important;}
 
 }
 .trans-jytx li .trans-pic{
-    font-weight: 600;
-    font-family: "微软雅黑";
+    font-weight: bold;
 }
 .trans-jytx li span{
     display: block;
@@ -2040,7 +2039,8 @@ body{ background:#ffffff !important;}
 }
 .mj-cTr_center li {
     min-width: 590px;
-    padding: 5px 0px;
+    height: 20px;
+    margin-top: 5px;
     overflow:hidden;
     margin-left: -10px;
 }
@@ -2212,6 +2212,7 @@ body{ background:#ffffff !important;}
     color: #ffffff;
     font-size: 16px;
     margin-right: 10px;
+    font-weight: bold;
 }
 .mj-cTr-ls a img{
     vertical-align: middle;

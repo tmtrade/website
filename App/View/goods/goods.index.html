@@ -5,12 +5,12 @@
  <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
 <div class="w1180 ms-filterWrapper f-clearfix">
     <!-- ms-filterMain start -->
-    <div class="ms-filterMain">
+    <div class="ms-filterMain-oter">
         <!-- ms-filters end -->
-        <div class="ms-filters">
-            <div class="ms-filterResults">
+        <div class="ms-filters-oter f-clearfix">
+            <div class="ms-filterResults-oter">
                 <span>全部结果&nbsp;&gt;</span>
-                <ul class="ms-filterResultsList f-clearfix">
+                <ul class="ms-filterResultsList-oter f-clearfix">
                     <? if ( $baoTitle ) { ?>
                         <li title="<?=$baoTitle?>"><a href="javascript:void(0);"><?=mb_substr($baoTitle,0,40,'utf-8')?></a></li>
                     <? } ?>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <!-- ms-filtersList start -->
-        <div class="ms-filtersList">
+        <div class="ms-filtersList-oter">
             <ul class="f-clearfix" id="s-all-list">
     <?if ( !empty($list['rows']) ){?>
         <? foreach ($list['rows'] as $k => $v) {?>
@@ -100,7 +100,7 @@
             <button type="button" onclick="changeDD();"></button>
     </div>
     <!-- ms-filterMain end -->
-    <dl class="ms-recommend">
+    <dl class="ms-recommend-oter">
         <dt><span>特价商标推荐</span><img src="<?=StaticDir?>1.2/images/xstj.png" alt=""/></dt>
         <?foreach ($offpriceList as $k => $v) {
             $_c_    = explode(',', $v['class']);

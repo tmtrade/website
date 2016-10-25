@@ -215,7 +215,7 @@
 
     text-align: center;
     margin-top:3px;
-    margin-bottom: 14px;
+    margin-bottom:20px;
 
 }
 
@@ -588,12 +588,17 @@
     background:#FFF;
     cursor: pointer;
 }
-
+.yzc-Activities ul a{
+    display: inline-block;
+}
 .yzc-Activities ul li div.fl{
     max-width: 120px;
     margin-left:10px;
     margin-top:10px;
     text-align: left;
+}
+.yzc-Activities ul li div.fl  label{
+    color: #666666;
 }
 .yzc-Activities ul li div.fl  h4{
     color: #666666;
@@ -608,7 +613,7 @@
     -webkit-transition: all .4s;
 }
 
-.yzc-Activities ul li div.fl  a{
+.yzc-Activities ul li div.fl  a.ck{
     display: inline-block;
     width: 55px;
     height: 18px;
@@ -619,7 +624,7 @@
     margin-top:15px;
     text-align: center;
 }
-.yzc-Activities ul li:hover div.fl  a{
+.yzc-Activities ul li:hover div.fl   a.ck{
     color: #ffffff;
     background-color: #f4b4b4;
     transition: all .4s;

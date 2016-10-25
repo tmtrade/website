@@ -8,7 +8,6 @@
     position: relative;
     border: 1px solid #eeeeee;
     height: 48px;
-
     border-bottom: none;
 }
 .ms-filterResults span{
@@ -249,6 +248,188 @@
     height: 30px;
     overflow: hidden;
 }
+/**/
+.ms-filterMain-oter{
+    float: left;
+    width: 962px;
+}
+.ms-filterWrapper-oter{
+    padding-top: 15px;
+}
+.ms-filterResults-oter{
+    position: relative;
+    min-height: 25px;
+}
+.ms-filterResults-oter span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    line-height: 25px;
+    color: #666;
+    font-weight: bold;
+}
+.ms-filterResultsList-oter{
+    padding-left: 75px;
+}
+.ms-filterResultsList-oter li{
+    float: left;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 10px;
+    border: 1px solid #e3e3e3;
+    background: #ffffff;
+    margin: 0 10px 10px 0;
+}
+.ms-filterResultsList-oter li a{
+    color: #666666;
+}
+.ms-filterResultsList-oter li:hover{
+    border: 1px solid #ff6d6d;
+}
+.ms-filterResultsList-oter li:hover a{
+    color: #ff6d6d;
+}
+.ms-condition{
+    border: 1px solid #eaeaea;
+    margin-top: 5px;
+}
+.ms-conditionList-oter{
+    position: relative;
+    background: #ffffff;
+    min-height: 40px;
+}
+.ms-conditionList-oter > span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 1px;
+    line-height: 40px;
+    width: 100px;
+    text-align: center;
+    color: #999999;
+    background: #fafafa;
+}
+.ms-conditionList-main{
+    padding: 10px 100px 0 100px;
+    border-bottom: 1px dashed #e3e3e3;
+}
+.ms-noBorder .ms-conditionList-main{
+    border-bottom: 0 none;
+}
+.ms-conditionList-main li{
+    float: left;
+    /* padding: 0 15px 10px;*/
+    padding: 0px 8px 10px;
+    height: 20px;
+    line-height: 20px;
+    width: auto;
+}
+/* ms-recommend */
+.ms-recommend-oter{
+    float: right;
+    width: 166px;
+    padding: 0 20px;
+    border: 1px solid #eaeaea;
+    background: #ffffff;
+    overflow:hidden;
+    margin-top: 30px;
+}
+.ms-recommend-oter > dt{
+    position: relative;
+    margin-top: 20px;
+    height:10px;
+    border-top: 1px solid #e3e3e3;
+    background: #ffffff;
+}
+.ms-recommend-oter > dt > span{
+    position: absolute;
+    color: #666666;
+    top: -16px;
+    left: 50%;
+    margin-left: -25%;
+    height: 30px;
+    line-height: 30px;
+    background: #ffffff;
+    padding: 0 10px;
+}
+.ms-recommend-oter > dt > img{
+    position: absolute;
+    right: -18px;
+    top: -18px;
+}
+.ms-recommend-oter > dd{
+    border-bottom: 1px dashed #e3e3e3;
+    margin-bottom: -1px;
+    padding: 15px 0;
+    position: relative;
+
+}
+/*.ms-recommend a:hover .ms-filtersListTxt h6{
+	color:#ff6666;
+	}
+*/
+.ms-recommend-oter  dd:first-child{
+    border-top:none;
+}
+.ms-recommend-oter > dd .ms-filtersListTxt{
+    background: rgba(255,255,255,.9);
+    background: url("../images/imgBg.png") repeat\9;
+    position: absolute;
+    top:0px;
+    left: 0;
+    bottom: 15px;
+    right: 0;
+    display: none;
+    height: 96px;
+}
+.ms-recommend-oter > dd .ms-filtersListTxt div{
+    margin-top: 20px;
+}
+.ms-recommend-oter > dd:hover .ms-filtersListTxt{
+    display: block;
+}
+.ms-recommend-oter > dd .ms-filtersListTxt h6{
+    color: #333333;
+    font-size: 12px;
+    font-weight:normal;
+}
+.ms-recommend-oter> dd .ms-filtersListTxt h6 a{
+    color: #333333;
+    font-size: 12px;
+}
+.ms-recommend-oter > dd .ms-filtersListTxt h6 a:hover{
+    color: #ff6d6d;
+}
+.ms-recommend-oter > dd .ms-filtersListTxt > div,
+.ms-recommend-oter > dd > span{
+    display: table-cell;
+    *display: inline-block;
+    width: 166px;
+    height: 95px;
+    vertical-align: middle;
+    text-align: center;
+    *font-size: 74px;
+}
+.ms-recommend-oter > dd > span > img{
+    max-width: 166px;
+    max-height: 95px;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*专利*/
 
 .ms-filterResults-zl{
