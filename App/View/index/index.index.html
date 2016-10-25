@@ -422,12 +422,19 @@
                             <li>
                                 <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
                                 <div class="brand-show">
-                                    <span>
-                                        <?if ($_k == 0){?>
+                                    <?if($tk==0){?>
+                                        <span class="shangbiao">
+                                    <?}else{?>
+                                        <span class="zhuanli">
+                                    <?}?>
+                                    
+                                    <?if ($_k == 0){?>
                                         <img class="lazy pulse" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$item['alt']?>">
-                                        <?}else{?>
+                                    <?}else{?>
                                         <img src="/Static/images/idx01.gif" _original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"  alt="<?=$item['alt']?>">
-                                        <?}?>
+                                    <?}?>
+                                       
+                                        
                                     </span>
                                     <p><label><?=$item['thum_name']?></label><?=$item['classStr']?></p>
                                 </div>
