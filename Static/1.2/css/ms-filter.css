@@ -480,10 +480,10 @@
     vertical-align: middle;
 }
 .ms-filtersImg-oter a{
-    display:block;
-    width:162px;
-    height:130px;
-
+    display: table-cell;
+    width: 162px;
+    height: 130px;
+    vertical-align: middle;
 }
 
 .ms-filtersListTxt-oter{
