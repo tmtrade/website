@@ -323,6 +323,7 @@
     line-height: 20px;
     width: auto;
 }
+
 /* ms-recommend */
 .ms-recommend-oter{
     float: right;
@@ -452,6 +453,18 @@
     border: 1px solid #eaeaea;
     overflow: hidden;
 }
+.ms-filtersList-oter > ul > li:hover > div{
+    height: 275px;
+    border: 1px solid #ff5656;
+    z-index: 1;
+}
+.ms-filtersList-oter > ul > li:hover > div.ms-filterMany{
+    width: 302px;
+}
+.ms-filtersList-oter > ul > li:hover > div.ms-filterMany .ms-sortMain{
+    display: block;
+}
+
 .ms-filterCenter-oter{
     width: 162px;
     padding: 10px;
