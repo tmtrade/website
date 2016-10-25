@@ -82,7 +82,7 @@
     border-bottom: 1px solid #eeeeee;
 }
 .ms-noBorder .ms-conditionList-main{
-    border-bottom: 0 none;
+    /*border-bottom: 0 none;*/
 }
 .ms-conditionList-main li{
     float: left;
@@ -292,7 +292,7 @@
 }
 .ms-condition{
     border: 1px solid #eaeaea;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
 }
 .ms-conditionList-oter{
     position: relative;
@@ -314,9 +314,7 @@
     padding: 10px 100px 0 100px;
     border-bottom: 1px dashed #e3e3e3;
 }
-.ms-noBorder .ms-conditionList-main{
-    border-bottom: 0 none;
-}
+
 .ms-conditionList-main li{
     float: left;
     /* padding: 0 15px 10px;*/
@@ -417,10 +415,152 @@
     vertical-align: middle;
 }
 
+.ms-filtersList-oter{
+    padding-top: 10px;
+    margin-bottom:-25px;
+    padding-bottom: 45px;
+}
+/* ms-filterMain */
 
+.ms-filtersList-oter > ul{
+    width: 100%;
+    /*display: none;*/
+    padding-right:-10px;
+}
+.ms-filtersList-oter > ul > li{
+    position: relative;
+    float: left;
+    width: 182px;
+    height: 227px;
+    margin: 0 10px 10px 0;
 
+}
 
+.ms-filterCenter-oter:hover  .us-icon20{
+    background-image: url("../images/xin.png");
+}
+.ms-collect-oter.cur .us-icon20,
+.ms-collect-oter:hover .us-icon20{
+    background-image: url("../images/xin_cur.png");
+}
+.ms-filtersList-oter > ul > li > div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 182px;
+    height: 225px;
+    border: 1px solid #eaeaea;
+    overflow: hidden;
+}
+.ms-filterCenter-oter{
+    width: 162px;
+    padding: 10px;
+    background: #ffffff;
+    position: relative;
+}
 
+.ms-collect-oter{
+    position: absolute;
+    top: 0px;
+    right: 8px;
+}
+
+.ms-filtersImg-oter{
+    display: table-cell;
+    *display: inline-block;
+    width: 162px;
+    height: 130px;
+    text-align: center;
+    vertical-align: middle;
+    *font-size: 102px;
+}
+.ms-filtersImg-oter img{
+    max-height: 130px;
+    max-width: 162px;
+    vertical-align: middle;
+}
+.ms-filtersImg-oter a{
+    display:block;
+    width:162px;
+    height:130px;
+
+}
+
+.ms-filtersListTxt-oter{
+    text-align: center;
+    line-height: 18px;
+    margin-top: 15px;
+    height:55px;
+}
+.ms-filtersListTxt-oter h6{
+    font-size:13px;
+    -ms-font-size:13px;
+}
+.ms-filtersListTxt-oter p{
+    color: #999999;
+}
+.ms-filtersListTxt-oter em{
+    font-style: normal;
+    padding: 0 5px;
+    color: #ff6666;
+}
+.ms-filterBtn-oter{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.ms-filterBtn-oter a{
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    line-height: 30px;
+    width: 75px;
+    text-align: center;
+    margin: 0 2px;
+    color: #ffffff;
+    border-radius: 3px;
+}
+.ms-filterBtn-oter .ms-inquiry{
+    background: #ff8b3e;
+}
+.ms-filterBtn-oter .ms-inquiry:hover{
+    background: #f5843a;
+}
+.ms-filterBtn-oter .ms-seller{
+    background: #ff5656;
+}
+.ms-filterBtn-oter .ms-seller:hover{
+    background: #f74f4f;
+}
+.ms-sortMain-oter{
+    position: absolute;
+    top: 0;
+    right: -20px;
+    bottom: 0;
+    width: 110px;
+    padding: 10px 15px;
+    background: #f5f5f5;
+    display: none;
+}
+.ms-sortList-oter > li{
+    line-height: 20px;
+    color: #666;
+}
+.ms-sortList-oter > li > span{
+    color: #999;
+}
+.ms-sortMore-oter{
+    border-top: 1px solid #e3e3e3;
+    margin-top: 6px;
+    padding-top: 6px;
+    text-align: center;
+}
+.ms-sortMore-oter a{
+    color: #48aff1;
+}
+.ms-sortMore-oter a:hover{
+    text-decoration: underline;
+}
 
 
 
