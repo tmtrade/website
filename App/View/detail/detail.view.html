@@ -11,6 +11,8 @@
         <div class="fl fl-details">
             <? if($pack): ?>
             <p class="fl-details-tit"><a href="/offprice" target="_blank">特价商标</a> >打包出售</p>
+            <? else: ?>
+            <p class="fl-details-tit"><a href="/s-c-<?=$info['class'][0]?>/" target="_blank"><?=$info['label']?></a> >商标详情</p>
             <? endif; ?>
             <div class="brde-pic">
                 <div class="brde-pic-box">
