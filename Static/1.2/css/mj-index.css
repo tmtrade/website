@@ -1272,9 +1272,15 @@
 
 
 }
-.yzc-categorbrand li div span img{
-    max-width: 152px;
+.yzc-categorbrand li div span.shangbiao img{
+    max-width:152px;
     max-height: 104px;
+    margin:auto;
+    vertical-align:middle;
+}
+.yzc-categorbrand li div span.zhuanli img{
+    max-width:219px;
+    max-height: 126px;
     margin:auto;
     vertical-align:middle;
 }
