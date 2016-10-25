@@ -715,9 +715,9 @@ class SearchModule extends AppModule
         $items = $this->import('channelItems')->find($r);
         if(!empty($saleinfo)){
             foreach($items as $k=>$v){
-                $items[$k]['imgUrl'] = $this->load('trademark')->getImg($v['pic']);
-                $sale = $this->load('sale')->getSaleInfo($v['pic'],array('tid','salePrice','class','price','priceType','isOffprice','hits'));
+                $sale = $this->load('sale')->getSaleInfo($v['pic'],array('id','tid','salePrice','class','price','priceType','isOffprice','hits'));
                 $_class = current( explode(',', $sale['class']) );
+                $items[$k]['imgUrl']    = $this->load('internal')->getViewImg($sale['id']);
                 $items[$k]['viewUrl']   = '/d-'.$sale['tid'].'-'.$_class.'.html';
                 $items[$k]['salePrice'] = $sale['salePrice'];
                 $items[$k]['hits']      = $sale['hits'];
