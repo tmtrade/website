@@ -61,14 +61,14 @@ class DetailAction extends AppAction
 			$this->redirect('未找到页面6', '/index/error');
 		}
 		//得到商标的分类描述
+		$res = $this->load('search')->getClassInfo($info['class'][0]);
+		if(empty($res['label'])){
+			$info['label'] = $res['title'];
+		}else{
+			$info['label'] = $res['title'].': '.preg_replace('/,/','/',$res['label']);
+		}
+		$info['className'] = $res['name'];//分类名
 		if(count($info['class']==1)){
-			$res = $this->load('search')->getClassInfo($info['class'][0]);
-			if(empty($res['label'])){
-				$info['label'] = $res['title'];
-			}else{
-				$info['label'] = $res['title'].': '.preg_replace('/,/','/',$res['label']);
-			}
-			$info['className'] = $res['name'];//分类名
 			//处理商标名和分类描述的字符问题
 			$info['thum_name'] = mbSub($info['name'],0,10);//10字符
 			$info['thum_label'] = mbSub($info['label'],0,20);//20字符
