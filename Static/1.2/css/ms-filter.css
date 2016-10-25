@@ -248,7 +248,7 @@
     height: 30px;
     overflow: hidden;
 }
-/**/
+/*点击搜索框下面的出现的页面*/
 .ms-filterMain-oter{
     float: left;
     width: 962px;
@@ -292,7 +292,7 @@
 }
 .ms-condition{
     border: 1px solid #eaeaea;
-    /*margin-top: 5px;*/
+    margin-top: 5px;
 }
 .ms-conditionList-oter{
     position: relative;
