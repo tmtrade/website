@@ -588,8 +588,10 @@
     background:#FFF;
     cursor: pointer;
 }
-.yzc-Activities ul a{
-    display: inline-block;
+.yzc-Activities ul li a{
+    display: block;
+    width: 235px;
+    float: left;
 }
 .yzc-Activities ul li div.fl{
     max-width: 120px;
@@ -613,7 +615,7 @@
     -webkit-transition: all .4s;
 }
 
-.yzc-Activities ul li div.fl  a.ck{
+.yzc-Activities ul li div.fl  i.ck{
     display: inline-block;
     width: 55px;
     height: 18px;
@@ -623,8 +625,9 @@
     font-size: 12px;
     margin-top:15px;
     text-align: center;
+    font-style: normal;
 }
-.yzc-Activities ul li:hover div.fl   a.ck{
+.yzc-Activities ul li:hover div.fl   i.ck{
     color: #ffffff;
     background-color: #f4b4b4;
     transition: all .4s;
