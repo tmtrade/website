@@ -183,9 +183,13 @@
 
 }
 
+.ms-errorTips-buy{
+    margin: 10px 0;
+    position: absolute;
+    width: 317px;
+}
 
-
-.ms-errorTips p {
+.ms-errorTips-buy p {
 
     margin: -10px 0 0 0;
 
@@ -203,7 +207,7 @@
 
 }
 
-.ms-errorTips p em{
+.ms-errorTips-buy p em{
 
     font-style: normal;
 
