@@ -132,9 +132,9 @@
 .mj-from {
     position: absolute;
     width:317px;
-    height:337px;
+    height:330px;
     z-index: 5;
-    top: 10px;
+    top: 13px;
     right:5px;
     padding: 21px 13px;
     background: #fff url("../images/mj-from-top.png") no-repeat top center;
@@ -192,12 +192,14 @@
     padding: 0 30px;
 
     line-height: 28px;
+    text-align:center;
+    border: 1px solid #ffe4e4;
+    border-top: none;
 
-    border: 1px solid #ffddb2;
+    background: #ffefef;
 
-    background: #fff7e1;
-
-    color: #e80b05;
+    color: #ce0000;
+    border-radius: 0px 0px 5px 5px;
 
 }
 
@@ -215,7 +217,7 @@
 
     text-align: center;
     margin-top:3px;
-    margin-bottom:15px;
+    margin-bottom:22px;
 
 }
 
@@ -517,7 +519,8 @@
     color: #999;
 
     font-size: 12px;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 14px;
 
 }
 /*æ´»åŠ¨æ ‡é¢˜æŽ¨è*/
