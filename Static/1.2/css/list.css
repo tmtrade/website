@@ -315,7 +315,7 @@ body{ background:#ffffff !important;}
 .brand-details div.fr-details{
     width:750px;
     position: relative;
-    margin-top:-5px;
+    margin-top:14px;
 }
 .brand-details div.fl-details .brde-pic{
     height: 334px;
@@ -426,6 +426,7 @@ body{ background:#ffffff !important;}
     font-size: 25px;
     cursor: default;
     font-family: "微软雅黑";
+
 }
 .brand-details div.fr-details h3 .light_title{
     color: #666666;
@@ -452,8 +453,8 @@ body{ background:#ffffff !important;}
 }
 
 .brand-details div.fr-details p.may{
-    padding-top:16px;
-    padding-bottom:14px;
+    padding-top:11px;
+    padding-bottom:9px;
     border-bottom: 1px solid #eeeeee;
 }
 .o-reg-lg{
@@ -466,8 +467,8 @@ body{ background:#ffffff !important;}
     text-align: center;
     line-height: 87px;
     position: absolute;
-    right: 14px;
-    top: -5px;
+    right: 24px;
+    top: 0px;
 }
 .brand-details div.fr-details p.may font{
     color: #666666;
@@ -2026,21 +2027,16 @@ body{ background:#ffffff !important;}
 .mj-priceTxtt_ie7{
     color: #666;
 }
-.mj-cTr_center{
-    padding-top: 3px;
-    padding-bottom: 3px;
-}
+
 .mj-cTr_center li label {
     display: inline-block;
     min-width:60px;
     text-align:right;
-    margin-right:10px;
     float:left;
+    margin-right:4px;
 }
 .mj-cTr_center li {
     min-width: 590px;
-    height: 20px;
-    margin-top: 5px;
     overflow:hidden;
     margin-left: -10px;
 }
@@ -2048,19 +2044,17 @@ body{ background:#ffffff !important;}
     display:inline-block;
     /*max-width: 670px;*/
     float:left;
-    padding-left: 12px;
+    padding-left: 17px;
 }
 .mj-cTr_center li  font{
     display: inline-block;
     max-width: 630px;
-    margin-left: 20px;
     max-height: 120px;
     overflow: auto;
-    line-height: 24px;
 }
 .mj-cTr_center{
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 8px;
+    padding-bottom: 1px;
 }
 .zx-sqr {
     overflow: hidden;
@@ -2069,7 +2063,7 @@ body{ background:#ffffff !important;}
     border-top:1px solid #eeeeee ;
 }
 .zx-sqr .pro{
-    padding:6px 10px;
+    padding: 5px 17px 3px 12px;
     border-right: 1px solid #eeeeee;
     float: left;
     display: inline-block;
@@ -2097,7 +2091,7 @@ body{ background:#ffffff !important;}
 }
 .zx-sqr .pel {
     display: inline-block;
-    margin-left:12px;
+    margin-left:16px;
 }
 .zx-sqr .pel p{
     display: inline-block;

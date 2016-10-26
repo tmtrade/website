@@ -161,7 +161,7 @@
 
 .mj-from-title {
 
-    margin:-14px 0 5px 0;
+    margin:-11px 0 5px 0;
 
     padding: 0;
 
@@ -215,7 +215,7 @@
 
     text-align: center;
     margin-top:3px;
-    margin-bottom:20px;
+    margin-bottom:15px;
 
 }
 
@@ -1533,15 +1533,15 @@
 
 .succeed-al-sy li{
     float: left;
-    width: 392px;
+    width: 393px;
     position: relative;
     background: #fff;
 }
 .succeed-al-sy li img{
     opacity: 1;
     filter:Alpha(opacity=100);
-    max-width: 393px;
-    max-height: 204px;
+    max-width: 394px;
+    max-height: 205px;
 }
 .succeed-al-sy li:hover img{
     opacity:0.8;

@@ -290,7 +290,7 @@
 .ms-filterResultsList-oter li:hover a{
     color: #ff6d6d;
 }
-.ms-condition{
+.ms-condition-oter{
     border: 1px solid #eaeaea;
     margin-top: 5px;
 }
@@ -1058,9 +1058,11 @@
     background: #ffffff;
 	overflow:hidden;
 }
+.ms-recommend  ul{
+    margin-top:24px;
+}
 .ms-recommend  ul li{
-    margin-top:13px;
-
+    margin-top:-13px;
 }
 
 .ms-recommend  ul li img{

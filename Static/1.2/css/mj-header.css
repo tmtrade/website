@@ -366,7 +366,7 @@ table {
 
     height: 13px;
 
-    margin-top: 15px;
+    margin-top: 13px;
 
     padding: 0;
 
@@ -978,8 +978,7 @@ table {
     display: inline-block;
     width: 30px;
     height: 18px;
-    line-height: 13px;
-    background: url("../images/new-ico.png") no-repeat top center;
+    line-height: 14px;
     text-align: center;
     color: #ffffff;
     font-size: 12px;
@@ -987,6 +986,12 @@ table {
     top: -16px;
     right: -25px;
     font-family: "arial" !important;
+}
+.nav-tag-bg1{
+    background: url("../images/icon_hot.png") no-repeat top center;
+}
+.nav-tag-bg2{
+    background: url("../images/new-ico.png") no-repeat top center;
 }
 .mj-search-all{
     width: 100%;

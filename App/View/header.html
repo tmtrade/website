@@ -153,7 +153,7 @@
             <!--<li>
                 <a target="_blank" href="<?=SELLER_URL?>" module="顶部2" addmsg="数据共享">数据共享</a>
             </li>-->
-            <li class="spacer xs_login_"></li>
+            <!--<li class="spacer xs_login_"></li>-->
             <li>
                 <a href="<?=SELLER_URL?>login/seller" module="顶部3" addmsg="商标报价单工具">商标报价单工具 </a>
             </li>
@@ -375,7 +375,7 @@
                     首页
                 </a>
                 <a href="/offprice"  addmsg="2特价商标" module="频道2" <? if($nav_name=='offprice') echo $nav_style; ?>>
-                    特价商标
+                    特价商标<span class="nav-hot nav-tag-bg1">hot</span>
                 </a>
                 <a href="/s/" addmsg="3商标购买" module="频道3" <? if($nav_name=='search') echo $nav_style; ?>>
                     商标购买
@@ -384,7 +384,7 @@
                     专利购买
                 </a>
                 <a href="/zhuanti" addmsg="5专题活动" module="频道5" <? if($nav_name=='zhuanti') echo $nav_style; ?>>
-                    专题活动<span class="nav-hot">new</span>
+                    专题活动<span class="nav-hot nav-tag-bg2">new</span>
                 </a>
                  <a href="<?=TM_URL?>" target="_blank" addmsg="6商标注册" module="频道6">
                      商标注册
