@@ -25,7 +25,7 @@
             //验证手机号码
             if (!tel || !mobilereg.test(tel) || tel.length != 11) {
                 $(".mj-eed").show();
-                $(".reg-tip22 em").text('请输入手机号码');
+                $(".reg-tip22 em").show().text('请输入手机号码');
                 $(".mj-newjy").css("margin-top", "5px");
                 $(".reg-tip22").attr('flag', 2);
                 layer.closeAll('loading');
@@ -72,14 +72,14 @@
             tel = $.trim($('#buyMoblie').val());
             if (!tel) {
                 $(".mj-eed").show();
-                $(".reg-tip22 em").text('请输入手机号码');
+                $(".reg-tip22 em").show().text('请输入手机号码');
                 $(".mj-newjy").css("margin-top", "5px");
                 $(".reg-tip22").attr('flag', 2);
                 return false;
             }
             if (!mobilereg.test(tel) || tel.length != 11) {
                 $(".mj-eed").show();
-                $(".reg-tip22 em").text('请输入正确的手机号码');
+                $(".reg-tip22 em").show().text('请输入正确的手机号码');
                 $(".mj-newjy").css("margin-top", "5px");
                 $(".reg-tip22").attr('flag', 2);
                 return false;
@@ -93,7 +93,7 @@
                 var kj_name = $.trim($(this).val());
                 if (isChineseOrEng(kj_name)) {
                     $(".mj-eed").show();
-                    $(".reg-tip22 em").text('姓氏必须为中英文');
+                    $(".reg-tip22 em").show().text('姓氏必须为中英文');
                     $(".mj-newjy").css("margin-top", "5px");
                     $(".reg-tip22").attr('flag', 3);
                     return false;
@@ -105,7 +105,7 @@
     //快捷登录回调
     function submitDataCallback(Obj) {
         $.each(Obj, function(i, n) {
-	    var name = $.trim($('#buyName').val());
+            var name = $.trim($('#buyName').val());
             var tel = $.trim($('#buyMoblie').val());
             var subject = $.trim($('#buyNeed').val());
             if (login_mobile) {
@@ -384,7 +384,12 @@
             <div class="parHd" style="position:relative;">
                 <ul class="fr">
                     <? foreach($module['class'] as $class): ?>
-                    <li><?=$class['name']?></li>
+                    <?if(empty($class['link'])){?>
+                        <li><?=$class['name']?></li>
+                    <?}else{?>
+                        <li><a target="_blank" href="<?=$class['link']?>" ><?=$class['name']?></a></li>
+                    <?}?>
+                    
                     <? endforeach; ?>
                 </ul>
             </div>
@@ -739,8 +744,104 @@
 
 </ul>
 <!--漂浮楼层end-->
+
+<!--浮动客服-->
+<div class="fdkf-ss">
+   <img src="<?=StaticDir?>1.2/images/fdkf-ss.png">
+</div>
+<div class="fdkf-zk" style="z-index:100;">
+
+    <ul class="w1180">
+        <span class="gb-ss"></span>
+        <!--<li class="btm-tel">-->
+            <!--<a href="javascript:void(0);" onclick="goChat();" addmsg="在线咨询"  module="客服浮动层模块">-->
+                <!--<img src="<?=StaticDir?>1.2/images/zx-ico.png">-->
+                <!--在线咨询-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="btm-pel">-->
+            <!--<img src="<?=StaticDir?>1.2/images/btm-pel.png">-->
+        <!--</li>-->
+        <li class="btm-tj">
+            <!--<p><img src="<?=StaticDir?>1.2/images/btm-wz.png"></p>-->
+            <div>
+                <select id="my_select">
+                    <option value="行业:用户未选择行业">请选择商标所属行业</option>
+                    <option value="行业:服装/鞋帽/箱包">服装/鞋帽/箱包</option>
+                    <option value="行业:美妆/清洁用品">美妆/清洁用品</option>
+                    <option value="行业:食品/烟/酒/茶">食品/烟/酒/茶</option>
+                    <option value="行业:电子产品/软件">电子产品/软件</option>
+                    <option value="行业:餐饮住宿/运输">餐饮住宿/运输</option>
+                    <option value="行业:广告/推销/金融">广告/推销/金融</option>
+                    <option value="行业:家用电器/家居">家用电器/家居</option>
+                    <option value="行业:教育/娱乐">教育/娱乐</option>
+                    <option value="行业:药/保健品">药/保健品</option>
+                    <option value="行业:其他行业">其他行业</option>
+                </select>
+                <input type="tel" placeholder="请输入手机号" class="freeTel"/>
+                <a href="javascript:;" onclick="freeIntro()">免费推荐</a>
+            </div>
+        </li>
+        <a href="http://p.qiao.baidu.com/cps/chat?siteId=9503594&userId=21149642" target="_blank" class="zxzx"></a>
+    </ul>
+</div>
 <? require(ViewDir.'/sidebar.html'); ?>
+<script type="text/javascript">
+    $(".fdkf-ss").click(function(){
+        $(this).hide();
+        $(".fdkf-zk").show();
+        $(".fdkf-zk").animate({width:"100%"});;
+    });
+    $(".gb-ss").click(function(){
+        $(".fdkf-zk").hide();
+        $(".fdkf-zk").animate({width:"0"});;
+        $(".fdkf-ss").show();
+    });
+    
+    //免费推荐----start
+    function freeIntro(){
+        var freeTel = $('.freeTel').val();
+        if(!freeTel){
+            $('.freeTel').css('color','#ff6600');
+            $('.freeTel').val('请输入手机号');
+            return false;
+        }
+        if(!mobilereg.test(freeTel) || freeTel.length!=11){
+            $('.freeTel').css('color','#ff6600');
+            $('.freeTel').val('手机号不正确');
+            return false;
+        }
+        $('.freeTel').css('color','#666');
+        var freeContent = $('#my_select').val();
+        var data = new Array();
+        data['tel'] 	= freeTel;
+        data['subject'] = freeContent;
+        data['remarks'] = freeContent;
+        setEvent("客服浮动层","表单-提交了所属行业"+freeContent+"联系方式:"+freeTel);
+        ucNetwork.submitData(data);
+    }
+    
+    $('.freeTel').blur(function(){
+        var freeTel = $('.freeTel').val();
+        if(!freeTel){
+            $('.freeTel').css('color','#ff6600');
+            $('.freeTel').val('请输入手机号');
+            return false;
+        }
+        if(!mobilereg.test(freeTel) || freeTel.length!=11){
+            $('.freeTel').css('color','#ff6600');
+            $('.freeTel').val('手机号不正确');
+            return false;
+        }
+    });
+    $('.freeTel').focus(function(){
+        $('.freeTel').css('color','#666');
+        $('.freeTel').val('');
+    });
+    //免费推荐-----end
+</script>
 <script type="text/javascript" src="<?=StaticDir?>1.2/js/common.js"></script>
+<script src="<?=StaticDir?>script/objurl.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
     //全部分类展示与收起
     $(".yzc-Brand").hover(function(){
@@ -748,7 +849,7 @@
         $(".all-clas").html('收起<i class="fa fa-angle-up"></i>');
         $(".all-clas").click(function(){
             $(".brand-fl").css({"height":"114px"});
-        })
+        });
     },function(){
         $(".brand-fl").css({"height":"114px"});
         $(".all-clas").html('全部分类<i class="fa fa-angle-down"></i>');
@@ -810,7 +911,7 @@
                     oflr.show();
                     oflr.css({"left": oft, "top": ofh})
                 }
-            })
+            });
             $(window).scroll(function() {
                 var w_top = $(window).scrollTop();
                 if (w_top> $("#flr1").offset().top-400 && w_top < $("#flr3").offset().top-100) {
@@ -844,14 +945,14 @@
                     var t =  $(oafls[i]).offset().top;
                     $("html, body").animate({"scrollTop": t-350});
                     $(this).addClass("on");
-                })
-            })
+                });
+            });
     //banner焦点图等于1张的时候 不显示点
     $(document).ready(function(){
         if($(".mj-banner-img .mj-banner-itme").length<=1){
             $(".mj-bannerIimg .hd").css({"display":"none"})
         }
-    })
+    });
     //添加查看详情标签；
 //            $(document).ready(function() {
 //                $('.yzc-categorbrand li div ').on('mouseover', 'span',
@@ -875,6 +976,23 @@
 //                });
 //            })
 
-
+$(window).load(function(){//加载完成执行
+    //显示下面浮动层
+     setTimeout(function(){
+         $('.fdkf-ss').click();
+     },3000);
+     
+     //快捷登录提示5秒后小时
+     setInterval(function(){
+         $(".mj-eed").animate({
+            opacity: 'hide'
+        }, 1000);
+         $(".reg-tip22 em").animate({
+            opacity: 'hide'
+        }, 1000);
+     },6000);
+     
+    
+});
 </script>
 <? require(ViewDir.'/footer.html'); ?>

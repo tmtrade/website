@@ -401,13 +401,13 @@
         $(this).hide();
         $(".fdkf-zk").show();
         $(".fdkf-zk").animate({width:"100%"});;
-    })
+    });
     $(".gb-ss").click(function(){
         $(".fdkf-zk").hide();
         $(".fdkf-zk").animate({width:"0"});;
         $(".fdkf-ss").show();
-    })
-	
+    });
+	$('.fdkf-ss').click();
 </script>
 <script src="<?=StaticDir?>script/objurl.js?v=<?=$static_version?>"></script>
 
@@ -686,9 +686,9 @@
         _objTime    = setTimeout(function(){_times = 0;},30000);
 
         //当滚动3页时, 显示推荐商标的广告图
-        if(_start==3){
-            $('.fdkf-ss').click();
-        }
+//        if(_start==3){
+//            $('.fdkf-ss').click();
+//        }
 
         obj.set('_p', _start);
         var params = obj.getparams();

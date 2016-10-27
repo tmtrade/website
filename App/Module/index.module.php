@@ -144,7 +144,7 @@ class IndexModule extends AppModule
         $r = array();
         $r['eq']['moduleId'] = $moduleId;
         $r['limit'] = 100;
-        $r['col'] = array('id','name','type');
+        $r['col'] = array('id','name','type','link');
         $r['order'] = array('sort'=>'asc');
         $data = $this->import('moduleClass')->find($r);
         //得到分类的子分类列表
