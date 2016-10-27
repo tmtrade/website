@@ -1130,8 +1130,9 @@
     border-radius: 5px 5px 0px 0px;
     -webkit-border-radius:  5px 5px 0px 0px;
     position: relative;
-
-
+}
+.yzc-category-tit ul.fr li a{
+    color:#666666;
 }
 .yzc-category-tit ul.fr li.on span{
     border:none;
