@@ -79,6 +79,7 @@ a:active {outline: none;star:expression(this.onFocus=this.blur());}
     left: 0px;
     bottom: 20px;
     cursor:pointer;
+    z-index: 9999 !important;
 }
 
 .fdkf-zk{
