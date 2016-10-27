@@ -25,7 +25,7 @@
             //验证手机号码
             if (!tel || !mobilereg.test(tel) || tel.length != 11) {
                 $(".mj-eed").show();
-                $(".reg-tip22 em").show().text('请输入手机号码');
+                $(".reg-tip22 em").show().text('请输入正确的手机号码');
                 $(".mj-newjy").css("margin-top", "5px");
                 $(".reg-tip22").attr('flag', 2);
                 layer.closeAll('loading');
