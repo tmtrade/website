@@ -14,6 +14,8 @@
             //将用户电话号码放到该框中
             $('#buyMoblie').val(login_mobile);
         }
+        
+        var tel_mess = '请输入手机号码';
         //求购信息发布事件
         $('#mj-from-btn').click(function() {
             layer.load(1, {
@@ -23,14 +25,15 @@
             tel = $.trim($('#buyMoblie').val());
             subject = $.trim($('#buyNeed').val());
             //验证手机号码
-            if (!tel || !mobilereg.test(tel) || tel.length != 11) {
+            if(!mobilereg.test(tel) || tel.length != 11){
                 $(".mj-eed").show();
-                $(".reg-tip22 em").show().text('请输入正确的手机号码');
+                $(".reg-tip22 em").show().text(tel_mess);
                 $(".mj-newjy").css("margin-top", "5px");
-                $(".reg-tip22").attr('flag', 2);
+                $(".reg-tip22").attr('flag', 3);
                 layer.closeAll('loading');
                 return false;
             }
+            
             if (!login_mobile && isChineseOrEng(name)) {
                 $(".mj-eed").show();
                 $(".reg-tip22 em").show().text('姓氏必须为中英文');
@@ -75,6 +78,7 @@
                 $(".reg-tip22 em").show().text('请输入手机号码');
                 $(".mj-newjy").css("margin-top", "5px");
                 $(".reg-tip22").attr('flag', 2);
+                tel_mess = '请输入手机号码';
                 return false;
             }
             if (!mobilereg.test(tel) || tel.length != 11) {
@@ -82,8 +86,10 @@
                 $(".reg-tip22 em").show().text('请输入正确的手机号码');
                 $(".mj-newjy").css("margin-top", "5px");
                 $(".reg-tip22").attr('flag', 2);
+                tel_mess = '请输入正确的手机号码';
                 return false;
             }
+            istel = true;
             hideTip(2);
         });
         //未登录情况下验证姓名
