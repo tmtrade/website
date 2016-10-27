@@ -97,7 +97,7 @@ abstract class AppAction extends Action
         $this->set('description', $this->pageDescription);//页面description
         $this->set('qq_num', C('qq_num'));//页面description
 
-        $this->set('static_version', 12833);//静态文件版本号>>控制js,css缓存
+        $this->set('static_version', 12844);//静态文件版本号>>控制js,css缓存
 
         // $this->set('CLASSES', C('CLASSES'));//国际分类
         // $this->set('CATEGORY', C('CATEGORY'));//分类
