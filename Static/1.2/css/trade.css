@@ -288,8 +288,11 @@ body,html{
     cursor: pointer;
 }
 .sel-bannerIimg {
+    width: 100%;
     position: relative;
     height:312px;
+    overflow: hidden;
+    background-color: #565656;
 }
 .sel-banner-img {
     margin: 0;
@@ -303,12 +306,11 @@ body,html{
 }
 
 .sel-banner-img .sel-banner-itme{
-    background-size:100%;
-}
-.sel-banner-img .sel-banner-itme{
     display: block;
     width: 100%!important;
     height:312px;
+    background-size:100%;
+    background-color: #565656;
 }
 .sel-bannerIimg .hd {
     width: 100%;

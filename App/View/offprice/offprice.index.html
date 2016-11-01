@@ -4,9 +4,9 @@
     <div class="bd">
         <ul class="sel-banner-img">
             <?foreach ($channel['adList'] as $k => $v) {?>            
-            <li class="sel-banner-itme">
+            <li class="sel-banner-itme" style="display: none;">
                 <a href="<?=$v['link']?>" target="_blank" webid="5" addmsg="01-查看详情" module="特价banner-<?=$k+1?>">
-                    <div style="width:100%;height:312px;background:url(<?=TRADE_URL.$v['pic']?>) no-repeat center center;">
+                    <div class="oimg" style="width:100%;height:312px;background:url(<?=TRADE_URL.$v['pic']?>) no-repeat center center;">
                     </div>
                     <!--<img src="<?=empty($v['pic'])?'':TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" alt="<?=($v['alt']?$v['alt']:$v['desc'])?>"  width="1903" height='312'/>-->
                 </a>

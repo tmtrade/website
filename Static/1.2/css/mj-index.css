@@ -1121,7 +1121,7 @@
     border-top: 1px solid #d3d3d3;
     border-right: 1px solid #d3d3d3;
     border-left: 1px solid #d3d3d3;
-    color: #ff5656;
+    /*color: #ff5656;*/
     text-decoration: underline;
     position: relative;
     left: -2px;
