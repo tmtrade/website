@@ -14,18 +14,18 @@
             //将用户电话号码放到该框中
             $('#buyMoblie').val(login_mobile);
         }
-        
+
         var tel_mess = '请输入手机号码';
         //求购信息发布事件
         $('#mj-from-btn').click(function() {
             layer.load(1, {
                 shade: [0.1, '#fff'] //0.1透明度的白色背景
             });
-            name = $.trim($('#buyName').val());
-            tel = $.trim($('#buyMoblie').val());
-            subject = $.trim($('#buyNeed').val());
+            var name = $.trim($('#buyName').val());
+            var tel = $.trim($('#buyMoblie').val());
+            var subject = $.trim($('#buyNeed').val());
             //验证手机号码
-            if(!mobilereg.test(tel) || tel.length != 11){
+            if (!mobilereg.test(tel) || tel.length != 11) {
                 $(".mj-eed").show();
                 $(".reg-tip22 em").show().text(tel_mess);
                 $(".mj-newjy").css("margin-top", "5px");
@@ -33,7 +33,7 @@
                 layer.closeAll('loading');
                 return false;
             }
-            
+
             if (!login_mobile && isChineseOrEng(name)) {
                 $(".mj-eed").show();
                 $(".reg-tip22 em").show().text('姓氏必须为中英文');
@@ -51,11 +51,12 @@
                 return false;
             }
             $(".mj-eed").hide();
-            data = new Array();
+            var data = new Array();
             data['name'] = name;
             data['tel'] = tel;
             data['subject'] = subject;
             data['remarks'] = subject;
+            setEvent("快捷登记", "表单-提交了要求" + subject + "联系方式:" + tel + "姓名:" + name);
             ucNetwork.submitData(data);
         });
         //验证内容
@@ -118,30 +119,25 @@
                 //用户登录情况下
                 if (n.code != -1) {
                     //弹出成功框
-		    setEvent("快捷登记","表单-提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     getLayer($('#mj-submitteS'));
                     clearKJLogin();
                 } else {
                     //弹出失败框
-		    setEvent("快捷登记","表单-提交失败了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     getLayer($('#mj-submitteF'));
-		    
+
                 }
             } else {
                 //用户未登录情况下
                 if (n.code == 1) {
                     //用户不存在
-		    setEvent("快捷登记","表单-提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     clearKJLogin();
                     getLogin(_buyTitle, tel, 0);
                 } else if (n.code == 2) {
                     //用户存在
-		    setEvent("快捷登记","表单-提交了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     clearKJLogin();
                     getLogin(_login, tel, 1);
                 } else {
                     //弹出失败框
-		    setEvent("快捷登记","表单-提交失败了要求"+subject+"联系方式:"+tel+"姓名:"+name);
                     getLayer($('#mj-submitteF'));
                 }
             }
@@ -232,16 +228,18 @@
             <div class="bd">
                 <ul class="mj-banner-img">
                     <?
-                $bannerStr = '';
-                foreach($banners as $k=>$banner){
+                    $bannerStr = '';
+                    foreach($banners as $k=>$banner){
                     $k = $k+1;
                     $url	 = TRADE_URL.'/'.substr($banner['pic'],1);
                     $_banner = $banner['link'] ? $banner['link'] : 'javascript:void(0);';
                     $bannerStr .= "<li class='mj-banner-itme'>
                     <a href='{$_banner}' target='_blank' webid='1' addmsg='第{$k}条' module='大图广告'>
+
                         <div style='width:100%;height:400px;background:url({$url})  no-repeat  center center'></div>
+
                     </a>
-                     </li>";
+                    </li>";
                     }
                     echo $bannerStr;
                     ?>
@@ -250,9 +248,9 @@
             <div class="hd">
                 <ul class="f-clearfix">
                     <?
-                $bannerBar = '';
-                for($i=1,$len=count($banners);$i<=$len;++$i){
-                $bannerBar .= "<li></li>";
+                    $bannerBar = '';
+                    for($i=1,$len=count($banners);$i<=$len;++$i){
+                    $bannerBar .= "<li></li>";
                     }
                     echo $bannerBar;
                     ?>
@@ -269,50 +267,50 @@
 <!--活动推荐start-->
 <div class="yzc-Act-all">
     <div class="yzc-Activities w1180">
-                <!--<div class="hd">-->
-                    <!--<a class="og_prev prev"></a>-->
-                    <!--<a class="og_next next"></a>-->
-                <!--</div>-->
-                <div class="bd picbox">
-                    <ul>
-                        <?  $j = 10-(count($ad_list['index_middle']));
-	                        foreach($ad_list['index_middle'] as $k=>$ad): ?>
+        <!--<div class="hd">-->
+        <!--<a class="og_prev prev"></a>-->
+        <!--<a class="og_next next"></a>-->
+        <!--</div>-->
+        <div class="bd picbox">
+            <ul>
+                <?  $j = 10-(count($ad_list['index_middle']));
+                foreach($ad_list['index_middle'] as $k=>$ad): ?>
 
-                        <li>
-                            <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第<?=$k+1?>条' module='轮播广告'>
-                            <div class="fl">
-                                <h4><?=$ad['desc']?></h4>
-                                <label><?=$ad['text']?></label>
-                                <i class="ck">查看</i>
-                            </div>
-                            <span class="fr">
-                                <img src="<?=($ad['pic']?TRADE_URL.$ad['pic']:'')?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
-                            </span>
-                            </a>
-                        </li>
+                <li>
+                    <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第<?=$k+1?>条' module='轮播广告'>
+                        <div class="fl">
+                            <h4><?=$ad['desc']?></h4>
+                            <label><?=$ad['text']?></label>
+                            <i class="ck">查看</i>
+                        </div>
+                        <span class="fr">
+                            <img src="<?=($ad['pic']?TRADE_URL.$ad['pic']:'')?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
+                        </span>
+                    </a>
+                </li>
 
-                        <? endforeach; ?>
-                        <? foreach($ads as $ad): ?>
-                        <? if($j<=0) break; ?>
+                <? endforeach; ?>
+                <? foreach($ads as $ad): ?>
+                <? if($j<=0) break; ?>
 
-                        <li>
-                            <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第<?=$k+1?>条' module='轮播广告'>
-                            <div class="fl">
-                                <h4><?=$ad['desc']?></h4>
-                                <label><?=$ad['text']?></label>
-                                <i class="ck">查看</i>
-                            </div>
-                            <span class="fr">
-                                <img src="<?=($ad['pic']?TRADE_URL.$ad['pic']:'')?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
-                            </span>
-                            </a>
-                        </li>
+                <li>
+                    <a href="<?=$ad['link']?>" webid="2" target="_blank"  addmsg='第<?=$k+1?>条' module='轮播广告'>
+                        <div class="fl">
+                            <h4><?=$ad['desc']?></h4>
+                            <label><?=$ad['text']?></label>
+                            <i class="ck">查看</i>
+                        </div>
+                        <span class="fr">
+                            <img src="<?=($ad['pic']?TRADE_URL.$ad['pic']:'')?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$ad['alt']?>">
+                        </span>
+                    </a>
+                </li>
 
-                        <?  $j--; ?>
-                        <?  endforeach; ?>
-                    </ul>
-                </div>
-            </div>
+                <?  $j--; ?>
+                <?  endforeach; ?>
+            </ul>
+        </div>
+    </div>
 </div>
 <!--活动推荐end-->
 <!--商标分类start-->
@@ -385,17 +383,17 @@
 <div class="sbzs" id="sbzs">
     <? foreach($modules as $tk=>$module): ?>
     <div class="yzc-category w1180" <?=(($tk!=0)?'':'id="cloth"')?>>
-        <div class="yzc-category-tit">
+         <div class="yzc-category-tit">
             <h3 class="fl"><?=$module['name']?></h3>
             <div class="parHd" style="position:relative;">
                 <ul class="fr">
                     <? foreach($module['class'] as $class): ?>
                     <?if(empty($class['link'])){?>
-                        <li><?=$class['name']?></li>
+                    <li><?=$class['name']?></li>
                     <?}else{?>
-                        <li><a target="_blank" href="<?=$class['link']?>" ><?=$class['name']?></a></li>
+                    <li><a target="_blank" href="<?=$class['link']?>" ><?=$class['name']?></a></li>
                     <?}?>
-                    
+
                     <? endforeach; ?>
                 </ul>
             </div>
@@ -421,14 +419,14 @@
                     <!--<a class="sprev" href="javascript:void(0)"></a>-->
                     <!--<a class="snext" href="javascript:void(0)"></a>-->
                 </div>
-               <!--红色背景 cate-list-bg1 蓝色背景cate-list-bg2-->
+                <!--红色背景 cate-list-bg1 蓝色背景cate-list-bg2-->
                 <div class="cate-list  <?=($tk==0)?'cate-list-bg1':'cate-list-bg2'?>">
                     <? foreach($module['link'] as $k=>$link): ?>
-                        <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第01条" module='楼层第<?=($tk+1)?>层'>
-                            ><span title="<?=$link[0]['title']?>"><?=$link[0]['title']?></span></a>
-                        <?if(isset($link[1])):?>
-                        <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第02条" module='楼层第<?=($tk+1)?>层'>><span title="<?=$link[1]['title']?>"><?=$link[1]['title']?></span></a>
-                        <?endif;?>
+                    <a target="_blank" class="fl <?=$link[0]['color']?>" href="<?=$link[0]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第01条" module='楼层第<?=($tk+1)?>层'>
+                        ><span title="<?=$link[0]['title']?>"><?=$link[0]['title']?></span></a>
+                    <?if(isset($link[1])):?>
+                    <a target="_blank" class="fr <?=$link[1]['color']?>" href="<?=$link[1]['link']?>" webid="<?=($tk+4)?>" addmsg="链接第<?=($k+1)?>行-第02条" module='楼层第<?=($tk+1)?>层'>><span title="<?=$link[1]['title']?>"><?=$link[1]['title']?></span></a>
+                    <?endif;?>
                     <? endforeach; ?>
                 </div>
             </div>
@@ -439,30 +437,30 @@
 
                         <? foreach($class['items'] as $k=>$item): ?>
 
-                            <li>
-                                <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
-                                <div class="brand-show">
-                                    <?if($tk==0){?>
-                                        <span class="shangbiao">
+                        <li>
+                            <input class="xunjia_data" type="hidden" tid="<?=$item['tid']?>" data_class="<?=$item['class']?>" number="<?=$item['number']?>" remarks="<?=$item['remarks']?>">
+                            <div class="brand-show">
+                                <?if($tk==0){?>
+                                <span class="shangbiao">
                                     <?}else{?>
-                                        <span class="zhuanli">
-                                    <?}?>
-                                    
-                                    <?if ($_k == 0){?>
+                                    <span class="zhuanli">
+                                        <?}?>
+
+                                        <?if ($_k == 0){?>
                                         <img class="lazy pulse" src="/Static/images/idx01.gif" data-original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'" alt="<?=$item['alt']?>">
-                                    <?}else{?>
+                                        <?}else{?>
                                         <img src="/Static/images/idx01.gif" _original="<?=$item['embellish']?>" onerror="this.src='/Static/images/img1.png'"  alt="<?=$item['alt']?>">
-                                    <?}?>
-                                       
-                                        
+                                        <?}?>
+
+
                                     </span>
                                     <p><label><?=$item['thum_name']?></label><?=$item['classStr']?></p>
-                                </div>
+                            </div>
 
-                                <div class="brand-buy">
-                                    <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="01-查看详情" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
+                            <div class="brand-buy">
+                                <a target="_blank" href="<?=$item['viewUrl']?>" webid="<?=($tk+4)?>" addmsg="01-查看详情" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
                                     <em>点击查看详情</em>
-                                    
+
                                     <font>
                                     <a href="javascript:;" class="first" addmsg="表单-02-询价" onclick="xunjia(this);" webid="<?=($tk+4)?>" module='楼层第<?=($tk+1)?>层-0<?=($_k+1).$class["name"]?>-0<?=($k+1)?>'>
                                         <i class="cate-buy"></i>
@@ -473,10 +471,10 @@
                                         联系卖家
                                     </a>
                                     </font>
-                                    </a>
-                                </div>
+                                </a>
+                            </div>
 
-                             </li>
+                        </li>
 
                         <? endforeach; ?>
                     </ul>
@@ -569,7 +567,7 @@
     <ul class="succeed-al-sy">
         <? foreach($case as $item): ?>
         <li>
-          <a target="_blank" href="<?=$item['url']?>"><img src="<?=($item['pic']?TRADE_URL.$item['pic']:'')?>" alt="<?=$item['alt']?>" onerror="this.src='/Static/images/img1.png'"></a>
+            <a target="_blank" href="<?=$item['url']?>"><img src="<?=($item['pic']?TRADE_URL.$item['pic']:'')?>" alt="<?=$item['alt']?>" onerror="this.src='/Static/images/img1.png'"></a>
         </li>
         <? endforeach; ?>
     </ul>
@@ -577,50 +575,50 @@
 <!--成功案列end-->
 <!--商标新闻start-->
 <div class="brand-ques w1180">
-        <div class="brand-ques-tit  f-clearfix f-hidden">
-            <div class="succeed-al-tit f-clearfix f-hidden fl">
-                <h3 class="fl">行业新闻</h3>
-                <a class="fr" target="_blank" module="新闻查看更多" href="/n-50/">查看更多</a>
-            </div>
-            <div class="succeed-al-tit f-clearfix f-hidden fr">
-                <h3 class="fl">转让问答</h3>
-                <a class="fr" href="/n-45/" target="_blank" module="问答查看更多">查看更多</a>
-            </div>
+    <div class="brand-ques-tit  f-clearfix f-hidden">
+        <div class="succeed-al-tit f-clearfix f-hidden fl">
+            <h3 class="fl">行业新闻</h3>
+            <a class="fr" target="_blank" module="新闻查看更多" href="/n-50/">查看更多</a>
         </div>
-        <div class="Trad-all">
-         <div class="Tradenews">
-             <dl class="fl">
-                 <dt>
-                     <a target="_blank" href="/n-50/" module="新闻(图)"><img src="<?=StaticDir?>1.2/images/hyxw.jpg" ></a>
-                 </dt>
-                 <dd>
-                     <? foreach ($news['news'] as $k=>$item){ ?>
-                     <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="新闻第<?=($k+1)?>条" module='新闻'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
-                     <? } ?>
-
-                 </dd>
-             </dl>
-             <dl class="fr">
-                 <dt>
-                     <a target="_blank" href="/n-45/" module="问答(图)"><img src="<?=StaticDir?>1.2/images/zrhd.jpg"></a>
-                 </dt>
-                 <dd>
-                     <? foreach ($news['faq'] as $k=>$item){ ?>
-                     <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
-                     <? } ?>
-
-                 </dd>
-             </dl>
-         </div>
-         <div class="btm">
-             <? foreach ($faq_other as $k=>$item){ ?>
-             <p>
-                 <span class="fl">[<a href="<?=$item['type_url']?>" target="_blank" addmsg="其他分类第<?=($k+1)?>条" module='问答'><?=$item['type']?></a>] <a href="<? echo $item['url'];?>" target="_blank" addmsg="其他问答第<?=($k+1)?>条" module='问答' title="<? echo $item['title'];?>"><? echo $item['thumtitle'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
-             </p>
-             <? } ?>
-         </div>
-     </div>
+        <div class="succeed-al-tit f-clearfix f-hidden fr">
+            <h3 class="fl">转让问答</h3>
+            <a class="fr" href="/n-45/" target="_blank" module="问答查看更多">查看更多</a>
+        </div>
     </div>
+    <div class="Trad-all">
+        <div class="Tradenews">
+            <dl class="fl">
+                <dt>
+                <a target="_blank" href="/n-50/" module="新闻(图)"><img src="<?=StaticDir?>1.2/images/hyxw.jpg" ></a>
+                </dt>
+                <dd>
+                    <? foreach ($news['news'] as $k=>$item){ ?>
+                    <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="新闻第<?=($k+1)?>条" module='新闻'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                    <? } ?>
+
+                </dd>
+            </dl>
+            <dl class="fr">
+                <dt>
+                <a target="_blank" href="/n-45/" module="问答(图)"><img src="<?=StaticDir?>1.2/images/zrhd.jpg"></a>
+                </dt>
+                <dd>
+                    <? foreach ($news['faq'] as $k=>$item){ ?>
+                    <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                    <? } ?>
+
+                </dd>
+            </dl>
+        </div>
+        <div class="btm">
+            <? foreach ($faq_other as $k=>$item){ ?>
+            <p>
+                <span class="fl">[<a href="<?=$item['type_url']?>" target="_blank" addmsg="其他分类第<?=($k+1)?>条" module='问答'><?=$item['type']?></a>] <a href="<? echo $item['url'];?>" target="_blank" addmsg="其他问答第<?=($k+1)?>条" module='问答' title="<? echo $item['title'];?>"><? echo $item['thumtitle'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
+            </p>
+            <? } ?>
+        </div>
+    </div>
+</div>
 <!--商标新闻end-->
 <!--一只蝉知产工具-->
 <div class="yzc-tool w1180" id="flr3">
@@ -639,60 +637,60 @@
         </li>
         <li>
             <a href="<?=BJ_URL?>" target="_blank">
-            <div>
-                <span class="tool-pic2"></span>
-                <b>商标查询</b>
-                <i></i>
-            </div>
-            <label>轻松查询商标动态</label>
+                <div>
+                    <span class="tool-pic2"></span>
+                    <b>商标查询</b>
+                    <i></i>
+                </div>
+                <label>轻松查询商标动态</label>
 
             </a>
 
         </li>
         <li>
             <a href="<?=TM_URL?>" target="_blank">
-            <div>
-                <span class="tool-pic3"></span>
-                <b>商标注册</b>
-                <i></i>
-            </div>
-            <label>资深团队 一对一服务</label>
+                <div>
+                    <span class="tool-pic3"></span>
+                    <b>商标注册</b>
+                    <i></i>
+                </div>
+                <label>资深团队 一对一服务</label>
 
             </a>
 
         </li>
         <li>
             <a href="<?=SELLER_URL?>" target="_blank">
-            <div>
-                <span class="tool-pic4"></span>
-                <b>商标出售者平台</b>
-                <i></i>
-            </div>
-            <label>曝光量更大，成交更快</label>
+                <div>
+                    <span class="tool-pic4"></span>
+                    <b>商标出售者平台</b>
+                    <i></i>
+                </div>
+                <label>曝光量更大，成交更快</label>
 
             </a>
 
         </li>
         <li>
             <a href="<?=SELLER_URL?>login/seller" target="_blank">
-            <div>
-                <span class="tool-pic5"></span>
-                <b>商标报价单工具</b>
-                <i></i>
-            </div>
-            <label>极速生成漂亮的报价单</label>
+                <div>
+                    <span class="tool-pic5"></span>
+                    <b>商标报价单工具</b>
+                    <i></i>
+                </div>
+                <label>极速生成漂亮的报价单</label>
 
             </a>
 
         </li>
         <li>
             <a href="<?=CHECK_URL?>" target="_blank">
-            <div>
-                <span class="tool-pic6"></span>
-                <b>商标安全检测工具</b>
-                <i></i>
-            </div>
-            <label>一键检测，10秒出结果</label>
+                <div>
+                    <span class="tool-pic6"></span>
+                    <b>商标安全检测工具</b>
+                    <i></i>
+                </div>
+                <label>一键检测，10秒出结果</label>
             </a>
         </li>
     </ul>
@@ -753,20 +751,20 @@
 
 <!--浮动客服-->
 <div class="fdkf-ss">
-   <img src="<?=StaticDir?>1.2/images/fdkf-ss.png">
+    <img src="<?=StaticDir?>1.2/images/fdkf-ss.png">
 </div>
 <div class="fdkf-zk" style="z-index:100;">
 
     <ul class="w1180">
         <span class="gb-ss"></span>
         <!--<li class="btm-tel">-->
-            <!--<a href="javascript:void(0);" onclick="goChat();" addmsg="在线咨询"  module="客服浮动层模块">-->
-                <!--<img src="<?=StaticDir?>1.2/images/zx-ico.png">-->
-                <!--在线咨询-->
-            <!--</a>-->
+        <!--<a href="javascript:void(0);" onclick="goChat();" addmsg="在线咨询"  module="客服浮动层模块">-->
+        <!--<img src="<?=StaticDir?>1.2/images/zx-ico.png">-->
+        <!--在线咨询-->
+        <!--</a>-->
         <!--</li>-->
         <!--<li class="btm-pel">-->
-            <!--<img src="<?=StaticDir?>1.2/images/btm-pel.png">-->
+        <!--<img src="<?=StaticDir?>1.2/images/btm-pel.png">-->
         <!--</li>-->
         <li class="btm-tj">
             <!--<p><img src="<?=StaticDir?>1.2/images/btm-wz.png"></p>-->
@@ -793,55 +791,57 @@
 </div>
 <? require(ViewDir.'/sidebar.html'); ?>
 <script type="text/javascript">
-    $(".fdkf-ss").click(function(){
+    $(".fdkf-ss").click(function() {
         $(this).hide();
         $(".fdkf-zk").show();
-        $(".fdkf-zk").animate({width:"100%"});;
+        $(".fdkf-zk").animate({width: "100%"});
+        ;
     });
-    $(".gb-ss").click(function(){
+    $(".gb-ss").click(function() {
         $(".fdkf-zk").hide();
-        $(".fdkf-zk").animate({width:"0"});;
+        $(".fdkf-zk").animate({width: "0"});
+        ;
         $(".fdkf-ss").show();
     });
-    
+
     //免费推荐----start
-    function freeIntro(){
+    function freeIntro() {
         var freeTel = $('.freeTel').val();
-        if(!freeTel){
-            $('.freeTel').css('color','#ff6600');
+        if (!freeTel) {
+            $('.freeTel').css('color', '#ff6600');
             $('.freeTel').val('请输入手机号');
             return false;
         }
-        if(!mobilereg.test(freeTel) || freeTel.length!=11){
-            $('.freeTel').css('color','#ff6600');
+        if (!mobilereg.test(freeTel) || freeTel.length != 11) {
+            $('.freeTel').css('color', '#ff6600');
             $('.freeTel').val('手机号不正确');
             return false;
         }
-        $('.freeTel').css('color','#666');
+        $('.freeTel').css('color', '#666');
         var freeContent = $('#my_select').val();
         var data = new Array();
-        data['tel'] 	= freeTel;
+        data['tel'] = freeTel;
         data['subject'] = freeContent;
         data['remarks'] = freeContent;
-        setEvent("客服浮动层","表单-提交了所属行业"+freeContent+"联系方式:"+freeTel);
+        setEvent("客服浮动层", "表单-提交了所属行业" + freeContent + "联系方式:" + freeTel);
         ucNetwork.submitData(data);
     }
-    
-    $('.freeTel').blur(function(){
+
+    $('.freeTel').blur(function() {
         var freeTel = $('.freeTel').val();
-        if(!freeTel){
-            $('.freeTel').css('color','#ff6600');
+        if (!freeTel) {
+            $('.freeTel').css('color', '#ff6600');
             $('.freeTel').val('请输入手机号');
             return false;
         }
-        if(!mobilereg.test(freeTel) || freeTel.length!=11){
-            $('.freeTel').css('color','#ff6600');
+        if (!mobilereg.test(freeTel) || freeTel.length != 11) {
+            $('.freeTel').css('color', '#ff6600');
             $('.freeTel').val('手机号不正确');
             return false;
         }
     });
-    $('.freeTel').focus(function(){
-        $('.freeTel').css('color','#666');
+    $('.freeTel').focus(function() {
+        $('.freeTel').css('color', '#666');
         $('.freeTel').val('');
     });
     //免费推荐-----end
@@ -850,14 +850,14 @@
 <script src="<?=StaticDir?>script/objurl.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
     //全部分类展示与收起
-    $(".yzc-Brand").hover(function(){
-        $(".brand-fl").css({"height":"auto"});
+    $(".yzc-Brand").hover(function() {
+        $(".brand-fl").css({"height": "auto"});
         $(".all-clas").html('收起<i class="fa fa-angle-up"></i>');
-        $(".all-clas").click(function(){
-            $(".brand-fl").css({"height":"114px"});
+        $(".all-clas").click(function() {
+            $(".brand-fl").css({"height": "114px"});
         });
-    },function(){
-        $(".brand-fl").css({"height":"114px"});
+    }, function() {
+        $(".brand-fl").css({"height": "114px"});
         $(".all-clas").html('全部分类<i class="fa fa-angle-down"></i>');
     });
     //交易无缝滚动
@@ -873,7 +873,7 @@
     jQuery(".yzc-Brand").slide({effect: "fold", switchLoad: "_original"});
     //类别展示选项卡和焦点图
     /*jQuery(".slideBox").slide({titCell:".shd a",mainCell:".sbd ul",prevCell:".sprev",nextCell:".snext",effect:"leftLoop",autoPlay:true});*/
-    jQuery(".slideBox").slide({titCell:".shd a",mainCell: ".sbd ul", prevCell: ".sprev", nextCell: ".snext", effect: "fold", delayTime: "500", autoPlay: true});
+    jQuery(".slideBox").slide({titCell: ".shd a", mainCell: ".sbd ul", prevCell: ".sprev", nextCell: ".snext", effect: "fold", delayTime: "500", autoPlay: true});
     //楼层
     jQuery(".yzc-category").slide({titCell: ".parHd li", mainCell: ".parBd", effect: "fold", pnLoop: false, switchLoad: "_original"});
     $(".slideBox").each(function() {
@@ -886,77 +886,77 @@
         $(".og_prev").css("opacity", "0");
         $(".og_next").css("opacity", "0");
     }
-            //漂浮楼层
-            var farrs=$("#sbzs>div");
-            var ofls1=$("#flr1");
-            var ofls2=$("#flr2");
-            var ofls3=$("#flr3");
-            var oafls=[ofls1,farrs[0],farrs[1],ofls2,ofls3]
-            var cet_w = $("#cloth").offset().left;
-            var oflr = $("#float-floor");
-            var sbzs = $(".sbzs>div");
-            var oflis = $("#float-floor li");
-            var owf = document.body.clientWidth;
-            var owh = $(window).height();
-            var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
-            var ofh = owh / 2 - $("#float-floor").height() / 2;
+    //漂浮楼层
+    var farrs = $("#sbzs>div");
+    var ofls1 = $("#flr1");
+    var ofls2 = $("#flr2");
+    var ofls3 = $("#flr3");
+    var oafls = [ofls1, farrs[0], farrs[1], ofls2, ofls3]
+    var cet_w = $("#cloth").offset().left;
+    var oflr = $("#float-floor");
+    var sbzs = $(".sbzs>div");
+    var oflis = $("#float-floor li");
+    var owf = document.body.clientWidth;
+    var owh = $(window).height();
+    var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
+    var ofh = owh / 2 - $("#float-floor").height() / 2;
+    oflr.css({"left": oft, "top": ofh})
+    $(window).resize(function() {
+        var cet_w = $("#cloth").offset().left;
+        var oflr = $("#float-floor");
+        var sbzs = $(".sbzs>div");
+        var oflis = $("#float-floor li");
+        var owf = document.body.clientWidth;
+        var owh = $(window).height();
+        var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
+        var ofh = owh / 2 - $("#float-floor").height() / 2;
+        if (cet_w < $("#float-floor").width() + 20) {
+            oflr.hide();
+        }
+        else {
+            oflr.show();
             oflr.css({"left": oft, "top": ofh})
-            $(window).resize(function() {
-                var cet_w = $("#cloth").offset().left;
-                var oflr = $("#float-floor");
-                var sbzs = $(".sbzs>div");
-                var oflis = $("#float-floor li");
-                var owf = document.body.clientWidth;
-                var owh = $(window).height();
-                var oft = (owf - $("#cloth").width()) / 2 - ($("#float-floor").width() + 20);
-                var ofh = owh / 2 - $("#float-floor").height() / 2;
-                if (cet_w < $("#float-floor").width() + 20) {
-                    oflr.hide();
-                }
-                else {
-                    oflr.show();
-                    oflr.css({"left": oft, "top": ofh})
-                }
-            });
-            $(window).scroll(function() {
-                var w_top = $(window).scrollTop();
-                if (w_top> $("#flr1").offset().top-400 && w_top < $("#flr3").offset().top-100) {
-                    oflr.show();
-                    oflr.css({"left": oft, "top": ofh})
-                    if (owf < 1180) {
-                        oflr.hide();
-                    }
-                }
-                else {
-                    oflr.hide();
-                }
-                for(var i=0;i<4;i++){
-                    if(w_top > $(oafls[i]).offset().top-400 && w_top < $(oafls[i+1]).offset().top+200){
-                        $("#float-floor li").removeClass("on");
-                        $(oflis[i]).addClass("on");
+        }
+    });
+    $(window).scroll(function() {
+        var w_top = $(window).scrollTop();
+        if (w_top > $("#flr1").offset().top - 400 && w_top < $("#flr3").offset().top - 100) {
+            oflr.show();
+            oflr.css({"left": oft, "top": ofh})
+            if (owf < 1180) {
+                oflr.hide();
+            }
+        }
+        else {
+            oflr.hide();
+        }
+        for (var i = 0; i < 4; i++) {
+            if (w_top > $(oafls[i]).offset().top - 400 && w_top < $(oafls[i + 1]).offset().top + 200) {
+                $("#float-floor li").removeClass("on");
+                $(oflis[i]).addClass("on");
 
-                    }
-                }
-                if(w_top > $(oafls[2]).offset().top-200 && w_top < $(".brand-ques").offset().top-400){
-                    $("#float-floor li").removeClass("on");
-                    $(oflis[3]).addClass("on");
-                }
-                if(w_top > $(".brand-ques").offset().top-400){
-                    $("#float-floor li").removeClass("on");
-                    $(oflis[4]).addClass("on");
-                }
-            });
-            $("#float-floor li").each(function(i) {
-                $(this).click(function() {
-                    var t =  $(oafls[i]).offset().top;
-                    $("html, body").animate({"scrollTop": t-350});
-                    $(this).addClass("on");
-                });
-            });
+            }
+        }
+        if (w_top > $(oafls[2]).offset().top - 200 && w_top < $(".brand-ques").offset().top - 400) {
+            $("#float-floor li").removeClass("on");
+            $(oflis[3]).addClass("on");
+        }
+        if (w_top > $(".brand-ques").offset().top - 400) {
+            $("#float-floor li").removeClass("on");
+            $(oflis[4]).addClass("on");
+        }
+    });
+    $("#float-floor li").each(function(i) {
+        $(this).click(function() {
+            var t = $(oafls[i]).offset().top;
+            $("html, body").animate({"scrollTop": t - 350});
+            $(this).addClass("on");
+        });
+    });
     //banner焦点图等于1张的时候 不显示点
-    $(document).ready(function(){
-        if($(".mj-banner-img .mj-banner-itme").length<=1){
-            $(".mj-bannerIimg .hd").css({"display":"none"})
+    $(document).ready(function() {
+        if ($(".mj-banner-img .mj-banner-itme").length <= 1) {
+            $(".mj-bannerIimg .hd").css({"display": "none"})
         }
     });
     //添加查看详情标签；
@@ -982,23 +982,23 @@
 //                });
 //            })
 
-$(window).load(function(){//加载完成执行
-    //显示下面浮动层
-     setTimeout(function(){
-         $('.fdkf-ss').click();
-     },3000);
-     
-     //快捷登录提示5秒后小时
-     setInterval(function(){
-         $(".mj-eed").animate({
-            opacity: 'hide'
-        }, 1000);
-         $(".reg-tip22 em").animate({
-            opacity: 'hide'
-        }, 1000);
-     },6000);
-     
-    
-});
+    $(window).load(function() {//加载完成执行
+        //显示下面浮动层
+        setTimeout(function() {
+            $('.fdkf-ss').click();
+        }, 3000);
+
+        //快捷登录提示5秒后小时
+        setInterval(function() {
+            $(".mj-eed").animate({
+                opacity: 'hide'
+            }, 1000);
+            $(".reg-tip22 em").animate({
+                opacity: 'hide'
+            }, 1000);
+        }, 6000);
+
+
+    });
 </script>
 <? require(ViewDir.'/footer.html'); ?>

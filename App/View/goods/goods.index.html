@@ -19,7 +19,7 @@
         </div>
         <!-- ms-filtersList start -->
         <div class="ms-filtersList-oter">
-            <ul class="f-clearfix" id="s-all-list">
+            <ul class="f-clearfix" id="tm-all-list">
     <?if ( !empty($list['rows']) ){?>
         <? foreach ($list['rows'] as $k => $v) {?>
             <? $_c_ = explode(',', $v['class']);
@@ -89,10 +89,9 @@
             </div>
         </div>
     <? } ?>
-            </ul>
-            <ul class="f-clearfix" id="tm-all-list">                
-                <div id="tm-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>1.2/images/tm-list-wait.png"></div>
-            </ul>
+        <div id="tm-uploading" style="padding-top:33px;text-align:center;display:none;height:100px;"><img src="<?=StaticDir?>1.2/images/tm-list-wait.png"></div>
+            
+        </ul>
         </div>
         <!-- ms-filtersList end -->
 
