@@ -65,7 +65,7 @@
         ucConfig.setConfig(timestamp,nonceStr,signature);
         var copyArr = new Array();
         var isLoghtml = '';
-        //ucLoginTemp.setLoginTemp();
+        ucLoginTemp.setLoginTemp();
 
         //用户是否登录
         nick_name = getCookie('uc_nickname');
@@ -77,14 +77,7 @@
         if(nick_name && !login_mobile){
             getLayer($('#goCenter'));
         }
-        if(login_mobile){ //账户处链接
-            var privateHtml = '<div class="yzc-account" id="account-name"><a href="'+HOST+'" target="_blank" class="lg-name" id="chaofan-mj-nickname">'+nickname+'<i class="fa fa-sort-desc" aria-hidden="true"></i></a><div class="account-list" id="acc-list"></p><p><a target="_blank" href="'+HOST+'/collect/trade/">我的收藏</a></p><p><a target="_blank" href="'+HOST+'/buyer/myinfo/">我的求购</a></p><p><a href="javascript:;" id="chaofan-mj-logexit">退出登录</a></p></div></div>';
-            $('#_login_no').hide();
-            $('#login_after').html(privateHtml);
-        }else{
-            $('#login_after').hide();
-            $('#_login_no').show();
-        }
+        
         //执行任务
         var task_aim = getCookie('task_aim');
         delCookie('task_aim');
