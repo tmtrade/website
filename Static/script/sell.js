@@ -119,7 +119,7 @@ $(function(){
 		var tip = _this.parent().next();
                
 		if($.trim(_this.val()) == ''){
-			tip.html('<img src="/Static/1.2/images/pt-sell-err.png">专利号格式：cn201512345678.1');
+			tip.html('<img src="/Static/1.2/images/pt-sell-err.png">专利信息不存在，请重新填写');
                         tip.show();
                       	$(this).addClass('errorIp');
 			return false;
