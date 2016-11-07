@@ -201,13 +201,13 @@ class DetailAction extends AppAction
 		if(isset($sale['id'])){
 			if( $sale['priceType'] == 1 && $sale['isOffprice'] == 1 && ($sale['salePriceDate'] == 0 || $sale['salePriceDate'] > time())){ //特价
 				$data['show'] = true;
-				$data['button'] = '立即购买';
+				$data['button'] = '我有兴趣';
 				$data['key'] = 1;
 				$data['price'] = $sale['salePrice'];
 			}elseif($sale['priceType'] == 1){//定价
 				if($this->isLogin){
 					$data['show'] = true;
-					$data['button'] = '立即购买';
+					$data['button'] = '我有兴趣';
 				}
 				$data['key'] = 2;
 				$data['price'] = $sale['price']*1.1;
