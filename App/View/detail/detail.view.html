@@ -191,7 +191,7 @@
                     <? elseif($isLogin || $price_module['key']==1): ?>
                     <a href='javascript:;' webid="30" onclick="createOrder();" class="opt_btn"><img src="<?=StaticDir?>1.2/images/shop-ico.png"><?=$price_module['button']?></a>
                     <? else: ?>
-                    <a href='javascript:;' onclick="goLook()" class="opt_btn"><img src="<?=StaticDir?>1.2/images/ck-ye.png"><?=$price_module['button']?></a>
+                    <a href='javascript:;' onclick="createOrder()" class="opt_btn"><img src="<?=StaticDir?>1.2/images/ck-ye.png"><?=$price_module['button']?></a>
                     <? endif; ?>
                     促销
                     <em title="买一送一" class="wddsb" url="/topic/buyone_getone">买一送一</em>
@@ -639,7 +639,21 @@
             }
         });
     });
-    //生成订单
+    function createOrder(){
+        var tel= $('#tels').val();
+        //获得数据
+        var buyData 			= new Object();
+        buyData['tid'] 			= $('#tid').val();
+        buyData['trademark'] 	= $('#trademark').val();
+        buyData['class'] 		= $('#class').val();
+        buyData['subject'] 		= '求购信息';
+        buyData['remarks'] 		= $('#remarks').val();
+        if(tel){
+            setEvent('立即购买','表单-提交了账号'+tel);
+        }
+        xunjia(buyData,2);//调用询价方法
+    }
+    /*//生成订单
     function createOrder(){
         layer.load(1,{shade: [0.2,'#000']});
         //检测是否有电话号码
@@ -669,7 +683,7 @@
             }
         }
         return false;
-    }
+    }*/
     //生成订单--2  (直接输入电话)
     //失去焦点,检测用户输入的手机号
     $('#telInput2').blur(function(){
@@ -720,15 +734,6 @@
                 $('.opt_btn').replaceWith("<a href='javascript:;' class='opt_btn'>求购信息已提交</a>");
             }
         });
-    }
-    //打开登录窗口
-    function goLook()
-    {
-        $('#chaofan-mj-login').trigger('click');
-    }
-    function goBuy()
-    {
-        $('#chaofan-mj-login').trigger('click');
     }
     //专题点击事件
     $('.wddsb').click(function(e){

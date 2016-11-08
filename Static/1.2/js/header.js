@@ -398,27 +398,32 @@ function getLogin(title,tel,isExist){
     reCal($('#loginFormDiv'));
 }
 //用户询价
-function xunjia(obj){
+function xunjia(obj,flag){
     layer.load(1, {
         shade: [0.1,'#fff'] //0.1透明度的白色背景
     });
-    //组装提交数据
-    var mydata = $(obj).closest('li').find('.xunjia_data');
-    var remarks = mydata.attr('remarks');
-    var buyData 			= new Object();
-    buyData['tid'] 			= mydata.attr('tid');
-    buyData['trademark'] 	= mydata.attr('number');
-    buyData['class'] 		= mydata.attr('data_class');
-    buyData['type'] 		= mydata.attr('p_type');
-    buyData['subject'] 		= '求购信息';
-    buyData['remarks'] 		= remarks;
+    if(typeof flag=='undefined'){
+        flag = 1;
+    }
+    var buyData = new Object();
+    if(flag==1){ //从li中获取数据
+        //组装提交数据
+        var mydata = $(obj).closest('li').find('.xunjia_data');
+        var remarks = mydata.attr('remarks');
+        buyData['tid'] 			= mydata.attr('tid');
+        buyData['trademark'] 	= mydata.attr('number');
+        buyData['class'] 		= mydata.attr('data_class');
+        buyData['type'] 		= mydata.attr('p_type');
+        buyData['subject'] 		= '求购信息';
+        buyData['remarks'] 		= remarks;
+    }else{ //直接读取数据
+        buyData = obj;
+    }
     //用户是否登录
     if(login_mobile){
+        buyData['tel'] = login_mobile;
+        buyData['remarks'] += (';电话号码：' + login_mobile);
         //提交到分配系统中
-        remarks = remarks + ';电话号码：' + login_mobile;
-        buyData['tel'] 			= login_mobile;
-        buyData['remarks'] 		= remarks;
-        //提交数据
         ucBuy.buyAdd(buyData);
     }else if(nick_name){
         //弹出绑定手机框

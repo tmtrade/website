@@ -120,7 +120,7 @@ class DetailAction extends AppAction
 		//得到商标参与的专题
 		$topic = $this->load('zhuanti')->getTopicByNumber($number);
 		//得到用户订单的need字段
-		$need = "商标号:".$info['number'].",类别:".implode(',',$info['class']);
+		$need = "商标号:".$info['number'].",类别:".implode(',',$info['class']).",名称:".$info['name'];
 		//得到打包数据
 		$pack = $this->load('pack')->getPackInfo($number);
 		//判断用户的状态(显示不同的价格页面和操作按钮)
