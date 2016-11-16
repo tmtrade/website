@@ -57,11 +57,11 @@ class IndexAction extends AppAction
 		}
 		$this->set('news',$news);
 		//得到faq其他信息
-		$faq_other = $this->com('redisHtml')->get('faq_other');
-		if(empty($faq_other)){
-			$faq_other = $this->load('faq')->getOther(6);
-			if($faq_other) $this->com('redisHtml')->set('faq_other', $faq_other, 86400);
-		}
+		// $faq_other = $this->com('redisHtml')->get('faq_other');
+		// if(empty($faq_other)){
+		// 	$faq_other = $this->load('faq')->getOther(6);
+		// 	if($faq_other) $this->com('redisHtml')->set('faq_other', $faq_other, 86400);
+		// }
 		$this->set('faq_other',$faq_other);
 		$this->setSeo(1);
 		$this->display();
