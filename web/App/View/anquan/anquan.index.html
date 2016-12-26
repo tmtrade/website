@@ -32,10 +32,23 @@
 	</style>
     <script type="text/javascript">
         var _static_dir = "<?=StaticDir?>";
-		$(document).ready(function(e) {
+        var _YZC_ONLINE_ = '';
+        $(document).ready(function(e) {
             $(".fastlogin").click(function(){
         		getLogin();
     		});
+            //获取客服在线
+            $.ajax({
+                async: false,
+                type : 'post',
+                url  : '<?=SITE_URL?>index/getOnlineStatus/',
+                dataType : 'json',
+                success : function (data){
+                    if (data.code){
+                        _YZC_ONLINE_ = data.msg;
+                    }
+                }
+            });
         });
 		
     </script>

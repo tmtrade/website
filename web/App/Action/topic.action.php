@@ -116,5 +116,19 @@ class TopicAction extends AppAction
         $this->setSeoByTopic("/topic/ptline");
         $this->display();
     }
+
+    /**
+     * 圣诞节专题
+     */
+    public function chris(){
+        $this->pageTitle = '如何选择商标，选商标流程注意事项';
+        $this->pageKey  = '一只蝉专利买卖,专利交易系统,专利交易平台';
+        $this->pageDescription = '怎么选择到好的商标？选择商标时要有哪些注意事项？百万商标交易网一只蝉用心为你服务，教你挑选好的商标。';
+        $this->set('title', $this->pageTitle);//页面title
+        $this->set('keywords', $this->pageKey);//页面keywords
+        $this->set('description', $this->pageDescription);//页面description
+        $this->setSeoByTopic("/topic/chris");
+        $this->display();
+    }
 }
 ?>

@@ -548,6 +548,10 @@ function analyzePage(ptype){
             str = '活动页';break;
         case '19':
             str = '商标打包页';break;
+        case '20':
+            str = '需求大厅列表页';break;
+        case '21':
+            str = '需求大厅详情页';break;
         default:
             str = '未知';
     }

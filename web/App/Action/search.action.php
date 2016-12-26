@@ -588,6 +588,7 @@ class SearchAction extends AppAction
         $type   = $this->input('_from', 'int', 1);
 
         $params = $this->getSearchParams(0, 1);
+        $params['length'] = urldecode($params['length']);//字数这里需要url解码
         if ( empty($params) ){
             $res = array('rows'=>array(),'total'=>0);
         }else{

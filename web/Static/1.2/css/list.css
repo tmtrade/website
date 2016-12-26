@@ -53,7 +53,36 @@ body{ background:#ffffff !important;}
 /*专题详情页*/
 .zj-ban{
     overflow: hidden;
-    margin-top: 25px;
+    /*margin-top: 25px;*/
+}
+.yzc-zt-recom{
+    width: 1178px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.yzc-zt-recom span{
+    display: inline-block;
+    width: 115px;
+    height: 45px;
+    float: left;
+    margin-left: 40px;
+}
+.yzc-zt-recom p{
+    display: inline-block;
+    width: 960px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 22px;
+    font-size: 12px;
+    color: #666666;
+    font-family: "微软雅黑";
+    float: left;
+    margin-left: 40px;
 }
 .yzc-ztname{
     margin-top: 45px;
@@ -288,6 +317,9 @@ body{ background:#ffffff !important;}
     /*overflow: hidden;*/
     margin-top: 20px;
 }
+.brand-details a{
+    color: #666;
+}
 .cur-pos{
     overflow: hidden;
     padding-top: 20px;
@@ -469,6 +501,9 @@ body{ background:#ffffff !important;}
     position: absolute;
     right: 24px;
     top: 0px;
+}
+.o-reg-lg a{
+    color: #ffffff;
 }
 .brand-details div.fr-details p.may font{
     color: #666666;
@@ -1403,10 +1438,23 @@ body{ background:#ffffff !important;}
     border-top: 1px solid #e7e7e7;
     position: relative;
     padding-bottom:25px;
-// width: 95%;
+    width: 95%;
 
 }
-
+.comSty2{
+    margin: 35px auto 0px;
+    border-top: 1px solid #e7e7e7;
+    position: relative;
+}
+.comSty2 .lb-tit{
+    background:#ffffff;
+}
+.sell-ryzz p{
+    width: 214px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .cUlb-tit{
     color: #333333;
     font-size:18px;
@@ -1558,7 +1606,7 @@ body{ background:#ffffff !important;}
 .case-name-share{
     display: inline-block;
     position: absolute;
-    top:-15px;
+    top:-12px;
     left:405px;
     padding-left: 15px;
     padding-right: 15px;
@@ -1566,8 +1614,9 @@ body{ background:#ffffff !important;}
     background: #ffffff;
 }
 .case-name-share a{
+    vertical-align:middle;
     display: inline-block;
-    margin-top: -5px;
+    margin-top: -2px;
 }
 .case-name-share i{
     margin-bottom: -5px;
@@ -1775,6 +1824,7 @@ body{ background:#ffffff !important;}
     padding-top: 8px;
     padding-bottom: 20px;
     border-bottom: 1px solid  #eaeaea;
+    display: none;
 }
 .contUsMain li{
     width: 100%;
@@ -1860,6 +1910,13 @@ body{ background:#ffffff !important;}
     margin: 45px auto 0px;
     padding-left:10px;
     padding-right: 0px;
+    line-height: 24px;
+}
+.trad-certi .yzzz p{
+    /*margin-top: -10px !important;*/
+}
+.trad-certi .yzzz span{
+    margin-top: -25px !important;
 }
 .trad-certi .yzzz img{
     display: block;
@@ -1914,6 +1971,9 @@ body{ background:#ffffff !important;}
     color: #999999;
     font-size: 14px;
     margin-top:30px;
+}
+.contUg-page li.fr{
+    float: right !important;
 }
 .contUg-page li.fl{
     text-align: left;

@@ -1,0 +1,177 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/require.css?v=<?=$static_version?>" />
+
+<div class="req-ban w1180 f-clearfix">
+    <div class="req-ban-top">
+        <div class="req-ban-lg">
+                <span class="fl">
+                    <img src="<?=StaticDir?>1.2/images/req-cbb.png">
+                </span>
+            <p class="req-ban-title fl">
+                <b>商标需求大厅</b><br/>
+                <label>Trademark demand Hall</label>
+            </p>
+        </div>
+        <div class="req-ban-des">
+            <i><img src="<?=StaticDir?>1.2/images/req-jt.png"></i>
+            <p>商标卖不出去？快来看买家需要啥！每一条都是真实求购，匹配成功立即出手！
+            </p>
+        </div>
+    </div>
+    <div class="req-ban-from f-clearfix">
+        <form id="myForm">
+        <ul class="req-from-list">
+            <li class="fir-text">
+                <label>您的需求</label>
+                <textarea name="content" placeholder="告诉我们，您对商标都有哪些要求吧！" id="buyNeed"></textarea>
+            </li>
+            <li>
+                <p>
+                    <label>您的姓名</label>
+                    <input type="text" name="name" id="buyName"/>
+                </p>
+                <p class="sec">
+                    <label>联系方式</label>
+                    <input type="text" name="mobile" id="buyMoblie"/>
+                </p>
+            </li>
+            <li>
+                <a href="javascript:;" class="req-tiBtn" id="addRequire">发布求购</a>
+                 <span class="req-err-ts" id="error" style="display: none">
+                       <img src="<?=StaticDir?>1.2/images/icon19-1.png"><span class="err_str"></span>
+                 </span>
+            </li>
+        </ul>
+        </form>
+        <div class="req-ban-adpos">
+            <ul>
+                <li>
+                   <a href="/offprice" target="_blank">
+                       <img src="<?=StaticDir?>1.2/images/req-adv-pic2.jpg">
+                   </a>
+
+                </li>
+                <li>
+                    <a href="http://seller.yizhchan.com/" target="_blank">
+                        <img src="<?=StaticDir?>1.2/images/req-adv-pic1.jpg">
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="req-main w1160 f-clearfix f-hidden">
+    <div class="req-seek-top">
+        <div class="ms-filterSearch">
+            <!--[if !IE]><!-->
+            <input type="text" id="research" value="<?=$keyword?>" class="research" placeholder="搜一搜有无我可投标的">
+            <!--<![endif]-->
+            <!--[if IE]>
+            <input type="text" class="research" value="搜一搜有无我可投标的" onblur="if(value == ''){value = '搜一搜有无我可投标的'}" onfocus="if(value == '搜一搜有无我可投标的'){value = ''}" id="research"/>
+            <![endif]-->
+            <em></em>
+            <a href="javascript:void(0);" onclick="mysearch();"><i class="us-icon us-icon21"></i></a>
+        </div>
+        <label class="req-seek-data">
+            共<font> <?=$count?> </font>条需求
+        </label>
+    </div>
+    <div class="req-seek-list f-clearfix f-hidden">
+        <ul>
+            <? foreach($list as $item): ?>
+
+            <li>
+                <a target="_blank" href="/require/detail/?id=<?=$item['id']?>" module="需求详情" addmsg="查看需求详情">
+                    <div class="req-seek-list-top">
+                        <label class="list-top-mes fl">
+                           <?=date('Y/m/d H:i',$item['date'])?>&nbsp;&nbsp;<?=$item['name']?$item['m_name']:''?>&nbsp;<?=$item['m_mobile']?>
+                        </label>
+                        <span class="fr">
+                            <i class="us-icon us-coll"></i>
+                            <?=$item['status']==1?'征集中':'已结束'?>
+                        </span>
+                    </div>
+
+                    <div class="req-seek-list-cont">
+                        <p class="req-seek-descr">
+                            <?=$item['desc']?>
+                        </p>
+                    </div>
+                    <div class="req-seek-offer">
+                        <? if($item['count']): ?>
+                        <span href="javascript:;">已有<font><?=$item['count']?></font>条报价</span>
+                        <? else: ?>
+                        <span href="javascript:;">暂无报价</span>
+                        <? endif; ?>
+                    </div>
+                </a>
+            </li>
+
+            <? endforeach; ?>
+        </ul>
+        <div class="req-seek-page mj-pages">
+            <?=$pageBar?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        //提交需求
+        $('#addRequire').click(function(){
+            layer.load(1, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            var name = $.trim($('#buyName').val());
+            var tel = $.trim($('#buyMoblie').val());
+            var subject = $.trim($('#buyNeed').val());
+            //验证手机号码
+            if (!mobilereg.test(tel) || tel.length != 11) {
+                $('.err_str').text('手机号码不正确');
+                $('#error').show();
+                layer.closeAll('loading');
+                return false;
+            }
+            if (!(subject)) {
+                $('.err_str').text('请输入您的需求');
+                $('#error').show();
+                layer.closeAll('loading');
+                return false;
+            }
+            $('#error').hide();
+            var data = new Array();
+            data['name'] = name;
+            data['tel'] = tel;
+            data['subject'] = '求购信息';
+            data['remarks'] = subject;
+            setEvent("需求登记", "表单-提交了要求" + subject + "联系方式:" + tel + "姓名:" + name);
+            ucNetwork.submitData(data);
+        });
+    });
+    //搜索关键字
+    function mysearch(){
+        var keyword = $('.research').val();
+        var url = '/require/index/';
+        if(keyword){
+            setEvent('搜索需求','需求关键字:'+keyword);
+            url += '?keyword='+keyword;
+        }
+        location.href = url;
+    }
+    //快捷登录回调
+    function submitDataCallback(Obj) {
+        $.each(Obj, function(i, n) {
+            if (n.code != -1) {
+                //弹出成功框
+                getLayer($('#mj-submitteS'));
+                //清空输入
+                $('#myForm').get(0).reset();
+            } else {
+                //弹出失败框
+                getLayer($('#mj-submitteF'));
+            }
+            layer.closeAll('loading');
+        });
+    }
+</script>
+<? require(ViewDir.'/footer.html'); ?>

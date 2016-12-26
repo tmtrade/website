@@ -55,7 +55,7 @@ class ZhuantiAction extends AppAction
 		$this->set('topic', $topic);
 		$this->set('topicItems', $topicItems);
                 
-        $res 	= $this->load('zhuanti')->getList($id, $page, 4,array('isMore'=>'asc','sort'=>'asc'));
+        $res 	= $this->load('zhuanti')->getList($id, $page, 6,array('isMore'=>'asc','sort'=>'desc'));
 		$list 	= empty($res['rows']) ? array() : $res['rows'];
         $title  = $topic['title'] . ' - '.$this->seotime;
         $this->set('list', $list);

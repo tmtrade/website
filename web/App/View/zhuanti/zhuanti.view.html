@@ -1,21 +1,36 @@
 <? require(ViewDir.'/header.html'); ?>
 <link rel="stylesheet" type="text/css" href="<?=StaticDir?>zhuanti/css/list.css?v=<?=$static_version?>" />
-  <a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
-<div class="w1180">
-    <div class="zj-ban">
-        <?php if(!empty($topic['banner'])) {?><img src="<?php echo TRADE_URL.$topic['banner']?>" alt="<?=$topic['alt2']?>"/><? }?>
-    </div>
-    <div class="yzc-ztname">
-        <div class="yzc-zttit">
-            <span>
-                <label> <img src="<?=StaticDir?>zhuanti/images/xq-ico.png"><?=date('Y-m-d', $topic['date'])?></label>
-            </span>
+<a class="detail-nav" id="tip" style="display:none;"><点击查看详情</a>
+<div class="zj-ban-bg" style="background-color:<?=$topic['img_color']?>">
+    <div class="w1180">
+        <div class="zj-ban">
+            <!--<i><?=$topic['img_color']?></i>--><!--banner背景色-->
+            <?php if(!empty($topic['banner'])) {?><img src="<?php echo TRADE_URL.$topic['banner']?>" alt="<?=$topic['alt2']?>"/><? }?>
         </div>
+    </div>
+</div>
+<div class="yzc-ztname w1180">
+        <!--<div class="yzc-zttit">-->
+            <!--<span>-->
+                <!--<label> <img src="<?=StaticDir?>zhuanti/images/xq-ico.png"><?=date('Y-m-d', $topic['date'])?></label>-->
+            <!--</span>-->
+        <!--</div>-->
+        <? if($topic['has_desc']==1): ?>
+        <div class="yzc-zt-recom">
+           <span>
+               <!--<i></i>--><!--描述标题-->
+               <?=$topic['desc_title']?>
+           </span>
+            <!--描述内容-->
+           <p>
+               <?=$topic['desc_content']?>
+           </p>
+        </div>
+        <? endif; ?>
         <div class="yzc-ztlishow">
             <ul class="f-clearfix">
                 <? $counts = count($topicItems); 
                 foreach($topicItems as $k=>$v){?>
-                
                 <li>
                     <div class="front" style="width: 188px;">
                         <span>
@@ -32,7 +47,7 @@
                                 <img src="<?=StaticDir?>zhuanti/images/catebuy1.png"/>
                                 询 价
                             </a>
-                            <a addmsg="咨询-03-联系卖家" webid="31" module="专题商品列表第<?=($k+1)?>条" href="http://p.qiao.baidu.com/im/index?siteid=7918603&ucid=1268165" target="_blank" class="sec cl-org">
+                            <a addmsg="咨询-03-联系卖家" webid="31" module="专题商品列表第<?=($k+1)?>条"  href="javascript:void(0);" onclick="goChat()" target="_blank" class="sec cl-org">
                                 <img src="<?=StaticDir?>zhuanti/images/cate-ck.png"/>
                                 联系卖家
                             </a>
@@ -44,57 +59,34 @@
                 <? }?>
             </ul>
         </div>
-
     </div>
-    <div class="ztlist w1180">
+<div class="ztlist w1180">
         <h3 class="ztlist-tit">更多精彩</h3>
         <ul>
-            <li>
             <?php foreach($list as $k=>$v){
-            if(($k+1)%2!=0){
+
             ?>
-                <div class="fl">
-                <span>
-                    <a module="更多精彩模块第<?=($k+1)?>条" href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221" alt="<?=$v['alt1']?>"></a>
-                </span>
-                    <dl>
-                        <dt>
-                        <h4><?=$v['title']?></h4>
-                        <label><?=date('Y-m-d', $v['date'])?></label>
-                        </dt>
-                        <dd>
-                            <a module="更多精彩模块第<?=($k+1)?>条" href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
-                        </dd>
-                    </dl>
-                </div>
-            <? }else{?>
-                <div class="fr">
-                <span>
-                     <a module="更多精彩模块第<?=($k+1)?>条" href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank"><img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221" alt="<?=$v['alt1']?>"></a>
-                </span>
-                    <dl>
-                        <dt>
-                        <h4><?=$v['title']?></h4>
-                        <label><?=date('Y-m-d', $v['date'])?></label>
-                        </dt>
-                        <dd>
-                            <a module="更多精彩模块第<?=($k+1)?>条" href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
-                        </dd>
-                    </dl>
+            <li>
+                <div>
+                    <span>
+                        <a module="更多精彩模块第<?=($k+1)?>条" href="<?if($v['type']==1){echo "/zhuanti/view/?id=".$v['id'];}else{echo $v['link'];}?>" target="blank">
+                            <img src="<?=TRADE_URL.$v['pic']?>" onerror="this.src='<?=StaticDir?>images/img1.png'" width="553" height="221" alt="<?=$v['alt1']?>">
+                        </a>
+                    </span>
+                    <p>
+                        <b><?=$v['title']?></b>
+                        <a module="更多精彩模块第<?=($k+1)?>条" href="/zhuanti/view/?id=<?=$v['id']?>" target="blank"><img src="<?=StaticDir?>zhuanti/images/list-ss.png"></a>
+                    </p>
                 </div>
             </li>
-            <li>
-            <? } }?>
-        </li>
-
+            <?}?>
         </ul>
     </div>
-</div>
+
 <script type="text/javascript">
    $(document).ready(function(){     
         $('.yzc-ztlishow').on('mouseover','li span',       
                 function(){
-                   
                     $('#tip').show();
                 }
         );

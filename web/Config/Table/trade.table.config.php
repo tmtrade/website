@@ -276,4 +276,14 @@ $tbl['package'] = array(
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
+$tbl['require'] = array(
+	'name'		=> $prefix.'require',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+$tbl['requireBid'] = array(
+	'name'		=> $prefix.'require_bid',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
 ?>

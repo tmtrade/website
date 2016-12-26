@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<?=StaticDir?>1.2/css/kj_tc.css?v=<?=$static_version?>"/>
 <!--专利详情介绍-->
 <div class="brand-details f-clearfix">
-    <p class="cur-pos w1180">全部结果 > <a href="/pt/?t=<?=$info['type']?>"><?=$patentType[$info['type']]?></a> > <?=empty($info['title'])?'【暂无专利名称】':$info['title']?></p>
+    <p class="w1180">全部结果 > <a href="/pt/?t=<?=$info['type']?>"><?=$patentType[$info['type']]?></a> > <?=empty($info['title'])?'【暂无专利名称】':$info['title']?></p>
     <div class="w1180">
 
         <div class="fl fl-details">
@@ -38,7 +38,7 @@
             }
             $temp = trim($temp,'/');
          ?>
-        <div class="fr fr-details">
+        <div class="fr fr-details" style="margin-top: 0px;">
            <h3><span title="<?=$info['title']?>"><?=empty($info['thum_title'])?'【暂无专利名称】':$info['thum_title']?></span> <span title="<?=$info['label']?>" class="light_title">( <?=$temp?> )</span></h3>
             <label class="bm"><?=$tminfo['value']?></label>
             <!--是否上架-->
@@ -358,7 +358,7 @@
                     <div class="jylc-xq-fl">
                         <img src="<?=StaticDir?>1.2/images/jyq-pt.jpg">
                     </div>
-                    <div class="jylc-xq-fr" style="margin-top:-10px;margin-right: 35px;">
+                    <div class="jylc-xq-fr" style="margin-top:-10px;margin-right: 5px;">
                         <dl>
                             <dd>
                                 <b><span>Q：</span>应该买什么专利？</b>

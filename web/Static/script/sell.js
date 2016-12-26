@@ -393,7 +393,7 @@ function addSell(){
 	var sid  = $('#sid').val();
 	var area = $('#area').val();
 	var content = $('#addsell').serialize()+"&sid="+sid+"&area="+area;
-	sendBehavior(1,13,0,0,content);//发送统计数据
+	//sendBehavior(1,13,0,0,content);//发送统计数据
 	var index = layer.load(1, {
 	    shade: [0.1,'#fff'] //0.1透明度的白色背景
 	});
@@ -439,7 +439,7 @@ function submitPatentSell(){
 
 function patentSell(){
 	var content = $('#patentsell').serialize();
-	sendBehavior(2,13,0,0,content);//发送统计数据
+	//sendBehavior(2,13,0,0,content);//发送统计数据
 	var index = layer.load(1, {
 	    shade: [0.1,'#fff'] //0.1透明度的白色背景
 	});

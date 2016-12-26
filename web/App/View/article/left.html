@@ -1,0 +1,67 @@
+<div class="contUsList-fl fl">
+        <div class="contUsList">
+            <h3 class="contUstit">关于一只蝉<img src="<?=StaticDir?>images/cont-rg.png"></h3>
+                <ul class="contUsMain">
+                    <a href="/v-0-28872/"  addmsg="一只蝉简介" webid="1"><li id="contact1" onclick="jc('contact',1,14)">一只蝉简介</li></a>
+                    <a href="/case/" target="_blank" addmsg="成功案例" webid="1"><li id="contact2" >成功案例</li></a>
+                    <a href="/ryzz/" addmsg="荣誉资质" webid="1"><li id="contact3"  onclick="jc('contact',3,14)" <? if($id==-1) echo 'class="up"';?>>荣誉资质</li></a>
+                    <a href="/v-0-28872/"  addmsg="联系我们" webid="1"><li id="contact4"   onclick="jc('contact',1,14)">联系我们</li></a>
+                </ul>
+           <h3 class="contUstit">常见问题&nbsp;&nbsp;&nbsp;<img src="<?=StaticDir?>images/cont-rg.png"></h3>
+                <ul class="contUsMain">
+                    <a href="/n-2/" addmsg="商标转让问答" webid="1"><li id="contact5" <? if($nav==2 && !$id) echo 'class="up"';?> onclick="jc('contact',5,14)">交易常见问题</li></a>
+                    <a href="/v-0-28874/" addmsg="用户服务协议" webid="1"><li id="contact7" <? if($id==28874) echo 'class="up"';?> onclick="jc('contact',7,14)">用户服务协议</li></a>
+                    <a href="/v-0-28878/" addmsg="入驻平台规则" webid="1"><li id="contact8" <? if($id==28878) echo 'class="up"';?> onclick="jc('contact',8,14)">入驻平台规则</li></a>
+                    <a href="/v-0-28880/" addmsg="商标交易流程" webid="1"><li id="contact9" <? if($id==28880) echo 'class="up"';?> onclick="jc('contact',9,14)">商标交易流程</li></a>
+                </ul>
+           <h3 class="contUstit">新闻中心&nbsp;&nbsp;&nbsp;<img src="<?=StaticDir?>images/cont-rg.png"></h3>
+                <ul class="contUsMain">
+                    <a href="/n-0/" addmsg="商标新闻" webid="1"><li id="contact10" <? if($nav==0 && !$id) echo 'class="up"';?> onclick="jc('contact',10,14)">商标新闻</li></a>
+                    <a href="/n-1/" addmsg="商标法律" webid="1"><li id="contact11" <? if($nav==1 && !$id) echo 'class="up"';?> onclick="jc('contact',11,14)">商标法律</li></a>
+                    <a href="/n-3/" addmsg="商标求购信息" webid="1"><li id="contact14" <? if($nav==3 && !$id) echo 'class="up"';?> onclick="jc('contact',14,14)">商标求购信息</li></a>
+                </ul>
+        </div>
+           
+               <div class="contUs-trademark">
+                   <i></i>
+                   <h3>商标转让知识推荐</h3>
+                   <ul class="contUs-trademarkul">
+                       <?foreach($faq as $f):?>
+                       <a href="<?=$f['url']?>" addmsg="知识推荐-<?=$f['thumtitle']?>" webid="1"><li><span>&bull;</span><?=$f['thumtitle']?></li></a>
+                       <?endforeach;?>
+                   </ul>
+               </div>
+                <div class="contUs-trademark">
+                   <i></i>
+                   <h3>商标新闻推荐</h3>
+                   <ul class="contUs-trademarkul">
+                       <?foreach($news as $n):?>
+                       <a href="<?=$n['url']?>" addmsg="新闻推荐-<?=$n['thumtitle']?>" webid="1"><li><span>&bull;</span><?=$n['thumtitle']?></li></a>
+                       <?endforeach;?>
+                   </ul>
+               </div>
+                <div class="contUs-trademark">
+                   <i></i>
+                   <h3>商标推荐</h3>
+                   <div id="traslideBox" class="traslideBox">
+                    <div class="bd">
+                      <ul>
+                          <?foreach($tj as $t):?>
+                        <li><a href="<?=$t['viewUrl']?>" target="_blank" addmsg="商标推荐-<?=$t['name']?>" webid="1"><img src="<?=$t['imgUrl']?>" onerror="this.src='/Static/images/img1.png'"></a></li>
+                          <?endforeach;?>
+                      </ul>
+                    </div>
+
+                  
+                    <a class="prev" href="javascript:void(0)"></a>
+                    <a class="next" href="javascript:void(0)"></a>
+
+                  </div>
+               </div>
+    </div>
+<? require(ViewDir.'/sidebar.html'); ?>
+    <script type="text/javascript" src="/Static/1.2/js/jquery.SuperSlide.2.1.js"></script>
+    <script type="text/javascript">
+        jQuery("#traslideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true});
+        jQuery(".contUsList").slide({titCell:"h3", targetCell:"ul",defaultIndex:'<?=$lanmu?>',effect:"slideDown",delayTime:300,trigger:"click",returnDefault:false})
+    </script>

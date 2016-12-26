@@ -48,7 +48,6 @@ abstract class AppAction extends Action
 
             $this->redirect('', WAP_URL);
         }
-       $this->caches = ""; //打开后关闭所有 页面缓存
         //设置访问的action(导航样式)
         $this->set('nav_name',$this->getNavType());
         //设置用户信息
@@ -97,7 +96,6 @@ abstract class AppAction extends Action
         $this->set('description', $this->pageDescription);//页面description
         $this->set('qq_num', C('qq_num'));//页面description
 
-        $this->set('static_version', 12855);//静态文件版本号>>控制js,css缓存
 
         // $this->set('CLASSES', C('CLASSES'));//国际分类
         // $this->set('CATEGORY', C('CATEGORY'));//分类

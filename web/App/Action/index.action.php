@@ -18,7 +18,6 @@ class IndexAction extends AppAction
 
 	public function index()
 	{
-		$this->redirect('', '/s/');
 		//首页标识
 		$this->set('is_index',true);
 		//得到首页基本基本配置信息
@@ -35,35 +34,42 @@ class IndexAction extends AppAction
 		}
 		$this->set('modules',$modules);
 		//最新交易记录
-		// $_tradeInfo = $this->com('redisHtml')->get('_tradeInfo_tmp');
-		// if ( empty($_tradeInfo) ){
-		// 	$tradeInfo = $this->load('buy')->getNewsTradeInfo(10);
-		// 	$this->com('redisHtml')->set('_tradeInfo_tmp', $tradeInfo, 3600);
-		// }else{
-		// 	$tradeInfo = $_tradeInfo;
-		// }
-		// $this->set('tradeInfo',$tradeInfo);
+//		$_tradeInfo = $this->com('redisHtml')->get('_tradeInfo_tmp');
+//		if ( empty($_tradeInfo) ){
+//			$tradeInfo = $this->load('buy')->getNewsTradeInfo(10);
+//			$this->com('redisHtml')->set('_tradeInfo_tmp', $tradeInfo, 3600);
+//		}else{
+//			$tradeInfo = $_tradeInfo;
+//		}
+//		$this->set('tradeInfo',$tradeInfo);
 
+		//最新求购需求
+		$last_require = $this->com('redisHtml')->get('_last_require');
+		if ( empty($last_require) ){
+			$last_require = $this->load('require')->getRequire(10);
+			$this->com('redisHtml')->set('_last_require', $last_require, 3600);
+		}
+		$this->set('last_require',$last_require);
 		//得到商标分类信息
 		$allClass = $this->load('index')->getAllClass();
 		$this->set('allClass',$allClass);
 		//得到新闻和问答
-		// $_news = $this->com('redisHtml')->get('_news_tmp');
-		// if(empty($_news)){
-		// 	$news['news']	= $this->load('faq')->newsList(array('c'=>50,'limit'=>5));
-		// 	$news['faq']	= $this->load('faq')->newsList(array('c'=>45,'limit'=>5));
-		// 	$this->com('redisHtml')->set('_news_tmp', $news, 86400);
-		// }else{
-		// 	$news = $_news;
-		// }
-		// $this->set('news',$news);
+		$_news = $this->com('redisHtml')->get('_news_tmp');
+		if(empty($_news)){
+			$news['news']	= $this->load('wordpress')->getList(0,1,5,false);
+			$news['faq']	= $this->load('wordpress')->getList(2,1,5,false);
+			$this->com('redisHtml')->set('_news_tmp', $news, 86400);
+		}else{
+			$news = $_news;
+		}
+		$this->set('news',$news);
 		//得到faq其他信息
-		// $faq_other = $this->com('redisHtml')->get('faq_other');
-		// if(empty($faq_other)){
-		// 	$faq_other = $this->load('faq')->getOther(6);
-		// 	if($faq_other) $this->com('redisHtml')->set('faq_other', $faq_other, 86400);
-		// }
-		// $this->set('faq_other',$faq_other);
+		$faq_other = $this->com('redisHtml')->get('faq_other');
+		if(empty($faq_other)){
+			$faq_other = $this->load('wordpress')->getOther(6);
+			if($faq_other) $this->com('redisHtml')->set('faq_other', $faq_other, 86400);
+		}
+		$this->set('faq_other',$faq_other);
 		$this->setSeo(1);
 		$this->display();
 	}

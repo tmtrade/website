@@ -1,0 +1,336 @@
+<? require(ViewDir.'/header.html'); ?>
+<link rel="stylesheet" type="text/css" href="<?=StaticDir?>1.2/css/require.css?v=<?=$static_version?>" />
+<script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery.SuperSlide.2.1.js?v=<?=$static_version?>"></script>
+
+<div class="req-details-main f-clearfix">
+    <!--左侧主要内容-->
+    <div class="req-details-content">
+        <p class="req-details-top">
+            <a href="/require/index/">需求大厅</a>&nbsp;>&nbsp;<a>需求详情</a>
+        </p>
+        <div class="req-details-content-box f-clearfix f-hidden">
+            <div class="req-box-top">
+                <p class="fl"><?=date('Y/m/d H:i',$require['date'])?></p>
+                <a class="fr">
+                    <i class="us-icon us-coll"></i>
+                    <?=$require['status']==1?'征集中':'已结束'?>
+                </a>
+            </div>
+            <div class="req-details-intr req-padding">
+                <div class="req-details-intr-user">
+                   <span>
+                       <img src="<?=StaticDir?>1.2/images/req-deta-yzc.png">
+                   </span>
+                    <label><?=$require['name']?$require['m_name']:''?>  <?=$require['m_mobile']?></label>
+                </div>
+                <p class="req-details-intr-content">
+                    <label>需求内容：</label><br/>
+                    <?=$require['desc']?>
+                </p>
+
+            </div>
+            <? if($require['bids']): ?>
+                <!--有竞标信息-->
+                <div class="req-padding infoList-padding">
+                    <div class="req-refer-list f-clearfix f-hidden">
+                        <div class="bd">
+                            <ul  class="infoList">
+                                <? foreach($require['bids'] as $item): ?>
+                                <li><label  class="time"><?=date('Y/m/d H:i',$item['date'])?></label><label class="name"> <?=$item['name']?></label><label class="tel"> <?=$item['m_mobile']?></label><label  class="mes">提交了 <?=$item['count']?> 条商标</label></li>
+                                <? endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            <? else: ?>
+                 <!--无竞标信息-->
+                <div class="req-padding">
+                    <div class="req-no-data">
+                        <img src="<?=StaticDir?>1.2/images/req-deta-head.png">
+                        <h4>当前还没有人回应呢</h4>
+                    </div>
+                </div>
+            <? endif; ?>
+            <? if($require['status']==1): ?>
+            <div class="req-trade-details req-padding">
+                 <div class="req-trade-details-pad">
+                    <h3>我可以提供商标</h3>
+                    <form id="myForm">
+                        <ul class="req-trade-list f-clearfix">
+                            <li>
+                                <p>
+                                    <label>您的姓名</label>
+                                    <input class="data-inp1" name="name" id="name" type="text"/>
+                                </p>
+                                <p class="sec">
+                                    <label>联系电话</label>
+                                    <input class="data-inp2" name="mobile" id="mobile" type="text"/>
+                                </p>
+                            </li>
+                            <li>
+                                <div class="f-clearfix f-hidden">
+                                    <label>商标号</label>
+                                    <input type="text" id="number" class="data-inp3" placeholder="一次可提交最多10条商标 商标号之间以为空格进行区分"/>
+                                    <a href="javascript:;" class="rq-deta-btn" id="addNumber">添加商标</a>
+                                    <span class="req-err-ts"  id="error" style="display: none">
+                                        <img src="<?=StaticDir?>1.2/images/icon19-1.png"><span class="err_str"></span>
+                                    </span>
+                                </div>
+                                <div class="req-trade-deta f-clearfix f-hidden">
+                                    <!--有数据时候-->
+                                    <table class="req-trade-tab" id="mytable" style="display: none">
+                                        <thead>
+                                           <tr>
+                                               <th style="width: 20%;text-align: center">商标图形</th>
+                                               <th style="width: 15%">商标号</th>
+                                               <th style="width: 15%">商标名称</th>
+                                               <th style="width: 40%">报价</th>
+                                               <th style="width: 10%">操作</th>
+                                           </tr>
+                                        </thead>
+                                        <tbody class="req-tbody" id="mybody">
+
+                                        </tbody>
+                                    </table>
+                                    <!--无数据时候-->
+                                    <div class="req-no-deta" id="nonedata">
+                                        <span>
+                                              <img src="<?=StaticDir?>1.2/images/req-yzc-head.png">
+                                        </span>
+                                        <h4>您还未添加商标</h4>
+                                        <p>请先输入商标号，并点击 添加商标 按钮</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tjbj-btn">
+                                <a href="javascript:;" class="req-deta-btn" id="addData">立刻提交报价</a>
+                                <font>让求购者第一时间看到你的商标出售信息！</font>
+                            </li>
+                        </ul>
+                        <input type="hidden" name="require_id" value="<?=$require['id']?>">
+                    </form>
+                 </div>
+            </div>
+        <? endif; ?>
+        </div>
+        <div class="req-page-btm f-clearfix f-hidden">
+            <ul>
+                <? if($prev): ?>
+                <li class="page-prev">
+                    <span>上一条  </span> <a href="<?=$prev['url']?>"><?=$prev['thum_titile']?></a>
+                </li>
+                <? else: ?>
+                <li class="page-prev">
+                    <span>上一条  </span> <a href="javascript:;">无</a>
+                </li>
+                <? endif; ?>
+
+                <? if($next): ?>
+                <li class="page-next">
+                    <span>下一条  </span> <a href="<?=$next['url']?>"><?=$next['thum_titile']?></a>
+                </li>
+                <? else: ?>
+                <li class="page-next">
+                    <span>下一条  </span> <a href="javascript:;">无</a>
+                </li>
+                <? endif; ?>
+            </ul>
+        </div>
+    </div>
+    <!--右侧广告-->
+    <div class="req-details-ad">
+        <ul>
+            <li>
+                <a href="/offprice" target="_blank">
+                    <img src="<?=StaticDir?>1.2/images/req-adv-pic3.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="http://seller.yizhchan.com/" target="_blank">
+                    <img src="<?=StaticDir?>1.2/images/req-adv-pic4.jpg">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        if($(".req-refer-list li").length>4){
+            jQuery(".req-refer-list").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:4,interTime:100});
+        }
+        //提交商标号
+        $('#addNumber').click(function(){
+            //得到信息
+            layer.load(1, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            var number = $.trim($('#number').val());
+            //商标号
+            if (!(number)) {
+                $('.err_str').text('请输入商标号');
+                $('#error').show();
+                layer.closeAll('loading');
+                return false;
+            }
+            //商标数不能大于20
+            var numbers = $('#mybody .mytm');
+            if(numbers.length>=50){
+                layer.msg('单次提交商标数不能大于50', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //检查列表中是否有此商标
+            var tmp = '';
+            var flag = true;
+            numbers.each(function(i){
+                tmp = $.trim($(this).text());
+                if(number.indexOf(tmp)!=-1){
+                    flag = false;
+                    return false;
+                }
+            });
+            if(!flag){
+                layer.msg('商标已在列表中', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //检测商标号
+            $.post('/require/checkTms',{number:number},function(data){
+                layer.closeAll('loading');
+                if(data.code==0){
+                    //显示商标信息
+                    $('#nonedata').hide();
+                    var mydata = data.data;
+                    var trs = '';
+                    for(var i in mydata){
+                         trs += '<tr>\
+                            <td class="req-tab-pic"><span><img src="'+mydata[i].img+'"></span></td>\
+                            <td class="mytm">'+mydata[i].number+'</td>\
+                            <td>'+mydata[i].name+'</td>\
+                            <td class="req-tab-bj"><span>报价</span><input class="myprice" name="price[]" placeholder="输入您的报价" class="data-inp1"/><span>元</span></td>\
+                            <td class="req-tab-del"><input type="hidden" name="number[]" value="'+mydata[i].number+'">\<a class="del-tr">删除</a></td>\
+                            </tr>';
+                    }
+                    $('#mybody').append(trs);
+                    $('#mytable').show();
+                    $('#error').hide();
+                    $('#number').val('');
+                    //看是否有错误的商标号
+                    if(data.code1!=0){
+                        layer.msg(data.msg,{time:3000});
+                        return false;
+                    }
+                }else{
+                    //显示错误
+//                    $('.err_str').text(data.msg);
+//                    $('#error').show();
+                    layer.msg(data.msg,{time:3000});
+                    return false;
+                }
+            },'json');
+        });
+
+        //提交数据
+        $('#addData').click(function(){
+            //得到信息
+            layer.load(1, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            //检查商标价格
+            var prices = $('#mybody .myprice');
+            if(prices.length==0){
+                layer.msg('请至少添加一条商标信息', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            if(prices.length>10){
+                layer.msg('一次可提交最多10条商标!', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            var tmp = '';
+            var flag = true;
+            prices.each(function(i){
+                tmp = /^\d+$/.test($.trim($(this).val()));
+                if(!tmp){
+                    flag = false;
+                    return false;
+                }
+            });
+            if(!flag){
+                layer.msg('请填写整数报价', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //获取其他值
+            var name = $.trim($('#name').val());
+            var tel = $.trim($('#mobile').val());
+            //验证手机号码
+            if (!mobilereg.test(tel) || tel.length != 11) {
+                $('.err_str').text('手机号码不正确');
+                $('#error').show();
+                layer.closeAll('loading');
+                return false;
+            }
+            if (!(name)) {
+                $('.err_str').text('请输入您的姓名');
+                $('#error').show();
+                layer.closeAll('loading');
+                return false;
+            }
+            //序列化表单
+            var data = $('#myForm').serialize();
+            //提交数据
+            $.post('/require/addRequireBid',data,function(data2){
+                layer.closeAll('loading');
+                if(data2.code==0){
+                    layer.closeAll('loading');
+                    setEvent("需求竞标信息", "竞标-提交了-姓名" + name + ";联系方式:" + tel);
+                    //提示成功
+                    layer.msg('您已成功提交竞标信息!',{time:1000},function(){
+                        location.reload();
+                    });
+                }else{
+                    //显示错误
+                    $('.err_str').text(data2.msg);
+                    $('#error').show();
+                    return false;
+                }
+            },'json');
+        });
+    });
+
+    //删除每行数据
+    $(".req-trade-tab").on("click",".del-tr",function(){
+        $(this).parents("tr").remove();
+    });
+
+    //检测价格
+    $('#mybody').on('blur','.myprice',function(){
+        var _this = this;
+        var reg = /^\d+$/;
+        var price = $(this).val();
+        if(!reg.test(price)){
+            layer.msg('请输入整数的报价!',{},function(){
+                $(_this).focus();//获取焦点
+            });
+        }
+    });
+
+    //获取焦点
+    $(document).on('focus','input',function(){
+        $('#error').hide();
+    })
+</script>
+
+<? require(ViewDir.'/footer.html'); ?>

@@ -128,7 +128,7 @@
                 <? if ( empty($sn) ) {?>
                 <div class="ms-conditionList gry-bg">
                     <span>商标字数</span>
-                    <div class="ms-conditionList-main">
+                    <div class="ms-conditionList-main" style="border-bottom: none;">
                         <ul class="f-clearfix ms-conditionRadio">
                             <li><a href="javascript:void(0);" onclick="createUrl('_sN','0');return false;">全部</a></li>
                             <?foreach ($_NUMBER as $k => $v) {?>
@@ -392,7 +392,7 @@
                 <a href="javascript:;" onclick="freeIntro()">免费推荐</a>
             </div>
         </li>
-        <a href="http://p.qiao.baidu.com/cps/chat?siteId=9503594&userId=21149642" target="_blank" class="zxzx"></a>
+        <a href="javascript:;" onclick="goChat()" target="_blank" class="zxzx"></a>
     </ul>
 </div>
 <? require(ViewDir.'/sidebar.html'); ?>

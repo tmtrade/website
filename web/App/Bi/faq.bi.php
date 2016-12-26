@@ -19,7 +19,7 @@ class FaqBi extends Bi
     {
     	if ( empty($params) || !is_array($params) ) return array();
         
-		return $this->request("article/getArticleList/", $params);
+		return $this->request("article/getArticleList/", $params,100);
     }
 
 

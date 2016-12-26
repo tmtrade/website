@@ -23,7 +23,7 @@ $rules[] = array(
 //详情页
 $rules[] = array(
     '#/v-#',
-    array('mod' => 'faq', 'action' => 'views'),
+    array('mod' => 'article', 'action' => 'view'),
     array(
         'short' => '#(\d+-\d+)#',
     ),
@@ -31,7 +31,7 @@ $rules[] = array(
 //列表页
 $rules[] = array(
     '#/n-#',
-    array('mod' => 'faq', 'action' => 'news'),
+    array('mod' => 'article', 'action' => 'lists'),
     array(
         'short' => '#(\d+(-\d+)?)#',
     ),
@@ -43,7 +43,7 @@ $rules[] = array(
 );
 $rules[] = array(
     '#/ryzz/$#',
-    array('mod' => 'faq', 'action' => 'ryzz'),
+    array('mod' => 'article', 'action' => 'ryzz'),
 );
 $rules[] = array(
     '#/lxwm/$#',
@@ -67,14 +67,4 @@ $rules[] = array(
         'short' => '#^/g-(([\w-])*)#',
         ),
 );
-
-//定义商标详情规则(新规则)
-// $rules[] = array(
-//     '#/goods-#',
-//     array('mod' => 'detail', 'action' => 'view'),
-//     array(
-//         'short' => '#([0-9a-zA-Z]+)(.html)#',
-//         ),
-// );
-
 ?>

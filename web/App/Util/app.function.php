@@ -147,8 +147,8 @@ function getPageBar($pager, $script = true)
 		'<a href="' . $pager['last']  . '">尾页</a>' . '&nbsp;' ;
 	} else {
 		$html .= '<a href="' . $pager['first'] . '">首页</a>' . '&nbsp;' .
-		'<a href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .
-		'<a href="' . $pager['next']  . '">下页</a>' . '&nbsp;' .
+		'<a href="' . $pager['pre']   . '>上页</a>' . '&nbsp;' .
+		'<a href="' . $pager['next']  . '>下页</a>' . '&nbsp;' .
 		'<a href="' . $pager['last']  . '">尾页</a>' . '&nbsp;' ;
 	}
 
@@ -173,8 +173,8 @@ function getPageBarNew($pager, $script = true)
 
 	$html = "";
 
-	$html .='<a href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .$pager['point'].
-		'<a href="' . $pager['next']  . '">下页</a>' . '&nbsp;' ;
+	$html .='<a href="' . $pager['pre']   . '" class="prev">上页</a>' . '&nbsp;' .$pager['point'].
+		'<a href="' . $pager['next']  . '" class="next">下页</a>' . '&nbsp;' ;
         
         $html .= '<span>共' . $pager['pageNum'] . '页</span>' . '&nbsp;';
         

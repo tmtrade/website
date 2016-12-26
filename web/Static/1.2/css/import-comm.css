@@ -29,6 +29,10 @@ img{
 a {outline: none;}
 a:active {outline: none;star:expression(this.onFocus=this.blur());}
 :focus{outline:0}
+input,textarea{
+    outline:none;
+    resize: none;
+}
 /*清除浮动*/
 .hot-red{
     color: #ff5656!important;

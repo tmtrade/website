@@ -1,10 +1,113 @@
 .cl-org{background: #ff8b3e}
 .cl-red{background: #ff5656}
 /*专题列表页*/
-.ztlist{
+
+.ztlist-main{
     margin-top:45px;
     border-top: 1px solid #e7e7e7;
     position: relative;
+}
+.ztlist-main h3{
+    display: inline-block;
+    color: #333333;
+    font-size: 24px;
+    background: #f5f5f5;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    left:530px;
+    top:-20px;
+}
+.ztlist-main  ul{
+    overflow: hidden;
+    margin-top: 35px;
+}
+.ztlist-main  ul li{
+    overflow: hidden;
+    margin-top: 15px;
+}
+.ztlist-main  ul li div{
+    padding:15px;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+}
+.ztlist-main  ul li div span{
+    display: block;
+    width: 553px;
+    height: 221px;
+    overflow: hidden;
+    text-align: center;
+}
+.ztlist-main  ul li div span img{
+    max-width: 553px;
+    max-height: 221px;
+}
+.ztlist-main  ul li div dl{
+    overflow: hidden;
+    margin-top: 12px;
+}
+.ztlist-main ul li div dl dt{
+    display: inline-block;
+    float: left;
+}
+.ztlist-main  ul li div dl dt h4{
+    color:#333333;
+    font-size: 16px;
+}
+.ztlist-main  ul li div dl dt label{
+    color: #999999;
+    font-size: 12px;
+}
+.ztlist-main  ul li div dl dd{
+    float: right;
+}
+
+
+/*专题详情页*/
+
+.ztlist{
+    border-top: 1px solid #e7e7e7;
+    position: relative;
+    margin-top: 20px;
+}
+.yzc-zt-recom{
+    width: 1178px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    margin-top: 20px;
+    overflow:hidden;
+}
+.yzc-zt-recom span{
+    display: inline-block;
+    padding-left:10px;
+    padding-right:10px;
+    min-width:85px;
+    max-width:147px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    background: url("../images/zt-recom.png") no-repeat center center;
+    background-size: 100% 100%;
+    float: left;
+    margin-left:20px;
+    color: #666666;
+    font-size: 16px;
+    font-family: "微软雅黑";
+}
+.yzc-zt-recom p{
+    display: inline-block;
+    width: 960px;
+    line-height: 22px;
+    font-size: 12px;
+    color: #666666;
+    font-family: "微软雅黑";
+    float:right;
+    margin-right:20px;
 }
 .ztlist h3{
     display: inline-block;
@@ -17,46 +120,68 @@
     left:545px;
     top:-20px;
 }
+.yzc-succeeal{
+    width: 100% !important;
+}
+.yzc-succeeal .lb-tit{
+    background: #fff !important;;
+}
 .ztlist  ul{
     overflow: hidden;
     margin-top: 35px;
+    margin-left:-10px;
 }
 .ztlist  ul li{
     overflow: hidden;
     margin-top: 15px;
+    float: left;
+    margin-left: 10px;
 }
 .ztlist  ul li div{
-    padding:15px;
+    width: 354px;
+    padding:15px 15px 10px 15px;
     background: #ffffff;
     border: 1px solid #eaeaea;
+    overflow: hidden;
 }
-.ztlist  ul li div dl{
-   overflow: hidden;
-   margin-top: 12px;
+.ztlist  ul li div span{
+    display: block;
+    width: 356px;
+    height: 143px;
+    overflow: hidden;
 }
-.ztlist  ul li div dl dt{
+.ztlist  ul li div span img{
+    max-width:100%;
+    max-height:100%;
+}
+.ztlist  ul li div p{
+  margin-top: 10px;
+  overflow: hidden;
+}
+.ztlist  ul li div p b{
     display: inline-block;
-    float: left;
-}
-.ztlist  ul li div dl dt h4{
     color:#333333;
     font-size: 16px;
+    float: left;
+    margin-top: 4px;
 }
-.ztlist  ul li div dl dt label{
-    color: #999999;
-    font-size: 12px;
-}
-.ztlist  ul li div dl dd{
+
+.ztlist  ul li div p a{
     float: right;
 }
 /*专题详情页*/
+.zj-ban-bg{
+    width: 100%;
+    height: 245px;
+    overflow: hidden;
+}
 .zj-ban{
     overflow: hidden;
-    margin-top: 25px;
+}
+.zj-ban img{
+    max-width: 1180px;
 }
 .yzc-ztname{
-    margin-top: 45px;
-    border-top: 1px solid #e7e7e7;
     position: relative;
 }
 
@@ -87,7 +212,7 @@
 .yzc-ztlishow{
     overflow: hidden;
     padding-bottom:0px;
-	padding-top: 25px;
+	padding-top: 20px;
 }
 .yzc-ztlishow ul{
    
@@ -226,7 +351,7 @@
 .mj-pages>a{
     display: inline-block;
     margin:0 5px;
-    width: 30px;
+    width: 60px;
     height: 31px;
     background: #fff;
     text-align: center;
@@ -1117,10 +1242,15 @@
 }
 .case-name-share a{
     display: inline-block;
-    margin-top: -5px;
+    margin-top: -2px;
 }
 .case-name-share i{
     margin-bottom: -5px;
+}
+.case-name-share img{
+    display: inline-block;
+    vertical-align:middle;
+    margin-bottom: 2px;
 }
 .case-xq-main{
     height: 400px;

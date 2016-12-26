@@ -207,15 +207,15 @@
                 </form>
                 <!--添加最新交易-->
                 <div class="mj-newjy">
-                    <h3>最新交易记录</h3>
+                    <h3>最新求购需求</h3>
                     <div class="bd">
-                        <ul><? foreach($tradeInfo as $item): ?>
+                        <ul><? foreach($last_require as $item): ?>
                             <li>
-
                                 <p>
-
-                                    <label> [出售]</label><label><?=$item['name']?></label><a>（<?=$item['tel']?>）</a><?=$item['remarks']?>
-                                    <!--<font><label>“</label><b></b><label>”</label></font>-->
+                                    <span><?=$item['m_mobile']?></span>
+                                    <a href="<?=$item['url']?>" target="_blank">
+                                      <?=$item['desc']?>
+                                    </a>
                                 </p>
                             </li><? endforeach; ?>
                         </ul>
@@ -313,6 +313,23 @@
     </div>
 </div>
 <!--活动推荐end-->
+<!--添加新手入门-->
+<div class="new-strategy">
+   <span class="fl">
+       <img src="<?=StaticDir?>1.2/images/new-ico1.png">
+   </span>
+    <div class="new-strategy-buy fl">
+        <a  href="/topic/chris" target="_blank">
+            <img src="<?=StaticDir?>1.2/images/new-buy.jpg">
+        </a>
+    </div>
+    <div class="new-strategy-sell fl">
+        <a  href="<?=SELLER_URL?>" target="_blank">
+             <img src="<?=StaticDir?>1.2/images/new-sell.jpg">
+        </a>
+    </div>
+</div>
+<!--添加新手入门结束-->
 <!--商标分类start-->
 <div class="yzc-Brand-all w1180" id="flr1">
     <div class="yzc-Brand">
@@ -578,33 +595,33 @@
     <div class="brand-ques-tit  f-clearfix f-hidden">
         <div class="succeed-al-tit f-clearfix f-hidden fl">
             <h3 class="fl">行业新闻</h3>
-            <a class="fr" target="_blank" module="新闻查看更多" href="/n-50/">查看更多</a>
+            <a class="fr" target="_blank" module="新闻查看更多" href="/n-0/">查看更多</a>
         </div>
         <div class="succeed-al-tit f-clearfix f-hidden fr">
             <h3 class="fl">转让问答</h3>
-            <a class="fr" href="/n-45/" target="_blank" module="问答查看更多">查看更多</a>
+            <a class="fr" href="/n-2/" target="_blank" module="问答查看更多">查看更多</a>
         </div>
     </div>
     <div class="Trad-all">
         <div class="Tradenews">
             <dl class="fl">
                 <dt>
-                <a target="_blank" href="/n-50/" module="新闻(图)"><img src="<?=StaticDir?>1.2/images/hyxw.jpg" ></a>
+                <a target="_blank" href="/n-0/" module="新闻(图)"><img src="<?=StaticDir?>1.2/images/hyxw.jpg" ></a>
                 </dt>
                 <dd>
                     <? foreach ($news['news'] as $k=>$item){ ?>
-                    <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="新闻第<?=($k+1)?>条" module='新闻'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                    <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="新闻第<?=($k+1)?>条" module='新闻'><? echo $item['title'];?></a>   </span><label class="fr"><? echo $item['date'];?></label></p>
                     <? } ?>
 
                 </dd>
             </dl>
             <dl class="fr">
                 <dt>
-                <a target="_blank" href="/n-45/" module="问答(图)"><img src="<?=StaticDir?>1.2/images/zrhd.jpg"></a>
+                <a target="_blank" href="/n-2/" module="问答(图)"><img src="<?=StaticDir?>1.2/images/zrhd.jpg"></a>
                 </dt>
                 <dd>
                     <? foreach ($news['faq'] as $k=>$item){ ?>
-                    <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a>   </span><label class="fr"><? echo date('Y-m-d',$item['time']);?></label></p>
+                    <p><span class="fl"><a target="_blank" href="<? echo $item['url'];?>" webid="15" addmsg="问答第<?=($k+1)?>条" module='问答'><? echo $item['title'];?></a>   </span><label class="fr"><? echo  $item['date'];?></label></p>
                     <? } ?>
 
                 </dd>
@@ -613,7 +630,7 @@
         <div class="btm">
             <? foreach ($faq_other as $k=>$item){ ?>
             <p>
-                <span class="fl">[<a href="<?=$item['type_url']?>" target="_blank" addmsg="其他分类第<?=($k+1)?>条" module='问答'><?=$item['type']?></a>] <a href="<? echo $item['url'];?>" target="_blank" addmsg="其他问答第<?=($k+1)?>条" module='问答' title="<? echo $item['title'];?>"><? echo $item['thumtitle'];?></a></span> <label class="fr"><? echo date('Y-m-d',$item['time']);?></label>
+                <span class="fl">[<a href="<?=$item['type_url']?>" target="_blank" addmsg="其他分类第<?=($k+1)?>条" module='问答'><?=$item['type']?></a>] <a href="<? echo $item['url'];?>" target="_blank" addmsg="其他问答第<?=($k+1)?>条" module='问答' title="<? echo $item['title'];?>"><? echo $item['thumtitle'];?></a></span> <label class="fr"><? echo $item['date'];?></label>
             </p>
             <? } ?>
         </div>
@@ -628,12 +645,14 @@
     </div>
     <ul>
         <li>
-            <div>
-                <span class="tool-pic1"></span>
-                <b>数据共享</b>
-                <i></i>
-            </div>
-            <label>发现行业变化和热点</label>
+            <a href="<?=SELLER_URL?>login/share" target="_blank">
+                <div>
+                    <span class="tool-pic1"></span>
+                    <b>数据共享</b>
+                    <i></i>
+                </div>
+                <label>发现行业变化和热点</label>
+            </a>
         </li>
         <li>
             <a href="<?=BJ_URL?>" target="_blank">
@@ -786,7 +805,7 @@
                 <a href="javascript:;" onclick="freeIntro()">免费推荐</a>
             </div>
         </li>
-        <a href="http://p.qiao.baidu.com/cps/chat?siteId=9503594&userId=21149642" target="_blank" class="zxzx"></a>
+        <a href="javascript:;" onclick="goChat()" target="_blank" class="zxzx"></a>
     </ul>
 </div>
 <? require(ViewDir.'/sidebar.html'); ?>

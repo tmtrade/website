@@ -33,11 +33,12 @@ abstract class Bi extends RpcClient
 	 * @access	public
 	 * @param	string	$name	请求的接口
 	 * @param	string  $param	提交的参数
+	 * @param	int  $timeout 超时时间
 	 * @return	array
 	 */
-	public function request($name, $param)
+	public function request($name, $param, $timeout=5)
 	{
-		$response = parent::request($name, $param);
+		$response = parent::request($name, $param, $timeout);
 		//if ( empty($response) ) {
 		//	return array('code' => '404', 'msg' => '系统异常', 'data' => '');
 		//}

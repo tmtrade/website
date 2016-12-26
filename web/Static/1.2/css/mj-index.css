@@ -421,22 +421,26 @@
 }
 .mj-newjy ul li p{
     display: inline-block;
-    margin-left:5px;
     color: #666666;
     margin-top: 3px;
     max-width: 310px;
     overflow:hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    cursor:pointer;
 }
 .mj-newjy ul li p span{
-    display: block;
+    display: inline-block;
+    width: 100px;
 }
-.mj-newjy ul li p span a{
-    color:#999999;
+.mj-newjy ul li p a{
+    color: #666666;
+}
+.mj-newjy ul li a:hover{
+    text-decoration: underline;
+    color: #ff6666;
 }
 .mj-newjy ul li p font{
-
     margin-top:-5px;
     height:45px;
     display:inline-block;
@@ -654,13 +658,13 @@
     position: absolute;
     bottom:-13px;
     left: 0px;
+    transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    -webkit-animation-name: bounce;
+    animation-name: bounce
 }
 .yzc-Activities ul li:hover span img{
     bottom:0px;
-    transition: all .4s;
-    -webkit-transition: all .4s;
-    -webkit-animation-name: bounce;
-    animation-name: bounce
 }
 .yzc-Activities ul li h3{
     position: absolute;
@@ -1993,10 +1997,24 @@
 .float-floor li.on .flr-pic5{
     background: url("../images/flr-ico5-1.png") no-repeat center  center;
 }
-
-
-
-
+/*添加新手入门*/
+.new-strategy{
+    width: 1179px;
+    height: 82px;
+    margin: 11px auto;
+    border: 1px solid #d9d9d9;
+    background-color:#ffffff;
+}
+.new-strategy span.fl{
+    margin-top: 24px;
+    margin-left: 24px;
+}
+.new-strategy-buy{
+    margin-left: 82px;
+}
+.new-strategy-sell{
+    margin-left:48px;
+}
 
 
 
